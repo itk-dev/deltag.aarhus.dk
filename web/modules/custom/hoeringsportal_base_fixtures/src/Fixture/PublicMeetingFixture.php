@@ -101,6 +101,10 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->set('field_public_meeting_cancelled', TRUE);
     $node->set('field_cancelled_text', 'This was canceled for a good reason.');
     $node->set('field_signup_selection', 'pretix');
+    
+    // A public meeting with pretix signup and multiple dates.
+    $node = $node->createDuplicate();
+    $node->setTitle('Public meeting with pretix signup and multiple dates');
     $node->set('field_pretix_dates', [
       [
         'location' => 'The location',
@@ -119,6 +123,23 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       // Cf. PretixConfigFixture.
       'template_event' => 'template-series',
       'synchronize_event' => TRUE,
+      [
+        'location' => 'Another location',
+        'address' => 'Rådhuspladsen 1, 8000 Aarhus C',
+        'time_from_value' => (new \DateTimeImmutable('2025-12-01T15:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_to_value' => (new \DateTimeImmutable('2025-12-01T16:30:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'spots' => 42,
+      ],
+      [
+        'location' => 'The location',
+        'address' => 'Hack Kampmanns Plads 2, 8000 Aarhus C',
+        'time_from_value' => (new \DateTimeImmutable('2025-12-02T15:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_to_value' => (new \DateTimeImmutable('2025-12-02T16:30:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'spots' => 87,
+      ],
+    ]);
+    $node->set('field_department', [
+      $this->getReference('department:Department 1')->id(),
     ]);
     $this->addReference('public_meeting:fixture-3', $node);
     $node->save();
