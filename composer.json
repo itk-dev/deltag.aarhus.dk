@@ -73,7 +73,7 @@
         "itk-dev/azure-ad-delta-sync-drupal": "^2.0",
         "itk-dev/composer-virtualenv": "^1.0",
         "itk-dev/itk_azure_video": "^2.0",
-        "itk-dev/itk_pretix": "^1.0",
+        "itk-dev/itk_pretix": "dev-feature/registration_deadline",
         "itk-dev/itk_siteimprove": "^1.2",
         "itk-dev/serviceplatformen": "^1.5",
         "itk-dev/web_accessibility_statement": "^1.0",
@@ -85,6 +85,7 @@
     "require-dev": {
         "drupal/content_fixtures": "^3.2",
         "drupal/core-dev": "^10.0",
+        "drupal/examples": "^4.0",
         "drupal/masquerade": "^2.0",
         "drupal/webprofiler": "^10.3",
         "ergebnis/composer-normalize": "^2.44",
@@ -97,6 +98,15 @@
         "drupal/drupal": "*"
     },
     "repositories": {
+        "itk-dev/itk_pretix": {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/itk_pretix/"
+        },
+        "drupal/content_fixtures": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/content_fixtures-3498162",
+            "//": "Content fixtures: Not compatible with Drush 13+ (https://www.drupal.org/project/content_fixtures/issues/3498162)"
+        },
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
