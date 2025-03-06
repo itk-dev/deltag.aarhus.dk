@@ -5,6 +5,8 @@ namespace Drupal\hoeringsportal_base_fixtures\Fixture;
 use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Session\AccountSwitcherInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
@@ -15,6 +17,11 @@ use Drupal\node\NodeInterface;
  * @package Drupal\hoeringsportal_base_fixtures\Fixture
  */
 final class PublicMeetingFixture extends AbstractFixture implements DependentFixtureInterface, FixtureGroupInterface {
+
+  public function __construct(
+    private readonly AccountSwitcherInterface $accountSwitcher,
+  ) {
+  }
 
   /**
    * {@inheritdoc}
@@ -160,6 +167,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       TermDepartmentFixture::class,
       TermTypeFixture::class,
       PretixConfigFixture::class,
+      UserFixture::class,
     ];
   }
 
