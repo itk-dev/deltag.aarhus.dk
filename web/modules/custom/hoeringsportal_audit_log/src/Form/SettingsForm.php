@@ -175,7 +175,7 @@ YAML;
                   $routeKey = array_key_first($matches);
                   // RouteValue is the more human understandable name, e.g.
                   // '/node/{node}'.
-                  $routeValue = reset($matches)->getPath();
+                  $routeValue = $matches[$routeKey]->getPath();
                   $options[$this->configHelper->escapeProviderId($routeKey)] = $routeValue;
                 }
               }
@@ -183,13 +183,14 @@ YAML;
               $form['types'][$definitionId][$typeId][] = [
                 '#type' => 'checkboxes',
                 '#options' => $options,
-                '#default_value' => $this->getDefaultValues($definitionId, (string) $typeId),
+                '#default_value' => $this->getDefaultValues($definitionId, $typeId),
               ];
             }
           }
         }
       }
     }
+
     return $form;
   }
 
@@ -208,7 +209,7 @@ YAML;
     $configTypes = $this->configHelper->getConfiguration('types');
     $defaultValues = [];
 
-    if ($configTypes && is_array($configTypes) && count($configTypes) > 1) {
+    if ($configTypes && is_array($configTypes)) {
       $defaultValues = reset($configTypes[$definitionId][$typeId]);
     }
     return $defaultValues;
@@ -221,13 +222,20 @@ YAML;
    * @phpstan-param \Drupal\Core\Form\FormStateInterface $form_state
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
-    $routesToLog = $form_state->getValue('logged_pages')['routes_to_audit'];
+    $loggedPages = $form_state->getValue('logged_pages');
+    $routesToLog = [];
+
+    if (is_array($loggedPages) && isset($loggedPages['routes_to_audit'])) {
+      $routesToLog = $loggedPages['routes_to_audit'];
+    }
 
     try {
       Yaml::parse($routesToLog);
     }
     catch (ParseException $e) {
-      $form_state->setError($form['logged_pages']['routes_to_audit'], $this->t('The YAML is invalid: @error', ['@error' => $e->getMessage()]));
+      if ($form['logged_pages'] && is_array($form['logged_pages']) && isset($form['logged_pages']['routes_to_audit'])) {
+        $form_state->setError($form['logged_pages']['routes_to_audit'], $this->t('The YAML is invalid: @error', ['@error' => $e->getMessage()]));
+      }
     }
   }
 
@@ -237,10 +245,15 @@ YAML;
    * @phpstan-param array<mixed, mixed> $form
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    $routesToLog = $form_state->getValue('logged_pages')['routes_to_audit'] ? $form_state->getValue('logged_pages')['routes_to_audit'] : [];
-    $this->configHelper->setConfiguration('routes_to_audit', $routesToLog);
+    $loggedPages = $form_state->getValue('logged_pages');
+    if (is_array($loggedPages) && isset($loggedPages['routes_to_audit'])) {
+      $routesToLog = $loggedPages['routes_to_audit'];
+    }
+    $this->configHelper->setConfiguration('routes_to_audit', $routesToLog ?? []);
     $types = $form_state->getValue('types');
-    $this->configHelper->setConfiguration('types', $types);
+    if (is_array($types)) {
+      $this->configHelper->setConfiguration('types', $types);
+    }
 
     $this->configHelper->saveConfig();
     parent::submitForm($form, $form_state);
