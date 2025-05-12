@@ -69,7 +69,11 @@ class ConfigHelper {
    *   Configuration or null.
    */
   public function getConfiguration(string $configName): array|string|null {
-    return $this->moduleConfig->get($configName) ?? NULL;
+    $config = $this->moduleConfig->get($configName);
+    if (is_array($config) || is_string($config)) {
+      return $config;
+    }
+    return NULL;
   }
 
   /**
@@ -97,9 +101,12 @@ class ConfigHelper {
     try {
       $routesToAudit = $this->moduleConfig->get('routes_to_audit');
 
-      if ($routesToAudit) {
+      if ($routesToAudit && is_string($routesToAudit)) {
         $routesToAudit = Yaml::decode($routesToAudit);
-        return $routesToAudit;
+        if (is_array($routesToAudit)) {
+          return $routesToAudit;
+        }
+        return [];
       }
 
       return [];
@@ -146,8 +153,8 @@ class ConfigHelper {
     // Retrieve the available types configuration.
     $types = $this->getConfiguration('types');
 
-    // If no types configuration exists, return an empty array immediately.
-    if (!$types && is_array($types)) {
+    // If no types configuration exists, return false immediately.
+    if (!$types) {
       return FALSE;
     }
 
@@ -159,7 +166,7 @@ class ConfigHelper {
 
     $type = $types[$entityTypeId] ?? NULL;
 
-    if (is_array($type) && is_array($type[$typeId])) {
+    if (isset($type[$typeId])) {
       $routeConfig = reset($type[$typeId]);
       // See if, in the config, the route name has the route name as value,
       // instead of 0.

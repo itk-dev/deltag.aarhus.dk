@@ -51,28 +51,30 @@ final class ControllerListener implements EventSubscriberInterface {
     }
 
     $currentRouteName = $event->getRequest()->attributes->get('_route');
-    $routesThatShouldBeLogged = $this->configHelper->getRouteNames();
-    if ($routesThatShouldBeLogged && in_array($currentRouteName, $routesThatShouldBeLogged)) {
-      // Early return, if the route is in config no need to do anything besides
-      // auditlog.
-      $this->logAuditMessage($pathInfo);
-      return;
-    }
+    if (is_string($currentRouteName)) {
+      $routesThatShouldBeLogged = $this->configHelper->getRouteNames();
+      if ($routesThatShouldBeLogged && in_array($currentRouteName, $routesThatShouldBeLogged)) {
+        // Early return, if the route is in config no need to do anything besides
+        // auditlog.
+        $this->logAuditMessage($pathInfo);
+        return;
+      }
 
-    $parameterBag = $this->routeMatch->getParameters();
-    foreach ($parameterBag as $routeParameter) {
-      if ($routeParameter instanceof EntityInterface) {
-        $entityTypeId = $routeParameter->getEntityTypeId();
-        $nodeType = NULL;
-        // If it is a node, it has the getType, and we need the nodetype for the
-        // config.
-        if ($entityTypeId === 'node') {
-          /** @var \Drupal\node\Entity\Node $routeParameter */
-          $nodeType = $routeParameter->getType();
-        }
-        if ($this->configHelper->isConfigActive($currentRouteName, $entityTypeId, $nodeType)) {
-          $this->logAuditMessage($pathInfo);
-          return;
+      $parameterBag = $this->routeMatch->getParameters();
+      foreach ($parameterBag as $routeParameter) {
+        if ($routeParameter instanceof EntityInterface) {
+          $entityTypeId = $routeParameter->getEntityTypeId();
+          $nodeType = NULL;
+          // If it is a node, it has the getType, and we need the nodetype for the
+          // config.
+          if ($entityTypeId === 'node') {
+            /** @var \Drupal\node\Entity\Node $routeParameter */
+            $nodeType = $routeParameter->getType();
+          }
+          if ($this->configHelper->isConfigActive($currentRouteName, $entityTypeId, $nodeType)) {
+            $this->logAuditMessage($pathInfo);
+            return;
+          }
         }
       }
     }
