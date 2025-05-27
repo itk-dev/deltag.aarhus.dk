@@ -2,36 +2,15 @@
 
 namespace Drupal\hoeringsportal_deskpro\Form;
 
-use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\hoeringsportal_deskpro\Service\HearingHelper;
-use Drupal\hoeringsportal_deskpro\State\DeskproConfig;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Nicoeg\Dawa\Dawa;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Form form definition for adding a hearing.
  */
-final class HearingTicketAddForm extends FormBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('hoeringsportal_deskpro.config'),
-      $container->get('hoeringsportal_deskpro.helper')
-    );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(
-    private readonly DeskproConfig $config,
-    private readonly HearingHelper $helper,
-  ) {
-  }
+final class HearingTicketAddForm extends AbstractHearingTicketForm {
 
   /**
    * A HACK!
@@ -40,9 +19,6 @@ final class HearingTicketAddForm extends FormBase {
    */
   private function initialize() {
     $container = \Drupal::getContainer();
-    if (empty($this->config)) {
-      $this->config = $container->get('hoeringsportal_deskpro.config');
-    }
     if (empty($this->helper)) {
       $this->helper = $container->get('hoeringsportal_deskpro.helper');
     }
@@ -58,8 +34,61 @@ final class HearingTicketAddForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  protected function getAuthenticateMessage(): string|TranslatableMarkup {
+    return $this->getAdminFormStateValue(
+      'authenticate_message',
+      $this->t('You must authenticate to add a hearing reply')
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  #[\Override]
+  protected function buildTicketForm(array $form, FormStateInterface $formState): array|RedirectResponse {
     $this->initialize();
+
+    $defaultValues = [];
+    if ($this->isAuthenticatedAsCitizen()) {
+      $cpr = $this->getUserUuid();
+      try {
+        $result = $this->cprHelper->lookUpCpr($cpr);
+        $navn = $result['persondata']['navn'] ?? NULL;
+        $defaultValues['person_name'] = $navn['personadresseringsnavn'] ?? NULL;
+        $aktuelAdresse = $result['adresse']['aktuelAdresse'] ?? NULL;
+        $defaultValues['address']['postal_code_and_city'] = implode(' ', array_filter([
+          $aktuelAdresse['postnummer'] ?? NULL,
+          $aktuelAdresse['postdistrikt'] ?? NULL,
+        ])) ?: NULL;
+        $defaultValues['address']['street_and_number'] = implode(' ', array_filter([
+          $aktuelAdresse['vejadresseringsnavn'] ?? $aktuelAdresse['vejnavn'] ?? NULL,
+          ltrim($aktuelAdresse['husnummer'] ?? '', '0') ?: NULL,
+        ])) ?: NULL;
+
+        // If person is NOT under address protection, 'adressebeskyttelse' is
+        // simply an empty array.
+        $defaultValues['address_secret'] = !empty($result['persondata']['adressebeskyttelse']);
+        $defaultValues['postal_code'] = $aktuelAdresse['postnummer'] ?? NULL;
+      }
+      catch (\Exception $exception) {
+        // Throw $exception;.
+        $this->logger->error('Error getting citizen data: @message', [
+          '@message' => $exception->getMessage(),
+          'exception' => $exception,
+        ]);
+
+        return $form + [
+          'message' => [
+            '#theme' => 'status_messages',
+            '#message_list' => [
+              'warning' => [
+                $this->t('Error getting citizen name and address.'),
+              ],
+            ],
+          ],
+        ];
+      }
+    }
 
     $file_validators = [
       'file_validate_size' => [10490000],
@@ -69,13 +98,7 @@ final class HearingTicketAddForm extends FormBase {
     $form['hearing_intro_text'] = [
       '#type' => 'html_tag',
       '#tag' => 'p',
-      '#value' => $this->config->get('intro'),
-    ];
-
-    $form['person_name'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Your full name'),
-      '#required' => TRUE,
+      '#value' => $this->helper->getConfig()->get('intro'),
     ];
 
     $form['email'] = [
@@ -88,6 +111,14 @@ final class HearingTicketAddForm extends FormBase {
       '#type' => 'email',
       '#title' => $this->t('Confirm email address'),
       '#required' => TRUE,
+    ];
+
+    $form['person_name'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Your full name'),
+      '#default_value' => $defaultValues['person_name'] ?? NULL,
+      '#required' => empty($defaultValues['person_name']),
+      '#disabled' => !empty($defaultValues['person_name']),
     ];
 
     $form['address'] = [
@@ -109,6 +140,9 @@ final class HearingTicketAddForm extends FormBase {
     $form['address']['postal_code_and_city'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Postal code and city'),
+      '#default_value' => $defaultValues['address']['postal_code_and_city'] ?? NULL,
+      '#required' => empty($defaultValues['address']['postal_code_and_city']),
+      '#disabled' => !empty($defaultValues['address']['postal_code_and_city']),
       '#attributes' => ['autocomplete' => 'off'],
       '#states' => [
         'required' => [
@@ -121,6 +155,9 @@ final class HearingTicketAddForm extends FormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Street and number'),
       '#attributes' => ['autocomplete' => 'off'],
+      '#default_value' => $defaultValues['address']['street_and_number'] ?? NULL,
+      '#required' => empty($defaultValues['address']['street_and_number']),
+      '#disabled' => !empty($defaultValues['address']['street_and_number']),
       '#states' => [
         'required' => [
           ':input[name="address_secret"]' => ['checked' => FALSE],
@@ -130,14 +167,17 @@ final class HearingTicketAddForm extends FormBase {
 
     $form['postal_code'] = [
       '#type' => 'hidden',
+      '#default_value' => $defaultValues['postal_code'] ?? NULL,
     ];
 
     $form['address_secret'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('My address is secret'),
+      '#default_value' => $defaultValues['address_secret'] ?? FALSE,
+      '#disabled' => array_key_exists('address_secret', $defaultValues),
     ];
 
-    $representations = $this->config->getRepresentations();
+    $representations = $this->helper->getConfig()->getRepresentations();
     $stateCondition = [];
     $options = [];
     foreach ($representations as $id => $representation) {
@@ -193,7 +233,7 @@ final class HearingTicketAddForm extends FormBase {
     ];
 
     $form['hearing_consent_text'] = [
-      '#markup' => $this->config->get('consent'),
+      '#markup' => $this->helper->getConfig()->get('consent'),
     ];
 
     $form['consent'] = [
@@ -238,7 +278,7 @@ final class HearingTicketAddForm extends FormBase {
 
     $representation = $form_state->getValue('representation');
     $organization = trim($form_state->getValue('organization'));
-    $representations = $this->config->getRepresentations();
+    $representations = $this->helper->getConfig()->getRepresentations();
 
     if ($representations[$representation]['require_organization'] && empty($organization)) {
       // @todo Customer has to decide if we need an organization name.
@@ -326,7 +366,7 @@ final class HearingTicketAddForm extends FormBase {
 
       // @todo Show confirmation page.
       $ticket['url'] = $this->helper->getTicketUrl($ticket);
-      $message = $this->helper->replaceTokens($this->config->get('ticket_created_confirmation'), [
+      $message = $this->helper->replaceTokens($this->helper->getConfig()->get('ticket_created_confirmation'), [
         'ticket' => $ticket,
       ]);
       $this->messenger()->addMessage($message);

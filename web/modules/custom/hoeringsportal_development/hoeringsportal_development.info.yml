@@ -1,0 +1,7 @@
+name: 'hoeringsportal_development'
+type: module
+description: 'Development stuff for deltag.aarhus.dk'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - hoeringsportal_citizen_proposal:hoeringsportal_citizen_proposal

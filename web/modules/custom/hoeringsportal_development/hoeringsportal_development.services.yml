@@ -1,0 +1,4 @@
+services:
+  # https://www.drupal.org/docs/drupal-apis/services-and-dependency-injection/altering-existing-services-providing-dynamic-services
+  Drupal\hoeringsportal_citizen_proposal\Helper\CprHelper:
+    class: Drupal\hoeringsportal_development\hoeringsportal_citizen_proposal\Helper\MockCprHelper

@@ -80,6 +80,23 @@ final class DeskproSettingsForm extends FormBase {
       '#group' => 'deskpro_settings',
     ];
 
+    $form['add_hearing_ticket_form']['authenticate_message'] = [
+      '#title' => $this->t('Authenticate message'),
+      '#type' => 'text_format',
+      '#format' => 'filtered_html',
+      '#default_value' => $config->get('authenticate_message'),
+      '#weight' => -1,
+      '#size' => 60,
+    ];
+
+    $form['add_hearing_ticket_form']['authenticate_link_text'] = [
+      '#title' => $this->t('Authenticate link text'),
+      '#type' => 'textfield',
+      '#default_value' => $config->get('authenticate_link_text'),
+      '#weight' => 0,
+      '#size' => 60,
+    ];
+
     $form['add_hearing_ticket_form']['intro'] = [
       '#title' => $this->t('Intro text'),
       '#type' => 'text_format',
@@ -330,6 +347,8 @@ final class DeskproSettingsForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Set the configuration values.
     $this->getFormConfig()->setMultiple([
+      'authenticate_message' => $form_state->getValue('authenticate_message')['value'],
+      'authenticate_link_text' => $form_state->getValue('authenticate_link_text'),
       'intro' => $form_state->getValue('intro')['value'],
       'consent' => $form_state->getValue('consent')['value'],
       'representations' => $form_state->getValue('representations'),

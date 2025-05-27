@@ -1,0 +1,174 @@
+1111111111: {
+  "persondata": {
+    "personnummer": "1111111111",
+    "navn": {
+      "personadresseringsnavn": "Citizen One",
+      "fornavn": "Citizen",
+      "efternavn": "One",
+      "navnestartdato": {
+        "dato": "1975-03-16T00:00:00.000+01:00"
+      }
+    },
+    "foedselsdato": {
+      "dato": "1974-11-26+01:00"
+    },
+    "foedselsregistreringsOplysninger": {
+      "foedselsregistreringsstedKode": 9251,
+      "foedselsregistreringsstedKodeMyndighedsnavn": "Paddesø,Nordfyns",
+      "supplerendeFoedselsregistreringssted": "Paddesø,Nordfyns"
+    },
+    "startdato": {
+      "dato": "1974-11-26+01:00"
+    },
+    "alder": 50,
+    "koen": "K",
+    "antalBoernUnder18": 0,
+    "status": {
+      "status": 7
+    },
+    "civilstand": {
+      "civilstand": "U"
+    },
+    "statsborgerskab": {
+      "landekode": 5100,
+      "statsborgerskabDato": {
+        "dato": "1974-11-26T00:00:00.000+01:00"
+      },
+      "landekodeMyndighedsnavn": "Danmark"
+    },
+    "adressebeskyttelse": {},
+    "vejviserbeskyttelse": {},
+    "markedsfoeringsbeskyttelse": {},
+    "tilmeldtNemsms": true,
+    "tilmeldtDigitalpost": true
+  },
+  "adresse": {
+    "aktuelAdresse": {
+      "kommuneCvr": "0",
+      "kommunekode": 955,
+      "vejkode": 9953,
+      "lokalitet": "Qaqortoq",
+      "postnummer": "9999",
+      "postdistrikt": "Ukendt",
+      "vejnavn": "Udsendte af den danske stat",
+      "adresseringsnavn": "Betina Henningsentest",
+      "tilflytningsdato": {
+        "dato": "2003-06-05T16:25:00.000+02:00"
+      },
+      "distrikter": {
+        "postnummer": 9999,
+        "postdistrikt": "Ukendt",
+        "sognedistriktKode": 9999,
+        "sognedistrikt": "Ukendt (Sogn)",
+        "valgdistriktKode": 99,
+        "valgdistrikt": ""
+      }
+    },
+    "adresseHistorik": {
+      "kommuneCvr": "0",
+      "kommunekode": 956,
+      "vejkode": 78,
+      "husnummer": "056",
+      "postnummer": "3900",
+      "postdistrikt": "Nuuk",
+      "vejnavn": "Gertrud Rasksvej",
+      "tilflytningsdato": {
+        "dato": "1998-05-10T06:56:00.000+02:00"
+      },
+      "fraflytningsdato": {
+        "dato": "2003-06-05T16:20:00.000+02:00"
+      }
+    }
+  },
+  "relationer": {
+    "mor": {
+      "personnummer": "0309450000"
+    },
+    "far": {}
+  },
+  "notater": {
+    "notanr": 1,
+    "notatlinie": "KOMBIT ARKETYPE CPR TESTDATA",
+    "notatstartdato": "2024-01-31+01:00"
+  }
+}
+
+2222222222: {
+  "persondata": {
+    "personnummer": "2222222222",
+    "gaeldendePersonnummer": "2222222222",
+    "navn": {
+      "personadresseringsnavn": "Citizen Two",
+      "fornavn": "Citizen",
+      "efternavn": "Two",
+      "navnestartdato": {
+        "dato": "1988-10-06T00:00:00.000+01:00"
+      }
+    },
+    "foedselsdato": {
+      "dato": "1988-05-17+02:00"
+    },
+    "foedselsregistreringsOplysninger": {
+      "foedselsregistreringsstedKode": 7651,
+      "foedselsregistreringsstedKodeMyndighedsnavn": "R\u00f8dby,Lolland",
+      "supplerendeFoedselsregistreringssted": "R\u00f8dby,Lolland"
+    },
+    "startdato": {
+      "dato": "1988-05-17+02:00"
+    },
+    "slutdato": {
+      "dato": "2006-04-21+02:00"
+    },
+    "alder": 37,
+    "koen": "K",
+    "antalBoernUnder18": 0,
+    "status": {
+      "status": 60,
+      "statusdato": {
+        "dato": "1988-05-17T00:00:00.000+02:00"
+      }
+    },
+    "civilstand": {
+      "civilstand": "U"
+    },
+    "statsborgerskab": {
+      "landekode": 5100,
+      "statsborgerskabDato": {
+        "dato": "1988-05-17T00:00:00.000+02:00"
+      },
+      "landekodeMyndighedsnavn": "Danmark"
+    },
+    "adressebeskyttelse": ["ja"],
+    "vejviserbeskyttelse": {},
+    "markedsfoeringsbeskyttelse": {},
+    "tilmeldtNemsms": false,
+    "tilmeldtDigitalpost": false
+  },
+  "adresse": {
+    "aktuelAdresse": {},
+    "adresseHistorik": {
+      "kommuneCvr": "29188572",
+      "kommunekode": 360,
+      "vejkode": 502,
+      "husnummer": "009",
+      "postnummer": "4970",
+      "postdistrikt": "R\u00f8dby",
+      "vejnavn": "Hagelundsvej",
+      "tilflytningsdato": {
+        "dato": "1988-05-17T00:02:00.000+02:00"
+      },
+      "fraflytningsdato": {
+        "dato": "2006-04-21T15:48:00.000+02:00"
+      }
+    }
+  },
+  "relationer": {
+    "mor": {},
+    "far": {}
+  },
+  "notater": {
+    "notanr": 1,
+    "notatlinie": "KOMBIT ARKETYPE CPR TESTDATA",
+    "notatstartdato": "2024-01-31+01:00"
+  }
+}

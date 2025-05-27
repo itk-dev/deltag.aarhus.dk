@@ -1,3 +1,7 @@
 access deskpro settings:
   title: 'Access Deskpro settings'
   restrict access: TRUE
+
+create hearing reply on behalf of citizen:
+  title: 'create hearing reply on behalf of citizen'
+  restrict access: TRUE

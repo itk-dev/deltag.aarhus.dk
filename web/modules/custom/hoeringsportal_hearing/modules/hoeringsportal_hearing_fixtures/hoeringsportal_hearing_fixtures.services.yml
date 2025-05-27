@@ -1,8 +1,8 @@
 services:
+  _defaults:
+    autowire: true
+
   Drupal\hoeringsportal_hearing_fixtures\Fixture\HearingFixture:
-    arguments:
-      - '@database'
-      - '@hoeringsportal_deskpro.config'
     tags:
       - { name: content_fixture }
 

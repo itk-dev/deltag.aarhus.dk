@@ -5,4 +5,5 @@ package: Hoeringsportal
 core_version_requirement: ^8.8 || ^9 || ^10
 
 dependencies:
-  - itk_admin
+  - hoeringsportal_openid_connect:hoeringsportal_openid_connect
+  - itk_admin:itk_admin

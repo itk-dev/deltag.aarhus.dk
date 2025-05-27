@@ -181,6 +181,8 @@ details.
 
 [Pretix local setup Readme](pretix.md#local-setup)
 
+[Our custom development module](../web/modules/custom/hoeringsportal_development/README.md)
+
 ## Production setup
 
 ```sh
