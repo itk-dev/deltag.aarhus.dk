@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-509](https://github.com/itk-dev/hoeringsportal/pull/509)
+  * Remove excess space between sections
 * [PR-499](https://github.com/itk-dev/hoeringsportal/pull/499)
   * Url pattern in audit log
 
