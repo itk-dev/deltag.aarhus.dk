@@ -200,4 +200,4 @@ $settings['hoeringsportal_citizen_proposal']['access_check']['cpr_result_checks'
 and sign in (in the local IdP) with username `aarhusianer` and password
 `aarhusianer` to get access. Sign in with `ikke-aarhusianer` and
 `ikke-aarhusianer` to be denied access (cf.
-[docker-compose.override.yml](../../../../docker-compose.override.yml)).
+[docker-compose.override.yml](../../../../docker-compose.oidc.yml)).

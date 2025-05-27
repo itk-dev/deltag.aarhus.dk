@@ -2,6 +2,7 @@
 
 namespace Drupal\hoeringsportal_deskpro\Service;
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Query\Merge;
@@ -15,6 +16,7 @@ use Drupal\advancedqueue\Job;
 use Drupal\advancedqueue\Plugin\AdvancedQueue\Backend\SupportsDeletingJobsInterface;
 use Drupal\file\Entity\File;
 use Drupal\hoeringsportal_deskpro\Plugin\AdvancedQueue\JobType\SynchronizeTicket;
+use Drupal\hoeringsportal_deskpro\State\DeskproConfig;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Psr\Log\LoggerInterface;
@@ -68,7 +70,7 @@ class HearingHelper {
   /**
    * Constructs a new DeskproHelper object.
    */
-  public function __construct(DeskproService $deskpro, EntityTypeManagerInterface $entityTypeManager, FileSystemInterface $fileSystem, Connection $database, LockBackendInterface $lock, LoggerInterface $logger) {
+  public function __construct(private readonly DeskproConfig $config, DeskproService $deskpro, EntityTypeManagerInterface $entityTypeManager, FileSystemInterface $fileSystem, Connection $database, LockBackendInterface $lock, LoggerInterface $logger) {
     $this->deskpro = $deskpro;
     $this->entityTypeManager = $entityTypeManager;
     $this->fileSystem = $fileSystem;
@@ -754,6 +756,37 @@ class HearingHelper {
     }
 
     return $jobs;
+  }
+
+  /**
+   * Get admin value.
+   *
+   * @param string|array|null $key
+   *   The key to get. If key is empty all values are returned.
+   * @param mixed|null $default
+   *   The default value.
+   *
+   * @return string|array|null
+   *   The value if any. Otherwise the default value.
+   */
+  public function getAdminValue(string|array|null $key = NULL, mixed $default = NULL) {
+    $values = $this->config->getAll();
+    $value = empty($key)
+      ? $values
+      : NestedArray::getValue($values, (array) $key);
+
+    if (is_string($value)) {
+      $value = trim($value);
+    }
+
+    return $value ?: $default;
+  }
+
+  /**
+   * Get Deskpro config.
+   */
+  public function getConfig(): DeskproConfig {
+    return $this->config;
   }
 
 }
