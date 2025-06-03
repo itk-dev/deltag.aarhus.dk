@@ -6,13 +6,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-* [PR-509](https://github.com/itk-dev/hoeringsportal/pull/509)
-  * Remove excess space between sections
-* [PR-499](https://github.com/itk-dev/hoeringsportal/pull/499)
-  * Url pattern in audit log
-
 ## [4.10.0] - 2025-04-22
 
+* [PR-509](https://github.com/itk-dev/hoeringsportal/pull/509)
+  * Remove excess space between sections
+* [PR-508](https://github.com/itk-dev/deltag.aarhus.dk/pull/508)
+  * Allowed project editor to edit URL aliases
+  * Updated project fixtures
+* [PR-499](https://github.com/itk-dev/hoeringsportal/pull/499)
+  * Url pattern in audit log
 * [PR-502](https://github.com/itk-dev/deltag.aarhus.dk/pull/502)
   Updated citizen proposal overview
 * [PR-500](https://github.com/itk-dev/deltag.aarhus.dk/pull/500)
