@@ -7,8 +7,11 @@ use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
 use Drupal\hoeringsportal_base_fixtures\Fixture\MediaFixture;
 use Drupal\hoeringsportal_base_fixtures\Fixture\ParagraphFixture;
+use Drupal\hoeringsportal_base_fixtures\Fixture\TermAreaFixture;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\path_alias\Entity\PathAlias;
+use Drupal\pathauto\PathautoState;
 
 /**
  * Landing page fixture.
@@ -32,7 +35,10 @@ class ProjectMainPageFixture extends AbstractFixture implements DependentFixture
         ])
         ->set('field_short_description', 'This is the first project')
         ->set('field_project_image', [
-        ['target_id' => $this->getReference('media:Medium1')->id()],
+          ['target_id' => $this->getReference('media:Medium1')->id()],
+        ])
+        ->set('field_area', [
+          $this->getReference('area:Hele kommunen'),
         ]);
 
     $paragraph = Paragraph
@@ -65,8 +71,18 @@ BODY,
       'target_revision_id' => $paragraph->getRevisionId(),
     ]);
 
+    // Tell pathauto to stay away.
+    $entity->path->pathauto = PathautoState::SKIP;
     $entity->save();
     $this->addReference('node:project_main_page:1', $entity);
+
+    // Create the path alias.
+    PathAlias::create([
+      'path' => $entity->toUrl(options: ['alias' => TRUE])->toString(),
+      'alias' => '/the-first-project',
+    ])->save();
+    // Let pathauto do what is does.
+    unset($entity->path->pathauto);
 
     $entity = $entity->createDuplicate();
     $entity
@@ -74,6 +90,9 @@ BODY,
       ->set('field_short_description', 'We have more than one project')
       ->set('field_project_image', [
         ['target_id' => $this->getReference('media:Map1')->id()],
+      ])
+      ->set('field_area', [
+        $this->getReference('area:Hele kommunen'),
       ]);
 
     $entity->save();
@@ -88,6 +107,9 @@ BODY,
       ->set('field_short_description', 'We have more than one project')
       ->set('field_project_image', [
         ['target_id' => $this->getReference('media:Map1')->id()],
+      ])
+      ->set('field_area', [
+        $this->getReference('area:Hele kommunen'),
       ]);
 
     $entity->save();
@@ -103,6 +125,7 @@ BODY,
       MediaFixture::class,
       ParagraphFixture::class,
       ProjectPageFixture::class,
+      TermAreaFixture::class,
     ];
   }
 
