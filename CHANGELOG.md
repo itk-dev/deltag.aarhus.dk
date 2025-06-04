@@ -9,7 +9,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 ## [4.9.2] - 2025-06-04
 
 * [PR-510](https://github.com/itk-dev/deltag.aarhus.dk/pull/510)
-  Allowed roles to publish content
+  * Allowed roles to publish content
+  * Applied security update to node modules in custom theme
 
 ## [4.9.1] - 2025-04-23
 
