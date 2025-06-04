@@ -46,6 +46,7 @@ permissions:
   - 'edit own image media'
   - 'publish any node type hearing'
   - 'revert hearing revisions'
+  - 'unpublish any node type hearing'
   - 'use text format email_html'
   - 'view any unpublished hearing content'
   - 'view hearing revisions'
