@@ -47,6 +47,7 @@ permissions:
   - 'edit own public_meeting content'
   - 'publish any node type public_meeting'
   - 'revert public_meeting revisions'
+  - 'unpublish any node type public_meeting'
   - 'update media'
   - 'use text format email_html'
   - 'view any unpublished public_meeting content'
