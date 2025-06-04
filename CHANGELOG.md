@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.9.2] - 2025-06-04
+
+* [PR-510](https://github.com/itk-dev/deltag.aarhus.dk/pull/510)
+  Allowed roles to publish content
+
 ## [4.9.1] - 2025-04-23
 
 * [PR-497](https://github.com/itk-dev/hoeringsportal/pull/497)
@@ -422,7 +427,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.9.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.9.2...HEAD
+[4.9.2]: https://github.com/itk-dev/hoeringsportal/compare/4.9.1...4.9.2
 [4.9.1]: https://github.com/itk-dev/hoeringsportal/compare/4.9.0...4.9.1
 [4.9.0]: https://github.com/itk-dev/hoeringsportal/compare/4.8.5...4.9.0
 [4.8.5]: https://github.com/itk-dev/hoeringsportal/compare/4.8.4...4.8.5

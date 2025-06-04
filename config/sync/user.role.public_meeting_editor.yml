@@ -15,6 +15,7 @@ dependencies:
     - filter
     - media
     - node
+    - publishcontent
     - quick_node_clone
     - system
     - toolbar
@@ -44,6 +45,7 @@ permissions:
   - 'edit own document media'
   - 'edit own image media'
   - 'edit own public_meeting content'
+  - 'publish any node type public_meeting'
   - 'revert public_meeting revisions'
   - 'update media'
   - 'use text format email_html'
