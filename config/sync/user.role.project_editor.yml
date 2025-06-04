@@ -18,6 +18,7 @@ dependencies:
     - media
     - node
     - publication_date
+    - publishcontent
     - quick_node_clone
     - system
     - taxonomy
@@ -68,6 +69,9 @@ permissions:
   - 'edit own project_main_page content'
   - 'edit own project_page content'
   - 'edit terms in timeline_item_types'
+  - 'publish any node type project'
+  - 'publish any node type project_main_page'
+  - 'publish any node type project_page'
   - 'revert any aside_contact_info block content revisions'
   - 'revert project revisions'
   - 'revert project_main_page revisions'

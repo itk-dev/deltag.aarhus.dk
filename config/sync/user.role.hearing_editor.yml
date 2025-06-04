@@ -15,6 +15,7 @@ dependencies:
     - filter
     - media
     - node
+    - publishcontent
     - quick_node_clone
     - system
     - toolbar
@@ -43,6 +44,7 @@ permissions:
   - 'edit own document media'
   - 'edit own hearing content'
   - 'edit own image media'
+  - 'publish any node type hearing'
   - 'revert hearing revisions'
   - 'use text format email_html'
   - 'view any unpublished hearing content'
