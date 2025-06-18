@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.10.0] - 2025-04-22
 
+* [PR-516](https://github.com/itk-dev/deltag.aarhus.dk/pull/516)
+  Updated npm packages (after audit issues)
 * [PR-509](https://github.com/itk-dev/hoeringsportal/pull/509)
   * Remove excess space between sections
 * [PR-508](https://github.com/itk-dev/deltag.aarhus.dk/pull/508)
