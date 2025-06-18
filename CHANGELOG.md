@@ -10,6 +10,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-517](https://github.com/itk-dev/hoeringsportal/pull/517)
   Add icon browser privileges to all roles
+* [PR-515](https://github.com/itk-dev/deltag.aarhus.dk/pull/515)
+  4721: Reset pretix date cardinality
+* [PR-516](https://github.com/itk-dev/deltag.aarhus.dk/pull/516)
+  Updated npm packages (after audit issues)
 * [PR-509](https://github.com/itk-dev/hoeringsportal/pull/509)
   * Remove excess space between sections
 * [PR-508](https://github.com/itk-dev/deltag.aarhus.dk/pull/508)
