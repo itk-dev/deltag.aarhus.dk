@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.itk_document_browser
+    - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
     - node.type.hearing
     - node.type.landing_page
@@ -16,6 +17,7 @@ dependencies:
     - aarhus_hero
     - entity_browser
     - file
+    - hoeringsportal_data
     - hoeringsportal_deskpro
     - itk_admin
     - locale
@@ -34,8 +36,10 @@ permissions:
   - 'access content overview'
   - 'access deskpro settings'
   - 'access hero configuration'
+  - 'access hoeringsportal_data statistics'
   - 'access itk admin settings'
   - 'access itk_document_browser entity browser pages'
+  - 'access itk_icon_browser entity browser pages'
   - 'access itk_image_browser entity browser pages'
   - 'access media overview'
   - 'access site reports'
