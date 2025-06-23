@@ -5,6 +5,7 @@ dependencies:
   config:
     - block_content.type.aside_contact_info
     - entity_browser.browser.itk_document_browser
+    - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
     - media.type.document
     - media.type.image
@@ -17,6 +18,7 @@ dependencies:
     - entity_browser
     - media
     - node
+    - path
     - publication_date
     - publishcontent
     - quick_node_clone
@@ -33,9 +35,11 @@ permissions:
   - 'access content'
   - 'access content overview'
   - 'access itk_document_browser entity browser pages'
+  - 'access itk_icon_browser entity browser pages'
   - 'access itk_image_browser entity browser pages'
   - 'access media overview'
   - 'access toolbar'
+  - 'administer url aliases'
   - 'clone project content'
   - 'clone project_main_page content'
   - 'clone project_page content'
@@ -46,6 +50,7 @@ permissions:
   - 'create project_main_page content'
   - 'create project_page content'
   - 'create terms in timeline_item_types'
+  - 'create url aliases'
   - 'delete any aside_contact_info block content'
   - 'delete any aside_contact_info block content revisions'
   - 'delete any project content'
