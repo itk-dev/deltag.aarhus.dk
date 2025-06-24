@@ -39,7 +39,6 @@
 {# sort items by time_from #}
 {% set items = items|sort((a, b) => a.content['#variables'].time_from <=> b.content['#variables'].time_from) %}
 
-
 <div class="mb-5 mx-3 mx-lg-0">
 
   {# Headers for table like expirence on larger screens. #}
