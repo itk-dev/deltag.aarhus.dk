@@ -6,6 +6,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-463](https://github.com/itk-dev/hoeringsportal/pull/463)
+  3893: Avoid `<strong>` in translation
+* [PR-451](https://github.com/itk-dev/hoeringsportal/pull/451)
+  * Enabled multiple pretix dates on public meetings
+  * Updated fixtures with multipe date examples (and pretix orders)
+
 ## [4.10.0] - 2025-04-22
 
 * [PR-517](https://github.com/itk-dev/hoeringsportal/pull/517)

@@ -65,14 +65,11 @@ tasks:
 
   assets-build:
     cmds:
-      - |
-        if [[ -z "{{.SKIP_BUILD}}" ]]; then
-          echo {{.DOCKER_COMPOSE}} run --rm node npm install --prefix web/themes/custom/hoeringsportal
-          echo {{.DOCKER_COMPOSE}} run --rm node npm run build --prefix web/themes/custom/hoeringsportal
-        fi
-    vars:
-      SKIP_BUILD: '{{.ASSETS_SKIP_BUILD | default .TASK_ASSETS_SKIP_BUILD}}'
-
+      - '{{.DOCKER_COMPOSE}} run --rm node npm install --prefix web/themes/custom/hoeringsportal'
+      - '{{.DOCKER_COMPOSE}} run --rm node npm run build --prefix web/themes/custom/hoeringsportal'
+  assets-watch:
+    cmds:
+      - '{{.DOCKER_COMPOSE}} run --rm node npm run watch --prefix web/themes/custom/hoeringsportal'
   compose:
     cmds:
       - '{{.DOCKER_COMPOSE}} {{if .DOCKER_COMPOSE_PROFILES}}--profile {{.DOCKER_COMPOSE_PROFILES | splitList "," |join " --profile " }}{{end}} {{.CLI_ARGS}}'
