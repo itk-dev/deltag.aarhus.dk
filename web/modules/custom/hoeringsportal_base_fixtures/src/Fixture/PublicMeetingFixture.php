@@ -126,6 +126,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       [
         'location' => 'The location',
         'address' => 'Hack Kampmanns Plads 2, 8000 Aarhus C',
+        'registration_deadline_value' => (new \DateTimeImmutable('2025-01-01T18:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'time_from_value' => (new \DateTimeImmutable('2025-01-01T19:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'time_to_value' => (new \DateTimeImmutable('2025-01-01T21:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'spots' => 87,

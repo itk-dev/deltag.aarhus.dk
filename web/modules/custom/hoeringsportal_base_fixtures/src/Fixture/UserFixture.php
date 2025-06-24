@@ -32,7 +32,7 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
         ],
       ]);
       $user->save();
-      $this->setReference('user:citizen_proposal_editor', $user);
+      $this->setReference('user:' . $role, $user);
     }
 
     // We use the range 100..103 to prevent usernames clashing with the ones
