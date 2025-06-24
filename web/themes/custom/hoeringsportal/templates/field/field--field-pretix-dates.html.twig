@@ -36,17 +36,6 @@
  * @see template_preprocess_field()
  */
 #}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      {% for item in items %}
-        {% set variables = item.content['#variables'] %}
-        {% set node = variables['entity'] %}
-        {% set meeting_cancelled = public_meeting_helper.isCancelled(node) %}
-        {% set meeting_has_been_held = public_meeting_helper.hasBeenHeld(node) %}
-        {% set registration_deadline_passed = public_meeting_helper.isDeadlinePassed(node) %}
-        {% set sign_up_url = public_meeting_helper.getPretixSignUpUrl(variables.data) %}
-        {% set availability = public_meeting_helper.getPretixAvailability(variables.data) %}
 
 {# sort items by time_from #}
 {% set items = items|sort((a, b) => a.content['#variables'].time_from <=> b.content['#variables'].time_from) %}

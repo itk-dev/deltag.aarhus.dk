@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.4.0",
         "bower-asset/jquery-simple-color": "^1.2",
+        "bower-asset/jqueryui-touch-punch": "dev-gh-pages",
         "bower-asset/spectrum": "^1.8",
         "chx/drupal-issue-fork": "dev-main",
         "composer/installers": "^2.3",
@@ -83,7 +84,7 @@
         "webflo/drupal-finder": "^1.0.0"
     },
     "require-dev": {
-        "drupal/content_fixtures": "^3.2",
+        "drupal/content_fixtures": "dev-3498162-not-compatible-with",
         "drupal/core-dev": "^10.0",
         "drupal/examples": "^4.0",
         "drupal/masquerade": "^2.0",

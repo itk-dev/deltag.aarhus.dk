@@ -5,7 +5,6 @@ namespace Drupal\hoeringsportal_base_fixtures\Fixture;
 use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
-use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountSwitcherInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
@@ -116,7 +115,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->set('field_public_meeting_cancelled', TRUE);
     $node->set('field_cancelled_text', 'This was canceled for a good reason.');
     $node->set('field_signup_selection', 'pretix');
-    
+
     // A public meeting with pretix signup and multiple dates.
     $node = $node->createDuplicate();
     $node->setTitle('Public meeting with pretix signup and multiple dates');
