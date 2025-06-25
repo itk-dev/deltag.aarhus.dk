@@ -389,4 +389,42 @@ class PublicMeetingHelper {
     return $node->get('field_pretix_dates');
   }
 
+  // @todo Do we need this function or has it been made superfluous by getPublicMeetingContext?
+  /**
+   * Get next meeting start time object.
+   */
+  public function getNextMeetingStartTime(NodeInterface $node): ?int {
+    if (!$this->isPublicMeeting($node)) {
+      return NULL;
+    }
+
+    if (isset($node->field_pretix_dates[0]->time_from->date)) {
+      return $node->field_pretix_dates[0]->time_from->date->getTimestamp();
+    }
+    elseif (isset($node->field_last_meeting_time->date)) {
+      return $node->field_last_meeting_time->date->getTimestamp();
+    }
+
+    return NULL;
+  }
+
+  // @todo Do we need this function or has it been made superfluous by getPublicMeetingContext?
+  /**
+   * Get next meeting end time object.
+   */
+  public function getNextMeetingEndTime(NodeInterface $node): ?int {
+    if (!$this->isPublicMeeting($node)) {
+      return NULL;
+    }
+
+    if (isset($node->field_pretix_dates[0]->time_to->date)) {
+      return $node->field_pretix_dates[0]->time_to->date->getTimestamp();
+    }
+    elseif (isset($node->field_last_meeting_time_end->date)) {
+      return $node->field_last_meeting_time_end->date->getTimestamp();
+    }
+
+    return NULL;
+  }
+
 }
