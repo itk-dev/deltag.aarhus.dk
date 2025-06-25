@@ -126,6 +126,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       [
         'location' => 'The location',
         'address' => 'Hack Kampmanns Plads 2, 8000 Aarhus C',
+        'registration_deadline_value' => (new \DateTimeImmutable('2025-01-01T18:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'time_from_value' => (new \DateTimeImmutable('2025-01-01T19:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'time_to_value' => (new \DateTimeImmutable('2025-01-01T21:00:00+0100'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'spots' => 87,
@@ -175,7 +176,6 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->set('field_department', [
       $this->getReference('department:Department 1')->id(),
     ]);
-    $this->addReference('public_meeting:fixture-3', $node);
     $node->save();
 
     $node = $node->createDuplicate();
@@ -184,12 +184,9 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       static fn(int $offset) => [
         'location' => sprintf('Location %d', $offset + 1),
         'address' => 'Hack Kampmanns Plads 2, 8000 Aarhus C',
-        'registration_deadline_value' => (new \DateTimeImmutable(sprintf('10:00 first day of %d month',
-          $offset - 1)))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
-        'time_from_value' => (new \DateTimeImmutable(sprintf('12:00 first day of %d month',
-          $offset - 1)))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
-        'time_to_value' => (new \DateTimeImmutable(sprintf('13:00 first day of %d month',
-          $offset - 1)))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'registration_deadline_value' => (new \DateTimeImmutable(sprintf('10:00 first day of %d month', $offset - 1)))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_from_value' => (new \DateTimeImmutable(sprintf('12:00 first day of %d month', $offset - 1)))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_to_value' => (new \DateTimeImmutable(sprintf('13:00 first day of %d month', $offset - 1)))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'spots' => 10 * $offset + 7,
       ],
       range(0, 12)
@@ -202,12 +199,9 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       static fn(int $offset) => [
         'location' => sprintf('Location %d', $offset),
         'address' => 'Hack Kampmanns Plads 2, 8000 Aarhus C',
-        'registration_deadline_value' => (new \DateTimeImmutable('10:00 first day of this month'))->modify(sprintf('+%d day',
-          $offset - 1))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
-        'time_from_value' => (new \DateTimeImmutable('12:00 first day of this month'))->modify(sprintf('+%d day',
-          $offset - 1))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
-        'time_to_value' => (new \DateTimeImmutable('13:00 first day of this month'))->modify(sprintf('+%d day',
-          $offset - 1))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'registration_deadline_value' => (new \DateTimeImmutable('10:00 first day of this month'))->modify(sprintf('+%d day', $offset - 1))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_from_value' => (new \DateTimeImmutable('12:00 first day of this month'))->modify(sprintf('+%d day', $offset - 1))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_to_value' => (new \DateTimeImmutable('13:00 first day of this month'))->modify(sprintf('+%d day', $offset - 1))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
         'spots' => 87,
       ],
       range(1, (int) (new \DateTimeImmutable('this month'))->format('t')),
