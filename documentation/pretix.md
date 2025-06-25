@@ -30,7 +30,7 @@ sign in with username `admin@localhost` and password `admin`.
 #### Resetting pretix database
 
 ```sh name=pretix-database-load
-task pretix:database-reset
+task pretix:database-load
 ```
 
 ```sh name=pretix-database-dump
