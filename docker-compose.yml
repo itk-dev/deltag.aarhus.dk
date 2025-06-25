@@ -30,7 +30,7 @@ services:
       com.symfony.server.service-prefix: 'DATABASE'
 
   phpfpm:
-    image: itkdev/php8.3-fpm:latest
+    image: itkdev/php8.4-fpm:latest
     user: ${COMPOSE_USER:-deploy}
     networks:
       - app
@@ -44,6 +44,8 @@ services:
       - PHP_SENDMAIL_PATH=/usr/bin/msmtp --host=mail --port=1025 --read-recipients --read-envelope-from
       - DOCKER_HOST_DOMAIN=${COMPOSE_DOMAIN}
       - PHP_IDE_CONFIG=serverName=localhost
+      # Let drush know the site uri (makes using --uri redundant)
+      - DRUSH_OPTIONS_URI=http://${COMPOSE_DOMAIN}
     depends_on:
       mariadb:
         condition: service_healthy
