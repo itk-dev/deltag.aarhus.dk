@@ -101,7 +101,9 @@ class ItkGeneralSettingsForm extends FormBase {
       '#type' => 'details',
       '#open' => TRUE,
       '#weight' => '2',
-      '#description' => $this->t('These references are used by the system when creating links automatically. Only change these if you create a new overview page.'),
+      '#description' => $this->t(
+        'These references are used by the system when creating links automatically. Only change these if you create a new overview page.'
+      ),
       '#group' => 'general_settings',
     ];
 

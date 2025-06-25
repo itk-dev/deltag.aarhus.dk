@@ -221,10 +221,7 @@ class MediaFixture extends AbstractFixture implements DependentFixtureInterface,
    * {@inheritdoc}
    */
   public function getDependencies() {
-    return [
-      FilesFixture::class,
-      TermMediaLibraryFixture::class,
-    ];
+    return [FilesFixture::class, TermMediaLibraryFixture::class];
   }
 
   /**
