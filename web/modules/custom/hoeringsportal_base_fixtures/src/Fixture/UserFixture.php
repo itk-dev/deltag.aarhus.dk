@@ -5,6 +5,7 @@ namespace Drupal\hoeringsportal_base_fixtures\Fixture;
 use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
+use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
 
 /**
@@ -18,56 +19,25 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
    * {@inheritdoc}
    */
   public function load() {
-    $user = User::create([
-      'name' => 'administrator',
-      'mail' => 'administrator@example.com',
-      'pass' => 'administrator-password',
-      'status' => 1,
-      'roles' => [
-        'administrator',
-      ],
-    ]);
-    $user->save();
-    $this->setReference('user:administrator', $user);
-
-    $user = User::create([
-      'name' => 'citizen_proposal_editor',
-      'mail' => 'citizen_proposal_editor@example.com',
-      'pass' => 'citizen_proposal_editor-password',
-      'status' => 1,
-      'roles' => [
-        'citizen_proposal_editor',
-      ],
-    ]);
-    $user->save();
-    $this->setReference('user:citizen_proposal_editor', $user);
-
-    $user = User::create([
-      'name' => 'public_meeting_editor',
-      'mail' => 'public_meeting_editor@example.com',
-      'pass' => 'public_meeting_editor-password',
-      'status' => 1,
-      'roles' => [
-        'public_meeting_editor',
-      ],
-    ]);
-    $user->save();
-    $this->setReference('user:public_meeting_editor', $user);
-
-    $user = User::create([
-      'name' => 'editor',
-      'mail' => 'editor@example.com',
-      'pass' => 'editor-password',
-      'status' => 1,
-      'roles' => [
-        'editor',
-      ],
-    ]);
-    $user->save();
-    $this->setReference('user:editor', $user);
+    // Create a user for each defined role.
+    $roles = Role::loadMultiple();
+    foreach (array_keys($roles) as $role) {
+      $user = User::create([
+        'name' => $role,
+        'mail' => $role . '@example.com',
+        'pass' => $role . '-password',
+        'status' => 1,
+        'roles' => [
+          $role,
+        ],
+      ]);
+      $user->save();
+      $this->setReference('user:'.$role, $user);
+    }
 
     // We use the range 100..103 to prevent usernames clashing with the ones
     // used in OIDCUserFixture.
+    $role = 'hearing_editor';
     foreach (range(100, 103) as $i) {
       $departmentNumber = ($i - 1) % TermDepartmentFixture::NUMBER_OF_TERMS + 1;
       $name = sprintf('department%d-editor', $i);
@@ -77,7 +47,7 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
         'pass' => $name . '-password',
         'status' => 1,
         'roles' => [
-          'editor',
+          $role,
         ],
         'field_department' => [
           $this->getReference(sprintf('department:Department %d', $departmentNumber))->id(),
