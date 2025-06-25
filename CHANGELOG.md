@@ -11,9 +11,109 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-451](https://github.com/itk-dev/hoeringsportal/pull/451)
   * Enabled multiple pretix dates on public meetings
   * Updated fixtures with multipe date examples (and pretix orders)
+
+## [4.10.0] - 2025-04-22
+
+* [PR-517](https://github.com/itk-dev/hoeringsportal/pull/517)
+  Add icon browser privileges to all roles
+* [PR-515](https://github.com/itk-dev/deltag.aarhus.dk/pull/515)
+  4721: Reset pretix date cardinality
+* [PR-516](https://github.com/itk-dev/deltag.aarhus.dk/pull/516)
+  Updated npm packages (after audit issues)
+* [PR-509](https://github.com/itk-dev/hoeringsportal/pull/509)
+  * Remove excess space between sections
+* [PR-508](https://github.com/itk-dev/deltag.aarhus.dk/pull/508)
+  * Allowed project editor to edit URL aliases
+  * Updated project fixtures
+* [PR-499](https://github.com/itk-dev/hoeringsportal/pull/499)
+  * Url pattern in audit log
+* [PR-502](https://github.com/itk-dev/deltag.aarhus.dk/pull/502)
+  Updated citizen proposal overview
+* [PR-500](https://github.com/itk-dev/deltag.aarhus.dk/pull/500)
+  Added citizen proposal overview
+* [PR-501](https://github.com/itk-dev/deltag.aarhus.dk/pull/501)
+  Updated composer packages and modules
+* [PR-492](https://github.com/itk-dev/hoeringsportal/pull/492)
+  * Updated Danish translations of names of days
+* [PR-498](https://github.com/itk-dev/hoeringsportal/pull/498)
+  Fix broken design on public meeting page
+* [PR-487](https://github.com/itk-dev/hoeringsportal/pull/487)
+  Added statistics
+* [PR-428](https://github.com/itk-dev/hoeringsportal/pull/428)
+  Upgraded to PHP 8.4
+* [PR-494](https://github.com/itk-dev/hoeringsportal/pull/494)
+  * Add config for default teaser images
+* [PR-480](https://github.com/itk-dev/hoeringsportal/pull/480)
+  * New paragraph section for content promotion
+* [PR-475](https://github.com/itk-dev/hoeringsportal/pull/475)
+  * New landingpage hero
+* [PR-490](https://github.com/itk-dev/hoeringsportal/pull/490)
+  * Added hearing reply fixtures
+  * Fixed ticket author template
+* [PR-489](https://github.com/itk-dev/hoeringsportal/pull/489)
+  Feat: Redesigned teaser cards that makes the cards easier to distinguish from each other when listed on the same page.
+* [PR-491](https://github.com/itk-dev/hoeringsportal/pull/491)
+  Optimized development setup
+
+## [4.9.3] - 2025-06-04
+
+* [PR-511](https://github.com/itk-dev/deltag.aarhus.dk/pull/511)
+  * Allowed roles to unpublish content
+
+## [4.9.2] - 2025-06-04
+
+* [PR-510](https://github.com/itk-dev/deltag.aarhus.dk/pull/510)
+  * Allowed roles to publish content
+  * Applied security update to node modules in custom theme
+
+## [4.9.1] - 2025-04-23
+
+* [PR-497](https://github.com/itk-dev/hoeringsportal/pull/497)
+  Added and configured Publish content module
+
+## [4.9.0] - 2025-03-25
+
+* [PR-484](https://github.com/itk-dev/hoeringsportal/pull/484)
+  Added token to `arduino/setup-task`
+* [PR-483](https://github.com/itk-dev/hoeringsportal/pull/483)
+  Made exports consistent
+* [PR-482](https://github.com/itk-dev/hoeringsportal/pull/482)
+  * Updated role permissions
+  * Updated user fixtures to create a user for each role
+
+## [4.8.7] - 2025-04-04
+
+* [PR-488](https://github.com/itk-dev/hoeringsportal/pull/488)
+  Fixed “Log off” URL
+
+## [4.8.6] - 2025-04-02
+
+* [PR-479](https://github.com/itk-dev/hoeringsportal/pull/479)
+  Security updated Drupal core and contrib modules
+
+## [4.8.5] - 2025-03-31
+
+* [PR-486](https://github.com/itk-dev/hoeringsportal/pull/486)
+  Added media permissions to public meeting editor role
+
+## [4.8.4] - 2025-03-27
+
+* [PR-485](https://github.com/itk-dev/hoeringsportal/pull/485)
+  Cleaned up form helper
 * [PR-472](https://github.com/itk-dev/hoeringsportal/pull/472)
   * Translated search page to Danish
   * Updated custom Danish translations (exported from production site)
+
+## [4.8.3] - 2025-03-24
+
+* [PR-473](https://github.com/itk-dev/hoeringsportal/pull/473)
+  Allowed citizen proposal editors to view unpublished citizen proposals.
+
+## [4.8.2] - 2025-03-19
+
+* [PR-474](https://github.com/itk-dev/hoeringsportal/pull/474)
+  * Patched role permissions
+  * Cleaned up frontend admin menu
 
 ## [4.8.1] - 2025-03-17
 
@@ -31,6 +131,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   Added department access check.
 * [PR-449](https://github.com/itk-dev/hoeringsportal/pull/449)
   Set correct Danish pluralization. Remove superfluous docker service.
+* [PR-447](https://github.com/itk-dev/hoeringsportal/pull/447)
+  * Add hoeringsportalen module for configuring [os2web_audit](https://github.com/OS2web/os2web_audit)
 * [PR-446](https://github.com/itk-dev/hoeringsportal/pull/446)
   Cleaned up archiving code and added web profiler
 * [PR-445](https://github.com/itk-dev/hoeringsportal/pull/445)
@@ -80,9 +182,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-425](https://github.com/itk-dev/hoeringsportal/pull/425)
   Publication dates
 * [PR-424](https://github.com/itk-dev/hoeringsportal/pull/424)
-  2945: Cleaned up form templates. Applied security updates
-* [PR-458](https://github.com/itk-dev/hoeringsportal/pull/458)
-  Cleaned up actions
+  2945: Cleaned up form templates. Applied security updates.
 
 ## [4.7.3] - 2025-03-14
 
@@ -384,7 +484,16 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.8.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...HEAD
+[4.10.0]: https://github.com/itk-dev/hoeringsportal/compare/4.9.3...4.10.0
+[4.9.3]: https://github.com/itk-dev/hoeringsportal/compare/4.9.2...4.9.3
+[4.9.2]: https://github.com/itk-dev/hoeringsportal/compare/4.9.1...4.9.2
+[4.9.1]: https://github.com/itk-dev/hoeringsportal/compare/4.9.0...4.9.1
+[4.9.0]: https://github.com/itk-dev/hoeringsportal/compare/4.8.5...4.9.0
+[4.8.5]: https://github.com/itk-dev/hoeringsportal/compare/4.8.4...4.8.5
+[4.8.4]: https://github.com/itk-dev/hoeringsportal/compare/4.8.3...4.8.4
+[4.8.3]: https://github.com/itk-dev/hoeringsportal/compare/4.8.2...4.8.3
+[4.8.2]: https://github.com/itk-dev/hoeringsportal/compare/4.8.1...4.8.2
 [4.8.1]: https://github.com/itk-dev/hoeringsportal/compare/4.8.0...4.8.1
 [4.8.0]: https://github.com/itk-dev/hoeringsportal/compare/4.7.3...4.8.0
 [4.7.3]: https://github.com/itk-dev/hoeringsportal/compare/4.7.2...4.7.3
