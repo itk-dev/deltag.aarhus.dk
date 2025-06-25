@@ -55,7 +55,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       'field_contact' => 'Contact info',
       'field_content_state' => 'active',
       'field_email_address' => 'a@a.dk',
-      'field_first_meeting_time' => date('Y-m-d', 1283166912),
+      'field_first_meeting_time' => (new \DateTimeImmutable('2025-01-01'))->format(DateTimeItemInterface::DATE_STORAGE_FORMAT),
       'field_media_document' => [[$this->getReference('media_library:Fil:MTM')]],
       'field_media_image_single' => [
         ['target_id' => $this->getReference('media:Large1')->id()],
