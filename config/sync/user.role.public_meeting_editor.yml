@@ -3,22 +3,56 @@ langcode: da
 status: true
 dependencies:
   config:
+    - entity_browser.browser.itk_document_browser
+    - entity_browser.browser.itk_icon_browser
+    - entity_browser.browser.itk_image_browser
     - filter.format.email_html
+    - media.type.document
+    - media.type.image
     - node.type.public_meeting
   module:
+    - entity_browser
     - file
     - filter
+    - media
     - node
+    - publishcontent
+    - quick_node_clone
     - system
-    - webform
+    - toolbar
+    - view_unpublished
 id: public_meeting_editor
-label: 'Public meeting editor'
+label: Begivenhedsredaktør
 weight: -4
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'access webform overview'
+  - 'access itk_document_browser entity browser pages'
+  - 'access itk_icon_browser entity browser pages'
+  - 'access itk_image_browser entity browser pages'
+  - 'access media overview'
+  - 'access toolbar'
+  - 'clone public_meeting content'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
+  - 'create public_meeting content'
+  - 'delete any public_meeting content'
+  - 'delete own document media'
   - 'delete own files'
+  - 'delete own image media'
+  - 'delete own public_meeting content'
+  - 'delete public_meeting revisions'
   - 'edit any public_meeting content'
+  - 'edit own document media'
+  - 'edit own image media'
+  - 'edit own public_meeting content'
+  - 'publish any node type public_meeting'
+  - 'revert public_meeting revisions'
+  - 'unpublish any node type public_meeting'
+  - 'update media'
   - 'use text format email_html'
+  - 'view any unpublished public_meeting content'
+  - 'view own unpublished media'
+  - 'view public_meeting revisions'
   - 'view the administration theme'
