@@ -23,7 +23,7 @@
 
 {# Show teaser description #}
 {% block card_content %}
-  {{ content.field_teaser }}
+  {{ content.field_teaser[0]['#context'].value|length > 95 ? content.field_teaser[0]['#context'].value|slice(0, 95) ~ '...' : content.field_teaser }}
 {% endblock %}
 
 {# Collect data for information lines on card #}
@@ -38,7 +38,7 @@
 {# Show card information #}
 {% block card_type_information %}
 
-  {# Show details for next meeting #}
+  {# Show details for next Hearing #}
   {% if (content_state in ['upcoming', 'active']) %}
   {% for item in items %}
     <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
@@ -47,12 +47,12 @@
     </div>
   {% endfor %}
 
-  {# Show text for finished meeting #}
+  {# Show text for finished Hearing #}
   {% elseif (content_state == 'finished') %}
-    <p>{{ 'Meeting has been held'|t }}</p>
+    <p>{{ 'Hearing has ended'|t }}</p>
 
-  {# Show text for canceled meeting #}
+  {# Show text for canceled Hearing #}
   {% elseif (content_state == 'canceled') %}
-    <p>{{ 'Meeting has been canceled'|t }}</p>
+    <p>{{ 'Hearing has been canceled'|t }}</p>
   {% endif %}
 {% endblock %}
