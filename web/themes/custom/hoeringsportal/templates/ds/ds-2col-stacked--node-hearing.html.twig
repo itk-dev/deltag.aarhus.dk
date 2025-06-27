@@ -32,7 +32,9 @@
     <div class="row">
       <{{ left_wrapper }}{{ left_attributes.addClass('content group-left col-md-8') }}>
         <div class="content__main ">
-          {{ left.field_teaser }}
+          {% if left.field_teaser %}
+            <p class="fs-3">{{ left.field_teaser }}</p>
+          {% endif %}
           {{ left.field_description }}
           {{ left.field_media_document }}
           <div class="row">
