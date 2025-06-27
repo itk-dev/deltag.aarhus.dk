@@ -271,11 +271,15 @@ function hoeringsportal_public_meeting_form_validate(array $element, FormStateIn
   if ('pretix' === $signUpType) {
     $dates = $formState->getValue('field_pretix_dates');
 
+    /** @var \Drupal\Core\Datetime\DrupalDateTime $registration_deadline */
+    $registration_deadline = $formState->getValue('field_registration_deadline')[0]['value'];
+
     if (!empty($registration_deadline) && !empty($dates)) {
       $meeting_start_time = reset($dates)['time_from_value'];
       if ($isNew && $meeting_start_time < $now) {
         $formState->setErrorByName('field_pretix_dates', t('The meeting time must not be in the past.'));
       }
+      // @todo This does not look right. The registration deadline from the node itself should not be used, right?
       if ($meeting_start_time < $registration_deadline) {
         $formState->setErrorByName('field_registration_deadline', t('The registration deadline must not be after the meeting starts.'));
       }
