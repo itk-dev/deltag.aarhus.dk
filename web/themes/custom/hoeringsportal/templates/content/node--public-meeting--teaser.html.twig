@@ -24,11 +24,10 @@
 {# Show teaser description #}
 {% block card_content %}
   {{ content.field_teaser[0]['#context'].value|length > 95 ? content.field_teaser[0]['#context'].value|slice(0, 95) ~ '...' : content.field_teaser }}
+
 {% endblock %}
 
 {# Collect data for information lines on card #}
-
-{# TODO: The time does not account for timezone and daylight savings time #}
 {% set items =
   [
     {icon: 'fa-calendar-day', value: meetingDateStartTime|format_date('hoeringsportal_date_long')|capitalize},
@@ -39,6 +38,7 @@
 
 {# Show card information #}
 {% block card_type_information %}
+
   {# Show text if meeting is canceled #}
   {% if (meetingIsCanceled) %}
     <div class="alert alert-warning"><p class="my-0">{{ content.field_cancelled_text|default('Meeting has been canceled'|t) }}</p></div>
