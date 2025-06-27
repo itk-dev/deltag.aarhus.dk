@@ -390,6 +390,7 @@ class PublicMeetingHelper {
   }
 
   // @todo Do we need this function or has it been made superfluous by getPublicMeetingContext?
+
   /**
    * Get next meeting start time object.
    */
@@ -409,6 +410,7 @@ class PublicMeetingHelper {
   }
 
   // @todo Do we need this function or has it been made superfluous by getPublicMeetingContext?
+
   /**
    * Get next meeting end time object.
    */
