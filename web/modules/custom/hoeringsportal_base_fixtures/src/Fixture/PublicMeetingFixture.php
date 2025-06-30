@@ -146,6 +146,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->save();
 
     $node = $node->createDuplicate();
+    $node->set('field_public_meeting_cancelled', FALSE);
     $node->setTitle('Public meeting with pretix signup and multiple dates');
     $node->set('field_pretix_dates', [
       [
