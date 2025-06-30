@@ -6,10 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-522](https://github.com/itk-dev/hoeringsportal/pull/522)
+  Fixes issues described in [#521](https://github.com/itk-dev/deltag.aarhus.dk/issues/521)
+
 ## [4.10.0] - 2025-04-22
 
-* [PR-517](https://github.com/itk-dev/hoeringsportal/pull/517)
-  Add icon browser privileges to all roles
 * [PR-515](https://github.com/itk-dev/deltag.aarhus.dk/pull/515)
   4721: Reset pretix date cardinality
 * [PR-516](https://github.com/itk-dev/deltag.aarhus.dk/pull/516)

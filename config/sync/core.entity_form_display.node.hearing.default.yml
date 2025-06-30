@@ -36,6 +36,7 @@ dependencies:
     - field_group
     - hoeringsportal_data
     - link
+    - maxlength
     - publication_date
     - text
 third_party_settings:
@@ -359,7 +360,11 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 90
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
   url_redirects:
     weight: 16
     region: content
