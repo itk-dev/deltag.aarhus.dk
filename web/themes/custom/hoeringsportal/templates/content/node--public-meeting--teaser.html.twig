@@ -3,21 +3,29 @@
 {% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
 
 {# Set the content state #}
-{% set content_state = public_meeting_helper.getState(node) %}
+{% set content_state = content.field_content_state['#items'].value %}
 
-{# Set the content state #}
-{% set meetingIsCanceled = public_meeting_helper.isCancelled(node) %}
+{# Set the Cancelled state #}
+{% set meetingIsCancelled = public_meeting_helper.isCancelled(node) %}
 
 {# Set start and end time for next meeting #}
-{% set meetingDateStartTime = public_meeting_helper.getNextMeetingStartTime(node) %}
-{% set meetingDateEndTime = public_meeting_helper.getNextMeetingEndTime(node) %}
+{% set meetingDateStartTime = null %}
+{% if public_meeting_context.upcoming is not empty %}
+  {# Set start and end time for next meeting #}
+  {% set meetingDateStartTime = public_meeting_context.upcoming|first.time_from %}
+  {% set meetingDateEndTime = public_meeting_context.upcoming|first.time_to %}
+{% else %}
+  {% set meetingDateStartTime = content.field_last_meeting_time['#items'].value %}
+{% endif %}
 
 {# Show a date splash on the card #}
 {% block card_date %}
   {# When deadline field exists show date. #}
-  {% if meetingDateStartTime != '' %}
-    <div class="fw-semibold">{{ meetingDateStartTime|format_date('hoeringsportal_day_only') }}</div>
-    <div class="small">{{ meetingDateStartTime|format_date('hoeringsportal_month_short') }}</div>
+  {% if (content_state != 'finished') %}
+    <div class="fw-semibold">{{ meetingDateStartTime|date('U')|format_date('hoeringsportal_day_only') }}</div>
+    <div class="small">{{ meetingDateStartTime|date('U')|format_date('hoeringsportal_month_short') }}</div>
+  {% else %}
+    {{ 'Finished'|t }}
   {% endif %}
 {% endblock %}
 
@@ -29,8 +37,8 @@
 {# Collect data for information lines on card #}
 {% set items =
   [
-    {icon: 'fa-calendar-day', value: meetingDateStartTime|format_date('hoeringsportal_date_long')|capitalize},
-    {icon: 'fa-clock', value: meetingDateStartTime|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|format_date('hoeringsportal_time')},
+    {icon: 'fa-calendar-day', value: meetingDateStartTime|date('U')|format_date('hoeringsportal_date_long')|capitalize},
+    {icon: 'fa-clock', value: meetingDateStartTime|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|date('U')|format_date('hoeringsportal_time')},
     {icon: 'fa-location-dot', value: content.field_area}
   ]
 %}
@@ -39,23 +47,23 @@
 {% block card_type_information %}
 
   {# Show text if meeting is canceled #}
-  {% if (meetingIsCanceled) %}
-    <div class="alert alert-warning"><p class="my-0">{{ content.field_cancelled_text|default('Meeting has been canceled'|t) }}</p></div>
+  {% if (meetingIsCancelled) %}
+    <div class="alert alert-warning"><h4 class="alert-heading mt-0">{{ 'Cancelled'|t }}</h4><p class="my-0">{{ content.field_cancelled_text|default('Meeting has been cancelled'|t) }}</p></div>
   {% else %}
 
-    {# Show details for next meeting #}
-    {% if (content_state == 'upcoming' or content_state == 'active') %}
-    {% for item in items %}
-      <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
-        <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-public-meeting"></i>
-        <p class="small">{{ item.value }}</p>
-      </div>
-    {% endfor %}
+  {# Show details for next meeting #}
+  {% if (content_state == 'upcoming' or content_state == 'active') %}
+  {% for item in items %}
+    <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
+      <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-public-meeting"></i>
+      <p class="small">{{ item.value }}</p>
+    </div>
+  {% endfor %}
 
-    {# Show text for finished meeting #}
-    {% elseif (content_state == 'finished') %}
-      <p>{{ 'Meeting has been held'|t }}</p>
-    {% endif %}
+  {# Show text for finished meeting #}
+  {% elseif (content_state == 'finished') %}
+    <p>{{ 'Meeting has been held'|t }}</p>
+  {% endif %}
 
   {% endif %}
 {% endblock %}

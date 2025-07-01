@@ -11,6 +11,15 @@ module](https://github.com/itk-dev/itk_pretix_d8).
 This project ships with a docker environment that includes a local pretix setup
 for use during development.
 
+Our pretix service must be able to call a [webhook
+controller](https://github.com/itk-dev/itk_pretix/blob/main/src/Controller/PretixWebhookController.php) in our Drupal
+(phpfpm) service and this requires [a little setting in
+`settings.local.php`](https://github.com/itk-dev/itk_pretix/blob/main/README.md#configuration):
+
+``` php
+$settings['itk_pretix']['drupal_base_url'] = 'http://hoeringsportal.local.itkdev.dk:8080';
+```
+
 ### Pretix build
 
 Sign in to pretix:

@@ -32,7 +32,7 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
         ],
       ]);
       $user->save();
-      $this->setReference('user:citizen_proposal_editor', $user);
+      $this->setReference('user:' . $role, $user);
     }
 
     // We use the range 100..103 to prevent usernames clashing with the ones
@@ -40,7 +40,7 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
     $role = 'hearing_editor';
     foreach (range(100, 103) as $i) {
       $departmentNumber = ($i - 1) % TermDepartmentFixture::NUMBER_OF_TERMS + 1;
-      $name = sprintf('department%d-%s', $i, $role);
+      $name = sprintf('department%d-editor', $i);
       $user = User::create([
         'name' => $name,
         'mail' => $name . '@example.com',
@@ -56,6 +56,18 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
       $user->save();
       $this->setReference('user:' . $name, $user);
     }
+
+    $user = User::create([
+      'name' => 'user',
+      'mail' => 'user@example.com',
+      'pass' => 'user-password',
+      'status' => 1,
+      'roles' => [
+        'authenticated',
+      ],
+    ]);
+    $user->save();
+    $this->setReference('user:user', $user);
   }
 
   /**

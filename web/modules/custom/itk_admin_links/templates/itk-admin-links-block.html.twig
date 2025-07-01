@@ -3,8 +3,8 @@
   <icon class="itk-admin-links--icon js-admin-toggle"></icon>
 
   {# Admin link to /admin or /admin/content depending on actual permissions #}
-  {% set admin_link = drupal_link('Go to administration'|t, path('system.admin'), check_access=true)|default(drupal_link('Go to administration'|t, path('system.admin_content'), check_access=true)) %}
-  {% set edit_link = nid ? drupal_link('Edit this page'|t, path('entity.node.edit_form', {node: nid}), check_access=true) %}
+  {% set admin_link = drupal_link('Go to administration'|t, path('system.admin'), check_access = true)|default(drupal_link('Go to administration'|t, path('system.admin_content'), check_access = true)) %}
+  {% set edit_link = nid ? drupal_link('Edit this page'|t, path('entity.node.edit_form', {node: nid}), check_access = true) %}
 
   <ul class="itk-admin-links--items js-admin-menu">
     {% if admin_link %}

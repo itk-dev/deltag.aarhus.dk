@@ -30,8 +30,9 @@ steps:
         - git apply patches/development/mitid-test-cpr-hack.patch
         - itkdev-docker-compose-server pull
         - itkdev-docker-compose-server up --detach --force-recreate --remove-orphans
-        # Using --classmap-authoritative will break something ('Drupal\mysql\Driver\Database\mysql\Connection' not found)
-        # @todo Investigate how to fix this (see https://www.drupal.org/project/drupal/issues/3334213)
+        # Using --classmap-authoritative will break Drupal
+        # ('Drupal\mysql\Driver\Database\mysql\Connection' not found), cf.
+        # https://getcomposer.org/doc/articles/autoloader-optimization.md#trade-offs-2
         - itkdev-docker-compose-server exec phpfpm composer install --no-dev --optimize-autoloader
         - itkdev-docker-compose-server exec phpfpm composer clear-cache
         - itkdev-docker-compose-server exec phpfpm vendor/bin/drush --yes cache:rebuild

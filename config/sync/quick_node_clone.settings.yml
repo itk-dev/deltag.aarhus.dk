@@ -5,4 +5,4 @@ exclude:
   node: {  }
   paragraph: {  }
 text_to_prepend_to_title: 'Kopi af'
-clone_status: false
+clone_status: ''
