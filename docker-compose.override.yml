@@ -29,5 +29,5 @@ services:
     networks:
       - app
     ports:
-      - '3310'
-      - '7357'
+      - "3310"
+      - "7357"

@@ -1,5 +1,5 @@
 name: Hoeringsportal content blocks
 type: module
-description: 'Blocks used for displaying content on nodes'
+description: "Blocks used for displaying content on nodes"
 package: Hoeringsportal
 core_version_requirement: ^8.8 || ^9 || ^10

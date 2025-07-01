@@ -1,7 +1,7 @@
-version: '3'
+version: "3"
 
 # https://taskfile.dev/usage/#env-files
-dotenv: ['.env.local', '.env']
+dotenv: [".env.local", ".env"]
 
 vars:
   # https://taskfile.dev/reference/templating/
@@ -71,17 +71,17 @@ tasks:
           {{.DOCKER_COMPOSE}} run --rm node npm run build --prefix web/themes/custom/hoeringsportal
         fi
     vars:
-      SKIP_BUILD: '{{.ASSETS_SKIP_BUILD | default .TASK_ASSETS_SKIP_BUILD}}'
+      SKIP_BUILD: "{{.ASSETS_SKIP_BUILD | default .TASK_ASSETS_SKIP_BUILD}}"
 
   assets-watch:
     cmds:
-      - '{{.DOCKER_COMPOSE}} run --rm node npm run watch --prefix web/themes/custom/hoeringsportal'
+      - "{{.DOCKER_COMPOSE}} run --rm node npm run watch --prefix web/themes/custom/hoeringsportal"
 
   compose:
     cmds:
       - '{{.DOCKER_COMPOSE}} {{if .DOCKER_COMPOSE_PROFILES}}--profile {{.DOCKER_COMPOSE_PROFILES | splitList "," |join " --profile " }}{{end}} {{.CLI_ARGS}}'
     vars:
-      DOCKER_COMPOSE_PROFILES: '{{.PROFILES | default .DOCKER_COMPOSE_PROFILES}}'
+      DOCKER_COMPOSE_PROFILES: "{{.PROFILES | default .DOCKER_COMPOSE_PROFILES}}"
 
   compose-up:
     cmds:
@@ -161,83 +161,115 @@ tasks:
   coding-standards:apply:
     desc: "Apply coding standards"
     cmds:
-      - task: coding-standards:assets:apply
+      - task: coding-standards:javascript:apply
       - task: coding-standards:markdown:apply
       - task: coding-standards:php:apply
+      - task: coding-standards:styles:apply
       - task: coding-standards:twig:apply
+      - task: coding-standards:yaml:apply
     silent: true
 
   coding-standards:check:
     desc: "Apply coding standards"
     cmds:
-      - task: coding-standards:assets:check
+      - task: coding-standards:javascript:check
       - task: coding-standards:markdown:check
       - task: coding-standards:php:check
+      - task: coding-standards:styles:check
       - task: coding-standards:twig:check
+      - task: coding-standards:yaml:check
     silent: true
 
-  coding-standards:assets:apply:
-    desc: "Apply coding standards for assets"
+  coding-standards:javascript:apply:
+    desc: "Apply coding standards for javascript"
     cmds:
-      # Prettier does not (yet, fcf.
-      # https://github.com/prettier/prettier/issues/15206) have an official
-      # docker image.
-      # https://hub.docker.com/r/jauderho/prettier is good candidate (cf. https://hub.docker.com/search?q=prettier&sort=updated_at&order=desc)
-      - docker run --rm --volume "$PWD:/work" jauderho/prettier --write playwright web/themes/custom/hoeringsportal/assets
+      # Cf. .github/workflows/javascript.yaml
+      - docker compose run --rm prettier 'web/themes/custom/**/js/**/*.js' --write
 
-  coding-standards:assets:check:
-    desc: "Apply and check coding standards for assets"
+  coding-standards:javascript:check:
+    desc: "Apply coding standards for javascript"
     cmds:
-      - task: coding-standards:assets:apply
-      - docker run --rm --volume "$PWD:/work" jauderho/prettier --check playwright web/themes/custom/hoeringsportal/assets
+      - task: coding-standards:javascript:apply
+      # Cf. .github/workflows/javascript.yaml
+      - docker compose run --rm prettier 'web/themes/custom/**/js/**/*.js' --check
 
   coding-standards:markdown:apply:
     desc: "Apply coding standards for Markdown"
     cmds:
-      - docker run --rm --volume "$PWD:/md" peterdavehello/markdownlint markdownlint  --ignore '**/node_modules/**' --ignore '**/vendor/**' '*.md' 'web/*/custom/**/*.md' 'documentation/*.md' --fix
+      # Cf. .github/workflows/markdown.yaml
+      - docker compose run --rm markdownlint markdownlint '**/*.md' --fix
 
   coding-standards:markdown:check:
     desc: "Apply and check coding standards for Markdown"
     cmds:
       - task: coding-standards:markdown:apply
-      - docker run --rm --volume "$PWD:/md" peterdavehello/markdownlint markdownlint  --ignore '**/node_modules/**' --ignore '**/vendor/**' '*.md' 'web/*/custom/**/*.md' 'documentation/*.md'
+      # Cf. .github/workflows/markdown.yaml
+      - docker compose run --rm markdownlint markdownlint '**/*.md'
 
   coding-standards:php:apply:
     desc: "Apply coding standards for PHP"
     cmds:
-      - task composer -- coding-standards-apply/php
+      # Cf. .github/workflows/php.yaml
+      - docker compose run --rm phpfpm vendor/bin/phpcbf
     silent: true
 
   coding-standards:php:check:
     desc: "Apply and check coding standards for PHP"
     cmds:
       - task: coding-standards:php:apply
-      - task composer -- coding-standards-check/php
+      # Cf. .github/workflows/php.yaml
+      - docker compose run --rm phpfpm vendor/bin/phpcs
     silent: true
+
+  coding-standards:styles:apply:
+    desc: "Apply coding standards for styles"
+    cmds:
+      # Cf. .github/workflows/styles.yaml
+      - docker compose run --rm prettier 'web/themes/custom/**/css/**/*.{css,scss}' --write
+
+  coding-standards:styles:check:
+    desc: "Apply coding standards for styles"
+    cmds:
+      - task: coding-standards:styles:apply
+      # Cf. .github/workflows/styles.yaml
+      - docker compose run --rm prettier 'web/themes/custom/**/css/**/*.{css,scss}' --check
 
   coding-standards:twig:apply:
     desc: "Apply coding standards for Twig"
     cmds:
-      - task composer -- coding-standards-apply/twig
+      - docker compose run --rm phpfpm vendor/bin/twig-cs-fixer fix
     silent: true
 
   coding-standards:twig:check:
     desc: "Apply and check coding standards for Twig"
     cmds:
       - task: coding-standards:twig:apply
-      - task composer -- coding-standards-check/twig
+      - docker compose run --rm phpfpm vendor/bin/twig-cs-fixer lint
     silent: true
 
+  coding-standards:yaml:apply:
+    desc: "Apply coding standards for YAML"
+    cmds:
+      # Cf. .github/workflows/yaml.yaml
+      - docker compose run --rm prettier '**/*.{yml,yaml}' --write
+
+  coding-standards:yaml:check:
+    desc: "Apply coding standards for YAML"
+    cmds:
+      - task: coding-standards:yaml:apply
+      # Cf. .github/workflows/yaml.yaml
+      - docker compose run --rm prettier '**/*.{yml,yaml}' --check
+
   code-analysis:
-     cmds:
-       - task composer -- code-analysis
-       # Check some modules with a higher level.
-       #
-       # Note: The second `--` is needed to pass command line arguments (starting with `--`) to the composer script
-       # `code-analysis`
-       #
-       # @todo Update all our custom modules to resolve ‘level 9 (or 8) errors“
-       - task composer -- code-analysis -- --level=9 web/modules/custom/hoeringsportal_audit_log/
+    cmds:
+      - docker compose run --rm phpfpm vendor/bin/phpstan analyse --configuration=phpstan.neon
+      # Check some modules with a higher level.
+      #
+      # Note: The second `--` is needed to pass command line arguments (starting with `--`) to the composer script
+      # `code-analysis`
+      #
+      # @todo Update all our custom modules to resolve ‘level 9 (or 8) errors“
+      - docker compose run --rm phpfpm vendor/bin/phpstan analyse --configuration=phpstan.neon --level=9 web/modules/custom/hoeringsportal_audit_log/
 
   docker-pull:
     desc: "Pull all development docker images"
@@ -249,8 +281,8 @@ tasks:
   fixtures:load:
     prompt: "This will reset your content. Continue?"
     cmds:
-      # We need the pretix service to load public meeting fixtures.
-      - PROFILES=pretix COMPOSE_UP_WAIT=true task compose-up
+      # We need the pretix service to load public meeting fixtures (cf. https://docs.docker.com/compose/how-tos/environment-variables/envvars/#compose_profiles)
+      - COMPOSE_PROFILES=pretix COMPOSE_UP_WAIT=true task compose-up
       - task drush -- --yes pm:enable hoeringsportal_base_fixtures $(find web/modules/custom -type f -name 'hoeringsportal_*_fixtures.info.yml' -exec basename -s .info.yml {} \;)
       - task drush -- --yes content-fixtures:load
       - task drush -- --yes pm:uninstall content_fixtures

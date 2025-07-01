@@ -65,6 +65,11 @@ jobs:
     if: github.event_name == 'pull_request'
     name: Check that site can be updated
     runs-on: ubuntu-latest
+    env:
+      # Force docker compose to run with the new project name
+      # @todo Remove in the future when base branch uses the new project name
+      COMPOSE_PROJECT_NAME: deltag
+      COMPOSE_DOMAIN: deltag.local.itkdev.dk
     steps:
       # Install site from our base ref
       - uses: actions/checkout@v4
