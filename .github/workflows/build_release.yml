@@ -21,13 +21,15 @@ jobs:
       - name: Composer install
         run: |
           docker network create frontend
-          docker compose run --rm --user=root phpfpm composer install --no-dev -o --classmap-authoritative
+          # Using --classmap-authoritative will break something ('Drupal\mysql\Driver\Database\mysql\Connection' not found)
+          # @todo Investigate how to fix this (see https://www.drupal.org/project/drupal/issues/3334213)
+          docker compose run --rm --user=root phpfpm composer install --no-dev --optimize-autoloader
           docker compose run --rm --user=root phpfpm composer clear-cache
 
       - name: Building assets for the frontend
         run: |
-          docker compose run --rm node npm install --prefix /app/web/themes/custom/hoeringsportal 
-          docker compose run --rm node npm run build --prefix  /app/web/themes/custom/hoeringsportal 
+          docker compose run --rm node npm install --prefix /app/web/themes/custom/hoeringsportal
+          docker compose run --rm node npm run build --prefix  /app/web/themes/custom/hoeringsportal
 
       - name: Clean up
         run: |
