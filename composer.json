@@ -60,6 +60,7 @@
         "drupal/search_autocomplete": "^3.0",
         "drupal/svg_image": "^3.2",
         "drupal/svg_sanitizer": "^2.0",
+        "drupal/textfield_counter": "^2.5",
         "drupal/token_filter": "^2.1",
         "drupal/toolbar_visibility": "^2.1",
         "drupal/twig_tweak": "^3.2",

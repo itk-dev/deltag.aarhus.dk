@@ -104,6 +104,7 @@ module:
   taxonomy: 0
   telephone: 0
   text: 0
+  textfield_counter: 0
   token: 0
   token_filter: 0
   toolbar: 0
