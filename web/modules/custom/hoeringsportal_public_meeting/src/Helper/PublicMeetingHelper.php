@@ -399,8 +399,8 @@ class PublicMeetingHelper {
       return NULL;
     }
 
-    if (isset($node->field_pretix_dates[0]->time_from->date)) {
-      return $node->field_pretix_dates[0]->time_from->date->getTimestamp();
+    if (isset($node->field_pretix_dates[0]->time_from)) {
+      return $node->field_pretix_dates[0]->time_from->getTimestamp();
     }
     elseif (isset($node->field_last_meeting_time->date)) {
       return $node->field_last_meeting_time->date->getTimestamp();
@@ -419,8 +419,8 @@ class PublicMeetingHelper {
       return NULL;
     }
 
-    if (isset($node->field_pretix_dates[0]->time_to->date)) {
-      return $node->field_pretix_dates[0]->time_to->date->getTimestamp();
+    if (isset($node->field_pretix_dates[0]->time_to)) {
+      return $node->field_pretix_dates[0]->time_to->getTimestamp();
     }
     elseif (isset($node->field_last_meeting_time_end->date)) {
       return $node->field_last_meeting_time_end->date->getTimestamp();

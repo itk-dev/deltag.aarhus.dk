@@ -14,10 +14,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Enabled multiple pretix dates on public meetings
   * Updated fixtures with multipe date examples (and pretix orders)
 
+## [4.10.1] - 2025-06-30
+
+* [PR-522](https://github.com/itk-dev/hoeringsportal/pull/522)
+  Fixes issues described in [#521](https://github.com/itk-dev/deltag.aarhus.dk/issues/521)
+
 ## [4.10.0] - 2025-04-22
 
-* [PR-517](https://github.com/itk-dev/hoeringsportal/pull/517)
-  Add icon browser privileges to all roles
 * [PR-515](https://github.com/itk-dev/deltag.aarhus.dk/pull/515)
   4721: Reset pretix date cardinality
 * [PR-516](https://github.com/itk-dev/deltag.aarhus.dk/pull/516)
@@ -486,7 +489,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...HEAD
+[4.10.1]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...4.10.1
 [4.10.0]: https://github.com/itk-dev/hoeringsportal/compare/4.9.3...4.10.0
 [4.9.3]: https://github.com/itk-dev/hoeringsportal/compare/4.9.2...4.9.3
 [4.9.2]: https://github.com/itk-dev/hoeringsportal/compare/4.9.1...4.9.2

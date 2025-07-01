@@ -3,9 +3,7 @@
 {% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
 
 {% block card_content %}
-  <div class="py-0 line-clamp-3">
-    {{ node.field_short_description.value }}
-  </div>
+  {{ node.field_short_description.value|truncate(95, true, true) }}
 {% endblock %}
 {% block card_footer %}
   <span>{{ content.field_project_category }}</span>
