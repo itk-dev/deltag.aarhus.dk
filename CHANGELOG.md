@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.11.0] - 2025-07-01
+
 * [PR-523](https://github.com/itk-dev/hoeringsportal/pull/523)
   Update public meeting template to use new base-card approach for teasers
 * [PR-463](https://github.com/itk-dev/hoeringsportal/pull/463)
@@ -489,7 +491,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...HEAD
+[4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.11.0
 [4.10.1]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...4.10.1
 [4.10.0]: https://github.com/itk-dev/hoeringsportal/compare/4.9.3...4.10.0
 [4.9.3]: https://github.com/itk-dev/hoeringsportal/compare/4.9.2...4.9.3
