@@ -4,6 +4,9 @@ include:
   - docker-compose.pretix.yml
 
 services:
+  phpfpm:
+    image: itkdev/php8.4-fpm:latest
+
   nginx:
     labels:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=redirect-to-https"

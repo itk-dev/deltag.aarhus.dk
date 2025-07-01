@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.11.0] - 2025-07-01
 
+* [PR-526](https://github.com/itk-dev/deltag.aarhus.dk/pull/526)
+  Updated docker compose setup
 * [PR-523](https://github.com/itk-dev/hoeringsportal/pull/523)
   Update public meeting template to use new base-card approach for teasers
 * [PR-463](https://github.com/itk-dev/hoeringsportal/pull/463)
