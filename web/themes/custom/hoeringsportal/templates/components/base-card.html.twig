@@ -56,11 +56,11 @@
   {% endif %}
 
   {# Card body #}
-  <div class="card-body px-4 pt-3 pb-2">
+  <div class="card-body px-4 pt-3 pb-2 d-flex flex-column gap-2">
     {# Show the type of content the card teases #}
     <span class="small fw-semibold {{ node_type_class }}">{{ node_type_text }}</span>
     {# Show the title of the node #}
-    <h3 class="card-title">{{ node.fields.title.value }}</h3>
+    <h3 class="card-title mb-0">{{ node.fields.title.value }}</h3>
 
     {# Card content block for showing a short description #}
     {% block card_content %}
@@ -69,7 +69,7 @@
     {% endblock %}
 
     {# Card information block for showing relevant lines of information eg. meeting date, place ect. #}
-    <div class="d-flex flex-column w-100 gap-3 mt-4">
+    <div class="d-flex flex-column w-100 gap-3 mt-auto pt-2">
       {% block card_type_information %}
       {% endblock %}
     </div>
