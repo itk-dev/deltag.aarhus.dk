@@ -5,12 +5,12 @@ dotenv: ['.env.local', '.env']
 
 vars:
   # https://taskfile.dev/reference/templating/
-  BASE_URL: '{{.TASK_BASE_URL | default .COMPOSE_SERVER_DOMAIN | default .COMPOSE_DOMAIN | default "https://hoeringsportal.local.itkdev.dk"}}'
+  BASE_URL: '{{.TASK_BASE_URL | default .COMPOSE_SERVER_DOMAIN | default .COMPOSE_DOMAIN | default "https://deltag.local.itkdev.dk"}}'
   DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose"}}'
   DOCKER_COMPOSE_PROFILES: '{{.TASK_DOCKER_COMPOSE_PROFILES | default ""}}'
   COMPOSER_INSTALL_ARGUMENTS: '{{.TASK_COMPOSER_INSTALL_ARGUMENTS | default ""}}'
 
-  PRETIX_URL: '{{.TASK_PRETIX_URL | default "http://pretix.hoeringsportal.local.itkdev.dk"}}'
+  PRETIX_URL: '{{.TASK_PRETIX_URL | default "http://pretix.deltag.local.itkdev.dk"}}'
   PRETIX_ORGANIZER: '{{.TASK_PRETIX_ORGANIZER | default "dpl-cms"}}'
 
 tasks:
