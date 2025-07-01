@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-523](https://github.com/itk-dev/hoeringsportal/pull/523)
+  Update public meeting template to use new base-card approach for teasers
 * [PR-463](https://github.com/itk-dev/hoeringsportal/pull/463)
   3893: Avoid `<strong>` in translation
 * [PR-451](https://github.com/itk-dev/hoeringsportal/pull/451)
