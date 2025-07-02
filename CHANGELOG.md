@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.11.0] - 2025-07-01
 
+* [PR-528](https://github.com/itk-dev/deltag.aarhus.dk/pull/528)
+  Aligned `composer.json` with <https://github.com/drupal-composer/drupal-project/blob/10.x/composer.json>
 * [PR-526](https://github.com/itk-dev/deltag.aarhus.dk/pull/526)
   * Updated docker compose setup
   * Linted YAML

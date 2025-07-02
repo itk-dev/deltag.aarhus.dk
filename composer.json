@@ -104,7 +104,7 @@
         },
         "asset-packagist": {
             "type": "composer",
-            "url": "https://asset-packagist.org/"
+            "url": "https://asset-packagist.org"
         },
         "drupal/hoeringsportal_data": {
             "type": "path",
@@ -200,6 +200,14 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": [
+            "load.environment.php"
+        ]
+    },
     "config": {
         "allow-plugins": {
             "chx/drupal-issue-fork": true,
@@ -215,11 +223,17 @@
             "phpstan/extension-installer": true,
             "tbachert/spi": true
         },
+        "discard-changes": true,
         "sort-packages": true
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
         "drupal-scaffold": {
+            "file-mapping": {
+                "[project-root]/.gitignore": false,
+                "[web-root]/INSTALL.txt": false,
+                "[web-root]/README.txt": false
+            },
             "locations": {
                 "web-root": "web/"
             }
@@ -231,8 +245,8 @@
             ],
             "web/libraries/{$name}": [
                 "type:drupal-library",
-                "type:npm-asset",
-                "type:bower-asset"
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -249,6 +263,9 @@
             "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
             "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ]
@@ -257,6 +274,9 @@
             "npm-asset",
             "bower-asset"
         ],
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "patches": {
             "drupal/better_exposed_filters": {
                 "Add option to hide exposed filter field labels (https://www.drupal.org/project/better_exposed_filters/issues/3282228)": "https://www.drupal.org/files/issues/2022-09-08/bef-visually_hidden.3282228.8.patch",
@@ -265,6 +285,20 @@
             "drupal/core": {
                 "Text format wrapper does not take description_display into account (https://www.drupal.org/project/drupal/issues/2421445#comment-14328645)": "https://www.drupal.org/files/issues/2021-12-03/2421445-18_0.patch"
             }
+        },
+        "scripts": {
+            "post-install-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            ],
+            "post-update-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            ],
+            "pre-install-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            ],
+            "pre-update-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            ]
         }
     }
 }
