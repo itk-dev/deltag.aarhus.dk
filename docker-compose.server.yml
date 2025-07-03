@@ -1,4 +1,4 @@
-# itk-version: 3.2.3
+# itk-version: 3.2.4
 networks:
   frontend:
     external: true
@@ -8,7 +8,7 @@ networks:
 
 services:
   phpfpm:
-    image: itkdev/php8.4-fpm:alpine
+    image: itkdev/php8.3-fpm:alpine
     restart: unless-stopped
     networks:
       - app
@@ -52,7 +52,7 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
 
   memcached:
-    image: 'memcached:latest'
+    image: "memcached:latest"
     restart: unless-stopped
     networks:
       - app

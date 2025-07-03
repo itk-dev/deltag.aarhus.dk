@@ -6,6 +6,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.11.0] - 2025-07-01
+
+* [PR-528](https://github.com/itk-dev/deltag.aarhus.dk/pull/528)
+  Aligned `composer.json` with <https://github.com/drupal-composer/drupal-project/blob/10.x/composer.json>
+* [PR-526](https://github.com/itk-dev/deltag.aarhus.dk/pull/526)
+  * Updated docker compose setup
+  * Linted YAML
 * [PR-523](https://github.com/itk-dev/hoeringsportal/pull/523)
   Update public meeting template to use new base-card approach for teasers
 * [PR-463](https://github.com/itk-dev/hoeringsportal/pull/463)
@@ -13,6 +20,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-451](https://github.com/itk-dev/hoeringsportal/pull/451)
   * Enabled multiple pretix dates on public meetings
   * Updated fixtures with multipe date examples (and pretix orders)
+
+## [4.10.2] - 2025-07-03
+
+* [PR-529](https://github.com/itk-dev/hoeringsportal/pull/529)
+  Added [Site Status Message](https://www.drupal.org/project/site_status_message) module.
 
 ## [4.10.1] - 2025-06-30
 
@@ -489,7 +501,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...HEAD
+[4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.11.0
 [4.10.1]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...4.10.1
 [4.10.0]: https://github.com/itk-dev/hoeringsportal/compare/4.9.3...4.10.0
 [4.9.3]: https://github.com/itk-dev/hoeringsportal/compare/4.9.2...4.9.3

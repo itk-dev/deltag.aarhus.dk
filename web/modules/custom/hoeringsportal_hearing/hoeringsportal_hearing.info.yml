@@ -1,5 +1,5 @@
 name: Hoeringsportal hearing
 type: module
-description: 'Stuff related to hearing content type'
+description: "Stuff related to hearing content type"
 package: Hoeringsportal
 core_version_requirement: ^8.8 || ^9 || ^10

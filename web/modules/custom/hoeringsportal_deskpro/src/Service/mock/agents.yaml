@@ -3,7 +3,7 @@ data:
     primary_email: deskpro@example.com
     first_name: Deskpro
     last_name: Agent
-    title_prefix: ''
+    title_prefix: ""
     name: Deskpro Agent
     display_name: Deskpro Agent
     is_agent: true
@@ -20,7 +20,7 @@ data:
     primary_email: 007@example.com
     first_name: James
     last_name: Bond
-    title_prefix: ''
+    title_prefix: ""
     name: James Bond
     display_name: James Bond
     is_agent: true

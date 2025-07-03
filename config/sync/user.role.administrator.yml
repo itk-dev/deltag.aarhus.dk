@@ -24,6 +24,7 @@ dependencies:
     - media
     - node
     - path
+    - site_status_message
     - system
     - taxonomy
     - toolbar
@@ -47,6 +48,7 @@ permissions:
   - 'access toolbar'
   - 'administer menu'
   - 'administer nodes'
+  - 'administer site status message'
   - 'administer taxonomy'
   - 'administer url aliases'
   - 'administer users'

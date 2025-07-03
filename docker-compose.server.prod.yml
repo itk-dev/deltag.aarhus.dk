@@ -4,7 +4,7 @@ services:
       - ../../shared/settings.local.php:/app/web/sites/default/settings.local.php
       - ../../shared/files:/app/web/sites/default/files
       - ../../shared/private:/app/private-files
-      
+
   nginx:
     volumes:
       - ../../shared/files:/app/web/sites/default/files

@@ -10,8 +10,8 @@ settings:
   client_secret: client-secret
   iss_allowed_domains: ''
   issuer_url: ''
-  authorization_endpoint: 'http://idp-employee.hoeringsportal.local.itkdev.dk/connect/authorize'
-  token_endpoint: 'http://idp-employee.hoeringsportal.local.itkdev.dk/connect/token'
+  authorization_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/connect/authorize'
+  token_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/connect/token'
   userinfo_endpoint: ''
   end_session_endpoint: ''
   scopes:

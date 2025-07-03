@@ -1,6 +1,6 @@
 name: Hoeringsportal hearing fixtures
 type: module
-description: 'Provides hearing fixtures for the site.'
+description: "Provides hearing fixtures for the site."
 core_version_requirement: ^9 || ^10
 package: ITK
 dependencies:

@@ -1,5 +1,6 @@
 services:
   phpfpm:
+    image: itkdev/php8.4-fpm:alpine
     environment:
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_POST_MAX_SIZE=90M

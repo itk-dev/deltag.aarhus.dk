@@ -3,4 +3,4 @@ itk_admin.settings:
   title: Site specific settings
   route_name: itk_admin.settings
   parent: system.admin
-  description: 'Sitespecific settings'
+  description: "Sitespecific settings"

@@ -1,81 +1,81 @@
 hoeringsportal_data.statistics_controller_index:
-  path: '/admin/hoeringsportal_data/statistics'
+  path: "/admin/hoeringsportal_data/statistics"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\StatisticsController::index'
-    _title: 'Statistics'
+    _title: "Statistics"
   requirements:
-    _permission: 'access hoeringsportal_data statistics'
+    _permission: "access hoeringsportal_data statistics"
   options:
     no_cache: TRUE
 
 hoeringsportal_data.api_controller_index:
-  path: '/api'
+  path: "/api"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\DefaultController::index'
-    _title: 'API'
+    _title: "API"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.api_controller_hearings:
-  path: '/api/hearings'
+  path: "/api/hearings"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\HearingController::index'
-    _title: 'Hearings'
+    _title: "Hearings"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.api_controller_hearings_show:
-  path: '/api/hearings/{hearing}'
+  path: "/api/hearings/{hearing}"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\HearingController::show'
-    _title: 'Hearings'
+    _title: "Hearings"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.api_controller_hearings_tickets:
-  path: '/api/hearings/{hearing}/tickets'
+  path: "/api/hearings/{hearing}/tickets"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\HearingController::tickets'
-    _title: 'Hearing tickets'
+    _title: "Hearing tickets"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.api_controller_geojson_hearings:
-  path: '/api/geojson/hearings'
+  path: "/api/geojson/hearings"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\GeoJSON\HearingController::index'
-    _title: 'Hearings'
+    _title: "Hearings"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.api_controller_geojson_public_meeting_dates:
-  path: '/api/geojson/public_meetings/dates'
+  path: "/api/geojson/public_meetings/dates"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\GeoJSON\PublicMeetingController::dates'
-    _title: 'Public meetings'
+    _title: "Public meetings"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.maps_controller:
-  path: '/maps'
+  path: "/maps"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\MapsController::index'
-    _title: 'Maps'
+    _title: "Maps"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.maps_controller_widget:
-  path: '/maps/widget/{id}'
+  path: "/maps/widget/{id}"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\MapsController::widget'
-    _title: 'Maps configuration'
+    _title: "Maps configuration"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
 
 hoeringsportal_data.api_geojson_v2_hearings:
-  path: '/api/v2/geojson/hearings'
+  path: "/api/v2/geojson/hearings"
   defaults:
     _controller: '\Drupal\hoeringsportal_data\Controller\Api\V2\GeoJSON\HearingController::index'
-    _title: 'GeoJSON hearings (v2)'
+    _title: "GeoJSON hearings (v2)"
   requirements:
-    _permission: 'access content'
+    _permission: "access content"

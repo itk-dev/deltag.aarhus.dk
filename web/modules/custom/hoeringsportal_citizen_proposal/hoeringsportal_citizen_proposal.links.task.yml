@@ -1,15 +1,15 @@
 hoeringsportal_citizen_proposal.citizen_proposals:
-  title: 'Citizen proposals'
+  title: "Citizen proposals"
   route_name: view.citizen_proposal.page_1
   base_route: system.admin_content
 
 hoeringsportal_citizen_proposal.admin_settings:
-  title: 'Citizen proposal settings'
+  title: "Citizen proposal settings"
   route_name: hoeringsportal_citizen_proposal.proposal_admin_settings
   base_route: system.admin_content
 
 hoeringsportal_citizen_proposal.proposal_list:
   route_name: hoeringsportal_citizen_proposal.admin_supporter
   base_route: entity.node.canonical
-  title: 'Supporters'
+  title: "Supporters"
   weight: 100

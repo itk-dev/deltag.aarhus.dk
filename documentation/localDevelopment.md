@@ -117,7 +117,7 @@ docker compose run --rm node npm install --prefix web/themes/custom/hoeringsport
 docker compose run --rm node npm run build --prefix web/themes/custom/hoeringsportal
 
 # Get admin sign in url
-docker compose exec phpfpm vendor/bin/drush --yes --uri="http://hoeringsportal.local.itkdev.dk" user:login
+docker compose exec phpfpm vendor/bin/drush --yes --uri="http://deltag.local.itkdev.dk" user:login
 ```
 
 Add all fixtures

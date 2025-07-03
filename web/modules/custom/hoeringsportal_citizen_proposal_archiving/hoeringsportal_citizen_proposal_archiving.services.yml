@@ -4,7 +4,7 @@ services:
 
   logger.channel.hoeringsportal_citizen_proposal_archiving:
     parent: logger.channel_base
-    arguments: [ 'hoeringsportal_citizen_proposal_archiving' ]
+    arguments: ["hoeringsportal_citizen_proposal_archiving"]
 
   Drupal\hoeringsportal_citizen_proposal_archiving\Archiver\GetOrganizedArchiver:
 
@@ -12,6 +12,6 @@ services:
 
   Drupal\hoeringsportal_citizen_proposal_archiving\Helper\Helper:
     tags:
-      - {name: event_subscriber}
+      - { name: event_subscriber }
 
   Drupal\hoeringsportal_citizen_proposal_archiving\Helper\FormHelper:

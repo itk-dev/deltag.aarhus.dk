@@ -5,7 +5,7 @@ services:
   hoeringsportal_public_meeting.event_subscriber:
     class: Drupal\hoeringsportal_public_meeting\EventSubscriber\EventSubscriber
     tags:
-      - {name: event_subscriber}
+      - { name: event_subscriber }
 
   hoeringsportal_public_meeting.public_meeting_helper:
     class: Drupal\hoeringsportal_public_meeting\Helper\PublicMeetingHelper

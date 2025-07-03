@@ -6,7 +6,7 @@ Define settings in `settings.local.php`:
 $settings['hoeringsportal_openid_connect']['openid_connect'] = [
   'clientId'                 => 'client-id',
   'clientSecret'             => 'client-secret',
-  'openIDConnectMetadataUrl' => 'http://idp-citizen.hoeringsportal.local.itkdev.dk/.well-known/openid-configuration',
+  'openIDConnectMetadataUrl' => 'http://idp-citizen.deltag.local.itkdev.dk/.well-known/openid-configuration',
 ];
 ```
 
