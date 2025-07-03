@@ -265,6 +265,9 @@
             },
             "drupal/core": {
                 "Text format wrapper does not take description_display into account (https://www.drupal.org/project/drupal/issues/2421445#comment-14328645)": "https://www.drupal.org/files/issues/2021-12-03/2421445-18_0.patch"
+            },
+            "drupal/site_status_message": {
+                "Add cache support (https://www.drupal.org/project/site_status_message/issues/3497218)": "https://git.drupalcode.org/project/site_status_message/-/merge_requests/8.diff"
             }
         }
     },
