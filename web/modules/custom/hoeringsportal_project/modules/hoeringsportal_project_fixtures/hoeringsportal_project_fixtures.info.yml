@@ -1,7 +1,7 @@
 name: Hoeringsportal project fixtures
 type: module
 description: 'Provides project fixtures for the site.'
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 package: ITK
 dependencies:
   - content_fixtures:content_fixtures

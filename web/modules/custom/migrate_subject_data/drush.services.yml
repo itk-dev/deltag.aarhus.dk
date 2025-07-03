@@ -1,5 +1,0 @@
-services:
-  migrate_subject_data.commands:
-    class: \Drupal\migrate_subject_data\Commands\MigrateSubjectDataCommands
-    tags:
-      - { name: drush.command }

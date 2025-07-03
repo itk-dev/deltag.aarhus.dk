@@ -18,6 +18,6 @@
         "itk-dev/getorganized-api-client-php": "^1.2",
         "drush/drush": "^13",
         "dompdf/dompdf": "^2.0",
-        "drupal/pluginformalter": "^1.5"
+        "drupal/pluginformalter": "dev-project-update-bot-only#9430eca36b603a73183cefe0cabca2e1c7fe0e39"
     }
 }
