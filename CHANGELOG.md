@@ -21,6 +21,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Enabled multiple pretix dates on public meetings
   * Updated fixtures with multipe date examples (and pretix orders)
 
+## [4.10.2] - 2025-07-03
+
+* [PR-529](https://github.com/itk-dev/hoeringsportal/pull/529)
+  Added [Site Status Message](https://www.drupal.org/project/site_status_message) module.
+
 ## [4.10.1] - 2025-06-30
 
 * [PR-522](https://github.com/itk-dev/hoeringsportal/pull/522)

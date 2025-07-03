@@ -98,6 +98,7 @@ module:
   search_api_db: 0
   search_autocomplete: 0
   serialization: 0
+  site_status_message: 0
   svg_image: 0
   svg_sanitizer: 0
   symfony_mailer: 0
