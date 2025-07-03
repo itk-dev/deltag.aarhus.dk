@@ -53,7 +53,7 @@ abstract class ProposalFormBase extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    if (!$this->isAuthenticatedAsCitizen() && !$this->isAuthenticatedAsEditor()) {
+    if (1 === 1) {
       $form['authenticate'] = [
         '#type' => 'container',
 
@@ -66,14 +66,14 @@ abstract class ProposalFormBase extends FormBase {
           '#text' => $this->getAuthenticateMessage(),
         ],
 
-        'link' => Link::createFromRoute(
-            $this->getAdminFormStateValue('authenticate_link_text', $this->t('Authenticate with MitID')),
-              'hoeringsportal_openid_connect.openid_connect_authenticate',
-              [
-                OpenIDConnectController::QUERY_STRING_DESTINATION => Url::fromRoute('<current>')->toString(TRUE)->getGeneratedUrl(),
-              ],
-        )->toRenderable()
-        + ['#attributes' => ['class' => ['btn', 'btn-primary', 'ml-2']]],
+        'maintenance_message' => [
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#attributes' => [
+            'class' => ['alert', 'alert-danger'],
+          ],
+          '#value' => 'Vi er ved at opdatere deltag.aarhus.dk og derfor kan du ikke oprette eller støtte borgerforslag lige nu. Vi forventer at være klar igen mandag 7. juli 2025.',
+        ],
       ];
 
       return $form;
