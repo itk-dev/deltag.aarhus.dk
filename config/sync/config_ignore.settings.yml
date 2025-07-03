@@ -4,4 +4,5 @@ langcode: da
 mode: simple
 ignored_config_entities:
   - itk_pretix.pretixconfig
+  - site_status_message.settings
   - 'webform.webform.*'
