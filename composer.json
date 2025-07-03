@@ -58,6 +58,7 @@
         "drupal/redirect": "^1.6",
         "drupal/search_api": "^1.37",
         "drupal/search_autocomplete": "^3.0",
+        "drupal/site_status_message": "^2.0",
         "drupal/svg_image": "^3.2",
         "drupal/svg_sanitizer": "^2.0",
         "drupal/textfield_counter": "^2.5",

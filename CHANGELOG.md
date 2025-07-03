@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.10.2] - 2025-07-03
+
+* [PR-](https://github.com/itk-dev/hoeringsportal/pull/)
+  Added [Site Status Message](https://www.drupal.org/project/site_status_message) module.
+
 ## [4.10.1] - 2025-06-30
 
 * [PR-522](https://github.com/itk-dev/hoeringsportal/pull/522)
