@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.10.2] - 2025-07-03
+
+* [PR-529](https://github.com/itk-dev/hoeringsportal/pull/529)
+  Added [Site Status Message](https://www.drupal.org/project/site_status_message) module.
+
 ## [4.10.1] - 2025-06-30
 
 * [PR-522](https://github.com/itk-dev/hoeringsportal/pull/522)
@@ -481,7 +486,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.2...HEAD
+[4.10.2]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.10.2
 [4.10.1]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...4.10.1
 [4.10.0]: https://github.com/itk-dev/hoeringsportal/compare/4.9.3...4.10.0
 [4.9.3]: https://github.com/itk-dev/hoeringsportal/compare/4.9.2...4.9.3
