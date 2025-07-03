@@ -325,11 +325,11 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $request = new \ReflectionMethod($client, 'request');
 
     // Add setting to create a proper webhook in pretix
-    // (http://pretix.hoeringsportal.local.itkdev.dk/control/organizer/hoeringsportal/webhooks)
+    // (http://pretix.deltag.local.itkdev.dk/control/organizer/hoeringsportal/webhooks)
     // (see PretixOrderHelper::ensureWebhook() for details).
     $settings = Settings::getAll();
     if (!isset($settings['itk_pretix']['drupal_base_url'])) {
-      $settings['itk_pretix']['drupal_base_url'] = 'http://hoeringsportal.local.itkdev.dk:8080';
+      $settings['itk_pretix']['drupal_base_url'] = 'http://deltag.local.itkdev.dk:8080';
     }
     new Settings($settings);
     $output->writeln(sprintf('Ensuring that webhook (%s) exists in pretix',
