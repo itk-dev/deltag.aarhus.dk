@@ -3584,10 +3584,10 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/hoeringsportal_audit_log",
-                "reference": "53d2f6561efd629dc7d99eeb3650e2511cd94881"
+                "reference": "c670ca39b7f4bc67ddbcbc936956a035ffd96ccd"
             },
             "require": {
-                "os2web/os2web_audit": "^0.2.0"
+                "os2web/os2web_audit": "^1.2"
             },
             "type": "drupal-custom-module",
             "license": [
@@ -6948,25 +6948,29 @@
         },
         {
             "name": "itk-dev/drupal_psr6_cache",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_psr6_cache.git",
-                "reference": "c6050f5b2de9714aa23739fb3361e51e0b574f97"
+                "reference": "ae1df9322e324ce10db8338520c6d2ab17822bc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_psr6_cache/zipball/c6050f5b2de9714aa23739fb3361e51e0b574f97",
-                "reference": "c6050f5b2de9714aa23739fb3361e51e0b574f97",
+                "url": "https://api.github.com/repos/itk-dev/drupal_psr6_cache/zipball/ae1df9322e324ce10db8338520c6d2ab17822bc9",
+                "reference": "ae1df9322e324ce10db8338520c6d2ab17822bc9",
                 "shasum": ""
             },
             "require": {
+                "drush/drush": "^12 || ^13",
                 "psr/cache": "^3.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4"
+                "mglaman/phpstan-drupal": "^2.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -6980,9 +6984,9 @@
             "homepage": "https://github.com/itk-dev/drupal_psr6_cache",
             "support": {
                 "issues": "https://github.com/itk-dev/drupal_psr6_cache/issues",
-                "source": "https://github.com/itk-dev/drupal_psr6_cache/tree/1.1.2"
+                "source": "https://github.com/itk-dev/drupal_psr6_cache/tree/1.1.3"
             },
-            "time": "2024-01-10T10:00:44+00:00"
+            "time": "2025-07-04T11:48:48+00:00"
         },
         {
             "name": "itk-dev/getorganized-api-client-php",
@@ -8564,16 +8568,16 @@
         },
         {
             "name": "os2web/os2web_audit",
-            "version": "0.2.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_audit.git",
-                "reference": "4a7328e54dd8fbb1fc9372f65f6d1fb92c948851"
+                "reference": "6b494c277944f7f7aa154e3078c1a14265774c45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/4a7328e54dd8fbb1fc9372f65f6d1fb92c948851",
-                "reference": "4a7328e54dd8fbb1fc9372f65f6d1fb92c948851",
+                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/6b494c277944f7f7aa154e3078c1a14265774c45",
+                "reference": "6b494c277944f7f7aa154e3078c1a14265774c45",
                 "shasum": ""
             },
             "require": {
@@ -8603,9 +8607,9 @@
             "description": "Drupal OS2 module that provides audit logging for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_audit/issues",
-                "source": "https://github.com/OS2web/os2web_audit/tree/0.2.2"
+                "source": "https://github.com/OS2web/os2web_audit/tree/1.2.0"
             },
-            "time": "2025-02-28T08:03:04+00:00"
+            "time": "2025-07-04T11:34:14+00:00"
         },
         {
             "name": "pear/archive_tar",
