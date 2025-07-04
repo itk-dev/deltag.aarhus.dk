@@ -7041,17 +7041,29 @@
         },
         {
             "name": "itk-dev/itk_azure_video",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/itk_azure_video.git",
-                "reference": "a721393f7a91dec222b516670d68f5e4eb5b8112"
+                "reference": "265404a03e122e895e8630a846437e26b2d2a54e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/itk_azure_video/zipball/a721393f7a91dec222b516670d68f5e4eb5b8112",
-                "reference": "a721393f7a91dec222b516670d68f5e4eb5b8112",
+                "url": "https://api.github.com/repos/itk-dev/itk_azure_video/zipball/265404a03e122e895e8630a846437e26b2d2a54e",
+                "reference": "265404a03e122e895e8630a846437e26b2d2a54e",
                 "shasum": ""
+            },
+            "require": {
+                "drush/drush": "^12 || ^13",
+                "psr/cache": "^3.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/phpstan-drupal": "^2.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -7064,22 +7076,22 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/itk_azure_video/issues",
-                "source": "https://github.com/itk-dev/itk_azure_video/tree/2.0.0"
+                "source": "https://github.com/itk-dev/itk_azure_video/tree/2.1.0"
             },
-            "time": "2023-10-10T11:59:00+00:00"
+            "time": "2025-07-04T10:49:56+00:00"
         },
         {
             "name": "itk-dev/itk_pretix",
-            "version": "1.3.0-rc.5",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/itk_pretix.git",
-                "reference": "f3bc2300b6e57d8ada2ac9da0f866f5263ef008a"
+                "reference": "9e10ac6e55b01b44f0a0d1f3b6b283f11995a494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/f3bc2300b6e57d8ada2ac9da0f866f5263ef008a",
-                "reference": "f3bc2300b6e57d8ada2ac9da0f866f5263ef008a",
+                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/9e10ac6e55b01b44f0a0d1f3b6b283f11995a494",
+                "reference": "9e10ac6e55b01b44f0a0d1f3b6b283f11995a494",
                 "shasum": ""
             },
             "require": {
@@ -7108,9 +7120,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/itk_pretix/issues",
-                "source": "https://github.com/itk-dev/itk_pretix/tree/1.3.0-rc.5"
+                "source": "https://github.com/itk-dev/itk_pretix/tree/1.3.0"
             },
-            "time": "2025-03-06T13:39:09+00:00"
+            "time": "2025-07-04T12:26:59+00:00"
         },
         {
             "name": "itk-dev/itk_siteimprove",
