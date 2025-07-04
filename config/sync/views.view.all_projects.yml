@@ -121,6 +121,7 @@ display:
               text_input_required: 'Vælg et filter og klik på Anvend for at se resultater'
               text_input_required_format: basic_html
               reset_button_always_show: false
+              autosubmit_textfield_minimum_length: 3
             filter:
               field_area_target_id:
                 plugin_id: default
