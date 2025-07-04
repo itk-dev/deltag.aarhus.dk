@@ -1,5 +1,5 @@
 name: Hoeringsportal forms
 type: module
-description: 'Customization of backend forms'
+description: "Customization of backend forms"
 package: Hoeringsportal
 core_version_requirement: ^8.8 || ^9 || ^10 || ^11

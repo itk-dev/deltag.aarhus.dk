@@ -1,4 +1,4 @@
-name: 'Hoeringsportal project timeline'
+name: "Hoeringsportal project timeline"
 type: module
 description: 'Provides timeline block for projects'
 core_version_requirement: ^8.8 || ^9 || ^10 || ^11

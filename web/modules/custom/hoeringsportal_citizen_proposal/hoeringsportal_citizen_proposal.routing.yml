@@ -1,12 +1,12 @@
 # Citizen proposal views
 # @todo link access to nemlogin.
 hoeringsportal_citizen_proposal.citizen_proposal.proposal_add:
-  path: '/citizen_proposal/add'
+  path: "/citizen_proposal/add"
   defaults:
     _form: '\Drupal\hoeringsportal_citizen_proposal\Form\ProposalFormAdd'
-    _title: 'Create new proposal'
+    _title: "Create new proposal"
   requirements:
-    _access: 'TRUE'
+    _access: "TRUE"
   options:
     # Setting 'max-age' in the form doesn't work (anymore), cf.
     # https://www.drupal.org/docs/drupal-apis/cache-api/cache-max-age#s-limitations-of-max-age,
@@ -14,12 +14,12 @@ hoeringsportal_citizen_proposal.citizen_proposal.proposal_add:
     no_cache: TRUE
 
 hoeringsportal_citizen_proposal.citizen_proposal.proposal_approve:
-  path: '/citizen_proposal/approve'
+  path: "/citizen_proposal/approve"
   defaults:
     _form: '\Drupal\hoeringsportal_citizen_proposal\Form\ProposalFormApprove'
-    _title: 'Create new proposal'
+    _title: "Create new proposal"
   requirements:
-    _access: 'TRUE'
+    _access: "TRUE"
   options:
     # Setting 'max-age' in the form doesn't work (anymore), cf.
     # https://www.drupal.org/docs/drupal-apis/cache-api/cache-max-age#s-limitations-of-max-age,
@@ -27,20 +27,20 @@ hoeringsportal_citizen_proposal.citizen_proposal.proposal_approve:
     no_cache: TRUE
 
 hoeringsportal_citizen_proposal.proposal_admin_settings:
-  path: '/admin/citizen_proposal/settings'
+  path: "/admin/citizen_proposal/settings"
   defaults:
     _form: '\Drupal\hoeringsportal_citizen_proposal\Form\ProposalAdminForm'
-    _title: 'Administer citizen proposal'
+    _title: "Administer citizen proposal"
   requirements:
-    _permission: 'administer citizen proposal'
+    _permission: "administer citizen proposal"
 
 hoeringsportal_citizen_proposal.support:
-  path: '/citizen_proposal/{node}/support'
+  path: "/citizen_proposal/{node}/support"
   defaults:
     _form: '\Drupal\hoeringsportal_citizen_proposal\Form\ProposalFormSupport'
-    _title: 'Support citizen proposal'
+    _title: "Support citizen proposal"
   requirements:
-    _access: 'TRUE'
+    _access: "TRUE"
   options:
     # Setting 'max-age' in the form doesn't work (anymore), cf.
     # https://www.drupal.org/docs/drupal-apis/cache-api/cache-max-age#s-limitations-of-max-age,
@@ -48,12 +48,12 @@ hoeringsportal_citizen_proposal.support:
     no_cache: TRUE
 
 hoeringsportal_citizen_proposal.admin_supporter:
-  path: '/node/{node}/supporters'
+  path: "/node/{node}/supporters"
   defaults:
     _controller: '\Drupal\hoeringsportal_citizen_proposal\Controller\Controller::supporters'
-    _title: 'Supporters'
+    _title: "Supporters"
   requirements:
-    _permission: 'administer citizen proposal'
+    _permission: "administer citizen proposal"
   options:
     _admin_route: TRUE
     parameters:

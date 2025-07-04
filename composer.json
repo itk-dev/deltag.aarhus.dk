@@ -58,6 +58,7 @@
         "drupal/redirect": "^1.6",
         "drupal/search_api": "^1.37",
         "drupal/search_autocomplete": "^4.0",
+        "drupal/site_status_message": "^2.0",
         "drupal/svg_image": "^3.2",
         "drupal/svg_sanitizer": "^2.0",
         "drupal/textfield_counter": "^2.5",
@@ -109,7 +110,7 @@
         },
         "asset-packagist": {
             "type": "composer",
-            "url": "https://asset-packagist.org/"
+            "url": "https://asset-packagist.org"
         },
         "drupal/hoeringsportal_data": {
             "type": "path",
@@ -213,6 +214,14 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": [
+            "load.environment.php"
+        ]
+    },
     "config": {
         "allow-plugins": {
             "chx/drupal-issue-fork": true,
@@ -228,11 +237,17 @@
             "phpstan/extension-installer": true,
             "tbachert/spi": true
         },
+        "discard-changes": true,
         "sort-packages": true
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
         "drupal-scaffold": {
+            "file-mapping": {
+                "[project-root]/.gitignore": false,
+                "[web-root]/INSTALL.txt": false,
+                "[web-root]/README.txt": false
+            },
             "locations": {
                 "web-root": "web/"
             }
@@ -244,8 +259,8 @@
             ],
             "web/libraries/{$name}": [
                 "type:drupal-library",
-                "type:npm-asset",
-                "type:bower-asset"
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -262,6 +277,9 @@
             "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
             "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ]
@@ -270,59 +288,33 @@
             "npm-asset",
             "bower-asset"
         ],
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "patches": {
             "drupal/better_exposed_filters": {
                 "Add option to hide exposed sort field labels (based on “Add option to hide exposed filter field labels”)": "patches/drupal/better_exposed_filters/visually-hidden-label-on-sort.patch"
             },
             "drupal/core": {
                 "Text format wrapper does not take description_display into account (https://www.drupal.org/project/drupal/issues/2421445#comment-14328645)": "https://www.drupal.org/files/issues/2021-12-03/2421445-18_0.patch"
+            },
+            "drupal/site_status_message": {
+                "Add cache support (https://www.drupal.org/project/site_status_message/issues/3497218)": "https://git.drupalcode.org/project/site_status_message/-/merge_requests/8.diff"
             }
+        },
+        "scripts": {
+            "post-install-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            ],
+            "post-update-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            ],
+            "pre-install-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            ],
+            "pre-update-cmd": [
+                "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            ]
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "@install-codestandards"
-        ],
-        "code-analysis": [
-            "@code-analysis/phpstan"
-        ],
-        "code-analysis/phpstan": [
-            "phpstan analyse --configuration=phpstan.neon --memory-limit=256M"
-        ],
-        "coding-standards-apply": [
-            "@coding-standards-apply/phpcs",
-            "@coding-standards-apply/twig-cs-fixer"
-        ],
-        "coding-standards-apply/php": [
-            "@coding-standards-apply/phpcs"
-        ],
-        "coding-standards-apply/phpcs": [
-            "phpcbf --standard=phpcs.xml.dist"
-        ],
-        "coding-standards-apply/twig": [
-            "@coding-standards-apply/twig-cs-fixer"
-        ],
-        "coding-standards-apply/twig-cs-fixer": [
-            "twig-cs-fixer lint web/themes/custom/hoeringsportal/templates --fix"
-        ],
-        "coding-standards-check": [
-            "@coding-standards-check/phpcs",
-            "@coding-standards-check/twig-cs-fixer"
-        ],
-        "coding-standards-check/php": [
-            "@coding-standards-check/phpcs"
-        ],
-        "coding-standards-check/phpcs": [
-            "phpcs --standard=phpcs.xml.dist"
-        ],
-        "coding-standards-check/twig": [
-            "@coding-standards-check/twig-cs-fixer"
-        ],
-        "coding-standards-check/twig-cs-fixer": [
-            "twig-cs-fixer lint web/themes/custom/hoeringsportal/templates"
-        ],
-        "install-codestandards": [
-            "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
-        ]
     }
 }
