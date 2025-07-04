@@ -404,7 +404,6 @@ libraries:
 requirements:
   cdn: true
   clientside_validation: true
-  bootstrap: true
   spam: true
 third_party_settings:
   captcha:

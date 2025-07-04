@@ -104,6 +104,7 @@ display:
               text_input_required: 'Select any filter and click on Apply to see results'
               text_input_required_format: basic_html
               reset_button_always_show: false
+              autosubmit_textfield_minimum_length: 3
             sort:
               plugin_id: default
               advanced:
