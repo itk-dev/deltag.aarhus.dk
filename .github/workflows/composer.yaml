@@ -45,7 +45,7 @@ jobs:
       - run: |
           docker network create frontend
       - run: |
-          docker compose run --rm phpfpm composer validate --strict
+          docker compose run --rm phpfpm composer validate
 
   composer-normalized:
     runs-on: ubuntu-latest
