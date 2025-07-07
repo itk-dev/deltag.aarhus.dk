@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for hoeringsportal_misc module.
+ */
+
+/**
+ * Implements hook_page_top().
+ */
+function hoeringsportal_misc_page_top(array &$page_top) {
+  // Remove toolbar when using our custom frontend theme (lifted from
+  // https://git.drupalcode.org/project/toolbar_visibility).
+  $current_theme_name = \Drupal::theme()->getActiveTheme()->getName();
+  if ('hoeringsportal' === $current_theme_name) {
+    if (isset($page_top['toolbar'])) {
+      unset($page_top['toolbar']);
+    }
+  }
+}

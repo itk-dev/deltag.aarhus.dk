@@ -8,6 +8,14 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.11.0] - 2025-07-01
 
+* [PR-531](https://github.com/itk-dev/deltag.aarhus.dk/pull/531)
+  Added custom toolbar visibility logic (replacing [Toolbar
+  Visibility](https://www.drupal.org/project/toolbar_visibility))
+* [PR-530](https://github.com/itk-dev/deltag.aarhus.dk/pull/530)
+  * Updated contrib modules to support d11
+  * Updated custom modules and themes to support d11
+  * Removed spaceless filter about to be deprecated
+  * Removed unused module
 * [PR-528](https://github.com/itk-dev/deltag.aarhus.dk/pull/528)
   Aligned `composer.json` with <https://github.com/drupal-composer/drupal-project/blob/10.x/composer.json>
 * [PR-526](https://github.com/itk-dev/deltag.aarhus.dk/pull/526)

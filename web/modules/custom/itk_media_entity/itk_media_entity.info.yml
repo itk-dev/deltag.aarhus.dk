@@ -2,4 +2,4 @@ name: ITK Media entity
 description: "An ITK Media entity configuration"
 type: module
 package: ITK
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
