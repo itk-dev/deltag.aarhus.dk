@@ -3635,12 +3635,11 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/hoeringsportal_citizen_proposal_archiving",
-                "reference": "8c361bfcee42580aa8ea99541dc0c6312b4a2410"
+                "reference": "0dd6ca6ebfb17b9070da5139f65175f983d9cf18"
             },
             "require": {
                 "dompdf/dompdf": "^2.0",
                 "drupal/entity_events": "^2.0",
-                "drupal/pluginformalter": "dev-project-update-bot-only#9430eca36b603a73183cefe0cabca2e1c7fe0e39",
                 "drush/drush": "^13",
                 "itk-dev/getorganized-api-client-php": "^1.2",
                 "symfony/options-resolver": "^5.0"
@@ -4484,29 +4483,6 @@
                 "issues": "https://www.drupal.org/project/issues/pathauto",
                 "documentation": "https://www.drupal.org/docs/8/modules/pathauto"
             }
-        },
-        {
-            "name": "drupal/pluginformalter",
-            "version": "dev-project-update-bot-only",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/issue/pluginformalter-3433936.git",
-                "reference": "9430eca36b603a73183cefe0cabca2e1c7fe0e39"
-            },
-            "type": "drupal-module",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Provides an Annotation Plugin to be used as replacement of hook_form_alter().",
-            "homepage": "https://www.drupal.org/project/pluginformalter",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "issues": "https://www.drupal.org/project/issues/pluginformalter",
-                "source": "http://cgit.drupalcode.org/pluginformalter"
-            },
-            "time": "2024-03-24T21:19:23+00:00"
         },
         {
             "name": "drupal/publication_date",
