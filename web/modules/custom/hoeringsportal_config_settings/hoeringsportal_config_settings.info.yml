@@ -1,6 +1,6 @@
 name: Hoeringsportal admin
 type: module
-description: 'Provides config settings and admin interface for hoeringsportalen'
+description: "Provides config settings and admin interface for hoeringsportalen"
 core_version_requirement: ^8.8 || ^9 || ^10 || ^11
 package: Hoeringsportal
 dependencies:

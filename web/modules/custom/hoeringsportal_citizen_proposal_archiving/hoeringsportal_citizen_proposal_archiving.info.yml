@@ -1,6 +1,6 @@
 name: Hoeringsportal citizen proposal archiving
 type: module
-description: 'Archives citizen proposals in GetOrganized.'
+description: "Archives citizen proposals in GetOrganized."
 core_version_requirement: ^10 || ^11
 package: ITK
 dependencies:
