@@ -183,4 +183,15 @@ class HearingHelper implements LoggerAwareInterface {
     return $node->field_start_date->date->getTimestamp();
   }
 
+  /**
+   * Get end date.
+   */
+  public function getDeadlineDate(NodeInterface $node): ?int {
+    if (!$this->isHearing($node)) {
+      return NULL;
+    }
+
+    return $node->field_reply_deadline->date->getTimestamp();
+  }
+
 }
