@@ -39,7 +39,7 @@
 {# Collect data for information lines on card #}
 {% set items =
   [
-    {icon: 'fa-calendar-day', value: deadlinepassed ? 'Hearing has ended'|t : deadlinedate|format_date('hoeringsportal_date_long')|capitalize },
+    {icon: 'fa-calendar-day', value: deadlinepassed ? 'Hearing has ended'|t : deadlinedate|format_date('hoeringsportal_date_long')|capitalize},
     {icon: 'fa-comments', value: repliesCount ~ ' ' ~ 'replies'|t},
     {icon: 'fa-location-dot', value: content.field_area}
   ]
