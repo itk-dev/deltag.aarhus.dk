@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.11.0] - 2025-07-01
 
+* [PR-533](https://github.com/itk-dev/deltag.aarhus.dk/pull/533)
+  Show deadline date on hearing teaser instead of startdate - Closes issues #532
 * [PR-531](https://github.com/itk-dev/deltag.aarhus.dk/pull/531)
   Added custom toolbar visibility logic (replacing [Toolbar
   Visibility](https://www.drupal.org/project/toolbar_visibility))
