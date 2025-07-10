@@ -184,7 +184,7 @@ class HearingHelper implements LoggerAwareInterface {
   }
 
   /**
-   * Get end date.
+   * Get deadline date.
    */
   public function getDeadlineDate(NodeInterface $node): ?int {
     if (!$this->isHearing($node)) {
