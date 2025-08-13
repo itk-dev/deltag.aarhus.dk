@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.10.3] - 2025-08-13
 
+* [PR-534](https://github.com/itk-dev/deltag.aarhus.dk/pull/534)
+  Fixed handling of empty dates. Updated npm package (security).
+
 ## [4.10.2] - 2025-07-03
 
 * [PR-529](https://github.com/itk-dev/hoeringsportal/pull/529)
