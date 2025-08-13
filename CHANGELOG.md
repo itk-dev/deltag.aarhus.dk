@@ -9,7 +9,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 ## [4.10.3] - 2025-08-13
 
 * [PR-534](https://github.com/itk-dev/deltag.aarhus.dk/pull/534)
-  Fixed handling of empty dates. Updated npm package (security).
+  * Fixed handling of empty dates. Updated npm package (security).
+  * Use teaser image instead of full image. Supportticket: 373
 
 ## [4.10.2] - 2025-07-03
 
