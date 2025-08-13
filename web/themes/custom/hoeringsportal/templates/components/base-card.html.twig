@@ -40,8 +40,9 @@
   {# Show a header with image if there is a image present for the node/teaser #}
   {% if image %}
     {# Get the url and alt text for the image #}
-    {% set image_url = file_url(image.field_itk_media_image_upload.entity.uri.value) %}
-    {% set image_alt = file_url(image.field_itk_media_image_upload.entity.entity.alt) %}
+    {% set image_url = file_url(image.field_itk_media_image_upload.entity.uri.value|image_style('responsive_small_teaser')) %}
+    {% set image_alt = image.field_itk_media_image_upload.alt %}
+
     <div class="card-header position-relative p-0 w-100 activity-teaser-image overflow-hidden">
       <img class="object-fit-cover" src="{{ image_url }}" alt="{{ image_alt|default('') }}">
 

@@ -21,9 +21,11 @@
 {% block card_date %}
   {# If we have a date then show a date splash on the card #}
   {% if (content_state in ['upcoming', 'active']) %}
-    {# Show the date #}
+    {% if deadlinedate %}
+      {# Show the date #}
       <div class="fw-semibold">{{ deadlinedate|format_date('hoeringsportal_day_only') }}</div>
       <div class="small">{{ deadlinedate|format_date('hoeringsportal_month_short') }}</div>
+    {% endif %}
   {% elseif (content_state in ['finished']) %}
     <div><strong>{{ 'Ended'|t }}</strong></div>
   {% elseif (content_state in ['canceled']) %}
@@ -37,12 +39,25 @@
 {% endblock %}
 
 {# Collect data for information lines on card #}
-{% set items =
-  [
-    {icon: 'fa-calendar-day', value: deadlinepassed ? 'Hearing has ended'|t : deadlinedate|format_date('hoeringsportal_date_long')|capitalize},
+{% set items = [] %}
+{% if deadlinepassed %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-calendar-day', value: 'Hearing has ended'|t},
+    ])
+  %}
+{% elseif deadlinedate %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-calendar-day', value: deadlinedate|format_date('hoeringsportal_date_long')|capitalize},
+    ])
+  %}
+{% endif %}
+{%
+  set items = items|merge([
     {icon: 'fa-comments', value: repliesCount ~ ' ' ~ 'replies'|t},
-    {icon: 'fa-location-dot', value: content.field_area}
-  ]
+    {icon: 'fa-location-dot', value: content.field_area},
+  ])
 %}
 
 {# Show card information #}
