@@ -14,7 +14,7 @@
 {# Show a date splash on the card #}
 {% block card_date %}
   {# If we have a date then show a date splash on the card #}
-  {% if (startdate) %}
+  {% if startdate %}
     {# Show the date #}
       <div class="fw-semibold">{{ startdate|format_date('hoeringsportal_day_only') }}</div>
       <div class="small">{{ startdate|format_date('hoeringsportal_month_short') }}</div>
@@ -27,12 +27,19 @@
 {% endblock %}
 
 {# Collect data for information lines on card #}
-{% set items =
-  [
-    {icon: 'fa-calendar-day', value: startdate|format_date('hoeringsportal_date_long')|capitalize},
+{% set items = [] %}
+{% if startdate %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-calendar-day', value: startdate|format_date('hoeringsportal_date_long')|capitalize},
+    ])
+  %}
+{% endif %}
+{%
+  set items = items|merge([
     {icon: 'fa-comments', value: repliesCount ~ ' ' ~ 'replies'|t},
     {icon: 'fa-location-dot', value: content.field_area}
-  ]
+  ])
 %}
 
 {# Show card information #}

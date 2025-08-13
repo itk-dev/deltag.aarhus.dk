@@ -6,6 +6,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.10.3] - 2025-08-13
+
+* [PR-534](https://github.com/itk-dev/deltag.aarhus.dk/pull/534)
+  * Fixed handling of empty dates. Updated npm package (security).
+  * Use teaser image instead of full image. Supportticket: 373
+
 ## [4.10.2] - 2025-07-03
 
 * [PR-529](https://github.com/itk-dev/hoeringsportal/pull/529)
@@ -486,7 +492,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.2...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.10.3...HEAD
+[4.10.3]: https://github.com/itk-dev/hoeringsportal/compare/4.10.2...4.10.3
 [4.10.2]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.10.2
 [4.10.1]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...4.10.1
 [4.10.0]: https://github.com/itk-dev/hoeringsportal/compare/4.9.3...4.10.0
