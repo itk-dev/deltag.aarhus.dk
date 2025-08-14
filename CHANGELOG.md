@@ -518,7 +518,7 @@ Updated drupal core 8.6.16
 Initial release
 
 [Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...HEAD
-[4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.11.0
+[4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.3...4.11.0
 [4.10.3]: https://github.com/itk-dev/hoeringsportal/compare/4.10.2...4.10.3
 [4.10.2]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.10.2
 [4.10.1]: https://github.com/itk-dev/hoeringsportal/compare/4.10.0...4.10.1
