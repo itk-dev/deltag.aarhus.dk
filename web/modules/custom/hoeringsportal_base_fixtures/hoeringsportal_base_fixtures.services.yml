@@ -1,16 +1,46 @@
 services:
+  _defaults:
+    autowire: true
+
   Drupal\hoeringsportal_base_fixtures\Helper\Helper:
-    arguments:
-      - '@extension.path.resolver'
-      - '@file.repository'
-      - '@file_system'
-      - '@entity_type.manager'
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\AboutPageFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\FilesFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\MapFixture:
+    tags:
+      - { name: content_fixture }
 
   Drupal\hoeringsportal_base_fixtures\Fixture\MediaFixture:
     tags:
       - { name: content_fixture }
 
-  Drupal\hoeringsportal_base_fixtures\Fixture\UserFixture:
+  Drupal\hoeringsportal_base_fixtures\Fixture\MenuItemFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\ParagraphFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\PretixConfigFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\ProjectTimeLineFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\PublicMeetingFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\hoeringsportal_base_fixtures\Fixture\StaticPageFixture:
     tags:
       - { name: content_fixture }
 
@@ -42,56 +72,6 @@ services:
     tags:
       - { name: content_fixture }
 
-  Drupal\hoeringsportal_base_fixtures\Fixture\FilesFixture:
-    tags:
-      - { name: content_fixture }
-    arguments:
-      - '@Drupal\hoeringsportal_base_fixtures\Helper\Helper'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\ParagraphFixture:
-    tags:
-      - { name: content_fixture }
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\MenuItemFixture:
-    tags:
-      - { name: content_fixture }
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\PublicMeetingFixture:
-     tags:
-       - { name: content_fixture }
-     arguments:
-       - '@Drupal\hoeringsportal_base_fixtures\Helper\Helper'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\MapFixture:
-    tags:
-      - { name: content_fixture }
-    arguments:
-      - '@Drupal\hoeringsportal_base_fixtures\Helper\Helper'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\ProjectTimeLineFixture:
-    tags:
-      - { name: content_fixture }
-    arguments:
-      - '@Drupal\hoeringsportal_base_fixtures\Helper\Helper'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\StaticPageFixture:
-    tags:
-      - { name: content_fixture }
-    arguments:
-      - '@Drupal\hoeringsportal_base_fixtures\Helper\Helper'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\PretixConfigFixture:
-    tags:
-      - { name: content_fixture }
-    arguments:
-      - '@config.factory'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\LandingPageFixture:
-    tags:
-      - { name: content_fixture }
-    arguments:
-      - '@itk_admin.itk_config'
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\AboutPageFixture:
+  Drupal\hoeringsportal_base_fixtures\Fixture\UserFixture:
     tags:
       - { name: content_fixture }

@@ -5,5 +5,5 @@ itk_admin_links:
   js:
     js/itk-admin-links.js: {}
   dependencies:
-      - core/jquery
-      - core/drupalSettings
+    - core/jquery
+    - core/drupalSettings

@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the hoeringsportal_misc module.
+ */
+
+/**
+ * Set module weight.
+ */
+function hoeringsportal_misc_install() {
+  // Make sure that our module runs after the Toolbar module (which presumably
+  // and hopefully has weight 0).
+  module_set_weight('hoeringsportal_misc', 10);
+}

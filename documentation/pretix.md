@@ -11,11 +11,20 @@ module](https://github.com/itk-dev/itk_pretix_d8).
 This project ships with a docker environment that includes a local pretix setup
 for use during development.
 
+Our pretix service must be able to call a [webhook
+controller](https://github.com/itk-dev/itk_pretix/blob/main/src/Controller/PretixWebhookController.php) in our Drupal
+(phpfpm) service and this requires [a little setting in
+`settings.local.php`](https://github.com/itk-dev/itk_pretix/blob/main/README.md#configuration):
+
+``` php
+$settings['itk_pretix']['drupal_base_url'] = 'http://deltag.local.itkdev.dk:8080';
+```
+
 ### Pretix build
 
 Sign in to pretix:
 
-Go to [Local pretix](http://pretix.hoeringsportal.local.itkdev.dk/control/) and
+Go to [Local pretix](http://pretix.deltag.local.itkdev.dk/control/) and
 sign in with username `admin@localhost` and password `admin`.
 
 #### Resetting pretix database
@@ -35,21 +44,21 @@ task pretix:database-dump
 #### Connect Drupal to pretix
 
 ```sh name=pretix-configure-drupal
-task drush -- config:set itk_pretix.pretixconfig pretix_url 'http://pretix.hoeringsportal.local.itkdev.dk/'
+task drush -- config:set itk_pretix.pretixconfig pretix_url 'http://pretix.deltag.local.itkdev.dk/'
 task drush -- config:set itk_pretix.pretixconfig organizer_slug 'hoeringsportal'
 task drush -- config:set itk_pretix.pretixconfig api_token 'v84pb9f19gv5gkn2d8vbxoih6egx2v00hpbcwzwzqoqqixt22locej5rffmou78e'
 task drush -- config:set itk_pretix.pretixconfig template_event_slugs 'template-series'
 ```
 
 Go to
-<http://hoeringsportal.local.itkdev.dk/admin/config/itk_pretix/pretixconfig> for
+<http://deltag.local.itkdev.dk/admin/config/itk_pretix/pretixconfig> for
 more pretix configuration.
 
 ### API
 
 ``` sh name=pretix-api-get-organizers
 curl --header 'Authorization: Token v84pb9f19gv5gkn2d8vbxoih6egx2v00hpbcwzwzqoqqixt22locej5rffmou78e' \
-  http://pretix.hoeringsportal.local.itkdev.dk/api/v1/organizers/
+  http://pretix.deltag.local.itkdev.dk/api/v1/organizers/
 ```
 
 ### Making sure everything is up to date
@@ -59,10 +68,10 @@ curl --header 'Authorization: Token v84pb9f19gv5gkn2d8vbxoih6egx2v00hpbcwzwzqoqq
 docker compose exec phpfpm /app/vendor/bin/drush --root=/app/web --yes deploy
 docker compose exec phpfpm /app/vendor/bin/drush --root=/app/web --yes locale:update
 
-docker compose exec phpfpm vendor/bin/drush --yes --uri=http://hoeringsportal.local.itkdev.dk/ config:set itk_pretix.pretixconfig pretix_url 'http://pretix.hoeringsportal.local.itkdev.dk/'
-docker compose exec phpfpm vendor/bin/drush --yes --uri=http://hoeringsportal.local.itkdev.dk/ config:set itk_pretix.pretixconfig organizer_slug 'hoeringsportal'
-docker compose exec phpfpm vendor/bin/drush --yes --uri=http://hoeringsportal.local.itkdev.dk/ config:set itk_pretix.pretixconfig api_token 'v84pb9f19gv5gkn2d8vbxoih6egx2v00hpbcwzwzqoqqixt22locej5rffmou78e'
-docker compose exec phpfpm vendor/bin/drush --yes --uri=http://hoeringsportal.local.itkdev.dk/ config:set itk_pretix.pretixconfig template_event_slugs 'template-series'
+docker compose exec phpfpm vendor/bin/drush --yes --uri=http://deltag.local.itkdev.dk/ config:set itk_pretix.pretixconfig pretix_url 'http://pretix.deltag.local.itkdev.dk/'
+docker compose exec phpfpm vendor/bin/drush --yes --uri=http://deltag.local.itkdev.dk/ config:set itk_pretix.pretixconfig organizer_slug 'hoeringsportal'
+docker compose exec phpfpm vendor/bin/drush --yes --uri=http://deltag.local.itkdev.dk/ config:set itk_pretix.pretixconfig api_token 'v84pb9f19gv5gkn2d8vbxoih6egx2v00hpbcwzwzqoqqixt22locej5rffmou78e'
+docker compose exec phpfpm vendor/bin/drush --yes --uri=http://deltag.local.itkdev.dk/ config:set itk_pretix.pretixconfig template_event_slugs 'template-series'
 
 docker compose exec phpfpm /app/vendor/bin/drush --root=/app/web --yes cache:rebuild
 ```

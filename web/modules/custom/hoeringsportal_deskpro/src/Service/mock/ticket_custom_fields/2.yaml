@@ -2,15 +2,15 @@ data:
   id: 2
   parent: null
   title: Jeg udtaler mig som
-  description: ''
+  description: ""
   options:
-    custom_css_classname: ''
+    custom_css_classname: ""
     multiple: false
     expanded: false
     validation_type: required
     required: true
-    min_length: '1'
-    max_length: ''
+    min_length: "1"
+    max_length: ""
   is_user_enabled: true
   is_enabled: true
   display_order: 10
@@ -38,14 +38,14 @@ data:
   widget_type: choice
   type_name: choice
   translations:
-    '1':
+    "1":
       language: 1
       title: Jeg udtaler mig som
-      user_title: ''
-      description: ''
-    '2':
+      user_title: ""
+      description: ""
+    "2":
       language: 2
       title: Jeg udtaler mig som
-      user_title: ''
-      description: ''
+      user_title: ""
+      description: ""
   aliases: []

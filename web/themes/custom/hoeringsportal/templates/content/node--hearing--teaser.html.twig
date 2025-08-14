@@ -8,16 +8,28 @@
 {# Set how many replies there is to this hearing #}
 {% set repliesCount = hearing_helper.getNumberOfReplies(node) %}
 
-{# Set date for next meeting #}
+{# Set startdate for hearing #}
 {% set startdate = hearing_helper.getStartDate(node) %}
+
+{# Set deadlinedate for hearing #}
+{% set deadlinedate = hearing_helper.getDeadlineDate(node) %}
+
+{# Set is deadlinepassed #}
+{% set deadlinepassed = hearing_helper.isDeadlinePassed(node) %}
 
 {# Show a date splash on the card #}
 {% block card_date %}
   {# If we have a date then show a date splash on the card #}
-  {% if startdate %}
-    {# Show the date #}
-      <div class="fw-semibold">{{ startdate|format_date('hoeringsportal_day_only') }}</div>
-      <div class="small">{{ startdate|format_date('hoeringsportal_month_short') }}</div>
+  {% if (content_state in ['upcoming', 'active']) %}
+    {% if deadlinedate %}
+      {# Show the date #}
+      <div class="fw-semibold">{{ deadlinedate|format_date('hoeringsportal_day_only') }}</div>
+      <div class="small">{{ deadlinedate|format_date('hoeringsportal_month_short') }}</div>
+    {% endif %}
+  {% elseif (content_state in ['finished']) %}
+    <div><strong>{{ 'Ended'|t }}</strong></div>
+  {% elseif (content_state in ['canceled']) %}
+    <div>{{ 'Canceled'|t }}</div>
   {% endif %}
 {% endblock %}
 
@@ -28,36 +40,36 @@
 
 {# Collect data for information lines on card #}
 {% set items = [] %}
-{% if startdate %}
+{% if deadlinepassed %}
   {%
     set items = items|merge([
-      {icon: 'fa-calendar-day', value: startdate|format_date('hoeringsportal_date_long')|capitalize},
+      {icon: 'fa-calendar-day', value: 'Hearing has ended'|t},
+    ])
+  %}
+{% elseif deadlinedate %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-calendar-day', value: deadlinedate|format_date('hoeringsportal_date_long')|capitalize},
     ])
   %}
 {% endif %}
 {%
   set items = items|merge([
     {icon: 'fa-comments', value: repliesCount ~ ' ' ~ 'replies'|t},
-    {icon: 'fa-location-dot', value: content.field_area}
+    {icon: 'fa-location-dot', value: content.field_area},
   ])
 %}
 
 {# Show card information #}
 {% block card_type_information %}
-
   {# Show details for next Hearing #}
-  {% if (content_state in ['upcoming', 'active']) %}
-  {% for item in items %}
-    <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
-      <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-hearing"></i>
-      <p class="small">{{ item.value }}</p>
-    </div>
-  {% endfor %}
-
-  {# Show text for finished Hearing #}
-  {% elseif (content_state == 'finished') %}
-    <p>{{ 'Hearing has ended'|t }}</p>
-
+  {% if (content_state in ['upcoming', 'active', 'finished']) %}
+    {% for item in items %}
+      <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
+        <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-hearing"></i>
+        <p class="small">{{ item.value }}</p>
+      </div>
+    {% endfor %}
   {# Show text for canceled Hearing #}
   {% elseif (content_state == 'canceled') %}
     <p>{{ 'Hearing has been canceled'|t }}</p>
