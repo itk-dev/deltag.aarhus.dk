@@ -22,8 +22,10 @@
 {% block card_date %}
   {# When deadline field exists show date. #}
   {% if (content_state != 'finished') %}
-    <div class="fw-semibold">{{ meetingDateStartTime|date('U')|format_date('hoeringsportal_day_only') }}</div>
-    <div class="small">{{ meetingDateStartTime|date('U')|format_date('hoeringsportal_month_short') }}</div>
+    {% if meetingDateStartTime %}
+      <div class="fw-semibold">{{ meetingDateStartTime|date('U')|format_date('hoeringsportal_day_only') }}</div>
+      <div class="small">{{ meetingDateStartTime|date('U')|format_date('hoeringsportal_month_short') }}</div>
+    {% endif %}
   {% else %}
     {{ 'Finished'|t }}
   {% endif %}
@@ -35,12 +37,25 @@
 {% endblock %}
 
 {# Collect data for information lines on card #}
-{% set items =
-  [
-    {icon: 'fa-calendar-day', value: meetingDateStartTime|date('U')|format_date('hoeringsportal_date_long')|capitalize},
-    {icon: 'fa-clock', value: meetingDateStartTime|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|date('U')|format_date('hoeringsportal_time')},
-    {icon: 'fa-location-dot', value: content.field_area}
-  ]
+{% set items = [] %}
+{% if meetingDateStartTime %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-calendar-day', value: meetingDateStartTime|date('U')|format_date('hoeringsportal_date_long')|capitalize},
+    ])
+  %}
+  {% if meetingDateEndTime %}
+    {%
+      set items = items|merge([
+        {icon: 'fa-clock', value: meetingDateStartTime|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|date('U')|format_date('hoeringsportal_time')},
+      ])
+    %}
+  {% endif %}
+{% endif %}
+{%
+  set items = items|merge([
+    {icon: 'fa-location-dot', value: content.field_area},
+  ])
 %}
 
 {# Show card information #}

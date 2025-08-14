@@ -4,7 +4,7 @@ project_timeline:
     theme:
       assets/public/build/project-timeline.css: {}
   js:
-    assets/public/build/project-timeline.js: {preprocess: false}
+    assets/public/build/project-timeline.js: { preprocess: false }
   dependencies:
     - core/jquery
     - core/drupalSettings
@@ -12,7 +12,7 @@ project_timeline:
 
 project_timeline_backend:
   js:
-    assets/public/build/project-timeline-backend.js: {preprocess: false}
+    assets/public/build/project-timeline-backend.js: { preprocess: false }
   css:
     theme:
       assets/css/backend.css: {}
