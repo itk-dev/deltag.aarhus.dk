@@ -36,11 +36,6 @@
  * @see template_preprocess_field()
  */
 #}
-{% set node = element['#object'] %}
-{% set meeting_cancelled = public_meeting_helper.isCancelled(node) %}
-{% set meeting_has_been_held = public_meeting_helper.hasBeenHeld(node) %}
-{% set registration_deadline_passed = public_meeting_helper.isDeadlinePassed(node) %}
-
 {% if label_hidden %}
   {% if multiple %}
     {% for item in items %}
@@ -68,15 +63,22 @@
   {% endif %}
 {% endif %}
 
-{% if meeting_cancelled %}
-  <div class="pretix-alert meeting-has-been-cancelled my-3">{{ 'Meeting has been cancelled'|t }}</div>
-{% elseif meeting_has_been_held %}
-  <div class="pretix-alert meeting-has-been-held my-3">{{ 'Meeting has already been held'|t }}</div>
-{% else %}
-  {% if registration_deadline_passed %}
-    {# @TODO: Design: styling of "alert" #}
-    <div class="pretix-alert pretix-alert-registration-deadline-passed my-3">{{ 'Registration deadline passed'|t }}</div>
+{% set node = element['#object'] %}
+{# pretix info is rendered in hoeringsportal-public-meeting-summary.html.twig #}
+{% if not public_meeting_helper.hasPretixSignUp(node) %}
+  {% set meeting_cancelled = public_meeting_helper.isCancelled(node) %}
+  {% set meeting_has_been_held = public_meeting_helper.hasBeenHeld(node) %}
+  {% set registration_deadline_passed = public_meeting_helper.isDeadlinePassed(node) %}
+
+  {% if meeting_cancelled %}
+    <div class="pretix-alert meeting-has-been-cancelled my-3">{{ 'Meeting has been cancelled'|t }}</div>
+  {% elseif meeting_has_been_held %}
+    <div class="pretix-alert meeting-has-been-held my-3">{{ 'Meeting has already been held'|t }}</div>
   {% else %}
-    <a id="sign-up-shortcut" class="btn btn-primary btn-sm my-3" style="display: none">{{ 'Sign up for public meeting'|t }}</a>
+    {% if registration_deadline_passed %}
+      <div class="pretix-alert pretix-alert-registration-deadline-passed my-3">{{ 'Registration deadline passed'|t }}</div>
+    {% else %}
+      <a id="sign-up-shortcut" class="btn btn-primary btn-sm my-3" style="display: none">{{ 'Sign up for public meeting'|t }}</a>
+    {% endif %}
   {% endif %}
 {% endif %}
