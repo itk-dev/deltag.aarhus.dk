@@ -101,5 +101,7 @@
   {% endif %}
 {% endif %}
 
-<h3 class="mt-3">{{ 'This event has multiple dates'|t }}</h3>
-<a href="#pretix_signup_list" class="btn btn-sm bg-primary text-white rounded py-1 px-3 mb-3">{{ 'View the list'|t }}</a>
+{% if public_meeting_helper.hasPretixSignUp(node) and public_meeting_helper.getPretixDates(node)|length > 1 %}
+  <h3 class="mt-3">{{ 'This event has multiple dates'|t }}</h3>
+  <a href="#pretix_signup_list" class="btn btn-sm bg-primary text-white rounded py-1 px-3 mb-3">{{ 'View the list'|t }}</a>
+{% endif %}

@@ -381,7 +381,7 @@ class PublicMeetingHelper {
    * @return \Drupal\itk_pretix\Plugin\Field\FieldType\PretixDate[]|iterable|null
    *   The pretix dates if any.
    */
-  private function getPretixDates(NodeInterface $node): ?iterable {
+  public function getPretixDates(NodeInterface $node): ?iterable {
     if (!$this->isPublicMeeting($node) || !$this->hasPretixSignUp($node)) {
       return NULL;
     }
