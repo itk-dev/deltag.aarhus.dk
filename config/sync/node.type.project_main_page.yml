@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: Project
 type: project_main_page
-description: 'Use this to create a landingpage for your project'
+description: 'Use this to create a landing page for your project'
 help: null
 new_revision: true
 preview_mode: 1
