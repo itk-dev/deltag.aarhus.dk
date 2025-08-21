@@ -4,7 +4,9 @@
     <div class="col-md-8 py-3 pt-md-5">
       <span class="text-primary">{{ content.field_project_category }}</span>
       <h1>{{ node.title.value }}</h1>
-      <p class="fs-3">{{ content.field_teaser }}</p>
+      {% if content.field_teaser %}
+        <p class="fs-3">{{ content.field_teaser }}</p>
+      {% endif %}
       {{ content|without('field_project_category', 'field_teaser', 'field_content_sections', 'published_at') }}
     </div>
     <div class="col-md-4 pt-md-3">
