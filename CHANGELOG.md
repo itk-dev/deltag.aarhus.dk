@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-539](https://github.com/itk-dev/deltag.aarhus.dk/pull/539)
+  Fixed public meeting summary view
 * [PR-537](https://github.com/itk-dev/deltag.aarhus.dk/pull/537)
   5209: Cleaned up public meeting summary view
 * [PR-538](https://github.com/itk-dev/deltag.aarhus.dk/pull/538)
