@@ -344,6 +344,7 @@ class PublicMeetingHelper {
     $upcoming = array_values(array_filter($dates, static fn(PretixDate $date) => $date->get('time_from')->getValue() > $now));
 
     return array_filter([
+      'is_pretix' => $this->hasPretixSignUp($node),
       'previous' => $previous,
       'current' => $current,
       'next' => $next,
