@@ -11,6 +11,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.11.0] - 2025-07-01
 
+* [PR-538](https://github.com/itk-dev/deltag.aarhus.dk/pull/538)
+  Update project page styling - Closes issues #536
 * [PR-533](https://github.com/itk-dev/deltag.aarhus.dk/pull/533)
   Show deadline date on hearing teaser instead of startdate - Closes issues #532
 * [PR-531](https://github.com/itk-dev/deltag.aarhus.dk/pull/531)
