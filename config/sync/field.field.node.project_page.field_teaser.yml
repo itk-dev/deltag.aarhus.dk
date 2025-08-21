@@ -10,7 +10,7 @@ field_name: field_teaser
 entity_type: node
 bundle: project_page
 label: Teaser/indledning
-description: 'Kort tekst der vises i teasers og i toppen af indholdsviningen'
+description: 'Kort tekst der vises i teasers og i toppen af indholdsvisningen'
 required: false
 translatable: false
 default_value: {  }
