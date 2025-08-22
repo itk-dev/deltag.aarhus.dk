@@ -6,6 +6,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.11.1] - 2025-08-22
+
+* [PR-539](https://github.com/itk-dev/deltag.aarhus.dk/pull/539)
+  Fixed public meeting summary view
+* [PR-537](https://github.com/itk-dev/deltag.aarhus.dk/pull/537)
+  5209: Cleaned up public meeting summary view
+* [PR-538](https://github.com/itk-dev/deltag.aarhus.dk/pull/538)
+  Update project page styling - Closes issues #536
+
 ## [4.11.0] - 2025-07-01
 
 * [PR-533](https://github.com/itk-dev/deltag.aarhus.dk/pull/533)
@@ -517,7 +526,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.11.1...HEAD
+[4.11.1]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...4.11.1
 [4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.3...4.11.0
 [4.10.3]: https://github.com/itk-dev/hoeringsportal/compare/4.10.2...4.10.3
 [4.10.2]: https://github.com/itk-dev/hoeringsportal/compare/4.10.1...4.10.2

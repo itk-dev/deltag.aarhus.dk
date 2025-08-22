@@ -55,7 +55,6 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       'field_contact' => 'Contact info',
       'field_content_state' => 'active',
       'field_email_address' => 'a@a.dk',
-      'field_first_meeting_time' => date('Y-m-d', 1283166912),
       'field_media_document' => [[$this->getReference('media_library:Fil:MTM')]],
       'field_media_image_single' => [
         ['target_id' => $this->getReference('media:Large1')->id()],
@@ -87,6 +86,14 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       ],
     ]);
     $this->addReference('public_meeting:fixture-1', $node);
+    $node->save();
+
+    // Create a copy in the future.
+    $node = $node->createDuplicate();
+    $node->setTitle('Future public meeting with manual signup');
+    $node->set('field_registration_deadline', (new \DateTimeImmutable('today + 12 hours + 4 years'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
+    $node->set('field_last_meeting_time', (new \DateTimeImmutable('today + 19 hours + 4 years'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
+    $node->set('field_last_meeting_time_end', (new \DateTimeImmutable('today + 21 hours + 4 years'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
     $node->save();
 
     // A public meeting that has signup with Pretix.
