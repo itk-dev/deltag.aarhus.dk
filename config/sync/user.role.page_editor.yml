@@ -1,0 +1,70 @@
+uuid: 9dd4e2f0-2252-406d-bca6-828ffd39ff71
+langcode: da
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.itk_document_browser
+    - entity_browser.browser.itk_icon_browser
+    - entity_browser.browser.itk_image_browser
+    - media.type.document
+    - media.type.image
+    - node.type.landing_page
+    - node.type.static_page
+  module:
+    - entity_browser
+    - media
+    - node
+    - path
+    - publishcontent
+    - quick_node_clone
+    - system
+    - toolbar
+    - view_unpublished
+id: page_editor
+label: Sideredaktør
+weight: -3
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access itk_document_browser entity browser pages'
+  - 'access itk_icon_browser entity browser pages'
+  - 'access itk_image_browser entity browser pages'
+  - 'access media overview'
+  - 'access toolbar'
+  - 'administer url aliases'
+  - 'clone landing_page content'
+  - 'clone static_page content'
+  - 'create document media'
+  - 'create image media'
+  - 'create landing_page content'
+  - 'create media'
+  - 'create static_page content'
+  - 'create url aliases'
+  - 'delete any landing_page content'
+  - 'delete any static_page content'
+  - 'delete landing_page revisions'
+  - 'delete own document media'
+  - 'delete own image media'
+  - 'delete own landing_page content'
+  - 'delete own static_page content'
+  - 'delete static_page revisions'
+  - 'edit any landing_page content'
+  - 'edit any static_page content'
+  - 'edit own document media'
+  - 'edit own image media'
+  - 'edit own landing_page content'
+  - 'edit own static_page content'
+  - 'publish any node type landing_page'
+  - 'publish any node type static_page'
+  - 'revert landing_page revisions'
+  - 'revert static_page revisions'
+  - 'unpublish any node type landing_page'
+  - 'unpublish any node type static_page'
+  - 'update media'
+  - 'view any unpublished landing_page content'
+  - 'view any unpublished static_page content'
+  - 'view landing_page revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view static_page revisions'
+  - 'view the administration theme'
