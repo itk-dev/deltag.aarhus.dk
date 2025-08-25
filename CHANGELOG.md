@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-542](https://github.com/itk-dev/deltag.aarhus.dk/pull/542)
+  Added Page editor role
+
 ## [4.11.1] - 2025-08-22
 
 * [PR-539](https://github.com/itk-dev/deltag.aarhus.dk/pull/539)

@@ -1,0 +1,14 @@
+uuid: 3627a88a-46a2-41e0-be35-8247d9957b43
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.page_editor
+  module:
+    - user
+id: user_remove_role_action.page_editor
+label: 'Remove the Sideredaktør role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: page_editor
