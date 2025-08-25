@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-543](https://github.com/itk-dev/deltag.aarhus.dk/pull/543)
+  5248: Fixed permission name (`edit` → `update`)
 * [PR-542](https://github.com/itk-dev/deltag.aarhus.dk/pull/542)
   Added Page editor role
 

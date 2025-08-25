@@ -96,7 +96,7 @@ class HearingHelper {
     }
 
     // Allow users with edit access to do stuff after the deadline.
-    if ($node->access('edit', \Drupal::currentUser())) {
+    if ($node->access('update', \Drupal::currentUser())) {
       return FALSE;
     }
 
