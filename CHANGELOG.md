@@ -6,6 +6,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.12.0] - 2025-08-26
+
+* [PR-543](https://github.com/itk-dev/deltag.aarhus.dk/pull/543)
+  5248: Fixed permission name (`edit` → `update`)
+* [PR-542](https://github.com/itk-dev/deltag.aarhus.dk/pull/542)
+  Added Page editor role
+
 ## [4.11.1] - 2025-08-22
 
 * [PR-539](https://github.com/itk-dev/deltag.aarhus.dk/pull/539)
@@ -526,7 +533,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.11.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...HEAD
+[4.12.0]: https://github.com/itk-dev/hoeringsportal/compare/4.11.1...4.12.0
 [4.11.1]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...4.11.1
 [4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.3...4.11.0
 [4.10.3]: https://github.com/itk-dev/hoeringsportal/compare/4.10.2...4.10.3

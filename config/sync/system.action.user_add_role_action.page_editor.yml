@@ -1,0 +1,14 @@
+uuid: fdeedf43-e2b0-46bc-b9f4-661c54936829
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.page_editor
+  module:
+    - user
+id: user_add_role_action.page_editor
+label: 'Add the Sideredaktør role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: page_editor
