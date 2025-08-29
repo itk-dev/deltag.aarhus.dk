@@ -7,5 +7,10 @@ services:
     tags:
       - { name: event_subscriber }
 
+  hoeringsportal_public_meeting.redirect_event_subscriber:
+    class: Drupal\hoeringsportal_public_meeting\EventSubscriber\RedirectEventSubscriber
+    tags:
+      - { name: event_subscriber }
+
   hoeringsportal_public_meeting.public_meeting_helper:
     class: Drupal\hoeringsportal_public_meeting\Helper\PublicMeetingHelper

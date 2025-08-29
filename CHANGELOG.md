@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-545](https://github.com/itk-dev/deltag.aarhus.dk/pull/545)
+  Fixed issue with public meeting details not being shown.
+
 ## [4.12.0] - 2025-08-26
 
 * [PR-543](https://github.com/itk-dev/deltag.aarhus.dk/pull/543)

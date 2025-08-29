@@ -34,10 +34,10 @@
 
   {% if variables is defined %}
     <h5 class="mt-3">{{ 'Date'|t }}</h5>
-    {{ variables.time_from_value|date('U')|format_date('hoeringsportal_date_long') }}
+    {{ variables.time_from|date('U')|format_date('hoeringsportal_date_long') }}
 
     <h5 class="mt-3">{{ 'Time'|t }}</h5>
-    {{ variables.time_from_value|date('U')|format_date('hoeringsportal_time') }} - {{ variables.time_to_value|date('U')|format_date('hoeringsportal_time') }}
+    {{ variables.time_from|date('U')|format_date('hoeringsportal_time') }} - {{ variables.time_to|date('U')|format_date('hoeringsportal_time') }}
   {% elseif node.field_last_meeting_time[0] is defined %}
     <h5 class="mt-3">{{ 'Date'|t }}</h5>
     {{ node.field_last_meeting_time[0].date|date('U')|format_date('hoeringsportal_date_long') }}
