@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.13.0] - 2025-09-02
+
+* [PR-545](https://github.com/itk-dev/deltag.aarhus.dk/pull/545)
+  Fixed issue with public meeting details not being shown.
+
 ## [4.12.0] - 2025-08-26
 
 * [PR-543](https://github.com/itk-dev/deltag.aarhus.dk/pull/543)
@@ -533,7 +538,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.0...HEAD
+[4.13.0]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...4.13.0
 [4.12.0]: https://github.com/itk-dev/hoeringsportal/compare/4.11.1...4.12.0
 [4.11.1]: https://github.com/itk-dev/hoeringsportal/compare/4.11.0...4.11.1
 [4.11.0]: https://github.com/itk-dev/hoeringsportal/compare/4.10.3...4.11.0
