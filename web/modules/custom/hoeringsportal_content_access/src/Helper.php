@@ -154,6 +154,20 @@ final class Helper {
   }
 
   /**
+   * Implements hook_form_alter() for node_form.
+   */
+  public function formAlter(array &$form, FormStateInterface $formState, string $formId) {
+    if (in_array($formId, ['user_register_form', 'user_form'])) {
+      // Remove the department field if no departments are available.
+      if (isset($form[self::FIELD_DEPARTMENT]['widget']['#options'])
+        && empty($form[self::FIELD_DEPARTMENT]['widget']['#options'])
+      ) {
+        $form[self::FIELD_DEPARTMENT]['#access'] = FALSE;
+      }
+    }
+  }
+
+  /**
    * Implements template_preprocess_form_element().
    *
    * Hides departments the current user does not have access to.

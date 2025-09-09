@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-547](https://github.com/itk-dev/deltag.aarhus.dk/pull/547)
+  Hid Department field on user if no departments are defined
+
 ## [4.13.0] - 2025-09-02
 
 * [PR-545](https://github.com/itk-dev/deltag.aarhus.dk/pull/545)

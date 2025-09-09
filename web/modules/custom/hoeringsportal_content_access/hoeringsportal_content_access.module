@@ -28,6 +28,13 @@ function hoeringsportal_content_access_form_node_form_alter(array &$form, FormSt
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function hoeringsportal_content_access_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  return _hoeringsportal_content_access_get_helper()->formAlter($form, $form_state, $form_id);
+}
+
+/**
  * Implements template_preprocess_form_element().
  */
 function hoeringsportal_content_access_preprocess_form_element(&$variables) {
