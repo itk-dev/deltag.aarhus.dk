@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-548](https://github.com/itk-dev/deltag.aarhus.dk/pull/548)
+  5479: Fixed handling of draft citizen proposals
+
 ## [4.13.0] - 2025-09-02
 
 * [PR-545](https://github.com/itk-dev/deltag.aarhus.dk/pull/545)
