@@ -25,7 +25,6 @@ use Drupal\node\NodeInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerTrait;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * A helper class for the module.
@@ -47,7 +46,6 @@ class Helper implements LoggerAwareInterface {
    */
   public function __construct(
     readonly private PrivateTempStoreFactory $tempStoreFactory,
-    readonly private Serializer $serializer,
     readonly private StateInterface $state,
     readonly private FileUrlGenerator $fileUrlGenerator,
     readonly private RouteMatchInterface $routeMatch,
@@ -65,11 +63,10 @@ class Helper implements LoggerAwareInterface {
    * @return object|null
    *   The entity or NULL if no valid entity was found.
    */
-  public function getDraftProposal(): ?object {
-    $entitySerialized = $this->getProposalStorage()->get(self::CITIZEN_PROPOSAL_ENTITY);
-    $node = is_string($entitySerialized) ? $this->serializer->deserialize($entitySerialized, Node::class, 'json') : NULL;
+  public function getDraftProposal(): ?NodeInterface {
+    $entity = $this->getProposalStorage()->get(self::CITIZEN_PROPOSAL_ENTITY);
 
-    return isset($node) && $node instanceof Node ? $node : NULL;
+    return $entity instanceof NodeInterface ? $entity : NULL;
   }
 
   /**
@@ -93,11 +90,10 @@ class Helper implements LoggerAwareInterface {
   /**
    * Add entity to temp store.
    */
-  public function setDraftProposal($entity): void {
-    $nodeSerialized = $this->serializer->serialize($entity, 'json');
+  public function setDraftProposal(NodeInterface $entity): void {
     try {
       $this->getProposalStorage()->set(
-        self::CITIZEN_PROPOSAL_ENTITY, $nodeSerialized
+        self::CITIZEN_PROPOSAL_ENTITY, $entity
       );
     }
     catch (\Exception $exception) {
@@ -514,7 +510,7 @@ class Helper implements LoggerAwareInterface {
   /**
    * Get vote end date.
    */
-  public function getVoteEndDate(NodeInterface $node): int {
+  public function getVoteEndDate(NodeInterface $node): ?int {
     if (!$this->isCitizenProposal($node)) {
       return NULL;
     }
