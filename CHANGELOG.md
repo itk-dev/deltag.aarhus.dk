@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-550](https://github.com/itk-dev/deltag.aarhus.dk/pull/550)
+  5603: Aligned development service config with prod config
+
 ## [4.13.1] - 2025-09-15
 
 * [PR-548](https://github.com/itk-dev/deltag.aarhus.dk/pull/548)

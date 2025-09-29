@@ -6,6 +6,11 @@ include:
 services:
   phpfpm:
     image: itkdev/php8.4-fpm:latest
+    environment:
+      - PHP_MAX_EXECUTION_TIME=30
+      - PHP_POST_MAX_SIZE=90M
+      - PHP_UPLOAD_MAX_FILESIZE=80M
+      - PHP_MEMORY_LIMIT=512M
 
   nginx:
     labels:
@@ -13,6 +18,9 @@ services:
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     # Let the container be accessible both internally and externally on the same domain.
     container_name: ${COMPOSE_DOMAIN}
+    environment:
+      # Match PHP_UPLOAD_MAX_FILESIZE (plus a little more)
+      NGINX_MAX_BODY_SIZE: 90M
 
   node:
     image: node:22
