@@ -28,7 +28,6 @@ dependencies:
     - field.field.node.hearing.field_tags
     - field.field.node.hearing.field_teaser
     - field.field.node.hearing.field_type
-    - field.field.node.hearing.field_video_embed
     - node.type.hearing
   module:
     - datetime
@@ -181,7 +180,6 @@ hidden:
   field_media_image: true
   field_project_reference: true
   field_teaser: true
-  field_video_embed: true
   langcode: true
   links: true
   published_at: true

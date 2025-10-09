@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b414c55f416209302d2d1f1f78549451",
+    "content-hash": "52172532383ce980f457e9c06349499e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3454,17 +3454,17 @@
         },
         {
             "name": "drupal/flag",
-            "version": "4.0.0-beta7",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/flag.git",
-                "reference": "8.x-4.0-beta7"
+                "reference": "5.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/flag-8.x-4.0-beta7.zip",
-                "reference": "8.x-4.0-beta7",
-                "shasum": "6f74fcaec0db3c54934cdf8f25acb67c0c2d7f07"
+                "url": "https://ftp.drupal.org/files/projects/flag-5.0.1.zip",
+                "reference": "5.0.1",
+                "shasum": "8487a0d34b3c52f47d8af1631e1947497057f500"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
@@ -3472,11 +3472,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.0-beta7",
-                    "datestamp": "1743851261",
+                    "version": "5.0.1",
+                    "datestamp": "1757658472",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -7128,6 +7128,57 @@
                 "source": "https://github.com/itk-dev/siteimprove-d8/tree/1.4.0"
             },
             "time": "2025-06-27T14:13:39+00:00"
+        },
+        {
+            "name": "itk-dev/itk_video",
+            "version": "dev-release/first_version",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/itk_video",
+                "reference": "fcd97c86df469bbbda4b22c86c837cf494902fcc"
+            },
+            "require": {
+                "drush/drush": "^12 || ^13",
+                "psr/cache": "^3.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "ergebnis/composer-normalize": "^2.44",
+                "mglaman/phpstan-drupal": "^2.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0"
+            },
+            "type": "drupal-module",
+            "scripts": {
+                "code-analysis": [
+                    "@code-analysis/drupal-check"
+                ],
+                "code-analysis/drupal-check": [
+                    "vendor/bin/drupal-check --deprecations --analysis --exclude-dir=vendor *.* src"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/phpcs"
+                ],
+                "coding-standards-apply/phpcs": [
+                    "vendor/bin/phpcbf --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/phpcs"
+                ],
+                "coding-standards-check/phpcs": [
+                    "vendor/bin/phpcs --standard=phpcs.xml.dist"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Module that provides Video integration",
+            "keywords": [
+                "Drupal"
+            ],
+            "time": "2025-10-09T07:41:13+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
@@ -20865,11 +20916,11 @@
         "chx/drupal-issue-fork": 20,
         "drupal/email_registration": 5,
         "drupal/entityqueue": 15,
-        "drupal/flag": 15,
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
-        "drupal/webform": 10
+        "drupal/webform": 10,
+        "itk-dev/itk_video": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
