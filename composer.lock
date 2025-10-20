@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbe31c8ff35d76a6e607a4a184f4af2f",
+    "content-hash": "82bfd205b0ab4e43673d750d7c146f8e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7204,8 +7204,14 @@
             "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/itk-dev/itk_video",
+                "url": "https://github.com/itk-dev/itk_video.git",
                 "reference": "2467441cea83fa8085605d59690242e30b71ab0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/itk_video/zipball/2467441cea83fa8085605d59690242e30b71ab0b",
+                "reference": "2467441cea83fa8085605d59690242e30b71ab0b",
+                "shasum": ""
             },
             "require": {
                 "drush/drush": "^12 || ^13",
@@ -7222,33 +7228,18 @@
                 "phpstan/phpstan-deprecation-rules": "^2.0"
             },
             "type": "drupal-module",
-            "scripts": {
-                "code-analysis": [
-                    "@code-analysis/drupal-check"
-                ],
-                "code-analysis/drupal-check": [
-                    "vendor/bin/drupal-check --deprecations --analysis --exclude-dir=vendor *.* src"
-                ],
-                "coding-standards-apply": [
-                    "@coding-standards-apply/phpcs"
-                ],
-                "coding-standards-apply/phpcs": [
-                    "vendor/bin/phpcbf --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-check": [
-                    "@coding-standards-check/phpcs"
-                ],
-                "coding-standards-check/phpcs": [
-                    "vendor/bin/phpcs --standard=phpcs.xml.dist"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Module that provides Video integration",
             "keywords": [
-                "Drupal"
+                "drupal"
             ],
+            "support": {
+                "issues": "https://github.com/itk-dev/itk_video/issues",
+                "source": "https://github.com/itk-dev/itk_video/tree/1.0.0"
+            },
             "time": "2025-10-20T11:13:09+00:00"
         },
         {

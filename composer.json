@@ -212,10 +212,6 @@
         "1": {
             "type": "git",
             "url": "https://git.drupalcode.org/issue/toolbar_visibility-3435073.git"
-        },
-        "2": {
-            "type": "git",
-            "url": "https://github.com/itk-dev/itk_video"
         }
     },
     "minimum-stability": "dev",
