@@ -1,0 +1,15 @@
+uuid: 41d59a04-e947-41ee-843b-98b1041e83e2
+langcode: da
+status: true
+dependencies:
+  config:
+    - flag.flag.support
+  module:
+    - flag
+id: flag_action.support_unflag
+label: 'Remove support'
+type: comment
+plugin: 'flag_action:support_unflag'
+configuration:
+  flag_id: support
+  flag_action: unflag

@@ -1,0 +1,30 @@
+uuid: 6ec5b89c-d08e-42c1-8600-6fd5acfec85e
+langcode: da
+status: true
+dependencies:
+  module:
+    - comment
+id: support
+label: Support
+bundles: {  }
+entity_type: comment
+global: false
+flag_short: Support
+flag_long: ''
+flag_message: ''
+unflag_short: 'Remove support'
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:comment'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+    parent_owner: '0'
+linkTypeConfig: {  }

@@ -63,6 +63,7 @@ module:
   hoeringsportal_public_meeting: 0
   hoeringsportal_quicklinks: 0
   hoeringsportal_test_delta_sync_fixtures: 0
+  honeypot: 0
   image: 0
   image_captcha: 0
   image_widget_crop: 0
@@ -74,6 +75,7 @@ module:
   itk_media_entity: 0
   itk_pretix: 0
   itk_siteimprove: 0
+  itk_video: 0
   jquery_ui: 0
   jsonapi: 0
   language: 0
