@@ -1,0 +1,41 @@
+{{ attach_library('hoeringsportal/image-fade') }}
+<div class="header-v2 mb-5">
+  {% if images %}
+    {% if images|length > 1 %}
+      <div class="image-wrapper image-fade" data-image-duration="15000">
+        {% for key, image in images %}
+          <img id="img-{{ key }}" class="image-slide" src="{{ image|file_url }}" alt="">
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="image-wrapper">
+        <img src="{{ images[0]|file_url }}" alt="">
+      </div>
+    {% endif %}
+  {% endif %}
+  <div class="content-wrapper type-dialogue position-relative {{ images ? 'with-image' : '' }}">
+    <div class="container">
+      <div class="type small fw-semibold">
+        {{ node.type.entity.label }}
+      </div>
+      <h1>{{ title }}</h1>
+      <div class="row">
+        <div class="col-md-8 mb-5">
+          {{ description }}
+        </div>
+      </div>
+      <div class="mb-5">
+        <div class="fw-bold mb-3">{{ 'Go to'|t }}</div>
+        <div>
+          <a href="#content" class="btn btn-outline-secondary me-3">{{ 'Content'|t }}</a>
+          <a href="#proposals" class="btn btn-outline-secondary me-3">{{ 'Proposals'|t }}</a>
+          <a href="#" class="btn btn-outline-secondary">{{ 'Map'|t }}</a>
+        </div>
+      </div>
+      <div class="tags mall fw-semibold is-comma-separated">
+        {{ type }}{{ area }}
+      </div>
+    </div>
+  </div>
+</div>
+

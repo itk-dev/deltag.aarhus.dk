@@ -18,6 +18,7 @@ Encore
   .addEntry('hoeringsportal', './assets/js/hoeringsportal.js')
   .addEntry('deskpro-custom-css', './assets/js/deskpro-custom-css.js')
   .addEntry('show-map', './assets/js/show-map.js')
+  .addEntry('image-fade', './assets/js/image-fade.js')
 
   // Bootstrap expects jQuery to be available as a global variable.
   // (cf. http://symfony.com/doc/current/frontend/encore/bootstrap.html#importing-bootstrap-javascript).

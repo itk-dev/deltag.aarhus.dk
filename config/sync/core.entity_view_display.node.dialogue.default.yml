@@ -1,0 +1,75 @@
+uuid: 08ce4a5a-b200-4bdd-828a-b48a45579fc5
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.node.dialogue.field_area
+    - field.field.node.dialogue.field_content_sections
+    - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_teaser
+    - field.field.node.dialogue.field_top_images
+    - field.field.node.dialogue.field_type
+    - node.type.dialogue
+  module:
+    - entity_reference_revisions
+    - user
+id: node.dialogue.default
+targetEntityType: node
+bundle: dialogue
+mode: default
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_top_images:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

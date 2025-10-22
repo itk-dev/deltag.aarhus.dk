@@ -1,0 +1,52 @@
+uuid: 6c27a54f-de42-4014-b694-3e5281db0ede
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.list_display
+    - field.field.node.dialogue.field_area
+    - field.field.node.dialogue.field_content_sections
+    - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_teaser
+    - field.field.node.dialogue.field_top_images
+    - field.field.node.dialogue.field_type
+    - node.type.dialogue
+  module:
+    - user
+id: node.dialogue.list_display
+targetEntityType: node
+bundle: dialogue
+mode: list_display
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_content_sections: true
+  field_department: true
+  field_top_images: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

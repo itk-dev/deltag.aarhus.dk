@@ -1,0 +1,35 @@
+{% extends "@hoeringsportal/node/_node--1-col-large-image-top.html.twig" %}
+
+{% block content_top %}
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-dialogue.html.twig', {
+    images: node.field_top_images,
+    type: node.bundle,
+    title: node.label,
+    description: content.field_teaser,
+    area: content.field_area,
+    type: content.field_type
+  }) }}
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="container content__container" id="content">
+    <div class="row">
+      <div class="col-md-8">
+        {{ content|without('field_top_images', 'field_teaser', 'field_area', 'field_department', 'field_type', 'field_content_sections') }}
+      </div>
+      <div class="col-md-4 pt-md-3">
+        {{ content.field_aside_block }}
+      </div>
+    </div>
+  </div>
+  <div class="sections d-flex flex-column">
+    {{ content.field_content_sections }}
+  </div>
+  <div class="container">
+    <div class="row text-muted">
+      {{ content.published_at }}
+    </div>
+  </div>
+{% endblock %}

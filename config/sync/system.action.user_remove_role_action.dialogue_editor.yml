@@ -1,0 +1,14 @@
+uuid: f01672eb-cca0-4ae3-9f8f-d3e18d613abb
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.dialogue_editor
+  module:
+    - user
+id: user_remove_role_action.dialogue_editor
+label: 'Remove the Dialog redaktør role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: dialogue_editor

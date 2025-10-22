@@ -28,6 +28,9 @@ function hoeringsportal_forms_theme_suggestions_alter(array &$suggestions, array
     if ($variables['form']['#form_id'] == 'node_public_meeting_form' || $variables['form']['#form_id'] == 'node_public_meeting_edit_form') {
       $suggestions[] = $hook . '__hoeringsportal_public_meeting';
     }
+    if ($variables['form']['#form_id'] == 'node_dialogue_form' || $variables['form']['#form_id'] == 'node_dialogue_form_edit_form') {
+      $suggestions[] = $hook . '__hoeringsportal_dialogue';
+    }
   }
 
   return $suggestions;
@@ -50,6 +53,9 @@ function hoeringsportal_forms_theme($existing, $type, $theme, $path) {
       'render element' => 'form',
     ],
     'node_edit_form__hoeringsportal_public_meeting' => [
+      'render element' => 'form',
+    ],
+    'node_edit_form__hoeringsportal_dialogue' => [
       'render element' => 'form',
     ],
   ];

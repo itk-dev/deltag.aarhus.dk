@@ -1,0 +1,25 @@
+uuid: 6d277b75-4cc2-4ed8-b965-cffa22e4b5f7
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.dialogue
+  module:
+    - node
+    - quick_node_clone
+    - view_unpublished
+id: dialogue_editor
+label: Dialogredaktør
+weight: -4
+is_admin: null
+permissions:
+  - 'clone dialogue content'
+  - 'create dialogue content'
+  - 'delete any dialogue content'
+  - 'delete dialogue revisions'
+  - 'delete own dialogue content'
+  - 'edit any dialogue content'
+  - 'edit own dialogue content'
+  - 'revert dialogue revisions'
+  - 'view any unpublished dialogue content'
+  - 'view dialogue revisions'

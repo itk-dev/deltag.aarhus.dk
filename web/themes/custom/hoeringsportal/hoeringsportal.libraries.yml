@@ -12,3 +12,11 @@ bottom-scripts:
   dependencies:
     - core/jquery
     - core/drupal
+
+image-fade:
+  version: VERSION
+  js:
+    build/image-fade.js: { scope: bottom, preprocess: false }
+  css:
+    theme:
+      build/image-fade.css: {}

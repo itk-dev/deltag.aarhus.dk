@@ -40,7 +40,7 @@
 {% if label_hidden %}
   {% if multiple %}
     {% for item in items %}
-      {{ item.content }}
+      <span>{{ item.content }}</span>
     {% endfor %}
   {% else %}
     {% for item in items %}
@@ -48,12 +48,12 @@
     {% endfor %}
   {% endif %}
 {% else %}
-  <h4 class="mt-3 h5">{{ label }}</h4>
+  <h5 class="mt-3">{{ label }}</h5>
   {% if multiple %}
-    <div>
+    <div class="is-comma-separated">
   {% endif %}
   {% for item in items %}
-    {{ item.content }}
+    <span>{{ item.content }}</span>
   {% endfor %}
   {% if multiple %}
     </div>

@@ -1,0 +1,32 @@
+uuid: b35d709a-3d90-4576-9cd0-453435af1f8c
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.dialogue.field_area
+    - field.field.node.dialogue.field_content_sections
+    - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_teaser
+    - field.field.node.dialogue.field_top_images
+    - field.field.node.dialogue.field_type
+    - node.type.dialogue
+  module:
+    - user
+id: node.dialogue.search_result
+targetEntityType: node
+bundle: dialogue
+mode: search_result
+content: {  }
+hidden:
+  field_area: true
+  field_content_sections: true
+  field_department: true
+  field_teaser: true
+  field_top_images: true
+  field_type: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true
