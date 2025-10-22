@@ -1,0 +1,15 @@
+uuid: f64e8fa2-b9f7-45ea-adfc-68f718b97c3c
+langcode: da
+status: true
+dependencies:
+  config:
+    - flag.flag.support_proposal
+  module:
+    - flag
+id: flag_action.support_proposal_flag
+label: 'Support proposal'
+type: comment
+plugin: 'flag_action:support_proposal_flag'
+configuration:
+  flag_id: support_proposal
+  flag_action: flag
