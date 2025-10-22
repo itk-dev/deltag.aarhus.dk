@@ -1,15 +1,15 @@
-uuid: 6ec5b89c-d08e-42c1-8600-6fd5acfec85e
+uuid: 24a6dd2d-73d8-4d5b-80d6-5e0d80d8b09e
 langcode: da
 status: true
 dependencies:
   module:
     - comment
-id: support
-label: Support
+id: support_proposal
+label: 'Support proposal'
 bundles: {  }
 entity_type: comment
 global: false
-flag_short: Support
+flag_short: 'Support proposal'
 flag_long: ''
 flag_message: ''
 unflag_short: 'Remove support'
