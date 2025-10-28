@@ -14,7 +14,6 @@ module:
   breakpoint: 0
   captcha: 0
   ckeditor5: 0
-  clamav: 0
   color_field: 0
   comment: 0
   config: 0
@@ -41,6 +40,7 @@ module:
   field_group: 0
   field_ui: 0
   file: 0
+  file_resup: 0
   filter: 0
   flag: 0
   hoeringsportal_audit_log: 0
@@ -51,6 +51,7 @@ module:
   hoeringsportal_content_blocks: 0
   hoeringsportal_data: 0
   hoeringsportal_deskpro: 0
+  hoeringsportal_dialogue: 0
   hoeringsportal_forms: 0
   hoeringsportal_hearing: 0
   hoeringsportal_openid_connect: 0

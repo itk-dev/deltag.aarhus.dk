@@ -1,5 +1,4 @@
 hearing-edit:
-  version: VERSION
   css:
     theme:
       build/hearing-edit.css: {}

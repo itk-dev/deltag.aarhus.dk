@@ -1,4 +1,4 @@
-uuid: 2641ba6c-64f0-4b32-b890-02f3f2db044e
+uuid: cf1166cb-1155-4c26-adcc-409d6e24361f
 langcode: da
 status: true
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
     - flag
 id: flag_action.support_proposal_unflag
 label: 'Remove support'
-type: comment
+type: node
 plugin: 'flag_action:support_proposal_unflag'
 configuration:
   flag_id: support_proposal

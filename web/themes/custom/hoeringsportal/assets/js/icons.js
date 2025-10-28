@@ -31,6 +31,7 @@ import {
   faClock,
   faLocationDot,
   faComments,
+  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Import icons from the free brands package
@@ -71,6 +72,7 @@ library.add(
   faCalendarDay,
   faClock,
   faLocationDot,
+  faThumbsUp,
   // Brand
   faDigg,
   faEvernote,

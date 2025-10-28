@@ -7,6 +7,10 @@ dependencies:
     - field.field.node.dialogue.field_area
     - field.field.node.dialogue.field_content_sections
     - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_dialogue_proposal_category
+    - field.field.node.dialogue.field_dialogue_proposal_config
+    - field.field.node.dialogue.field_dialogue_proposal_location
+    - field.field.node.dialogue.field_dialogue_proposal_zoom
     - field.field.node.dialogue.field_teaser
     - field.field.node.dialogue.field_top_images
     - field.field.node.dialogue.field_type
@@ -22,6 +26,10 @@ hidden:
   field_area: true
   field_content_sections: true
   field_department: true
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_config: true
+  field_dialogue_proposal_location: true
+  field_dialogue_proposal_zoom: true
   field_teaser: true
   field_top_images: true
   field_type: true

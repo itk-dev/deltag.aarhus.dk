@@ -17,6 +17,7 @@ require("slick-carousel");
 require("./slick-slider-config.js");
 require("./filter-collapse.js");
 require("./icons.js");
+require("./modify-dialogue-form.js");
 
 // Enable popovers.
 $(function () {

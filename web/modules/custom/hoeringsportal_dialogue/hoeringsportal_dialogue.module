@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Module for dialogue content type.
+ */
+
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
+
+/**
+ * Implements hook_node_create_access().
+ */
+function hoeringsportal_dialogue_node_create_access(AccountInterface $account, array $context, $entity_bundle): AccessResultInterface {
+  return Drupal::service(DialogueHelper::class)->dialogueProposalCreateAccess($account, $context, $entity_bundle);
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function hoeringsportal_dialogue_node_presave(EntityInterface $entity): void {
+  Drupal::service(DialogueHelper::class)->dialogueProposalPresave($entity);
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+function hoeringsportal_dialogue_form_node_dialogue_proposal_form_alter(array &$form, FormStateInterface $form_state) {
+  Drupal::service(DialogueHelper::class)->dialogueProposalFormAlter($form, $form_state);
+}

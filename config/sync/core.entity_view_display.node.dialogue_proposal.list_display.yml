@@ -1,0 +1,35 @@
+uuid: d0775ba9-b2c5-4111-911b-e1f53c493fe6
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.list_display
+    - field.field.node.dialogue_proposal.field_dialogue
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_category
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
+    - field.field.node.dialogue_proposal.field_image_upload
+    - field.field.node.dialogue_proposal.field_location
+    - node.type.dialogue_proposal
+  module:
+    - user
+id: node.dialogue_proposal.list_display
+targetEntityType: node
+bundle: dialogue_proposal
+mode: list_display
+content:
+  flag_support_proposal:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dialogue: true
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_descr: true
+  field_image_upload: true
+  field_location: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

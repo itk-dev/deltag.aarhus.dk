@@ -1,0 +1,18 @@
+uuid: f98bf0d7-6ebc-486b-b1c5-2895395bd739
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.dialogue_proposal
+id: node.dialogue_proposal.title
+field_name: title
+entity_type: node
+bundle: dialogue_proposal
+label: 'Proposal title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

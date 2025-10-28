@@ -1,13 +1,14 @@
-uuid: 24a6dd2d-73d8-4d5b-80d6-5e0d80d8b09e
+uuid: d239eea9-827f-4d15-9597-9bf42b1aa35e
 langcode: da
 status: true
 dependencies:
   module:
-    - comment
+    - node
 id: support_proposal
 label: 'Support proposal'
-bundles: {  }
-entity_type: comment
+bundles:
+  - dialogue_proposal
+entity_type: node
 global: false
 flag_short: 'Support proposal'
 flag_long: ''
@@ -17,7 +18,7 @@ unflag_long: ''
 unflag_message: ''
 unflag_denied_text: ''
 weight: 0
-flag_type: 'entity:comment'
+flag_type: 'entity:node'
 link_type: ajax_link
 flagTypeConfig:
   show_in_links: {  }
@@ -26,5 +27,4 @@ flagTypeConfig:
   show_contextual_link: false
   extra_permissions:
     owner: '0'
-    parent_owner: '0'
 linkTypeConfig: {  }

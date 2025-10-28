@@ -27,4 +27,13 @@
   <div class="sections d-flex flex-column">
     {{ content.field_content_sections }}
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-primary" href="{{ path('node.add', {'node_type': 'dialogue_proposal', 'dialogue': node.id}) }}">Test</a>
+    </div>
+    <div class="col-md-4 pt-md-3">
+      {{ content.field_aside_block }}
+    </div>
+  </div>
 {% endblock %}

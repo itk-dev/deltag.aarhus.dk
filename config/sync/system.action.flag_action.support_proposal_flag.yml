@@ -1,4 +1,4 @@
-uuid: f64e8fa2-b9f7-45ea-adfc-68f718b97c3c
+uuid: c51fbee9-19b1-4928-86af-614baff1902d
 langcode: da
 status: true
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
     - flag
 id: flag_action.support_proposal_flag
 label: 'Support proposal'
-type: comment
+type: node
 plugin: 'flag_action:support_proposal_flag'
 configuration:
   flag_id: support_proposal

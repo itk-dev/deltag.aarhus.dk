@@ -7,6 +7,10 @@ dependencies:
     - field.field.node.dialogue.field_area
     - field.field.node.dialogue.field_content_sections
     - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_dialogue_proposal_category
+    - field.field.node.dialogue.field_dialogue_proposal_config
+    - field.field.node.dialogue.field_dialogue_proposal_location
+    - field.field.node.dialogue.field_dialogue_proposal_zoom
     - field.field.node.dialogue.field_teaser
     - field.field.node.dialogue.field_top_images
     - field.field.node.dialogue.field_type
@@ -14,6 +18,7 @@ dependencies:
   module:
     - entity_browser
     - field_group
+    - hoeringsportal_data
     - paragraphs
 third_party_settings:
   field_group:
@@ -25,11 +30,30 @@ third_party_settings:
       label: Informationer
       region: content
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details
       format_settings:
         classes: ''
         show_empty_fields: true
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: false
+    group_proposal_settings:
+      children:
+        - field_dialogue_proposal_config
+        - field_dialogue_proposal_category
+        - field_dialogue_proposal_location
+        - field_dialogue_proposal_zoom
+      label: 'Proposal settings'
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
         id: ''
         label_as_html: false
         open: true
@@ -48,7 +72,7 @@ content:
     third_party_settings: {  }
   field_content_sections:
     type: paragraphs
-    weight: 5
+    weight: 4
     region: content
     settings:
       title: Paragraph
@@ -71,6 +95,36 @@ content:
     weight: 5
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_dialogue_proposal_category:
+    type: options_buttons
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dialogue_proposal_config:
+    type: options_buttons
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dialogue_proposal_location:
+    type: hoeringsportal_data_map_default
+    weight: 30
+    region: content
+    settings:
+      available_types:
+        point: point
+        localplanids: 0
+        localplanids_node: 0
+    third_party_settings: {  }
+  field_dialogue_proposal_zoom:
+    type: string_textfield
+    weight: 31
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_teaser:
     type: string_textarea
@@ -103,7 +157,7 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 4
+    weight: 3
     region: content
     settings:
       display_label: true

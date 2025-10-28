@@ -1,0 +1,76 @@
+uuid: 9b2fde90-6e46-46f6-9c7d-d03b19b500f2
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.node.dialogue_proposal.field_dialogue
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_category
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
+    - field.field.node.dialogue_proposal.field_image_upload
+    - field.field.node.dialogue_proposal.field_location
+    - node.type.dialogue_proposal
+  module:
+    - hoeringsportal_data
+    - svg_image
+    - user
+id: node.dialogue_proposal.default
+targetEntityType: node
+bundle: dialogue_proposal
+mode: default
+content:
+  field_dialogue:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_dialogue_proposal_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_dialogue_proposal_descr:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image_upload:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_location:
+    type: hoeringsportal_data_map_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  flag_support_proposal:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

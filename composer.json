@@ -37,6 +37,7 @@
         "drupal/entity_browser": "^2.6",
         "drupal/entityqueue": "^1.0@alpha",
         "drupal/field_group": "^3.0",
+        "drupal/file_resup": "^2.0",
         "drupal/flag": "^5.0",
         "drupal/hoeringsportal_audit_log": "^1.0",
         "drupal/hoeringsportal_citizen_proposal": "^1.0",
