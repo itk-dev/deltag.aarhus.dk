@@ -4,6 +4,7 @@ status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.dialogue_proposal.field_comments
     - field.field.node.dialogue_proposal.field_dialogue
     - field.field.node.dialogue_proposal.field_dialogue_proposal_category
     - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
@@ -33,6 +34,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_comments: true
   field_dialogue: true
   field_dialogue_proposal_category: true
   field_dialogue_proposal_descr: true

@@ -12,7 +12,7 @@ mode: default
 content:
   field_comment:
     type: basic_string
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 11

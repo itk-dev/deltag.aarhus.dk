@@ -18,3 +18,25 @@
     }
   }
 }
+
+.btn-sm {
+  @extend .btn-sm;
+
+  padding: $spacer * 0.5 $spacer * .75;
+
+  &.btn-primary {
+    position: relative;
+    border: 0;
+    color: $white;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: transparent;
+    }
+  }
+}

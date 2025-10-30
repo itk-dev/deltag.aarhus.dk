@@ -11,15 +11,36 @@
   }
 }
 
-.flag a {
-  color: inherit;
-  text-decoration: none;
+.flag-wrapper {
+  .flag a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ajax-progress-throbber {
+    display:none;
+  }
 }
 
 .node-dialogue-proposal-form {
-  label {
+  .fieldset-legend {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  label,
+  legend {
     font-weight: 700;
     margin-bottom: .5rem;
+
+    span.optional {
+      margin-left: .5rem;
+      font-weight: normal;
+    }
+  }
+
+  .form-required:after {
+    content: "";
   }
 
   .image-widget {
@@ -60,5 +81,51 @@
         display: none;
       }
     }
+  }
+}
+
+.dialogue-proposals {
+  font-size: $font-size-small;
+
+  .card-text {
+    line-clamp: 3;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 65px;
+    overflow: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.proposal-category-items {
+  .badge {
+    border: 1px solid $color-petroleum-800;
+    color: $color-petroleum-800;
+  }
+}
+
+.dialogue-proposal {
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  #map {
+    height: 300px!important;
+  }
+
+  .comments .indented {
+    border-left: 2px dashed $gray-600;
+    padding-left: 2em;
+  }
+
+  .comments .comment-time {
+    color: $gray-600;
   }
 }

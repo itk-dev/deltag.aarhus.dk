@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "801cfca3148b81be0b5da4a403f8e1ef",
+    "content-hash": "fa1f35924a98cade3aa6db37ae3d0948",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5401,6 +5401,62 @@
                 "source": "https://git.drupalcode.org/project/toolbar_visibility"
             },
             "time": "2024-12-10T15:53:09+00:00"
+        },
+        {
+            "name": "drupal/twig_extensions",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/twig_extensions.git",
+                "reference": "8.x-2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/twig_extensions-8.x-2.5.zip",
+                "reference": "8.x-2.5",
+                "shasum": "bdd02c598780cc448c209dfe2660b68b5fa7d308"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.5",
+                    "datestamp": "1749640515",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "dieterholvoet",
+                    "homepage": "https://www.drupal.org/user/3567222"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
+                },
+                {
+                    "name": "smulvih2",
+                    "homepage": "https://www.drupal.org/user/795442"
+                }
+            ],
+            "description": "Adds the twig/extensions package to Drupal, providing common additional features for Twig that do not directly belong in core.",
+            "homepage": "https://www.drupal.org/project/twig_extensions",
+            "support": {
+                "source": "https://git.drupalcode.org/project/twig_extensions"
+            }
         },
         {
             "name": "drupal/twig_tweak",

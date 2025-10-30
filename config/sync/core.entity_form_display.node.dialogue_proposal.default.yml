@@ -3,6 +3,7 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.dialogue_proposal.field_comments
     - field.field.node.dialogue_proposal.field_dialogue
     - field.field.node.dialogue_proposal.field_dialogue_proposal_category
     - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
@@ -18,6 +19,16 @@ targetEntityType: node
 bundle: dialogue_proposal
 mode: default
 content:
+  field_dialogue:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_dialogue_proposal_category:
     type: options_buttons
     weight: 2
@@ -60,7 +71,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_dialogue: true
+  field_comments: true
   langcode: true
   path: true
   promote: true

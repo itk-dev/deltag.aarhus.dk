@@ -1,0 +1,60 @@
+{% extends "@hoeringsportal/node/_node--1-col-large-image-top.html.twig" %}
+
+{% block content_top %}
+
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="dialogue-proposal container-fluid bg-white content__container" id="content">
+    <div class="row justify-content-center pt-5">
+      <div class="proposal-layout">
+        <div class="breadcrumb mb-3">
+          <span class="me-2">{{ 'Early inclusion'|t}}</span>/
+          <span class="mx-2">
+            <a href="{{ path('entity.node.canonical', {'node': node.field_dialogue.entity.id}) }}">{{ node.field_dialogue.entity.label }}</a>
+          </span>/
+          <span class="mx-2">{{ label }}</span>
+        </div>
+        <h1>{{ label }}</h1>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="d-flex flex-wrap px-0">
+              <div class="me-3">
+                <span class="flag-wrapper">{{ content.flag_support_proposal }}</span>
+              </div>
+              <div>
+                <span class="me-2"><i class="me-2 fa-solid fa-comments"></i>{{ node.field_comments.comment_count }}</span><span>{{ 'Comments'|t }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          {{ content.field_dialogue_proposal_category }}
+        </div>
+        {% if content.field_image_upload %}
+          <div class="row mb-3">
+            <div class="col">
+              {{ content.field_image_upload }}
+            </div>
+          </div>
+        {% endif %}
+        <div class="row mb-3">
+          <div class="col">
+            {{ content.field_dialogue_proposal_descr }}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            {{ content.field_location }}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            {{ content.field_comments }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

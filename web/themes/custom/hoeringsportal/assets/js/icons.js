@@ -86,4 +86,9 @@ library.add(
   faXTwitter,
   faTriangleExclamation,
 );
-dom.i2svg();
+
+Drupal.behaviors.iconToSvg = {
+  attach: function (context, settings) {
+    dom.i2svg();
+  }
+};

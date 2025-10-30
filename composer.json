@@ -66,6 +66,7 @@
         "drupal/textfield_counter": "^2.5",
         "drupal/token_filter": "^2.1",
         "drupal/toolbar_visibility": "dev-3435073-automated-drupal-11#2b0a7e687bdef04e80a0a765a8e6eb8f7b846d03",
+        "drupal/twig_extensions": "^2.5",
         "drupal/twig_tweak": "^3.2",
         "drupal/upgrade_status": "^4.3",
         "drupal/view_custom_table": "^2.0",

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.list_display
+    - field.field.node.dialogue_proposal.field_comments
     - field.field.node.dialogue_proposal.field_dialogue
     - field.field.node.dialogue_proposal.field_dialogue_proposal_category
     - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
@@ -17,15 +18,29 @@ targetEntityType: node
 bundle: dialogue_proposal
 mode: list_display
 content:
+  field_dialogue_proposal_category:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dialogue_proposal_descr:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   flag_support_proposal:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  field_comments: true
   field_dialogue: true
-  field_dialogue_proposal_category: true
-  field_dialogue_proposal_descr: true
   field_image_upload: true
   field_location: true
   langcode: true

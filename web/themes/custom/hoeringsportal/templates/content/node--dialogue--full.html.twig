@@ -30,10 +30,10 @@
 
   <div class="row">
     <div class="col-md-12">
-      <a class="btn btn-primary" href="{{ path('node.add', {'node_type': 'dialogue_proposal', 'dialogue': node.id}) }}">Test</a>
-    </div>
-    <div class="col-md-4 pt-md-3">
-      {{ content.field_aside_block }}
+      <div class="container">
+        <h3>{{ 'Proposals'|t }}</h3>
+      </div>
+      {{ drupal_view('dialogue_proposals', 'block_1', content.id) }}
     </div>
   </div>
 {% endblock %}
