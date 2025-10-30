@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-552](https://github.com/itk-dev/deltag.aarhus.dk/pull/552)
+  * Add styling for dialog proposal categories
+
 * [PR-551](https://github.com/itk-dev/deltag.aarhus.dk/pull/551)
   * Remove old video field and disabled Azure video module
   * Enable Comments module
