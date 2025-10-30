@@ -1,5 +1,5 @@
 .proposal-layout {
-  max-width: 840px!important;
+  max-width: 840px !important;
 }
 
 .breadcrumb {
@@ -18,7 +18,7 @@
   }
 
   .ajax-progress-throbber {
-    display:none;
+    display: none;
   }
 }
 
@@ -31,16 +31,17 @@
   label,
   legend {
     font-weight: 700;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 
     span.optional {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
       font-weight: normal;
     }
   }
 
   .form-required:after {
     content: "";
+    margin-bottom: 0.5rem;
   }
 
   .image-widget {
@@ -72,14 +73,28 @@
       @extend .btn;
       @extend .btn-primary;
 
-      padding: .25rem .5rem;
-      font-size: .875rem;
-      border-radius: .2rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
       position: inherit;
 
       &:after {
         display: none;
       }
+    }
+  }
+  #edit-field-dialogue-proposal-category--wrapper .fieldset-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacer;
+
+    .form-checkboxes {
+      display: flex;
+      gap: $spacer;
+      order: 2;
+    }
+    .description {
+      order: 1;
     }
   }
 }
@@ -117,7 +132,7 @@
   }
 
   #map {
-    height: 300px!important;
+    height: 300px !important;
   }
 
   .comments .indented {
