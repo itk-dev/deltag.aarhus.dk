@@ -9,3 +9,30 @@
     width: initial;
   }
 }
+
+@keyframes rotate {
+  to {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes stretchX {
+  50% {
+    transform: scaleX(1.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
