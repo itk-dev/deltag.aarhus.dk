@@ -18,7 +18,7 @@
   }
 
   .ajax-progress-throbber {
-    display:none;
+    display: none;
   }
 }
 
@@ -31,10 +31,10 @@
   label,
   legend {
     font-weight: 700;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 
     span.optional {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
       font-weight: normal;
     }
   }
@@ -132,7 +132,7 @@
   }
 
   #map {
-    height: 300px!important;
+    height: 300px !important;
   }
 
   .comments .indented {
