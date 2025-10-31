@@ -37,5 +37,5 @@
 {# Set nofollow to prevent search bots from crawling anonymous flag links #}
 {% set attributes = attributes.setAttribute('rel', 'nofollow') %}
 <div class="{{classes|join(' ')}}">
-  <a{{ attributes }}><i class="fa-solid fa-thumbs-up me-2"></i>{{ flagcount(flag, flaggable) }} {{ 'like this'|t }}</a>
+  <a{{ attributes }}>{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-thumbs-up.svg.html.twig') }}{{ flagcount(flag, flaggable) }} {{ 'like this'|t }}</a>
 </div>

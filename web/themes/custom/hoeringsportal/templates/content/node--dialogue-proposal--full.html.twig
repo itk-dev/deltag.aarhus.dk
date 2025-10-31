@@ -24,7 +24,7 @@
                 <span class="flag-wrapper">{{ content.flag_support_proposal }}</span>
               </div>
               <div>
-                <span class="me-2"><i class="me-2 fa-solid fa-comments"></i>{{ node.field_comments.comment_count }}</span><span>{{ 'Comments'|t }}</span>
+                <a href="#comments" class="text-decoration-none text-secondary">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-comment.svg.html.twig') }}<span>{{ node.field_comments.comment_count }}</span><span>{{ 'Comments'|t }}</span></a>
               </div>
             </div>
           </div>
