@@ -78,7 +78,7 @@
       </div>
       <div class="d-flex mb-2">
         <div class="flag-wrapper me-3">{{ content.flag_support_comment }}</div>
-        <div class="comment-reply"><i class="fa-solid fa-reply me-2"></i><a class="use-ajax" data-dialog-options="{&quot;width&quot;:400}" data-dialog-type="modal" href="{{ path('comment.reply', {'entity_type': 'node', 'entity': comment.entity_id.value[0].target_id, 'field_name': 'field_comments', 'pid': comment.cid.value}) }}">{{ 'Reply'|t({}, {'context' : 'Comment reply  '}) }}</a></div>
+        <div class="comment-reply"><a class="use-ajax" data-dialog-options="{&quot;width&quot;:400}" data-dialog-type="modal" href="{{ path('comment.reply', {entity_type: 'node', entity: comment.entity_id.value[0].target_id, field_name: 'field_comments', pid: comment.cid.value}) }}">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-reply.svg.html.twig') }}{{ 'Reply'|t({}, {context: 'Comment reply  '}) }}</a></div>
       </div>
     {% endif %}
   </div>
