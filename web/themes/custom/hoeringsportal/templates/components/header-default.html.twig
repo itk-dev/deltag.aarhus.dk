@@ -1,4 +1,5 @@
 {{ attach_library('hoeringsportal/image-fade') }}
+
 <div class="header-v2 mb-5">
   {% block header_top_image %}
     {% if images %}
@@ -19,15 +20,31 @@
     <div class="content-wrapper position-relative {{ images ? 'with-image' : '' }} {{ type ?? 'type-default' }}">
       <div class="container">
         {% if category %}
-          <div class="small fw-semibold text-primary">{{ category }}</div>
+          <div class="small fw-semibold text-background-match">{{ category }}</div>
         {% endif %}
         <h1>{{ title }}</h1>
-        {{ description }}
-        {% if area %}
-          <div class="areas">{{ area }}</div>
+        <div class="mb-5">
+          {{ description }}
+        </div>
+        {% if shortcuts %}
+          <div class="mb-5">
+            {% for shortcut in shortcuts %}
+              <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if tags_fields %}
+          <div>
+            <button class="tags is-comma-separated text-background-match">
+              {% for tags in tags_fields %}
+                {% if tags %}
+                  {{ tags }}
+                {% endif %}
+              {% endfor %}
+            </button>
+          </div>
         {% endif %}
       </div>
     </div>
   {% endblock %}
 </div>
-

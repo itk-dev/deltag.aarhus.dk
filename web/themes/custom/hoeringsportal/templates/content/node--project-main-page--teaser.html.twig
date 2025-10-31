@@ -4,8 +4,7 @@
 
 {% block card_content %}
   {{ node.field_short_description.value|truncate(95, true, true) }}
-{% endblock %}
-{% block card_footer %}
   <span>{{ content.field_project_category }}</span>
-  <span class="is-comma-separated">{{ content.field_area }}</span>
+  <span class="is-comma-separated">{{ content.field_area }}{{ content.field_project_category }}</span>
 {% endblock %}
+

@@ -7,8 +7,22 @@
     type: node.bundle,
     title: node.label,
     description: content.field_teaser,
-    area: content.field_area,
-    type: content.field_type
+    tags_fields: {0: content.field_area, 1: content.field_type},
+    shortcuts: {
+      0: {
+        'label':  'Content'|t,
+        'href':  '#content',
+      },
+      1: {
+        'label':  'Proposals'|t,
+        'href':  '#proposals',
+      },
+      2: {
+        'label':  'Map'|t,
+        'href':  {'route': 'entity.node.canonical', 'parameters': {'node': 1}
+        },
+      }
+    }
   }) }}
 {% endblock %}
 
@@ -30,7 +44,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div class="container">
+      <div id="proposals" class="container">
         <h3>{{ 'Proposals'|t }}</h3>
       </div>
       {{ drupal_view('dialogue_proposals', 'block_1', content.id) }}

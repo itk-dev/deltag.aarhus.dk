@@ -22,12 +22,16 @@
 {% elseif node_type == 'citizen_proposal' %}
   {% set node_type_class = 'text-citizen-proposal' %}
   {% set node_type_text = 'Citizen proposal'|t %}
+{% elseif node_type == 'dialogue' %}
+  {% set node_type_class = 'text-dialogue' %}
+  {% set node_type_text = 'Dialogue'|t %}
 {% endif %}
 
 {# Set image for Hearing, Project, Public meeting or Static page #}
 {% set image = content.field_media_image[0]['#media']
   |default(content.field_project_image[0]['#media'])
   |default(content.field_media_image_single[0]['#media'])
+  |default(content.field_top_images[0]['#media'])
   |default(false) %}
 
 {# Use default image if no image found. #}

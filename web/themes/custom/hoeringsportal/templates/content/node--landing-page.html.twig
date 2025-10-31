@@ -2,14 +2,14 @@
 
 {% block content_top %}
   {# Header #}
-
-  {{  include(directory ~ '/templates/components/header-default.html.twig', {
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
     images: {0: node.field_media_image_single.entity.field_itk_media_image_upload.entity},
     category: content.field_header_label,
     title: node.label,
     description: content.field_teaser,
-    area: '',
-    image_half: true}
+    tags_fields: {},
+    image_half: true,
+    shortcuts: {}}
   ) }}
 {% endblock %}
 
