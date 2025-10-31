@@ -1,0 +1,11 @@
+{# Template for Project teaser extending base-card #}
+
+{% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
+
+{% block card_content %}
+  {{ node.field_teaser.value|truncate(95, true, true) }}
+{% endblock %}
+{% block card_footer %}
+  <span>{{ content.field_project_category }}</span>
+  <span class="is-comma-separated">{{ content.field_area }}</span>
+{% endblock %}

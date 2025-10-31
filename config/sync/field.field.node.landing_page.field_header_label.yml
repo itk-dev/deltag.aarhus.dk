@@ -1,0 +1,19 @@
+uuid: e344c1a9-c6bf-4a9f-871d-2180d74ff354
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header_label
+    - node.type.landing_page
+id: node.landing_page.field_header_label
+field_name: field_header_label
+entity_type: node
+bundle: landing_page
+label: 'Header label'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

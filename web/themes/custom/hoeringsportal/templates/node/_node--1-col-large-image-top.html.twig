@@ -1,6 +1,6 @@
 {% block content_top %}
   {# Header #}
-  {{ include(directory ~ '/templates/components/header-project.html.twig', {
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
     images: {0: node.field_project_image},
     category: content.field_project_category,
     title: node.label,
