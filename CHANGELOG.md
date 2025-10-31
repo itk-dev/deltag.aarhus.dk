@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-553](https://github.com/itk-dev/deltag.aarhus.dk/pull/553)
+  * Add animated svg icons comment, reply, thumbs-up
+
 * [PR-552](https://github.com/itk-dev/deltag.aarhus.dk/pull/552)
   * Add styling for dialog proposal categories
 
