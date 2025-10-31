@@ -50,7 +50,7 @@
 
   <div class="d-flex justify-content-between">
     {{ exposed }}
-    <div><a href="{{ path('node.add', {'node_type': 'dialogue_proposal', 'dialogue': view.args[0]}) }}" class="btn btn-primary btn-sm rounded-2">{{ 'Participate with your proposal'|t }}</a></div>
+    <div><a href="{{ path('node.add', {node_type: 'dialogue_proposal', dialogue: view.args[0]}) }}" class="btn btn-primary btn-sm rounded-2">{{ 'Participate with your proposal'|t }}</a></div>
   </div>
   {{ attachment_before }}
 
