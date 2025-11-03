@@ -90,6 +90,7 @@
 
     .form-checkboxes {
       display: flex;
+      flex-wrap: wrap;
       gap: $spacer;
       order: 2;
     }
