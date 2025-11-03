@@ -28,6 +28,18 @@
   }
 }
 
+@keyframes rotatePop {
+  50% {
+    transform: rotate(10deg) translateX(-1px);
+  }
+  75% {
+    transform: scale(1.2) rotate(-10deg) translateX(-2px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes stretchX {
   50% {
     transform: scaleX(1.1);

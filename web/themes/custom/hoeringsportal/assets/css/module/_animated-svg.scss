@@ -9,6 +9,7 @@ a:has(svg) {
 
   display: flex;
   gap: var(--sp2);
+  text-decoration: none;
 
   svg {
     /* Comment */
@@ -38,7 +39,7 @@ a:has(svg) {
 
       path:first-of-type {
         transform-origin: center left;
-        transition: stroke 200ms var(--ease-spring-glide);
+        transition: fill 200ms var(--ease-spring-glide);
       }
     }
   }
@@ -68,15 +69,34 @@ a:has(svg) {
     /* Thumbs-up hover */
     g.thumbs-up {
       path:last-child {
-        transition: fill 200ms 300ms var(--ease-spring-lazy);
+        transition: fill 200ms 200ms var(--ease-spring-lazy);
         fill: var(--bs-primary);
       }
-
       path:first-of-type {
-        animation:
-          pop 400ms var(--ease-spring-lazy),
-          rotate 200ms var(--ease-spring-lazy);
+        transform: rotate(-3deg);
+        transition: transform 200ms var(--ease-spring-lazy);
       }
+    }
+  }
+}
+
+/* Click on <a> with thumbs-up svg */
+.liked a:has(svg) {
+  g.thumbs-up {
+    path:first-of-type {
+      animation: rotatePop 500ms var(--ease-spring-lazy);
+    }
+    path:last-child {
+      fill: var(--bs-primary);
+    }
+  }
+}
+
+/* Thumbs-up already set*/
+.action-unflag a:has(svg) {
+  g.thumbs-up {
+    path:last-child {
+      fill: var(--bs-primary);
     }
   }
 }
