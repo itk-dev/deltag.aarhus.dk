@@ -372,7 +372,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
                 'subevent' => $subEventInfo['pretix_subevent_id'] ?? [],
                 'attendee_name' => sprintf('Attendee %d', $index),
                 'attendee_email' => sprintf('test%03d@example.com', $index),
-                'item' => reset($subEventInfo['data']['subevent']['item_price_overrides'])['item'],
+                'item' => isset($subEventInfo['data']['subevent']['item_price_overrides']) ? reset($subEventInfo['data']['subevent']['item_price_overrides'])['item'] : [],
               ],
               range(1, $line['quantity'] ?? 1),
             ),
