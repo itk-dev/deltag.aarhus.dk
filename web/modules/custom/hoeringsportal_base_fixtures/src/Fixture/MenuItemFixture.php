@@ -6,6 +6,8 @@ use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
 use Drupal\hoeringsportal_citizen_proposal_fixtures\Fixture\CitizenProposalLandingPageFixture;
+use Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueFixture;
+use Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueLandingPageFixture;
 use Drupal\hoeringsportal_hearing_fixtures\Fixture\HearingLandingPageFixture;
 use Drupal\hoeringsportal_project_fixtures\Fixture\ProjectLandingPageFixture;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
@@ -29,6 +31,7 @@ class MenuItemFixture extends AbstractFixture implements DependentFixtureInterfa
       'node:landing_page:Proposals',
       'node:landing_page:Public meetings',
       'node:landing_page:Projects',
+      'node:landing_page:Dialogue proposals',
     ] as $weight => $name) {
       $page = $this->getReference($name);
       MenuLinkContent::create([
@@ -63,6 +66,7 @@ class MenuItemFixture extends AbstractFixture implements DependentFixtureInterfa
       HearingLandingPageFixture::class,
       CitizenProposalLandingPageFixture::class,
       ProjectLandingPageFixture::class,
+      DialogueLandingPageFixture::class,
       PublicMeetingFixture::class,
     ];
   }
