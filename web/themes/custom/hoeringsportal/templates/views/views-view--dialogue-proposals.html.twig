@@ -48,9 +48,13 @@
     </header>
   {% endif %}
 
+  {% set nodeConfig = drupal_entity('node', view.args[0])['#node'].field_dialogue_proposal_config.value %}
+
   <div class="d-flex justify-content-between">
     {{ exposed }}
-    <div><a href="{{ path('node.add', {'node_type': 'dialogue_proposal', 'dialogue': view.args[0]}) }}" class="btn btn-primary btn-sm rounded-2">{{ 'Participate with your proposal'|t }}</a></div>
+    {% if 'public_proposals' in nodeConfig %}
+      <div><a href="{{ path('node.add', {'node_type': 'dialogue_proposal', 'dialogue': view.args[0]}) }}" class="btn btn-primary btn-sm rounded-2">{{ 'Participate with your proposal'|t }}</a></div>
+    {% endif %}
   </div>
   {{ attachment_before }}
 
