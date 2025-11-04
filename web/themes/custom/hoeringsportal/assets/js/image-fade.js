@@ -1,10 +1,10 @@
 require("../css/module/_image-fade.scss");
 
 let imgFadeSelector = document.querySelector(".image-fade");
-let firstImage = document.getElementById("img-0")
+let firstImage = document.getElementById("img-0");
 
 if (imgFadeSelector && firstImage) {
-  setInterval(nextImage,  imgFadeSelector.dataset.imageDuration ?? 15000);
+  setInterval(nextImage, imgFadeSelector.dataset.imageDuration ?? 15000);
   firstImage.classList.add("show");
 }
 

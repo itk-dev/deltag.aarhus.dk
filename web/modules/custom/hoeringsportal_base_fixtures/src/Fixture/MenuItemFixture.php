@@ -6,7 +6,6 @@ use Drupal\content_fixtures\Fixture\AbstractFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
 use Drupal\hoeringsportal_citizen_proposal_fixtures\Fixture\CitizenProposalLandingPageFixture;
-use Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueFixture;
 use Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueLandingPageFixture;
 use Drupal\hoeringsportal_hearing_fixtures\Fixture\HearingLandingPageFixture;
 use Drupal\hoeringsportal_project_fixtures\Fixture\ProjectLandingPageFixture;

@@ -13,9 +13,11 @@ use Drupal\node\Entity\Node;
  *
  * @package Drupal\hoeringsportal_dialogue_fixtures\Fixture
  */
-class DialogueProposalFixture extends AbstractFixture implements FixtureGroupInterface, DependentFixtureInterface
-{
+class DialogueProposalFixture extends AbstractFixture implements FixtureGroupInterface, DependentFixtureInterface {
 
+  /**
+   * {@inheritdoc}
+   */
   public function load() {
     $node = Node::create([
       'type' => 'dialogue_proposal',
@@ -28,7 +30,7 @@ Dignissim ac sapien potenti ipsum nam penatibus leo. Facilisi potenti laoreet et
         $this->getReference('dialogue_proposal_categories:Cykelstier'),
         $this->getReference('dialogue_proposal_categories:Regnvandsopsamling'),
         $this->getReference('dialogue_proposal_categories:Bæredygtig Belysning'),
-        $this->getReference('dialogue_proposal_categories:Affaldshåndtering')
+        $this->getReference('dialogue_proposal_categories:Affaldshåndtering'),
       ],
       'field_dialogue' => $this->getReference('node:dialogue:Test Dialogue - proposals full'),
       'field_image_upload' => ['target_id' => $this->getReference('file:large1.jpg')->id()],
@@ -54,7 +56,7 @@ Dignissim ac sapien potenti ipsum nam penatibus leo. Facilisi potenti laoreet et
         $this->getReference('dialogue_proposal_categories:Cykelstier'),
         $this->getReference('dialogue_proposal_categories:Regnvandsopsamling'),
         $this->getReference('dialogue_proposal_categories:Bæredygtig Belysning'),
-        $this->getReference('dialogue_proposal_categories:Affaldshåndtering')
+        $this->getReference('dialogue_proposal_categories:Affaldshåndtering'),
       ],
       'field_dialogue' => $this->getReference('node:dialogue:Test Dialogue - proposals full'),
       'field_image_upload' => ['target_id' => $this->getReference('file:trafic.jpg')->id()],
@@ -80,7 +82,7 @@ Dignissim ac sapien potenti ipsum nam penatibus leo. Facilisi potenti laoreet et
         $this->getReference('dialogue_proposal_categories:Cykelstier'),
         $this->getReference('dialogue_proposal_categories:Regnvandsopsamling'),
         $this->getReference('dialogue_proposal_categories:Bæredygtig Belysning'),
-        $this->getReference('dialogue_proposal_categories:Affaldshåndtering')
+        $this->getReference('dialogue_proposal_categories:Affaldshåndtering'),
       ],
       'field_dialogue' => $this->getReference('node:dialogue:Test Dialogue - proposals full'),
       'field_image_upload' => ['target_id' => $this->getReference('file:large2.jpg')->id()],
@@ -128,7 +130,7 @@ Dignissim ac sapien potenti ipsum nam penatibus leo. Facilisi potenti laoreet et
         $this->getReference('dialogue_proposal_categories:Cykelstier'),
         $this->getReference('dialogue_proposal_categories:Regnvandsopsamling'),
         $this->getReference('dialogue_proposal_categories:Bæredygtig Belysning'),
-        $this->getReference('dialogue_proposal_categories:Affaldshåndtering')
+        $this->getReference('dialogue_proposal_categories:Affaldshåndtering'),
       ],
       'field_dialogue' => $this->getReference('node:dialogue:Test Dialogue - proposals simple, private'),
     ]);

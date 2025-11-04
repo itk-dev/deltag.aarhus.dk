@@ -31,7 +31,3 @@ function hoeringsportal_dialogue_node_presave(EntityInterface $entity): void {
 function hoeringsportal_dialogue_form_node_dialogue_proposal_form_alter(array &$form, FormStateInterface $form_state) {
   Drupal::service(DialogueHelper::class)->dialogueProposalFormAlter($form, $form_state);
 }
-
-function hoeringsportal_dialogue_form_alter(array &$form, FormStateInterface $form_state, $id) {
-  $a = 1;
-}

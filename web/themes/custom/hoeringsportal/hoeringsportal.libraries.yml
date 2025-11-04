@@ -25,5 +25,5 @@ map-display:
     theme:
       build/show-map.css: {}
   js:
-    build/show-map.js: {preprocess: false}
-    build/runtime.js: {preprocess: false}
+    build/show-map.js: { preprocess: false }
+    build/runtime.js: { preprocess: false }

@@ -12,14 +12,16 @@ use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
  *
  * @package Drupal\hoeringsportal_dialogue_fixtures\Fixture
  */
-class CommentFixture extends AbstractFixture implements FixtureGroupInterface, DependentFixtureInterface
-{
+class CommentFixture extends AbstractFixture implements FixtureGroupInterface, DependentFixtureInterface {
 
+  /**
+   * {@inheritdoc}
+   */
   public function load() {
     $comment = Comment::create([
-        'comment_type' => 'early_inclusion_comment',
-        'field_name' => 'field_comments'
-      ])
+      'comment_type' => 'early_inclusion_comment',
+      'field_name' => 'field_comments',
+    ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
       ->set('entity_id', $this->getReference('node:dialogue_proposal:Titel på mit forslag'))
@@ -32,7 +34,7 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -46,7 +48,7 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -61,7 +63,7 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -75,7 +77,7 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -89,7 +91,7 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -103,7 +105,7 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -115,10 +117,9 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
     $comment->save();
     $this->addReference('comment:early_inclusion_comment:7', $comment);
 
-
     $comment = Comment::create([
       'comment_type' => 'early_inclusion_comment',
-      'field_name' => 'field_comments'
+      'field_name' => 'field_comments',
     ])
       ->set('subject', '(No subject)')
       ->set('entity_type', 'node')
@@ -148,4 +149,3 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
   }
 
 }
-

@@ -176,6 +176,16 @@ function hoeringsportal_theme_suggestions_container_alter(array &$suggestions, a
   $suggestions[] = 'container__' . str_replace('-', '_', $variables['element']['#type']);
 }
 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function hoeringsportal_theme_suggestions_views_exposed_form_block_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'views_exposed_form__' . str_replace('-', '_', $variables['form']['#id']);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
 function hoeringsportal_theme_suggestions_views_exposed_form_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'views_exposed_form__' . str_replace('-', '_', $variables['form']['#id']);
 }

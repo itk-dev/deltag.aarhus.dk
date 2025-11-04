@@ -2,15 +2,12 @@
 
 namespace Drupal\hoeringsportal_dialogue\Helper;
 
-use _PHPStan_2d0955352\Symfony\Component\Finder\Exception\AccessDeniedException;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\node\Entity\Node;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -22,31 +19,37 @@ class DialogueHelper {
   use StringTranslationTrait;
 
   /**
-   * @param RequestStack $requestStack
+   * The dialogue helper constructor.
+   *
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The enity type manager.
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   The current user account.
    */
   public function __construct(
     protected RequestStack $requestStack,
     protected EntityTypeManagerInterface $entityTypeManager,
-    protected AccountInterface $account
-  )
-  {
+    protected AccountInterface $account,
+  ) {
   }
 
   /**
    * Implements access check for dialogue proposal creation.
    *
-   * @param AccountInterface $account
-   * The current user
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   The current user.
    * @param array $context
-   * The context.
-   * @param $entity_bundle
-   * The entity being created.
+   *   The context.
+   * @param string $entity_bundle
+   *   The entity being created.
    *
-   * @return AccessResult
-   * The access result.
+   * @return \Drupal\Core\Access\AccessResult
+   *   The access result.
+   *   /
    */
-  public function dialogueProposalCreateAccess(AccountInterface $account, array $context, $entity_bundle): AccessResult {
+  public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
     if ('dialogue_proposal' === $entity_bundle) {
       $parentNode = $this->getParentNode();
       $config = $this->getProposalConfig($parentNode);
@@ -55,7 +58,8 @@ class DialogueHelper {
         return AccessResult::forbiddenIf($account->isAnonymous());
       }
 
-      // Refuse to allow dialogue proposal creation if the parent dialogue is not set or not a dialogue.
+      // Refuse to allow dialogue proposal creation if the parent dialogue is
+      // not set or not a dialogue.
       return AccessResult::forbiddenIf(!$parentNode || !($parentNode->bundle() === 'dialogue'));
     }
   }
@@ -63,14 +67,14 @@ class DialogueHelper {
   /**
    * Implements presave for dialogue proposal creation.
    *
-   * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\EntityInterface $entity
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
     if ('dialogue_proposal' === $entity->bundle()) {
       $parentNode = $this->getParentNode();
       if ($parentNode) {
-        /**** @var Node $entity */
+        /**** @var \Drupal\node\Entity\Node $entity */
         $entity->set('field_dialogue', ['target_id' => $parentNode->id()]);
       }
     }
@@ -81,15 +85,14 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    */
-  public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void
-  {
+  public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
     // Disableable form cache to prevent serialization error on file upload.
     $form_state->disableCache();
 
-    foreach($form as $key => $formPart) {
+    foreach ($form as $key => $formPart) {
       if (is_array($formPart) && isset($formPart['widget'])) {
         $this->modifyRequired($form, $key, $formPart['widget']);
       }
@@ -113,8 +116,7 @@ class DialogueHelper {
     $form['actions']['submit']['#value'] = t('Send your proposal');
     $form['field_dialogue']['#access'] = FALSE;
 
-
-    /** @var Node $parent */
+    /** @var \Drupal\node\Entity\Node $parent */
     $parent = $this->getParentNode();
 
     if ($parent) {
@@ -135,8 +137,8 @@ class DialogueHelper {
 
       $parentZoomSelection = $parent->get('field_dialogue_proposal_zoom')->getValue();
       $form['field_location']['widget'][0]['point-widget']['#attributes']['data-map-config'] = json_encode([
-        'x' => $coordinates[0] ?? null,
-        'y' => $coordinates[1] ?? null,
+        'x' => $coordinates[0] ?? NULL,
+        'y' => $coordinates[1] ?? NULL,
         'zoomLevel' => $parentZoomSelection[0]['value'] ?? 11,
       ]);
     }
@@ -144,43 +146,53 @@ class DialogueHelper {
   }
 
   /**
-   * Custom submit handler for dialog proposal form
+   * Custom submit handler for dialog proposal form.
    *
    * @param array $form
    *   The form.
-   * @param FormStateInterface $form_state
-   *  The state of the form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
    */
-  public function formAlterSubmit(array &$form, FormStateInterface $form_state): void
-  {
-      $parentNode = $this->getParentNode();
+  public function formAlterSubmit(array &$form, FormStateInterface $form_state): void {
+    $parentNode = $this->getParentNode();
 
-      if ($parentNode) {
-        $form_state->setRedirect('entity.node.canonical', ['node' => $parentNode->id()]);
-      }
+    if ($parentNode) {
+      $form_state->setRedirect('entity.node.canonical', ['node' => $parentNode->id()]);
+    }
   }
 
   /**
    * Get parent node.
    *
-   * @return EntityInterface|null
+   * @return \Drupal\Core\Entity\EntityInterface|null
+   *   The parent node.
    */
-  private function getParentNode(): ?EntityInterface
-  {
+  private function getParentNode(): ?EntityInterface {
     try {
       $parentId = $this->requestStack->getCurrentRequest()->query->get('dialogue');
       if ($parentId && is_numeric($parentId)) {
         return $this->entityTypeManager->getStorage('node')->load($parentId);
       }
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       return NULL;
     }
 
     return NULL;
   }
 
-  private function getProposalConfig($parent) {
+  /**
+   * Get proposal config related to dialogue.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $parent
+   *   The parent node.
+   *
+   * @return array
+   *   the proposal config.
+   */
+  private function getProposalConfig(EntityInterface $parent): array {
     $config = [];
+    /** @var \Drupal\node\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
     foreach ($parentConfig as $key => $value) {
@@ -190,14 +202,23 @@ class DialogueHelper {
     return $config;
   }
 
-  private function modifyRequired(&$form, $key, $widget): void
-  {
+  /**
+   * Change display of required fields.
+   *
+   * @param array $form
+   *   The full form.
+   * @param string $key
+   *   The form field.
+   * @param array $widget
+   *   The form widget to change.
+   */
+  private function modifyRequired(array &$form, string $key, array $widget): void {
     if (!isset($widget['#required']) || !$widget['#required']) {
       if (isset($widget['#title'])) {
-        $widget['#title'] = $widget['#title'] . '<span class="optional">(' . $this->t('optional') .')</span>';
+        $widget['#title'] = $widget['#title'] . '<span class="optional">(' . $this->t('optional') . ')</span>';
       }
       if (isset($widget[0]['#title'])) {
-        $widget[0]['#title'] = $widget[0]['#title'] . '<span class="optional">(' . $this->t('optional') .')</span>';
+        $widget[0]['#title'] = $widget[0]['#title'] . '<span class="optional">(' . $this->t('optional') . ')</span>';
       }
     }
 

@@ -21,8 +21,17 @@ class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
     return FALSE;
   }
 
-  public function determineActiveTheme(RouteMatchInterface $route_match)
-  {
+  /**
+   * Determine the active theme.
+   *
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   *   The route.
+   *
+   * @return string
+   *   Machine name of theme.
+   */
+  public function determineActiveTheme(RouteMatchInterface $route_match) {
     return 'hoeringsportal';
   }
+
 }

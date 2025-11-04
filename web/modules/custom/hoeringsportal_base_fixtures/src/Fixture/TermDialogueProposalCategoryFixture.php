@@ -26,7 +26,7 @@ class TermDialogueProposalCategoryFixture extends AbstractTaxonomyTermFixture {
     'Energi Effektivisering',
     'Grønne Materialer',
     'Affaldshåndtering',
-    'Vedvarende Energi'
+    'Vedvarende Energi',
   ];
 
 }

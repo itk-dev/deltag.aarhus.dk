@@ -90,5 +90,5 @@ library.add(
 Drupal.behaviors.iconToSvg = {
   attach: function (context, settings) {
     dom.i2svg();
-  }
+  },
 };

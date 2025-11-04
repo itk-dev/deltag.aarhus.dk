@@ -1,13 +1,17 @@
 Drupal.behaviors.modifyDialogueForm = {
   attach: function (context, settings) {
-    once('modifyDialogueForm', '.file-resup', context).forEach(
+    once("modifyDialogueForm", ".file-resup", context).forEach(
       function (element) {
-        let imageDescription = document.querySelector('.field--name-field-image-upload .form-item > .description')
-        let dropArea = document.querySelector('.field--name-field-image-upload .form-item .file-resup-wrapper .drop-message')
+        let imageDescription = document.querySelector(
+          ".field--name-field-image-upload .form-item > .description",
+        );
+        let dropArea = document.querySelector(
+          ".field--name-field-image-upload .form-item .file-resup-wrapper .drop-message",
+        );
 
-        imageDescription.classList.toggle('d-block');
-        dropArea.append(imageDescription)
-      }
+        imageDescription.classList.toggle("d-block");
+        dropArea.append(imageDescription);
+      },
     );
-  }
+  },
 };
