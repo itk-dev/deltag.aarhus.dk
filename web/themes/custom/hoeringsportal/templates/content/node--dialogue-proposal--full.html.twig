@@ -1,4 +1,4 @@
-{% extends "@hoeringsportal/node/_node--1-col-large-image-top.html.twig" %}
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
 
 {% block content_top %}
 
@@ -10,9 +10,9 @@
     <div class="row justify-content-center pt-5">
       <div class="proposal-layout">
         <div class="breadcrumb mb-3">
-          <span class="me-2">{{ 'Early inclusion'|t}}</span>/
+          <span class="me-2">{{ 'Early inclusion'|t }}</span>/
           <span class="mx-2">
-            <a href="{{ path('entity.node.canonical', {'node': node.field_dialogue.entity.id}) }}">{{ node.field_dialogue.entity.label }}</a>
+            <a href="{{ path('entity.node.canonical', {node: node.field_dialogue.entity.id}) }}">{{ node.field_dialogue.entity.label }}</a>
           </span>/
           <span class="mx-2">{{ label }}</span>
         </div>
@@ -24,7 +24,7 @@
                 <span class="flag-wrapper">{{ content.flag_support_proposal }}</span>
               </div>
               <div>
-                <span class="me-2"><i class="me-2 fa-solid fa-comments"></i>{{ node.field_comments.comment_count }}</span><span>{{ 'Comments'|t }}</span>
+                <a href="#comments" class="text-secondary">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-comment.svg.html.twig') }}<span>{{ node.field_comments.comment_count }}</span><span>{{ 'Comments'|t }}</span></a>
               </div>
             </div>
           </div>

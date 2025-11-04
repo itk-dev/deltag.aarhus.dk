@@ -26,7 +26,7 @@
  * @see comment_preprocess_field()
  */
 #}
-<section{{ attributes.addClass('comments') }}>
+<section{{ attributes.addClass('comments') }} id="comments">
   {% if comment_form %}
     <h2{{ content_attributes }}>{{ 'Add new comment'|t }}</h2>
     {{ comment_form }}
