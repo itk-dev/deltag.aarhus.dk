@@ -55,7 +55,7 @@ BODY,
         $this->getReference('dialogue_proposal_categories:Parkeringspladser for elbiler'),
         $this->getReference('dialogue_proposal_categories:Vedvarende Energi'),
       ],
-      'field_dialogue_proposal_config' => ['public_proposals', 'use_image_on_proposals', 'use_map_on_proposals'],
+      'field_dialogue_proposal_config' => [['value' => 'public_proposals'], ['value' => 'use_image_on_proposals'], ['value' => 'use_map_on_proposals']],
       'field_dialogue_proposal_location' => [
         'type' => 'point',
         'data' => '{"type":"Feature","properties":[],"geometry":{"type":"Point","coordinates":[10.2118737466156,56.15312642194584]}}',
