@@ -47,7 +47,6 @@ class DialogueHelper {
    *
    * @return \Drupal\Core\Access\AccessResult
    *   The access result.
-   *   /
    */
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
     if ('dialogue_proposal' === $entity_bundle) {
@@ -62,6 +61,8 @@ class DialogueHelper {
       // not set or not a dialogue.
       return AccessResult::forbiddenIf(!$parentNode || !($parentNode->bundle() === 'dialogue'));
     }
+
+    return AccessResult::neutral();
   }
 
   /**
