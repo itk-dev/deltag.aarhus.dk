@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
+use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -68,7 +69,7 @@ class DialogueHelper {
   /**
    * Implements presave for dialogue proposal creation.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
+   * @param EntityInterface $entity
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
@@ -86,7 +87,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The state of the form.
    */
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
@@ -151,7 +152,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The state of the form.
    */
   public function formAlterSubmit(array &$form, FormStateInterface $form_state): void {
@@ -165,7 +166,7 @@ class DialogueHelper {
   /**
    * Get parent node.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|null
+   * @return EntityInterface|null
    *   The parent node.
    */
   private function getParentNode(): ?EntityInterface {
@@ -185,22 +186,17 @@ class DialogueHelper {
   /**
    * Get proposal config related to dialogue.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $parent
+   * @param EntityInterface $parent
    *   The parent node.
    *
    * @return array
    *   the proposal config.
    */
   private function getProposalConfig(EntityInterface $parent): array {
-    $config = [];
-    /** @var \Drupal\node\NodeInterface $parent */
+    /** @var NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
-    foreach ($parentConfig as $key => $value) {
-      $config[$key] = $value['value'];
-    }
-
-    return $config;
+    return array_map(static fn(array $value) => $value['value'], $parentConfig);
   }
 
   /**
