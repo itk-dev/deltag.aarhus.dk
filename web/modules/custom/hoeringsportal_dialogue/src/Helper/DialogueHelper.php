@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class DialogueHelper {
 
+  public const DIALOGUE_PROPOSAL_TYPE = 'dialogue_proposal';
+
   use StringTranslationTrait;
 
   /**
@@ -49,7 +51,7 @@ class DialogueHelper {
    *   The access result.
    */
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
-    if ('dialogue_proposal' === $entity_bundle) {
+    if ($this::DIALOGUE_PROPOSAL_TYPE === $entity_bundle) {
       $parentNode = $this->getParentNode();
       $config = $this->getProposalConfig($parentNode);
 
@@ -72,7 +74,7 @@ class DialogueHelper {
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
-    if ('dialogue_proposal' === $entity->bundle()) {
+    if ($this::DIALOGUE_PROPOSAL_TYPE === $entity->bundle()) {
       $parentNode = $this->getParentNode();
       if ($parentNode) {
         /**** @var \Drupal\node\Entity\Node $entity */

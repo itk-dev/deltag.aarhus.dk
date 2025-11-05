@@ -4,6 +4,7 @@ namespace Drupal\hoeringsportal_dialogue\Theme;
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Theme\ThemeNegotiatorInterface;
+use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 
 /**
  * Theme negotiator for dialogue proposal.
@@ -11,10 +12,22 @@ use Drupal\Core\Theme\ThemeNegotiatorInterface;
 class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
 
   /**
+   * The dialogue negotiator constructor.
+   *
+   * @param DialogueHelper $dialogueHelper
+   *   The request stack.
+   */
+  public function __construct(
+    protected DialogueHelper $dialogueHelper,
+  ) {
+  }
+
+  /**
    * {@inheritdoc}
    */
-  public function applies(RouteMatchInterface $route_match) {
-    if ($route_match->getRouteName() == 'node.add' && $route_match->getParameter('node_type')->id() == 'dialogue_proposal') {
+  public function applies(RouteMatchInterface $route_match): bool
+  {
+    if ($route_match->getRouteName() == 'node.add' && $route_match->getParameter('node_type')->id() == $this->dialogueHelper::DIALOGUE_PROPOSAL_TYPE) {
       return TRUE;
     }
 
@@ -30,7 +43,8 @@ class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
    * @return string
    *   Machine name of theme.
    */
-  public function determineActiveTheme(RouteMatchInterface $route_match) {
+  public function determineActiveTheme(RouteMatchInterface $route_match): string
+  {
     return 'hoeringsportal';
   }
 
