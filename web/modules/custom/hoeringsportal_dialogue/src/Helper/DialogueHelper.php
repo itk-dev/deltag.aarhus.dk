@@ -90,7 +90,7 @@ class DialogueHelper {
    *   The state of the form.
    */
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
-    // Disableable form cache to prevent serialization error on file upload.
+    // Disable form cache to prevent serialization error on file upload.
     $form_state->disableCache();
 
     foreach ($form as $key => $formPart) {
