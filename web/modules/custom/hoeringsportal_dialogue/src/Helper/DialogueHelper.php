@@ -9,7 +9,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
-use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -71,7 +70,7 @@ class DialogueHelper {
   /**
    * Implements presave for dialogue proposal creation.
    *
-   * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\EntityInterface $entity
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
@@ -89,7 +88,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    */
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
@@ -136,8 +135,8 @@ class DialogueHelper {
 
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
 
-      $parentPoint = json_decode($parentLocationSelection[0]['point']);
-      $coordinates = $parentPoint->features[0]->geometry->coordinates;
+      $parentPoint = json_decode($parentLocationSelection[0]['point'] ?? '');
+      $coordinates = $parentPoint->features[0]->geometry->coordinates ?? NULL;
 
       $parentZoomSelection = $parent->get('field_dialogue_proposal_zoom')->getValue();
       $form['field_location']['widget'][0]['point-widget']['#attributes']['data-map-config'] = json_encode([
@@ -154,7 +153,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    */
   public function formAlterSubmit(array &$form, FormStateInterface $form_state): void {
@@ -168,7 +167,7 @@ class DialogueHelper {
   /**
    * Get parent node.
    *
-   * @return EntityInterface|null
+   * @return \Drupal\Core\Entity\EntityInterface|null
    *   The parent node.
    */
   private function getParentNode(): ?EntityInterface {
@@ -188,14 +187,14 @@ class DialogueHelper {
   /**
    * Get proposal config related to dialogue.
    *
-   * @param EntityInterface $parent
+   * @param \Drupal\Core\Entity\EntityInterface $parent
    *   The parent node.
    *
    * @return array
    *   the proposal config.
    */
   private function getProposalConfig(EntityInterface $parent): array {
-    /** @var NodeInterface $parent */
+    /** @var \Drupal\node\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
     return array_map(static fn(array $value) => $value['value'], $parentConfig);

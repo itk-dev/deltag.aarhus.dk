@@ -18,6 +18,7 @@ function nextImage() {
   // Compute next image
   curImage++;
   if (curImage > numImages - 1) {
+    // Reset to first image
     curImage = 0;
   }
 

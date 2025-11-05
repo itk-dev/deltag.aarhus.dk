@@ -14,7 +14,7 @@ class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
   /**
    * The dialogue negotiator constructor.
    *
-   * @param DialogueHelper $dialogueHelper
+   * @param \Drupal\hoeringsportal_dialogue\Helper\DialogueHelper $dialogueHelper
    *   The request stack.
    */
   public function __construct(
@@ -25,8 +25,7 @@ class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
   /**
    * {@inheritdoc}
    */
-  public function applies(RouteMatchInterface $route_match): bool
-  {
+  public function applies(RouteMatchInterface $route_match): bool {
     if ('node.add' === $route_match->getRouteName() && $this->dialogueHelper::DIALOGUE_PROPOSAL_TYPE === $route_match->getParameter('node_type')->id()) {
       return TRUE;
     }
@@ -43,8 +42,7 @@ class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
    * @return string
    *   Machine name of theme.
    */
-  public function determineActiveTheme(RouteMatchInterface $route_match): string
-  {
+  public function determineActiveTheme(RouteMatchInterface $route_match): string {
     return 'hoeringsportal';
   }
 
