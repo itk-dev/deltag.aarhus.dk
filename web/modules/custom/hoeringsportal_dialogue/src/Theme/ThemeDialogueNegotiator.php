@@ -14,7 +14,7 @@ class ThemeDialogueNegotiator implements ThemeNegotiatorInterface {
    * {@inheritdoc}
    */
   public function applies(RouteMatchInterface $route_match) {
-    if ($route_match->getRouteName() == 'node.add' && $route_match->getParameter('node_type')->id() == 'dialogue_proposal') {
+    if ('node.add' === $route_match->getRouteName() && 'dialogue_proposal' === $route_match->getParameter('node_type')->id()) {
       return TRUE;
     }
 
