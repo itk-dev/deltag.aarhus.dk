@@ -27,14 +27,34 @@ const project = (geojson, fromProjection, toProjection) => {
   return geojson
 }
 
+const defaultMapConfig = (function () {
+  const widget = document.querySelector('.septima-widget')
+  if (widget.parentElement && widget.parentElement.getAttribute('data-map-config')) {
+    const config = widget.parentElement.getAttribute('data-map-config')
+    const configObj = JSON.parse(config)
+    const transformedCoordinates = proj4('EPSG:4326', 'EPSG:25832', [configObj.x, configObj.y])
+    if (transformedCoordinates) {
+      return {
+        'x': transformedCoordinates[0],
+        'y': transformedCoordinates[1],
+        'zoomLevel': configObj.zoomLevel
+      }
+    }
+  }
+
+  return {
+    'x': null,
+    'y': null,
+    'zoomLevel': 12
+  }
+}())
+
 window.addEventListener('load', function () {
   const config = {
     'map': {
       'maxZoomLevel': 1,
       'minZoomLevel': 22,
-      'view': {
-        'zoomLevel': 12
-      },
+      'view': defaultMapConfig,
       'layer': [
         {
           'namedlayer': '#osm'

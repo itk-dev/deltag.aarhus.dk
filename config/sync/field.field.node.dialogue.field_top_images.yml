@@ -1,0 +1,29 @@
+uuid: 14723400-9df1-44dc-857c-e3781286d7a8
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_top_images
+    - media.type.image
+    - node.type.dialogue
+id: node.dialogue.field_top_images
+field_name: field_top_images
+entity_type: node
+bundle: dialogue
+label: 'Top images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

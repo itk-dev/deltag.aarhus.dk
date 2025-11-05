@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b414c55f416209302d2d1f1f78549451",
+    "content-hash": "fa1f35924a98cade3aa6db37ae3d0948",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3453,18 +3453,66 @@
             }
         },
         {
-            "name": "drupal/flag",
-            "version": "4.0.0-beta7",
+            "name": "drupal/file_resup",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/flag.git",
-                "reference": "8.x-4.0-beta7"
+                "url": "https://git.drupalcode.org/project/file_resup.git",
+                "reference": "2.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/flag-8.x-4.0-beta7.zip",
-                "reference": "8.x-4.0-beta7",
-                "shasum": "6f74fcaec0db3c54934cdf8f25acb67c0c2d7f07"
+                "url": "https://ftp.drupal.org/files/projects/file_resup-2.0.3.zip",
+                "reference": "2.0.3",
+                "shasum": "e10a6ad658beabef280953a9d0ee1df46dbdd318"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.3",
+                    "datestamp": "1741046701",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "anrikun",
+                    "homepage": "https://www.drupal.org/user/410199"
+                },
+                {
+                    "name": "tim bozeman",
+                    "homepage": "https://www.drupal.org/user/2241356"
+                }
+            ],
+            "description": "Allows users to add large files, multiple files, and resume uploads.",
+            "homepage": "https://www.drupal.org/project/file_resup",
+            "support": {
+                "source": "https://git.drupalcode.org/project/file_resup"
+            }
+        },
+        {
+            "name": "drupal/flag",
+            "version": "5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/flag.git",
+                "reference": "5.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/flag-5.0.1.zip",
+                "reference": "5.0.1",
+                "shasum": "8487a0d34b3c52f47d8af1631e1947497057f500"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
@@ -3472,11 +3520,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-4.0-beta7",
-                    "datestamp": "1743851261",
+                    "version": "5.0.1",
+                    "datestamp": "1757658472",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3687,6 +3735,76 @@
             "transport-options": {
                 "symlink": false,
                 "relative": true
+            }
+        },
+        {
+            "name": "drupal/honeypot",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/honeypot.git",
+                "reference": "2.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/honeypot-2.2.2.zip",
+                "reference": "2.2.2",
+                "shasum": "828872d31d1a2c37a818cacae7fcd77a60996c66"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "require-dev": {
+                "drupal/rules": "^4.0",
+                "drupal/webform": "^6.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.2",
+                    "datestamp": "1739854442",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Geerling",
+                    "homepage": "https://www.drupal.org/user/389011",
+                    "email": "geerlingguy@mac.com"
+                },
+                {
+                    "name": "manuel garcia",
+                    "homepage": "https://www.drupal.org/user/213194"
+                },
+                {
+                    "name": "tr",
+                    "homepage": "https://www.drupal.org/user/202830"
+                },
+                {
+                    "name": "vijaycs85",
+                    "homepage": "https://www.drupal.org/user/93488"
+                }
+            ],
+            "description": "Mitigates spam form submissions using the honeypot method.",
+            "homepage": "https://www.drupal.org/project/honeypot",
+            "keywords": [
+                "deterrent",
+                "form",
+                "honeypot",
+                "honeytrap",
+                "php",
+                "spam"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/honeypot",
+                "issues": "https://www.drupal.org/project/issues/honeypot"
             }
         },
         {
@@ -5283,6 +5401,62 @@
                 "source": "https://git.drupalcode.org/project/toolbar_visibility"
             },
             "time": "2024-12-10T15:53:09+00:00"
+        },
+        {
+            "name": "drupal/twig_extensions",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/twig_extensions.git",
+                "reference": "8.x-2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/twig_extensions-8.x-2.5.zip",
+                "reference": "8.x-2.5",
+                "shasum": "bdd02c598780cc448c209dfe2660b68b5fa7d308"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.5",
+                    "datestamp": "1749640515",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "dieterholvoet",
+                    "homepage": "https://www.drupal.org/user/3567222"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
+                },
+                {
+                    "name": "smulvih2",
+                    "homepage": "https://www.drupal.org/user/795442"
+                }
+            ],
+            "description": "Adds the twig/extensions package to Drupal, providing common additional features for Twig that do not directly belong in core.",
+            "homepage": "https://www.drupal.org/project/twig_extensions",
+            "support": {
+                "source": "https://git.drupalcode.org/project/twig_extensions"
+            }
         },
         {
             "name": "drupal/twig_tweak",
@@ -7128,6 +7302,49 @@
                 "source": "https://github.com/itk-dev/siteimprove-d8/tree/1.4.0"
             },
             "time": "2025-06-27T14:13:39+00:00"
+        },
+        {
+            "name": "itk-dev/itk_video",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/itk_video.git",
+                "reference": "2467441cea83fa8085605d59690242e30b71ab0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/itk_video/zipball/2467441cea83fa8085605d59690242e30b71ab0b",
+                "reference": "2467441cea83fa8085605d59690242e30b71ab0b",
+                "shasum": ""
+            },
+            "require": {
+                "drush/drush": "^12 || ^13",
+                "ext-dom": "*",
+                "psr/cache": "^3.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "ergebnis/composer-normalize": "^2.44",
+                "mglaman/phpstan-drupal": "^2.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Module that provides Video integration",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/itk-dev/itk_video/issues",
+                "source": "https://github.com/itk-dev/itk_video/tree/1.0.0"
+            },
+            "time": "2025-10-20T11:13:09+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
@@ -20865,7 +21082,6 @@
         "chx/drupal-issue-fork": 20,
         "drupal/email_registration": 5,
         "drupal/entityqueue": 15,
-        "drupal/flag": 15,
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,

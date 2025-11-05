@@ -1,0 +1,19 @@
+uuid: 66d58409-3170-4894-be89-b6c9db159023
+langcode: da
+status: true
+dependencies:
+  module:
+    - hoeringsportal_data
+    - node
+id: node.field_dialogue_proposal_location
+field_name: field_dialogue_proposal_location
+entity_type: node
+type: hoeringsportal_data_map
+settings: {  }
+module: hoeringsportal_data
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

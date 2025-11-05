@@ -1,0 +1,29 @@
+{# Main container #}
+<div class="container content__container">
+  <div class="row">
+    <div class="col-md-8 py-3 pt-md-5">
+      <span class="text-primary">{{ content.field_project_category }}</span>
+      <h1>{{ node.title.value }}</h1>
+      {% if content.field_teaser %}
+        <p class="fs-3">{{ content.field_teaser }}</p>
+      {% endif %}
+      {{ content|without('field_project_category', 'field_teaser', 'field_content_sections', 'published_at') }}
+    </div>
+    <div class="col-md-4 pt-md-3">
+      {{ content.field_aside_block }}
+    </div>
+  </div>
+</div>
+<div class="d-flex flex-column row-gap-3">
+  {{ content.field_content_sections }}
+</div>
+<div class="container">
+  <div class="row text-muted">
+    {{ content.published_at }}
+  </div>
+</div>
+
+{# Newsletter signup #}
+{% if node_newsletter %}
+  {{ include('@hoeringsportal/newsletter-bottom-link.html.twig') }}
+{% endif %}

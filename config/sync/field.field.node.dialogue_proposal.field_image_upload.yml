@@ -1,0 +1,44 @@
+uuid: 79f5d86f-f743-4057-b2e1-67476eab8caf
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_upload
+    - node.type.dialogue_proposal
+  module:
+    - file_resup
+    - image
+third_party_settings:
+  file_resup:
+    enabled: 1
+    max_upload_size: '10 MB'
+    auto_upload: 1
+id: node.dialogue_proposal.field_image_upload
+field_name: field_image_upload
+entity_type: node
+bundle: dialogue_proposal
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: dialogue_proposal
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: '10 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: true
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

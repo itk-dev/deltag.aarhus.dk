@@ -1,0 +1,37 @@
+uuid: ec2b860f-c2fb-471d-9577-6a8f8889c434
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.dialogue_proposal.field_comments
+    - field.field.node.dialogue_proposal.field_dialogue
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_category
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
+    - field.field.node.dialogue_proposal.field_image_upload
+    - field.field.node.dialogue_proposal.field_location
+    - node.type.dialogue_proposal
+  module:
+    - user
+id: node.dialogue_proposal.search_result
+targetEntityType: node
+bundle: dialogue_proposal
+mode: search_result
+content:
+  flag_support_proposal:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_comments: true
+  field_dialogue: true
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_descr: true
+  field_image_upload: true
+  field_location: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

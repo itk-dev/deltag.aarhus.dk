@@ -1,0 +1,30 @@
+uuid: 96bdb878-857c-4661-b30a-f19ce160d247
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dialogue_proposal_config
+field_name: field_dialogue_proposal_config
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: public_proposals
+      label: 'Open proposals for public'
+    -
+      value: use_map_on_proposals
+      label: 'Use map on proposals'
+    -
+      value: use_image_on_proposals
+      label: 'Use image on proposals'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,15 @@
+uuid: 13df67ae-1078-4867-991f-9f77003899d7
+langcode: da
+status: true
+dependencies:
+  config:
+    - flag.flag.support_comment
+  module:
+    - flag
+id: flag_action.support_comment_flag
+label: Like
+type: comment
+plugin: 'flag_action:support_comment_flag'
+configuration:
+  flag_id: support_comment
+  flag_action: flag

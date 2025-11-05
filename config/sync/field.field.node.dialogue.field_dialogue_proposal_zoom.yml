@@ -1,0 +1,21 @@
+uuid: a1e62b49-9169-422e-b2ae-c21a93d4ed50
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dialogue_proposal_zoom
+    - node.type.dialogue
+id: node.dialogue.field_dialogue_proposal_zoom
+field_name: field_dialogue_proposal_zoom
+entity_type: node
+bundle: dialogue
+label: 'Dialogue proposal zoom'
+description: 'Select the map zoom level on proposals. Higher numbers will zoom in. Default: 11'
+required: false
+translatable: false
+default_value:
+  -
+    value: '11'
+default_value_callback: ''
+settings: {  }
+field_type: string

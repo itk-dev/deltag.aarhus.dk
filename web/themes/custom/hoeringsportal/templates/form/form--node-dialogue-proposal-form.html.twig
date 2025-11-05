@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+
+<div class="container-fluid bg-white">
+  <div class="row justify-content-center pt-5">
+    <form{{ attributes.addClass('proposal-layout') }}>
+      <h1>{{ 'Create dialog proposal'|t }}</h1>
+      <p>
+        {{ 'Fill out the form and send your proposal so other people can interact with it.'|t }}
+      </p>
+      <div class="image-drag">
+        {{ children }}
+      </div>
+    </form>
+  </div>
+</div>

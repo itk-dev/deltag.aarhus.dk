@@ -96,6 +96,18 @@ BODY,
     $this->addReference('paragraph:content_list:all_public_meetings', $paragraph);
 
     $paragraph = Paragraph::create([
+      'type' => 'content_list',
+      'field_content_list' => [
+        'target_id' => 'all_early_inclusion',
+        'display_id' => 'default',
+        'data' => '',
+      ],
+      'field_list_title' => 'All Early Inclusion Elements',
+    ]);
+    $paragraph->save();
+    $this->addReference('paragraph:content_list:all_early_inclusion', $paragraph);
+
+    $paragraph = Paragraph::create([
       'type' => 'info_box',
       'field_content_block_text' => [
         'value' => <<<'BODY'

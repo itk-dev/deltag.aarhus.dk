@@ -1,0 +1,5 @@
+name: Hoeringsportal dialogue
+type: module
+description: "Dialogue functionality"
+package: Hoeringsportal
+core_version_requirement: ^10 || ^11

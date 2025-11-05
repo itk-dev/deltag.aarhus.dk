@@ -1,0 +1,53 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: node.field_top_images,
+    type: node.bundle,
+    title: node.label,
+    description: content.field_teaser,
+    tags_fields: {0: content.field_area, 1: content.field_type},
+    shortcuts: {
+      0: {
+        label: 'Content'|t,
+        href: '#content',
+      },
+      1: {
+        label: 'Proposals'|t,
+        href: '#proposals',
+      },
+      2: {
+        label: 'Map'|t,
+        href: {route: 'entity.node.canonical', parameters: {node: 1}
+        },
+      }
+    }
+  }) }}
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="container content__container" id="content">
+    <div class="row">
+      <div class="col-md-8">
+        {{ content|without('field_top_images', 'field_teaser', 'field_area', 'field_department', 'field_type', 'field_content_sections') }}
+      </div>
+      <div class="col-md-4 pt-md-3">
+        {{ content.field_aside_block }}
+      </div>
+    </div>
+  </div>
+  <div class="sections d-flex flex-column">
+    {{ content.field_content_sections }}
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div id="proposals" class="container">
+        <h3>{{ 'Proposals'|t }}</h3>
+      </div>
+      {{ drupal_view('dialogue_proposals', 'block_1', content.id) }}
+    </div>
+  </div>
+{% endblock %}

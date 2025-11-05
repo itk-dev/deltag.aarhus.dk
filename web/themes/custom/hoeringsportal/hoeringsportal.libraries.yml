@@ -1,14 +1,29 @@
 global-styling:
-  version: VERSION
   css:
     theme:
       build/hoeringsportal.css: {}
 
 bottom-scripts:
-  version: VERSION
   js:
     build/hoeringsportal.js: { scope: bottom, preprocess: false }
     build/runtime.js: { scope: bottom, preprocess: false }
   dependencies:
     - core/jquery
     - core/drupal
+
+image-fade:
+  version: VERSION
+  js:
+    build/image-fade.js: { scope: bottom, preprocess: false }
+  css:
+    theme:
+      build/image-fade.css: {}
+
+map-display:
+  version: VERSION
+  css:
+    theme:
+      build/show-map.css: {}
+  js:
+    build/show-map.js: { preprocess: false }
+    build/runtime.js: { preprocess: false }

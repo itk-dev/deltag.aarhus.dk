@@ -1,0 +1,19 @@
+uuid: 6f55fb31-a502-4654-bfb3-5aad1fcad27d
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dialogue_proposal_descr
+    - node.type.dialogue_proposal
+id: node.dialogue_proposal.field_dialogue_proposal_descr
+field_name: field_dialogue_proposal_descr
+entity_type: node
+bundle: dialogue_proposal
+label: Description
+description: 'Giv en kort beskrivelse af hvad dit forslag går ud på.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
