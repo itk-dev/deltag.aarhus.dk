@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class DialogueHelper {
 
+  public const DIALOGUE_PROPOSAL_TYPE = 'dialogue_proposal';
+
   use StringTranslationTrait;
 
   /**
@@ -49,7 +51,7 @@ class DialogueHelper {
    *   The access result.
    */
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
-    if ('dialogue_proposal' === $entity_bundle) {
+    if ($this::DIALOGUE_PROPOSAL_TYPE === $entity_bundle) {
       $parentNode = $this->getParentNode();
       $config = $this->getProposalConfig($parentNode);
 
@@ -72,7 +74,7 @@ class DialogueHelper {
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
-    if ('dialogue_proposal' === $entity->bundle()) {
+    if ($this::DIALOGUE_PROPOSAL_TYPE === $entity->bundle()) {
       $parentNode = $this->getParentNode();
       if ($parentNode) {
         /**** @var \Drupal\node\Entity\Node $entity */
@@ -90,7 +92,7 @@ class DialogueHelper {
    *   The state of the form.
    */
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
-    // Disableable form cache to prevent serialization error on file upload.
+    // Disable form cache to prevent serialization error on file upload.
     $form_state->disableCache();
 
     foreach ($form as $key => $formPart) {
@@ -133,8 +135,8 @@ class DialogueHelper {
 
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
 
-      $parentPoint = json_decode($parentLocationSelection[0]['point']);
-      $coordinates = $parentPoint->features[0]->geometry->coordinates;
+      $parentPoint = json_decode($parentLocationSelection[0]['point'] ?? '');
+      $coordinates = $parentPoint->features[0]->geometry->coordinates ?? NULL;
 
       $parentZoomSelection = $parent->get('field_dialogue_proposal_zoom')->getValue();
       $form['field_location']['widget'][0]['point-widget']['#attributes']['data-map-config'] = json_encode([
@@ -192,15 +194,10 @@ class DialogueHelper {
    *   the proposal config.
    */
   private function getProposalConfig(EntityInterface $parent): array {
-    $config = [];
     /** @var \Drupal\node\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
-    foreach ($parentConfig as $key => $value) {
-      $config[$key] = $value['value'];
-    }
-
-    return $config;
+    return array_map(static fn(array $value) => $value['value'], $parentConfig);
   }
 
   /**
