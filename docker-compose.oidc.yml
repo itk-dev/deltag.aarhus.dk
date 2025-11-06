@@ -1,7 +1,7 @@
 services:
-  # https://github.com/Soluto/oidc-server-mock
+  # https://github.com/geigerzaehler/oidc-provider-mock
   idp-citizen:
-    image: ghcr.io/soluto/oidc-server-mock:latest
+    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
     profiles:
       - oidc
       - test
@@ -12,170 +12,31 @@ services:
       - frontend
     ports:
       - "80"
-    volumes:
-      - .:/tmp/config:ro
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-citizen.rule=Host(`idp-citizen.${COMPOSE_DOMAIN}`)"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp-citizen.loadbalancer.server.port=443"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp-citizen.loadbalancer.server.scheme=https"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-citizen.middlewares=redirect-to-https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-    environment:
-      # https://github.com/Soluto/oidc-server-mock?tab=readme-ov-file#https
-      ASPNETCORE_URLS: https://+:443;http://+:80
-      ASPNETCORE_Kestrel__Certificates__Default__Password: mock
-      ASPNETCORE_Kestrel__Certificates__Default__Path: /tmp/config/.docker/oidc-server-mock/cert/docker.pfx
-
-      ASPNETCORE_ENVIRONMENT: Development
-      SERVER_OPTIONS_INLINE: |
-        AccessTokenJwtType: JWT
-        Discovery:
-          ShowKeySet: true
-        Authentication:
-          CookieSameSiteMode: Lax
-          CheckSessionCookieSameSiteMode: Lax
-
-      LOGIN_OPTIONS_INLINE: |
-        {
-          "AllowRememberLogin": false
-        }
-
-      LOGOUT_OPTIONS_INLINE: |
-        {
-          "AutomaticRedirectAfterSignOut": true
-        }
-
-      CLIENTS_CONFIGURATION_INLINE: |
-        - ClientId: client-id
-          ClientSecrets: [client-secret]
-          Description: Mock IdP
-          AllowedGrantTypes:
-            # - client_credentials
-            # - implicit
-            - authorization_code
-          # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704963181
-          RequireClientSecret: false
-          AllowAccessTokensViaBrowser: true
-          # https://github.com/Soluto/oidc-server-mock/issues/26#issuecomment-705022941
-          AlwaysIncludeUserClaimsInIdToken: true
-          AllowedScopes:
-            - openid
-            - profile
-            - email
-          ClientClaimsPrefix: ''
-          RedirectUris:
-            - '*'
-          # https://github.com/Soluto/oidc-server-mock/issues/60
-          PostLogoutRedirectUris:
-            - '*'
-          # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
-          RequirePkce: false
-
-      # Needed to set custom claim types in "profile"
-      # https://github.com/Soluto/oidc-server-mock/issues/123#issuecomment-1427129278
-      # https://github.com/Soluto/oidc-server-mock/blob/master/README.md#simple-configuration
-      # https://docs.docker.com/compose/compose-file/compose-file-v3/#environment
-      OVERRIDE_STANDARD_IDENTITY_RESOURCES: "true"
-      IDENTITY_RESOURCES_INLINE: |
-        # https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes#standard-claims
-        - Name: openid
-          ClaimTypes:
-            - sub
-        - Name: email
-          ClaimTypes:
-            - email
-        - Name: profile
-          ClaimTypes:
-            # Add your custom claims here
-            - dk_ssn
-            - name
-            - zip
-
-      USERS_CONFIGURATION_INLINE: |
-        - SubjectId: 1
-          Username: citizen1
-          Password: citizen1
-          Claims:
-            # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
-          - Type: dk_ssn
-            Value: '1111111111'
-            ValueType: string
-          - Type: name
-            Value: 'Anders And'
-            ValueType: string
-          - Type: zip
-            Value: '1111'
-            ValueType: string
-
-        - SubjectId: 2
-          Username: citizen2
-          Password: citizen2
-          Claims:
-          - Type: dk_ssn
-            Value: '2222222222'
-            ValueType: string
-          - Type: name
-            Value: 'Bent Betjentsen'
-            ValueType: string
-          - Type: zip
-            Value: '2222'
-            ValueType: string
-
-        - SubjectId: 3
-          Username: citizen3
-          Password: citizen3
-          Claims:
-          - Type: dk_ssn
-            Value: '3333333333'
-            ValueType: string
-          - Type: name
-            Value: 'Carsten Carlsen'
-            ValueType: string
-          - Type: zip
-            Value: '3333'
-            ValueType: string
-
-        - SubjectId: 4
-          Username: citizen4
-          Password: citizen4
-          Claims:
-          - Type: dk_ssn
-            Value: '4444444444'
-            ValueType: string
-          - Type: name
-            Value: 'Dorte Dyhr'
-            ValueType: string
-          - Type: zip
-            Value: '4444'
-            ValueType: string
-
-        - SubjectId: 'ikke-aarhusianer'
-          Username: 'ikke-aarhusianer'
-          Password: 'ikke-aarhusianer'
-          Claims:
-          - Type: dk_ssn
-            Value: '1705880000'
-            ValueType: string
-          - Type: name
-            Value: Troels Bondetest
-            ValueType: string
-
-        - SubjectId: 'aarhusianer'
-          Username: 'aarhusianer'
-          Password: 'aarhusianer'
-          Claims:
-          - Type: dk_ssn
-            Value: '2611740000'
-            ValueType: string
-          - Type: name
-            Value: Betina Henningsentest
-            ValueType: string
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-idp.rule=Host(`idp-citizen.${COMPOSE_DOMAIN}`)"
+    command:
+      [
+        "--port",
+        "80",
+        "--user-claims",
+        '{"sub": "citizen1", "dk_ssn": "1111111111", "name": "Anders And", "zip": "1111"}',
+        "--user-claims",
+        '{"sub": "citizen2", "dk_ssn": "2222222222", "name": "Bent Betjentsen", "zip": "2222"}',
+        "--user-claims",
+        '{"sub": "citizen3", "dk_ssn": "3333333333", "name": "Carsten Carlsen", "zip": "3333"}',
+        "--user-claims",
+        '{"sub": "citizen4", "dk_ssn": "4444444444", "name": "Dorte Dyhr", "zip": "4444"}',
+        "--user-claims",
+        '{"sub": "ikke-aarhusianer", "dk_ssn": "1705880000", "name": "Troels Bondetest"}',
+        "--user-claims",
+        '{"sub": "aarhusianer", "dk_ssn": "2611740000", "name": "Betina Henningsentest"}',
+      ]
 
   # https://github.com/Soluto/oidc-server-mock
   idp-employee:
-    image: ghcr.io/soluto/oidc-server-mock:latest
+    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
     profiles:
       - oidc
       - test
@@ -186,139 +47,31 @@ services:
       - frontend
     ports:
       - "80"
-    volumes:
-      - .:/tmp/config:ro
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-employee.rule=Host(`idp-employee.${COMPOSE_DOMAIN}`)"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp-employee.loadbalancer.server.port=443"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp-employee.loadbalancer.server.scheme=https"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-employee.middlewares=redirect-to-https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-    environment:
-      # https://github.com/Soluto/oidc-server-mock?tab=readme-ov-file#https
-      ASPNETCORE_URLS: https://+:443;http://+:80
-      ASPNETCORE_Kestrel__Certificates__Default__Password: mock
-      ASPNETCORE_Kestrel__Certificates__Default__Path: /tmp/config/.docker/oidc-server-mock/cert/docker.pfx
-
-      ASPNETCORE_ENVIRONMENT: Development
-      SERVER_OPTIONS_INLINE: |
-        AccessTokenJwtType: JWT
-        Discovery:
-          ShowKeySet: true
-        Authentication:
-          CookieSameSiteMode: Lax
-          CheckSessionCookieSameSiteMode: Lax
-
-      LOGIN_OPTIONS_INLINE: |
-        {
-          "AllowRememberLogin": false
-        }
-
-      LOGOUT_OPTIONS_INLINE: |
-        {
-          "AutomaticRedirectAfterSignOut": true
-        }
-
-      CLIENTS_CONFIGURATION_INLINE: |
-        - ClientId: client-id
-          ClientSecrets: [client-secret]
-          Description: Mock IdP
-          AllowedGrantTypes:
-            # - client_credentials
-            # - implicit
-            - authorization_code
-          # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704963181
-          RequireClientSecret: false
-          AllowAccessTokensViaBrowser: true
-          # https://github.com/Soluto/oidc-server-mock/issues/26#issuecomment-705022941
-          AlwaysIncludeUserClaimsInIdToken: true
-          AllowedScopes:
-            - openid
-            - profile
-            - email
-          ClientClaimsPrefix: ''
-          RedirectUris:
-            - '*'
-          # https://github.com/Soluto/oidc-server-mock/issues/60
-          PostLogoutRedirectUris:
-            - '*'
-          # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
-          RequirePkce: false
-
-      # Needed to set custom claim types in "profile"
-      # https://github.com/Soluto/oidc-server-mock/issues/123#issuecomment-1427129278
-      # https://github.com/Soluto/oidc-server-mock/blob/master/README.md#simple-configuration
-      # https://docs.docker.com/compose/compose-file/compose-file-v3/#environment
-      OVERRIDE_STANDARD_IDENTITY_RESOURCES: "true"
-      IDENTITY_RESOURCES_INLINE: |
-        # https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes#standard-claims
-        - Name: openid
-          ClaimTypes:
-            - sub
-        - Name: email
-          ClaimTypes:
-            - email
-        - Name: profile
-          ClaimTypes:
-            # Add your custom claims here
-            - name
-            - groups
-            - magistratsafdeling
-
-      USERS_CONFIGURATION_INLINE: |
-        - SubjectId: 1
-          Username: department1-admin
-          Password: department1-admin
-          Claims:
-            # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
-          - Type: email
-            Value: 'department1-administrator@example.com'
-            ValueType: string
-          - Type: name
-            Value: 'department1-administrator'
-            ValueType: string
-          - Type: magistratsafdeling
-            Value: 'Department 1'
-            ValueType: string
-          - Type: groups
-            Value: '["administrator"]'
-            ValueType: json
-
-        - SubjectId: 2
-          Username: department2-hearing_editor
-          Password: department2-hearing_editor
-          Claims:
-          - Type: email
-            Value: 'department2-hearing_editor@example.com'
-            ValueType: string
-          - Type: name
-            Value: 'department2-hearing_editor'
-            ValueType: string
-          - Type: magistratsafdeling
-            Value: 'Department 2'
-            ValueType: string
-          - Type: groups
-            Value: '["hearing_editor"]'
-            ValueType: json
-
-        - SubjectId: 3
-          Username: department3-hearing_editor
-          Password: department3-hearing_editor
-          Claims:
-          - Type: email
-            Value: 'department3-hearing_editor@example.com'
-            ValueType: string
-          - Type: name
-            Value: 'department3-hearing_editor'
-            ValueType: string
-          - Type: magistratsafdeling
-            Value: 'Department 3'
-            ValueType: string
-          - Type: groups
-            Value: '["hearing_editor"]'
-            ValueType: json
+    command:
+      [
+        "--port",
+        "80",
+        "--user-claims",
+        '{"sub": "user", "email": "user@example.com", "roles": ["authenticated"]}',
+        "--user-claims",
+        '{"sub": "page_editor", "email": "page_editor@example.com", "roles": ["page_editor"]}',
+        "--user-claims",
+        '{"sub": "public_meeting_editor", "email": "public_meeting_editor@example.com", "roles": ["public_meeting_editor"]}',
+        "--user-claims",
+        '{"sub": "dialogue_editor", "email": "dialogue_editor@example.com", "roles": ["dialogue_editor"]}',
+        "--user-claims",
+        '{"sub": "project_editor", "email": "project_editor@example.com", "roles": ["project_editor"]}',
+        "--user-claims",
+        '{"sub": "hearing_editor", "email": "hearing_editor@example.com", "roles": ["hearing_editor"]}',
+        "--user-claims",
+        '{"sub": "citizen_proposal_editor", "email": "citizen_proposal_editor@example.com", "roles": ["citizen_proposal_editor"]}',
+        "--user-claims",
+        '{"sub": "administrator", "email": "administrator@example.com", "roles": ["administrator"]}',
+      ]
 
   idp_mock_api:
     image: dotronglong/faker:stable
