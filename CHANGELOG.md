@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
+  * Add underline to active navigation.
+  * Adjust header witdt
 * [PR-556](https://github.com/itk-dev/deltag.aarhus.dk/pull/556)
   * Change OIDC container
 
