@@ -135,7 +135,7 @@ Explanation of the configuration:
 # file name: azure_ad_delta_sync.settings.yml
 drupal:
   # Built in drupal user deletion procedures
-  # https://www.drush.org/12.x/commands/user_cancel/ 
+  # https://www.drush.org/12.x/commands/user_cancel/
   user_cancel_method: user_cancel_reassign
   # user_id_field is the field that determines which user to block/delete
   # If mail is chosen, the deletion match is on the drupal user mail.
