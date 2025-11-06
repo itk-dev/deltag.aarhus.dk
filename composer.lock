@@ -3718,11 +3718,11 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/hoeringsportal_openid_connect",
-                "reference": "d9f5d951b1f02c7453c7dd9f6c896920dfe17770"
+                "reference": "d27fc98b89309e2dc8f65a129b41084248ffe40f"
             },
             "require": {
                 "itk-dev/drupal_psr6_cache": "^1.1",
-                "itk-dev/openid-connect": "^3.1"
+                "itk-dev/openid-connect": "^4.0"
             },
             "type": "drupal-custom-module",
             "license": [
@@ -7348,16 +7348,16 @@
         },
         {
             "name": "itk-dev/openid-connect",
-            "version": "3.2.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/openid-connect.git",
-                "reference": "7bea58e5d8b338a1e0d260653ccf3f72fc2a4c2d"
+                "reference": "65951585ef2680432b33391fadffb1f87d210d27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/7bea58e5d8b338a1e0d260653ccf3f72fc2a4c2d",
-                "reference": "7bea58e5d8b338a1e0d260653ccf3f72fc2a4c2d",
+                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/65951585ef2680432b33391fadffb1f87d210d27",
+                "reference": "65951585ef2680432b33391fadffb1f87d210d27",
                 "shasum": ""
             },
             "require": {
@@ -7365,18 +7365,18 @@
                 "ext-openssl": "*",
                 "firebase/php-jwt": "^6.8",
                 "league/oauth2-client": "^2.6",
-                "php": "^8.1",
+                "php": "^8.3",
                 "psr/cache": "^2.0 || ^3.0",
                 "psr/http-client": "^1.0",
                 "robrichards/xmlseclibs": "^3.1"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "escapestudios/symfony2-coding-standard": "^3.12",
                 "mockery/mockery": "^1.4",
-                "phpunit/php-code-coverage": "^9.2",
-                "phpunit/phpunit": "^9.5",
-                "vimeo/psalm": "^5.0"
+                "phpstan/phpstan": "^2.1",
+                "phpunit/php-code-coverage": "^11.0",
+                "phpunit/phpunit": "^11.0"
             },
             "type": "library",
             "autoload": {
@@ -7405,9 +7405,9 @@
             "description": "OpenID connect configuration package",
             "support": {
                 "issues": "https://github.com/itk-dev/openid-connect/issues",
-                "source": "https://github.com/itk-dev/openid-connect/tree/3.2.1"
+                "source": "https://github.com/itk-dev/openid-connect/tree/4.0.2"
             },
-            "time": "2023-09-18T10:24:50+00:00"
+            "time": "2025-10-06T07:25:31+00:00"
         },
         {
             "name": "itk-dev/pretix-api-client-php",
