@@ -10,8 +10,8 @@ settings:
   client_secret: client-secret
   iss_allowed_domains: ''
   issuer_url: ''
-  authorization_endpoint: 'http://idp.deltag.local.itkdev.dk/oauth2/authorize'
-  token_endpoint: 'http://idp.deltag.local.itkdev.dk/oauth2/token'
+  authorization_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/oauth2/authorize'
+  token_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/oauth2/token'
   userinfo_endpoint: ''
   end_session_endpoint: ''
   scopes:
