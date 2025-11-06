@@ -179,7 +179,7 @@ above config file (here, `userprincipalname`).
     "body": [
       {
         "userprincipalname": "department3-editor@example.com"
-      },
+      }
     ]
   }
 }
