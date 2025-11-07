@@ -1,22 +1,22 @@
 hoeringsportal_dialogue.admin:
-  path: '/admin/content/dialogue-proposal'
+  path: "/admin/content/dialogue-proposal"
   defaults:
-    _title: 'Dialogue proposals'
+    _title: "Dialogue proposals"
   requirements:
-    _permission: 'administer dialogue proposals'
+    _permission: "administer dialogue proposals"
 
 hoeringsportal_dialogue.admin_dialogue_proposals:
-  path: '/admin/content/dialogue-proposal/proposals'
+  path: "/admin/content/dialogue-proposal/proposals"
   defaults:
-    _title: 'Dialogue proposals'
+    _title: "Dialogue proposals"
     _form: '\Drupal\comment\Form\CommentAdminOverview'
-    type: 'approval'
+    type: "approval"
   requirements:
-    _permission: 'administer dialogue proposals'
+    _permission: "administer dialogue proposals"
 
 hoeringsportal_dialogue.admin_dialogue_replies:
-  path: '/admin/content/dialogue-proposal/replies'
+  path: "/admin/content/dialogue-proposal/replies"
   defaults:
-    _title: 'Replies'
+    _title: "Replies"
   requirements:
-    _permission: 'administer dialogue proposals'
+    _permission: "administer dialogue proposals"
