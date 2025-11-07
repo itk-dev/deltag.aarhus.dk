@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content_sections
     - node.type.dialogue
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.files
     - paragraphs.paragraphs_type.image
@@ -38,9 +39,13 @@ settings:
       introduction: introduction
       teaser_row: teaser_row
       files: files
+      accordion: accordion
       video: video
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: true
       content_block:
         weight: -21
         enabled: true
