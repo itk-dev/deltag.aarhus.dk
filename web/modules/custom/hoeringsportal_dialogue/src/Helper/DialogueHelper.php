@@ -2,10 +2,15 @@
 
 namespace Drupal\hoeringsportal_dialogue\Helper;
 
+use Drupal\comment\CommentInterface;
+use Drupal\comment\Entity\Comment;
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
@@ -17,30 +22,34 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class DialogueHelper {
 
   public const DIALOGUE_PROPOSAL_TYPE = 'dialogue_proposal';
+  public const DIALOGUE_PROPOSAL_COMMENT_TYPE = 'early_inclusion_comment';
 
   use StringTranslationTrait;
 
   /**
    * The dialogue helper constructor.
    *
-   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   * @param RequestStack $requestStack
    *   The request stack.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   * @param EntityTypeManagerInterface $entityTypeManager
    *   The enity type manager.
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param AccountInterface $account
    *   The current user account.
+   * @param MessengerInterface $messenger
+   *    The messenger service.
    */
   public function __construct(
     protected RequestStack $requestStack,
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
+    protected MessengerInterface $messenger,
   ) {
   }
 
   /**
    * Implements access check for dialogue proposal creation.
    *
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param AccountInterface $account
    *   The current user.
    * @param array $context
    *   The context.
@@ -53,7 +62,7 @@ class DialogueHelper {
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity_bundle) {
       $parentNode = $this->getParentNode();
-      $config = $this->getProposalConfig($parentNode);
+      $config = $parentNode ? $this->getProposalConfig($parentNode) : [];
 
       if (!in_array('public_proposals', $config)) {
         return AccessResult::forbiddenIf($account->isAnonymous());
@@ -70,7 +79,7 @@ class DialogueHelper {
   /**
    * Implements presave for dialogue proposal creation.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
+   * @param EntityInterface $entity
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
@@ -79,6 +88,31 @@ class DialogueHelper {
       if ($parentNode) {
         /**** @var \Drupal\node\Entity\Node $entity */
         $entity->set('field_dialogue', ['target_id' => $parentNode->id()]);
+      }
+    }
+  }
+
+  /**
+   * Implements update for dialogue comments.
+   *
+   * @param EntityInterface $comment
+   *   The comment that is being updated.
+   *
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
+   */
+  public function dialogueCommentUpdate(EntityInterface $comment): void {
+    if ($this::DIALOGUE_PROPOSAL_COMMENT_TYPE === $comment->bundle()) {
+      $children = [];
+      /** @var Comment $comment */
+      if (!$comment->isPublished() && $comment->original->isPublished()) {
+        $this->messenger->addMessage($this->t('Comment @commentId and it\'s children have been unpublished.', ['@commentId' => $comment->id()]));
+        $this->getDialogueCommentChildren($comment, $children);
+
+        foreach ($children as $child) {
+          $child->set('status', FALSE);
+          $child->save();
+        }
       }
     }
   }
@@ -167,7 +201,7 @@ class DialogueHelper {
   /**
    * Get parent node.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|null
+   * @return EntityInterface|null
    *   The parent node.
    */
   private function getParentNode(): ?EntityInterface {
@@ -187,7 +221,7 @@ class DialogueHelper {
   /**
    * Get proposal config related to dialogue.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $parent
+   * @param EntityInterface $parent
    *   The parent node.
    *
    * @return array
@@ -221,6 +255,28 @@ class DialogueHelper {
     }
 
     $form[$key]['widget'] = $widget;
+  }
+
+  /**
+   * Get children recursively.
+   *
+   * @param $comment
+   *   The comment to fetch children for.
+   * @param $children
+   *   An expanding list of children added recursively.
+   *
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
+   */
+  private function getDialogueCommentChildren($comment, &$children): void {
+    $comments = $this->entityTypeManager->getStorage('comment')->loadByProperties([
+      'pid' => $comment->id(),
+    ]);
+
+    foreach ($comments as $comment) {
+      $children[] = $comment;
+      $this->getDialogueCommentChildren($comment, $children);
+    }
   }
 
 }

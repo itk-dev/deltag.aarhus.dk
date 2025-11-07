@@ -19,6 +19,13 @@ function hoeringsportal_dialogue_node_create_access(AccountInterface $account, a
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function hoeringsportal_dialogue_comment_update(EntityInterface $entity): void {
+  Drupal::service(DialogueHelper::class)->dialogueCommentUpdate($entity);
+}
+
+/**
  * Implements hook_node_presave().
  */
 function hoeringsportal_dialogue_node_presave(EntityInterface $entity): void {
