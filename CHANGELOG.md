@@ -6,6 +6,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-557](https://github.com/itk-dev/deltag.aarhus.dk/pull/557)
+  * Change dialogue proposal backend
+  * Add seperate view for dialogue proposal comments
+  * Deny access for admin comments tab in general
+  * Update user permissions
+  * Add access restrictions on unpublished comments
+
 * [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
   * Add underline to active navigation.
   * Adjust header witdt
