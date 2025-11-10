@@ -105,14 +105,14 @@ class DialogueHelper {
    */
   public function dialogueCommentUpdate(EntityInterface $comment): void {
     if ($this::DIALOGUE_PROPOSAL_COMMENT_TYPE === $comment->bundle()) {
+      $children = [];
       /** @var \Drupal\comment\Entity\Comment $comment */
       if (!$comment->isPublished() && $comment->original->isPublished()) {
         $this->messenger->addMessage($this->t("Comment @commentId and it's children have been unpublished.", ['@commentId' => $comment->id()]));
-        $children = [];
         $this->getDialogueCommentChildren($comment, $children);
 
         foreach ($children as $child) {
-          $child->setUnpublished();
+	  $child->setUnpublished();
           $child->save();
         }
       }

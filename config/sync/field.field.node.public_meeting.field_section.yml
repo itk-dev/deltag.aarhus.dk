@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_section
     - node.type.public_meeting
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.info_box
   module:
@@ -25,13 +26,23 @@ settings:
     target_bundles:
       content_block: content_block
       info_box: info_box
+      accordion: accordion
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: true
       content_block:
         weight: 9
         enabled: true
       content_list:
         weight: 10
+        enabled: false
+      content_promotion:
+        weight: 21
+        enabled: false
+      files:
+        weight: 22
         enabled: false
       image:
         weight: 11
@@ -42,6 +53,12 @@ settings:
       introduction:
         weight: 12
         enabled: false
+      link:
+        weight: 26
+        enabled: false
+      links_on_a_background_image:
+        weight: 27
+        enabled: false
       projekt_billede_galleri:
         weight: 13
         enabled: false
@@ -51,7 +68,16 @@ settings:
       text:
         weight: 15
         enabled: false
+      text_aside_blocks_2_column:
+        weight: 31
+        enabled: false
       timeline_items:
         weight: 16
+        enabled: false
+      timeline_period:
+        weight: 33
+        enabled: false
+      video:
+        weight: 34
         enabled: false
 field_type: entity_reference_revisions
