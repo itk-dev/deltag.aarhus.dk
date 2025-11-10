@@ -1,0 +1,5 @@
+services:
+  hoeringsportal_misc.route_subscriber:
+    class: Drupal\hoeringsportal_misc\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

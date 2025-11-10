@@ -71,7 +71,7 @@
 <article{{ attributes.addClass('js-comment mb-3') }}>
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
   <div{{ content_attributes }}>
-    {% if submitted %}
+    {% if submitted and status is same as('published') %}
       <div class="mb-1">
         <div class="comment-time small">{{ comment.created.value|time_diff }}</div>
         <div>{{ content|without('flag_support_comment') }}</div>

@@ -8,8 +8,10 @@ dependencies:
     - filter.format.hearing_description
     - node.type.dialogue_proposal
   module:
+    - comment
     - file
     - filter
+    - flag
     - media
     - node
     - system
@@ -20,9 +22,16 @@ label: 'Godkendt bruger'
 weight: -9
 is_admin: false
 permissions:
+  - 'access comments'
   - 'access content'
   - 'create dialogue_proposal content'
   - 'delete own files'
+  - 'flag support_comment'
+  - 'flag support_proposal'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'unflag support_comment'
+  - 'unflag support_proposal'
   - 'use text format citizen_proposal_content'
   - 'use text format filtered_html'
   - 'use text format hearing_description'
