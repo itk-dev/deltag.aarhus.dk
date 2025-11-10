@@ -107,7 +107,7 @@ class DialogueHelper {
         $this->getDialogueCommentChildren($comment, $children);
 
         foreach ($children as $child) {
-          $child->set('status', FALSE);
+          $child->setUnpublished();
           $child->save();
         }
       }
