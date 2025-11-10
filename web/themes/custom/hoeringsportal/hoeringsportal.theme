@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper as CitizenProposalHelper;
@@ -66,6 +67,15 @@ function hoeringsportal_preprocess_field(&$variables) {
     /** @var \Drupal\hoeringsportal_public_meeting\Helper\PublicMeetingHelper $helper */
     $helper = \Drupal::service('hoeringsportal_public_meeting.public_meeting_helper');
     $variables['registration_deadline_passed'] = $helper->isDeadlinePassed($variables['element']['#object']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function hoeringsportal_preprocess_form(&$variables): void {
+  if ('node_dialogue_proposal_form' === $variables['element']['#form_id']) {
+    $variables['dialogoue_helper'] = \Drupal::service(DialogueHelper::class);
   }
 }
 

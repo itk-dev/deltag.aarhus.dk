@@ -206,7 +206,7 @@ class DialogueHelper {
    * @return \Drupal\Core\Entity\EntityInterface|null
    *   The parent node.
    */
-  private function getParentNode(): ?EntityInterface {
+  public function getParentNode(): ?EntityInterface {
     try {
       $parentId = $this->requestStack->getCurrentRequest()->query->get('dialogue');
       if ($parentId && is_numeric($parentId)) {
