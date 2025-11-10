@@ -1,52 +1,50 @@
 {{ attach_library('hoeringsportal/image-fade') }}
 
-{% if field_show_page_title %}
-  <div class="header-v2 mb-5">
-    {% block header_top_image %}
-      {% if images %}
-        {% if images|length > 1 %}
-          <div class="{{ image_half ? 'image-wrapper-half' : 'image-wrapper' }} image-fade position-relative" data-image-duration="15000">
-            {% for key, image in images %}
-              <img id="img-{{ key }}" class="image-slide" src="{{ image|file_url }}" alt="">
+<div class="header-v2 mb-5">
+  {% block header_top_image %}
+    {% if images %}
+      {% if images|length > 1 %}
+        <div class="{{ image_half ? 'image-wrapper-half' : 'image-wrapper' }} image-fade position-relative" data-image-duration="15000">
+          {% for key, image in images %}
+            <img id="img-{{ key }}" class="image-slide" src="{{ image|file_url }}" alt="">
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="{{ image_half ? 'image-wrapper-half' : 'image-wrapper' }}">
+          <img src="{{ images[0]|file_url }}" alt="">
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endblock %}
+  {% block header_text_box %}
+    <div class="content-wrapper position-relative {{ images ? 'with-image' : '' }} {{ type ?? 'type-default' }}">
+      <div class="container px-md-5">
+        {% if category %}
+          <div class="small fw-semibold text-background-match">{{ category }}</div>
+        {% endif %}
+        <h1>{{ title }}</h1>
+        <div class="mb-5">
+          {{ description }}
+        </div>
+        {% if shortcuts %}
+          <div class="mb-5">
+            {% for shortcut in shortcuts %}
+              <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
             {% endfor %}
           </div>
-        {% else %}
-          <div class="{{ image_half ? 'image-wrapper-half' : 'image-wrapper' }}">
-            <img src="{{ images[0]|file_url }}" alt="">
+        {% endif %}
+        {% if tags_fields %}
+          <div>
+            <button class="tags is-comma-separated text-background-match">
+              {% for tags in tags_fields %}
+                {% if tags %}
+                  {{ tags }}
+                {% endif %}
+              {% endfor %}
+            </button>
           </div>
         {% endif %}
-      {% endif %}
-    {% endblock %}
-    {% block header_text_box %}
-      <div class="content-wrapper position-relative {{ images ? 'with-image' : '' }} {{ type ?? 'type-default' }}">
-        <div class="container px-md-5">
-          {% if category %}
-            <div class="small fw-semibold text-background-match">{{ category }}</div>
-          {% endif %}
-          <h1>{{ title }}</h1>
-          <div class="mb-5">
-            {{ description }}
-          </div>
-          {% if shortcuts %}
-            <div class="mb-5">
-              {% for shortcut in shortcuts %}
-                <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
-              {% endfor %}
-            </div>
-          {% endif %}
-          {% if tags_fields %}
-            <div>
-              <button class="tags is-comma-separated text-background-match">
-                {% for tags in tags_fields %}
-                  {% if tags %}
-                    {{ tags }}
-                  {% endif %}
-                {% endfor %}
-              </button>
-            </div>
-          {% endif %}
-        </div>
       </div>
-    {% endblock %}
-  </div>
-{% endif %}
+    </div>
+  {% endblock %}
+</div>
