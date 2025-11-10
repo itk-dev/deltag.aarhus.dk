@@ -75,7 +75,7 @@ function hoeringsportal_preprocess_field(&$variables) {
  */
 function hoeringsportal_preprocess_form(&$variables): void {
   if ('node_dialogue_proposal_form' === $variables['element']['#form_id']) {
-    $variables['dialogoue_helper'] = \Drupal::service(DialogueHelper::class);
+    $variables['dialogue_helper'] = \Drupal::service(DialogueHelper::class);
   }
 }
 
@@ -169,9 +169,10 @@ function hoeringsportal_theme_suggestions_input_alter(array &$suggestions, array
   }
 
   if ('checkbox' === $variables['element']['#type']) {
-    if(!empty($variables['element']['#parents'])) {
+    $suggestions[] = 'input__' . $variables['element']['#type'];
+    if (!empty($variables['element']['#parents'])) {
       foreach ($variables['element']['#parents'] as $parent) {
-        $suggestions[] = 'input__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$parent);
+        $suggestions[] = 'input__' . $variables['element']['#type'] . '__' . str_replace('-', '_', $parent);
       }
     }
   }
