@@ -59,7 +59,12 @@ class DialogueHelper {
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity_bundle) {
       $parentNode = $this->getParentNode();
-      $config = $parentNode ? $this->getProposalConfig($parentNode) : [];
+
+      if (NULL === $parentNode) {
+        return AccessResult::forbidden();
+      }
+
+      $config = $this->getProposalConfig($parentNode);
 
       if (!in_array('public_proposals', $config)) {
         return AccessResult::forbiddenIf($account->isAnonymous());
@@ -100,14 +105,14 @@ class DialogueHelper {
    */
   public function dialogueCommentUpdate(EntityInterface $comment): void {
     if ($this::DIALOGUE_PROPOSAL_COMMENT_TYPE === $comment->bundle()) {
-      $children = [];
       /** @var \Drupal\comment\Entity\Comment $comment */
       if (!$comment->isPublished() && $comment->original->isPublished()) {
         $this->messenger->addMessage($this->t("Comment @commentId and it's children have been unpublished.", ['@commentId' => $comment->id()]));
+        $children = [];
         $this->getDialogueCommentChildren($comment, $children);
 
         foreach ($children as $child) {
-          $child->set('status', FALSE);
+          $child->setUnpublished();
           $child->save();
         }
       }
