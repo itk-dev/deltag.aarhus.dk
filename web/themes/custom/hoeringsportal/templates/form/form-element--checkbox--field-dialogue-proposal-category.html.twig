@@ -44,4 +44,29 @@
  * @see template_preprocess_form_element()
  */
 #}
-{% extends 'themes/custom/hoeringsportal/templates/components/toggle-button.html.twig' %}
+
+{%
+  set classes = [
+  'js-form-item',
+  'form-item',
+  'form-type-' ~ type|clean_class,
+  'js-form-type-' ~ type|clean_class,
+  'form-item-' ~ name|clean_class,
+  'js-form-item-' ~ name|clean_class,
+  title_display not in ['after', 'before'] ? 'form-no-label',
+  disabled == 'disabled' ? 'form-disabled',
+  errors ? 'form-item--error',
+  'btn-toggle'
+]
+%}
+{%
+  set description_classes = [
+  'description',
+  description_display == 'invisible' ? 'visually-hidden',
+]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ children }}
+  <label class="btn toggle-badge option" for="{{ element['#id'] }}">{{ label['#title'] }}</label>
+</div>
