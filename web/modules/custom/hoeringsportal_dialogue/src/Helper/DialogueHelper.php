@@ -229,7 +229,7 @@ class DialogueHelper {
    * @return array
    *   the proposal config.
    */
-  private function getProposalConfig(EntityInterface $parent): array {
+  public function getProposalConfig(EntityInterface $parent): array {
     /** @var \Drupal\node\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
