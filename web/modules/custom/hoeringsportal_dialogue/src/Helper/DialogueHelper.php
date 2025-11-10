@@ -2,10 +2,12 @@
 
 namespace Drupal\hoeringsportal_dialogue\Helper;
 
+use Drupal\comment\Entity\Comment;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
@@ -17,6 +19,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class DialogueHelper {
 
   public const DIALOGUE_PROPOSAL_TYPE = 'dialogue_proposal';
+  public const DIALOGUE_PROPOSAL_COMMENT_TYPE = 'early_inclusion_comment';
 
   use StringTranslationTrait;
 
@@ -29,11 +32,14 @@ class DialogueHelper {
    *   The enity type manager.
    * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user account.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
    */
   public function __construct(
     protected RequestStack $requestStack,
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
+    protected MessengerInterface $messenger,
   ) {
   }
 
@@ -53,6 +59,11 @@ class DialogueHelper {
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity_bundle) {
       $parentNode = $this->getParentNode();
+
+      if (NULL === $parentNode) {
+        return AccessResult::forbidden();
+      }
+
       $config = $this->getProposalConfig($parentNode);
 
       if (!in_array('public_proposals', $config)) {
@@ -79,6 +90,31 @@ class DialogueHelper {
       if ($parentNode) {
         /**** @var \Drupal\node\Entity\Node $entity */
         $entity->set('field_dialogue', ['target_id' => $parentNode->id()]);
+      }
+    }
+  }
+
+  /**
+   * Implements update for dialogue comments.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $comment
+   *   The comment that is being updated.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function dialogueCommentUpdate(EntityInterface $comment): void {
+    if ($this::DIALOGUE_PROPOSAL_COMMENT_TYPE === $comment->bundle()) {
+      /** @var \Drupal\comment\Entity\Comment $comment */
+      if (!$comment->isPublished() && $comment->original->isPublished()) {
+        $this->messenger->addMessage($this->t("Comment @commentId and it's children have been unpublished.", ['@commentId' => $comment->id()]));
+        $children = [];
+        $this->getDialogueCommentChildren($comment, $children);
+
+        foreach ($children as $child) {
+          $child->setUnpublished();
+          $child->save();
+        }
       }
     }
   }
@@ -221,6 +257,29 @@ class DialogueHelper {
     }
 
     $form[$key]['widget'] = $widget;
+  }
+
+  /**
+   * Get children recursively.
+   *
+   * @param \Drupal\comment\Entity\Comment $comment
+   *   The comment to fetch children for.
+   * @param array $children
+   *   An expanding list of children added recursively.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function getDialogueCommentChildren(Comment $comment, array &$children): void {
+    $comments = $this->entityTypeManager->getStorage('comment')->loadByProperties([
+      'pid' => $comment->id(),
+    ]);
+
+    /** @var \Drupal\comment\Entity\Comment $comment */
+    foreach ($comments as $comment) {
+      $children[] = $comment;
+      $this->getDialogueCommentChildren($comment, $children);
+    }
   }
 
 }
