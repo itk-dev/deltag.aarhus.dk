@@ -59,7 +59,12 @@ class DialogueHelper {
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity_bundle) {
       $parentNode = $this->getParentNode();
-      $config = $parentNode ? $this->getProposalConfig($parentNode) : [];
+
+      if (NULL === $parentNode) {
+        return AccessResult::forbidden();
+      }
+
+      $config = $this->getProposalConfig($parentNode);
 
       if (!in_array('public_proposals', $config)) {
         return AccessResult::forbiddenIf($account->isAnonymous());
@@ -107,7 +112,7 @@ class DialogueHelper {
         $this->getDialogueCommentChildren($comment, $children);
 
         foreach ($children as $child) {
-          $child->set('status', FALSE);
+	  $child->setUnpublished();
           $child->save();
         }
       }
@@ -201,7 +206,7 @@ class DialogueHelper {
    * @return \Drupal\Core\Entity\EntityInterface|null
    *   The parent node.
    */
-  private function getParentNode(): ?EntityInterface {
+  public function getParentNode(): ?EntityInterface {
     try {
       $parentId = $this->requestStack->getCurrentRequest()->query->get('dialogue');
       if ($parentId && is_numeric($parentId)) {
@@ -224,7 +229,7 @@ class DialogueHelper {
    * @return array
    *   the proposal config.
    */
-  private function getProposalConfig(EntityInterface $parent): array {
+  public function getProposalConfig(EntityInterface $parent): array {
     /** @var \Drupal\node\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 

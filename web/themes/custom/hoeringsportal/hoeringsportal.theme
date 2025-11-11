@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper as CitizenProposalHelper;
@@ -17,6 +18,7 @@ function hoeringsportal_preprocess(&$vars) {
   $vars['hearing_helper'] = \Drupal::service('hoeringsportal_data.hearing_helper');
   $vars['public_meeting_helper'] = \Drupal::service('hoeringsportal_public_meeting.public_meeting_helper');
   $vars['citizen_proposal_helper'] = \Drupal::service(CitizenProposalHelper::class);
+  $vars['dialogue_helper'] = \Drupal::service(DialogueHelper::class);
 }
 
 /**
@@ -133,7 +135,13 @@ function hoeringsportal_theme_suggestions_form_element_alter(array &$suggestions
   if (!empty($variables['element']['#type'])) {
     $suggestions[] = 'form_element__' . $variables['element']['#type'];
     if (!empty($variables['element']['#name'])) {
-      $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . $variables['element']['#name'];
+      if(!empty($variables['element']['#parents'])) {
+        foreach ($variables['element']['#parents'] as $parent) {
+          $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$parent);
+        }
+      }
+
+      $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$variables['element']['#name']);
     }
   }
 }
@@ -149,6 +157,15 @@ function hoeringsportal_theme_suggestions_input_alter(array &$suggestions, array
     }
     if (!empty($variables['element']['#button_type'])) {
       $suggestions[] = 'input__submit__' . $variables['element']['#button_type'];
+    }
+  }
+
+  if ('checkbox' === $variables['element']['#type']) {
+    $suggestions[] = 'input__' . $variables['element']['#type'];
+    if (!empty($variables['element']['#parents'])) {
+      foreach ($variables['element']['#parents'] as $parent) {
+        $suggestions[] = 'input__' . $variables['element']['#type'] . '__' . str_replace('-', '_', $parent);
+      }
     }
   }
 }
