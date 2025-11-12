@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content_sections
     - node.type.project_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.files
     - paragraphs.paragraphs_type.image
@@ -36,14 +37,21 @@ settings:
       introduction: introduction
       teaser_row: teaser_row
       files: files
+      accordion: accordion
       text_aside_blocks_2_column: text_aside_blocks_2_column
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: true
       content_block:
         weight: -19
         enabled: true
       content_list:
         weight: -18
+        enabled: false
+      content_promotion:
+        weight: 21
         enabled: false
       files:
         weight: 13
@@ -57,6 +65,12 @@ settings:
       introduction:
         weight: -16
         enabled: true
+      link:
+        weight: 26
+        enabled: false
+      links_on_a_background_image:
+        weight: 27
+        enabled: false
       projekt_billede_galleri:
         weight: -15
         enabled: false
@@ -74,5 +88,8 @@ settings:
         enabled: false
       timeline_period:
         weight: -12
+        enabled: false
+      video:
+        weight: 34
         enabled: false
 field_type: entity_reference_revisions
