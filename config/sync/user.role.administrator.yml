@@ -11,6 +11,7 @@ dependencies:
     - node.type.project
     - node.type.static_page
     - taxonomy.vocabulary.area
+    - taxonomy.vocabulary.dialogue_proposal_categories
     - taxonomy.vocabulary.hearing_type
     - taxonomy.vocabulary.media_library
   module:
@@ -59,6 +60,7 @@ permissions:
   - 'create project content'
   - 'create static_page content'
   - 'create terms in area'
+  - 'create terms in dialogue_proposal_categories'
   - 'create terms in hearing_type'
   - 'create terms in media_library'
   - 'create url aliases'
