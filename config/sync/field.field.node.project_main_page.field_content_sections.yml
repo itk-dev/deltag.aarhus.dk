@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content_sections
     - node.type.project_main_page
+    - paragraphs.paragraphs_type.aktuelt_i_projektet
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.files
     - paragraphs.paragraphs_type.image
@@ -37,13 +38,26 @@ settings:
       introduction: introduction
       teaser_row: teaser_row
       files: files
+      aktuelt_i_projektet: aktuelt_i_projektet
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 21
+        enabled: false
+      accordion_item:
+        weight: 22
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 20
+        enabled: true
       content_block:
         weight: -21
         enabled: true
       content_list:
         weight: -20
+        enabled: false
+      content_promotion:
+        weight: 25
         enabled: false
       files:
         weight: 13
@@ -57,6 +71,12 @@ settings:
       introduction:
         weight: -17
         enabled: true
+      link:
+        weight: 30
+        enabled: false
+      links_on_a_background_image:
+        weight: 31
+        enabled: false
       projekt_billede_galleri:
         weight: -16
         enabled: false
@@ -74,5 +94,8 @@ settings:
         enabled: false
       timeline_period:
         weight: -13
+        enabled: false
+      video:
+        weight: 38
         enabled: false
 field_type: entity_reference_revisions

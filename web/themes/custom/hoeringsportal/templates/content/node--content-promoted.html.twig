@@ -1,0 +1,17 @@
+{# Template for content promoted #}
+<div class="">
+  <h3>{{ 'Current activity in the project'|t }}</h3>
+  {{ include(directory ~ '/templates/components/promoted-dialogue.html.twig', {
+    type: elements['#node'].type.entity.label,
+    label: elements['#node'].label,
+    left: {
+      leftLabel: 'Latest proposal'|t,
+      promoted: {
+        id: dialogue_helper.getLatestDialogueProposal(elements['#node']).id,
+        display_mode: 'list_display'
+      }
+    },
+    right: true
+  }) }}
+</div>
+

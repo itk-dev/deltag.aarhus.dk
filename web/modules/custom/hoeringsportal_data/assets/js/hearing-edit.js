@@ -1,4 +1,3 @@
-/* global Drupal, WidgetAPI */
 /**
  * @file
  * Encore config global WidgetAPI.
@@ -6,50 +5,68 @@
 
 import proj4 from 'proj4'
 
-require('../css/hearing-edit.scss')
-// Define default Septima projection.
-proj4.defs('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs')
+window.addEventListener('load', function () {
+  applyMap()
+})
 
-// Aliases for convenience.
-proj4.defs('urn:ogc:def:crs:EPSG::4326', proj4.defs('EPSG:4326'))
-proj4.defs('urn:ogc:def:crs:EPSG::25832', proj4.defs('EPSG:25832'))
+// If the map is added to a dialog, we need to re-apply the map after the dialog is opened.
+// eslint-disable-next-line no-undef
+let domObserver = new MutationObserver(function (mutation) {
+  mutation.forEach(function (mutation) {
+    mutation.addedNodes.forEach(function (node) {
+      if (node.classList && node.classList.contains('ui-dialog')) {
+        applyMap()
+      }
+    })
+  })
+})
 
-const defaultMapProjection = 'urn:ogc:def:crs:EPSG::25832'
-const targetMapProjection = 'urn:ogc:def:crs:EPSG::4326'
+domObserver.observe(document.body, { childList: true })
 
-// Project a simple geojson object to a new projection.
-const project = (geojson, fromProjection, toProjection) => {
-  if (geojson.features.length === 1 && geojson.features[0].geometry.type === 'Point') {
-    geojson.features[0].geometry.coordinates = proj4(fromProjection, toProjection, geojson.features[0].geometry.coordinates)
-    geojson.crs.properties.name = toProjection
+function applyMap () {
+  require('../css/hearing-edit.css')
+  // Define default Septima projection.
+  proj4.defs('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs')
+
+  // Aliases for convenience.
+  proj4.defs('urn:ogc:def:crs:EPSG::4326', proj4.defs('EPSG:4326'))
+  proj4.defs('urn:ogc:def:crs:EPSG::25832', proj4.defs('EPSG:25832'))
+
+  const defaultMapProjection = 'urn:ogc:def:crs:EPSG::25832'
+  const targetMapProjection = 'urn:ogc:def:crs:EPSG::4326'
+
+  // Project a simple geojson object to a new projection.
+  const project = (geojson, fromProjection, toProjection) => {
+    if (geojson.features.length === 1 && geojson.features[0].geometry.type === 'Point') {
+      geojson.features[0].geometry.coordinates = proj4(fromProjection, toProjection, geojson.features[0].geometry.coordinates)
+      geojson.crs.properties.name = toProjection
+    }
+
+    return geojson
   }
 
-  return geojson
-}
+  const defaultMapConfig = (function () {
+    const widget = document.querySelector('.septima-widget')
 
-const defaultMapConfig = (function () {
-  const widget = document.querySelector('.septima-widget')
-  if (widget.parentElement && widget.parentElement.getAttribute('data-map-config')) {
-    const config = widget.parentElement.getAttribute('data-map-config')
-    const configObj = JSON.parse(config)
-    const transformedCoordinates = proj4('EPSG:4326', 'EPSG:25832', [configObj.x, configObj.y])
-    if (transformedCoordinates) {
-      return {
-        'x': transformedCoordinates[0],
-        'y': transformedCoordinates[1],
-        'zoomLevel': configObj.zoomLevel
+    if (widget && widget.parentElement && widget.parentElement.getAttribute('data-map-config')) {
+      const config = widget.parentElement.getAttribute('data-map-config')
+      const configObj = JSON.parse(config)
+      const transformedCoordinates = proj4('EPSG:4326', 'EPSG:25832', [configObj.x, configObj.y])
+      if (transformedCoordinates) {
+        return {
+          'x': transformedCoordinates[0],
+          'y': transformedCoordinates[1],
+          'zoomLevel': configObj.zoomLevel
+        }
       }
     }
-  }
+    return {
+      'x': null,
+      'y': null,
+      'zoomLevel': 12
+    }
+  }())
 
-  return {
-    'x': null,
-    'y': null,
-    'zoomLevel': 12
-  }
-}())
-
-window.addEventListener('load', function () {
   const config = {
     'map': {
       'maxZoomLevel': 1,
@@ -186,4 +203,4 @@ window.addEventListener('load', function () {
       }
     }
   })
-})
+}

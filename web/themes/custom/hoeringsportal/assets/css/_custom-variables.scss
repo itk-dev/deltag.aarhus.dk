@@ -23,3 +23,11 @@ $font-size-teaser: 1.625rem !default; //26px
 $font-size-teaser-responsive: 1.25rem !default; //20px
 
 $shadow: 0 0.25rem 1rem rgb(0 0 0 / 16%);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1400px
+);
