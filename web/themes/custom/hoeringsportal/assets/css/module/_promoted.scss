@@ -10,6 +10,16 @@
     color: inherit;
     text-decoration: none;
   }
+
+  .card-text {
+    line-clamp: 3;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 65px;
+    overflow: hidden;
+  }
 }
 
 .proposal-count {

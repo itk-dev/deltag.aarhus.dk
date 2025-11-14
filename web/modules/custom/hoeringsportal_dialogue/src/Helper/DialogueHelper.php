@@ -11,7 +11,6 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\node\Entity\Node;
-use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -21,8 +20,6 @@ class DialogueHelper {
 
   public const DIALOGUE_PROPOSAL_TYPE = 'dialogue_proposal';
   public const DIALOGUE_PROPOSAL_COMMENT_TYPE = 'early_inclusion_comment';
-
-  private ?array $dialogueConfig = NULL;
 
   use StringTranslationTrait;
 
@@ -91,7 +88,7 @@ class DialogueHelper {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity->bundle()) {
       $parentNode = $this->getParentNode();
       if ($parentNode) {
-        /**** @var Node $entity */
+        /** @var \Drupal\node\Entity\Node $entity */
         $entity->set('field_dialogue', ['target_id' => $parentNode->id()]);
       }
     }
@@ -152,7 +149,7 @@ class DialogueHelper {
     // Disable form cache to prevent serialization error on file upload.
     $form_state->disableCache();
 
-    if('drupal_modal' === $this->requestStack->getCurrentRequest()->query->get('_wrapper_format')) {
+    if ('drupal_modal' === $this->requestStack->getCurrentRequest()->query->get('_wrapper_format')) {
       $form['dialogue_options'] = [
         '#type' => 'hidden',
         '#value' => serialize($this->requestStack->getCurrentRequest()->request->all()['dialogOptions']),
@@ -182,7 +179,7 @@ class DialogueHelper {
     $form['actions']['submit']['#value'] = t('Send your proposal');
     $form['field_dialogue']['#access'] = FALSE;
 
-    /** @var Node $parent */
+    /** @var \Drupal\node\Entity\Node $parent */
     $parent = $this->getParentNode($form_state);
 
     if ($parent) {
@@ -227,18 +224,18 @@ class DialogueHelper {
    *   The state of the form.
    */
   public function formAlterSubmit(array &$form, FormStateInterface $form_state): void {
-      $originalNid = $this->getDialogueIdFromFormState($form_state);
+    $originalNid = $this->getDialogueIdFromFormState($form_state);
 
-      if ($originalNid) {
-        $form_state->setRedirect('entity.node.canonical', ['node' => $originalNid]);
-      }
-      else {
-        $parentNode = $this->getParentNode();
-        if ($parentNode) {
-          $form_state->setRedirect('entity.node.canonical', ['node' => $parentNode->id()]);
-        }
+    if ($originalNid) {
+      $form_state->setRedirect('entity.node.canonical', ['node' => $originalNid]);
+    }
+    else {
+      $parentNode = $this->getParentNode();
+      if ($parentNode) {
+        $form_state->setRedirect('entity.node.canonical', ['node' => $parentNode->id()]);
       }
     }
+  }
 
   /**
    * Get parent node.
@@ -273,7 +270,7 @@ class DialogueHelper {
    *   the proposal config.
    */
   public function getProposalConfig(EntityInterface $parent): array {
-    /** @var NodeInterface $parent */
+    /** @var \Drupal\node\Entity\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
     return array_map(static fn(array $value) => $value['value'], $parentConfig);
@@ -282,10 +279,10 @@ class DialogueHelper {
   /**
    * Get latest proposal for dialogue.
    *
-   * @param Node $node
+   * @param \Drupal\node\Entity\Node $node
    *   The dialogue node.
    *
-   * @return EntityInterface|null
+   * @return \Drupal\Core\Entity\EntityInterface|null
    *   The latest proposal.
    */
   public function getLatestDialogueProposal(Node $node): ?EntityInterface {
@@ -296,7 +293,8 @@ class DialogueHelper {
         ->execute();
 
       return $this->entityTypeManager->getStorage('node')->load(array_pop($proposalIds));
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       $this->messenger->addError($this->t('Error fetching latest proposal: @message', ['@message' => $e->getMessage()]));
       return NULL;
     }
@@ -305,8 +303,9 @@ class DialogueHelper {
   /**
    * Get proposal count for dialogue.
    *
-   * @param Node $node
+   * @param \Drupal\node\Entity\Node $node
    *   The dialogue node.
+   *
    * @return int
    *   THE proposal count.
    */
@@ -318,7 +317,8 @@ class DialogueHelper {
         ->execute();
 
       return count($proposalIds);
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       $this->messenger->addError($this->t('Error fetching proposal count: @message', ['@message' => $e->getMessage()]));
       return 0;
     }
@@ -370,6 +370,14 @@ class DialogueHelper {
     }
   }
 
+  /**
+   * Determine dialogue id from the $form_state.
+   *
+   * @param $form_state
+   *   The form state.
+   * @return int|null
+   *   The dialogue id or null if not found.
+   */
   private function getDialogueIdFromFormState($form_state): ?int {
     $userInput = $form_state->getUserInput();
 
