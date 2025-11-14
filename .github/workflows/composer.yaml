@@ -63,9 +63,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+    # Ignore abandoned packages until https://www.drupal.org/project/drupal/issues/3550917
     steps:
       - uses: actions/checkout@v4
       - run: |
           docker network create frontend
       - run: |
-          docker compose run --rm phpfpm composer audit --locked
+          docker compose run --rm phpfpm composer audit --locked --abandoned=ignore
