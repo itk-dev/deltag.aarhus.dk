@@ -9,6 +9,6 @@
     <a data-dialog-options="{&quot;width&quot;:800, &quot;dialogueId&quot;:{{ elements['#node'].id }}, &quot;originalPath&quot;:&quot;{{ path('<current>') }}&quot;}" data-dialog-type="modal" href="{{ path('node.add', {node_type: 'dialogue_proposal', dialogue: elements['#node'].id}) }}" class="use-ajax btn btn-primary text-white rounded">{{ 'Participate with your proposal'|t }}</a>
   </div>
   <div class="mb-4">
-    <a href="{{ path('entity.node.canonical', {'node': elements['#node'].id}) }}#proposals" class="btn btn-transparent rounded">{{ 'View all proposals'|t }}</a>
+    <a href="{{ path('entity.node.canonical', {node: elements['#node'].id}) }}#proposals" class="btn btn-transparent rounded">{{ 'View all proposals'|t }}</a>
   </div>
 </div>

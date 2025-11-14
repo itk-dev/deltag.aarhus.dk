@@ -373,12 +373,13 @@ class DialogueHelper {
   /**
    * Determine dialogue id from the $form_state.
    *
-   * @param $form_state
+   * @param FormStateInterface $form_state
    *   The form state.
+   *
    * @return int|null
    *   The dialogue id or null if not found.
    */
-  private function getDialogueIdFromFormState($form_state): ?int {
+  private function getDialogueIdFromFormState(FormStateInterface $form_state): ?int {
     $userInput = $form_state->getUserInput();
 
     if ($userInput['dialogue_options']) {

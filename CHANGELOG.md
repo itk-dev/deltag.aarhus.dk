@@ -13,6 +13,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Update user permissions
   * Add access restrictions on unpublished comments
   * Override default dialogue form
+  * Add promoted content feature
 
 * [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
   * Add underline to active navigation.
