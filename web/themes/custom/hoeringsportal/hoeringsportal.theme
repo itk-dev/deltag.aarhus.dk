@@ -135,13 +135,13 @@ function hoeringsportal_theme_suggestions_form_element_alter(array &$suggestions
   if (!empty($variables['element']['#type'])) {
     $suggestions[] = 'form_element__' . $variables['element']['#type'];
     if (!empty($variables['element']['#name'])) {
-      if(!empty($variables['element']['#parents'])) {
+      if (!empty($variables['element']['#parents'])) {
         foreach ($variables['element']['#parents'] as $parent) {
-          $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$parent);
+          $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_', $parent);
         }
       }
 
-      $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$variables['element']['#name']);
+      $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_', $variables['element']['#name']);
     }
   }
 }

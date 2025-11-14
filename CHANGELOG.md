@@ -12,6 +12,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Deny access for admin comments tab in general
   * Update user permissions
   * Add access restrictions on unpublished comments
+  * Override default dialogue form
 
 * [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
   * Add underline to active navigation.

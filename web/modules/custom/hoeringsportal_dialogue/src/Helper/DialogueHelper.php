@@ -10,7 +10,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -112,11 +111,29 @@ class DialogueHelper {
         $this->getDialogueCommentChildren($comment, $children);
 
         foreach ($children as $child) {
-	  $child->setUnpublished();
+          $child->setUnpublished();
           $child->save();
         }
       }
     }
+  }
+
+  /**
+   * Changes to the dialogue admin form.
+   *
+   * @param array $form
+   *   The form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
+   */
+  public function dialogueFormAlter(array &$form, FormStateInterface $form_state): void {
+    $form['field_dialogue_proposal_location']['widget'][0]['type']['#access'] = FALSE;
+    $form['field_dialogue_proposal_location']['widget'][0]['geojson']['#access'] = FALSE;
+    $form['field_dialogue_proposal_location']['widget'][0]['localplanids']['#access'] = FALSE;
+    $form['field_dialogue_proposal_location']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
+      ['checked' => TRUE];
+    $form['field_dialogue_proposal_zoom']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
+      ['checked' => TRUE];
   }
 
   /**
@@ -182,6 +199,11 @@ class DialogueHelper {
       ]);
     }
 
+    $dialogueCategories = $parent->field_dialogue_proposal_category->referencedEntities();
+    $form['field_dialogue_proposal_category']['widget']['#options'] = array_combine(
+      array_map(fn($value) => $value->id(), $dialogueCategories),
+      array_map(fn($value) => $value->label(), $dialogueCategories)
+    );
   }
 
   /**
