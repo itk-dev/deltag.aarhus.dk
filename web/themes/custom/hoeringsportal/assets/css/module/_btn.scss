@@ -12,9 +12,22 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 2px;
       width: 100%;
       background-color: color.adjust($primary, $lightness: -10%);
+    }
+  }
+
+  &-transparent {
+    position: relative;
+    border: 0;
+
+    background-color: rgba(255, 255, 255, 0);
+    color: color.adjust($petroleum, $lightness: -10%);
+    border: 2px solid color.adjust($petroleum, $lightness: -10%);
+
+    &:hover {
+      color: color.adjust($petroleum, $lightness: -30%);
+      border: 2px solid color.adjust($petroleum, $lightness: -30%);
     }
   }
 }

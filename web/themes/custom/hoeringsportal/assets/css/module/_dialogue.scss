@@ -83,7 +83,8 @@
       }
     }
   }
-  #edit-field-dialogue-proposal-category--wrapper .fieldset-wrapper {
+
+  .field--name-field-dialogue-proposal-category .fieldset-wrapper {
     display: flex;
     flex-direction: column;
     gap: $spacer;

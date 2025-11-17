@@ -1,0 +1,25 @@
+uuid: bbfd582d-56e2-4f35-95ec-7a50b5cbf301
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.aktuelt_i_projektet.field_promoted_content
+    - paragraphs.paragraphs_type.aktuelt_i_projektet
+id: paragraph.aktuelt_i_projektet.default
+targetEntityType: paragraph
+bundle: aktuelt_i_projektet
+mode: default
+content:
+  field_promoted_content:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
