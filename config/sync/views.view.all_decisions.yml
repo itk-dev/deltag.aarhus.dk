@@ -1,20 +1,20 @@
-uuid: 9153b384-41a7-4502-afd8-630148012a6d
+uuid: f703dd7b-377a-404c-bbbe-e637da5d0578
 langcode: da
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - node.type.dialogue
+    - node.type.decision
     - taxonomy.vocabulary.area
   module:
     - better_exposed_filters
     - node
     - taxonomy
     - user
-id: all_early_inclusion
-label: 'Alle tidlig dialog'
+id: all_decisions
+label: 'Alle afgørelser'
 module: views
-description: 'En liste af alle tidligere dialoger'
+description: 'En liste af alle tidligere afgørelser'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -208,7 +208,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            dialogue: dialogue
+            decision: decision
           group: 1
           exposed: false
           expose:
