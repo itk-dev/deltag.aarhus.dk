@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_content_sections
     - node.type.project_main_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.aktuelt_i_projektet
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.files
@@ -39,11 +40,12 @@ settings:
       teaser_row: teaser_row
       files: files
       aktuelt_i_projektet: aktuelt_i_projektet
+      accordion: accordion
     negate: 0
     target_bundles_drag_drop:
       accordion:
         weight: 21
-        enabled: false
+        enabled: true
       accordion_item:
         weight: 22
         enabled: false
