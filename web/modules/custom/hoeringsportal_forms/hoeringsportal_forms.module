@@ -15,7 +15,7 @@ use Drupal\field\FieldStorageConfigInterface;
  * Add a template suggestions for modifying the node form.
  */
 function hoeringsportal_forms_theme_suggestions_alter(array &$suggestions, array $variables, string $hook) {
-  if (isset($variables['form']) && $variables['theme_hook_original'] == 'node_edit_form') {
+    if (isset($variables['form']) && $variables['theme_hook_original'] == 'node_edit_form') {
     if ($variables['form']['#form_id'] == 'node_project_form' || $variables['form']['#form_id'] == 'node_project_edit_form') {
       $suggestions[] = $hook . '__hoeringsportal_project';
     }
@@ -30,6 +30,9 @@ function hoeringsportal_forms_theme_suggestions_alter(array &$suggestions, array
     }
     if ($variables['form']['#form_id'] == 'node_dialogue_form' || $variables['form']['#form_id'] == 'node_dialogue_edit_form') {
       $suggestions[] = $hook . '__hoeringsportal_dialogue';
+    }
+    if ($variables['form']['#form_id'] == 'node_decision_form' || $variables['form']['#form_id'] == 'node_decision_edit_form') {
+      $suggestions[] = $hook . '__hoeringsportal_decision';
     }
   }
 
@@ -56,6 +59,9 @@ function hoeringsportal_forms_theme($existing, $type, $theme, $path) {
       'render element' => 'form',
     ],
     'node_edit_form__hoeringsportal_dialogue' => [
+      'render element' => 'form',
+    ],
+    'node_edit_form__hoeringsportal_decision' => [
       'render element' => 'form',
     ],
   ];

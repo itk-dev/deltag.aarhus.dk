@@ -1,0 +1,22 @@
+uuid: f772f85c-7ed2-4081-b22c-c26385bdd4dd
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.decision
+id: node.decision.promote
+field_name: promote
+entity_type: node
+bundle: decision
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

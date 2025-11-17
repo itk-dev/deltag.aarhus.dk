@@ -1,6 +1,6 @@
 {{ attach_library('hoeringsportal/image-fade') }}
 
-<div class="header-v2 mb-5">
+<div class="header-v2 pb-5 {{ background_class }}">
   {% block header_top_image %}
     {% if images %}
       {% if images|length > 1 %}
@@ -23,8 +23,33 @@
           <div class="small fw-semibold text-background-match">{{ category }}</div>
         {% endif %}
         <h1>{{ title }}</h1>
-        <div class="mb-5">
-          {{ description }}
+        <div class="mb-5 row">
+          <div class="col-8">
+            {{ description }}
+          </div>
+          {% if right_content %}
+            <div class="col-4 ps-3">
+              <div class="border-start ps-3">
+                {% for element in right_content %}
+                  <div>
+                    <div class="align-top d-inline-block me-2">
+                      <i class="fa-regular fa-circle-dot text-background-match"></i>
+                    </div>
+                    {% if element.type is same as('text') %}
+                      <div class="d-inline-block">
+                        <div class="text-background-match">{{ element.label }}</div>
+                        <div class="fw-bold">{{ element.value }}</div>
+                      </div>
+                    {% endif %}
+                    {% if element.type is same as('link') %}
+
+                    {% endif %}
+                  </div>
+
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
         </div>
         {% if shortcuts %}
           <div class="mb-5">

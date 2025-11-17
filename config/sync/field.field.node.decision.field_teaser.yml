@@ -1,0 +1,19 @@
+uuid: c64442fb-fcb1-475b-a2f9-3e873bda65a1
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser
+    - node.type.decision
+id: node.decision.field_teaser
+field_name: field_teaser
+entity_type: node
+bundle: decision
+label: Teaser/indledning
+description: 'Kort tekst der vises i teasers og i toppen af indholdsviningen'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
