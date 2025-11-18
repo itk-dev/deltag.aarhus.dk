@@ -5,7 +5,7 @@
       <h4 class="px-3">{{ left.leftLabel }}:</h4>
       <div class="container">
         <div class="row">
-          <div class="col-6">
+          <div class="col-lg-6">
             {% if left.promoted.id %}
               {{ drupal_entity('node', left.promoted.id, left.promoted.display_mode) }}
             {% else %}
@@ -19,7 +19,7 @@
             {% endif %}
           </div>
           {% if right %}
-            <div class="col-6">
+            <div class="col-lg-6">
               <div class="p-3">
                 {{ include(directory ~ '/templates/components/promoted-content-dialogue-right.html.twig', {}) }}
               </div>
