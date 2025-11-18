@@ -1,4 +1,4 @@
-{% set dialogOptions = {
+{% set dialog_options = {
   width: 800,
   title: '',
   classes: {
@@ -15,8 +15,8 @@
   <div class="mb-4 fs-5">
     {{ 'Proposals received'|t }}
   </div>
-  <div class="mb-4" data-test="{{ dialogOptions|json_encode }}">
-    <a data-dialog-options="{{ dialogOptions|json_encode }}" data-dialog-type="modal" href="{{ path('node.add', {node_type: 'dialogue_proposal', dialogue: elements['#node'].id}) }}" class="use-ajax btn btn-primary text-white rounded">{{ 'Participate with your proposal'|t }}</a>
+  <div class="mb-4">
+    <a data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal" href="{{ path('node.add', {node_type: 'dialogue_proposal', dialogue: elements['#node'].id}) }}" class="use-ajax btn btn-primary text-white rounded">{{ 'Participate with your proposal'|t }}</a>
   </div>
   <div class="mb-4">
     <a href="{{ path('entity.node.canonical', {node: elements['#node'].id}) }}#proposals" class="btn btn-transparent rounded">{{ 'View all proposals'|t }}</a>
