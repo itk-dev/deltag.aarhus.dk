@@ -1,0 +1,23 @@
+uuid: b8bc4240-1cc1-48c7-bd5d-3306170a0459
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.aktuelt_i_projektet.field_promoted_content
+    - paragraphs.paragraphs_type.aktuelt_i_projektet
+id: paragraph.aktuelt_i_projektet.default
+targetEntityType: paragraph
+bundle: aktuelt_i_projektet
+mode: default
+content:
+  field_promoted_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: content_promoted
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

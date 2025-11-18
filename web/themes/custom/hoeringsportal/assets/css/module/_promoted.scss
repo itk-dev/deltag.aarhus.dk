@@ -1,0 +1,27 @@
+.promoted-content {
+  background-color: $color-petroleum-100;
+  font-size: 0.9rem;
+
+  .h2 {
+    font-size: 1.4rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-text {
+    line-clamp: 3;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 65px;
+    overflow: hidden;
+  }
+}
+
+.proposal-count {
+  font-size: 3rem;
+}
