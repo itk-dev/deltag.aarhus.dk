@@ -1,0 +1,14 @@
+uuid: 16550f09-0b5f-4b26-9763-f22c0b980ff4
+langcode: da
+status: true
+dependencies:
+  module:
+    - hoeringsportal_anonymous_edit
+id: hoeringsportal_anonymous_edit.content_recover
+configuration:
+  email_body:
+    content:
+      value: "Gå til <a href=\"{{ url }}\">{{ url }}</a> for at finde dit eget indhold på deltag.aarhus.dk.\r\n"
+      format: email_html
+  email_subject:
+    value: 'Dit indhold på deltag.aarhus.dk'

@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Content list template.
+ *
+ * Available variables:
+ * - entities: a list of content grouped by bundle and type, e.g.
+ *   [
+ *     {
+ *       type: an instance of ContentEntityType,
+ *       bundles: [
+ *         {
+ *           type: the bundle type, e.g. "early_inclusion_comment",
+ *           entities: [
+ *             {
+ *               instance: an instance of EntityInterface
+ *               edit_query: a URL query to add when generating an edit URL, e.g. `{"edit_token": "17f4139a-8248-422b-b985-d1bb00ba266c"}`
+ *             },
+ *             {
+ *               instance: …,
+ *               edit_query: …
+ *             },
+ *             …
+ *           ]
+ *         },
+ *         {
+ *           type: …,
+ *           entities: …
+ *         },
+ *         …
+ *       ]
+ *     },
+ *     {
+ *       type: …,
+ *       bundles: …
+ *     },
+ *     …
+ *   ]
+ */
+#}
+<div class="anonymous-edit-content-list">
+{% if entities is same as null %}
+  <div class="info">{{ "You don't have any content."|trans }}</div>
+
+  <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|trans }}</a>
+{% else %}
+  {% for entity_type in entities %}
+    <fieldset>
+      <legend>{{ entity_type.type.label }}</legend>
+      {% for bundle in entity_type.bundles %}
+        <fieldset>
+          <legend>{{ bundle.type }}</legend>
+
+          <ul>
+            {% for entity in bundle.entities %}
+              <li>
+                {{ entity.instance.toLink('Edit'|trans, 'edit-form', {query: entity.edit_query}) }}
+              </li>
+            {% endfor %}
+          </ul>
+        </fieldset>
+      {% endfor %}
+    </fieldset>
+  {% endfor %}
+
+{% endif %}
+</div>

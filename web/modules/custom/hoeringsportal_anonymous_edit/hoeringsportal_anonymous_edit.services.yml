@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+
+  hoeringsportal_anonymous_edit.logger:
+    parent: logger.channel_base
+    arguments: ["hoeringsportal_anonymous_edit"]
+
+  Drupal\hoeringsportal_anonymous_edit\Helper\ItemHelper:
+
+  Drupal\hoeringsportal_anonymous_edit\Helper\MailHelper:
+
+  Drupal\hoeringsportal_anonymous_edit\Helper\Helper:
+    tags:
+      - { name: event_subscriber }

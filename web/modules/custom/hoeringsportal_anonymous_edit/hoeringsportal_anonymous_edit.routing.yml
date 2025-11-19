@@ -1,0 +1,25 @@
+hoeringsportal_anonymous_edit.content:
+  path: "/hoeringsportal-anonymous-edit/content"
+  defaults:
+    _title: "Content"
+    _controller: '\Drupal\hoeringsportal_anonymous_edit\Controller\HoeringsportalAnonymousEditController'
+  options:
+    no_cache: "TRUE"
+  requirements:
+    _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.content_request:
+  path: "/hoeringsportal-anonymous-edit/content/request"
+  defaults:
+    _title: "Request"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\RequestForm'
+  requirements:
+    _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.content_recover:
+  path: "/hoeringsportal-anonymous-edit/content/recover/{token}"
+  defaults:
+    _title: "Recover"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\RecoverForm'
+  requirements:
+    _user_is_logged_in: "FALSE"

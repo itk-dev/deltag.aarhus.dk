@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Functions for the hoeringsportal_anonymous_edit module.
+ */
+
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\hoeringsportal_anonymous_edit\Helper\Helper;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function hoeringsportal_anonymous_edit_entity_insert(EntityInterface $entity): void {
+  _hoeringsportal_anonymous_edit_get_helper()->entityInsert($entity);
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function hoeringsportal_anonymous_edit_entity_delete(EntityInterface $entity): void {
+  _hoeringsportal_anonymous_edit_get_helper()->entityDelete($entity);
+}
+
+/**
+ * Implements hook_entity_access().
+ */
+function hoeringsportal_anonymous_edit_entity_access(EntityInterface $entity, $operation, AccountInterface $account): AccessResultInterface {
+  return _hoeringsportal_anonymous_edit_get_helper()->entityAccess($entity, $operation, $account);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function hoeringsportal_anonymous_edit_theme($existing, $type, $theme, $path) : array {
+  return [
+    'hoeringsportal_anonymous_edit_content_index' => [
+      'variables' => [
+        'entities' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Get the hoeringsportal_anonymous_edit helper.
+ */
+function _hoeringsportal_anonymous_edit_get_helper(): Helper {
+  return \Drupal::service(Helper::class);
+}
