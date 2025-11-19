@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-
+use Drupal\node\Entity\Node;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -88,7 +88,7 @@ class DialogueHelper {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity->bundle()) {
       $parentNode = $this->getParentNode();
       if ($parentNode) {
-        /**** @var \Drupal\node\Entity\Node $entity */
+        /** @var \Drupal\node\Entity\Node $entity */
         $entity->set('field_dialogue', ['target_id' => $parentNode->id()]);
       }
     }
@@ -112,11 +112,29 @@ class DialogueHelper {
         $this->getDialogueCommentChildren($comment, $children);
 
         foreach ($children as $child) {
-	  $child->setUnpublished();
+          $child->setUnpublished();
           $child->save();
         }
       }
     }
+  }
+
+  /**
+   * Changes to the dialogue admin form.
+   *
+   * @param array $form
+   *   The form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
+   */
+  public function dialogueFormAlter(array &$form, FormStateInterface $form_state): void {
+    $form['field_dialogue_proposal_location']['widget'][0]['type']['#access'] = FALSE;
+    $form['field_dialogue_proposal_location']['widget'][0]['geojson']['#access'] = FALSE;
+    $form['field_dialogue_proposal_location']['widget'][0]['localplanids']['#access'] = FALSE;
+    $form['field_dialogue_proposal_location']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
+      ['checked' => TRUE];
+    $form['field_dialogue_proposal_zoom']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
+      ['checked' => TRUE];
   }
 
   /**
@@ -130,6 +148,13 @@ class DialogueHelper {
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
     // Disable form cache to prevent serialization error on file upload.
     $form_state->disableCache();
+
+    if ('drupal_modal' === $this->requestStack->getCurrentRequest()->query->get('_wrapper_format')) {
+      $form['dialogue_options'] = [
+        '#type' => 'hidden',
+        '#value' => serialize($this->requestStack->getCurrentRequest()->request->all()['dialogOptions']),
+      ];
+    }
 
     foreach ($form as $key => $formPart) {
       if (is_array($formPart) && isset($formPart['widget'])) {
@@ -148,15 +173,14 @@ class DialogueHelper {
     $form['field_image_upload']['widget'][0]['value']['#attributes']['drop_zone'] = TRUE;
     $form['field_dialogue_proposal_descr']['widget'][0]['value']['#description_display'] = 'before';
     $form['field_dialogue_proposal_category']['widget']['#description_position'] = 'top';
-    $form['field_location']['widget'][0]['type']['#access'] = FALSE;
-    $form['field_location']['widget'][0]['geojson']['#access'] = FALSE;
-    $form['field_location']['widget'][0]['localplanids']['#access'] = FALSE;
+    $form['field_location']['widget'][0]['type']['#attributes']['style'] = ['display: none;'];
+    $form['field_location']['widget'][0]['type']['#title'] = '';
     $form['actions']['submit']['#submit'][] = [$this, 'formAlterSubmit'];
     $form['actions']['submit']['#value'] = t('Send your proposal');
     $form['field_dialogue']['#access'] = FALSE;
 
     /** @var \Drupal\node\Entity\Node $parent */
-    $parent = $this->getParentNode();
+    $parent = $this->getParentNode($form_state);
 
     if ($parent) {
       $config = $this->getProposalConfig($parent);
@@ -182,6 +206,13 @@ class DialogueHelper {
       ]);
     }
 
+    if ($parent) {
+      $dialogueCategories = $parent->field_dialogue_proposal_category->referencedEntities();
+      $form['field_dialogue_proposal_category']['widget']['#options'] = array_combine(
+        array_map(fn($value) => $value->id(), $dialogueCategories),
+        array_map(fn($value) => $value->label(), $dialogueCategories)
+      );
+    }
   }
 
   /**
@@ -193,10 +224,16 @@ class DialogueHelper {
    *   The state of the form.
    */
   public function formAlterSubmit(array &$form, FormStateInterface $form_state): void {
-    $parentNode = $this->getParentNode();
+    $originalNid = $this->getDialogueIdFromFormState($form_state);
 
-    if ($parentNode) {
-      $form_state->setRedirect('entity.node.canonical', ['node' => $parentNode->id()]);
+    if ($originalNid) {
+      $form_state->setRedirect('entity.node.canonical', ['node' => $originalNid]);
+    }
+    else {
+      $parentNode = $this->getParentNode();
+      if ($parentNode) {
+        $form_state->setRedirect('entity.node.canonical', ['node' => $parentNode->id()]);
+      }
     }
   }
 
@@ -206,9 +243,12 @@ class DialogueHelper {
    * @return \Drupal\Core\Entity\EntityInterface|null
    *   The parent node.
    */
-  public function getParentNode(): ?EntityInterface {
+  public function getParentNode(?FormStateInterface $form_state = NULL): ?EntityInterface {
     try {
       $parentId = $this->requestStack->getCurrentRequest()->query->get('dialogue');
+      if (empty($parentId) && $form_state) {
+        $parentId = $this->getDialogueIdFromFormState($form_state);
+      }
       if ($parentId && is_numeric($parentId)) {
         return $this->entityTypeManager->getStorage('node')->load($parentId);
       }
@@ -230,10 +270,58 @@ class DialogueHelper {
    *   the proposal config.
    */
   public function getProposalConfig(EntityInterface $parent): array {
-    /** @var \Drupal\node\NodeInterface $parent */
+    /** @var \Drupal\node\Entity\NodeInterface $parent */
     $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
 
     return array_map(static fn(array $value) => $value['value'], $parentConfig);
+  }
+
+  /**
+   * Get latest proposal for dialogue.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *   The dialogue node.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface|null
+   *   The latest proposal.
+   */
+  public function getLatestDialogueProposal(Node $node): ?EntityInterface {
+    try {
+      $proposalIds = $this->entityTypeManager->getStorage('node')->getQuery()
+        ->accessCheck()
+        ->condition('field_dialogue', $node->id())
+        ->execute();
+
+      return $this->entityTypeManager->getStorage('node')->load(array_pop($proposalIds));
+    }
+    catch (\Exception $e) {
+      $this->messenger->addError($this->t('Error fetching latest proposal: @message', ['@message' => $e->getMessage()]));
+      return NULL;
+    }
+  }
+
+  /**
+   * Get proposal count for dialogue.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *   The dialogue node.
+   *
+   * @return int
+   *   THE proposal count.
+   */
+  public function getProposalCount(Node $node): int {
+    try {
+      $proposalIds = $this->entityTypeManager->getStorage('node')->getQuery()
+        ->accessCheck()
+        ->condition('field_dialogue', $node->id())
+        ->execute();
+
+      return count($proposalIds);
+    }
+    catch (\Exception $e) {
+      $this->messenger->addError($this->t('Error fetching proposal count: @message', ['@message' => $e->getMessage()]));
+      return 0;
+    }
   }
 
   /**
@@ -280,6 +368,28 @@ class DialogueHelper {
       $children[] = $comment;
       $this->getDialogueCommentChildren($comment, $children);
     }
+  }
+
+  /**
+   * Determine dialogue id from the $form_state.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The form state.
+   *
+   * @return int|null
+   *   The dialogue id or null if not found.
+   */
+  private function getDialogueIdFromFormState(FormStateInterface $form_state): ?int {
+    $userInput = $form_state->getUserInput();
+
+    if ($userInput['dialogue_options']) {
+      $dialogueOptions = unserialize($userInput['dialogue_options']);
+      $originalUrlObject = \Drupal::service('path.validator')->getUrlIfValid($dialogueOptions['originalPath']);
+
+      return $originalUrlObject ? $originalUrlObject->getRouteParameters()['node'] : NULL;
+    }
+
+    return NULL;
   }
 
 }

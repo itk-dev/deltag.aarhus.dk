@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_content_sections
     - node.type.project_page
     - paragraphs.paragraphs_type.accordion
+    - paragraphs.paragraphs_type.aktuelt_i_projektet
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.files
     - paragraphs.paragraphs_type.image
@@ -39,10 +40,17 @@ settings:
       files: files
       accordion: accordion
       text_aside_blocks_2_column: text_aside_blocks_2_column
+      aktuelt_i_projektet: aktuelt_i_projektet
     negate: 0
     target_bundles_drag_drop:
       accordion:
         weight: 18
+        enabled: true
+      accordion_item:
+        weight: 21
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 22
         enabled: true
       content_block:
         weight: -19

@@ -21,3 +21,7 @@ role_mappings:
     - project_editor
   public_meeting_editor:
     - public_meeting_editor
+  dialogue_editor:
+    - dialogue_editor
+  page_editor:
+    - page_editor
