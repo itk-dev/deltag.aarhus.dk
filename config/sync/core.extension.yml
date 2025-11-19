@@ -20,6 +20,7 @@ module:
   config: 0
   config_ignore: 0
   config_import_locale: 0
+  content_fixtures: 0
   crop: 0
   csv_serialization: 0
   ctools: 0
@@ -45,20 +46,26 @@ module:
   filter: 0
   flag: 0
   hoeringsportal_audit_log: 0
+  hoeringsportal_base_fixtures: 0
   hoeringsportal_citizen_proposal: 0
   hoeringsportal_citizen_proposal_archiving: 0
+  hoeringsportal_citizen_proposal_fixtures: 0
   hoeringsportal_config_settings: 0
   hoeringsportal_content_access: 0
   hoeringsportal_content_blocks: 0
   hoeringsportal_data: 0
   hoeringsportal_deskpro: 0
   hoeringsportal_dialogue: 0
+  hoeringsportal_dialogue_fixtures: 0
   hoeringsportal_forms: 0
   hoeringsportal_hearing: 0
+  hoeringsportal_hearing_fixtures: 0
   hoeringsportal_openid_connect: 0
+  hoeringsportal_project_fixtures: 0
   hoeringsportal_project_timeline: 0
   hoeringsportal_public_meeting: 0
   hoeringsportal_quicklinks: 0
+  hoeringsportal_test_delta_sync_fixtures: 0
   honeypot: 0
   image: 0
   image_captcha: 0
