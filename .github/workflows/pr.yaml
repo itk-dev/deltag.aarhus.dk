@@ -27,7 +27,7 @@ jobs:
         run: docker network create frontend
 
       - name: npm audit
-        run: docker compose run --rm node --disable-proto npm audit --prefix /app/web/themes/custom/hoeringsportal
+        run: docker compose run --rm node npm audit --disable-proto=delete --prefix /app/web/themes/custom/hoeringsportal
 
   code-analysis:
     name: PHP - Code analysis
