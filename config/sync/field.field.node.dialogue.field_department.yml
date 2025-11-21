@@ -10,7 +10,7 @@ id: node.dialogue.field_department
 field_name: field_department
 entity_type: node
 bundle: dialogue
-label: Department
+label: Afdeling
 description: ''
 required: true
 translatable: false

@@ -14,7 +14,7 @@ dependencies:
     - taxonomy
     - user
 id: dialogue_proposals
-label: 'Dialogue proposals'
+label: Dialogforslag
 module: views
 description: ''
 tag: ''
@@ -27,7 +27,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Dialogue proposals'
+      title: Dialogforslag
       fields:
         title:
           id: title
@@ -124,7 +124,7 @@ display:
           expose_sort_order: false
           sort_asc_label: Stigende
           sort_desc_label: Faldende
-          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required: 'Vælg et filter'
           text_input_required_format: citizen_proposal_content
           bef:
             general:
@@ -135,7 +135,7 @@ display:
               autosubmit_hide: true
               input_required: false
               allow_secondary: false
-              secondary_label: 'Advanced options'
+              secondary_label: Avanceret
               secondary_open: false
               reset_button_always_show: false
             sort:
@@ -182,7 +182,7 @@ display:
           plugin_id: date
           order: DESC
           expose:
-            label: 'Latest proposals'
+            label: 'Seneste forslag'
             field_identifier: created
           exposed: true
           granularity: second
@@ -196,7 +196,7 @@ display:
           plugin_id: standard
           order: DESC
           expose:
-            label: 'Most likes'
+            label: 'Flest synes om'
             field_identifier: count
           exposed: true
         comment_count:
@@ -209,7 +209,7 @@ display:
           plugin_id: standard
           order: DESC
           expose:
-            label: 'Most comments'
+            label: 'Flest kommentarer'
             field_identifier: comment_count
           exposed: true
       arguments:
@@ -242,7 +242,7 @@ display:
           specify_validation: false
           validate:
             type: none
-            fail: 'not found'
+            fail: 'ikke fundet'
           validate_options: {  }
           break_phrase: false
           not: false
@@ -314,7 +314,7 @@ display:
           exposed: true
           expose:
             operator_id: field_dialogue_proposal_category_target_id_op
-            label: 'Dialogue proposal category'
+            label: 'Dialogforslag kategori'
             description: ''
             use_operator: false
             operator: field_dialogue_proposal_category_target_id_op

@@ -11,8 +11,8 @@ id: node.dialogue.field_dialogue_proposal_config
 field_name: field_dialogue_proposal_config
 entity_type: node
 bundle: dialogue
-label: 'Dialogue proposal config'
-description: 'Configure proposals for this dialogue'
+label: 'Dialogforslag konfiguration'
+description: 'Konfigurér forslag for denne dialog'
 required: false
 translatable: false
 default_value:

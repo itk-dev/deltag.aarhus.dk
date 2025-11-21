@@ -19,9 +19,9 @@ dependencies:
 _core:
   default_config_hash: H6JHGXl97yOKmVaV62SoY1ki1tWVdyD44fgOkdmVyRM
 id: dialogue_comments
-label: 'Dialogue comments'
+label: 'Dialog kommentarer'
 module: comment
-description: 'Find and manage comments.'
+description: 'Find og håndtér kommentarer.'
 tag: default
 base_table: comment_field_data
 base_field: cid
@@ -32,7 +32,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Dialogue proposal replies'
+      title: 'Svar til dialogforslag'
       fields:
         comment_bulk_form:
           id: comment_bulk_form
@@ -88,6 +88,7 @@ display:
           include_exclude: include
           selected_actions:
             - comment_delete_action
+            - comment_delete_action
             - comment_publish_action
             - comment_unpublish_action
         field_comment:
@@ -98,7 +99,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Comment
+          label: Kommentar
           exclude: false
           alter:
             alter_text: false
@@ -291,7 +292,7 @@ display:
           entity_type: comment
           entity_field: entity_id
           plugin_id: commented_entity
-          label: 'Posted in'
+          label: 'Oprettet i'
           exclude: false
           alter:
             alter_text: false
@@ -408,8 +409,8 @@ display:
               custom_date_format: ''
             time_diff:
               enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
+              future_format: '@interval til'
+              past_format: '@interval siden'
               granularity: 2
               refresh: 60
           group_column: value
@@ -495,7 +496,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: Likes
+          label: 'Synes om'
           exclude: false
           alter:
             alter_text: false
@@ -599,8 +600,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Unpublished
-            format_custom_true: Published
+            format_custom_false: 'Ikke udgivet'
+            format_custom_true: Udgivet
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -687,14 +688,14 @@ display:
       exposed_form:
         type: bef
         options:
-          submit_button: Filter
+          submit_button: Filtrér
           reset_button: true
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
           expose_sort_order: true
           sort_asc_label: Stigende
           sort_desc_label: Faldende
-          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required: 'Vælg et filter for at se resultater'
           text_input_required_format: citizen_proposal_content
           bef:
             general:
@@ -705,7 +706,7 @@ display:
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
-              secondary_label: 'Advanced options'
+              secondary_label: 'Avancerede muligheder'
               secondary_open: false
               reset_button_always_show: false
             filter:
@@ -764,7 +765,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'No comments available.'
+          content: 'Ingen kommentarer tilgængelige.'
           tokenize: false
       sorts:
         changed:
@@ -799,7 +800,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: Comment
+            label: Kommentar
             description: ''
             use_operator: false
             operator: combine_op
@@ -893,7 +894,7 @@ display:
           exposed: true
           expose:
             operator_id: title_op
-            label: 'Dialogue proposal'
+            label: Dialogforslag
             description: ''
             use_operator: false
             operator: title_op
@@ -942,7 +943,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: 'Publishing status'
+            label: Publiseringsstatus
             description: ''
             use_operator: false
             operator: status_op
@@ -1138,7 +1139,7 @@ display:
       cacheable: false
   data_export_1:
     id: data_export_1
-    display_title: 'Data export (CSV)'
+    display_title: 'Dataeksport (CSV)'
     display_plugin: data_export
     position: 2
     display_options:
@@ -1461,8 +1462,8 @@ display:
               custom_date_format: ''
             time_diff:
               enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
+              future_format: '@interval til'
+              past_format: '@interval siden'
               granularity: 2
               refresh: 60
           group_column: value
@@ -1711,7 +1712,7 @@ display:
         - flag.flag.support_comment
   data_export_2:
     id: data_export_2
-    display_title: 'Data export (XLSX)'
+    display_title: 'Dataeksport (XLSX)'
     display_plugin: data_export
     position: 3
     display_options:
@@ -1917,7 +1918,7 @@ display:
           entity_type: comment
           entity_field: entity_id
           plugin_id: commented_entity
-          label: 'Posted in'
+          label: 'Oprettet i'
           exclude: false
           alter:
             alter_text: false
@@ -2034,8 +2035,8 @@ display:
               custom_date_format: ''
             time_diff:
               enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
+              future_format: '@interval til'
+              past_format: '@interval siden'
               granularity: 2
               refresh: 60
           group_column: value
@@ -2284,11 +2285,11 @@ display:
         - flag.flag.support_comment
   page_published:
     id: page_published
-    display_title: 'Published comments'
+    display_title: 'Publiserede kommentarer'
     display_plugin: page
     position: 1
     display_options:
-      display_description: 'The approved comments listing.'
+      display_description: 'Liste af godkendte kommentarer.'
       display_comment: ''
       exposed_block: false
       display_extenders: {  }
@@ -2296,7 +2297,7 @@ display:
       menu:
         type: tab
         title: Replies
-        description: 'Replies published'
+        description: 'Svar publiseret'
         weight: 0
         expanded: false
         menu_name: admin

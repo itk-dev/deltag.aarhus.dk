@@ -10,7 +10,7 @@ id: node.dialogue_proposal.field_dialogue
 field_name: field_dialogue
 entity_type: node
 bundle: dialogue_proposal
-label: Dialogue
+label: Dialog
 description: ''
 required: false
 translatable: false
