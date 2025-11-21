@@ -21,8 +21,8 @@ id: node.dialogue.field_content_sections
 field_name: field_content_sections
 entity_type: node
 bundle: dialogue
-label: 'Content sections'
-description: 'Used to create page sections with the Drupal Paragraphs module'
+label: Indholdssektioner
+description: 'Bruges til at oprette indholds sektioner på siden'
 required: false
 translatable: false
 default_value: {  }
@@ -46,6 +46,12 @@ settings:
       accordion:
         weight: 18
         enabled: true
+      accordion_item:
+        weight: 21
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 22
+        enabled: false
       content_block:
         weight: -21
         enabled: true

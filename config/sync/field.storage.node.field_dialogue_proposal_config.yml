@@ -13,13 +13,13 @@ settings:
   allowed_values:
     -
       value: public_proposals
-      label: 'Open proposals for public'
+      label: 'Åbn forslag for offentligheden'
     -
       value: use_map_on_proposals
-      label: 'Use map on proposals'
+      label: 'Anvend kort på dialogforslag'
     -
       value: use_image_on_proposals
-      label: 'Use image on proposals'
+      label: 'Anvend billede på dialogforslag'
   allowed_values_function: ''
 module: options
 locked: false
