@@ -20,7 +20,7 @@ dependencies:
     - views_data_export
     - xls_serialization
 id: dialogue_proposals_admin
-label: 'Dialogue proposals'
+label: Dialogforslag
 module: views
 description: ''
 tag: ''
@@ -33,7 +33,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Dialogue proposals'
+      title: Dialogforslag
       fields:
         comment_count:
           id: comment_count
@@ -43,7 +43,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Comment count'
+          label: 'Antal kommentarer'
           exclude: true
           alter:
             alter_text: false
@@ -100,7 +100,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Flagging count'
+          label: 'Antal synes om'
           exclude: true
           alter:
             alter_text: false
@@ -290,7 +290,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: field
-          label: 'Creation date'
+          label: Oprettelsesdato
           exclude: false
           alter:
             alter_text: false
@@ -342,8 +342,8 @@ display:
               custom_date_format: ''
             time_diff:
               enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
+              future_format: '@interval til'
+              past_format: '@interval siden'
               granularity: 2
               refresh: 60
               description: ''
@@ -432,7 +432,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Dialogue
+          label: Dialog
           exclude: false
           alter:
             alter_text: false
@@ -558,7 +558,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Comments / Likes'
+          label: 'Kommentarer / Synes om'
           exclude: false
           alter:
             alter_text: true
@@ -628,7 +628,7 @@ display:
           expose_sort_order: true
           sort_asc_label: Stigende
           sort_desc_label: Faldende
-          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required: 'Vælg filter'
           text_input_required_format: citizen_proposal_content
           bef:
             general:
@@ -639,7 +639,7 @@ display:
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
-              secondary_label: 'Advanced options'
+              secondary_label: Avanceret
               secondary_open: false
               reset_button_always_show: true
             filter:
@@ -875,7 +875,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: 'Displaying @start - @end of @total'
+          content: 'Viser @start - @end af @total'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -894,7 +894,7 @@ display:
         - flag.flag.support_proposal
   data_export_1:
     id: data_export_1
-    display_title: 'Data export (CSV)'
+    display_title: 'Dataeksport (CSV)'
     display_plugin: data_export
     position: 2
     display_options:
@@ -1092,8 +1092,8 @@ display:
               custom_date_format: ''
             time_diff:
               enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
+              future_format: '@interval til'
+              past_format: '@interval siden'
               granularity: 2
               refresh: 60
               description: ''
@@ -1182,7 +1182,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Dialogue
+          label: Dialog
           exclude: false
           alter:
             alter_text: false
@@ -1308,7 +1308,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Comment count'
+          label: Kommentarantal
           exclude: false
           alter:
             alter_text: false
@@ -1365,7 +1365,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Flagging count'
+          label: 'Synes om antal'
           exclude: false
           alter:
             alter_text: false
@@ -1422,7 +1422,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Comments / Likes'
+          label: 'Kommentarer / Synes om'
           exclude: true
           alter:
             alter_text: true
@@ -1507,7 +1507,7 @@ display:
         - flag.flag.support_proposal
   data_export_2:
     id: data_export_2
-    display_title: 'Data export (XLSX)'
+    display_title: 'Dataeksport (XLSX)'
     display_plugin: data_export
     position: 2
     display_options:
@@ -1653,7 +1653,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: field
-          label: 'Creation date'
+          label: Oprettelsesdato
           exclude: false
           alter:
             alter_text: false
@@ -1705,8 +1705,8 @@ display:
               custom_date_format: ''
             time_diff:
               enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
+              future_format: '@interval til'
+              past_format: '@interval siden'
               granularity: 2
               refresh: 60
               description: ''
@@ -1795,7 +1795,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Dialogue
+          label: Dialog
           exclude: false
           alter:
             alter_text: false
@@ -1921,7 +1921,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Comment count'
+          label: Kommentarantal
           exclude: false
           alter:
             alter_text: false
@@ -1978,7 +1978,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Flagging count'
+          label: 'Synes om antal'
           exclude: false
           alter:
             alter_text: false
@@ -2035,7 +2035,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Comments / Likes'
+          label: 'Kommentarer / Synes om'
           exclude: true
           alter:
             alter_text: true
@@ -2128,7 +2128,7 @@ display:
       path: admin/content/dialogue-proposal
       menu:
         type: tab
-        title: 'Dialogue proposals'
+        title: Dialogforslag
         description: ''
         weight: 0
         expanded: true

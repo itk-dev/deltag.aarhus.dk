@@ -11,11 +11,16 @@ id: node.dialogue.field_dialogue_proposal_location
 field_name: field_dialogue_proposal_location
 entity_type: node
 bundle: dialogue
-label: 'Dialogue proposal location'
-description: 'Select where the map for proposals should be centered'
+label: 'Dialogforslag location'
+description: 'Vælg hvor på kortet dialogforslag skal centreres'
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    type: point
+    geojson: ''
+    localplanids: ''
+    point: ''
 default_value_callback: ''
 settings: {  }
 field_type: hoeringsportal_data_map

@@ -46,7 +46,7 @@ third_party_settings:
         - field_dialogue_proposal_category
         - field_dialogue_proposal_location
         - field_dialogue_proposal_zoom
-      label: 'Proposal settings'
+      label: 'Dialogforslag indstillinger'
       region: content
       parent_name: ''
       weight: 5

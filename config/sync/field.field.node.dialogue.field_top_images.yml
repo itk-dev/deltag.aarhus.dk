@@ -10,7 +10,7 @@ id: node.dialogue.field_top_images
 field_name: field_top_images
 entity_type: node
 bundle: dialogue
-label: 'Top images'
+label: Topbilleder
 description: ''
 required: false
 translatable: false
