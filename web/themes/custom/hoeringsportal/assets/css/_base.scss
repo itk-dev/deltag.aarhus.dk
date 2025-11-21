@@ -5,6 +5,7 @@ body {
   word-wrap: break-word;
   letter-spacing: 0.05em;
   padding-top: 96px;
+  font-size: 1rem;
 }
 
 h1,
@@ -54,4 +55,8 @@ a {
 
 .ui-button-icon {
   background-color: $white;
+}
+
+input {
+  font-size: 1rem;
 }

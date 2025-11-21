@@ -10,8 +10,8 @@ id: node.dialogue.field_dialogue_proposal_category
 field_name: field_dialogue_proposal_category
 entity_type: node
 bundle: dialogue
-label: 'Dialogue proposal category'
-description: 'Select what categories should be available when creating a proposal'
+label: 'Dialogforslag kategorier'
+description: 'Vælg hvilke kategorier der skal være tilgængelige når der oprettes dialogforslag'
 required: true
 translatable: false
 default_value: {  }

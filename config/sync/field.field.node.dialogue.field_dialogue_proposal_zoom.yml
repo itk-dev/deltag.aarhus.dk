@@ -9,8 +9,8 @@ id: node.dialogue.field_dialogue_proposal_zoom
 field_name: field_dialogue_proposal_zoom
 entity_type: node
 bundle: dialogue
-label: 'Dialogue proposal zoom'
-description: 'Select the map zoom level on proposals. Higher numbers will zoom in. Default: 11'
+label: 'Dialogforslag zoom'
+description: 'Vælg zoom niveau på dialogforslag. Højere værdier vil zoome ind. Standardværdi: 11'
 required: false
 translatable: false
 default_value:
