@@ -25,6 +25,10 @@ You can also set 'PROFILES` when running the `compose` task, e.g.
 PROFILES=pretix task compose -- up --detach
 ```
 
+You may have to increase the Memory Limit in Docker Desktop to be able to start
+pretix and it's internal services (cf.
+<https://github.com/celery/celery/issues/2966#issuecomment-567401386>).
+
 > [!TIP]
 > Run `git grep -A2 'profiles:' '*.y*ml'` to get a crude list of all profiles in the project.
 
