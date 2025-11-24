@@ -6,6 +6,7 @@ namespace Drupal\hoeringsportal_anonymous_edit\Event;
 
 use Drupal\Component\EventDispatcher\Event;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\hoeringsportal_anonymous_edit\Model\Owner;
 
 /**
  * Event for hoeringsportal_anonymous_edit.
@@ -17,14 +18,11 @@ final class HoeringsportalAnonymousEditEvent extends Event {
    */
   private bool $isSupported = FALSE;
 
-  /**
-   * An optional email for the entity.
-   */
-  private ?string $email = NULL;
-
   public function __construct(
     private readonly EntityInterface $entity,
-  ) {}
+    private readonly Owner $owner,
+  ) {
+  }
 
   /**
    * Get the entity.
@@ -50,19 +48,10 @@ final class HoeringsportalAnonymousEditEvent extends Event {
   }
 
   /**
-   * Get email.
+   * Get owner data.
    */
-  public function getEmail(): ?string {
-    return $this->email;
-  }
-
-  /**
-   * Set email.
-   */
-  public function setEmail(string $email): self {
-    $this->email = $email;
-
-    return $this;
+  public function getOwner(): Owner {
+    return $this->owner;
   }
 
 }

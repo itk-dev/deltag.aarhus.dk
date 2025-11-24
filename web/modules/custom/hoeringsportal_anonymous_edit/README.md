@@ -30,6 +30,15 @@ The module implements
 to allow anonymous users to update and delete content matching the current edit
 token.
 
+## Configuration
+
+Anonymous user names (!) are generated on demand using a string format pattern:
+
+``` php
+# settings.local.php
+$settings['hoeringsportal_anonymous_edit']['owner_name_pattern'] = 'Bruger %1$d'; // The default value
+```
+
 ## Content list
 
 An anonymous user with a valid edtit token can find a list of its content on

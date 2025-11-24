@@ -17,7 +17,8 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Url;
 use Drupal\hoeringsportal_anonymous_edit\Event\HoeringsportalAnonymousEditEvent;
 use Drupal\hoeringsportal_anonymous_edit\Exception\InvalidTokenException;
-use Drupal\hoeringsportal_anonymous_edit\Model\Item;
+use Drupal\hoeringsportal_anonymous_edit\Model\Content;
+use Drupal\hoeringsportal_anonymous_edit\Model\Owner;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
@@ -45,7 +46,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
     private readonly RequestStack $requestStack,
     private readonly AccountInterface $account,
     private readonly UuidInterface $uuid,
-    private readonly ItemHelper $itemHelper,
+    private readonly StorageHelper $storageHelper,
     private readonly EntityTypeManagerInterface $entityTypeManager,
     private readonly EventDispatcherInterface $eventDispatcher,
     private readonly MailHelper $mailHelper,
@@ -53,6 +54,20 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
     LoggerChannelInterface $logger,
   ) {
     $this->setLogger($logger);
+  }
+
+  /**
+   * Get owner of a piece of content.
+   */
+  public function getContentOwner(EntityInterface $entity): ?Owner {
+    if ($item = $this->storageHelper->fetchItemByEntity($entity)) {
+      if ($owner = $this->storageHelper->fetchOwner($item->owner_token)) {
+        $owner->isCurrent = $owner->owner_token === $this->getToken();
+        return $owner;
+      }
+    }
+
+    return NULL;
   }
 
   /**
@@ -64,7 +79,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
       return NULL;
     }
 
-    $items = $this->itemHelper->fetchItemsByToken($token);
+    $items = $this->storageHelper->fetchItemsByToken($token);
 
     $groups = [];
     foreach ($items as $row) {
@@ -133,7 +148,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    *
    * @see self::onKernelResponse()
    */
-  public function setToken(string $token): void {
+  private function setToken(string $token): void {
     if (!Uuid::isValid($token)) {
       throw new InvalidTokenException($token);
     }
@@ -163,8 +178,8 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   /**
    * Fetch item by email.
    */
-  private function fetchItemByEmail(string $email, string $token): ?Item {
-    $items = $this->itemHelper->fetchItemsByEmail($email, $token);
+  private function fetchItemByEmail(string $email, string $token): ?Content {
+    $items = $this->storageHelper->fetchItemsByEmail($email, $token);
 
     return reset($items) ?: NULL;
   }
@@ -174,7 +189,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    */
   public function getRecoverUrl(string $email): ?string {
     $tokens = [];
-    $items = $this->itemHelper->fetchItemsByEmail($email);
+    $items = $this->storageHelper->fetchItemsByEmail($email);
     foreach ($items as $item) {
       $tokens[$item->owner_token] = $item->owner_token;
     }
@@ -216,14 +231,20 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    * Implements hook_entity_insert().
    */
   public function entityInsert(EntityInterface $entity): void {
-    $event = new HoeringsportalAnonymousEditEvent($entity);
+    $token = $this->getToken(create: TRUE);
+    $owner = $this->storageHelper->fetchOwner($token);
+    if (NULL === $owner) {
+      $owner = new Owner();
+      $owner->owner_token = $token;
+      $format = $this->getSetting('owner_name_pattern', 'Bruger %1$d');
+      $owner->name = $this->storageHelper->computeName($format);
+    }
+    $event = new HoeringsportalAnonymousEditEvent($entity, $owner);
     $this->eventDispatcher->dispatch($event);
     if ($event->isSupported()) {
-      if ($token = $this->getToken(create: TRUE)) {
-        $email = $event->getEmail();
-        $item  = $this->itemHelper->createItem($entity, $token, $email);
-        $this->debug('Item <pre>@item</pre> created.', ['@item' => json_encode($item, JSON_PRETTY_PRINT)]);
-      }
+      $ownerData = $event->getOwner();
+      $item = $this->storageHelper->createItem($entity, $token, $ownerData);
+      $this->debug('Item <pre>@item</pre> created.', ['@item' => json_encode($item, JSON_PRETTY_PRINT)]);
     }
   }
 
@@ -231,7 +252,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    * Implements hook_entity_delete().
    */
   public function entityDelete(EntityInterface $entity): void {
-    $this->itemHelper->deleteItem($entity);
+    $this->storageHelper->deleteItem($entity);
   }
 
   /**
@@ -240,7 +261,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   public function entityAccess(EntityInterface $entity, string $operation, AccountInterface $account): AccessResultInterface {
     if (in_array($operation, ['update', 'delete'])) {
       if ($token = $this->getToken()) {
-        if ($item = $this->itemHelper->fetchItemByEntity($entity)) {
+        if ($item = $this->storageHelper->fetchItemByEntity($entity)) {
           if ($item->owner_token === $token) {
             return AccessResult::allowed();
           }
@@ -277,10 +298,17 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
       LogLevel::DEBUG => RfcLogLevel::DEBUG,
     ];
     $rfcLogLevel = $levelTranslation[$level] ?? RfcLogLevel::ERROR;
-    $logLevel = Settings::get('hoeringsportal_anonymous_edit')['log_level'] ?? RfcLogLevel::ERROR;
+    $logLevel = $this->getSetting('log_level', RfcLogLevel::ERROR);
     if ($logLevel >= $rfcLogLevel) {
       $this->logger->log($level, $message, $context);
     }
+  }
+
+  /**
+   * Get a setting.
+   */
+  private function getSetting(string $key, mixed $default): mixed {
+    return Settings::get('hoeringsportal_anonymous_edit')[$key] ?? $default;
   }
 
 }

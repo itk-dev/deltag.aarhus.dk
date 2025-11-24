@@ -6,7 +6,7 @@ services:
     parent: logger.channel_base
     arguments: ["hoeringsportal_anonymous_edit"]
 
-  Drupal\hoeringsportal_anonymous_edit\Helper\ItemHelper:
+  Drupal\hoeringsportal_anonymous_edit\Helper\StorageHelper:
 
   Drupal\hoeringsportal_anonymous_edit\Helper\MailHelper:
 

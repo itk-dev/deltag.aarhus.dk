@@ -1,8 +1,18 @@
+hoeringsportal_anonymous_edit:
+  path: "/hoeringsportal-anonymous-edit"
+  defaults:
+    _title: "Main controller"
+    _controller: '\Drupal\hoeringsportal_anonymous_edit\Controller\HoeringsportalAnonymousEditController'
+  options:
+    no_cache: "TRUE"
+  requirements:
+    _user_is_logged_in: "FALSE"
+
 hoeringsportal_anonymous_edit.content:
   path: "/hoeringsportal-anonymous-edit/content"
   defaults:
     _title: "Content"
-    _controller: '\Drupal\hoeringsportal_anonymous_edit\Controller\HoeringsportalAnonymousEditController'
+    _controller: '\Drupal\hoeringsportal_anonymous_edit\Controller\HoeringsportalAnonymousEditContentController'
   options:
     no_cache: "TRUE"
   requirements:
