@@ -1,7 +1,7 @@
 include:
   - docker-compose.oidc.yml
   - docker-compose.playwright.yml
-  #- docker-compose.pretix.yml
+  - docker-compose.pretix.yml
 
 services:
   phpfpm:

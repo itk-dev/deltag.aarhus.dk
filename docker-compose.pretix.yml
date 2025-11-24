@@ -3,9 +3,11 @@ networks:
     driver: bridge
     internal: false
 
+# https://docs.pretix.eu/self-hosting/installation/docker_smallscale/
+# https://github.com/ZPascal/pretix-docker-compose/tree/main
 services:
   pretix:
-    image: pretix/standalone:latest
+    image: pretix/standalone:stable
     profiles:
       - pretix
     networks:
