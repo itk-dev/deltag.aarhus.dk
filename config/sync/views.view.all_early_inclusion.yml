@@ -12,7 +12,7 @@ dependencies:
     - taxonomy
     - user
 id: all_early_inclusion
-label: 'Alle tidlig dialog'
+label: 'Alle tidlige dialoger'
 module: views
 description: 'En liste af alle projekter'
 tag: ''
