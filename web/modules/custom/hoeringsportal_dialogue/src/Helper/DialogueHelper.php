@@ -8,9 +8,11 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -18,6 +20,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class DialogueHelper {
 
+  public const DIALOGUE_TYPE = 'dialogue';
   public const DIALOGUE_PROPOSAL_TYPE = 'dialogue_proposal';
   public const DIALOGUE_PROPOSAL_COMMENT_TYPE = 'early_inclusion_comment';
 
@@ -28,6 +31,8 @@ class DialogueHelper {
    *
    * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The route match.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The enity type manager.
    * @param \Drupal\Core\Session\AccountInterface $account
@@ -37,6 +42,7 @@ class DialogueHelper {
    */
   public function __construct(
     protected RequestStack $requestStack,
+    protected RouteMatchInterface $routeMatch,
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
     protected MessengerInterface $messenger,
@@ -256,6 +262,39 @@ class DialogueHelper {
   }
 
   /**
+   * Implements hook_form_FORMID_alter().
+   */
+  public function commentEarlyInclusionCommentFormAlter(array &$form, FormStateInterface $form_state) {
+    if (!isset($form['author'])) {
+      return;
+    }
+
+    $config = [];
+    // The comment form is shown on routes `entity.node.canonical` and the POST
+    // request (when creating a comment) is sent to `comment.reply`.
+    $node = $this->routeMatch->getParameter('node')
+      ?? $this->routeMatch->getParameter('entity');
+    if ($node instanceof NodeInterface && self::DIALOGUE_PROPOSAL_TYPE === $node->getType()) {
+      $parent = $node->get('field_dialogue')->referencedEntities()[0] ?? NULL;
+      if ($parent instanceof NodeInterface && self::DIALOGUE_TYPE === $parent->getType()) {
+        $config = $this->getProposalConfig($parent);
+      }
+    }
+
+    // Disable author fields apart from the ones explicitly enabled.
+    foreach ($form['author'] as $key => &$formPart) {
+      $disable = match ($key) {
+        'name' => !in_array('use_name_on_proposal_comments', $config),
+        'mail' => !in_array('use_email_on_proposal_comments', $config),
+        default => TRUE,
+      };
+      if ($disable) {
+        $formPart['#access'] = FALSE;
+      }
+    }
+  }
+
+  /**
    * Get parent node.
    *
    * @return \Drupal\Core\Entity\EntityInterface|null
@@ -400,7 +439,7 @@ class DialogueHelper {
   private function getDialogueIdFromFormState(FormStateInterface $form_state): ?int {
     $userInput = $form_state->getUserInput();
 
-    if ($userInput['dialogue_options']) {
+    if (isset($userInput['dialogue_options'])) {
       $dialogueOptions = unserialize($userInput['dialogue_options']);
       $originalUrlObject = \Drupal::service('path.validator')->getUrlIfValid($dialogueOptions['originalPath']);
 

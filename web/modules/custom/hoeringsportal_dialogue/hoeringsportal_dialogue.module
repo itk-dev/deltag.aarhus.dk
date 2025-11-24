@@ -66,3 +66,10 @@ function hoeringsportal_dialogue_form_node_dialogue_proposal_form_alter(array &$
 function hoeringsportal_dialogue_form_node_dialogue_proposal_edit_form_alter(array &$form, FormStateInterface $form_state) {
   Drupal::service(DialogueHelper::class)->dialogueProposalFormAlter($form, $form_state);
 }
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+function hoeringsportal_dialogue_form_comment_early_inclusion_comment_form_alter(array &$form, FormStateInterface $form_state) {
+  Drupal::service(DialogueHelper::class)->commentEarlyInclusionCommentFormAlter($form, $form_state);
+}

@@ -57,8 +57,10 @@
                 {# @todo Clean this up #}
                 {% set instance = entity.instance %}
                 {% if instance.comment_type is defined and ('node' == instance.entity_type.string|default(false)) and instance.entity_id is defined %}
-                  {% set url = path('entity.node.canonical', {node: instance.entity_id.string}, {fragment: 'comment-' ~ instance.cid.string}) %}
-                  <a href="{{ url }}">Comment on {{ drupal_field('title', 'node', instance.entity_id.string) }}</a>
+                  {% set comment = instance %}
+                  {% set commentedEntity = comment.getCommentedEntity() %}
+                  {% set url = commentedEntity.toUrl(options: {fragment: 'comment-' ~ comment.id}) %}
+                  <a href="{{ url }}">{{ 'Comment #@comment on %title'|t({'@comment': comment.id, '%title': commentedEntity.label()}) }}</a>
                 {% else %}
                   {{ entity.instance.toLink('Edit'|trans, 'edit-form', {query: entity.edit_query}) }}
                 {% endif %}
