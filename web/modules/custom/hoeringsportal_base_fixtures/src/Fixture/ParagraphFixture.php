@@ -102,7 +102,7 @@ BODY,
         'display_id' => 'default',
         'data' => '',
       ],
-      'field_list_title' => 'All Early Inclusion Elements',
+      'field_list_title' => 'Alle tidlige dialoger',
     ]);
     $paragraph->save();
     $this->addReference('paragraph:content_list:all_early_inclusion', $paragraph);

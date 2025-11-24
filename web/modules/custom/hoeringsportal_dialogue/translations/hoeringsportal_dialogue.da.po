@@ -77,3 +77,7 @@ msgstr "Ingen dialog findes til dette dialogforslag! Du skal tilføje dit forsla
 msgctxt "Comment reply"
 msgid "Reply"
 msgstr "Svar"
+msgid "Dialogue"
+msgstr "Dialog"
+msgid "Dialogue proposal replies"
+msgstr "Dialogforslags svar"
