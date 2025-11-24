@@ -30,7 +30,6 @@ final class RequestForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Your email address', options: ['context' => 'hoeringsportal_anonymous_edit']),
@@ -57,7 +56,7 @@ final class RequestForm extends FormBase {
     try {
       $this->helper->sendRecoverUrl($email);
 
-      $this->messenger()->addMessage($this->t('Email send to @email', ['@email' => $email]));
+      $this->messenger()->addMessage($this->t('Email sent to @email', ['@email' => $email]));
       // @todo Redirect to where?
       $form_state->setRedirect('<front>');
     }

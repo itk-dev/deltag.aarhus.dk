@@ -30,7 +30,6 @@ final class RecoverForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Confirm your email address', options: ['context' => 'hoeringsportal_anonymous_edit']),
@@ -54,12 +53,7 @@ final class RecoverForm extends FormBase {
   public function validateForm(array &$form, FormStateInterface $form_state): void {
     $email = $form_state->getValue('email');
     $token = $this->getRouteMatch()->getParameter('token');
-    try {
-      $this->helper->setTokenByEmail($email, $token);
-
-      $form_state->setRedirect('hoeringsportal_anonymous_edit.content');
-    }
-    catch (\Exception) {
+    if (!$this->helper->isValidTokenEmail($email, $token)) {
       $form_state->setErrorByName('email', $this->t('Invalid email address'));
     }
   }
@@ -68,7 +62,16 @@ final class RecoverForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    // Everything has been done in validateForm.
+    $email = $form_state->getValue('email');
+    $token = $this->getRouteMatch()->getParameter('token');
+    try {
+      $this->helper->setTokenByEmail($email, $token);
+      $this->messenger()->addMessage('Your edit token has been recovered');
+    }
+    catch (\Exception) {
+      $this->messenger()->addError('Error recovering your edit token');
+    }
+    $form_state->setRedirect('hoeringsportal_anonymous_edit.content');
   }
 
 }

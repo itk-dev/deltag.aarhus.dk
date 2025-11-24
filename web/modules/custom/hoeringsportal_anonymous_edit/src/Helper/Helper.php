@@ -17,6 +17,7 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Url;
 use Drupal\hoeringsportal_anonymous_edit\Event\HoeringsportalAnonymousEditEvent;
 use Drupal\hoeringsportal_anonymous_edit\Exception\InvalidTokenException;
+use Drupal\hoeringsportal_anonymous_edit\Model\Item;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
@@ -141,16 +142,31 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   }
 
   /**
-   * Set token ny email.
+   * Decide if email address matches a token.
+   */
+  public function isValidTokenEmail(string $email, string $token): bool {
+    return NULL !== $this->fetchItemByEmail($email, $token);
+  }
+
+  /**
+   * Set token by email.
    */
   public function setTokenByEmail(string $email, string $token): void {
-    $items = $this->itemHelper->fetchItemsByEmail($email, $token);
-    $item = reset($items);
+    $item = $this->fetchItemByEmail($email, $token);
     if (!$item) {
       throw new InvalidTokenException($email);
     }
 
     $this->setToken($item->owner_token);
+  }
+
+  /**
+   * Fetch item by email.
+   */
+  private function fetchItemByEmail(string $email, string $token): ?Item {
+    $items = $this->itemHelper->fetchItemsByEmail($email, $token);
+
+    return reset($items) ?: NULL;
   }
 
   /**
