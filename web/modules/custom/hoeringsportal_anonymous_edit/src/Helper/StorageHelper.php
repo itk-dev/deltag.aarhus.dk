@@ -149,6 +149,7 @@ final class StorageHelper {
    * Compute a unique user name.
    */
   public function computeName(string $format) {
+    $transaction = $this->database->startTransaction();
     try {
       $id = $this->database
         ->select(self::TABLE_NAME_OWNERS, 't')
