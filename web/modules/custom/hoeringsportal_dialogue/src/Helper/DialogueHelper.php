@@ -217,6 +217,14 @@ class DialogueHelper {
         $form['field_location']['#access'] = FALSE;
       }
 
+      if (!in_array('use_name_on_proposals', $config)) {
+        $form['field_owner_name']['#access'] = FALSE;
+      }
+
+      if (!in_array('use_email_on_proposals', $config)) {
+        $form['field_owner_email']['#access'] = FALSE;
+      }
+
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
 
       $parentPoint = json_decode($parentLocationSelection[0]['point'] ?? '');

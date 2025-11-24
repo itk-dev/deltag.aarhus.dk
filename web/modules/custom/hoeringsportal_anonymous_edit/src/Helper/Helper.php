@@ -232,6 +232,9 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    */
   public function entityInsert(EntityInterface $entity): void {
     $token = $this->getToken(create: TRUE);
+    if (NULL === $token) {
+      return;
+    }
     $owner = $this->storageHelper->fetchOwner($token);
     if (NULL === $owner) {
       $owner = new Owner();
