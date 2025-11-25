@@ -47,6 +47,7 @@ function applyMap () {
 
   const defaultMapConfig = (function () {
     const widget = document.querySelector('.septima-widget')
+
     if (widget && widget.parentElement && widget.parentElement.getAttribute('data-map-config')) {
       const config = widget.parentElement.getAttribute('data-map-config')
       const configObj = JSON.parse(config)
@@ -98,6 +99,7 @@ function applyMap () {
         }
       ],
       'controls': [
+
         {
           'overlay': {
             'disable': false
