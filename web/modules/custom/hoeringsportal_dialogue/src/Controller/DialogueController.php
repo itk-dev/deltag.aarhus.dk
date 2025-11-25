@@ -40,7 +40,6 @@ class DialogueController extends ControllerBase {
     $mapCenter = new Point($nodeMapData['geometry']['coordinates'][0], $nodeMapData['geometry']['coordinates'][1]);
     $projectedMapCenter = $proj4->transform($e4326, $e25832, $mapCenter)->toArray();
 
-    // Build your JSON data array.
     $mapConfig = [
       'map' => [
         'minZoomLevel' => 15,
