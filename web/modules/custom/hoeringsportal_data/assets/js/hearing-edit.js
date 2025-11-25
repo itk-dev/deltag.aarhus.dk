@@ -76,6 +76,7 @@ function applyMap () {
         {
           'namedlayer': '#osm'
         },
+
         {
           'disable': false,
           'id': 'drawlayer',
@@ -99,7 +100,6 @@ function applyMap () {
         }
       ],
       'controls': [
-
         {
           'overlay': {
             'disable': false
