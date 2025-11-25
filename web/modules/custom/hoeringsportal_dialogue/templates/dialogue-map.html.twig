@@ -9,8 +9,7 @@
     </div>
     <h1>{{ 'Map for @title'|t({'@title': node.title.value}) }}</h1>
     <div class="dialogue-proposal-map">
-      <div class="map" data-widget-url="https://deltag.local.itkdev.dk/dialogue/530/map-data.json"></div>
-      <div class="d-none map" data-widget-url="{{ url('hoeringsportal_dialogue.map_data', {node: node.id}) }}"></div>
+      <div class="map" data-widget-url="{{ url('hoeringsportal_dialogue.map_data', {node: node.id}) }}"></div>
     </div>
   </div>
 </div>
