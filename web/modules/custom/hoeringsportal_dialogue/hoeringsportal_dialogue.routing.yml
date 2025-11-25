@@ -26,15 +26,15 @@ hoeringsportal_dialogue.map_data:
   defaults:
     _controller: '\Drupal\hoeringsportal_dialogue\Controller\DialogueController::mapData'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     node: \d+
   options:
-    _format: 'json'
+    _format: "json"
 
 hoeringsportal_dialogue.map_view:
   path: "/dialogue/{node}/map"
   defaults:
     _controller: '\Drupal\hoeringsportal_dialogue\Controller\DialogueController::mapView'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     node: \d+

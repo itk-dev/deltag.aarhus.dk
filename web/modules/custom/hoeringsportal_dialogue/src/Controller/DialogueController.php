@@ -10,8 +10,20 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use proj4php\Proj4php;
 use proj4php\Proj;
 
+/**
+ * Controller for dialogue content.
+ */
 class DialogueController extends ControllerBase {
 
+  /**
+   * Generate map data for a dialogue map.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   A dialogue node.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   The data.
+   */
   public function mapData(NodeInterface $node) {
     $zoom = $node->field_dialogue_proposal_zoom->value;
     $locationData = $node->field_dialogue_proposal_location->data;
@@ -28,7 +40,7 @@ class DialogueController extends ControllerBase {
     $mapCenter = new Point($nodeMapData['geometry']['coordinates'][0], $nodeMapData['geometry']['coordinates'][1]);
     $projectedMapCenter = $proj4->transform($e4326, $e25832, $mapCenter)->toArray();
 
-    // Build your JSON data array
+    // Build your JSON data array.
     $mapConfig = [
       'map' => [
         'minZoomLevel' => 15,
@@ -43,10 +55,10 @@ class DialogueController extends ControllerBase {
           ],
           [
             'name' => $this->t('Dialogue proposals'),
-            'selectable' => true,
-            'features' => true,
+            'selectable' => TRUE,
+            'features' => TRUE,
             'type' => 'geojson',
-            'visible' => true,
+            'visible' => TRUE,
             'data' => $proposalLocationData,
             'features_dataType' => 'json',
             'features_type' => 'Point',
@@ -55,17 +67,17 @@ class DialogueController extends ControllerBase {
               'fillcolor' => '#008486',
               'fillcolor_selected' => '#008486',
             ],
-            "template_info" => "<div class='widget-hoverbox-title'><%= title %></div><div class='widget-hoverbox-sub'><div><%= description %><div><a target='blank' href='<%= url %>'>" . $this->t('View more') . "</a></div></div>",
+            'template_info' => "<div class='widget-hoverbox-title'><%= title %></div><div class='widget-hoverbox-sub'><div><%= description %><div><a target='blank' href='<%= url %>'>" . $this->t('View more') . '</a></div></div>',
           ],
         ],
         'controls' => [
           [
             'info' => [
-              'disable' => false,
-              'closeButton' => true,
+              'disable' => FALSE,
+              'closeButton' => TRUE,
             ],
             'fullscreen' => [
-              'disable' => false,
+              'disable' => FALSE,
             ],
           ],
         ],
@@ -75,8 +87,16 @@ class DialogueController extends ControllerBase {
     return new JsonResponse($mapConfig);
   }
 
-  public function mapView(NodeInterface $node): array
-  {
+  /**
+   * Render the map view.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   A dialogue node.
+   *
+   * @return array
+   *   The render array.
+   */
+  public function mapView(NodeInterface $node): array {
     return [
       '#theme' => 'dialogue_map',
       '#node' => $node,
@@ -92,14 +112,13 @@ class DialogueController extends ControllerBase {
   /**
    * Get a list of location data for all proposals related to a dialogue.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   A dialogue node.
    *
    * @return array
    *   List of proposal locations.
    */
-  private function getProposalLocationData(NodeInterface $node): array
-  {
+  private function getProposalLocationData(NodeInterface $node): array {
     try {
       $proposalLocations = [];
       $proposalIds = $this->entityTypeManager()->getStorage('node')->getQuery()
@@ -112,7 +131,7 @@ class DialogueController extends ControllerBase {
         $location = json_decode($proposal->field_location->data, TRUE);
         $location['properties']['title'] = $proposal->label();
         $location['properties']['url'] = Url::fromRoute('entity.node.canonical', ['node' => $proposal->id()])->toString();
-        $location['properties']['description'] = mb_strimwidth($proposal->field_dialogue_proposal_descr->value, 0, 200, "...");
+        $location['properties']['description'] = mb_strimwidth($proposal->field_dialogue_proposal_descr->value, 0, 200, '...');
         $proposalLocations[] = $location;
       }
 
@@ -121,8 +140,8 @@ class DialogueController extends ControllerBase {
         'crs' => [
           'type' => 'name',
           'properties' => [
-            'name' => 'EPSG:4326'
-          ]
+            'name' => 'EPSG:4326',
+          ],
         ],
         'features' => $proposalLocations,
       ];
@@ -131,4 +150,5 @@ class DialogueController extends ControllerBase {
       $this->messenger()->addError($this->t('Error fetching proposal locations: @message', ['@message' => $e->getMessage()]));
     }
   }
+
 }

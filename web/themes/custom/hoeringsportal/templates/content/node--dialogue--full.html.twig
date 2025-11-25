@@ -56,7 +56,7 @@
       {% if 'use_map_on_proposals' in dialogue_helper.getProposalConfig(node) %}
         <div class="container">
           <div class="d-flex flex-row-reverse">
-            <a class="btn-transparent btn" href="{{ url('hoeringsportal_dialogue.map_view', { 'node': node.id }) }}">{{ 'Show proposals on map'|t }}</a>
+            <a class="btn-transparent btn" href="{{ url('hoeringsportal_dialogue.map_view', {node: node.id}) }}">{{ 'Show proposals on map'|t }}</a>
           </div>
         </div>
       {% endif %}

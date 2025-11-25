@@ -43,7 +43,13 @@ class DialogueHelper {
   ) {
   }
 
-  public function dialogueTheme() {
+  /**
+   * Returns the theme for the dialogue map.
+   *
+   * @return array[]
+   *   The theme.
+   */
+  public function dialogueTheme(): array {
     return [
       'dialogue_map' => [
         'variables' => [
