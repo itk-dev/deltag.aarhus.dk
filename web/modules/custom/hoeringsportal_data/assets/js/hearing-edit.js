@@ -187,7 +187,7 @@ function applyMap () {
           })
         }
       })
-      
+
       if (data !== null) {
         const resetMapCtrl = document.createElement('button')
         resetMapCtrl.type = 'button'
