@@ -1,0 +1,16 @@
+<div class="dialogue-proposal container-fluid bg-white content__container pt-5 pb-5">
+  <div class="container">
+    <div class="breadcrumb mb-3">
+      <span class="me-2"><a href="/tidlig-inddragelse">{{ 'Early inclusion'|t }}</a></span>/
+      <span class="mx-2">
+        <a href="{{ path('entity.node.canonical', {node: node.id }) }}">{{ node.label }}</a>
+      </span>/
+      <span class="mx-2">{{ 'Map'|t }}</span>
+    </div>
+    <h1>{{ 'Map for @title'|t({'@title': node.title.value}) }}</h1>
+    <div class="dialogue-proposal-map">
+      <div class="map" data-widget-url="https://deltag.local.itkdev.dk/dialogue/530/map-data.json"></div>
+      <div class="d-none map" data-widget-url="{{ url('hoeringsportal_dialogue.map_data', { 'node': node.id }) }}"></div>
+    </div>
+  </div>
+</div>

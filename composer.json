@@ -44,6 +44,7 @@
         "drupal/hoeringsportal_citizen_proposal_archiving": "^1.0",
         "drupal/hoeringsportal_data": "^1.0",
         "drupal/hoeringsportal_deskpro": "^1.0",
+        "drupal/hoeringsportal_dialogue": "1.0-dev",
         "drupal/hoeringsportal_openid_connect": "^1.0",
         "drupal/honeypot": "^2.2",
         "drupal/image_widget_crop": "^3.0",
@@ -133,6 +134,16 @@
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_deskpro": "1.0-dev"
+                }
+            }
+        },
+        "drupal/hoeringsportal_dialogue": {
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_dialogue",
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "drupal/hoeringsportal_dialogue": "1.0-dev"
                 }
             }
         },

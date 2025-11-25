@@ -1,0 +1,11 @@
+{
+    "name": "drupal/hoeringsportal_dialogue",
+    "type": "drupal-custom-module",
+    "description": "Dialogue module for Hoeringsportal.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {
+        "proj4php/proj4php": "^2.0"
+    }
+}

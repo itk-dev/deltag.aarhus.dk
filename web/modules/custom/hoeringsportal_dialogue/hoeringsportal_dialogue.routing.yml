@@ -20,3 +20,21 @@ hoeringsportal_dialogue.admin_dialogue_replies:
     _title: "Replies"
   requirements:
     _permission: "administer dialogue proposals"
+
+hoeringsportal_dialogue.map_data:
+  path: "/dialogue/{node}/map-data.json"
+  defaults:
+    _controller: '\Drupal\hoeringsportal_dialogue\Controller\DialogueController::mapData'
+  requirements:
+    _permission: 'access content'
+    node: \d+
+  options:
+    _format: 'json'
+
+hoeringsportal_dialogue.map_view:
+  path: "/dialogue/{node}/map"
+  defaults:
+    _controller: '\Drupal\hoeringsportal_dialogue\Controller\DialogueController::mapView'
+  requirements:
+    _permission: 'access content'
+    node: \d+

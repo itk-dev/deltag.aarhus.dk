@@ -43,6 +43,18 @@ class DialogueHelper {
   ) {
   }
 
+  public function dialogueTheme() {
+    return [
+      'dialogue_map' => [
+        'variables' => [
+          'node' => NULL,
+          'data_widget_url' => NULL,
+        ],
+        'template' => 'dialogue-map',
+      ],
+    ];
+  }
+
   /**
    * Implements access check for dialogue proposal creation.
    *
@@ -263,17 +275,17 @@ class DialogueHelper {
   /**
    * Get proposal config related to dialogue.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $parent
-   *   The parent node.
+   * @param \Drupal\Core\Entity\EntityInterface $node
+   *   A dialogue node.
    *
    * @return array
    *   the proposal config.
    */
-  public function getProposalConfig(EntityInterface $parent): array {
-    /** @var \Drupal\node\Entity\NodeInterface $parent */
-    $parentConfig = $parent->get('field_dialogue_proposal_config')->getValue();
+  public function getProposalConfig(EntityInterface $node): array {
+    /** @var \Drupal\node\Entity\NodeInterface $node */
+    $nodeConfig = $node->get('field_dialogue_proposal_config')->getValue();
 
-    return array_map(static fn(array $value) => $value['value'], $parentConfig);
+    return array_map(static fn(array $value) => $value['value'], $nodeConfig);
   }
 
   /**

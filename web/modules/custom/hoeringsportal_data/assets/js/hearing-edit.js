@@ -47,7 +47,6 @@ function applyMap () {
 
   const defaultMapConfig = (function () {
     const widget = document.querySelector('.septima-widget')
-
     if (widget && widget.parentElement && widget.parentElement.getAttribute('data-map-config')) {
       const config = widget.parentElement.getAttribute('data-map-config')
       const configObj = JSON.parse(config)
@@ -76,7 +75,6 @@ function applyMap () {
         {
           'namedlayer': '#osm'
         },
-
         {
           'disable': false,
           'id': 'drawlayer',
@@ -189,7 +187,7 @@ function applyMap () {
           })
         }
       })
-
+      console.log(data)
       if (data !== null) {
         const resetMapCtrl = document.createElement('button')
         resetMapCtrl.type = 'button'
