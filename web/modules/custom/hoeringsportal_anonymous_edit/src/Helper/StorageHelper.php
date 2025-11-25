@@ -40,6 +40,7 @@ final class StorageHelper {
       ])
       ->execute();
 
+    // Create or update owner.
     $this->database
       ->upsert(self::TABLE_NAME_OWNERS)
       ->key(self::OWNER_TOKEN)
@@ -55,7 +56,7 @@ final class StorageHelper {
       ])
       ->execute();
 
-    return $this->fetchItemByEntity($entity);
+    return $this->fetchItemByEntity($entity, refresh: TRUE);
   }
 
   /**
@@ -88,27 +89,29 @@ final class StorageHelper {
   /**
    * Fetch items by email.
    */
-  public function fetchItemsByEmail(string $email, ?string $token = NULL): array {
+  public function fetchOwnerByEmail(string $email, ?string $token = NULL): ?Owner {
     $query = $this->database
-      ->select(self::TABLE_NAME_CONTENT, 't')
+      ->select(self::TABLE_NAME_OWNERS, 't')
       ->fields('t')
-      ->condition('t.owner_email', $email);
+      ->condition('t.email', $email);
     if (NULL !== $token) {
       $query->condition('t.owner_token', $token);
     }
 
     return $query
       ->execute()
-      ->fetchAll(\PDO::FETCH_CLASS, Content::class);
+      ->fetchObject(Owner::class) ?: NULL;
   }
 
   /**
    * Fetch item by entity.
    */
-  public function fetchItemByEntity(EntityInterface $entity): ?Content {
+  public function fetchItemByEntity(EntityInterface $entity, bool $refresh = FALSE): ?Content {
     $items = &drupal_static(__FUNCTION__);
 
-    if (!isset($items[$entity->getEntityTypeId()][$entity->bundle()])) {
+    $type = $entity->getEntityTypeId();
+    $bundle = $entity->bundle();
+    if (!isset($items[$type][$bundle]) || $refresh) {
       // @todo Optimize this to load all content in one go and index by (entity_type, entity_bundle).
       $result = $this->database
         ->select(self::TABLE_NAME_CONTENT, 't')
@@ -116,13 +119,13 @@ final class StorageHelper {
         ->condition('t.entity_type', $entity->getEntityTypeId())
         ->condition('t.entity_bundle', $entity->bundle())
         ->execute()
-        ->fetchAll(\PDO::FETCH_CLASS, Content::class) ?: NULL;
+        ->fetchAll(\PDO::FETCH_CLASS, Content::class);
 
       // Index by UUID.
-      $items[$entity->getEntityTypeId()][$entity->bundle()] = array_combine(array_column($result, 'entity_uuid'), $result);
+      $items[$type][$bundle] = array_combine(array_column($result, 'entity_uuid'), $result);
     }
 
-    return $items[$entity->getEntityTypeId()][$entity->bundle()][$entity->uuid()] ?? NULL;
+    return $items[$type][$bundle][$entity->uuid()] ?? NULL;
   }
 
   /**

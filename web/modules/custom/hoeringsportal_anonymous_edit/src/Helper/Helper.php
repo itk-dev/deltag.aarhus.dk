@@ -17,7 +17,6 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Url;
 use Drupal\hoeringsportal_anonymous_edit\Event\HoeringsportalAnonymousEditEvent;
 use Drupal\hoeringsportal_anonymous_edit\Exception\InvalidTokenException;
-use Drupal\hoeringsportal_anonymous_edit\Model\Content;
 use Drupal\hoeringsportal_anonymous_edit\Model\Owner;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -160,14 +159,14 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    * Decide if email address matches a token.
    */
   public function isValidTokenEmail(string $email, string $token): bool {
-    return NULL !== $this->fetchItemByEmail($email, $token);
+    return NULL !== $this->fetchOwnerByEmail($email, $token);
   }
 
   /**
    * Set token by email.
    */
   public function setTokenByEmail(string $email, string $token): void {
-    $item = $this->fetchItemByEmail($email, $token);
+    $item = $this->fetchOwnerByEmail($email, $token);
     if (!$item) {
       throw new InvalidTokenException($email);
     }
@@ -178,27 +177,20 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   /**
    * Fetch item by email.
    */
-  private function fetchItemByEmail(string $email, string $token): ?Content {
-    $items = $this->storageHelper->fetchItemsByEmail($email, $token);
-
-    return reset($items) ?: NULL;
+  private function fetchOwnerByEmail(string $email, string $token): ?Owner {
+    return $this->storageHelper->fetchOwnerByEmail($email, $token);
   }
 
   /**
    * Get recover URL.
    */
   public function getRecoverUrl(string $email): ?string {
-    $tokens = [];
-    $items = $this->storageHelper->fetchItemsByEmail($email);
-    foreach ($items as $item) {
-      $tokens[$item->owner_token] = $item->owner_token;
-    }
-
-    if (empty($tokens)) {
+    $owner = $this->storageHelper->fetchOwnerByEmail($email);
+    if (NULL === $owner) {
       return NULL;
     }
 
-    return Url::fromRoute('hoeringsportal_anonymous_edit.content_recover', ['token' => reset($tokens)])
+    return Url::fromRoute('hoeringsportal_anonymous_edit.content_recover', ['token' => $owner->owner_token])
       ->setAbsolute()
       ->toString(TRUE)->getGeneratedUrl();
   }
@@ -305,6 +297,13 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
     if ($logLevel >= $rfcLogLevel) {
       $this->logger->log($level, $message, $context);
     }
+  }
+
+  /**
+   * Log an exception.
+   */
+  public function logException(\Exception $exception) {
+    $this->error('Exception: @message', ['@message' => $exception->getMessage(), 'exception' => $exception]);
   }
 
   /**

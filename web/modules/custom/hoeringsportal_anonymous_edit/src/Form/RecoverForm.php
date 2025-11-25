@@ -68,7 +68,8 @@ final class RecoverForm extends FormBase {
       $this->helper->setTokenByEmail($email, $token);
       $this->messenger()->addMessage('Your edit token has been recovered');
     }
-    catch (\Exception) {
+    catch (\Exception $exception) {
+      $this->helper->logException($exception);
       $this->messenger()->addError('Error recovering your edit token');
     }
     $form_state->setRedirect('hoeringsportal_anonymous_edit.content');

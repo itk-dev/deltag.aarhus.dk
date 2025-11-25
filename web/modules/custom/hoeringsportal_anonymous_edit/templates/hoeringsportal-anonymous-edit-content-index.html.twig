@@ -39,10 +39,13 @@
  */
 #}
 <div class="anonymous-edit-content-list">
-{% if entities is same as null %}
+{% if entities is empty %}
   <div class="info">{{ "You don't have any content."|trans }}</div>
 
-  <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|trans }}</a>
+  {# If entities is null, the user does not have an edit token #}
+  {% if entities is same as(null) %}
+    <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|trans }}</a>
+  {% endif %}
 {% else %}
   {% for entity_type in entities %}
     <fieldset>

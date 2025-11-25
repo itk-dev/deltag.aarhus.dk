@@ -60,7 +60,8 @@ final class RequestForm extends FormBase {
       // @todo Redirect to where?
       $form_state->setRedirect('<front>');
     }
-    catch (\Exception) {
+    catch (\Exception $exception) {
+      $this->helper->logException($exception);
       $this->messenger()->addError($this->t('Error sending email @email', ['@email' => $email]));
     }
   }
