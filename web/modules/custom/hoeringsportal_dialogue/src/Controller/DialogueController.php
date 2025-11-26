@@ -134,20 +134,21 @@ class DialogueController extends ControllerBase {
         $proposalLocations[] = $location;
       }
 
-      return [
-        'type' => 'FeatureCollection',
-        'crs' => [
-          'type' => 'name',
-          'properties' => [
-            'name' => 'EPSG:4326',
-          ],
-        ],
-        'features' => $proposalLocations,
-      ];
     }
     catch (\Exception $e) {
       $this->messenger()->addError($this->t('Error fetching proposal locations: @message', ['@message' => $e->getMessage()]));
     }
+
+    return [
+      'type' => 'FeatureCollection',
+      'crs' => [
+        'type' => 'name',
+        'properties' => [
+          'name' => 'EPSG:4326',
+        ],
+      ],
+      'features' => $proposalLocations,
+    ];
   }
 
 }
