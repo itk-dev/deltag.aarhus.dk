@@ -1,0 +1,84 @@
+uuid: 95a74d8a-3742-40cd-8624-d8d6e55ffca8
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_promoted
+    - field.field.node.dialogue.field_area
+    - field.field.node.dialogue.field_content_sections
+    - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_dialogue_proposal_category
+    - field.field.node.dialogue.field_dialogue_proposal_config
+    - field.field.node.dialogue.field_dialogue_proposal_location
+    - field.field.node.dialogue.field_dialogue_proposal_zoom
+    - field.field.node.dialogue.field_teaser
+    - field.field.node.dialogue.field_top_images
+    - field.field.node.dialogue.field_type
+    - node.type.dialogue
+  module:
+    - entity_reference_revisions
+    - user
+id: node.dialogue.content_promoted
+targetEntityType: node
+bundle: dialogue
+mode: content_promoted
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_top_images:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_config: true
+  field_dialogue_proposal_location: true
+  field_dialogue_proposal_zoom: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

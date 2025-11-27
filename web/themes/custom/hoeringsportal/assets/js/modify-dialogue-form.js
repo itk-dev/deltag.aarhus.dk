@@ -10,7 +10,9 @@ Drupal.behaviors.modifyDialogueForm = {
         );
 
         imageDescription.classList.toggle("d-block");
-        dropArea.append(imageDescription);
+        if (dropArea) {
+          dropArea.append(imageDescription);
+        }
       },
     );
   },

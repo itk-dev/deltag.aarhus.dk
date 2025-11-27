@@ -135,13 +135,13 @@ function hoeringsportal_theme_suggestions_form_element_alter(array &$suggestions
   if (!empty($variables['element']['#type'])) {
     $suggestions[] = 'form_element__' . $variables['element']['#type'];
     if (!empty($variables['element']['#name'])) {
-      if(!empty($variables['element']['#parents'])) {
+      if (!empty($variables['element']['#parents'])) {
         foreach ($variables['element']['#parents'] as $parent) {
-          $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$parent);
+          $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_', $parent);
         }
       }
 
-      $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_',$variables['element']['#name']);
+      $suggestions[] = 'form_element__' . $variables['element']['#type'] . '__' . str_replace('-', '_', $variables['element']['#name']);
     }
   }
 }
@@ -174,6 +174,10 @@ function hoeringsportal_theme_suggestions_input_alter(array &$suggestions, array
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function hoeringsportal_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+
+  if (!empty($variables['element']['#form_id'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']);
+  }
   if (!empty($variables['element']['#id'])) {
     $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
   }

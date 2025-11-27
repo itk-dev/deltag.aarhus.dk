@@ -22,6 +22,10 @@
   }
 }
 
+.proposal-form-wrapper {
+  padding-top: 3rem;
+}
+
 .node-dialogue-proposal-form {
   .fieldset-legend {
     font-size: 1rem;
@@ -83,7 +87,8 @@
       }
     }
   }
-  #edit-field-dialogue-proposal-category--wrapper .fieldset-wrapper {
+
+  .field--name-field-dialogue-proposal-category .fieldset-wrapper {
     display: flex;
     flex-direction: column;
     gap: $spacer;

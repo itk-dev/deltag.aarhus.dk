@@ -17,7 +17,7 @@ id: node.dialogue_proposal.field_image_upload
 field_name: field_image_upload
 entity_type: node
 bundle: dialogue_proposal
-label: Image
+label: Billede
 description: ''
 required: false
 translatable: false

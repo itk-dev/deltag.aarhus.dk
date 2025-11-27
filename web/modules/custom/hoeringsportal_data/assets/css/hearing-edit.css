@@ -1,11 +1,9 @@
 .dawa-autocomplete-container {
-  /* relative position for at de absolut positionerede forslag får korrekt placering.*/
   position: relative;
   width: 100%;
 }
 
 .dawa-autocomplete-container input {
-  /* Både input og forslag får samme bredde som omkringliggende DIV */
   width: 100%;
   box-sizing: border-box;
 }
@@ -52,7 +50,7 @@
 }
 
 .field--type-hoeringsportal-data-map {
-  // Don't show "Aktiver kort" above menubar (which has z-index: 502).
+  /* Don't show "Aktiver kort" above menubar (which has z-index: 502). */
   .widget-container.widget-inactivemap > .widget-map-overlay {
     z-index: 500;
   }

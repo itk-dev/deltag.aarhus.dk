@@ -19,7 +19,7 @@
   <div class="container content__container">
     <div class="row">
       <div class="col-md-8">
-        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at') }}
+        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at', 'field_project_status') }}
       </div>
       <div class="col-md-4 pt-md-3">
         {{ content.field_aside_block }}

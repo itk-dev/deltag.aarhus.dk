@@ -12,14 +12,23 @@
 #}
 
 <div class="container-fluid bg-white">
-  <div class="row justify-content-center pt-5">
+  {% if not dialogue_helper.getParentNode %}
+    <div>
+      {{ include((directory ~ '/templates/misc/status-messages.html.twig'), {message_list: {warning: ['No parent exists for this dialogue proposal! You should add a proposal from the appropriate dialogue page.'|t]}, status_headings: {warning: 'warning'}}) }}
+    </div>
+  {% endif %}
+  <div class="proposal-form-wrapper row justify-content-center">
     <div class="proposal-layout">
       <div class="breadcrumb mb-3">
-        <span class="me-2"><a href="/tidlig-inddragelse">{{ 'Early inclusion'|t }}</a></span>/
-        <span class="mx-2">
+        <span class="me-2"><a href="/tidlig-inddragelse">{{ 'Early inclusion'|t }}</a></span>
+        {% if dialogue_helper.getParentNode %}
+          <span>/</span>
+          <span class="mx-2">
             <a href="{{ path('entity.node.canonical', {node: dialogue_helper.getParentNode.id}) }}">{{ dialogue_helper.getParentNode.label }}</a>
-          </span>/
-        <span class="mx-2">{{ 'Create dialog proposal'|t }}</span>
+          </span>
+          <span>/</span>
+          <span class="mx-2">{{ 'Create dialog proposal'|t }}</span>
+        {% endif %}
       </div>
       <form{{ attributes }}>
         <h1>{{ 'Create dialog proposal'|t }}</h1>

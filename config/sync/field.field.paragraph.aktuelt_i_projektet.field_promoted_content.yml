@@ -1,0 +1,29 @@
+uuid: d09c8a2a-1783-41f1-b39a-640b3ecb310a
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promoted_content
+    - node.type.dialogue
+    - paragraphs.paragraphs_type.aktuelt_i_projektet
+id: paragraph.aktuelt_i_projektet.field_promoted_content
+field_name: field_promoted_content
+entity_type: paragraph
+bundle: aktuelt_i_projektet
+label: 'Promoted content'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dialogue: dialogue
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

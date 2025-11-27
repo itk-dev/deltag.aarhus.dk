@@ -8,7 +8,7 @@ id: node.dialogue_proposal.title
 field_name: title
 entity_type: node
 bundle: dialogue_proposal
-label: 'Proposal title'
+label: 'Titel på forslaget'
 description: ''
 required: true
 translatable: true

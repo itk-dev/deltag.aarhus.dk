@@ -5,6 +5,7 @@
 {% endif %}
 
 {# @FIXME: Is this the right way do get the data? #}
+
 {% for item in element['#items']|slice(0, 1) %}
   {% if (item.data is not same as('null')) %}
     <div id="map" class="row" style="height:500px" data-geojson="{{ item.data }}"></div>
