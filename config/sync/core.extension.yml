@@ -54,6 +54,7 @@ module:
   hoeringsportal_content_access: 0
   hoeringsportal_content_blocks: 0
   hoeringsportal_data: 0
+  hoeringsportal_decision: 0
   hoeringsportal_deskpro: 0
   hoeringsportal_dialogue: 0
   hoeringsportal_dialogue_fixtures: 0
