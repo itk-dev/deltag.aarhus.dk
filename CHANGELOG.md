@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-567](https://github.com/itk-dev/deltag.aarhus.dk/pull/567)
+  * Added skip-ssl flag to queries in readme regarding test-setup of deskpro
+
 * [PR-557](https://github.com/itk-dev/deltag.aarhus.dk/pull/557)
   * Change dialogue proposal backend
   * Add seperate view for dialogue proposal comments
