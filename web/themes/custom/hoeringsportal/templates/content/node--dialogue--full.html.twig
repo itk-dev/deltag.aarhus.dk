@@ -2,27 +2,32 @@
 
 {% block content_top %}
   {# Header #}
+  {% set shortcuts = {
+    0: {
+      label: 'Content'|t,
+      href: '#content',
+    },
+    1: {
+      label: 'Proposals'|t,
+      href: '#proposals',
+    }
+  }
+  %}
+
+  {%
+    set shortcuts = 'use_map_on_proposals' in dialogue_helper.getProposalConfig(node) ? shortcuts|merge([{
+      label: 'Map'|t,
+      href: {route: 'hoeringsportal_dialogue.map_view', parameters: {node: node.id}}
+    }]) : shortcuts
+  %}
+
   {{ include(directory ~ '/templates/components/header-default.html.twig', {
     images: node.field_top_images,
     type: node.bundle,
     title: node.label,
     description: content.field_teaser,
     tags_fields: {0: content.field_area, 1: content.field_type},
-    shortcuts: {
-      0: {
-        label: 'Content'|t,
-        href: '#content',
-      },
-      1: {
-        label: 'Proposals'|t,
-        href: '#proposals',
-      },
-      2: {
-        label: 'Map'|t,
-        href: {route: 'entity.node.canonical', parameters: {node: 1}
-        },
-      }
-    }
+    shortcuts: shortcuts
   }) }}
 {% endblock %}
 
@@ -48,6 +53,13 @@
         <h3>{{ 'Proposals'|t }}</h3>
       </div>
       {{ drupal_view('dialogue_proposals', 'block_1', content.id) }}
+      {% if 'use_map_on_proposals' in dialogue_helper.getProposalConfig(node) %}
+        <div class="container">
+          <div class="d-flex flex-row-reverse">
+            <a class="btn-transparent btn" href="{{ url('hoeringsportal_dialogue.map_view', {node: node.id}) }}">{{ 'Show proposals on map'|t }}</a>
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

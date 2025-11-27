@@ -10,6 +10,7 @@ bottom-scripts:
   dependencies:
     - core/jquery
     - core/drupal
+    - core/once
 
 image-fade:
   version: VERSION

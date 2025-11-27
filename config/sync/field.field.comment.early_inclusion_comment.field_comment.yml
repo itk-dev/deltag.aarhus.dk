@@ -9,7 +9,7 @@ id: comment.early_inclusion_comment.field_comment
 field_name: field_comment
 entity_type: comment
 bundle: early_inclusion_comment
-label: comment
+label: Kommentar
 description: ''
 required: false
 translatable: false
