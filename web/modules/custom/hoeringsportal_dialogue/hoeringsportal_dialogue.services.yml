@@ -7,3 +7,6 @@ services:
   Drupal\hoeringsportal_dialogue\Theme\ThemeDialogueNegotiator:
     tags:
       - { name: theme_negotiator, priority: 10 }
+
+  Drupal\hoeringsportal_dialogue\Controller\DialogueController:
+    arguments: ["@url_generator"]

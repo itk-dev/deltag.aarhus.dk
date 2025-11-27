@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "600fdc45c3ddcb34ef0a14f49c545fa2",
+    "content-hash": "3189515fec080221eb54e197dd4ad735",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3704,6 +3704,30 @@
                 "issues": "https://www.drupal.org/project/issues/hoeringsportal_deskpro",
                 "source": "http://cgit.drupalcode.org/hoeringsportal_deskpro"
             },
+            "transport-options": {
+                "symlink": false,
+                "relative": true
+            }
+        },
+        {
+            "name": "drupal/hoeringsportal_dialogue",
+            "version": "1.0-dev",
+            "dist": {
+                "type": "path",
+                "url": "web/modules/custom/hoeringsportal_dialogue",
+                "reference": "f669050af7f7d3fccc5187a7e45d397c6cb1c6f3"
+            },
+            "require": {
+                "proj4php/proj4php": "^2.0"
+            },
+            "type": "drupal-custom-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Dialogue module for Hoeringsportal.",
+            "keywords": [
+                "Drupal"
+            ],
             "transport-options": {
                 "symlink": false,
                 "relative": true
@@ -9691,6 +9715,70 @@
                 "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.2.1"
             },
             "time": "2024-09-11T15:52:35+00:00"
+        },
+        {
+            "name": "proj4php/proj4php",
+            "version": "v2.0.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/proj4php/proj4php.git",
+                "reference": "52436c32e43efea3251d0c0d20f5fe387de46f6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/proj4php/proj4php/zipball/52436c32e43efea3251d0c0d20f5fe387de46f6a",
+                "reference": "52436c32e43efea3251d0c0d20f5fe387de46f6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "9.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "proj4php\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "julien2512",
+                    "email": "moquet.julien@gmail.com",
+                    "homepage": "https://github.com/julien2512",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Jason Judge",
+                    "email": "jason.judge@academe.co.uk",
+                    "homepage": "http://academe.co.uk",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Nick Blackwell",
+                    "email": "nickblackwell82@gmail.com",
+                    "homepage": "https://people.ok.ubc.ca/nblackwe",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP-Class for geographic coordinates transformation using proj4 definitions, thanks to a translation from Proj4JS",
+            "homepage": "https://github.com/proj4php/proj4php",
+            "keywords": [
+                "coordinates",
+                "geographic",
+                "proj4",
+                "proj4js"
+            ],
+            "support": {
+                "issues": "https://github.com/proj4php/proj4php/issues",
+                "source": "https://github.com/proj4php/proj4php/tree/v2.0.19"
+            },
+            "time": "2025-09-11T16:36:16+00:00"
         },
         {
             "name": "psr/cache",
@@ -21127,6 +21215,7 @@
         "chx/drupal-issue-fork": 20,
         "drupal/email_registration": 5,
         "drupal/entityqueue": 15,
+        "drupal/hoeringsportal_dialogue": 20,
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
