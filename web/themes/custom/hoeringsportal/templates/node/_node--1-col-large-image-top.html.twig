@@ -6,7 +6,16 @@
     title: node.label,
     description: content.field_short_description,
     tag_fields: {0: content.field_area},
-    shortcuts: {}}
+    shortcuts: {},
+    notification: {
+      header: 'Decision'|t,
+      message: 'At a council meeting @date a decision regarding this hearing was made: <strong>@decision</strong>'|t({'@date': 'd/m/Y', '@decision': 'vedtaget'}),
+      link: {
+        text: 'Read the entire decision'|t,
+        url: '#'
+      }
+    }
+  }
   ) }}
 {% endblock %}
 {% block content_main %}

@@ -1,0 +1,29 @@
+uuid: edb73cc7-aaec-40dc-9f03-234b6d2346e1
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department
+    - node.type.decision
+    - taxonomy.vocabulary.department
+id: node.decision.field_department
+field_name: field_department
+entity_type: node
+bundle: decision
+label: Department
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      department: department
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

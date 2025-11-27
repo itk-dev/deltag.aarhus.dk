@@ -4,6 +4,16 @@
 {% if header['dynamic_block_field:node-public_meeting_warning'] is defined %}
   {{ header['dynamic_block_field:node-public_meeting_warning'] }}
 {% endif %}
+{% if notification %}
+  <div class="header-notification">
+    <div class="status-messages alert-warning alert mb-3">
+      <div class="container">
+        <h3 class="m-0">{{ notification.header }}</h3>
+        <div>{{ notification.message }} <a href="{{ notification.link.url }}">{{ notification.link.text }}</a></div>
+      </div>
+    </div>
+  </div>
+{% endif %}
 <div class="container">
   <div class="row">
     <div class="col-md-8 my-3 my-md-5">

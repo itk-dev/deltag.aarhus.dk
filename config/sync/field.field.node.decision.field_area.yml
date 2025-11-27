@@ -1,0 +1,29 @@
+uuid: 10d03655-6e76-4b58-9ccc-da13db14a283
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area
+    - node.type.decision
+    - taxonomy.vocabulary.area
+id: node.decision.field_area
+field_name: field_area
+entity_type: node
+bundle: decision
+label: Område
+description: 'Vælg områder som høringen dækker. Markér alle hvis høringen dækker hele kommunen.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      area: area
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,24 @@
+uuid: b3ab55f2-ea42-4a28-b6cf-88d3897dd221
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_decision_date
+    - node.type.decision
+  module:
+    - datetime
+id: node.decision.field_decision_date
+field_name: field_decision_date
+entity_type: node
+bundle: decision
+label: 'Decision date'
+description: 'The date of the city council meeting where this decision was made.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

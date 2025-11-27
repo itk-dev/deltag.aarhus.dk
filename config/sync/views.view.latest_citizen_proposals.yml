@@ -13,7 +13,7 @@ dependencies:
 id: latest_citizen_proposals
 label: 'Seneste borgerforslag'
 module: views
-description: 'En liste af alle høringer'
+description: 'En liste af alle borgerforslag'
 tag: ''
 base_table: node_field_data
 base_field: nid

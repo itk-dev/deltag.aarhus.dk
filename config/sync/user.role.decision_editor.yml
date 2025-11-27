@@ -1,0 +1,43 @@
+uuid: 0c53448d-d4bd-4375-99d0-efadc99b5c0c
+langcode: da
+status: true
+dependencies:
+  config:
+    - media.type.document
+    - media.type.image
+    - node.type.decision
+  module:
+    - media
+    - node
+    - publishcontent
+    - quick_node_clone
+    - system
+    - view_unpublished
+id: decision_editor
+label: Beslutningsredaktør
+weight: -3
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access media overview'
+  - 'clone decision content'
+  - 'create decision content'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
+  - 'delete any decision content'
+  - 'delete decision revisions'
+  - 'delete own decision content'
+  - 'delete own document media'
+  - 'delete own image media'
+  - 'edit any decision content'
+  - 'edit own decision content'
+  - 'edit own document media'
+  - 'edit own image media'
+  - 'publish any node type decision'
+  - 'revert decision revisions'
+  - 'unpublish any node type decision'
+  - 'update media'
+  - 'view any unpublished decision content'
+  - 'view own unpublished media'
+  - 'view the administration theme'

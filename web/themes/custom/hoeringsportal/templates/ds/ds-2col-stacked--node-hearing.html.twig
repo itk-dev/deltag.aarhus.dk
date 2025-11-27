@@ -21,6 +21,21 @@
  */
 #}
 
+{% set relatedDecision = hearing_helper.getDecisions(node)|first %}
+{% set decision = relatedDecision ? relatedDecision.field_decision.value %}
+{% set decisionDate = relatedDecision ? relatedDecision.field_decision_date.value|date('U')|format_date('long') %}
+
+{%
+ set notification = relatedDecision ? {
+  header: 'Decision'|t,
+  message: 'At a council meeting @date a decision regarding this hearing was made: <strong>@decision</strong>'|t({'@date': decisionDate, '@decision': decision}),
+  link: {
+    text: 'Read the entire decision'|t,
+    url: url('entity.node.canonical', { 'node': relatedDecision.id })
+  }
+}
+%}
+
 <{{ outer_wrapper }}{{ attributes.addClass('ds-2col-stacked', 'clearfix') }}>
 
   {{ title_suffix.contextual_links }}

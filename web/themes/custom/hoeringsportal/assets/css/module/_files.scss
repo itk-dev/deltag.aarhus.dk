@@ -1,14 +1,15 @@
-.paragraph-files article {
+article.media-document {
   background-color: $color-petroleum-100;
   padding: $spacer;
   margin-bottom: calc($spacer * 0.25);
   display: flex;
 }
 
-.paragraph-files article svg {
+article.media-document svg {
   order: 1;
 }
 
-.paragraph-files article span {
+article.media-document span {
+  font-weight: $font-weight-base;
   order: 2;
 }

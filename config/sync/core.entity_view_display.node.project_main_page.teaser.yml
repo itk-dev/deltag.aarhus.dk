@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.project_main_page.field_content_sections
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
+    - field.field.node.project_main_page.field_project_status
     - field.field.node.project_main_page.field_short_description
     - node.type.project_main_page
   module:
@@ -52,6 +53,7 @@ content:
     region: content
 hidden:
   field_content_sections: true
+  field_project_status: true
   langcode: true
   links: true
   published_at: true

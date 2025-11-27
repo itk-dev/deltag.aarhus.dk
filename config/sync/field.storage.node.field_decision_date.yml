@@ -1,0 +1,20 @@
+uuid: 822f0957-0ecc-4cdc-8519-d5d66ebbabc1
+langcode: da
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_decision_date
+field_name: field_decision_date
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

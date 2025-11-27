@@ -28,6 +28,8 @@
     color: $petroleum;
   }
 
+  border: 1px solid $gray-300;
+
   text-decoration: none;
   height: 100%;
   transition: box-shadow var(--transition-duration-in)

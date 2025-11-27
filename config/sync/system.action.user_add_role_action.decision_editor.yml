@@ -1,0 +1,14 @@
+uuid: 8248590d-2db6-47e9-a71c-d7b6ad8aae78
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.decision_editor
+  module:
+    - user
+id: user_add_role_action.decision_editor
+label: 'Add the Beslutningsredaktør role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: decision_editor
