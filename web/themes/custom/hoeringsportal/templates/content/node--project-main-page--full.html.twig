@@ -10,7 +10,14 @@
     tags_fields: {0: content.field_area},
     type: 'type-project',
     image_half: false,
-    shortcuts: {}
+    shortcuts: {},
+    right_content: {
+      0: {
+        type: 'text',
+        label: 'Status'|t,
+        value: content.field_project_status
+      }
+    }
     })
   }}
 {% endblock %}
