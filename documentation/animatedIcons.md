@@ -4,7 +4,6 @@ Icons is located in the folder `web/themes/custom/hoeringsportal/templates/anima
 
 Corresponding css is locatend in `web/themes/custom/hoeringsportal/assets/css/module/_animated-svg.scss`.
 
-
 ## Location icon
 
 Example of use in a twig file:
