@@ -1,0 +1,29 @@
+uuid: c82fcc4b-5a9d-44a4-b917-9714c3b49442
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department
+    - node.type.project_main_page
+    - taxonomy.vocabulary.department
+id: node.project_main_page.field_department
+field_name: field_department
+entity_type: node
+bundle: project_main_page
+label: Afdeling
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      department: department
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
