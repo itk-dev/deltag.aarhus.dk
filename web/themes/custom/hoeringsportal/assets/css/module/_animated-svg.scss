@@ -100,3 +100,21 @@ a:has(svg) {
     }
   }
 }
+
+svg.location {
+  path {
+    color: var(--bs-pink);
+    transform-origin: bottom center;
+    transition: fill 100ms var(--ease-spring-lazy);
+  }
+
+  &:hover {
+    path {
+      transition:
+        fill 300ms var(--ease-spring-lazy),
+        transform 300ms var(--ease-spring-lazy);
+      color: color-mix(in srgb, var(--bs-pink), black 20%);
+      transform: scale(1.1);
+    }
+  }
+}
