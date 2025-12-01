@@ -38,6 +38,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Add Honeypot module
   * Add ITK Video module and Video paragraph for Video Tool
 
+## [4.13.2] - 2025-12-01
+
+* [PR-570](https://github.com/itk-dev/deltag.aarhus.dk/pull/570)
+  Fixed issue with "Hidden signup" not being handled in templates
+
 ## [4.13.1] - 2025-09-15
 
 * [PR-548](https://github.com/itk-dev/deltag.aarhus.dk/pull/548)
@@ -575,7 +580,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...HEAD
+[4.13.2]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...4.13.2
 [4.13.1]: https://github.com/itk-dev/hoeringsportal/compare/4.13.0...4.13.1
 [4.13.0]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...4.13.0
 [4.12.0]: https://github.com/itk-dev/hoeringsportal/compare/4.11.1...4.12.0
