@@ -7,7 +7,6 @@ dependencies:
     - field.storage.node.field_area
     - field.storage.node.field_short_description
     - field.storage.node.field_teaser
-    - field.storage.node.field_top_images
     - field.storage.node.field_type
     - node.type.dialogue
     - node.type.hearing
@@ -1038,11 +1037,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-        field_top_images:
-          id: field_top_images
-          table: node__field_top_images
-          field: field_top_images
-          plugin_id: field
       pager:
         type: mini
         options:
@@ -1297,7 +1291,6 @@ display:
         - 'config:field.storage.node.field_area'
         - 'config:field.storage.node.field_short_description'
         - 'config:field.storage.node.field_teaser'
-        - 'config:field.storage.node.field_top_images'
         - 'config:field.storage.node.field_type'
   rest_export_1:
     id: rest_export_1
@@ -1364,5 +1357,4 @@ display:
         - 'config:field.storage.node.field_area'
         - 'config:field.storage.node.field_short_description'
         - 'config:field.storage.node.field_teaser'
-        - 'config:field.storage.node.field_top_images'
         - 'config:field.storage.node.field_type'
