@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-570](https://github.com/itk-dev/deltag.aarhus.dk/pull/570)
+  Fixed issue with "Hidden signup" not being handled in templates
+
 ## [4.13.1] - 2025-09-15
 
 * [PR-548](https://github.com/itk-dev/deltag.aarhus.dk/pull/548)
