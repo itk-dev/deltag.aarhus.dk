@@ -99,6 +99,11 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     // A public meeting that has signup with Pretix.
     $node = $node->createDuplicate();
     $node->setTitle('Public meeting with pretix signup');
+    // Clear out some stuff from "manual" meeting.
+    // @todo Split this fixture file into one with "manual" signup and one with "pretix" signup.
+    $node->set('field_registration_deadline', NULL);
+    $node->set('field_last_meeting_time', NULL);
+    $node->set('field_last_meeting_time_end', NULL);
     $node->set('field_signup_selection', 'pretix');
     $node->set('field_pretix_dates', [
       [
@@ -121,6 +126,22 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       'synchronize_event' => TRUE,
     ]);
     $this->addReference('public_meeting:fixture-2', $node);
+    $node->save();
+
+    // Pretix event with hidden sign up.
+    $node = $node->createDuplicate();
+    $node->setTitle('Public meeting with hidden pretix signup');
+    $node->set('field_pretix_dates', [
+      [
+        'location' => 'The location',
+        'address' => 'Hack Kampmanns Plads 2, 8000 Aarhus C',
+        'registration_deadline_value' => (new \DateTimeImmutable('midnight first day of next month'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_from_value' => (new \DateTimeImmutable('midnight first day of next month + 12 hours'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'time_to_value' => (new \DateTimeImmutable('midnight first day of next month + 14 hours'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+        'spots' => 87,
+      ],
+    ]);
+    $node->set('field_hidden_signup', TRUE);
     $node->save();
 
     // A public meeting that is canceled.
