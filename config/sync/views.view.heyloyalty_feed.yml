@@ -526,7 +526,7 @@ display:
           click_sort_column: target_id
           type: image_url
           settings:
-            image_style: responsive_xsmall_teaser
+            image_style: thumbnail
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -589,7 +589,7 @@ display:
           click_sort_column: target_id
           type: image_url
           settings:
-            image_style: responsive_xsmall_teaser
+            image_style: thumbnail
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -652,7 +652,7 @@ display:
           click_sort_column: target_id
           type: image_url
           settings:
-            image_style: responsive_xsmall_teaser
+            image_style: thumbnail
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -715,7 +715,7 @@ display:
           click_sort_column: target_id
           type: image_url
           settings:
-            image_style: responsive_xsmall_teaser
+            image_style: thumbnail
           group_column: ''
           group_columns: {  }
           group_rows: true
