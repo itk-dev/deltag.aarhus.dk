@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-569](https://github.com/itk-dev/deltag.aarhus.dk/pull/569)
+  * Align use of type, department and area in relevant content types
+
 * [PR-557](https://github.com/itk-dev/deltag.aarhus.dk/pull/557)
   * Change dialogue proposal backend
   * Add seperate view for dialogue proposal comments
