@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-550](https://github.com/itk-dev/deltag.aarhus.dk/pull/550)
+  5603: Aligned development service config with prod config
 * [PR-557](https://github.com/itk-dev/deltag.aarhus.dk/pull/557)
   * Change dialogue proposal backend
   * Add seperate view for dialogue proposal comments
