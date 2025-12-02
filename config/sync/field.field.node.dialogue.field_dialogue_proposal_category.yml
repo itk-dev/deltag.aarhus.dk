@@ -1,0 +1,29 @@
+uuid: 6a65168c-d711-4b2e-939c-a768d42994d0
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dialogue_proposal_category
+    - node.type.dialogue
+    - taxonomy.vocabulary.dialogue_proposal_categories
+id: node.dialogue.field_dialogue_proposal_category
+field_name: field_dialogue_proposal_category
+entity_type: node
+bundle: dialogue
+label: 'Dialogforslag kategorier'
+description: 'Vælg hvilke kategorier der skal være tilgængelige når der oprettes dialogforslag'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dialogue_proposal_categories: dialogue_proposal_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

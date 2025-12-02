@@ -148,7 +148,7 @@ final class Helper {
     // Validate departments when creating and editing nodes.
     if ($this->isEditingNode()) {
       if (isset($form[self::FIELD_DEPARTMENT])) {
-        $form['#validate'][] = $this->validateDepartment(...);
+        $form['#validate'][] = [$this, 'validateDepartment'];
       }
     }
   }
@@ -193,7 +193,7 @@ final class Helper {
   /**
    * Check that user has selected at least one of its own departments.
    */
-  private function validateDepartment(array &$form, FormStateInterface $formState) {
+  public function validateDepartment(array &$form, FormStateInterface $formState) {
     if ($this->bypassDepartmentAccessCheck()) {
       return;
     }

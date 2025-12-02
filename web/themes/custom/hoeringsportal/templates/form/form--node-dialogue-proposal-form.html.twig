@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+
+<div class="container-fluid bg-white">
+  {% if not dialogue_helper.getParentNode %}
+    <div>
+      {{ include((directory ~ '/templates/misc/status-messages.html.twig'), {message_list: {warning: ['No parent exists for this dialogue proposal! You should add a proposal from the appropriate dialogue page.'|t]}, status_headings: {warning: 'warning'}}) }}
+    </div>
+  {% endif %}
+  <div class="proposal-form-wrapper row justify-content-center">
+    <div class="proposal-layout">
+      <div class="breadcrumb mb-3">
+        <span class="me-2"><a href="/tidlig-inddragelse">{{ 'Early inclusion'|t }}</a></span>
+        {% if dialogue_helper.getParentNode %}
+          <span>/</span>
+          <span class="mx-2">
+            <a href="{{ path('entity.node.canonical', {node: dialogue_helper.getParentNode.id}) }}">{{ dialogue_helper.getParentNode.label }}</a>
+          </span>
+          <span>/</span>
+          <span class="mx-2">{{ 'Create dialog proposal'|t }}</span>
+        {% endif %}
+      </div>
+      <form{{ attributes }}>
+        <h1>{{ 'Create dialog proposal'|t }}</h1>
+        <p>
+          {{ 'Fill out the form and send your proposal so other people can interact with it.'|t }}
+        </p>
+        <div class="image-drag">
+          {{ children }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

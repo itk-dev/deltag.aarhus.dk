@@ -1,0 +1,23 @@
+uuid: df8ff97b-0ffb-4140-b6aa-7ade4ee48844
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dialogue_proposal_config
+    - node.type.dialogue
+  module:
+    - options
+id: node.dialogue.field_dialogue_proposal_config
+field_name: field_dialogue_proposal_config
+entity_type: node
+bundle: dialogue
+label: 'Dialogforslag konfiguration'
+description: 'Konfigurér forslag for denne dialog'
+required: false
+translatable: false
+default_value:
+  -
+    value: public_proposals
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.hearing.field_contact
     - field.field.node.hearing.field_content_state
     - field.field.node.hearing.field_delete_date
+    - field.field.node.hearing.field_department
     - field.field.node.hearing.field_description
     - field.field.node.hearing.field_deskpro_agent_email
     - field.field.node.hearing.field_deskpro_department_id
@@ -27,7 +28,6 @@ dependencies:
     - field.field.node.hearing.field_tags
     - field.field.node.hearing.field_teaser
     - field.field.node.hearing.field_type
-    - field.field.node.hearing.field_video_embed
     - node.type.hearing
   module:
     - ds
@@ -90,7 +90,6 @@ hidden:
   field_tags: true
   field_teaser: true
   field_type: true
-  field_video_embed: true
   langcode: true
   links: true
   published_at: true

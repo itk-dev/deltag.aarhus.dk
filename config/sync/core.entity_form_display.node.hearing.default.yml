@@ -28,9 +28,9 @@ dependencies:
     - field.field.node.hearing.field_tags
     - field.field.node.hearing.field_teaser
     - field.field.node.hearing.field_type
-    - field.field.node.hearing.field_video_embed
     - node.type.hearing
   module:
+    - allowed_formats
     - datetime
     - entity_browser
     - field_group
@@ -93,7 +93,7 @@ third_party_settings:
       label: eDoc
       region: content
       parent_name: ''
-      weight: 12
+      weight: 11
       format_type: details
       format_settings:
         classes: ''
@@ -106,7 +106,7 @@ third_party_settings:
       label: Kontakt
       region: content
       parent_name: ''
-      weight: 13
+      weight: 12
       format_type: details
       format_settings:
         classes: ''
@@ -120,7 +120,7 @@ third_party_settings:
       label: 'Vil du vide mere?'
       region: content
       parent_name: ''
-      weight: 15
+      weight: 14
       format_type: details
       format_settings:
         classes: ''
@@ -134,7 +134,7 @@ third_party_settings:
       label: GetOrganized
       region: content
       parent_name: ''
-      weight: 14
+      weight: 13
       format_type: details
       format_settings:
         classes: ''
@@ -150,7 +150,7 @@ third_party_settings:
       label: Høringssvarsystem
       region: content
       parent_name: ''
-      weight: 17
+      weight: 16
       format_type: details
       format_settings:
         classes: ''
@@ -166,13 +166,13 @@ mode: default
 content:
   field_area:
     type: options_buttons
-    weight: 32
+    weight: 35
     region: content
     settings: {  }
     third_party_settings: {  }
   field_contact:
     type: text_textarea
-    weight: 12
+    weight: 15
     region: content
     settings:
       rows: 5
@@ -180,13 +180,13 @@ content:
     third_party_settings: {  }
   field_delete_date:
     type: datetime_default
-    weight: 28
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 35
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -200,7 +200,7 @@ content:
     third_party_settings: {  }
   field_deskpro_agent_email:
     type: email_default
-    weight: 9
+    weight: 15
     region: content
     settings:
       placeholder: ''
@@ -208,7 +208,7 @@ content:
     third_party_settings: {  }
   field_deskpro_department_id:
     type: string_textfield
-    weight: 8
+    weight: 14
     region: content
     settings:
       size: 60
@@ -216,7 +216,7 @@ content:
     third_party_settings: {  }
   field_edoc_casefile_id:
     type: string_textfield
-    weight: 11
+    weight: 14
     region: content
     settings:
       size: 60
@@ -248,13 +248,13 @@ content:
     third_party_settings: {  }
   field_lokalplaner:
     type: hoeringsportal_data_localplan_default
-    weight: 30
+    weight: 33
     region: content
     settings: {  }
     third_party_settings: {  }
   field_map:
     type: hoeringsportal_data_map_default
-    weight: 6
+    weight: 5
     region: content
     settings:
       available_types:
@@ -299,22 +299,29 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
   field_project_reference:
     type: options_select
-    weight: 31
+    weight: 34
     region: content
     settings: {  }
     third_party_settings: {  }
   field_reply_deadline:
     type: datetime_default
-    weight: 27
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   field_start_date:
     type: datetime_default
-    weight: 26
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -328,17 +335,9 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 29
+    weight: 32
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_video_embed:
-    type: string_textarea
-    weight: 5
-    region: content
-    settings:
-      rows: 3
-      placeholder: ''
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
@@ -366,7 +365,7 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
   url_redirects:
-    weight: 16
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

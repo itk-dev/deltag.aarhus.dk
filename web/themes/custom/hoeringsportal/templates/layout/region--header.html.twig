@@ -36,7 +36,10 @@
             {% if elements.sogefelt_2 %}
               {{ elements.sogefelt_2 }}
             {% endif %}
-            <a href="/search"><i class="fas fa-search"></i></a>
+            <a aria-label="{{ 'Search'|t }}" href="/search">
+              <i aria-hidden="true" class="fas fa-search"></i>
+              <span id="search-label" class="visually-hidden">{{ 'Search'|t }}</span>
+            </a>
           </div>
         </div>
       </div>

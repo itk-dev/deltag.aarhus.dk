@@ -1,0 +1,17 @@
+uuid: 5fc34435-1da6-4881-a011-7bf917fe44a5
+langcode: da
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Dialogforslag
+type: dialogue_proposal
+description: 'A proposal related to a dialogue'
+help: null
+new_revision: false
+preview_mode: 0
+display_submitted: false

@@ -11,7 +11,7 @@ settings:
   default_ajax_speed: 500
   default_submit_button_label: Submit
   default_reset_button_label: Reset
-  default_delete_button_label: Delete
+  default_delete_button_label: Slet
   default_form_submit_once: false
   default_form_open_message: 'This form has not yet been opened to submissions.'
   default_form_close_message: 'Sorry… This form is closed to new submissions.'

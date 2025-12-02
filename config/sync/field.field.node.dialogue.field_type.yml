@@ -1,0 +1,29 @@
+uuid: 9ce201bf-07b1-4bdd-9883-ee60b18f23a8
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type
+    - node.type.dialogue
+    - taxonomy.vocabulary.type
+id: node.dialogue.field_type
+field_name: field_type
+entity_type: node
+bundle: dialogue
+label: Type
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      type: type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -30,6 +30,9 @@ class UserFixture extends AbstractFixture implements FixtureGroupInterface, Depe
         'roles' => [
           $role,
         ],
+        'field_department' => [
+          $this->getReference('department:Department 1')->id(),
+        ],
       ]);
       $user->save();
       $this->setReference('user:' . $role, $user);

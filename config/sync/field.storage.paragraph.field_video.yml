@@ -1,0 +1,19 @@
+uuid: d229a16d-72e3-47c9-bf1e-55b59f915cd3
+langcode: da
+status: true
+dependencies:
+  module:
+    - itk_video
+    - paragraphs
+id: paragraph.field_video
+field_name: field_video
+entity_type: paragraph
+type: itk_video_field
+settings: {  }
+module: itk_video
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

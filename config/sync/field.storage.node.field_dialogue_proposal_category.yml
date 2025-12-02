@@ -1,0 +1,20 @@
+uuid: be5af7f9-c5ae-4caf-919c-6fee60dbd6ee
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_dialogue_proposal_category
+field_name: field_dialogue_proposal_category
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

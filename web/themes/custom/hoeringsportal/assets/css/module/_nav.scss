@@ -45,12 +45,23 @@ nav.navbar {
     }
 
     &.active {
-      color: $gray-700;
+      color: $primary;
+      text-decoration: underline;
+      text-underline-offset: 19px;
+      text-decoration-thickness: 5px;
+      transition: text-underline-offset 200ms ease-in;
+
+      @include media-breakpoint-down(md) {
+        text-underline-offset: 9px;
+        text-decoration-thickness: 3px;
+      }
     }
 
     @include media-breakpoint-up(md) {
       .scrolled & {
         padding-top: $spacer * 0.25;
+        text-underline-offset: 14px;
+        transition: text-underline-offset 200ms ease-out;
       }
     }
   }

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_section
     - node.type.landing_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.content_list
     - paragraphs.paragraphs_type.content_promotion
@@ -32,9 +33,13 @@ settings:
       content_list: content_list
       teaser_row: teaser_row
       content_promotion: content_promotion
+      accordion: accordion
       links_on_a_background_image: links_on_a_background_image
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: true
       content_block:
         weight: 5
         enabled: true
@@ -79,5 +84,8 @@ settings:
         enabled: false
       timeline_period:
         weight: 26
+        enabled: false
+      video:
+        weight: 34
         enabled: false
 field_type: entity_reference_revisions

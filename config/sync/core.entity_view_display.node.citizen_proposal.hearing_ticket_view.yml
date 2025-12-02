@@ -1,0 +1,54 @@
+uuid: 93ee4e68-5ee4-4d11-b067-34a56a855249
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.hearing_ticket_view
+    - field.field.node.citizen_proposal.field_author_allow_email
+    - field.field.node.citizen_proposal.field_author_email
+    - field.field.node.citizen_proposal.field_author_email_display
+    - field.field.node.citizen_proposal.field_author_name
+    - field.field.node.citizen_proposal.field_author_phone
+    - field.field.node.citizen_proposal.field_author_uuid
+    - field.field.node.citizen_proposal.field_content_state
+    - field.field.node.citizen_proposal.field_getorganized_case_id
+    - field.field.node.citizen_proposal.field_more_info
+    - field.field.node.citizen_proposal.field_proposal
+    - field.field.node.citizen_proposal.field_remarks
+    - field.field.node.citizen_proposal.field_vote_end
+    - field.field.node.citizen_proposal.field_vote_start
+    - node.type.citizen_proposal
+  module:
+    - user
+id: node.citizen_proposal.hearing_ticket_view
+targetEntityType: node
+bundle: citizen_proposal
+mode: hearing_ticket_view
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_author_allow_email: true
+  field_author_email: true
+  field_author_email_display: true
+  field_author_name: true
+  field_author_phone: true
+  field_author_uuid: true
+  field_content_state: true
+  field_getorganized_case_id: true
+  field_more_info: true
+  field_proposal: true
+  field_remarks: true
+  field_vote_end: true
+  field_vote_start: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

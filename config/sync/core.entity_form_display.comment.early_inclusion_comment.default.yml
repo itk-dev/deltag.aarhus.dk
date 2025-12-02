@@ -1,0 +1,24 @@
+uuid: 231d1efa-b51c-40bd-8b41-4653beeabb38
+langcode: da
+status: true
+dependencies:
+  config:
+    - comment.type.early_inclusion_comment
+    - field.field.comment.early_inclusion_comment.field_comment
+id: comment.early_inclusion_comment.default
+targetEntityType: comment
+bundle: early_inclusion_comment
+mode: default
+content:
+  field_comment:
+    type: string_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  author: true
+  langcode: true
+  subject: true

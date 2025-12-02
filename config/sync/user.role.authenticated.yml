@@ -6,10 +6,14 @@ dependencies:
     - filter.format.citizen_proposal_content
     - filter.format.filtered_html
     - filter.format.hearing_description
+    - node.type.dialogue_proposal
   module:
+    - comment
     - file
     - filter
+    - flag
     - media
+    - node
     - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
@@ -18,8 +22,16 @@ label: 'Godkendt bruger'
 weight: -9
 is_admin: false
 permissions:
+  - 'access comments'
   - 'access content'
+  - 'create dialogue_proposal content'
   - 'delete own files'
+  - 'flag support_comment'
+  - 'flag support_proposal'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'unflag support_comment'
+  - 'unflag support_proposal'
   - 'use text format citizen_proposal_content'
   - 'use text format filtered_html'
   - 'use text format hearing_description'

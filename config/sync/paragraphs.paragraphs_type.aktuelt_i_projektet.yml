@@ -1,0 +1,10 @@
+uuid: eccf676c-bbf7-439a-923e-29f094d6cbf5
+langcode: da
+status: true
+dependencies: {  }
+id: aktuelt_i_projektet
+label: 'Aktuelt i projektet'
+icon_uuid: null
+icon_default: null
+description: 'Promote a specific activity in the project.'
+behavior_plugins: {  }

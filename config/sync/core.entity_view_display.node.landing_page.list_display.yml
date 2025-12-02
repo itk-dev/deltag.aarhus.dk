@@ -4,6 +4,7 @@ status: false
 dependencies:
   config:
     - core.entity_view_mode.node.list_display
+    - field.field.node.landing_page.field_header_label
     - field.field.node.landing_page.field_media_image_single
     - field.field.node.landing_page.field_section
     - field.field.node.landing_page.field_show_page_title
@@ -35,6 +36,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_header_label: true
   field_media_image_single: true
   field_show_page_title: true
   field_teaser: true

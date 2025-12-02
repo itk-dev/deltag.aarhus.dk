@@ -1,0 +1,11 @@
+uuid: fd61d20d-10f6-4496-98c2-74dd208a0272
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.dialogue_proposal_add
+label: 'Dialogue proposal add'
+description: ''
+targetEntityType: node
+cache: true

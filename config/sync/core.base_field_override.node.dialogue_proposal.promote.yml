@@ -1,0 +1,22 @@
+uuid: de7a9b01-3c91-46bf-b779-29641009f7c1
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.dialogue_proposal
+id: node.dialogue_proposal.promote
+field_name: promote
+entity_type: node
+bundle: dialogue_proposal
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

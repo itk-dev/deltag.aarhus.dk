@@ -16,7 +16,8 @@
  */
 #}
 
-{% if element.field_hidden_signup[0]['#markup'] != 1 %}
+{% set show_signup = element.field_hidden_signup[0]['#markup'] != 1 %}
+{% if show_signup %}
   <div class="signup">
     <div class="container">
       <div class="row py-3 py-lg-5">

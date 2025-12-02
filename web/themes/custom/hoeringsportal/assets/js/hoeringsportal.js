@@ -17,6 +17,10 @@ require("slick-carousel");
 require("./slick-slider-config.js");
 require("./filter-collapse.js");
 require("./icons.js");
+require("./modify-dialogue-form.js");
+require("./modify-dialogue-proposal-comments.js");
+require("./animated-svg.js");
+require("./accordion.js");
 
 // Enable popovers.
 $(function () {

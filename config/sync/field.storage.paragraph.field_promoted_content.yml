@@ -1,0 +1,20 @@
+uuid: 5c6db4e5-b615-4ec4-9abf-0c335609e3d0
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_promoted_content
+field_name: field_promoted_content
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

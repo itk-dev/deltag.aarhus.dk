@@ -1,0 +1,4 @@
+map-config:
+  version: VERSION
+  js:
+    https://widget.cdn.septima.dk/3.14.6/widgetconfig.js: { type: external }

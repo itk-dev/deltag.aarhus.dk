@@ -43,7 +43,7 @@
   <div class="fieldset-wrapper">
     {% set description_position = element['#description_position']|default('bottom') %}
     {% if description.content and 'top' == description_position %}
-      <div{{ description.attributes.addClass(['description', 'description-' ~ description_position]) }}>{{ description.content }}</div>
+      <div{{ description.attributes.addClass(['description', 'mb-2', 'description-' ~ description_position]) }}>{{ description.content }}</div>
     {% endif %}
     {% if errors %}
       <div>

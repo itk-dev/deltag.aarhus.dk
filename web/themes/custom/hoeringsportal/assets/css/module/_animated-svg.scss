@@ -1,0 +1,102 @@
+a:has(svg) {
+  /* prettier-ignore */
+  --ease-spring-lazy: linear(0, 0.008 1.1%, 0.034 2.3%, 0.134 4.9%, 0.264 7.3%, 0.683 14.3%, 0.797 16.5%, 0.89 18.6%, 0.967 20.7%, 1.027 22.8%, 1.073 25%, 1.104 27.3%, 1.123 30.6%, 1.119 34.3%, 1.018 49.5%, 0.988 58.6%, 0.985 65.2%, 1 84.5%, 1);
+  /* prettier-ignore */
+  --ease-spring-glide: linear(0, 0.012 0.9%, 0.05 2%, 0.411 9.2%, 0.517 11.8%, 0.611 14.6%, 0.694 17.7%, 0.765 21.1%, 0.824 24.8%, 0.872 28.9%, 0.91 33.4%, 0.939 38.4%, 0.977 50.9%, 0.994 68.4%, 1);
+  --path-fill-color: white;
+  --path-stroke-color: var(--bs-secondary);
+  --sp2: 4px;
+
+  display: flex;
+  gap: var(--sp2);
+  text-decoration: none;
+
+  svg {
+    /* Comment */
+    g.comment {
+      path {
+        transform-origin: bottom left;
+        stroke-width: 1.5px;
+        transition: stroke 200ms var(--ease-spring-glide);
+      }
+    }
+
+    /* Reply */
+    g.reply {
+      path {
+        transform-origin: center right;
+        stroke-width: 1.5px;
+        transition: stroke 200ms var(--ease-spring-glide);
+      }
+    }
+
+    /* Thumbs up */
+    g.thumbs-up {
+      path {
+        stroke-width: 1.5px;
+        stroke: var(--bs-secondary);
+      }
+
+      path:first-of-type {
+        transform-origin: center left;
+        transition: fill 200ms var(--ease-spring-glide);
+      }
+    }
+  }
+
+  /* Hover on <a> */
+  &:hover {
+    /* Comment hover */
+    g.comment {
+      path {
+        animation: pop 400ms var(--ease-spring-lazy);
+        transition: fill 200ms 300ms var(--ease-spring-lazy);
+        fill: var(--bs-primary);
+        stroke: var(--bs-secondary);
+      }
+    }
+
+    /* Reply hover */
+    g.reply {
+      path {
+        animation: stretchX 400ms var(--ease-spring-lazy);
+        transition: fill 200ms 300ms var(--ease-spring-lazy);
+        fill: var(--bs-primary);
+        stroke: var(--bs-secondary);
+      }
+    }
+
+    /* Thumbs-up hover */
+    g.thumbs-up {
+      path:last-child {
+        transition: fill 200ms 200ms var(--ease-spring-lazy);
+        fill: var(--bs-primary);
+      }
+      path:first-of-type {
+        transform: rotate(-3deg);
+        transition: transform 200ms var(--ease-spring-lazy);
+      }
+    }
+  }
+}
+
+/* Click on <a> with thumbs-up svg */
+.liked a:has(svg) {
+  g.thumbs-up {
+    path:first-of-type {
+      animation: rotatePop 500ms var(--ease-spring-lazy);
+    }
+    path:last-child {
+      fill: var(--bs-primary);
+    }
+  }
+}
+
+/* Thumbs-up already set*/
+.action-unflag a:has(svg) {
+  g.thumbs-up {
+    path:last-child {
+      fill: var(--bs-primary);
+    }
+  }
+}

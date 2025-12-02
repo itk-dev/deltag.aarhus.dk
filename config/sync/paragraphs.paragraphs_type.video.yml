@@ -1,0 +1,10 @@
+uuid: 2fb3e16c-e932-4e71-9662-623ac4744501
+langcode: da
+status: true
+dependencies: {  }
+id: video
+label: Video
+icon_uuid: null
+icon_default: null
+description: 'A Video Tool video.'
+behavior_plugins: {  }

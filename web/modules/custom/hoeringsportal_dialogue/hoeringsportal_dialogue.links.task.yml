@@ -1,0 +1,17 @@
+hoeringsportal_dialogue.admin:
+  title: "Dialogue proposals"
+  route_name: hoeringsportal_dialogue.admin
+  base_route: system.admin_content
+
+hoeringsportal_dialogue.admin_proposals:
+  title: "Dialogue proposals"
+  route_name: hoeringsportal_dialogue.admin
+  parent_id: hoeringsportal_dialogue.admin
+
+hoeringsportal_dialogue.admin_replies:
+  title: "Proposal replies"
+  route_name: hoeringsportal_dialogue.admin_dialogue_replies
+  parent_id: hoeringsportal_dialogue.admin
+  weight: 1
+  cache_tags:
+    - comment_list

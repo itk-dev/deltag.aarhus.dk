@@ -1,0 +1,18 @@
+uuid: fc4629cb-e6a2-440b-8f00-6c542c529b85
+langcode: da
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Dialog
+type: dialogue
+description: 'Indholdstype til oprettelse af dialog. Bruges til at give borgerne mulighed for tidlig inddragelse igennem kommentarer.'
+help: null
+new_revision: false
+preview_mode: 0
+display_submitted: false

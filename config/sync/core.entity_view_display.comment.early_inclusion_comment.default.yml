@@ -1,0 +1,28 @@
+uuid: b46bd223-172f-4262-8850-9722c21c895a
+langcode: da
+status: true
+dependencies:
+  config:
+    - comment.type.early_inclusion_comment
+    - field.field.comment.early_inclusion_comment.field_comment
+id: comment.early_inclusion_comment.default
+targetEntityType: comment
+bundle: early_inclusion_comment
+mode: default
+content:
+  field_comment:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  flag_support_comment:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  langcode: true
+  links: true
+  search_api_excerpt: true

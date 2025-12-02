@@ -1,0 +1,29 @@
+uuid: 8b82c11c-5e64-434f-bd26-3177e5010489
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dialogue
+    - node.type.dialogue
+    - node.type.dialogue_proposal
+id: node.dialogue_proposal.field_dialogue
+field_name: field_dialogue
+entity_type: node
+bundle: dialogue_proposal
+label: Dialog
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dialogue: dialogue
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

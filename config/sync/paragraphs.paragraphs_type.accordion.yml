@@ -1,0 +1,10 @@
+uuid: a61182cf-1d50-4b78-bf5e-034826e8d825
+langcode: da
+status: true
+dependencies: {  }
+id: accordion
+label: Accordion
+icon_uuid: null
+icon_default: null
+description: 'An accordion to show/collapse text elements'
+behavior_plugins: {  }

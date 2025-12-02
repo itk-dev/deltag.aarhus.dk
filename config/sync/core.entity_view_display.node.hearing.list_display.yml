@@ -28,7 +28,6 @@ dependencies:
     - field.field.node.hearing.field_tags
     - field.field.node.hearing.field_teaser
     - field.field.node.hearing.field_type
-    - field.field.node.hearing.field_video_embed
     - node.type.hearing
   module:
     - ds
@@ -99,7 +98,6 @@ hidden:
   field_reply_deadline: true
   field_start_date: true
   field_tags: true
-  field_video_embed: true
   langcode: true
   links: true
   published_at: true

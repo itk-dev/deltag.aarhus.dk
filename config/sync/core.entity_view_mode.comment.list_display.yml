@@ -1,0 +1,11 @@
+uuid: 539bb71d-926e-42ae-b7b8-031aabb863e2
+langcode: da
+status: true
+dependencies:
+  module:
+    - comment
+id: comment.list_display
+label: 'List display'
+description: ''
+targetEntityType: comment
+cache: true

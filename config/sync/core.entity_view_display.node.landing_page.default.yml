@@ -3,6 +3,7 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.landing_page.field_header_label
     - field.field.node.landing_page.field_media_image_single
     - field.field.node.landing_page.field_section
     - field.field.node.landing_page.field_show_page_title
@@ -12,34 +13,19 @@ dependencies:
     - ds
     - entity_reference_revisions
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: ds_1col
-      library: null
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        classes:
-          layout_class: {  }
-        wrappers:
-          ds_content: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-    regions:
-      ds_content:
-        - field_section
-        - field_teaser
-        - field_media_image_single
-        - field_show_page_title
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page
 mode: default
 content:
+  field_header_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_media_image_single:
     type: entity_reference_entity_view
     label: hidden
@@ -47,8 +33,8 @@ content:
       view_mode: content_display
       link: false
     third_party_settings: {  }
-    weight: 2
-    region: ds_content
+    weight: 3
+    region: content
   field_section:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -58,8 +44,8 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
-    weight: 0
-    region: ds_content
+    weight: 1
+    region: content
   field_show_page_title:
     type: boolean
     label: hidden
@@ -68,15 +54,15 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 3
-    region: ds_content
+    weight: 4
+    region: content
   field_teaser:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
-    region: ds_content
+    weight: 2
+    region: content
 hidden:
   langcode: true
   links: true

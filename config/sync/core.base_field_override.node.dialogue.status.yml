@@ -1,0 +1,22 @@
+uuid: 69b80e94-9ff6-4499-a636-4224450a2c28
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.dialogue
+id: node.dialogue.status
+field_name: status
+entity_type: node
+bundle: dialogue
+label: Udgivet
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

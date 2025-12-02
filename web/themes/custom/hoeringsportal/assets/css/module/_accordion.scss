@@ -1,0 +1,33 @@
+.accordion {
+  --bs-accordion-border-radius: 6px;
+  --accordion-border: 1px solid #333;
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23008486%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e");
+
+  .accordion-item {
+    overflow: hidden;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: var(--accordion-border);
+  }
+
+  .accordion-header {
+    button {
+      font-size: 1.1rem;
+      font-weight: 700;
+
+      &:after {
+        color: $primary;
+      }
+    }
+  }
+
+  /* Add rounded corners to top and bottom elements*/
+  .accordion-item:first-child {
+    border-top: var(--accordion-border);
+  }
+
+  /* Avoid shadow hanging around after opening accordion */
+  button:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,19 @@
+uuid: 3f761a8b-9573-4d37-b0b3-b2d2634d120c
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_dialogue_proposal_descr
+field_name: field_dialogue_proposal_descr
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

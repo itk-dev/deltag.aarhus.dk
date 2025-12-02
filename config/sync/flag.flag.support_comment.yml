@@ -1,0 +1,31 @@
+uuid: d73f54ce-236a-43a2-9517-ea0fd72ba041
+langcode: da
+status: true
+dependencies:
+  module:
+    - comment
+id: support_comment
+label: 'Support comment'
+bundles:
+  - early_inclusion_comment
+entity_type: comment
+global: false
+flag_short: Like
+flag_long: ''
+flag_message: ''
+unflag_short: 'Remove like'
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:comment'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+    parent_owner: '0'
+linkTypeConfig: {  }

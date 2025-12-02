@@ -1,0 +1,26 @@
+uuid: b7ccc207-b24c-4a49-b7e9-3355a10b5411
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dialogue_proposal_location
+    - node.type.dialogue
+  module:
+    - hoeringsportal_data
+id: node.dialogue.field_dialogue_proposal_location
+field_name: field_dialogue_proposal_location
+entity_type: node
+bundle: dialogue
+label: 'Dialogforslag location'
+description: 'Vælg hvor på kortet dialogforslag skal centreres'
+required: false
+translatable: false
+default_value:
+  -
+    type: point
+    geojson: ''
+    localplanids: ''
+    point: ''
+default_value_callback: ''
+settings: {  }
+field_type: hoeringsportal_data_map

@@ -76,7 +76,9 @@ class MapDefaultWidget extends WidgetBase {
       ]),
       '#states' => [
         'visible' => [
-          ':input[name="' . $parentNameSelector . '[type]"]' => ['value' => MapItem::TYPE_GEOJSON],
+          ':input[name="' . $parentNameSelector . '[type]"]' => [
+            'value' => MapItem::TYPE_GEOJSON,
+          ],
         ],
       ],
     ];

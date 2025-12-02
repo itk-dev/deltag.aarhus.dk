@@ -4,9 +4,13 @@ status: true
 dependencies:
   config:
     - filter.format.citizen_proposal_content
+    - node.type.dialogue_proposal
   module:
+    - comment
     - filter
+    - flag
     - media
+    - node
     - system
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
@@ -15,6 +19,14 @@ label: 'Anonym bruger'
 weight: -10
 is_admin: false
 permissions:
+  - 'access comments'
   - 'access content'
+  - 'create dialogue_proposal content'
+  - 'flag support_comment'
+  - 'flag support_proposal'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'unflag support_comment'
+  - 'unflag support_proposal'
   - 'use text format citizen_proposal_content'
   - 'view media'

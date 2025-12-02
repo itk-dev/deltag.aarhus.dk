@@ -26,8 +26,5 @@ Encore
   // Empty the outputPath dir before each build.
   .cleanupOutputBeforeBuild()
 
-  // Allow sass/scss files to be processed.
-  .enableSassLoader()
-
 // Export the final configuration.
 module.exports = Encore.getWebpackConfig()

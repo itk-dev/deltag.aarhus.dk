@@ -1,0 +1,19 @@
+uuid: 9ba38990-85d3-4791-bf26-1886d1327d83
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_dialogue
+field_name: field_dialogue
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

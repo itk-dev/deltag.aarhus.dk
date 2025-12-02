@@ -8,6 +8,42 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-550](https://github.com/itk-dev/deltag.aarhus.dk/pull/550)
   5603: Aligned development service config with prod config
+* [PR-557](https://github.com/itk-dev/deltag.aarhus.dk/pull/557)
+  * Change dialogue proposal backend
+  * Add seperate view for dialogue proposal comments
+  * Deny access for admin comments tab in general
+  * Update user permissions
+  * Add access restrictions on unpublished comments
+  * Override default dialogue form
+  * Add promoted content feature
+  * Updated Drupal core 10.5.2 => 10.5.6
+  * Updated accessibility
+  * Add breadcrumb to dialogue
+  * Add map to dialogue
+
+* [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
+  * Add underline to active navigation.
+  * Adjust header witdt
+* [PR-556](https://github.com/itk-dev/deltag.aarhus.dk/pull/556)
+  * Change OIDC container
+
+* [PR-553](https://github.com/itk-dev/deltag.aarhus.dk/pull/553)
+  * Add animated svg icons comment, reply, thumbs-up
+
+* [PR-552](https://github.com/itk-dev/deltag.aarhus.dk/pull/552)
+  * Add styling for dialog proposal categories
+
+* [PR-551](https://github.com/itk-dev/deltag.aarhus.dk/pull/551)
+  * Remove old video field and disabled Azure video module
+  * Enable Comments module
+  * Add Support comment flag
+  * Add Honeypot module
+  * Add ITK Video module and Video paragraph for Video Tool
+
+## [4.13.2] - 2025-12-01
+
+* [PR-570](https://github.com/itk-dev/deltag.aarhus.dk/pull/570)
+  Fixed issue with "Hidden signup" not being handled in templates
 
 ## [4.13.1] - 2025-09-15
 
@@ -546,7 +582,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...HEAD
+[4.13.2]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...4.13.2
 [4.13.1]: https://github.com/itk-dev/hoeringsportal/compare/4.13.0...4.13.1
 [4.13.0]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...4.13.0
 [4.12.0]: https://github.com/itk-dev/hoeringsportal/compare/4.11.1...4.12.0
