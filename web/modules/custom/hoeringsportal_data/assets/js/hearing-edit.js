@@ -85,9 +85,7 @@ function applyMap () {
           },
           'features_dataType': 'json',
           'features_style': {
-            'namedstyle': '#pin001',
-            'scale': 0.75,
-            'fillcolor': 'oklch(43% 0.063 196.55)'
+
           }
         }
       ],
@@ -128,6 +126,12 @@ function applyMap () {
 
   const widgets = document.querySelectorAll('.septima-widget')
   widgets.forEach((container) => {
+    const themePath = container.getAttribute('data-value-theme')
+    if (container.getAttribute('data-value-theme')) {
+      config.map.layer[1].features_style.icon = themePath + '/assets/images/maps/map-pin.png'
+      config.map.layer[1].features_style.scale = 0.75
+    }
+
     const data = (function () {
       try {
         const data = JSON.parse(container.getAttribute('data-value'))
