@@ -141,7 +141,6 @@ class MapDefaultWidget extends WidgetBase {
       ],
     ];
 
-    $element['#element_validate'][] = [$this, 'validate'];
     $element['#attached']['library'][] = 'hoeringsportal_data/hearing-edit';
 
     return $element;

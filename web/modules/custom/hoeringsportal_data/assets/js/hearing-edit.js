@@ -108,7 +108,7 @@ function applyMap () {
             'displaytext': 'Find adresse',
             'clearOnMapclick': true,
             'features_style': {
-              'namedstyle': '#004'
+              'namedstyle': '#001'
             },
             'driver': [
               {
@@ -130,6 +130,8 @@ function applyMap () {
     if (container.getAttribute('data-value-theme')) {
       config.map.layer[1].features_style.icon = themePath + '/assets/images/maps/map-pin.png'
       config.map.layer[1].features_style.scale = 0.75
+      config.map.controls[0].search.features_style.icon = themePath + '/assets/images/maps/map-pin.png'
+      config.map.controls[0].search.features_style.scale = 0.75
     }
 
     const data = (function () {
