@@ -212,16 +212,8 @@ class DialogueHelper {
       }
 
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
-
-      $parentPoint = json_decode($parentLocationSelection[0]['point'] ?? '');
-      $coordinates = $parentPoint->features[0]->geometry->coordinates ?? NULL;
-
-      $parentZoomSelection = $parent->get('field_dialogue_proposal_zoom')->getValue();
-      $form['field_location']['widget'][0]['point-widget']['#attributes']['data-map-config'] = json_encode([
-        'x' => $coordinates[0] ?? NULL,
-        'y' => $coordinates[1] ?? NULL,
-        'zoomLevel' => $parentZoomSelection[0]['value'] ?? 11,
-      ]);
+      $parentMapConfig = json_decode($parentLocationSelection[0]['map_config'] ?? '');
+      $form['field_location']['widget'][0]['map_config']['#default_value'] = json_encode($parentMapConfig);
     }
 
     if ($parent) {

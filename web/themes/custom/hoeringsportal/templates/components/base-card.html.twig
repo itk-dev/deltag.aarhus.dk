@@ -46,19 +46,21 @@
     {# Get the url and alt text for the image #}
     {% set image_url = file_url(image.field_itk_media_image_upload.entity.uri.value|image_style('responsive_small_teaser')) %}
     {% set image_alt = image.field_itk_media_image_upload.alt %}
-
-    <div class="card-header position-relative p-0 w-100 activity-teaser-image overflow-hidden">
-      <img class="object-fit-cover" src="{{ image_url }}" alt="{{ image_alt|default('') }}">
-
-      {# If we have a node of type hearing or public meeting we show a date splash on the card #}
-      {% if node_type in ['hearing', 'public_meeting'] %}
-        <div class="position-absolute bottom-0 start-0 py-2 px-4 bg-white flex-column d-flex align-items-center">
-          {% block card_date %}
-          {% endblock %}
-        </div>
-      {% endif %}
-    </div>
+  {% else %}
+    {% set image_url = directory ~ '/assets/images/default-img.png' %}
   {% endif %}
+  <div class="card-header position-relative p-0 w-100 activity-teaser-image overflow-hidden">
+    <img class="object-fit-cover" src="{{ image_url }}" alt="{{ image_alt|default('') }}">
+
+    {# If we have a node of type hearing or public meeting we show a date splash on the card #}
+    {% if node_type in ['hearing', 'public_meeting'] %}
+      <div class="position-absolute bottom-0 start-0 py-2 px-4 bg-white flex-column d-flex align-items-center">
+        {% block card_date %}
+        {% endblock %}
+      </div>
+    {% endif %}
+  </div>
+
 
   {# Card body #}
   <div class="card-body px-4 pt-3 pb-2 d-flex flex-column gap-2">

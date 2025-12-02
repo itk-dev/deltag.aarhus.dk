@@ -9,4 +9,4 @@ services:
       - { name: theme_negotiator, priority: 10 }
 
   Drupal\hoeringsportal_dialogue\Controller\DialogueController:
-    arguments: ["@url_generator"]
+    autowire: true

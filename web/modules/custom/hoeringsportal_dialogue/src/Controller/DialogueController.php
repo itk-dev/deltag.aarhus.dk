@@ -5,15 +5,17 @@ namespace Drupal\hoeringsportal_dialogue\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
-use proj4php\Point;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use proj4php\Proj4php;
-use proj4php\Proj;
+use Drupal\Core\Extension\ThemeExtensionList;
 
 /**
  * Controller for dialogue content.
  */
 class DialogueController extends ControllerBase {
+
+  public function __construct(
+    protected ThemeExtensionList $themeExtensionList
+  ) {}
 
   /**
    * Generate map data for a dialogue map.
@@ -25,29 +27,23 @@ class DialogueController extends ControllerBase {
    *   The data.
    */
   public function mapData(NodeInterface $node) {
-    $zoom = $node->field_dialogue_proposal_zoom->value;
-    $locationData = $node->field_dialogue_proposal_location->data;
-    if (empty($locationData || empty($zoom))) {
+    $locationData = $node->field_dialogue_proposal_location->map_config;
+    if (empty($locationData)) {
       $this->messenger()->addError($this->t('Error fetching map data'));
       return new JsonResponse([]);
     }
-
+    $view = json_decode($locationData, TRUE);
+    $view['zoomLevel'] = $view['zoom'];
+    $view['x'] = $view['center'][0];
+    $view['y'] = $view['center'][1];
+    unset ($view['zoom']);
+    unset ($view['center']);
     $proposalLocationData = $this->getProposalLocationData($node);
-    $nodeMapData = json_decode($locationData, TRUE);
-    $proj4 = new Proj4php();
-    $e4326 = new Proj('EPSG:4326', $proj4);
-    $e25832 = new Proj('EPSG:25832', $proj4);
-    $mapCenter = new Point($nodeMapData['geometry']['coordinates'][0], $nodeMapData['geometry']['coordinates'][1]);
-    $projectedMapCenter = $proj4->transform($e4326, $e25832, $mapCenter)->toArray();
 
     $mapConfig = [
       'map' => [
         'minZoomLevel' => 15,
-        'view' => [
-          'zoomLevel' => $zoom,
-          'x' => $projectedMapCenter[0],
-          'y' => $projectedMapCenter[1],
-        ],
+        'view' => $view,
         'layer' => [
           [
             'namedlayer' => '#septima_standard',
@@ -62,9 +58,9 @@ class DialogueController extends ControllerBase {
             'features_dataType' => 'json',
             'features_type' => 'Point',
             'features_style' => [
-              'namedstyle' => '#pin004',
-              'fillcolor' => '#008486',
-              'fillcolor_selected' => '#008486',
+              'namedstyle' => '#pin001',
+              'scale' =>  .75,
+              'fillcolor' => 'oklch(43% 0.063 196.55)',
             ],
             'template_info' => "<div class='widget-hoverbox-title'><%= title %></div><div class='widget-hoverbox-sub'><div><%= description %><div><a target='blank' href='<%= url %>'>" . $this->t('View more') . '</a></div></div>',
           ],
