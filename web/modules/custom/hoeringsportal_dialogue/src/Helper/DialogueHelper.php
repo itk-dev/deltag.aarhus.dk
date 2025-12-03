@@ -39,6 +39,8 @@ class DialogueHelper {
    *   The current user account.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The routematch service.
    */
   public function __construct(
     protected RequestStack $requestStack,
@@ -46,6 +48,7 @@ class DialogueHelper {
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
     protected MessengerInterface $messenger,
+    protected RouteMatchInterface $routeMatch,
   ) {
   }
 
@@ -157,8 +160,6 @@ class DialogueHelper {
     $form['field_dialogue_proposal_location']['widget'][0]['localplanids']['#access'] = FALSE;
     $form['field_dialogue_proposal_location']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
       ['checked' => TRUE];
-    $form['field_dialogue_proposal_zoom']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
-      ['checked' => TRUE];
   }
 
   /**
@@ -226,16 +227,8 @@ class DialogueHelper {
       }
 
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
-
-      $parentPoint = json_decode($parentLocationSelection[0]['point'] ?? '');
-      $coordinates = $parentPoint->features[0]->geometry->coordinates ?? NULL;
-
-      $parentZoomSelection = $parent->get('field_dialogue_proposal_zoom')->getValue();
-      $form['field_location']['widget'][0]['point-widget']['#attributes']['data-map-config'] = json_encode([
-        'x' => $coordinates[0] ?? NULL,
-        'y' => $coordinates[1] ?? NULL,
-        'zoomLevel' => $parentZoomSelection[0]['value'] ?? 11,
-      ]);
+      $parentMapConfig = json_decode($parentLocationSelection[0]['map_config'] ?? '');
+      $form['field_location']['widget'][0]['map_config']['#default_value'] = json_encode($parentMapConfig);
     }
 
     if ($parent) {
@@ -248,7 +241,53 @@ class DialogueHelper {
   }
 
   /**
-   * Custom submit handler for dialog proposal form.
+   * Changes to the views exposed form.
+   *
+   * @param array $form
+   *   The form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
+   */
+  public function exposedFormAlter(array &$form, FormStateInterface $form_state): void {
+    if ('views-exposed-form-dialogue-proposals-block-1' === $form['#id']) {
+      $currentNode = NULL;
+
+      $requestRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
+      // Get node from request.
+      if ('entity.node.canonical' === $requestRoute) {
+        $currentNode = $this->routeMatch->getParameter('node');
+      }
+
+      // Get node from form storage view.
+      if ('views.ajax' === $requestRoute) {
+        $view = $form_state->getStorage()['view'];
+        $nid = $view->args[0];
+        if (is_numeric($nid)) {
+          try {
+            $currentNode = $this->entityTypeManager->getStorage('node')->load($nid);
+          }
+          catch (\Exception $e) {
+
+          }
+        }
+      }
+
+      // Remove categories that are not applicable for the current node.
+      if ($currentNode instanceof Node) {
+        if ('dialogue' === $currentNode->bundle()) {
+          $dialogueCategories = array_column($currentNode->field_dialogue_proposal_category->getValue(), 'target_id');
+          foreach ($form['field_dialogue_proposal_category_target_id']['#options'] as $key => $option) {
+            if (!in_array($key, $dialogueCategories) && $key !== 'All') {
+              unset($form['field_dialogue_proposal_category_target_id']['#options'][$key]);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Custom submit handler for dialogue proposal form.
    *
    * @param array $form
    *   The form.

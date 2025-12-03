@@ -45,33 +45,23 @@ function applyMap () {
     return geojson
   }
 
-  const defaultMapConfig = (function () {
-    const widget = document.querySelector('.septima-widget')
-
-    if (widget && widget.parentElement && widget.parentElement.getAttribute('data-map-config')) {
-      const config = widget.parentElement.getAttribute('data-map-config')
-      const configObj = JSON.parse(config)
-      const transformedCoordinates = proj4('EPSG:4326', 'EPSG:25832', [configObj.x, configObj.y])
-      if (transformedCoordinates) {
-        return {
-          'x': transformedCoordinates[0],
-          'y': transformedCoordinates[1],
-          'zoomLevel': configObj.zoomLevel
-        }
-      }
-    }
-    return {
-      'x': null,
-      'y': null,
-      'zoomLevel': 12
-    }
-  }())
-
   const config = {
     'map': {
       'maxZoomLevel': 1,
       'minZoomLevel': 22,
-      'view': defaultMapConfig,
+      // Default to Aarhus C.
+      'view': {
+        'x': 574768.5806979571,
+        'y': 6223630.016778825,
+        'resolution': 78.00129222156862,
+        'bbox': [
+          574665.7520774566,
+          6223532.674711226,
+          574871.4093184576,
+          6223727.358846424
+        ],
+        'zoomLevel': 5
+      },
       'layer': [
         {
           'namedlayer': '#osm'
@@ -95,7 +85,7 @@ function applyMap () {
           },
           'features_dataType': 'json',
           'features_style': {
-            'namedstyle': '#004'
+
           }
         }
       ],
@@ -118,7 +108,7 @@ function applyMap () {
             'displaytext': 'Find adresse',
             'clearOnMapclick': true,
             'features_style': {
-              'namedstyle': '#004'
+              'namedstyle': '#001'
             },
             'driver': [
               {
@@ -136,6 +126,14 @@ function applyMap () {
 
   const widgets = document.querySelectorAll('.septima-widget')
   widgets.forEach((container) => {
+    const themePath = container.getAttribute('data-value-theme')
+    if (container.getAttribute('data-value-theme')) {
+      config.map.layer[1].features_style.icon = themePath + '/assets/images/maps/map-pin.png'
+      config.map.layer[1].features_style.scale = 0.75
+      config.map.controls[0].search.features_style.icon = themePath + '/assets/images/maps/map-pin.png'
+      config.map.controls[0].search.features_style.scale = 0.75
+    }
+
     const data = (function () {
       try {
         const data = JSON.parse(container.getAttribute('data-value'))
@@ -146,12 +144,28 @@ function applyMap () {
     }())
 
     const target = document.querySelector(container.getAttribute('data-value-target'))
+    const mapConfig = document.querySelector(container.getAttribute('data-value-map-config'))
+
+    // Override default view if map config is present.
+    if (mapConfig !== null && mapConfig.value) {
+      const mapConfigData = JSON.parse(mapConfig.value)
+      config.map.view.x = mapConfigData.center[0]
+      config.map.view.y = mapConfigData.center[1]
+      config.map.view.bbox = mapConfigData.bbox
+      config.map.view.zoomLevel = mapConfigData.zoom
+      config.map.view.resolution = mapConfigData.resolution
+    }
+
     if (target !== null) {
       const resetMap = (data) => {
-        // Center map on point.
-        const coordinates = data.features[0].geometry.coordinates
-        config.map.view.x = coordinates[0]
-        config.map.view.y = coordinates[1]
+        // Override default view coordinates if target is present, and map config is not.
+        if (mapConfig == null) {
+          // Center map on point.
+          const coordinates = data.features[0].geometry.coordinates
+          config.map.view.x = coordinates[0]
+          config.map.view.y = coordinates[1]
+        }
+
         config.map.layer[1].data = data
 
         if (typeof map !== 'undefined') {
@@ -188,6 +202,11 @@ function applyMap () {
             })
           })
         }
+      })
+
+      // On map move or zoom store the map state.
+      map.on('mapmove', function (eventname, scope, mapstate) {
+        mapConfig.value = JSON.stringify(mapstate)
       })
 
       if (data !== null) {

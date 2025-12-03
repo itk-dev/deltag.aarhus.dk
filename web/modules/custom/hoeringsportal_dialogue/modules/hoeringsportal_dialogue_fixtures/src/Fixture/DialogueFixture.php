@@ -67,7 +67,6 @@ BODY,
         'data' => '{"type":"Feature","properties":[],"geometry":{"type":"Point","coordinates":[10.2118737466156,56.15312642194584]}}',
         'point' => '{"type":"FeatureCollection","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:EPSG::4326"}},"features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[10.2118737466156,56.15312642194584]}}]}',
       ],
-      'field_dialogue_proposal_zoom' => 11,
       'field_content_sections' => [
         'target_id' => $paragraph->id(),
         'target_revision_id' => $paragraph->getRevisionId(),

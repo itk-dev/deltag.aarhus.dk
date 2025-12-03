@@ -3,11 +3,18 @@ langcode: da
 status: true
 dependencies:
   config:
+    - entity_browser.browser.itk_document_browser
+    - entity_browser.browser.itk_icon_browser
+    - entity_browser.browser.itk_image_browser
+    - media.type.document
+    - media.type.image
     - node.type.dialogue
     - node.type.dialogue_proposal
   module:
     - comment
+    - entity_browser
     - hoeringsportal_dialogue
+    - media
     - node
     - quick_node_clone
     - system
@@ -19,6 +26,10 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access content overview'
+  - 'access itk_document_browser entity browser pages'
+  - 'access itk_icon_browser entity browser pages'
+  - 'access itk_image_browser entity browser pages'
+  - 'access media overview'
   - 'administer comments'
   - 'administer dialogue proposals'
   - 'administer dialogues'
@@ -26,20 +37,28 @@ permissions:
   - 'clone dialogue content'
   - 'clone dialogue_proposal content'
   - 'create dialogue content'
+  - 'create document media'
+  - 'create image media'
   - 'delete any dialogue content'
   - 'delete any dialogue_proposal content'
   - 'delete dialogue revisions'
   - 'delete dialogue_proposal revisions'
   - 'delete own dialogue content'
   - 'delete own dialogue_proposal content'
+  - 'delete own document media'
+  - 'delete own image media'
   - 'edit any dialogue content'
   - 'edit any dialogue_proposal content'
   - 'edit own dialogue content'
   - 'edit own dialogue_proposal content'
+  - 'edit own document media'
+  - 'edit own image media'
   - 'revert dialogue revisions'
   - 'revert dialogue_proposal revisions'
+  - 'update media'
   - 'view any unpublished dialogue content'
   - 'view any unpublished dialogue_proposal content'
   - 'view dialogue revisions'
   - 'view dialogue_proposal revisions'
+  - 'view own unpublished media'
   - 'view the administration theme'

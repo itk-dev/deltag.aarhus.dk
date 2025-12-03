@@ -24,6 +24,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Updated accessibility
   * Add breadcrumb to dialogue
   * Add map to dialogue
+  * Add map default display
 
 * [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
   * Add underline to active navigation.
