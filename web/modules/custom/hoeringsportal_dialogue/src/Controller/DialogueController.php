@@ -14,7 +14,7 @@ use Drupal\Core\Extension\ThemeExtensionList;
 class DialogueController extends ControllerBase {
 
   public function __construct(
-    protected ThemeExtensionList $themeExtensionList
+    protected ThemeExtensionList $themeExtensionList,
   ) {}
 
   /**
@@ -36,8 +36,8 @@ class DialogueController extends ControllerBase {
     $view['zoomLevel'] = $view['zoom'];
     $view['x'] = $view['center'][0];
     $view['y'] = $view['center'][1];
-    unset ($view['zoom']);
-    unset ($view['center']);
+    unset($view['zoom']);
+    unset($view['center']);
     $proposalLocationData = $this->getProposalLocationData($node);
 
     $mapConfig = [
@@ -59,7 +59,7 @@ class DialogueController extends ControllerBase {
             'features_type' => 'Point',
             'features_style' => [
               'namedstyle' => '#pin001',
-              'scale' =>  .75,
+              'scale' => .75,
               'fillcolor' => 'oklch(43% 0.063 196.55)',
             ],
             'template_info' => "<div class='widget-hoverbox-title'><%= title %></div><div class='widget-hoverbox-sub'><div><%= description %><div><a target='blank' href='<%= url %>'>" . $this->t('View more') . '</a></div></div>',

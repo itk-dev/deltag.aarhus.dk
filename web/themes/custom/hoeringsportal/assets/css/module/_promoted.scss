@@ -28,11 +28,11 @@
 
 .create-proposal-dialogue {
   @include media-breakpoint-down(md) {
-    left: 0!important;
-    top: 0!important;
-    max-width: 100%!important;
+    left: 0 !important;
+    top: 0 !important;
+    max-width: 100% !important;
   }
-  
+
   .proposal-form-wrapper {
     padding-top: 0;
   }

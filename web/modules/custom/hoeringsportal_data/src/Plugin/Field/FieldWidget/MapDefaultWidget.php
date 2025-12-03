@@ -25,7 +25,7 @@ use Drupal\Core\Extension\ThemeExtensionList;
 class MapDefaultWidget extends WidgetBase {
 
   public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, protected ThemeExtensionList $themeExtensionList) {
-      parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
   }
 
   /**
@@ -136,7 +136,7 @@ class MapDefaultWidget extends WidgetBase {
           'data-value' => $item->point ?? '',
           'data-value-target' => '[name="' . $parentNameSelector . '[' . MapItem::TYPE_POINT . ']',
           'data-value-map-config' => '[name="' . $parentNameSelector . '[' . MapItem::TYPE_MAP_CONFIG . ']',
-          'data-value-theme' => '/' . $this->themeExtensionList->getPath('hoeringsportal')
+          'data-value-theme' => '/' . $this->themeExtensionList->getPath('hoeringsportal'),
         ],
       ],
     ];
@@ -169,11 +169,6 @@ class MapDefaultWidget extends WidgetBase {
       ],
       '#required' => TRUE,
       '#default_value' => $this->getSetting('available_types'),
-    ];
-
-    $element['default_display'] = [
-      '#title' => $this->t('Default display'),
-      '#type' => 'textfield',
     ];
 
     return $element;

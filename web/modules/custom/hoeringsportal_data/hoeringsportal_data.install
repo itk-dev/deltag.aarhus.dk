@@ -159,8 +159,10 @@ function hoeringsportal_data_update_10002() {
  * Update map field to include map_config column.
  */
 function hoeringsportal_data_update_10003() {
-  $columns_to_add = ['map_config'];  // Add this new column
-  $field_id = 'hoeringsportal_data_map';  // To this field type
+  // Add this new column.
+  $columns_to_add = ['map_config'];
+  // To this field type.
+  $field_id = 'hoeringsportal_data_map';
 
   _hoeringsportal_data_add_columns_to_schema($columns_to_add, $field_id);
 }
