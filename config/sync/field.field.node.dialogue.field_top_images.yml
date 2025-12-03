@@ -11,7 +11,7 @@ field_name: field_top_images
 entity_type: node
 bundle: dialogue
 label: Topbilleder
-description: ''
+description: 'Ved tilføjelse af flere billeder starter en billedekarussel hvor hvert billede vises i 15 sekunder.'
 required: false
 translatable: false
 default_value: {  }
