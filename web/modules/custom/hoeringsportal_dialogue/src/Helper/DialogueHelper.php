@@ -27,16 +27,16 @@ class DialogueHelper {
   /**
    * The dialogue helper constructor.
    *
-   * @param RequestStack $requestStack
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.
-   * @param EntityTypeManagerInterface $entityTypeManager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The enity type manager.
-   * @param AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user account.
-   * @param MessengerInterface $messenger
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
-   * @param RouteMatchInterface $routeMatch
-   *   The routematch service
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The routematch service.
    */
   public function __construct(
     protected RequestStack $requestStack,
