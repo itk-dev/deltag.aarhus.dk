@@ -31,6 +31,12 @@
         {% endif %}
       </div>
       <form{{ attributes }}>
+        {% if dialogue_helper.getParentNode %}
+          <h3>{{ dialogue_helper.getParentNode.label }}</h3>
+          <p class="mb-3 pb-3 border-bottom">
+            {{ dialogue_helper.getParentNode.field_teaser.value ?? '' }}
+          </p>
+        {% endif %}
         <h1>{{ 'Create dialog proposal'|t }}</h1>
         <p>
           {{ 'Fill out the form and send your proposal so other people can interact with it.'|t }}

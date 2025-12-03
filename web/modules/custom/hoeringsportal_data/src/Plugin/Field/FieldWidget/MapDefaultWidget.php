@@ -2,11 +2,14 @@
 
 namespace Drupal\hoeringsportal_data\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\hoeringsportal_data\Helper\MapItemHelper;
 use Drupal\hoeringsportal_data\Plugin\Field\FieldType\MapItem;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Extension\ThemeExtensionList;
 
 /**
  * Field widget.
@@ -19,7 +22,18 @@ use Drupal\hoeringsportal_data\Plugin\Field\FieldType\MapItem;
  *   }
  * )
  */
-class MapDefaultWidget extends WidgetBase {
+final class MapDefaultWidget extends WidgetBase {
+
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, protected ThemeExtensionList $themeExtensionList) {
+    parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static($plugin_id, $plugin_definition, $configuration['field_definition'], $configuration['settings'], $configuration['third_party_settings'], $container->get('extension.list.theme'));
+  }
 
   /**
    * {@inheritdoc}
@@ -55,7 +69,6 @@ class MapDefaultWidget extends WidgetBase {
       '#title' => t('Type'),
       '#options' => $typeOptions,
       '#default_value' => $item->type ?? '',
-      '#required' => $element['#required'],
     ];
 
     if (count($typeOptions) > 1) {
@@ -98,6 +111,11 @@ class MapDefaultWidget extends WidgetBase {
       '#default_value' => $item->point ?? '',
     ];
 
+    $element[MapItem::TYPE_MAP_CONFIG] = [
+      '#type' => 'hidden',
+      '#default_value' => $item->map_config ?? '',
+    ];
+
     $element[MapItem::TYPE_POINT . '-widget'] = [
       '#type' => 'container',
       '#attributes' => [
@@ -117,11 +135,12 @@ class MapDefaultWidget extends WidgetBase {
           'class' => ['septima-widget'],
           'data-value' => $item->point ?? '',
           'data-value-target' => '[name="' . $parentNameSelector . '[' . MapItem::TYPE_POINT . ']',
+          'data-value-map-config' => '[name="' . $parentNameSelector . '[' . MapItem::TYPE_MAP_CONFIG . ']',
+          'data-value-theme' => '/' . $this->themeExtensionList->getPath('hoeringsportal'),
         ],
       ],
     ];
 
-    $element['#element_validate'][] = [$this, 'validate'];
     $element['#attached']['library'][] = 'hoeringsportal_data/hearing-edit';
 
     return $element;
