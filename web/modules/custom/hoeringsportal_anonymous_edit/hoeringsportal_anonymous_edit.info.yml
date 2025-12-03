@@ -1,0 +1,8 @@
+name: "hoeringsportal_anonymous_edit"
+type: module
+description: "Allow anonymous users to edit their content"
+package: Custom
+core_version_requirement: ^10 || ^11
+
+dependencies:
+  - drupal:symfony_mailer

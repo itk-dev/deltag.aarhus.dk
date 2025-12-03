@@ -20,6 +20,18 @@ settings:
     -
       value: use_image_on_proposals
       label: 'Anvend billede på dialogforslag'
+    -
+      value: use_email_on_proposals
+      label: 'Use email on proposals'
+    -
+      value: use_name_on_proposals
+      label: 'Use name on proposals'
+    -
+      value: use_email_on_proposal_comments
+      label: 'Use email on proposal comments'
+    -
+      value: use_name_on_proposal_comments
+      label: 'Use name on proposal comments'
   allowed_values_function: ''
 module: options
 locked: false

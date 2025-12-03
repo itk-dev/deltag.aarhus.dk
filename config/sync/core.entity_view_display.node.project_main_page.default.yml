@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.field.node.project_main_page.field_area
     - field.field.node.project_main_page.field_content_sections
+    - field.field.node.project_main_page.field_department
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
     - entity_reference_revisions
@@ -35,6 +37,14 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_project_category:
     type: entity_reference_label
     label: visually_hidden
@@ -58,6 +68,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
     region: content
   published_at:
     type: timestamp

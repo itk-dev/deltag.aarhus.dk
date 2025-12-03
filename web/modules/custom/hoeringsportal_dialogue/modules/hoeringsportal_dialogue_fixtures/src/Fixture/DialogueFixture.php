@@ -113,6 +113,50 @@ BODY,
 
     $node->save();
     $this->addReference('node:dialogue:Test Dialogue - proposals simple, private', $node);
+
+    $node = Node::create([
+      'type' => 'dialogue',
+      'title' => 'Test Dialogue - name and email',
+      'status' => TRUE,
+      'field_teaser' => 'Test teaser',
+      'field_area' => [
+        $this->getReference('area:Hele kommunen'),
+      ],
+      'field_top_images' => [
+        $this->getReference('media:Large1'),
+        $this->getReference('media:Large2'),
+        $this->getReference('media:Large3'),
+      ],
+      'field_type' => [
+        $this->getReference('type:Klima'),
+      ],
+      'field_dialogue_proposal_category' => [
+        $this->getReference('dialogue_proposal_categories:Grønne pladser'),
+        $this->getReference('dialogue_proposal_categories:Biodiversitet Initiativer'),
+        $this->getReference('dialogue_proposal_categories:Cykelstier'),
+        $this->getReference('dialogue_proposal_categories:Regnvandsopsamling'),
+        $this->getReference('dialogue_proposal_categories:Parkeringspladser for elbiler'),
+        $this->getReference('dialogue_proposal_categories:Bæredygtig Belysning'),
+        $this->getReference('dialogue_proposal_categories:Energi Effektivisering'),
+        $this->getReference('dialogue_proposal_categories:Grønne Materialer'),
+        $this->getReference('dialogue_proposal_categories:Affaldshåndtering'),
+        $this->getReference('dialogue_proposal_categories:Vedvarende Energi'),
+      ],
+      'field_dialogue_proposal_config' => [
+        ['value' => 'public_proposals'],
+        ['value' => 'use_email_on_proposals'],
+        ['value' => 'use_name_on_proposals'],
+        ['value' => 'use_email_on_proposal_comments'],
+        ['value' => 'use_name_on_proposal_comments'],
+      ],
+      'field_content_sections' => [
+        'target_id' => $paragraph->id(),
+        'target_revision_id' => $paragraph->getRevisionId(),
+      ],
+    ]);
+
+    $node->save();
+    $this->addReference('node:dialogue:Test Dialogue - name and email', $node);
   }
 
   /**

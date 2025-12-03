@@ -130,6 +130,22 @@ class CommentFixture extends AbstractFixture implements FixtureGroupInterface, D
 
     $comment->save();
     $this->addReference('comment:early_inclusion_comment:8', $comment);
+
+    $comment = Comment::create([
+      'comment_type' => 'early_inclusion_comment',
+      'field_name' => 'field_comments',
+    ])
+      ->set('subject', '(No subject)')
+      ->set('entity_type', 'node')
+      ->set('entity_id', $this->getReference('node:dialogue_proposal:Test Dialogue proposal with name and email'))
+      ->set('uid', 0)
+      ->set('status', 1)
+      ->set('field_comment', 'Jeg er enig!')
+      ->set('name', 'Anders And')
+      ->set('mail', 'aand@andeby.dk');
+
+    $comment->save();
+    $this->addReference('comment:early_inclusion_comment:9', $comment);
   }
 
   /**

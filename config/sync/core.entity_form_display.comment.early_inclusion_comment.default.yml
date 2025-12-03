@@ -10,6 +10,11 @@ targetEntityType: comment
 bundle: early_inclusion_comment
 mode: default
 content:
+  author:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_comment:
     type: string_textarea
     weight: 0
@@ -19,6 +24,5 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
-  author: true
   langcode: true
   subject: true

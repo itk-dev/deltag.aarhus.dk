@@ -284,6 +284,8 @@ tasks:
       # We need the pretix service to load public meeting fixtures (cf. https://docs.docker.com/compose/how-tos/environment-variables/envvars/#compose_profiles)
       - COMPOSE_PROFILES=pretix COMPOSE_UP_WAIT=true task compose-up
       - task drush -- --yes pm:enable hoeringsportal_base_fixtures $(find web/modules/custom -type f -name 'hoeringsportal_*_fixtures.info.yml' -exec basename -s .info.yml {} \;)
+      - task drush -- sql:query "TRUNCATE hoeringsportal_anonymous_edit_content"
+      - task drush -- sql:query "TRUNCATE hoeringsportal_anonymous_edit_owners"
       - task drush -- --yes content-fixtures:load
       - task drush -- --yes pm:uninstall content_fixtures
       # Update states on public meetings.

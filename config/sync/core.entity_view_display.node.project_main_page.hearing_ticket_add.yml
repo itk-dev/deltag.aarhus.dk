@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_mode.node.hearing_ticket_add
     - field.field.node.project_main_page.field_area
     - field.field.node.project_main_page.field_content_sections
+    - field.field.node.project_main_page.field_department
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
     - user
@@ -25,6 +27,14 @@ content:
     third_party_settings: {  }
     weight: 9
     region: right
+  field_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: right
   links:
     settings: {  }
     third_party_settings: {  }
@@ -37,6 +47,7 @@ content:
     region: content
 hidden:
   field_content_sections: true
+  field_department: true
   field_project_category: true
   field_project_image: true
   field_short_description: true

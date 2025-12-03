@@ -43,13 +43,14 @@ third_party_settings:
   field_group:
     group_information:
       children:
+        - field_department
+        - field_type
+        - field_area
         - field_start_date
         - field_reply_deadline
         - field_delete_date
-        - field_type
         - field_lokalplaner
         - field_project_reference
-        - field_area
       label: Informationer
       region: content
       parent_name: ''
@@ -166,7 +167,7 @@ mode: default
 content:
   field_area:
     type: options_buttons
-    weight: 35
+    weight: 38
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -180,13 +181,13 @@ content:
     third_party_settings: {  }
   field_delete_date:
     type: datetime_default
-    weight: 31
+    weight: 41
     region: content
     settings: {  }
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 17
+    weight: 36
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -200,7 +201,7 @@ content:
     third_party_settings: {  }
   field_deskpro_agent_email:
     type: email_default
-    weight: 15
+    weight: 35
     region: content
     settings:
       placeholder: ''
@@ -208,12 +209,16 @@ content:
     third_party_settings: {  }
   field_deskpro_department_id:
     type: string_textfield
-    weight: 14
+    weight: 34
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
   field_edoc_casefile_id:
     type: string_textfield
     weight: 14
@@ -248,7 +253,7 @@ content:
     third_party_settings: {  }
   field_lokalplaner:
     type: hoeringsportal_data_localplan_default
-    weight: 33
+    weight: 42
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -309,19 +314,19 @@ content:
         hide_guidelines: '0'
   field_project_reference:
     type: options_select
-    weight: 34
+    weight: 43
     region: content
     settings: {  }
     third_party_settings: {  }
   field_reply_deadline:
     type: datetime_default
-    weight: 30
+    weight: 40
     region: content
     settings: {  }
     third_party_settings: {  }
   field_start_date:
     type: datetime_default
-    weight: 29
+    weight: 39
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -335,7 +340,7 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 32
+    weight: 37
     region: content
     settings: {  }
     third_party_settings: {  }
