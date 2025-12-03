@@ -39,8 +39,6 @@ class DialogueHelper {
    *   The current user account.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
-   *   The routematch service.
    */
   public function __construct(
     protected RequestStack $requestStack,
@@ -48,7 +46,6 @@ class DialogueHelper {
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
     protected MessengerInterface $messenger,
-    protected RouteMatchInterface $routeMatch,
   ) {
   }
 
