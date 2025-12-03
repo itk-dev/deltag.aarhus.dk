@@ -1,0 +1,10 @@
+{# A base template for rendering content in a page-like fashion #}
+<div class="container content__container {% block content_classes '' %}">
+  <div class="row">
+    <div class="content">
+        <div class="container-fluid bg-white">
+          {% block content %}{% endblock %}
+        </div>
+    </div>
+  </div>
+</div>

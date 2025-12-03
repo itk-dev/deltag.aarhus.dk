@@ -12,6 +12,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeForm;
 use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -168,6 +169,11 @@ class DialogueHelper {
    *   The state of the form.
    */
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
+    $formObject = $form_state->getFormObject();
+    assert($formObject instanceof NodeForm);
+    /** @var \Drupal\node\Entity\NodeInterface $proposal */
+    $proposal = $formObject->getEntity();
+
     // Disable form cache to prevent serialization error on file upload.
     $form_state->disableCache();
 
@@ -198,7 +204,9 @@ class DialogueHelper {
     $form['field_location']['widget'][0]['type']['#attributes']['style'] = ['display: none;'];
     $form['field_location']['widget'][0]['type']['#title'] = '';
     $form['actions']['submit']['#submit'][] = [$this, 'formAlterSubmit'];
-    $form['actions']['submit']['#value'] = t('Send your proposal');
+    $form['actions']['submit']['#value'] = $proposal->isNew()
+      ? $this->t('Send your proposal')
+      : $this->t('Edit your proposal');
     $form['field_dialogue']['#access'] = FALSE;
 
     /** @var \Drupal\node\Entity\Node $parent */
@@ -347,6 +355,17 @@ class DialogueHelper {
   public function getParentNode(?FormStateInterface $form_state = NULL): ?EntityInterface {
     try {
       $parentId = $this->requestStack->getCurrentRequest()->query->get('dialogue');
+      // Check if we're editing a node.
+      if ($proposal = $this->getCurrentProposal()) {
+        $parent = $proposal->get('field_dialogue')
+          ->first()
+          ?->get('entity')
+          ?->getValue();
+        if ($parent) {
+          $parentId = $parent->id();
+        }
+      }
+
       if (empty($parentId) && $form_state) {
         $parentId = $this->getDialogueIdFromFormState($form_state);
       }
@@ -356,6 +375,20 @@ class DialogueHelper {
     }
     catch (\Exception $e) {
       return NULL;
+    }
+
+    return NULL;
+  }
+
+  /**
+   * Get the current proposal node if any.
+   */
+  public function getCurrentProposal(): ?EntityInterface {
+    if ('entity.node.edit_form' === $this->routeMatch->getRouteName()) {
+      $node = $this->routeMatch->getParameter('node');
+      if (self::DIALOGUE_PROPOSAL_TYPE === $node?->bundle()) {
+        return $node;
+      }
     }
 
     return NULL;

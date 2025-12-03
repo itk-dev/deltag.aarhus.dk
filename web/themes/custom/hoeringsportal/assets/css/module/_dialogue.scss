@@ -26,7 +26,8 @@
   padding-top: 3rem;
 }
 
-.node-dialogue-proposal-form {
+.node-dialogue-proposal-form,
+.node-dialogue-proposal-edit-form {
   .fieldset-legend {
     font-size: 1rem;
     font-weight: bold;
@@ -148,5 +149,15 @@
 
   .comments .comment-time {
     color: $gray-600;
+  }
+
+  .comment-header,
+  .node-actions {
+    display: flex;
+    gap: 1em;
+
+    a {
+      text-decoration: none;
+    }
   }
 }

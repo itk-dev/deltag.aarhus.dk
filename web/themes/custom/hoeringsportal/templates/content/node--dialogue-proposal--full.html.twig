@@ -49,6 +49,27 @@
             {{ content.field_location }}
           </div>
         </div>
+
+        <div class="node-actions">
+          {% if node.access('update') %}
+            <div class="node-edit">
+              <a class="text-primary"
+                href="{{ path('entity.node.edit_form', {node: node.id}) }}">
+                {{ 'Edit'|t({}, {context: 'node'}) }}
+            </a>
+          </div>
+          {% endif %}
+          {% if node.access('delete') %}
+            <div class="node-delete">
+              <a class="use-ajax text-danger"
+                data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
+                href="{{ path('entity.node.delete_form', {node: node.id}) }}">
+                {{ 'Delete'|t({}, {context: 'node'}) }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
         <div class="row mb-3">
           <div class="col">
             {{ content.field_comments }}
