@@ -226,6 +226,46 @@ class DialogueHelper {
   }
 
   /**
+   * Changes to the views exposed form.
+   *
+   * @param array $form
+   *   The form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
+   */
+  public function exposedFormAlter(array &$form, FormStateInterface $form_state): void {
+    if ('views-exposed-form-dialogue-proposals-block-1' === $form['#id']) {
+      $currentNode = NULL;
+
+      $requestRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
+      // Get node from request
+      if ('entity.node.canonical' === $requestRoute) {
+        $currentNode = $this->requestStack->getCurrentRequest()->get('node');
+      }
+
+      // Get node from form storage view.
+      if ('views.ajax' === $requestRoute) {
+        $view = $form_state->getStorage()['view'];
+        $nid = $view->args[0];
+        if (is_numeric($nid)) {
+          $currentNode = $this->entityTypeManager->getStorage('node')->load($nid);
+        }
+      }
+
+      if ($currentNode instanceof Node) {
+        if ('dialogue' === $currentNode->bundle()) {
+          $dialogueCategories = array_column($currentNode->field_dialogue_proposal_category->getValue(), 'target_id');
+          foreach ($form['field_dialogue_proposal_category_target_id']['#options'] as $key => $option) {
+            if (!in_array($key, $dialogueCategories) && $key !== 'All') {
+              unset($form['field_dialogue_proposal_category_target_id']['#options'][$key]);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
    * Custom submit handler for dialog proposal form.
    *
    * @param array $form
