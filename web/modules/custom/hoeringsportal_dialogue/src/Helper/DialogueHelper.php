@@ -3,6 +3,8 @@
 namespace Drupal\hoeringsportal_dialogue\Helper;
 
 use Drupal\comment\Entity\Comment;
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -30,7 +32,7 @@ class DialogueHelper {
    *   The request stack.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The enity type manager.
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param AccountInterface $account
    *   The current user account.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
@@ -64,14 +66,14 @@ class DialogueHelper {
   /**
    * Implements access check for dialogue proposal creation.
    *
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param AccountInterface $account
    *   The current user.
    * @param array $context
    *   The context.
    * @param string $entity_bundle
    *   The entity being created.
    *
-   * @return \Drupal\Core\Access\AccessResult
+   * @return AccessResult
    *   The access result.
    */
   public function dialogueProposalCreateAccess(AccountInterface $account, array $context, string $entity_bundle): AccessResult {
@@ -99,14 +101,14 @@ class DialogueHelper {
   /**
    * Implements presave for dialogue proposal creation.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
+   * @param EntityInterface $entity
    *   An entity to presave.
    */
   public function dialogueProposalPresave(EntityInterface $entity): void {
     if ($this::DIALOGUE_PROPOSAL_TYPE === $entity->bundle()) {
       $parentNode = $this->getParentNode();
       if ($parentNode) {
-        /** @var \Drupal\node\Entity\Node $entity */
+        /** @var Node $entity */
         $entity->set('field_dialogue', ['target_id' => $parentNode->id()]);
       }
     }
@@ -115,16 +117,15 @@ class DialogueHelper {
   /**
    * Implements update for dialogue comments.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $comment
+   * @param EntityInterface $comment
    *   The comment that is being updated.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
    */
   public function dialogueCommentUpdate(EntityInterface $comment): void {
     if ($this::DIALOGUE_PROPOSAL_COMMENT_TYPE === $comment->bundle()) {
       $children = [];
-      /** @var \Drupal\comment\Entity\Comment $comment */
+      /** @var Comment $comment */
       if (!$comment->isPublished() && $comment->original->isPublished()) {
         $this->messenger->addMessage($this->t("Comment @commentId and it's children have been unpublished.", ['@commentId' => $comment->id()]));
         $this->getDialogueCommentChildren($comment, $children);
@@ -142,7 +143,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The state of the form.
    */
   public function dialogueFormAlter(array &$form, FormStateInterface $form_state): void {
@@ -151,8 +152,6 @@ class DialogueHelper {
     $form['field_dialogue_proposal_location']['widget'][0]['localplanids']['#access'] = FALSE;
     $form['field_dialogue_proposal_location']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
       ['checked' => TRUE];
-    $form['field_dialogue_proposal_zoom']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
-      ['checked' => TRUE];
   }
 
   /**
@@ -160,7 +159,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The state of the form.
    */
   public function dialogueProposalFormAlter(array &$form, FormStateInterface $form_state): void {
@@ -197,7 +196,7 @@ class DialogueHelper {
     $form['actions']['submit']['#value'] = t('Send your proposal');
     $form['field_dialogue']['#access'] = FALSE;
 
-    /** @var \Drupal\node\Entity\Node $parent */
+    /** @var Node $parent */
     $parent = $this->getParentNode($form_state);
 
     if ($parent) {
@@ -230,7 +229,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The state of the form.
    */
   public function exposedFormAlter(array &$form, FormStateInterface $form_state): void {
@@ -248,7 +247,12 @@ class DialogueHelper {
         $view = $form_state->getStorage()['view'];
         $nid = $view->args[0];
         if (is_numeric($nid)) {
-          $currentNode = $this->entityTypeManager->getStorage('node')->load($nid);
+          try {
+            $currentNode = $this->entityTypeManager->getStorage('node')->load($nid);
+          }
+          catch (\Exception $e) {
+
+          }
         }
       }
 
@@ -270,7 +274,7 @@ class DialogueHelper {
    *
    * @param array $form
    *   The form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The state of the form.
    */
   public function formAlterSubmit(array &$form, FormStateInterface $form_state): void {
@@ -290,7 +294,7 @@ class DialogueHelper {
   /**
    * Get parent node.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|null
+   * @return EntityInterface|null
    *   The parent node.
    */
   public function getParentNode(?FormStateInterface $form_state = NULL): ?EntityInterface {
@@ -313,7 +317,7 @@ class DialogueHelper {
   /**
    * Get proposal config related to dialogue.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $node
+   * @param EntityInterface $node
    *   A dialogue node.
    *
    * @return array
@@ -329,10 +333,10 @@ class DialogueHelper {
   /**
    * Get latest proposal for dialogue.
    *
-   * @param \Drupal\node\Entity\Node $node
+   * @param Node $node
    *   The dialogue node.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|null
+   * @return EntityInterface|null
    *   The latest proposal.
    */
   public function getLatestDialogueProposal(Node $node): ?EntityInterface {
@@ -353,7 +357,7 @@ class DialogueHelper {
   /**
    * Get proposal count for dialogue.
    *
-   * @param \Drupal\node\Entity\Node $node
+   * @param Node $node
    *   The dialogue node.
    *
    * @return int
@@ -400,7 +404,7 @@ class DialogueHelper {
   /**
    * Get children recursively.
    *
-   * @param \Drupal\comment\Entity\Comment $comment
+   * @param Comment $comment
    *   The comment to fetch children for.
    * @param array $children
    *   An expanding list of children added recursively.
@@ -413,7 +417,7 @@ class DialogueHelper {
       'pid' => $comment->id(),
     ]);
 
-    /** @var \Drupal\comment\Entity\Comment $comment */
+    /** @var Comment $comment */
     foreach ($comments as $comment) {
       $children[] = $comment;
       $this->getDialogueCommentChildren($comment, $children);
@@ -423,7 +427,7 @@ class DialogueHelper {
   /**
    * Determine dialogue id from the $form_state.
    *
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param FormStateInterface $form_state
    *   The form state.
    *
    * @return int|null
