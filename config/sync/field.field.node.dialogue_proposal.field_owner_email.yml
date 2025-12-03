@@ -1,0 +1,19 @@
+uuid: 35add208-8c2f-4144-b903-93fed0eb95b6
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_owner_email
+    - node.type.dialogue_proposal
+id: node.dialogue_proposal.field_owner_email
+field_name: field_owner_email
+entity_type: node
+bundle: dialogue_proposal
+label: Email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

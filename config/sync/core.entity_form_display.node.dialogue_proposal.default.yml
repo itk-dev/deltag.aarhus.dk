@@ -9,6 +9,8 @@ dependencies:
     - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
     - field.field.node.dialogue_proposal.field_image_upload
     - field.field.node.dialogue_proposal.field_location
+    - field.field.node.dialogue_proposal.field_owner_email
+    - field.field.node.dialogue_proposal.field_owner_name
     - image.style.thumbnail
     - node.type.dialogue_proposal
   module:
@@ -60,6 +62,22 @@ content:
         point: point
         localplanids: 0
         localplanids_node: 0
+    third_party_settings: {  }
+  field_owner_email:
+    type: email_default
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_owner_name:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   title:
     type: string_textfield

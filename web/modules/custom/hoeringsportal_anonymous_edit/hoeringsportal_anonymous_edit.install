@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Install functions for the hoeringsportal_anonymous_edit module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function hoeringsportal_anonymous_edit_schema() {
+  $schema['hoeringsportal_anonymous_edit_content'] = [
+    'description' => 'Anonymous content, i.e. a mapping from an entity to an owner token.',
+    'fields' => [
+      'entity_type' => [
+        'description' => 'The entity type.',
+        'type' => 'varchar_ascii',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'entity_bundle' => [
+        'description' => 'The entity bundle.',
+        'type' => 'varchar_ascii',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'entity_uuid' => [
+        'description' => 'The entity UUID.',
+        'type' => 'varchar_ascii',
+        'length' => 36,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'owner_token' => [
+        'description' => 'The owner token (UUID).',
+        'type' => 'varchar_ascii',
+        'length' => 36,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'entity_type',
+      'entity_bundle',
+      'entity_uuid',
+    ],
+    'indexes' => [
+      'owner' => [
+        'owner_token',
+      ],
+    ],
+  ];
+
+  $schema['hoeringsportal_anonymous_edit_owners'] = [
+    'description' => 'Information on owners of anonymous content.',
+    'fields' => [
+      'owner_token' => [
+        'description' => 'The owner token (UUID).',
+        'type' => 'varchar_ascii',
+        'length' => 36,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'email' => [
+        'description' => 'The email.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+      ],
+      'name' => [
+        'description' => 'The name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'owner_token',
+    ],
+    'indexes' => [
+      'owner' => [
+        'email',
+      ],
+    ],
+    'foreign keys' => [
+      'hoeringsportal_anonymous_edit_content' => [
+        'table' => 'hoeringsportal_anonymous_edit_content',
+        'columns' => [
+          'owner_token' => 'owner_token',
+        ],
+      ],
+    ],
+  ];
+
+  return $schema;
+}

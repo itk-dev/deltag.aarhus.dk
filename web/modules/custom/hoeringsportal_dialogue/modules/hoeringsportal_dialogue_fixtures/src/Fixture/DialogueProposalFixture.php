@@ -137,6 +137,22 @@ Dignissim ac sapien potenti ipsum nam penatibus leo. Facilisi potenti laoreet et
 
     $node->save();
     $this->addReference('node:dialogue_proposal:Test Dialogue proposal simple', $node);
+
+    $node = Node::create([
+      'type' => 'dialogue_proposal',
+      'title' => 'Test Dialogue proposal with name and email',
+      'status' => TRUE,
+      'field_dialogue_proposal_descr' => 'Jeg vil gerne stå ved mit forslag.',
+      'field_dialogue_proposal_category' => [
+        $this->getReference('dialogue_proposal_categories:Grønne pladser'),
+      ],
+      'field_dialogue' => $this->getReference('node:dialogue:Test Dialogue - name and email'),
+      'field_owner_name' => 'J. von And',
+      'field_owner_email' => 'jva@pengeby.dk',
+    ]);
+
+    $node->save();
+    $this->addReference('node:dialogue_proposal:Test Dialogue proposal with name and email', $node);
   }
 
   /**

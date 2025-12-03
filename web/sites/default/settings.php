@@ -69,6 +69,9 @@ $settings['twig_sandbox_allowed_methods'] = [
   // Additions
   // Allow calling `entity.toUrl`
   'toUrl',
+  // and `entity.toLink`
+  'toLink',
+  'access',
 ];
 
 // Local settings. These come last so that they can override anything.

@@ -44,6 +44,7 @@ module:
   file_resup: 0
   filter: 0
   flag: 0
+  hoeringsportal_anonymous_edit: 0
   hoeringsportal_audit_log: 0
   hoeringsportal_citizen_proposal: 0
   hoeringsportal_citizen_proposal_archiving: 0

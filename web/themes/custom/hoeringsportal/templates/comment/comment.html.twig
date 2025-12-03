@@ -81,6 +81,16 @@
   <div{{ content_attributes }}>
     {% if submitted and status is same as('published') %}
       <div class="mb-1">
+        {# @todo #}
+        {% set owner = anonymous_edit_helper.getContentOwner(comment) %}
+        {% if owner and owner.name|default(false) %}
+          <div class="comment-name small">{{ owner.isCurrent ? 'You'|t : owner.name }}</div>
+          {# @todo #}
+          {#
+          {% if comment.access('update') %}[EDIT COMMENT]{% endif %}
+          {% if comment.access('delete') %}[DELETE COMMENT]{% endif %}
+          #}
+        {% endif %}
         <div class="comment-time small">{{ comment.created.value|time_diff }}</div>
         <div>{{ content|without('flag_support_comment') }}</div>
       </div>

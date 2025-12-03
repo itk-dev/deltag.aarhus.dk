@@ -10,3 +10,7 @@ services:
 
   Drupal\hoeringsportal_dialogue\Controller\DialogueController:
     arguments: ["@url_generator"]
+
+  Drupal\hoeringsportal_dialogue\EventSubscriber\AnonymousEditSubscriber:
+    tags:
+      - { name: event_subscriber }

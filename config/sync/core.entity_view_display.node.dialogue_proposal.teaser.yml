@@ -10,6 +10,8 @@ dependencies:
     - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
     - field.field.node.dialogue_proposal.field_image_upload
     - field.field.node.dialogue_proposal.field_location
+    - field.field.node.dialogue_proposal.field_owner_email
+    - field.field.node.dialogue_proposal.field_owner_name
     - node.type.dialogue_proposal
   module:
     - user
@@ -40,6 +42,8 @@ hidden:
   field_dialogue_proposal_descr: true
   field_image_upload: true
   field_location: true
+  field_owner_email: true
+  field_owner_name: true
   langcode: true
   published_at: true
   search_api_excerpt: true

@@ -10,6 +10,7 @@ use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper as CitizenProposalHelper;
+use Drupal\hoeringsportal_anonymous_edit\Helper\Helper as AnonymousEditHelper;
 
 /**
  * Implements hook_preprocess().
@@ -19,6 +20,7 @@ function hoeringsportal_preprocess(&$vars) {
   $vars['public_meeting_helper'] = \Drupal::service('hoeringsportal_public_meeting.public_meeting_helper');
   $vars['citizen_proposal_helper'] = \Drupal::service(CitizenProposalHelper::class);
   $vars['dialogue_helper'] = \Drupal::service(DialogueHelper::class);
+  $vars['anonymous_edit_helper'] = \Drupal::service(AnonymousEditHelper::class);
 }
 
 /**
