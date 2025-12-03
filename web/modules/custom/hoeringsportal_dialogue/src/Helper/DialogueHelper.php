@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\node\Entity\Node;
@@ -40,6 +41,7 @@ class DialogueHelper {
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
     protected MessengerInterface $messenger,
+    protected RouteMatchInterface $routeMatch
   ) {
   }
 
@@ -238,7 +240,7 @@ class DialogueHelper {
       $requestRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
       // Get node from request.
       if ('entity.node.canonical' === $requestRoute) {
-        $currentNode = $this->requestStack->getCurrentRequest()->get('node');
+        $currentNode = $this->routeMatch->getParameter('node');
       }
 
       // Get node from form storage view.
@@ -255,6 +257,7 @@ class DialogueHelper {
         }
       }
 
+      // Remove categories that are not applicable for the current node.
       if ($currentNode instanceof Node) {
         if ('dialogue' === $currentNode->bundle()) {
           $dialogueCategories = array_column($currentNode->field_dialogue_proposal_category->getValue(), 'target_id');
@@ -269,7 +272,7 @@ class DialogueHelper {
   }
 
   /**
-   * Custom submit handler for dialog proposal form.
+   * Custom submit handler for dialogue proposal form.
    *
    * @param array $form
    *   The form.
