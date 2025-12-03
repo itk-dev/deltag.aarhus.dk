@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.public_meeting.field_content_state
     - field.field.node.public_meeting.field_department
     - field.field.node.public_meeting.field_description
+    - field.field.node.public_meeting.field_deskpro_department_id
     - field.field.node.public_meeting.field_email_address
     - field.field.node.public_meeting.field_first_meeting_time
     - field.field.node.public_meeting.field_hidden_signup
@@ -169,6 +170,14 @@ content:
     third_party_settings: {  }
     weight: 5
     region: left
+  field_deskpro_department_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_hidden_signup:
     type: boolean
     label: above

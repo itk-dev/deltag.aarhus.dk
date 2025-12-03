@@ -5,17 +5,21 @@ dependencies:
   config:
     - field.storage.media.field_itk_media_image_upload
     - field.storage.node.field_area
+    - field.storage.node.field_short_description
     - field.storage.node.field_teaser
     - field.storage.node.field_type
+    - node.type.dialogue
     - node.type.hearing
+    - node.type.project_main_page
     - node.type.public_meeting
   module:
     - file
-    - image
     - media
     - node
     - rest
     - serialization
+    - svg_image
+    - text
     - user
 id: heyloyalty_feed
 label: 'Heyloyalty feed'
@@ -172,7 +176,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -208,7 +212,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: Tom
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -521,7 +525,7 @@ display:
           click_sort_column: target_id
           type: image_url
           settings:
-            image_style: responsive_xsmall_teaser
+            image_style: thumbnail
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -584,7 +588,133 @@ display:
           click_sort_column: target_id
           type: image_url
           settings:
-            image_style: responsive_xsmall_teaser
+            image_style: thumbnail
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_itk_media_image_upload_2:
+          id: field_itk_media_image_upload_2
+          table: media__field_itk_media_image_upload
+          field: field_itk_media_image_upload
+          relationship: field_project_image
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image_url
+          settings:
+            image_style: thumbnail
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_itk_media_image_upload_3:
+          id: field_itk_media_image_upload_3
+          table: media__field_itk_media_image_upload
+          field: field_itk_media_image_upload
+          relationship: field_top_images
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image_url
+          settings:
+            image_style: thumbnail
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -607,7 +737,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% if field_itk_media_image_upload is empty and field_itk_media_image_upload_1 is empty %}\r\nTom\r\n{% else %}\r\n{{ url('<front>')|render }}{{ field_itk_media_image_upload|trim('/') }}{{ field_itk_media_image_upload_1|trim('/') }}\r\n{% endif %}"
+            text: "{% if field_itk_media_image_upload is not empty %}\r\n  {{ url('<front>')|render }}{{ field_itk_media_image_upload|trim('/') }}\r\n{% elseif field_itk_media_image_upload_1 is not empty %}\r\n  {{ url('<front>')|render }}{{ field_itk_media_image_upload_1|trim('/') }}\r\n{% elseif field_itk_media_image_upload_2 is not empty %}\r\n  {{ url('<front>')|render }}{{ field_itk_media_image_upload_2|trim('/') }}\r\n{% elseif field_itk_media_image_upload_3 is not empty %}\r\n  {{ url('<front>')|render }}{{ field_itk_media_image_upload_3|trim('/') }}\r\n{% else %}\r\n  {{ drupal_url(active_theme_path()).toString() ~ \"/assets/images/default-img.png\" }}\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -796,6 +926,117 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_short_description:
+          id: field_short_description
+          table: node__field_short_description
+          field: field_short_description
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% set teaser = field_teaser %}\r\n{% set shortdescription  = field_short_description %}\r\n\r\n{% if teaser %}\r\n  {{ teaser }}\r\n{% elseif shortdescription %}\r\n  {{ shortdescription }}\r\n{% else %}\r\n  Tomtom\r\n{% endif %}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: true
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
       pager:
         type: mini
         options:
@@ -925,7 +1166,9 @@ display:
           operator: in
           value:
             public_meeting: public_meeting
+            dialogue: dialogue
             hearing: hearing
+            project_main_page: project_main_page
           group: 1
           exposed: false
           expose:
@@ -1013,6 +1256,24 @@ display:
           admin_label: 'billede fra field_itk_media_image_upload'
           plugin_id: standard
           required: false
+        field_project_image:
+          id: field_project_image
+          table: node__field_project_image
+          field: field_project_image
+          relationship: none
+          group_type: group
+          admin_label: 'field_project_image: Media'
+          plugin_id: standard
+          required: false
+        field_top_images:
+          id: field_top_images
+          table: node__field_top_images
+          field: field_top_images
+          relationship: none
+          group_type: group
+          admin_label: 'field_top_images: Media'
+          plugin_id: standard
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -1028,6 +1289,7 @@ display:
       tags:
         - 'config:field.storage.media.field_itk_media_image_upload'
         - 'config:field.storage.node.field_area'
+        - 'config:field.storage.node.field_short_description'
         - 'config:field.storage.node.field_teaser'
         - 'config:field.storage.node.field_type'
   rest_export_1:
@@ -1050,11 +1312,11 @@ display:
         type: data_field
         options:
           field_options:
+            nid:
+              alias: id
+              raw_output: false
             title:
               alias: ''
-              raw_output: false
-            field_teaser:
-              alias: teaser
               raw_output: false
             type:
               alias: content_type
@@ -1077,8 +1339,8 @@ display:
             created_1:
               alias: ''
               raw_output: false
-            nid:
-              alias: id
+            nothing_1:
+              alias: teaser
               raw_output: false
       display_extenders: {  }
       path: heyloyalty-feed
@@ -1093,5 +1355,6 @@ display:
       tags:
         - 'config:field.storage.media.field_itk_media_image_upload'
         - 'config:field.storage.node.field_area'
+        - 'config:field.storage.node.field_short_description'
         - 'config:field.storage.node.field_teaser'
         - 'config:field.storage.node.field_type'

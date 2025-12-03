@@ -6,9 +6,11 @@ dependencies:
     - entity_browser.browser.itk_image_browser
     - field.field.node.project_main_page.field_area
     - field.field.node.project_main_page.field_content_sections
+    - field.field.node.project_main_page.field_department
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
     - allowed_formats
@@ -23,8 +25,10 @@ third_party_settings:
   field_group:
     group_project_area:
       children:
+        - field_department
+        - field_type
         - field_area
-      label: 'Project area'
+      label: Informationer
       region: content
       parent_name: ''
       weight: 4
@@ -33,6 +37,7 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
+        label_as_html: false
         open: true
         description: ''
         required_fields: true
@@ -50,7 +55,7 @@ content:
     third_party_settings: {  }
   field_area:
     type: options_buttons
-    weight: 6
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -73,6 +78,12 @@ content:
         collapse_edit_all: collapse_edit_all
         convert: '0'
         duplicate: duplicate
+    third_party_settings: {  }
+  field_department:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_project_category:
     type: entity_reference_autocomplete
@@ -114,6 +125,12 @@ content:
         maxlength_js: null
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
+  field_type:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 6
