@@ -287,6 +287,24 @@ tasks:
       - task drush -- sql:query "TRUNCATE hoeringsportal_anonymous_edit_content"
       - task drush -- sql:query "TRUNCATE hoeringsportal_anonymous_edit_owners"
       - task drush -- --yes content-fixtures:load
+      # We don't set/use browser cookies when loading fixtures, so we need a little clean up to make sure that an email is associated with just one token.
+      # Update content to use a single token (the smallest) per email
+      - |
+        task drush -- sql:query "
+          UPDATE hoeringsportal_anonymous_edit_content AS c
+            JOIN hoeringsportal_anonymous_edit_owners AS o ON c.owner_token = o.owner_token
+             SET c.owner_token = (SELECT MIN(owner_token) FROM hoeringsportal_anonymous_edit_owners WHERE hoeringsportal_anonymous_edit_owners.email = o.email)
+           WHERE o.email != ''
+           ;
+        "
+      # Delete all owners having an email and not the smallest token
+      - |
+        task drush -- sql:query "
+          DELETE FROM hoeringsportal_anonymous_edit_owners
+           WHERE email != ''
+             AND owner_token != (SELECT MIN(owner_token) FROM hoeringsportal_anonymous_edit_owners AS o WHERE hoeringsportal_anonymous_edit_owners.email = o.email)
+          ;
+        "
       - task drush -- --yes pm:uninstall content_fixtures
       # Update states on public meetings.
       - task drush -- --yes hoeringsportal:public_meeting:state-update

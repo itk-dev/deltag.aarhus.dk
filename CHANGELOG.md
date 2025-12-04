@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-574](https://github.com/itk-dev/deltag.aarhus.dk/pull/574)
+  Added settings for Anonymous edit
 * [PR-572](https://github.com/itk-dev/deltag.aarhus.dk/pull/572)
   Updated anonymous edit UI
 * [PR-564](https://github.com/itk-dev/deltag.aarhus.dk/pull/564)

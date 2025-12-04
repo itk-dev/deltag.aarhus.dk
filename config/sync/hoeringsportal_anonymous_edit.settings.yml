@@ -1,0 +1,9 @@
+node:
+  allow_update: 0
+  allow_delete: 0
+comment:
+  allow_update: 0
+  allow_delete: 0
+general:
+  owner_name_format: 'Bruger %1$d'
+  log_level: '3'
