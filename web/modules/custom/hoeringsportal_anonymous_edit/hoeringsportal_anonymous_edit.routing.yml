@@ -33,3 +33,11 @@ hoeringsportal_anonymous_edit.content_recover:
     _form: 'Drupal\hoeringsportal_anonymous_edit\Form\RecoverForm'
   requirements:
     _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.settings:
+  path: "/admin/config/system/settings"
+  defaults:
+    _title: "Settings"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\SettingsForm'
+  requirements:
+    _permission: "administer site configuration"

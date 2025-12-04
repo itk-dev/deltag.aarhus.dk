@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\hoeringsportal_anonymous_edit\Helper;
 
+use Drupal\comment\CommentInterface;
 use Drupal\Component\Uuid\Uuid;
 use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Access\AccessResult;
@@ -13,11 +14,11 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Site\Settings;
 use Drupal\Core\Url;
 use Drupal\hoeringsportal_anonymous_edit\Event\HoeringsportalAnonymousEditEvent;
 use Drupal\hoeringsportal_anonymous_edit\Exception\InvalidTokenException;
 use Drupal\hoeringsportal_anonymous_edit\Model\Owner;
+use Drupal\node\NodeInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
@@ -42,6 +43,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   private const string QUERY_PARAM_NAME = 'edit_token';
 
   public function __construct(
+    private readonly Settings $settings,
     private readonly RequestStack $requestStack,
     private readonly AccountInterface $account,
     private readonly UuidInterface $uuid,
@@ -231,7 +233,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
     if (NULL === $owner) {
       $owner = new Owner();
       $owner->owner_token = $token;
-      $format = $this->getSetting('owner_name_pattern', 'Bruger %1$d');
+      $format = $this->settings->getOwnerNameFormat();
       $owner->name = $this->storageHelper->computeName($format);
     }
     $event = new HoeringsportalAnonymousEditEvent($entity, $owner);
@@ -254,7 +256,12 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    * Implements hook_entity_access().
    */
   public function entityAccess(EntityInterface $entity, string $operation, AccountInterface $account): AccessResultInterface {
-    if (in_array($operation, ['update', 'delete'])) {
+    if (in_array($operation, ['update', 'delete'])
+      && (
+        $entity instanceof NodeInterface && ('update' === $operation ? $this->settings->getNodeAllowUpdate() : $this->settings->getNodeAllowDelete())
+        || $entity instanceof CommentInterface && ('update' === $operation ? $this->settings->getCommentAllowUpdate() : $this->settings->getCommentAllowDelete())
+      )
+    ) {
       if ($token = $this->getToken()) {
         if ($item = $this->storageHelper->fetchItemByEntity($entity)) {
           if ($item->owner_token === $token) {
@@ -293,7 +300,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
       LogLevel::DEBUG => RfcLogLevel::DEBUG,
     ];
     $rfcLogLevel = $levelTranslation[$level] ?? RfcLogLevel::ERROR;
-    $logLevel = $this->getSetting('log_level', RfcLogLevel::ERROR);
+    $logLevel = $this->settings->getLogLevel();
     if ($logLevel >= $rfcLogLevel) {
       $this->logger->log($level, $message, $context);
     }
@@ -304,13 +311,6 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    */
   public function logException(\Exception $exception) {
     $this->error('Exception: @message', ['@message' => $exception->getMessage(), 'exception' => $exception]);
-  }
-
-  /**
-   * Get a setting.
-   */
-  private function getSetting(string $key, mixed $default): mixed {
-    return Settings::get('hoeringsportal_anonymous_edit')[$key] ?? $default;
   }
 
 }
