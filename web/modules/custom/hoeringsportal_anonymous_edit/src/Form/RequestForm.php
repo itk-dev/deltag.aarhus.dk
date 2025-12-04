@@ -23,7 +23,7 @@ final class RequestForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId(): string {
-    return 'hoeringsportal_anonymous_edit_recover';
+    return 'hoeringsportal_anonymous_edit_request';
   }
 
   /**
