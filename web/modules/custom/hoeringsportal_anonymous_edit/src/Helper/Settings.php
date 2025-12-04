@@ -68,4 +68,12 @@ readonly class Settings {
     return $config->get($key) ?? $default;
   }
 
+  /**
+   * Get the anonymous user's name.
+   */
+  public function getAnonymousName(): string {
+    return (string) $this->configFactory->get('user.settings')
+      ->get('anonymous');
+  }
+
 }

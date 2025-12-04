@@ -230,17 +230,21 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
       return;
     }
     $owner = $this->storageHelper->fetchOwner($token);
+    $ownerNameFormat = $this->settings->getOwnerNameFormat();
     if (NULL === $owner) {
       $owner = new Owner();
       $owner->owner_token = $token;
-      $format = $this->settings->getOwnerNameFormat();
-      $owner->name = $this->storageHelper->computeName($format);
+      $owner->name = $this->storageHelper->computeName($ownerNameFormat);
     }
     $event = new HoeringsportalAnonymousEditEvent($entity, $owner);
     $this->eventDispatcher->dispatch($event);
     if ($event->isSupported()) {
-      $ownerData = $event->getOwner();
-      $item = $this->storageHelper->createItem($entity, $token, $ownerData);
+      $owner = $event->getOwner();
+      $anonymousName = $this->settings->getAnonymousName();
+      if ($owner->name === $anonymousName) {
+        $owner->name = $this->storageHelper->computeName($ownerNameFormat);
+      }
+      $item = $this->storageHelper->createItem($entity, $token, $owner);
       $this->debug('Item <pre>@item</pre> created.', ['@item' => json_encode($item, JSON_PRETTY_PRINT)]);
     }
   }
