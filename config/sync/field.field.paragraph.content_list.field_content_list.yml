@@ -34,5 +34,6 @@ settings:
     latest_hearings: latest_hearings
     latest_projects: latest_projects
     latest_public_meetings: latest_public_meetings
+    seneste_dialoger: seneste_dialoger
   enabled_settings: {  }
 field_type: viewsreference
