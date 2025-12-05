@@ -335,13 +335,15 @@ class DialogueHelper {
 
     // Disable author fields apart from the ones explicitly enabled.
     foreach ($form['author'] as $key => &$formPart) {
-      $disable = match ($key) {
-        'name' => !in_array('use_name_on_proposal_comments', $config),
-        'mail' => !in_array('use_email_on_proposal_comments', $config),
-        default => TRUE,
-      };
-      if ($disable) {
-        $formPart['#access'] = FALSE;
+      if (is_array($formPart)) {
+        $disable = match ($key) {
+          'name' => !in_array('use_name_on_proposal_comments', $config),
+          'mail' => !in_array('use_email_on_proposal_comments', $config),
+          default => TRUE,
+        };
+        if ($disable) {
+          $formPart['#access'] = FALSE;
+        }
       }
     }
   }

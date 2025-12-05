@@ -55,7 +55,7 @@ readonly class Settings {
   /**
    * Get log level.
    */
-  public function getLogLevel(): int {
+  public function getLogLevel(): ?int {
     return $this->get('general.log_level');
   }
 
