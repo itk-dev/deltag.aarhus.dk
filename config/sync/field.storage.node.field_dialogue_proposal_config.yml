@@ -22,16 +22,16 @@ settings:
       label: 'Anvend billede på dialogforslag'
     -
       value: use_email_on_proposals
-      label: 'Use email on proposals'
+      label: 'Brug e-mail på dialogforslag'
     -
       value: use_name_on_proposals
-      label: 'Use name on proposals'
+      label: 'Brug navn på dialogforslag'
     -
       value: use_email_on_proposal_comments
-      label: 'Use email on proposal comments'
+      label: 'Brug e-mail on forslagskommentarer'
     -
       value: use_name_on_proposal_comments
-      label: 'Use name on proposal comments'
+      label: 'Brug navn på forslagskommentarer'
   allowed_values_function: ''
 module: options
 locked: false

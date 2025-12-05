@@ -35,7 +35,10 @@
         {% for entity in dialogue_proposals %}
           {% set proposal = entity.instance %}
           <li>
-            {{ proposal.toLink(proposal.label, 'edit-form', {query: entity.edit_query}) }}
+            {{ proposal.toLink(proposal.label, options: {query: entity.edit_query}) }}
+            {% if proposal.access('update') %}
+              ({{ proposal.toLink('Edit proposal'|t({}, {context: 'hoeringsportal_anonymous_edit'}), 'edit-form', {query: entity.edit_query}) }})
+            {% endif %}
           </li>
         {% endfor %}
       </ul>
