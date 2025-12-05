@@ -1,0 +1,23 @@
+uuid: bb5ea0e2-b4af-4ad8-8d65-26b4d71cb66e
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hidden_dialogue
+    - node.type.dialogue
+id: node.dialogue.field_hidden_dialogue
+field_name: field_hidden_dialogue
+entity_type: node
+bundle: dialogue
+label: 'Skjul dialog'
+description: 'Skjul en dialog så den ikke dukker op op oversigssider og i nyhedsbreve. Borgeren skal kende URLen til dialogen for at kunne deltage.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

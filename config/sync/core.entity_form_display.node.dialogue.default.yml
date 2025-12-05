@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.dialogue.field_dialogue_proposal_category
     - field.field.node.dialogue.field_dialogue_proposal_config
     - field.field.node.dialogue.field_dialogue_proposal_location
+    - field.field.node.dialogue.field_hidden_dialogue
     - field.field.node.dialogue.field_teaser
     - field.field.node.dialogue.field_top_images
     - field.field.node.dialogue.field_type
@@ -23,6 +24,7 @@ third_party_settings:
   field_group:
     group_information:
       children:
+        - field_hidden_dialogue
         - field_department
         - field_type
         - field_area
@@ -44,7 +46,6 @@ third_party_settings:
         - field_dialogue_proposal_config
         - field_dialogue_proposal_category
         - field_dialogue_proposal_location
-        - field_dialogue_proposal_zoom
       label: 'Dialogforslag indstillinger'
       region: content
       parent_name: ''
@@ -65,7 +66,7 @@ mode: default
 content:
   field_area:
     type: options_buttons
-    weight: 7
+    weight: 34
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -91,7 +92,7 @@ content:
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 5
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -121,6 +122,13 @@ content:
         point: point
         localplanids_node: localplanids_node
     third_party_settings: {  }
+  field_hidden_dialogue:
+    type: boolean_checkbox
+    weight: 31
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_teaser:
     type: string_textarea
     weight: 2
@@ -146,7 +154,7 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 6
+    weight: 33
     region: content
     settings: {  }
     third_party_settings: {  }
