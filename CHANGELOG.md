@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-576](https://github.com/itk-dev/deltag.aarhus.dk/pull/576)
+  Updates translations and added translations handling to deployment
 * [PR-574](https://github.com/itk-dev/deltag.aarhus.dk/pull/574)
   Added settings for Anonymous edit
 * [PR-572](https://github.com/itk-dev/deltag.aarhus.dk/pull/572)
