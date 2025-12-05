@@ -161,13 +161,13 @@ task coding-standards:markdown:check
 Import translations by running
 
 ```sh
-(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.hoeringsportal_dialogue.da.po)
+(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.da.po)
 ```
 
 Export translations by running
 
 ```sh
-(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.hoeringsportal_dialogue.da.po)
+(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.da.po)
 ```
 
 Open `translations/custom-translations.da.po` with the latest version of [Poedit](https://poedit.net/) to clean up and
