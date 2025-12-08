@@ -22,10 +22,10 @@ final class AnonymousEditSubscriber implements EventSubscriberInterface {
     $entity = $event->getEntity();
     if ($entity instanceof CommentInterface && DialogueHelper::DIALOGUE_PROPOSAL_COMMENT_TYPE === $entity->bundle()) {
       $event->setIsSupported();
-      if ($email = $entity->getAuthorEmail()) {
+      if (empty($event->getOwner()->email) &&$email = $entity->getAuthorEmail()) {
         $event->getOwner()->email = $email;
       }
-      if ($name = $entity->getAuthorName()) {
+      if (empty($event->getOwner()->name) && $name = $entity->getAuthorName()) {
         $event->getOwner()->name = $name;
       }
     }
