@@ -49,6 +49,7 @@
   border-radius: 100%;
 }
 
+
 .field--widget-entity-browser-entity-reference .entities-list .button:hover,
 .field--widget-entity-browser-entity-reference .entities-list .button:focus,
 .field--widget-entity-browser-entity-reference .entities-list .button:active {
@@ -57,6 +58,14 @@
   background-color: white;
   background-position: 3px 3px;
   border-color: black;
+}
+
+.field--widget-entity-browser-entity-reference .entities-list .button.edit-button,
+.field--widget-entity-browser-entity-reference .entities-list .button.edit-button:hover,
+.field--widget-entity-browser-entity-reference .entities-list .button.edit-button:focus,
+.field--widget-entity-browser-entity-reference .entities-list .button.edit-button:active {
+  background: url('../icons/edit.svg') no-repeat;
+  margin-top: 30px;
 }
 
 .field--widget-entity-browser-entity-reference .field--name-thumbnail {

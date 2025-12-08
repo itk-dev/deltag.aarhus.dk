@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_short_description
     - field.storage.node.field_teaser
     - field.storage.node.field_type
+    - node.type.decision
     - node.type.dialogue
     - node.type.hearing
     - node.type.project_main_page
@@ -1231,6 +1232,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
+            decision: decision
             public_meeting: public_meeting
             dialogue: dialogue
             hearing: hearing
@@ -1343,11 +1345,100 @@ display:
             group_items: {  }
           fields:
             field_hidden_dialogue: field_hidden_dialogue
+        delta:
+          id: delta
+          table: node__field_top_images
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: empty
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        delta_1:
+          id: delta_1
+          table: node__field_top_images
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
           2: OR
+          3: OR
       style:
         type: serializer
       row:
@@ -1420,6 +1511,7 @@ display:
           admin_label: 'field_top_images: Media'
           plugin_id: standard
           required: false
+      group_by: false
       header: {  }
       footer: {  }
       display_extenders: {  }
