@@ -22,6 +22,7 @@ final class StorageHelper {
   public const string OWNER_NAME = 'name';
 
   public function __construct(
+    private readonly Settings $settings,
     private readonly Connection $database,
   ) {
   }
@@ -39,6 +40,10 @@ final class StorageHelper {
         'owner_token' => $token,
       ])
       ->execute();
+
+    if (!isset($owner->name)) {
+      $owner->name = $this->computeName();
+    }
 
     // Create or update owner.
     $this->database
@@ -151,7 +156,9 @@ final class StorageHelper {
   /**
    * Compute a unique user name.
    */
-  public function computeName(string $format) {
+  private function computeName() {
+    $format = $this->settings->getOwnerNameFormat();
+
     $transaction = $this->database->startTransaction();
     try {
       $id = $this->database
