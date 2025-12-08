@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Afgørelse
 type: decision
-description: "A decision from a council meeting. It's possible to upload files related to the decision and link to hearings, projects and other content related to the decision."
+description: 'En afgørelse fra et byrådsmøde. Det er muligt at tilføje filer relateret til afgørelsen og linke til høringer, projekter og andet indhold relateret til afgørelsen.'
 help: null
 new_revision: false
 preview_mode: 0

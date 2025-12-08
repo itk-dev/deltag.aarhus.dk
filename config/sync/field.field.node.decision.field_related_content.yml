@@ -14,8 +14,8 @@ id: node.decision.field_related_content
 field_name: field_related_content
 entity_type: node
 bundle: decision
-label: 'Related content'
-description: ''
+label: 'Relateret indhold'
+description: 'Vises nederst på siden, og hjælper brugeren til at finde indhold relateret til afgørelsen.'
 required: false
 translatable: false
 default_value: {  }

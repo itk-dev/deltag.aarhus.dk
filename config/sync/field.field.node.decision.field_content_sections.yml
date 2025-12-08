@@ -20,7 +20,7 @@ id: node.decision.field_content_sections
 field_name: field_content_sections
 entity_type: node
 bundle: decision
-label: 'Content sections'
+label: Indholdssektioner
 description: 'Used to create page sections with the Drupal Paragraphs module'
 required: false
 translatable: false
@@ -46,6 +46,9 @@ settings:
         enabled: true
       accordion_item:
         weight: 20
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 22
         enabled: false
       content_block:
         weight: -21
