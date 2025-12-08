@@ -14,7 +14,7 @@ dependencies:
     - system
     - view_unpublished
 id: decision_editor
-label: Beslutningsredaktør
+label: Afgørelsesredaktør
 weight: -3
 is_admin: null
 permissions:
