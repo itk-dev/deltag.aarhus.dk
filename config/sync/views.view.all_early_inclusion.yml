@@ -14,7 +14,7 @@ dependencies:
 id: all_early_inclusion
 label: 'Alle tidlige dialoger'
 module: views
-description: 'En liste af alle projekter'
+description: 'En liste af alle tidligere dialoger'
 tag: ''
 base_table: node_field_data
 base_field: nid

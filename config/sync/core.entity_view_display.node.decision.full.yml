@@ -1,0 +1,115 @@
+uuid: 99d093d7-1331-4ebf-8e9d-331304e239c9
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.decision.field_area
+    - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_decision
+    - field.field.node.decision.field_decision_date
+    - field.field.node.decision.field_department
+    - field.field.node.decision.field_media_document
+    - field.field.node.decision.field_related_content
+    - field.field.node.decision.field_teaser
+    - field.field.node.decision.field_top_images
+    - field.field.node.decision.field_type
+    - node.type.decision
+  module:
+    - datetime
+    - entity_reference_revisions
+    - options
+    - user
+id: node.decision.full
+targetEntityType: node
+bundle: decision
+mode: full
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_decision:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_decision_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_media_document:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: material_display
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_related_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_top_images:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

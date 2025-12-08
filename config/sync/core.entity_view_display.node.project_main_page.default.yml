@@ -8,11 +8,13 @@ dependencies:
     - field.field.node.project_main_page.field_department
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
+    - field.field.node.project_main_page.field_project_status
     - field.field.node.project_main_page.field_short_description
     - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
     - entity_reference_revisions
+    - options
     - text
     - user
 id: node.project_main_page.default
@@ -61,6 +63,13 @@ content:
       link: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_project_status:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_short_description:
     type: text_default

@@ -1,0 +1,62 @@
+uuid: 35e949f8-d5d6-4c2f-9b59-7435ab293d4c
+langcode: da
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.hearing_ticket_add
+    - field.field.node.decision.field_area
+    - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_decision
+    - field.field.node.decision.field_decision_date
+    - field.field.node.decision.field_department
+    - field.field.node.decision.field_media_document
+    - field.field.node.decision.field_related_content
+    - field.field.node.decision.field_teaser
+    - field.field.node.decision.field_top_images
+    - field.field.node.decision.field_type
+    - node.type.decision
+  module:
+    - user
+id: node.decision.hearing_ticket_add
+targetEntityType: node
+bundle: decision
+mode: hearing_ticket_add
+content:
+  field_area:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: right
+  field_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: right
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_sections: true
+  field_decision: true
+  field_decision_date: true
+  field_department: true
+  field_media_document: true
+  field_related_content: true
+  field_teaser: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

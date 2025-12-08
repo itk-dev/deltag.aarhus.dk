@@ -38,33 +38,12 @@
 #}
 <div>
   <section class="container">
-      {% if label_hidden %}
-        {% if multiple %}
-          {% for item in items %}
-            <div class="col-md-4">
-              {{ item.content }}
-            </div>
-          {% endfor %}
-        {% else %}
-          {% for item in items %}
-            {{ item.content }}
-          {% endfor %}
-        {% endif %}
-      {% else %}
-        <h2 class="pt-4">{{ label }}</h2>
-        {% if multiple %}
-          <div>
-        {% endif %}
-          <div class="row">
-          {% for item in items %}
-            <div class="activity-teaser col-md-6 col-lg-4 mb-4">
-              {{ item.content }}
-            </div>
-          {% endfor %}
-          </div>
-        {% if multiple %}
-          </div>
-        {% endif %}
-      {% endif %}
+    <div class="row">
+      {% for item in items %}
+        <div class="activity-teaser col-md-6 col-lg-4 mb-4">
+          {{ item.content }}
+        </div>
+      {% endfor %}
+    </div>
   </section>
 </div>
