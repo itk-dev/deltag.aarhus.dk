@@ -4,7 +4,7 @@ description: "Allow anonymous users to edit their content"
 package: Custom
 core_version_requirement: ^10 || ^11
 interface translation project: hoeringsportal_anonymous_edit
-interface translation server pattern: modules/custom/hoeringsportal_anonymous_edit/translations/hoeringsportal_anonymous_edit.%language.po
+interface translation server pattern: modules/custom/%project/translations/%project.%language.po
 
 dependencies:
   - drupal:symfony_mailer

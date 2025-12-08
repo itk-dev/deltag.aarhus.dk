@@ -339,6 +339,49 @@ tasks:
       - task compose-up
     silent: true
 
+
+  translations:export:
+    cmds:
+      - task drush -- pm:install itk_translation_extractor
+      - cmd: |
+          task drush -- itk_translation_extractor:translation:extract --dump-messages --force --no-fill --sort=asc \
+            {{.ITEM.LOCALE}} --module={{.ITEM.MODULE}} --output-name modules/custom/{{.ITEM.MODULE}}/translations/{{.ITEM.MODULE}}.{{.ITEM.LOCALE}}.po
+        for:
+          matrix:
+            LOCALE:
+              - da
+            MODULE:
+              - hoeringsportal_anonymous_edit
+              - hoeringsportal_citizen_proposal
+              - hoeringsportal_citizen_proposal_archiving
+              # - hoeringsportal_config_settings
+              # - hoeringsportal_content_access
+              # - hoeringsportal_content_blocks
+              # - hoeringsportal_data
+              # - hoeringsportal_deskpro
+              - hoeringsportal_dialogue
+              # - hoeringsportal_forms
+              - hoeringsportal_hearing
+              # - hoeringsportal_misc
+              # - hoeringsportal_openid_connect
+              - hoeringsportal_project
+              - hoeringsportal_project_timeline
+              - hoeringsportal_public_meeting
+              - hoeringsportal_quicklinks
+
+      - cmd: |
+          task drush -- itk_translation_extractor:translation:extract --dump-messages --force --no-fill --sort=asc \
+            {{.ITEM.LOCALE}} --theme={{.ITEM.THEME}} --output-name themes/custom/{{.ITEM.THEME}}/translations/{{.ITEM.THEME}}.{{.ITEM.LOCALE}}.po
+        for:
+          matrix:
+            LOCALE:
+              - da
+            THEME:
+              - hoeringsportal
+              - hoeringsportal_admin
+
+    silent: true
+
   translations:import:
     cmds:
       - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.da.po)'
