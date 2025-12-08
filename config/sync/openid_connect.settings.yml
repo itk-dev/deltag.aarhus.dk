@@ -23,7 +23,5 @@ role_mappings:
     - public_meeting_editor
   dialogue_editor:
     - dialogue_editor
-  decision_editor:
-    - decision_editor
   page_editor:
     - page_editor

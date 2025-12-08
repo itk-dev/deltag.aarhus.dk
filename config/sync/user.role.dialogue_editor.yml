@@ -8,6 +8,7 @@ dependencies:
     - entity_browser.browser.itk_image_browser
     - media.type.document
     - media.type.image
+    - node.type.decision
     - node.type.dialogue
     - node.type.dialogue_proposal
   module:
@@ -39,6 +40,7 @@ permissions:
   - 'create dialogue content'
   - 'create document media'
   - 'create image media'
+  - 'create media'
   - 'delete any dialogue content'
   - 'delete any dialogue_proposal content'
   - 'delete dialogue revisions'
@@ -56,6 +58,7 @@ permissions:
   - 'revert dialogue revisions'
   - 'revert dialogue_proposal revisions'
   - 'update media'
+  - 'view any unpublished decision content'
   - 'view any unpublished dialogue content'
   - 'view any unpublished dialogue_proposal content'
   - 'view dialogue revisions'
