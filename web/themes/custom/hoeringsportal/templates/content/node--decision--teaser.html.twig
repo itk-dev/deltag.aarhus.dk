@@ -5,5 +5,5 @@
 {% block card_content %}
   {{ node.field_teaser.value|truncate(95, true, true) }}
   <span>{{ content.field_project_category }}</span>
-  <span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span>
+  <span class="tags-one-line"><i class="{{ node_type_class }} fa-solid fa-tags"></i><span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span></span>
 {% endblock %}
