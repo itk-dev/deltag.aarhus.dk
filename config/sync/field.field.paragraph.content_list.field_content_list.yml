@@ -32,6 +32,7 @@ settings:
     all_meetings: all_meetings
     all_projects: all_projects
     latest_citizen_proposals: latest_citizen_proposals
+    latest_decisions: latest_decisions
     latest_hearings: latest_hearings
     latest_projects: latest_projects
     latest_public_meetings: latest_public_meetings
