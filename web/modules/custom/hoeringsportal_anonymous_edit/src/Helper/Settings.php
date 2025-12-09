@@ -55,8 +55,8 @@ readonly class Settings {
   /**
    * Get log level.
    */
-  public function getLogLevel(): ?int {
-    return $this->get('general.log_level');
+  public function getLogLevel(): int {
+    return (int) $this->get('general.log_level');
   }
 
   /**
@@ -66,14 +66,6 @@ readonly class Settings {
     $config = $this->configFactory->get(SettingsForm::CONFIG_NAME);
 
     return $config->get($key) ?? $default;
-  }
-
-  /**
-   * Get the anonymous user's name.
-   */
-  public function getAnonymousName(): string {
-    return (string) $this->configFactory->get('user.settings')
-      ->get('anonymous');
   }
 
 }
