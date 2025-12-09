@@ -25,6 +25,9 @@
 {% elseif node_type == 'dialogue' %}
   {% set node_type_class = 'text-dialogue' %}
   {% set node_type_text = 'Dialogue'|t %}
+{% elseif node_type == 'decision' %}
+  {% set node_type_class = 'text-decision' %}
+  {% set node_type_text = 'Decision'|t %}
 {% endif %}
 
 {# Set image for Hearing, Project, Public meeting or Static page #}

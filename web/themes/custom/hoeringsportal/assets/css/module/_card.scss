@@ -4,26 +4,18 @@
   --transition-easing-in: ease-in;
   --transition-easing-out: ease-out;
 
-  .text-hearing {
-    color: $primary;
-  }
-
-  .text-project {
-    color: $blue;
-  }
-
   .text-public-meeting {
     color: $pink;
   }
 
+  .text-project,
   .text-static-page {
     color: $blue;
   }
 
-  .text-citizen-proposal {
-    color: $primary;
-  }
-
+  .text-hearing,
+  .text-citizen-proposal,
+  .text-decision,
   .text-dialogue {
     color: $petroleum;
   }
