@@ -66,6 +66,22 @@
 .field--widget-entity-browser-entity-reference .entities-list .button.edit-button:active {
   background: url('../icons/edit.svg') no-repeat;
   margin-top: 30px;
+  background-size: 13px;
+  background-color: white;
+  background-position: 2px 2px;
+  border-color: black;
+}
+
+.field--widget-entity-browser-entity-reference .entities-list .button.replace-button,
+.field--widget-entity-browser-entity-reference .entities-list .button.replace-button:hover,
+.field--widget-entity-browser-entity-reference .entities-list .button.replace-button:focus,
+.field--widget-entity-browser-entity-reference .entities-list .button.replace-button:active {
+  background: url('../icons/replace.svg') no-repeat;
+  margin-top: 30px;
+  background-size: 13px;
+  background-color: white;
+  background-position: 2px 2px;
+  border-color: black;
 }
 
 .field--widget-entity-browser-entity-reference .field--name-thumbnail {

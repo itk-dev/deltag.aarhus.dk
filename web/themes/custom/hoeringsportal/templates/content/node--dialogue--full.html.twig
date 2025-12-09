@@ -27,7 +27,8 @@
     title: node.label,
     description: content.field_teaser,
     tags_fields: {0: content.field_area, 1: content.field_type},
-    shortcuts: shortcuts
+    shortcuts: shortcuts,
+    category: 'Dialogue'|t
   }) }}
 {% endblock %}
 
@@ -48,7 +49,6 @@
           {{ drupal_view('dialogue_proposals', 'block_1', content.id) }}
         </div>
       </div>
-      {{ drupal_view('dialogue_proposals', 'block_1', content.id) }}
       {% if 'use_map_on_proposals' in dialogue_helper.getProposalConfig(node) %}
         <div class="container">
           <div class="d-flex flex-row-reverse">

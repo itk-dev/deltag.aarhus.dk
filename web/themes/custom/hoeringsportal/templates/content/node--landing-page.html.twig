@@ -5,6 +5,7 @@
     {# Header #}
     {{ include(directory ~ '/templates/components/header-default.html.twig', {
       images: {0: node.field_media_image_single.entity.field_itk_media_image_upload.entity},
+      background_class: 'bg-light',
       category: content.field_header_label,
       title: node.label,
       description: content.field_teaser,

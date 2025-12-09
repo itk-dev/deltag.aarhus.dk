@@ -3,7 +3,7 @@
 {% block content_top %}
   {# Header #}
   {{ include(directory ~ '/templates/components/header-default.html.twig', {
-    images: {0: node.field_project_image},
+    images: node.field_project_image,
     category: content.field_project_category,
     title: node.label,
     description: content.field_short_description,
