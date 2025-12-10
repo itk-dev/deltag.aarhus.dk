@@ -1,0 +1,70 @@
+uuid: db743f61-0cc8-4c00-8755-29f410d67e36
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.course.field_area
+    - field.field.node.course.field_content_sections
+    - field.field.node.course.field_department
+    - field.field.node.course.field_map
+    - field.field.node.course.field_top_images
+    - field.field.node.course.field_type
+    - node.type.course
+  module:
+    - entity_reference_revisions
+    - user
+id: node.course.search_result
+targetEntityType: node
+bundle: course
+mode: search_result
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_map: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

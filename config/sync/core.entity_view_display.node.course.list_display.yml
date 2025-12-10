@@ -1,0 +1,54 @@
+uuid: c619656e-53aa-4d0f-ba59-5c3cf7661cc6
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.list_display
+    - field.field.node.course.field_area
+    - field.field.node.course.field_content_sections
+    - field.field.node.course.field_department
+    - field.field.node.course.field_map
+    - field.field.node.course.field_top_images
+    - field.field.node.course.field_type
+    - node.type.course
+  module:
+    - user
+id: node.course.list_display
+targetEntityType: node
+bundle: course
+mode: list_display
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_sections: true
+  field_department: true
+  field_map: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

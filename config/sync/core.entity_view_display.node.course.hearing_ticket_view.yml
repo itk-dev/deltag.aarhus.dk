@@ -1,0 +1,54 @@
+uuid: 05bac741-1597-4982-8115-e63967768401
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.hearing_ticket_view
+    - field.field.node.course.field_area
+    - field.field.node.course.field_content_sections
+    - field.field.node.course.field_department
+    - field.field.node.course.field_map
+    - field.field.node.course.field_top_images
+    - field.field.node.course.field_type
+    - node.type.course
+  module:
+    - user
+id: node.course.hearing_ticket_view
+targetEntityType: node
+bundle: course
+mode: hearing_ticket_view
+content:
+  field_area:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 10
+    region: right
+  field_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: right
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_sections: true
+  field_department: true
+  field_map: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

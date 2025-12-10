@@ -1,0 +1,27 @@
+uuid: fcc1e815-063d-4075-a903-e42a54ec2a67
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_map
+    - node.type.course
+  module:
+    - hoeringsportal_data
+id: node.course.field_map
+field_name: field_map
+entity_type: node
+bundle: course
+label: Kortvisning
+description: 'Vælg kortvisning for høringen.'
+required: true
+translatable: false
+default_value:
+  -
+    type: point
+    geojson: ''
+    localplanids: ''
+    point: ''
+    map_config: ''
+default_value_callback: ''
+settings: {  }
+field_type: hoeringsportal_data_map

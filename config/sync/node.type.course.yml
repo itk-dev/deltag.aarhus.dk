@@ -1,0 +1,17 @@
+uuid: b3b0d5e1-68d1-4419-ab67-24c8a703c9f9
+langcode: da
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Forløb
+type: course
+description: 'Et forløb repræsenterer en periode, hvor der kan afvikles en række aktiviteter. Forløb kan strække sig over dage, uger eller måneder. Brugere kan ikke melde sig til forløb eller købe billetter.'
+help: null
+new_revision: false
+preview_mode: 0
+display_submitted: false
