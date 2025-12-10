@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function hoeringsportal_activity_theme($existing, $type, $theme, $path) : array {
+  return [
+    'hoeringsportal_activity_add_activity' => [
+      'variables' => [
+        'entities' => NULL,
+        'module_path' => $path,
+      ],
+    ],
+  ];
+}
