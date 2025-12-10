@@ -86,7 +86,12 @@
           {% if owner and owner.name|default(false) %}
             <div class="comment-name">{{ owner.isCurrent ? 'You'|t : owner.name }}</div>
           {% endif %}
-          <div class="comment-time">{{ comment.created.value|time_diff }}</div>
+          <div class="comment-time">
+            {{ comment.changed.value|time_diff }}
+            {% if comment.changed.value > comment.created.value %}
+              {{ '(edited)'|t({}, {context: 'comment'}) }}
+            {% endif %}
+          </div>
           {% if comment.access('update') %}
             <div class="comment-edit">
               <a class="use-ajax text-primary"

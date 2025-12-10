@@ -50,14 +50,21 @@
           </div>
         </div>
 
-        <div class="node-actions">
+        <div class="node-metadata small">
+          <div class="node-time">
+            {{ node.changed.value|time_diff }}
+            {% if node.changed.value > node.created.value %}
+              {{ '(edited)'|t({}, {context: 'node'}) }}
+            {% endif %}
+          </div>
+
           {% if node.access('update') %}
             <div class="node-edit">
               <a class="text-primary"
                 href="{{ path('entity.node.edit_form', {node: node.id}) }}">
                 {{ 'Edit'|t({}, {context: 'node'}) }}
-            </a>
-          </div>
+              </a>
+            </div>
           {% endif %}
           {% if node.access('delete') %}
             <div class="node-delete">
