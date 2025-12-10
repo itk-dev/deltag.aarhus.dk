@@ -1,0 +1,10 @@
+hoeringsportal_activity.activity_add:
+  path: "/node/add/activity"
+  defaults:
+    _controller: '\Drupal\hoeringsportal_activity\Controller\ActivityController::activityAdd'
+    _title: "Add activity"
+  requirements:
+    _custom_access: '\Drupal\hoeringsportal_activity\Controller\ActivityController::access'
+  options:
+    _admin_route: TRUE
+

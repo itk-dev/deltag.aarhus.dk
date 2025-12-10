@@ -1,0 +1,5 @@
+backend:
+  version: VERSION
+  css:
+    theme:
+      assets/css/backend.css: {}

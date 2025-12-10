@@ -1,0 +1,86 @@
+{#
+/**
+ * @file
+ * Claro's theme implementation to list node types available for adding content.
+ *
+ * Available variables:
+ * - bundles: A list of content types, each with the following properties:
+ *   - label: Content type label.
+ *   - add_link: \Drupal\Core\Link link instance to create an entity of this
+ *     content type. This is a GeneratedLink originally and is switched by
+ *     claro_preprocess_node_add_list().
+ *   - description: Description of this type of content.
+ *
+ * @todo Revisit after https://www.drupal.org/node/3026221 has been solved.
+ *
+ * @see template_preprocess_node_add_list()
+ * @see claro_preprocess_node_add_list()
+ */
+#}
+
+{% set create_content = path('node.type_add') %}
+{%
+  set add_bundle_message = 'You have not created any content types yet. Go to the <a href="@create-content">content type creation page</a> to add a new content type.'|t({'@create-content': create_content})
+%}
+
+{#
+/**
+ * @file
+ * Theme override to present a list of available bundles.
+ *
+ * Available variables:
+ * - bundles: A list of bundles, each with the following properties:
+ *   - label: Bundle label.
+ *   - description: Bundle description.
+ *   - add_link: \Drupal\Core\Link link instance to create an entity of this
+ *     bundle.
+ * - add_bundle_message: The message shown when there are no bundles. Only
+ *     available if the entity type uses bundle entities.
+ *
+ * @see template_preprocess_entity_add_list()
+ */
+#}
+{%
+  set item_classes = [
+  'admin-item',
+]
+%}
+
+{% set bundles = bundles|filter((v, k) => k != 'public_meeting') %}
+
+
+{% if bundles is not empty %}
+  <dl{{ attributes.addClass('admin-list') }}>
+    <div{{ create_attribute({class: item_classes}) }}>
+      <dt class="admin-item__title">
+        <a href="{{ path('hoeringsportal_activity.activity_add') }}" class="admin-item__link">
+          {{ 'Activity'|t }}
+        </a>
+      </dt>
+      <dd class="admin-item__description">{{ 'Create an activity'|t }}</dd>
+    </div>
+    {% for bundle in bundles %}
+      {#
+      Add 'admin-item__link' class to the link attributes.
+      This is needed for keeping the original attributes of the link's url.
+      #}
+      {% set bundle_attributes = bundle.add_link.url.getOption('attributes') ?: {} %}
+      {% set link_attributes = create_attribute(bundle_attributes).addClass('admin-item__link') %}
+      <div{{ create_attribute({class: item_classes}) }}>
+        <dt class="admin-item__title">
+          <a href="{{ bundle.add_link.url }}"{{ link_attributes|without('href') }}>
+            {{ bundle.add_link.text }}
+          </a>
+        </dt>
+        {# Don't print empty description wrapper if there is no description #}
+        {% if bundle.description %}
+          <dd class="admin-item__description">{{ bundle.description }}</dd>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </dl>
+{% elseif add_bundle_message is not empty %}
+  <p>
+    {{ add_bundle_message }}
+  </p>
+{% endif %}
