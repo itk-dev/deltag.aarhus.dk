@@ -7,6 +7,7 @@ namespace Drupal\hoeringsportal_anonymous_edit\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\hoeringsportal_anonymous_edit\Helper\Settings;
 
 /**
  * Configure hoeringsportal_anonymous_edit settings for this site.
@@ -66,6 +67,27 @@ final class SettingsForm extends ConfigFormBase {
         '#default_value' => $defaults['allow_update'] ?? FALSE,
       ],
 
+      'allow_cancel' => [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Allow cancel'),
+        '#default_value' => $defaults['allow_cancel'] ?? FALSE,
+      ],
+
+      'cancel_texts' => [
+        '#type' => 'textarea',
+        '#title' => $this->t('Cancel texts'),
+        '#description' => $this->t('Text to set when cancelling a comment. Must be a YAML map from comment fields to texts, e.g. <code><pre>field_comment: Denne kommentar er blevet slettet af forfatteren.</pre></code>'),
+        '#default_value' => $defaults['cancel_texts'] ?? FALSE,
+        '#states' => [
+          'visible' => [
+            ':input[name="comment[allow_cancel]"]' => ['checked' => TRUE],
+          ],
+          'required' => [
+            ':input[name="comment[allow_cancel]"]' => ['checked' => TRUE],
+          ],
+        ],
+      ],
+
       'allow_delete' => [
         '#type' => 'checkbox',
         '#title' => $this->t('Allow delete'),
@@ -100,12 +122,34 @@ final class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    parent::validateForm($form, $form_state);
+    if ($form_state->getValue('comment')['allow_cancel'] ?? FALSE) {
+      $texts = $form_state->getValue('comment')['cancel_texts'] ?? '';
+      try {
+        Settings::yamlDecode($texts);
+      }
+      catch (\Exception $e) {
+        $form_state->setErrorByName('comment][cancel_texts',
+          $this->t('Invalid cancel texts: @message',
+            ['@message' => $e->getMessage()]));
+      }
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config('hoeringsportal_anonymous_edit.settings')
       ->set('node', $form_state->getValue('node'))
       ->set('comment', $form_state->getValue('comment'))
       ->set('general', $form_state->getValue('general'))
       ->save();
+
+    // Make sure that any changes are reflected in the frontend.
+    drupal_flush_all_caches();
+
     parent::submitForm($form, $form_state);
   }
 

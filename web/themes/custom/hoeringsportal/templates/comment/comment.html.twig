@@ -96,6 +96,15 @@
             </a>
           </div>
           {% endif %}
+          {% if comment.access('cancel') %}
+            <div class="comment-edit">
+              <a class="use-ajax text-primary"
+                data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
+                href="{{ path('hoeringsportal_anonymous_edit.comment.cancel_form', {comment: comment.id}) }}">
+                {{ 'Cancel'|t({}, {context: 'comment'}) }}
+            </a>
+          </div>
+          {% endif %}
           {% if comment.access('delete') %}
             <div class="comment-delete">
               <a class="use-ajax text-danger"

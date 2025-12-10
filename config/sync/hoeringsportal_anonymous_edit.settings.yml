@@ -1,8 +1,10 @@
 node:
-  allow_update: 0
+  allow_update: 1
   allow_delete: 0
 comment:
-  allow_update: 0
+  allow_update: 1
+  allow_cancel: 1
+  cancel_texts: "field_comment: Denne kommentar er blevet slettet af forfatteren.\r\n"
   allow_delete: 0
 general:
   owner_name_format: 'Bruger %1$d'

@@ -4,6 +4,7 @@ namespace Drupal\hoeringsportal_anonymous_edit\Helper;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\hoeringsportal_anonymous_edit\Form\SettingsForm;
+use Drupal\Component\Serialization\Yaml;
 
 /**
  * Settings for hoeringsportal_anonymous_edit.
@@ -39,6 +40,25 @@ readonly class Settings {
   }
 
   /**
+   * Get comment allow cancel.
+   */
+  public function getCommentAllowCancel(): bool {
+    return (bool) $this->get('comment.allow_cancel');
+  }
+
+  /**
+   * Get comment cancel texts.
+   */
+  public function getCommentCancelTexts(): array {
+    try {
+      return self::yamlDecode((string) $this->get('comment.cancel_texts'));
+    }
+    catch (\Exception) {
+      return [];
+    }
+  }
+
+  /**
    * Get comment allow delete.
    */
   public function getCommentAllowDelete(): bool {
@@ -66,6 +86,13 @@ readonly class Settings {
     $config = $this->configFactory->get(SettingsForm::CONFIG_NAME);
 
     return $config->get($key) ?? $default;
+  }
+
+  /**
+   * YAML decode.
+   */
+  public static function yamlDecode(string $yaml): mixed {
+    return Yaml::decode($yaml);
   }
 
 }
