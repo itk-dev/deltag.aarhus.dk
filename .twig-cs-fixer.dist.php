@@ -13,4 +13,7 @@ $finder->ignoreVCSIgnored(true);
 $config = new TwigCsFixer\Config\Config();
 $config->setFinder($finder);
 
+// @see https://github.com/VincentLanglet/Twig-CS-Fixer/pull/134#issuecomment-1756924889
+$config->addTokenParser(new Drupal\Core\Template\TwigTransTokenParser());
+
 return $config;
