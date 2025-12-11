@@ -76,7 +76,9 @@
   }
 } %}
 
-<article{{ attributes.addClass('js-comment mb-3') }}>
+{% set is_cancelled = comment.field_cancelled.getString() is not same as '' %}
+
+<article{{ attributes.addClass('js-comment mb-3').addClass(is_cancelled ? 'is-cancelled') }}>
   <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
   <div{{ content_attributes }}>
     {% if submitted and status is same as('published') %}
@@ -92,37 +94,38 @@
               {{ '(edited)'|t({}, {context: 'comment'}) }}
             {% endif %}
           </div>
-          {% if comment.access('update') %}
-            <div class="comment-edit">
-              <a class="use-ajax text-primary"
-                data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
-                href="{{ path('entity.comment.edit_form', {comment: comment.id}) }}">
-                {{ 'Edit'|t({}, {context: 'comment'}) }}
-            </a>
-          </div>
-          {% endif %}
-          {% if comment.access('cancel') %}
-            <div class="comment-edit">
-              <a class="use-ajax text-primary"
-                data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
-                href="{{ path('hoeringsportal_anonymous_edit.comment.cancel_form', {comment: comment.id}) }}">
-                {{ 'Cancel'|t({}, {context: 'comment'}) }}
-            </a>
-          </div>
-          {% endif %}
-          {% if comment.access('delete') %}
-            <div class="comment-delete">
-              <a class="use-ajax text-danger"
-                data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
-                href="{{ path('entity.comment.delete_form', {comment: comment.id}) }}">
-                {{ 'Delete'|t({}, {context: 'comment'}) }}
+          {% if not is_cancelled and route_name != 'comment.reply' %}
+            {% if comment.access('update') %}
+              <div class="comment-edit">
+                <a class="use-ajax text-primary"
+                  data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
+                  href="{{ path('entity.comment.edit_form', {comment: comment.id}) }}">
+                  {{ 'Edit'|t({}, {context: 'comment'}) }}
               </a>
             </div>
+            {% endif %}
+              <div class="comment-edit">
+                <a class="use-ajax text-primary"
+                  data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
+                  href="{{ path('hoeringsportal_anonymous_edit.comment.cancel_form', {comment: comment.id}) }}">
+                  {{ 'Cancel'|t({}, {context: 'comment'}) }}
+              </a>
+            </div>
+            {% endif %}
+            {% if comment.access('delete') %}
+              <div class="comment-delete">
+                <a class="use-ajax text-danger"
+                  data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
+                  href="{{ path('entity.comment.delete_form', {comment: comment.id}) }}">
+                  {{ 'Delete'|t({}, {context: 'comment'}) }}
+                </a>
+              </div>
+            {% endif %}
           {% endif %}
         </div>
         <div>{{ content|without('flag_support_comment') }}</div>
       </div>
-      {% if route_name != 'comment.reply' %}
+      {% if not is_cancelled and route_name != 'comment.reply' %}
         <div class="d-flex mb-2">
           <div class="flag-wrapper me-3">{{ content.flag_support_comment }}</div>
           <div class="comment-reply">
@@ -135,6 +138,5 @@
           </div>
         </div>
       {% endif %}
-    {% endif %}
   </div>
 </article>

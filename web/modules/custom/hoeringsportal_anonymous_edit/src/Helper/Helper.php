@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\hoeringsportal_anonymous_edit\Helper;
 
 use Drupal\comment\CommentInterface;
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Component\Uuid\Uuid;
 use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Access\AccessResult;
@@ -55,6 +56,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
     private readonly EntityTypeManagerInterface $entityTypeManager,
     private readonly EventDispatcherInterface $eventDispatcher,
     private readonly MailHelper $mailHelper,
+    private readonly TimeInterface $time,
     #[Autowire(service: 'hoeringsportal_anonymous_edit.logger')]
     LoggerChannelInterface $logger,
   ) {
@@ -344,6 +346,12 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
       foreach ($this->settings->getCommentCancelTexts() as $field => $text) {
         if ($comment->hasField($field)) {
           $comment->set($field, $text);
+        }
+      }
+      $now = $this->time->getCurrentTime();
+      foreach (['field_cancelled', 'cancelled'] as $field) {
+        if ($comment->hasField($field)) {
+          $comment->set($field, $now);
         }
       }
       $comment->save();

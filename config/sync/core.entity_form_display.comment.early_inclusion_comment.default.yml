@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - comment.type.early_inclusion_comment
+    - field.field.comment.early_inclusion_comment.field_cancelled
     - field.field.comment.early_inclusion_comment.field_comment
 id: comment.early_inclusion_comment.default
 targetEntityType: comment
@@ -24,5 +25,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_cancelled: true
   langcode: true
   subject: true
