@@ -8,4 +8,4 @@ dependencies:
   - itk_pretix:itk_pretix
 
 "interface translation project": hoeringsportal_public_meeting
-"interface translation server pattern": themes/custom/%project/translations/%project.%language.po
+"interface translation server pattern": modules/custom/%project/translations/%project.%language.po

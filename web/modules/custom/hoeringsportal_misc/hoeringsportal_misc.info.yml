@@ -7,4 +7,4 @@ dependencies:
   - drupal:toolbar
 
 "interface translation project": hoeringsportal_misc
-"interface translation server pattern": themes/custom/%project/translations/%project.%language.po
+"interface translation server pattern": modules/custom/%project/translations/%project.%language.po
