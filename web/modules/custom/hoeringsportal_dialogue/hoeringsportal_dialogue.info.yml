@@ -3,8 +3,9 @@ type: module
 description: "Dialogue functionality"
 package: Hoeringsportal
 core_version_requirement: ^10 || ^11
-interface translation project: hoeringsportal_dialogue
-interface translation server pattern: modules/custom/hoeringsportal_dialogue/translations/hoeringsportal_dialogue.%language.po
 dependencies:
   - hoeringsportal_anonymous_edit:hoeringsportal_anonymous_edit
   - hoeringsportal_data:hoeringsportal_data
+
+"interface translation project": hoeringsportal_dialogue
+"interface translation server pattern": themes/custom/%project/translations/%project.%language.po

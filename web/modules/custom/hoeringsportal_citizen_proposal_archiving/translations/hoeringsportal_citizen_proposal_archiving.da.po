@@ -13,12 +13,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-msgid "Early inclusion"
+msgid "Author"
 msgstr ""
 
-msgid "Map"
+msgid "Citizen proposal"
 msgstr ""
 
-msgid "Map for @title"
+msgid "Details"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Printed at"
+msgstr ""
+
+msgid "Proposal"
+msgstr ""
+
+msgid "Remarks"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "Vote end"
+msgstr ""
+
+msgid "Vote start"
 msgstr ""
 

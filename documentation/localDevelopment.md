@@ -161,10 +161,16 @@ task coding-standards:markdown:check
 Import translations by running
 
 ```sh
-(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.da.po)
+task translations:import
 ```
 
 Export translations by running
+
+```sh
+task translation:extract
+```
+
+and
 
 ```sh
 (cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.da.po)

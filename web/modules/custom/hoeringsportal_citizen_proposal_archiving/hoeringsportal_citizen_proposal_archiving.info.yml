@@ -7,3 +7,6 @@ dependencies:
   - advancedqueue:advancedqueue
   - entity_events:entity_events
   - hoeringsportal_citizen_proposal:hoeringsportal_citizen_proposal
+
+"interface translation project": hoeringsportal_citizen_proposal_archiving
+"interface translation server pattern": themes/custom/%project/translations/%project.%language.po

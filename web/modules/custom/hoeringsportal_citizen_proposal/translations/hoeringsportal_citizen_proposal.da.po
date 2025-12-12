@@ -13,12 +13,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-msgid "Early inclusion"
+msgid "Create new proposal"
 msgstr ""
 
-msgid "Map"
+msgid "Create proposal"
 msgstr ""
 
-msgid "Map for @title"
+msgid "Number of supporters"
+msgstr ""
+
+msgid "Support proposal"
+msgstr ""
+
+msgid "Support the proposal"
 msgstr ""
 

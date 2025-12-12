@@ -8,25 +8,36 @@ includes:
     taskfile: ./task/Taskfile.translation.yml
     vars:
       TRANSLATION_MODULES:
+        # - aarhus_hero
+
         - hoeringsportal_anonymous_edit
+        # - hoeringsportal_audit_log
+        # - hoeringsportal_base_fixtures
         - hoeringsportal_citizen_proposal
         - hoeringsportal_citizen_proposal_archiving
-        - hoeringsportal_config_settings
-        - hoeringsportal_content_access
-        - hoeringsportal_content_blocks
-        - hoeringsportal_data
-        - hoeringsportal_deskpro
+        # - hoeringsportal_config_settings
+        # - hoeringsportal_content_access
+        # - hoeringsportal_content_blocks
+        # - hoeringsportal_data
+        # - hoeringsportal_deskpro
         - hoeringsportal_dialogue
-        - hoeringsportal_forms
+        # - hoeringsportal_forms
         - hoeringsportal_hearing
-        - hoeringsportal_misc
-        - hoeringsportal_openid_connect
-        - hoeringsportal_project
+        # - hoeringsportal_misc
+        # - hoeringsportal_openid_connect
+        # - hoeringsportal_project
         - hoeringsportal_project_timeline
         - hoeringsportal_public_meeting
         - hoeringsportal_quicklinks
+        # - hoeringsportal_test_delta_sync_fixtures
 
-      TRANSLATION_THEMES: []
+        - itk_admin
+        - itk_admin_links
+        # - itk_media_entity
+
+      TRANSLATION_THEMES:
+        - hoeringsportal
+        # - hoeringsportal_admin
 
       TRANSLATION_LANGUAGES:
         - da
@@ -337,50 +348,6 @@ tasks:
       # Update states on public meetings.
       - task drush -- --yes hoeringsportal:public_meeting:state-update
       - task compose-up
-    silent: true
-
-
-  translations:export:
-    cmds:
-      - task drush -- pm:install drupal_translation_extractor
-      - cmd: |
-          task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc \
-            {{.ITEM.LOCALE}} --source=module:{{.ITEM.MODULE}} --output '%source_dir/translations/%module.%locale.po' {{.CLI_ARGS}}
-        for:
-          matrix:
-            LOCALE:
-              - da
-            MODULE:
-              - hoeringsportal_anonymous_edit
-              - hoeringsportal_citizen_proposal
-              - hoeringsportal_citizen_proposal_archiving
-              # - hoeringsportal_config_settings
-              # - hoeringsportal_content_access
-              # - hoeringsportal_content_blocks
-              # - hoeringsportal_data
-              # - hoeringsportal_deskpro
-              - hoeringsportal_dialogue
-              # - hoeringsportal_forms
-              - hoeringsportal_hearing
-              # - hoeringsportal_misc
-              # - hoeringsportal_openid_connect
-              # - hoeringsportal_project
-              - hoeringsportal_project_timeline
-              - hoeringsportal_public_meeting
-              - hoeringsportal_quicklinks
-
-      - cmd: |
-          task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc \
-            {{.ITEM.LOCALE}} --source=theme:{{.ITEM.THEME}} --output '%source_dir/translations/%theme.%locale.po' {{.CLI_ARGS}}
-        for:
-          matrix:
-            LOCALE:
-              - da
-
-            THEME:
-              - hoeringsportal
-              # - hoeringsportal_admin
-
     silent: true
 
   translations:import:

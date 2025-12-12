@@ -3,472 +3,463 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-09 12:35+0100\n"
-"PO-Revision-Date: 2025-12-09 12:35+0100\n"
+"POT-Creation-Date: 2025-12-12 12:50+0100\n"
+"PO-Revision-Date: 2025-12-12 12:50+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
 
 msgid ""
 "<a href=\"@sign_up_url\">Sign up to our message service</a> and be "
 "informed about your interests"
 msgstr ""
-"<a href=\"@sign_up_url\">Sign up to our message service</a> and be "
-"informed about your interests"
 
 msgid "Aarhus Municipality"
-msgstr "Aarhus Municipality"
+msgstr ""
 
 msgid "Account activities"
-msgstr "Account activities"
+msgstr ""
 
 msgid "Add hearing ticket"
-msgstr "Tilføj høringssvar"
+msgstr ""
 
 msgid "Add new comment"
-msgstr "Tilføj ny kommentar"
+msgstr ""
 
 msgid "Article"
-msgstr "Article"
+msgstr ""
 
 msgid ""
 "Before you can contribute you must validate your user account with "
 "NemID."
 msgstr ""
-"Before you can contribute you must validate your user account with "
-"NemID."
 
 msgid "Canceled"
-msgstr "Canceled"
+msgstr ""
 
 msgid "Cancelled"
-msgstr "Cancelled"
+msgstr ""
 
 msgid "Change user information"
-msgstr "Change user information"
+msgstr ""
 
 msgid "Citizen proposal"
-msgstr "Citizen proposal"
+msgstr ""
 
 msgid "Comments"
-msgstr "Kommentarer"
+msgstr ""
 
 msgid "Content"
-msgstr "Indhold"
+msgstr ""
 
 msgid "Content on this page"
-msgstr "Indhold på denne side"
+msgstr ""
 
 msgid "Copied to clipboard"
-msgstr "Copied to clipboard"
+msgstr ""
 
 msgid "Copy to clipboard"
-msgstr "Copy to clipboard"
+msgstr ""
 
 msgid "Create dialog proposal"
-msgstr "Opret dialogforslag"
+msgstr ""
 
 msgid "Create your proposal"
-msgstr "Create your proposal"
+msgstr ""
 
 msgid "Current activity in the project"
-msgstr "Nuværende aktivitet i projektet"
+msgstr ""
 
 msgid "Current occurrence"
-msgstr "Current occurrence"
+msgstr ""
 
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 msgid "Deadline:"
-msgstr "Deadline:"
+msgstr ""
 
 msgid "Dialogue"
-msgstr "Dialog"
+msgstr ""
 
 msgid "Digg"
-msgstr "Digg"
+msgstr ""
 
 msgid "Drop images here, or click to upload."
-msgstr "Drop images here, or click to upload."
+msgstr ""
 
 msgid "Early inclusion"
-msgstr "Tidlig dialog"
+msgstr ""
 
 msgid "Edit dialog proposal"
-msgstr "Edit dialog proposal"
+msgstr ""
 
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 msgid "End date"
-msgstr "End date"
+msgstr ""
 
 msgid "Ended"
-msgstr "Ended"
+msgstr ""
 
 msgid "Evernote"
-msgstr "Evernote"
+msgstr ""
 
 msgid "Expected finish"
-msgstr "Expected finish"
+msgstr ""
 
 msgid "Facebook"
-msgstr "Facebook"
+msgstr ""
 
 msgid "Facebook messenger"
-msgstr "Facebook messenger"
+msgstr ""
 
 msgid ""
 "Fill out the form and send your proposal so other people can interact "
 "with it."
 msgstr ""
-"Udfyld formularen og send dit forslag så andre kan interagere med "
-"det."
 
 msgid "Finished"
-msgstr "Slut"
+msgstr ""
 
 msgid "First upcoming"
-msgstr "First upcoming"
+msgstr ""
 
 msgid "Go to next page"
-msgstr "Go to next page"
+msgstr ""
 
 msgid "Go to previous page"
-msgstr "Go to previous page"
+msgstr ""
 
 msgid "Hearing"
-msgstr "Høring"
+msgstr ""
 
 msgid "Hearing has been canceled"
-msgstr "Hearing has been canceled"
+msgstr ""
 
 msgid "Hearing has ended"
-msgstr "Hearing has ended"
+msgstr ""
 
 msgid "Hearing reply for"
-msgstr "Høringssvar for"
+msgstr ""
 
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 msgid "Information page"
-msgstr "Information"
+msgstr ""
 
 msgid "Initiative"
-msgstr "Initiative"
+msgstr ""
 
 msgid "Last date for signup"
-msgstr "Last date for signup"
+msgstr ""
 
 msgid "Latest proposal"
-msgstr "Seneste forslag"
+msgstr ""
 
 msgid "Like this"
-msgstr "Like this"
+msgstr ""
 
 msgid "Linkedin"
-msgstr "Linkedin"
+msgstr ""
 
 msgid "Location"
-msgstr "Location"
+msgstr ""
 
 msgid "Log out"
-msgstr "Log out"
+msgstr ""
 
 msgid "Map"
-msgstr "Kort"
+msgstr ""
 
 msgid "Materials"
-msgstr "Materials"
+msgstr ""
 
 msgid "Meeting has already been held"
-msgstr "Meeting has already been held"
+msgstr ""
 
 msgid "Meeting has been cancelled"
-msgstr "Meeting has been cancelled"
+msgstr ""
 
 msgid "Meeting has been held"
-msgstr "Meeting has been held"
+msgstr ""
 
 msgid "Next"
-msgstr "Next"
+msgstr ""
 
 msgid "Next page"
-msgstr "Next page"
+msgstr ""
 
 msgid "No available spots left"
-msgstr "No available spots left"
+msgstr ""
 
 msgid ""
 "No parent exists for this dialogue proposal! You should add a proposal "
 "from the appropriate dialogue page."
 msgstr ""
-"Ingen dialog findes til dette dialogforslag! Du skal tilføje dit "
-"forslag fra den korrekte dialogside."
 
 msgid "Not yet validated"
-msgstr "Not yet validated"
+msgstr ""
 
 msgid ""
 "Number of supporters: @number_of_supporters of "
 "@required_number_of_supporters"
 msgstr ""
-"Number of supporters: @number_of_supporters of "
-"@required_number_of_supporters"
 
 msgid "Open all"
-msgstr "Åbn alle"
+msgstr ""
 
 msgid "Open project gallery"
-msgstr "Åbn projekt galleri"
+msgstr ""
 
 msgid "Open search"
-msgstr "Åben søgning"
+msgstr ""
 
 msgid "Opens in a new tab"
-msgstr "Opens in a new tab"
+msgstr ""
 
 msgid "Options"
-msgstr "Options"
+msgstr ""
 
 msgid "Page"
-msgstr "Side"
+msgstr ""
 
 msgid "Pagination"
-msgstr "Pagination"
+msgstr ""
 
 msgid "Participate with your proposal"
-msgstr "Deltag med dit forslag"
+msgstr ""
 
 msgid "Phone"
-msgstr "Phone"
+msgstr ""
 
 msgid "Pinterest"
-msgstr "Pinterest"
+msgstr ""
 
 msgid "Previous"
-msgstr "Previous"
+msgstr ""
 
 msgid "Previous page"
-msgstr "Previous page"
+msgstr ""
 
 msgid "Primary tabs"
-msgstr "Primary tabs"
+msgstr ""
 
 msgid "Print"
-msgstr "Print"
+msgstr ""
 
 msgid "Progress"
-msgstr "Progress"
+msgstr ""
 
 msgid "Project"
-msgstr "Project"
+msgstr ""
 
 msgid "Project info"
-msgstr "Project info"
+msgstr ""
 
 msgid "Proposals"
-msgstr "Forslag"
+msgstr ""
 
 msgid "Proposals received"
-msgstr "Proposals received"
+msgstr ""
 
 msgid "Public meeting"
-msgstr "Public meeting"
+msgstr ""
 
 msgid "Reddit"
-msgstr "Reddit"
+msgstr ""
 
 msgid "Registration"
-msgstr "Registration"
+msgstr ""
 
 msgid "Registration deadline passed"
-msgstr "Registration deadline passed"
+msgstr ""
 
 msgid "Reply date"
-msgstr "Bidrag dato"
+msgstr ""
 
 msgid "Search"
-msgstr "Search"
+msgstr ""
 
 msgid "Search and results will show up here"
-msgstr "Search and results will show up here"
+msgstr ""
 
 msgid "Search for %search_terms returned no results"
-msgstr "Search for %search_terms returned no results"
+msgstr ""
 
 msgid "Secondary tabs"
-msgstr "Secondary tabs"
+msgstr ""
 
 msgid "Share the proposal"
-msgstr "Share the proposal"
+msgstr ""
 
 msgid "Share to"
-msgstr "Share to"
+msgstr ""
 
 msgid "Show all hearings"
-msgstr "Show all hearings"
+msgstr ""
 
 msgid "Show all meetings"
-msgstr "Show all meetings"
+msgstr ""
 
 msgid "Show more hearings"
-msgstr "Vis flere høringer"
+msgstr ""
 
 msgid "Show on map"
-msgstr "Show on map"
+msgstr ""
 
 msgid "Show profile"
-msgstr "Show profile"
+msgstr ""
 
 msgid "Show proposals on map"
-msgstr "Vis forslag på kort"
+msgstr ""
 
 msgid "Sign up"
-msgstr "Sign up"
+msgstr ""
 
 msgid "Sign up for public meeting"
-msgstr "Sign up for public meeting"
+msgstr ""
 
 msgid "Skip to main content"
-msgstr "Skip to main content"
+msgstr ""
 
 msgid "Spots"
-msgstr "Spots"
+msgstr ""
 
 msgid "Start"
-msgstr "Start"
+msgstr ""
 
 msgid "Start date"
-msgstr "Start dato"
+msgstr ""
 
 msgid "Support the proposal"
-msgstr "Support the proposal"
+msgstr ""
 
 msgid "The hearing list is empty"
-msgstr "The hearing list is empty"
+msgstr ""
 
 msgid "The meeting list is empty"
-msgstr "The meeting list is empty"
+msgstr ""
 
 msgid "The proposal list is empty"
-msgstr "The proposal list is empty"
+msgstr ""
 
 msgid "This dialogue is open for proposals!"
-msgstr "This dialogue is open for proposals!"
+msgstr ""
 
 msgid "Time"
-msgstr "Time"
+msgstr ""
 
 msgid "Try with less words or to phrase it differently"
-msgstr "Try with less words or to phrase it differently"
+msgstr ""
 
 msgid "Tumblr"
-msgstr "Tumblr"
+msgstr ""
 
 msgid "Upcoming"
-msgstr "Upcoming"
+msgstr ""
 
 msgid "User validated"
-msgstr "User validated"
+msgstr ""
 
 msgid "User validation"
-msgstr "User validation"
+msgstr ""
 
 msgid "Validate"
-msgstr "Validate"
+msgstr ""
 
 msgid "Validate account"
-msgstr "Validate account"
+msgstr ""
 
 msgid "Validate with NemID"
-msgstr "Validate with NemID"
+msgstr ""
 
 msgid "Validated with NemID"
-msgstr "Validated with NemID"
+msgstr ""
 
 msgid "View all proposals"
-msgstr "Se alle forslag"
+msgstr ""
 
 msgid "Whatsapp"
-msgstr "Whatsapp"
+msgstr ""
 
 msgid "Would you like a direct message when deltag.aarhus.dk has new content?"
-msgstr "Would you like a direct message when deltag.aarhus.dk has new content?"
+msgstr ""
 
 msgid "X (Twitter)"
-msgstr "X (Twitter)"
+msgstr ""
 
 msgid "You"
-msgstr "You"
+msgstr ""
 
 msgid "You only have to do it once, and you can do it now."
-msgstr "You only have to do it once, and you can do it now."
+msgstr ""
 
 msgid "Your information"
-msgstr "Your information"
+msgstr ""
 
 msgid "Your search yielded no result"
-msgstr "Din søgning gav ingen resultater."
+msgstr ""
 
 msgid "like this"
-msgstr "synes om"
+msgstr ""
 
 msgid "replies"
-msgstr "replies"
+msgstr ""
 
 msgid "‹‹"
-msgstr "‹‹"
+msgstr ""
 
 msgid "››"
-msgstr "››"
+msgstr ""
+
+msgctxt "comment"
+msgid "Delete"
+msgstr ""
+
+msgctxt "comment"
+msgid "Edit"
+msgstr ""
 
 msgctxt "Comment reply  "
 msgid "Reply"
-msgstr "Svar"
+msgstr ""
+
+msgctxt "node"
+msgid "Delete"
+msgstr ""
+
+msgctxt "node"
+msgid "Edit"
+msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Comment on @title"
-msgstr "Comment on @title"
+msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit proposal"
-msgstr "Edit proposal"
+msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find my content"
-msgstr "Find mit indhold (med kontekst) xxx"
+msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
-msgstr "You don't have any content."
+msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your comments"
-msgstr "Your comments"
+msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your dialogue proposals"
-msgstr "Your dialogue proposals"
-
-msgctxt "comment"
-msgid "Delete"
-msgstr "Delete"
-
-msgctxt "comment"
-msgid "Edit"
-msgstr "Edit"
-
-msgctxt "node"
-msgid "Delete"
-msgstr "Delete"
-
-msgctxt "node"
-msgid "Edit"
-msgstr "Edit"
+msgstr ""
 

@@ -3,78 +3,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-09 12:35+0100\n"
-"PO-Revision-Date: 2025-12-09 12:35+0100\n"
+"POT-Creation-Date: 2025-12-12 12:50+0100\n"
+"PO-Revision-Date: 2025-12-12 12:50+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Allow delete"
-msgstr ""
-
-msgid "Allow update"
-msgstr ""
-
-msgid "Comment"
-msgstr ""
-
-msgid "Comment #@comment on %title"
-msgstr "Kommentar #@comment på %title"
-
-msgid "Email sent to @email"
-msgstr "E-mail sendt til @email"
-
-msgid "Error sending email @email"
-msgstr "Fejl ved afsendelse af e-mail til @email"
-
-msgid "General"
-msgstr ""
-
-msgid "Log level"
-msgstr ""
-
-msgid "Node"
-msgstr "Knude"
-
-msgid "Owner name format"
-msgstr ""
-
-msgctxt "hoeringsportal_anonymous_edit"
-msgid "Confirm your email address"
-msgstr ""
+"Language: da\n"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit"
-msgstr "Edit"
-
-msgctxt "hoeringsportal_anonymous_edit"
-msgid "Error recovering your edit token"
-msgstr ""
-
-msgctxt "hoeringsportal_anonymous_edit"
-msgid "Find content"
 msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find my content"
-msgstr "Find mit indhold (med kontekst) xxx"
-
-msgctxt "hoeringsportal_anonymous_edit"
-msgid "Invalid email address"
 msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
-msgstr "You don't have any content."
-
-msgctxt "hoeringsportal_anonymous_edit"
-msgid "Your edit token has been recovered"
 msgstr ""
 
-msgctxt "hoeringsportal_anonymous_edit"
-msgid "Your email address"
+msgid "Comment #@comment on %title"
 msgstr ""
 

@@ -7,3 +7,6 @@ dependencies:
   - twig_tweak:twig_tweak
   - drupal:symfony_mailer
   - drupal:views
+
+"interface translation project": hoeringsportal_citizen_proposal
+"interface translation server pattern": themes/custom/%project/translations/%project.%language.po
