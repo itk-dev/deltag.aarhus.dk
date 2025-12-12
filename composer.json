@@ -322,6 +322,9 @@
             },
             "drupal/site_status_message": {
                 "Add cache support (https://www.drupal.org/project/site_status_message/issues/3497218)": "https://git.drupalcode.org/project/site_status_message/-/merge_requests/8.diff"
+            },
+            "vincentlanglet/twig-cs-fixer": {
+                "Drupal's trans tag has an optional plural tag which conflicts with the trans tag from Symfony's Twig bridge (cf. https://github.com/VincentLanglet/Twig-CS-Fixer/pull/134#issuecomment-1756924889)": "patches/vincentlanglet/twig-cs-fixer/token-parser.patch"
             }
         },
         "scripts": {
