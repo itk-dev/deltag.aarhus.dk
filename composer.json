@@ -93,10 +93,10 @@
     "require-dev": {
         "drupal/content_fixtures": "^3.2",
         "drupal/core-dev": "^10.0",
-        "drupal/itk_translation_extractor": "dev-itk_translation_extractor",
         "drupal/masquerade": "^2.0",
         "drupal/webprofiler": "^10.3",
         "ergebnis/composer-normalize": "^2.44",
+        "itk-dev/drupal_translation_extractor": "dev-itk_translation_extractor",
         "mglaman/phpstan-drupal": "^1.1",
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan-deprecation-rules": "^1.1",
@@ -188,9 +188,9 @@
                 }
             }
         },
-        "drupal/itk_translation_extractor": {
+        "itk-dev/drupal_translation_extractor": {
             "type": "vcs",
-            "url": "https://github.com/rimi-itk/itk_translation_extractor"
+            "url": "https://github.com/itk-dev/drupal_translation_extractor"
         },
         "// @see web/modules/contrib/search_autocomplete/readme.md": {
             "type": "package",

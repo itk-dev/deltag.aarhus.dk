@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9efab314cbcd75466538dacca79c77a0",
+    "content-hash": "6a74e17005ea8784deb3539fa37eb5c3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -15872,52 +15872,6 @@
             }
         },
         {
-            "name": "drupal/itk_translation_extractor",
-            "version": "dev-itk_translation_extractor",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rimi-itk/itk_translation_extractor.git",
-                "reference": "4f1f5139285a3a720e4e4710a486f60204720633"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rimi-itk/itk_translation_extractor/zipball/4f1f5139285a3a720e4e4710a486f60204720633",
-                "reference": "4f1f5139285a3a720e4e4710a486f60204720633",
-                "shasum": ""
-            },
-            "require": {
-                "drupal/core": "^10 || ^11",
-                "symfony/translation": "^6 || ^7 || ^8",
-                "symfony/twig-bridge": "^6 || ^7 || ^8"
-            },
-            "require-dev": {
-                "ergebnis/composer-normalize": "^2.48",
-                "friendsofphp/php-cs-fixer": "^3.91",
-                "phpunit/phpunit": "^12.5",
-                "vincentlanglet/twig-cs-fixer": "^3.11"
-            },
-            "type": "drupal-module",
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\itk_translation_extractor\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Drupal\\itk_translation_extractor\\Test\\": "tests/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "itk_translation_extractor",
-            "support": {
-                "source": "https://github.com/rimi-itk/itk_translation_extractor/tree/itk_translation_extractor",
-                "issues": "https://github.com/rimi-itk/itk_translation_extractor/issues"
-            },
-            "time": "2025-12-11T08:40:28+00:00"
-        },
-        {
             "name": "drupal/masquerade",
             "version": "2.0.0",
             "source": {
@@ -16617,6 +16571,53 @@
                 "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.33.2"
             },
             "time": "2025-12-05T22:12:22+00:00"
+        },
+        {
+            "name": "itk-dev/drupal_translation_extractor",
+            "version": "dev-itk_translation_extractor",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/drupal_translation_extractor.git",
+                "reference": "77ecf2aa9699c29a9ab4097cf542c5a77c18475c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/77ecf2aa9699c29a9ab4097cf542c5a77c18475c",
+                "reference": "77ecf2aa9699c29a9ab4097cf542c5a77c18475c",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^10 || ^11",
+                "php": "^8.4",
+                "symfony/translation": "^6 || ^7 || ^8",
+                "symfony/twig-bridge": "^6 || ^7 || ^8"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.48",
+                "friendsofphp/php-cs-fixer": "^3.91",
+                "phpunit/phpunit": "^12.5",
+                "vincentlanglet/twig-cs-fixer": "^3.11"
+            },
+            "type": "drupal-module",
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\drupal_translation_extractor\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Drupal\\drupal_translation_extractor\\Test\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "drupal_translation_extractor",
+            "support": {
+                "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/itk_translation_extractor",
+                "issues": "https://github.com/itk-dev/drupal_translation_extractor/issues"
+            },
+            "time": "2025-12-12T10:33:53+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -21567,11 +21568,11 @@
         "drupal/email_registration": 5,
         "drupal/entityqueue": 15,
         "drupal/hoeringsportal_dialogue": 20,
-        "drupal/itk_translation_extractor": 20,
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
-        "drupal/webform": 10
+        "drupal/webform": 10,
+        "itk-dev/drupal_translation_extractor": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

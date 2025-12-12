@@ -342,10 +342,10 @@ tasks:
 
   translations:export:
     cmds:
-      - task drush -- pm:install itk_translation_extractor
+      - task drush -- pm:install drupal_translation_extractor
       - cmd: |
-          task drush -- itk_translation_extractor:translation:extract --dump-messages --force --no-fill --sort=asc \
-            {{.ITEM.LOCALE}} --module={{.ITEM.MODULE}} --output-name modules/custom/{{.ITEM.MODULE}}/translations/{{.ITEM.MODULE}}.{{.ITEM.LOCALE}}.po
+          task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc \
+            {{.ITEM.LOCALE}} --source=module:{{.ITEM.MODULE}} --output '%source_dir/translations/%module.%locale.po' {{.CLI_ARGS}}
         for:
           matrix:
             LOCALE:
@@ -364,21 +364,22 @@ tasks:
               - hoeringsportal_hearing
               # - hoeringsportal_misc
               # - hoeringsportal_openid_connect
-              - hoeringsportal_project
+              # - hoeringsportal_project
               - hoeringsportal_project_timeline
               - hoeringsportal_public_meeting
               - hoeringsportal_quicklinks
 
       - cmd: |
-          task drush -- itk_translation_extractor:translation:extract --dump-messages --force --no-fill --sort=asc \
-            {{.ITEM.LOCALE}} --theme={{.ITEM.THEME}} --output-name themes/custom/{{.ITEM.THEME}}/translations/{{.ITEM.THEME}}.{{.ITEM.LOCALE}}.po
+          task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc \
+            {{.ITEM.LOCALE}} --source=theme:{{.ITEM.THEME}} --output '%source_dir/translations/%theme.%locale.po' {{.CLI_ARGS}}
         for:
           matrix:
             LOCALE:
               - da
+
             THEME:
               - hoeringsportal
-              - hoeringsportal_admin
+              # - hoeringsportal_admin
 
     silent: true
 
