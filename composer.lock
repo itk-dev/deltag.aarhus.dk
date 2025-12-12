@@ -16578,12 +16578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_translation_extractor.git",
-                "reference": "77ecf2aa9699c29a9ab4097cf542c5a77c18475c"
+                "reference": "a362d5cffa159710e2165c83c89c41fa9842e411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/77ecf2aa9699c29a9ab4097cf542c5a77c18475c",
-                "reference": "77ecf2aa9699c29a9ab4097cf542c5a77c18475c",
+                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/a362d5cffa159710e2165c83c89c41fa9842e411",
+                "reference": "a362d5cffa159710e2165c83c89c41fa9842e411",
                 "shasum": ""
             },
             "require": {
@@ -16617,7 +16617,7 @@
                 "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/itk_translation_extractor",
                 "issues": "https://github.com/itk-dev/drupal_translation_extractor/issues"
             },
-            "time": "2025-12-12T10:33:53+00:00"
+            "time": "2025-12-12T14:21:57+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
