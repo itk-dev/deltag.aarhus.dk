@@ -24,7 +24,7 @@
                 <span class="flag-wrapper">{{ content.flag_support_proposal }}</span>
               </div>
               <div>
-                <a href="#comments" class="text-secondary">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-comment.svg.html.twig') }}<span>{{ node.field_comments.comment_count }}</span><span>{{ 'Comments'|t }}</span></a>
+                <a href="#comments" class="text-secondary">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-comment.svg.html.twig') }}<span>{% trans %}1 comment{% plural node.field_comments.comment_count %}{{ count }} comments{% endtrans %}</span></a>
               </div>
             </div>
           </div>
@@ -50,14 +50,21 @@
           </div>
         </div>
 
-        <div class="node-actions">
+        <div class="node-metadata small">
+          <div class="node-time">
+            {{ node.changed.value|time_diff }}
+            {% if node.changed.value > node.created.value %}
+              {{ '(edited)'|t({}, {context: 'node'}) }}
+            {% endif %}
+          </div>
+
           {% if node.access('update') %}
             <div class="node-edit">
               <a class="text-primary"
                 href="{{ path('entity.node.edit_form', {node: node.id}) }}">
                 {{ 'Edit'|t({}, {context: 'node'}) }}
-            </a>
-          </div>
+              </a>
+            </div>
           {% endif %}
           {% if node.access('delete') %}
             <div class="node-delete">

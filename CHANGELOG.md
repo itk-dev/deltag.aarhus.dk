@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
+  * Let citizens cancel comments
+  * Added "(edited)" on edited content
 * [PR-574](https://github.com/itk-dev/deltag.aarhus.dk/pull/574)
   Added settings for Anonymous edit
 * [PR-572](https://github.com/itk-dev/deltag.aarhus.dk/pull/572)

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\hoeringsportal_anonymous_edit\Helper;
 
 use Drupal\comment\CommentInterface;
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Component\Uuid\Uuid;
 use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Access\AccessResult;
@@ -39,6 +40,10 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   use LoggerTrait;
   use LoggerAwareTrait;
 
+  public const ACCESS_UPDATE = 'update';
+  public const ACCESS_DELETE = 'delete';
+  public const ACCESS_CANCEL = 'cancel';
+
   private const string COOKIE_NAME = 'hoeringsportal_anonymous_edit_token';
   private const string QUERY_PARAM_NAME = 'edit_token';
 
@@ -51,6 +56,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
     private readonly EntityTypeManagerInterface $entityTypeManager,
     private readonly EventDispatcherInterface $eventDispatcher,
     private readonly MailHelper $mailHelper,
+    private readonly TimeInterface $time,
     #[Autowire(service: 'hoeringsportal_anonymous_edit.logger')]
     LoggerChannelInterface $logger,
   ) {
@@ -247,6 +253,13 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    * Implements hook_entity_delete().
    */
   public function entityDelete(EntityInterface $entity): void {
+    $this->detachEntity($entity);
+  }
+
+  /**
+   * Detach owner from content.
+   */
+  public function detachEntity(EntityInterface $entity): void {
     $this->storageHelper->deleteItem($entity);
   }
 
@@ -254,19 +267,29 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    * Implements hook_entity_access().
    */
   public function entityAccess(EntityInterface $entity, string $operation, AccountInterface $account): AccessResultInterface {
-    if (in_array($operation, ['update', 'delete'])
+    if (in_array($operation, [self::ACCESS_UPDATE, self::ACCESS_CANCEL, self::ACCESS_DELETE])
       && (
-        $entity instanceof NodeInterface && ('update' === $operation ? $this->settings->getNodeAllowUpdate() : $this->settings->getNodeAllowDelete())
-        || $entity instanceof CommentInterface && ('update' === $operation ? $this->settings->getCommentAllowUpdate() : $this->settings->getCommentAllowDelete())
+        $entity instanceof NodeInterface && match ($operation) {
+          self::ACCESS_UPDATE => $this->settings->getNodeAllowUpdate(),
+          self::ACCESS_CANCEL => $this->settings->getNodeAllowCancel(),
+          self::ACCESS_DELETE => $this->settings->getNodeAllowDelete(),
+          default => FALSE
+        }
+        || $entity instanceof CommentInterface && match ($operation) {
+          self::ACCESS_UPDATE => $this->settings->getCommentAllowUpdate(),
+          self::ACCESS_CANCEL => $this->settings->getCommentAllowCancel(),
+          self::ACCESS_DELETE => $this->settings->getCommentAllowDelete(),
+          default => FALSE
+        }
       )
     ) {
-      if ($token = $this->getToken()) {
-        if ($item = $this->storageHelper->fetchItemByEntity($entity)) {
-          if ($item->owner_token === $token) {
-            return AccessResult::allowed();
-          }
+    if ($token = $this->getToken()) {
+      if ($item = $this->storageHelper->fetchItemByEntity($entity)) {
+        if ($item->owner_token === $token) {
+          return AccessResult::allowed();
         }
       }
+    }
     }
 
     return AccessResult::neutral();
@@ -309,6 +332,38 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
    */
   public function logException(\Exception $exception) {
     $this->error('Exception: @message', ['@message' => $exception->getMessage(), 'exception' => $exception]);
+  }
+
+  /**
+   * Cancel a comment.
+   */
+  public function cancelComment(CommentInterface $comment): bool {
+    try {
+      $comment
+        ->setSubject('')
+        ->setAuthorName('')
+        ->set('mail', '');
+      foreach ($this->settings->getCommentCancelTexts() as $field => $text) {
+        if ($comment->hasField($field)) {
+          $comment->set($field, $text);
+        }
+      }
+      $now = $this->time->getCurrentTime();
+      foreach (['field_cancelled', 'cancelled'] as $field) {
+        if ($comment->hasField($field)) {
+          $comment->set($field, $now);
+        }
+      }
+      $comment->save();
+      $this->detachEntity($comment);
+
+      return TRUE;
+    }
+    catch (\Exception $exception) {
+      $this->logException($exception);
+    }
+
+    return FALSE;
   }
 
 }
