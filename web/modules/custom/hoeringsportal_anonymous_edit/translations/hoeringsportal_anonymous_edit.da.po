@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-12 12:50+0100\n"
-"PO-Revision-Date: 2025-12-12 12:50+0100\n"
+"POT-Creation-Date: 2025-12-14 13:22+0100\n"
+"PO-Revision-Date: 2025-12-14 13:22+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,8 +13,82 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+msgid "Allow cancel"
+msgstr ""
+
+msgid "Allow delete"
+msgstr ""
+
+msgid "Allow update"
+msgstr ""
+
+msgid "Cancel comment"
+msgstr ""
+
+msgid "Cancel comment?"
+msgstr ""
+
+msgid "Cancel texts"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Comment #@comment on %title"
+msgstr ""
+
+msgid "Comment cancelled"
+msgstr ""
+
+msgid "Email sent to @email"
+msgstr ""
+
+msgid "Error sending email @email"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid ""
+"If you cancel the comment its content will be deleted, but any "
+"sub-comments will remain. This action cannot be undone."
+msgstr ""
+
+msgid "Invalid cancel texts: @message"
+msgstr ""
+
+msgid "Keep comment"
+msgstr ""
+
+msgid "Log level"
+msgstr ""
+
+msgid "Node"
+msgstr ""
+
+msgid "Owner name format"
+msgstr ""
+
+msgid ""
+"Text to set when cancelling a comment. Must be a YAML map from comment "
+"fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
+"blevet slettet af forfatteren.</pre></code>"
+msgstr ""
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Confirm your email address"
+msgstr ""
+
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit"
+msgstr ""
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Error recovering your edit token"
+msgstr ""
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Find content"
 msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
@@ -22,9 +96,18 @@ msgid "Find my content"
 msgstr ""
 
 msgctxt "hoeringsportal_anonymous_edit"
+msgid "Invalid email address"
+msgstr ""
+
+msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
 msgstr ""
 
-msgid "Comment #@comment on %title"
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Your edit token has been recovered"
+msgstr ""
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Your email address"
 msgstr ""
 

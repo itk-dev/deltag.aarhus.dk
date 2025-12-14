@@ -13,12 +13,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-msgid "Edit this page"
+msgid "Expected end date"
 msgstr ""
 
-msgid "Go to administration"
+msgid "Expected finish"
 msgstr ""
 
-msgid "Log off"
+msgid "Hearing"
+msgstr ""
+
+msgid "Project start"
+msgstr ""
+
+msgid "Public meeting"
+msgstr ""
+
+msgid "Start"
 msgstr ""
 

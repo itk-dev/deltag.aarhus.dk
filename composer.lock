@@ -16578,12 +16578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_translation_extractor.git",
-                "reference": "a362d5cffa159710e2165c83c89c41fa9842e411"
+                "reference": "8ca761898812dc3ed1fac19b131d341de5adb1ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/a362d5cffa159710e2165c83c89c41fa9842e411",
-                "reference": "a362d5cffa159710e2165c83c89c41fa9842e411",
+                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/8ca761898812dc3ed1fac19b131d341de5adb1ac",
+                "reference": "8ca761898812dc3ed1fac19b131d341de5adb1ac",
                 "shasum": ""
             },
             "require": {
@@ -16595,17 +16595,15 @@
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.48",
                 "friendsofphp/php-cs-fixer": "^3.91",
+                "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^12.5",
                 "vincentlanglet/twig-cs-fixer": "^3.11"
             },
             "type": "drupal-module",
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\drupal_translation_extractor\\": "src/"
-                }
-            },
             "autoload-dev": {
                 "psr-4": {
+                    "Drupal\\drupal_translation_extractor\\": "src/",
+                    "Drupal\\locale\\": "vendor/drupal/core/modules/locale/src/",
                     "Drupal\\drupal_translation_extractor\\Test\\": "tests/"
                 }
             },
@@ -16617,7 +16615,7 @@
                 "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/itk_translation_extractor",
                 "issues": "https://github.com/itk-dev/drupal_translation_extractor/issues"
             },
-            "time": "2025-12-12T14:21:57+00:00"
+            "time": "2025-12-14T12:21:59+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

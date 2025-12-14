@@ -13,12 +13,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-msgid "Edit this page"
+msgid "@site_name settings."
 msgstr ""
 
-msgid "Go to administration"
+msgid "Configure"
 msgstr ""
 
-msgid "Log off"
+msgid "These pages contain @site_name specific config settings."
 msgstr ""
 

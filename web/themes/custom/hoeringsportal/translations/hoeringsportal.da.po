@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-12 12:50+0100\n"
-"PO-Revision-Date: 2025-12-12 12:50+0100\n"
+"POT-Creation-Date: 2025-12-14 13:22+0100\n"
+"PO-Revision-Date: 2025-12-14 13:22+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -12,6 +12,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
+
+msgid "1 comment"
+msgid_plural "@count comments"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "<a href=\"@sign_up_url\">Sign up to our message service</a> and be "
@@ -420,6 +425,14 @@ msgid "››"
 msgstr ""
 
 msgctxt "comment"
+msgid "(edited)"
+msgstr ""
+
+msgctxt "comment"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "comment"
 msgid "Delete"
 msgstr ""
 
@@ -429,6 +442,10 @@ msgstr ""
 
 msgctxt "Comment reply  "
 msgid "Reply"
+msgstr ""
+
+msgctxt "node"
+msgid "(edited)"
 msgstr ""
 
 msgctxt "node"

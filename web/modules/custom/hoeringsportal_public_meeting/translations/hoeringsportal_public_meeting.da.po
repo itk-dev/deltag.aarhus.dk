@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-12 12:50+0100\n"
-"PO-Revision-Date: 2025-12-12 12:50+0100\n"
+"POT-Creation-Date: 2025-12-14 13:22+0100\n"
+"PO-Revision-Date: 2025-12-14 13:22+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,9 @@ msgstr ""
 msgid "Deadline:"
 msgstr ""
 
+msgid "Hearing deadline has passed"
+msgstr ""
+
 msgid "Last signup date"
 msgstr ""
 
@@ -34,10 +37,36 @@ msgstr ""
 msgid "No available spots left"
 msgstr ""
 
+msgid ""
+"Note: If this public meeting is cancelled you should go to @cancelLink "
+"to cancel all orders."
+msgstr ""
+
 msgid "Opens in a new tab"
 msgstr ""
 
 msgid "Place"
+msgstr ""
+
+msgid "Please enter a location"
+msgstr ""
+
+msgid "Please enter a start time"
+msgstr ""
+
+msgid "Please enter a value!"
+msgstr ""
+
+msgid "Please enter an address"
+msgstr ""
+
+msgid "Please enter an end time"
+msgstr ""
+
+msgid "Please enter number of spots"
+msgstr ""
+
+msgid "Public meeting cancelled"
 msgstr ""
 
 msgid "Registration"
@@ -50,6 +79,21 @@ msgid "Sign up"
 msgstr ""
 
 msgid "Spots"
+msgstr ""
+
+msgid "The meeting end time must be after the start time."
+msgstr ""
+
+msgid "The meeting time must not be in the past."
+msgstr ""
+
+msgid "The registration deadline is required."
+msgstr ""
+
+msgid "The registration deadline must not be after the meeting starts."
+msgstr ""
+
+msgid "The registration deadline must not be in the past."
 msgstr ""
 
 msgid "This event has multiple dates"

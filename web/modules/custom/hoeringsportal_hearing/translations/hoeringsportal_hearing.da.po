@@ -13,45 +13,47 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-msgid "Archive URL"
+msgid "About"
 msgstr ""
 
-msgid "Archived at"
+msgid "Add hearing reply"
 msgstr ""
 
-msgid "Author"
+msgid ""
+"Example: "
+"<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
 msgstr ""
 
-msgid "Citizen proposal"
+msgid "GIS data"
 msgstr ""
 
-msgid "Details"
+msgid "Hearing deadline has passed"
 msgstr ""
 
-msgid "Email"
+msgid "Hearing deadline: @deadline"
 msgstr ""
 
-msgid "Name"
+msgid "Hearings"
 msgstr ""
 
-msgid "Phone"
+msgid "Insert GIS minimap by UUID"
 msgstr ""
 
-msgid "Printed at"
+msgid "Invalid GIS map UUID: @map_uuid"
 msgstr ""
 
-msgid "Proposal"
+msgid "The delete date must not be before the reply deadline"
 msgstr ""
 
-msgid "Remarks"
+msgid "The delete date must not be in the past"
 msgstr ""
 
-msgid "Url"
+msgid "The reply deadline must not be before the start date"
 msgstr ""
 
-msgid "Vote end"
+msgid "The reply deadline must not be in the past"
 msgstr ""
 
-msgid "Vote start"
+msgid "The start date must not be in the past"
 msgstr ""
 
