@@ -2,7 +2,8 @@
 
 ## Executive Summary
 
-This document outlines a plan to centralize all colors as CSS custom properties while maintaining SCSS compatibility. The goal is better maintainability, easier theming, and runtime color customization capabilities.
+This document outlines a plan to centralize all colors as CSS custom properties while maintaining SCSS compatibility.
+The goal is better maintainability, easier theming, and runtime color customization capabilities.
 
 ---
 
@@ -10,33 +11,36 @@ This document outlines a plan to centralize all colors as CSS custom properties 
 
 ### Color Definition Locations
 
-| File | Purpose | Status |
-|------|---------|--------|
-| `_bootstrap-custom.scss` | Primary color definitions | Well-organized |
-| `deskpro-custom-css.scss` | External Deskpro styling | 5 hardcoded colors |
-| `module/_accordion.scss` | Accordion component | 2 hardcoded colors |
+| File                      | Purpose                   | Status             |
+| ------------------------- | ------------------------- | ------------------ |
+| `_bootstrap-custom.scss`  | Primary color definitions | Well-organized     |
+| `deskpro-custom-css.scss` | External Deskpro styling  | 5 hardcoded colors |
+| `module/_accordion.scss`  | Accordion component       | 2 hardcoded colors |
 
 ### Existing Color Variables (SCSS)
 
 **Grayscale:**
+
 - `$white: #fff`
 - `$black: #333` (redefined from `#000`)
 - `$gray-100` through `$gray-900`
 
 **Brand Colors (9 color pairs):**
-| Color | Base | Light |
-|-------|------|-------|
-| Pink | `#ee0043` | `#fab2c6` |
-| Purple | `#673ab7` | `#d1c4e9` |
-| Blue | `#3661d8` | `#c2cff3` |
-| Navy | `#2b3ba2` | `#bfc4e3` |
+
+| Color     | Base                | Light     |
+| --------- | ------------------- | --------- |
+| Pink      | `#ee0043`           | `#fab2c6` |
+| Purple    | `#673ab7`           | `#d1c4e9` |
+| Blue      | `#3661d8`           | `#c2cff3` |
+| Navy      | `#2b3ba2`           | `#bfc4e3` |
 | Petroleum | `#008486` (PRIMARY) | `#b2dada` |
-| Green | `#008850` | `#b2dbca` |
-| Yellow | `#ffe13d` | `#fff6c4` |
-| Orange | `#ff5f31` | `#ffcfc1` |
-| Red | `#d32f2f` | `#f2c0c0` |
+| Green     | `#008850`           | `#b2dbca` |
+| Yellow    | `#ffe13d`           | `#fff6c4` |
+| Orange    | `#ff5f31`           | `#ffcfc1` |
+| Red       | `#d32f2f`           | `#f2c0c0` |
 
 **Modern OKLCH Colors (already added):**
+
 - `$color-petroleum-100/200/800/900`
 - `$color-peach-100/200/600`
 - `$color-blue-100`
@@ -45,6 +49,7 @@ This document outlines a plan to centralize all colors as CSS custom properties 
 ### Current CSS Custom Properties Usage
 
 Already using CSS custom properties in:
+
 - `_info_box.scss` - `--bg-color`, `--secondary-bg-color`, `--text-color`, `--link-color`
 - `_card.scss` - `--transition-duration-in/out`, `--transition-easing-in/out`
 - `_animated-svg.scss` - `--path-fill-color`, `--path-stroke-color`
@@ -67,7 +72,8 @@ Already using CSS custom properties in:
 
 ## OKLCH Strategy
 
-All colors will be defined in OKLCH color space for better perceptual uniformity and easier color manipulation. To support older browsers, we use a fallback strategy.
+All colors will be defined in OKLCH color space for better perceptual uniformity and easier color manipulation.
+To support older browsers, we use a fallback strategy.
 
 ### Fallback Approach
 
@@ -96,9 +102,11 @@ Alternatively, use `@supports` for explicit separation:
 }
 ```
 
-**Recommendation:** Use the cascade approach (first example) for simplicity. Modern browsers override; older browsers ignore the OKLCH line.
+**Recommendation:** Use the cascade approach (first example) for simplicity.
+Modern browsers override; older browsers ignore the OKLCH line.
 
 ### OKLCH Benefits
+
 - Perceptually uniform lightness (50% lightness looks equally bright across hues)
 - Easier to create consistent color scales
 - Better for generating accessible color combinations
@@ -244,6 +252,7 @@ Scaffolding for future dark mode and accessibility themes:
 ## Implementation Steps
 
 ### Step 1: Audit & Document Color Usage
+
 - [ ] Identify all SCSS variables actually in use
 - [ ] Map which components use which colors
 - [ ] Document color usage in a reference table (color → components using it)
@@ -251,6 +260,7 @@ Scaffolding for future dark mode and accessibility themes:
 - [ ] Convert existing hex colors to OKLCH equivalents (create conversion table)
 
 ### Step 2: Create Color Token File
+
 - [ ] Create `_color-tokens.scss`
 - [ ] Define primitive tokens with hex fallbacks + OKLCH values
 - [ ] Define semantic tokens mapping to primitives
@@ -258,11 +268,14 @@ Scaffolding for future dark mode and accessibility themes:
 - [ ] Import before other modules in `hoeringsportal.scss`
 
 ### Step 3: Replace Hardcoded Values
+
 - [ ] Fix `_accordion.scss` hardcoded colors
 - [ ] Fix `deskpro-custom-css.scss` (requires special handling)
 
 ### Step 4: Migrate Components Gradually
+
 Priority order (by impact):
+
 1. [ ] `_btn.scss` - buttons are everywhere
 2. [ ] `_card.scss` - content type colors
 3. [ ] `_hero.scss` - prominent visual element
@@ -271,11 +284,14 @@ Priority order (by impact):
 6. [ ] Remaining 40+ modules
 
 ### Step 5: Remove Unused Colors
+
 After migration, evaluate and remove:
+
 - Potentially unused: `$navy`, `$navy-light`, `$purple`, `$purple-light`
 - Duplicate definitions (e.g., `$black` defined twice)
 
 ### Step 6: Documentation
+
 - [ ] Document color naming conventions
 - [ ] Create visual color palette reference
 - [ ] Update component documentation
@@ -284,7 +300,7 @@ After migration, evaluate and remove:
 
 ## File Structure After Refactoring
 
-```
+```Filestructure
 assets/css/
 ├── _custom-variables.scss      (spacing, typography - unchanged)
 ├── _bootstrap-custom.scss      (Bootstrap overrides, SCSS color vars)
@@ -295,10 +311,11 @@ assets/css/
 ```
 
 **Import order in `hoeringsportal.scss`:**
+
 ```scss
 @import "custom-variables";
-@import "bootstrap-custom";    // SCSS vars + Bootstrap
-@import "color-tokens";        // CSS custom properties (NEW)
+@import "bootstrap-custom"; // SCSS vars + Bootstrap
+@import "color-tokens"; // CSS custom properties (NEW)
 @import "base";
 // ... modules
 ```
@@ -316,12 +333,14 @@ For each module file:
 5. **Document** - Note which semantic tokens are used by the component
 
 **Token selection priority:**
+
 1. Use **semantic tokens** when the color serves a purpose (text, background, border, status)
 2. Use **primitive tokens** only when the color is decorative or brand-specific
 
 **Example transformation:**
 
 Before:
+
 ```scss
 .hero {
   background-color: $primary;
@@ -330,6 +349,7 @@ Before:
 ```
 
 After:
+
 ```scss
 .hero {
   background-color: var(--bg-accent);
@@ -344,7 +364,9 @@ This approach ensures components automatically adapt to theme changes (dark mode
 ## Special Considerations
 
 ### Deskpro Stylesheet
+
 The `deskpro-custom-css.scss` is loaded externally by Deskpro. Options:
+
 1. **Keep hardcoded** - Simplest, Deskpro cannot use our CSS variables
 2. **Duplicate values** - Define same colors but reference existing SCSS vars at build time
 3. **Inline the values** - Use SCSS interpolation `#{$petroleum-light}`
@@ -352,13 +374,17 @@ The `deskpro-custom-css.scss` is loaded externally by Deskpro. Options:
 **Recommendation:** Option 3 - use SCSS interpolation so colors stay in sync at build time.
 
 ### Bootstrap Integration
+
 Bootstrap generates many color shades automatically. The approach:
+
 - Keep SCSS variables for Bootstrap configuration
 - Export final computed values as CSS custom properties
 - Use `--bs-*` variables where Bootstrap already provides them
 
 ### SVG Data URLs
+
 Colors in SVG data URLs (like in `_accordion.scss`) cannot use CSS variables directly. Solutions:
+
 1. Use SCSS interpolation: `url("...stroke='#{$primary}'...")`
 2. Use external SVG files with `currentColor`
 3. Use CSS `mask-image` with `background-color`
@@ -367,12 +393,12 @@ Colors in SVG data URLs (like in `_accordion.scss`) cannot use CSS variables dir
 
 ## Risk Assessment
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Visual regressions | Medium | Thorough visual testing per component |
-| Bootstrap conflicts | Low | Test Bootstrap component styling |
-| Build errors | Low | Incremental migration with CI checks |
-| Performance | Very Low | CSS custom properties are well-optimized |
+| Risk                | Impact   | Mitigation                               |
+| ------------------- | -------- | ---------------------------------------- |
+| Visual regressions  | Medium   | Thorough visual testing per component    |
+| Bootstrap conflicts | Low      | Test Bootstrap component styling         |
+| Build errors        | Low      | Incremental migration with CI checks     |
+| Performance         | Very Low | CSS custom properties are well-optimized |
 
 ---
 
@@ -398,7 +424,8 @@ Colors in SVG data URLs (like in `_accordion.scss`) cannot use CSS variables dir
    ✅ **Decision:** Yes, all colors in OKLCH with hex fallbacks for older browsers. See "OKLCH Strategy" section.
 
 3. **Dark mode**: Is dark mode support a future requirement? (Affects token architecture)
-   ✅ **Decision:** Yes, possible future requirement. Architecture uses primitive + semantic token layers to support this. See "Phase 3: Theme Variants".
+   ✅ **Decision:** Yes, possible future requirement. Architecture uses primitive + semantic token layers
+   to support this. See "Phase 3: Theme Variants".
 
 4. **Theming**: Will there be multiple color themes beyond the current one?
    ✅ **Decision:** Yes, high-contrast accessibility theme is a possibility. Theme scaffolding included in architecture.
@@ -409,24 +436,28 @@ Colors in SVG data URLs (like in `_accordion.scss`) cannot use CSS variables dir
 
 ### Color Variables Defined (34 total)
 
-**Hex-based (24):** `$white`, `$black`, `$gray-100` through `$gray-900`, `$pink`/`$pink-light`, `$purple`/`$purple-light`, `$blue`/`$blue-light`, `$navy`/`$navy-light`, `$petroleum`/`$petroleum-light`, `$green`/`$green-light`, `$yellow`/`$yellow-light`, `$orange`/`$orange-light`, `$red`/`$red-light`
+**Hex-based (24):** `$white`, `$black`, `$gray-100` through `$gray-900`, `$pink`/`$pink-light`,
+`$purple`/`$purple-light`, `$blue`/`$blue-light`, `$navy`/`$navy-light`, `$petroleum`/`$petroleum-light`,
+`$green`/`$green-light`, `$yellow`/`$yellow-light`, `$orange`/`$orange-light`, `$red`/`$red-light`
 
-**OKLCH (10):** `$color-petroleum-100/200/800/900`, `$color-peach-100/200/600`, `$color-blue-100`, `$color-stone-100/600`
+**OKLCH (10):** `$color-petroleum-100/200/800/900`, `$color-peach-100/200/600`, `$color-blue-100`,
+`$color-stone-100/600`
 
 ### Most Used Colors
 
-| Variable | Usage | Primary Uses |
-|----------|-------|--------------|
-| `$primary` / `$petroleum` | 40+ | Buttons, links, navigation, headings |
-| `$white` | 30+ | Text, backgrounds, borders |
-| `$black` (#333) | 15+ | Text, backgrounds |
-| `$gray-*` series | 25+ | Borders, backgrounds, secondary text |
-| `$petroleum-light` | 10+ | Backgrounds, timeline |
-| `$color-petroleum-100/800` | 8+ | Modern header components |
+| Variable                   | Usage | Primary Uses                         |
+| -------------------------- | ----- | ------------------------------------ |
+| `$primary` / `$petroleum`  | 40+   | Buttons, links, navigation, headings |
+| `$white`                   | 30+   | Text, backgrounds, borders           |
+| `$black` (#333)            | 15+   | Text, backgrounds                    |
+| `$gray-*` series           | 25+   | Borders, backgrounds, secondary text |
+| `$petroleum-light`         | 10+   | Backgrounds, timeline                |
+| `$color-petroleum-100/800` | 8+    | Modern header components             |
 
 ### Unused Colors (13)
 
 These colors are defined but never used in SCSS files:
+
 - `$pink`, `$pink-light`
 - `$purple`, `$purple-light`
 - `$navy`, `$navy-light`
@@ -438,32 +469,32 @@ These colors are defined but never used in SCSS files:
 
 ### Hardcoded Colors Found
 
-| File | Color | Should Be |
-|------|-------|-----------|
-| `deskpro-custom-css.scss:20` | `#f5f5f5` | `$gray-100` |
-| `deskpro-custom-css.scss:26` | `#b2dada` | `$petroleum-light` |
-| `deskpro-custom-css.scss:33` | `#858585` | `$gray-700` |
-| `deskpro-custom-css.scss:40` | `#f2c0c0` | `$red-light` |
-| `deskpro-custom-css.scss:41` | `#333` | `$black` |
-| `module/_accordion.scss:3` | `#333` | `$black` |
-| `module/_accordion.scss:4` | `#008486` | SVG data-uri (special case) |
+| File                         | Color     | Should Be                   |
+| ---------------------------- | --------- | --------------------------- |
+| `deskpro-custom-css.scss:20` | `#f5f5f5` | `$gray-100`                 |
+| `deskpro-custom-css.scss:26` | `#b2dada` | `$petroleum-light`          |
+| `deskpro-custom-css.scss:33` | `#858585` | `$gray-700`                 |
+| `deskpro-custom-css.scss:40` | `#f2c0c0` | `$red-light`                |
+| `deskpro-custom-css.scss:41` | `#333`    | `$black`                    |
+| `module/_accordion.scss:3`   | `#333`    | `$black`                    |
+| `module/_accordion.scss:4`   | `#008486` | SVG data-uri (special case) |
 
 ### Files by Color Usage (Top 12)
 
-| File | Color Refs | Primary Colors |
-|------|------------|----------------|
-| `module/_btn.scss` | 16 | `$primary`, `$petroleum`, `$white` |
-| `module/_timeline.scss` | 13 | `$primary`, `$black`, `$petroleum-light` |
-| `module/_search.scss` | 13 | `$primary`, `$black`, `$gray-*` |
-| `module/_page-teaser.scss` | 12 | `$white`, `$gray-900`, `$petroleum` |
-| `module/_content.scss` | 10 | `$white`, `$primary`, `$gray-*` |
-| `module/_info_box.scss` | 9 | `$color-petroleum-100`, `$petroleum` |
-| `module/_header-v2.scss` | 9 | `$color-petroleum-*`, `$color-peach-*` |
-| `module/_list.scss` | 8 | `$white`, `$primary`, `$gray-*` |
-| `module/_hero.scss` | 8 | `$white`, `$primary`, `$black` |
-| `module/_nav.scss` | 7 | `$primary`, `$black`, `$gray-*` |
-| `module/_image-gallery.scss` | 7 | `$petroleum`, `$white` |
-| `layout/_aside.scss` | 7 | `$color-petroleum-*`, `$color-peach-*` |
+| File                         | Color Refs | Primary Colors                           |
+| ---------------------------- | ---------- | ---------------------------------------- |
+| `module/_btn.scss`           | 16         | `$primary`, `$petroleum`, `$white`       |
+| `module/_timeline.scss`      | 13         | `$primary`, `$black`, `$petroleum-light` |
+| `module/_search.scss`        | 13         | `$primary`, `$black`, `$gray-*`          |
+| `module/_page-teaser.scss`   | 12         | `$white`, `$gray-900`, `$petroleum`      |
+| `module/_content.scss`       | 10         | `$white`, `$primary`, `$gray-*`          |
+| `module/_info_box.scss`      | 9          | `$color-petroleum-100`, `$petroleum`     |
+| `module/_header-v2.scss`     | 9          | `$color-petroleum-*`, `$color-peach-*`   |
+| `module/_list.scss`          | 8          | `$white`, `$primary`, `$gray-*`          |
+| `module/_hero.scss`          | 8          | `$white`, `$primary`, `$black`           |
+| `module/_nav.scss`           | 7          | `$primary`, `$black`, `$gray-*`          |
+| `module/_image-gallery.scss` | 7          | `$petroleum`, `$white`                   |
+| `layout/_aside.scss`         | 7          | `$color-petroleum-*`, `$color-peach-*`   |
 
 ---
 
