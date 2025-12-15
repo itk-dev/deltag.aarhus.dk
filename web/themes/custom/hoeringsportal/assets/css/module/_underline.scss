@@ -8,10 +8,10 @@
     width: $underline-width;
     height: 4px;
     margin-top: $spacer * 0.5;
-    background: $primary;
+    background: var(--interactive-primary);
   }
 
   &.is-white::after {
-    background: $white;
+    background: var(--text-inverse);
   }
 }

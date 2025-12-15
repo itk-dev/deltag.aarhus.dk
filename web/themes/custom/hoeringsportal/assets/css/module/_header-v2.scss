@@ -45,7 +45,7 @@
     padding-bottom: $spacer * 2;
 
     .text-background-match {
-      color: $petroleum;
+      color: var(--interactive-primary);
     }
 
     @include media-breakpoint-up(md) {
@@ -62,7 +62,7 @@
     }
 
     .type {
-      color: $petroleum;
+      color: var(--interactive-primary);
     }
 
     .tags {
@@ -110,7 +110,7 @@
     display: flex;
     column-gap: $spacer * 1.5;
     span {
-      color: $color-peach-600;
+      color: var(--primitive-peach-600);
     }
   }
 }

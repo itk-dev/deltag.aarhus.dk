@@ -1,38 +1,38 @@
 .info-box {
   &.danger {
-    --bg-color: #{$red-100};
-    --secondary-bg-color: #{$red-200};
-    --text-color: #{$red-900};
-    --link-color: #{$red-700};
+    --bg-color: var(--status-danger-subtle);
+    --secondary-bg-color: var(--primitive-red-200);
+    --text-color: var(--text-primary);
+    --link-color: var(--status-danger);
   }
   &.warning {
-    --bg-color: #{$yellow-100};
-    --secondary-bg-color: #{$yellow-200};
-    --text-color: #{$yellow-900};
-    --link-color: #{$yellow-800};
+    --bg-color: var(--status-warning-subtle);
+    --secondary-bg-color: var(--primitive-yellow-200);
+    --text-color: var(--text-primary);
+    --link-color: var(--primitive-yellow-500);
   }
   &.info {
-    --bg-color: #{$blue-100};
-    --secondary-bg-color: #{$blue-200};
-    --text-color: #{$blue-900};
-    --link-color: #{$blue-700};
+    --bg-color: var(--status-info-subtle);
+    --secondary-bg-color: var(--primitive-blue-200);
+    --text-color: var(--text-primary);
+    --link-color: var(--status-info);
   }
   &.petroleum-light {
-    --bg-color: #{$color-petroleum-100};
-    --secondary-bg-color: #{$petroleum-light};
-    --text-color: #{$black};
+    --bg-color: var(--bg-accent-subtle);
+    --secondary-bg-color: var(--bg-accent-light);
+    --text-color: var(--text-primary);
     --link-color: inherit;
   }
   &.petroleum {
-    --bg-color: #{$petroleum};
-    --secondary-bg-color: #{$petroleum};
-    --text-color: #{$white};
+    --bg-color: var(--bg-accent);
+    --secondary-bg-color: var(--bg-accent);
+    --text-color: var(--text-inverse);
     --link-color: inherit;
   }
 
-  --bg-color: #{$color-petroleum-100};
-  --secondary-bg-color: #{$petroleum-light};
-  --text-color: #{$black};
+  --bg-color: var(--bg-accent-subtle);
+  --secondary-bg-color: var(--bg-accent-light);
+  --text-color: var(--text-primary);
 
   background-color: var(--bg-color);
   color: var(--text-color);

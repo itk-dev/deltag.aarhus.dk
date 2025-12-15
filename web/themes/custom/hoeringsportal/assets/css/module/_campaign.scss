@@ -20,7 +20,7 @@
 
   &-content {
     position: relative;
-    background-color: $white;
+    background-color: var(--bg-primary);
     margin: -$spacer * 6 $spacer * 1 $spacer * 1 $spacer * 1;
     box-shadow: $shadow;
 
@@ -39,7 +39,7 @@
 
     h2,
     p {
-      color: $gray-900;
+      color: var(--text-primary);
     }
 
     h2 {

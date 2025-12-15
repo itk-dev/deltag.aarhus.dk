@@ -405,10 +405,72 @@ Colors in SVG data URLs (like in `_accordion.scss`) cannot use CSS variables dir
 
 ---
 
+## Color Audit Results
+
+### Color Variables Defined (34 total)
+
+**Hex-based (24):** `$white`, `$black`, `$gray-100` through `$gray-900`, `$pink`/`$pink-light`, `$purple`/`$purple-light`, `$blue`/`$blue-light`, `$navy`/`$navy-light`, `$petroleum`/`$petroleum-light`, `$green`/`$green-light`, `$yellow`/`$yellow-light`, `$orange`/`$orange-light`, `$red`/`$red-light`
+
+**OKLCH (10):** `$color-petroleum-100/200/800/900`, `$color-peach-100/200/600`, `$color-blue-100`, `$color-stone-100/600`
+
+### Most Used Colors
+
+| Variable | Usage | Primary Uses |
+|----------|-------|--------------|
+| `$primary` / `$petroleum` | 40+ | Buttons, links, navigation, headings |
+| `$white` | 30+ | Text, backgrounds, borders |
+| `$black` (#333) | 15+ | Text, backgrounds |
+| `$gray-*` series | 25+ | Borders, backgrounds, secondary text |
+| `$petroleum-light` | 10+ | Backgrounds, timeline |
+| `$color-petroleum-100/800` | 8+ | Modern header components |
+
+### Unused Colors (13)
+
+These colors are defined but never used in SCSS files:
+- `$pink`, `$pink-light`
+- `$purple`, `$purple-light`
+- `$navy`, `$navy-light`
+- `$green`, `$green-light`
+- `$yellow`, `$yellow-light`
+- `$blue-light` (note: `$blue` used 2x in `_card.scss`)
+
+**Decision:** Keep all for now, document as "reserved for future use"
+
+### Hardcoded Colors Found
+
+| File | Color | Should Be |
+|------|-------|-----------|
+| `deskpro-custom-css.scss:20` | `#f5f5f5` | `$gray-100` |
+| `deskpro-custom-css.scss:26` | `#b2dada` | `$petroleum-light` |
+| `deskpro-custom-css.scss:33` | `#858585` | `$gray-700` |
+| `deskpro-custom-css.scss:40` | `#f2c0c0` | `$red-light` |
+| `deskpro-custom-css.scss:41` | `#333` | `$black` |
+| `module/_accordion.scss:3` | `#333` | `$black` |
+| `module/_accordion.scss:4` | `#008486` | SVG data-uri (special case) |
+
+### Files by Color Usage (Top 12)
+
+| File | Color Refs | Primary Colors |
+|------|------------|----------------|
+| `module/_btn.scss` | 16 | `$primary`, `$petroleum`, `$white` |
+| `module/_timeline.scss` | 13 | `$primary`, `$black`, `$petroleum-light` |
+| `module/_search.scss` | 13 | `$primary`, `$black`, `$gray-*` |
+| `module/_page-teaser.scss` | 12 | `$white`, `$gray-900`, `$petroleum` |
+| `module/_content.scss` | 10 | `$white`, `$primary`, `$gray-*` |
+| `module/_info_box.scss` | 9 | `$color-petroleum-100`, `$petroleum` |
+| `module/_header-v2.scss` | 9 | `$color-petroleum-*`, `$color-peach-*` |
+| `module/_list.scss` | 8 | `$white`, `$primary`, `$gray-*` |
+| `module/_hero.scss` | 8 | `$white`, `$primary`, `$black` |
+| `module/_nav.scss` | 7 | `$primary`, `$black`, `$gray-*` |
+| `module/_image-gallery.scss` | 7 | `$petroleum`, `$white` |
+| `layout/_aside.scss` | 7 | `$color-petroleum-*`, `$color-peach-*` |
+
+---
+
 ## Next Steps
 
-1. Review and approve this plan
-2. Start with Step 1 (Audit) to identify unused colors
+1. ~~Review and approve this plan~~ ✅
+2. ~~Start with Step 1 (Audit) to identify unused colors~~ ✅
 3. Create `_color-tokens.scss` with initial CSS custom properties
 4. Migrate one component as proof-of-concept
 5. Continue migration in priority order
