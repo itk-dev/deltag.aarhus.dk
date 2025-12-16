@@ -1,13 +1,20 @@
 uuid: 1fab1dde-bbc5-4b1b-a60c-dea5e15e37cc
 langcode: da
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.hearing_ticket_add
+    - field.field.node.course.field_activity_location
+    - field.field.node.course.field_address
     - field.field.node.course.field_area
     - field.field.node.course.field_content_sections
+    - field.field.node.course.field_content_state
     - field.field.node.course.field_department
+    - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_time
+    - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
     - node.type.course
@@ -45,9 +52,16 @@ content:
     weight: 100
     region: content
 hidden:
+  field_activity_location: true
+  field_address: true
   field_content_sections: true
+  field_content_state: true
   field_department: true
+  field_first_meeting_time: true
+  field_hide_time: true
+  field_last_meeting_time: true
   field_map: true
+  field_teaser: true
   field_top_images: true
   langcode: true
   published_at: true
