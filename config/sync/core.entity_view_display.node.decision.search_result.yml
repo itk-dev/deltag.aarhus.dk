@@ -1,0 +1,107 @@
+uuid: 44fa74b4-4aaa-41de-bd67-385fa5b59b71
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.decision.field_area
+    - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_decision
+    - field.field.node.decision.field_decision_date
+    - field.field.node.decision.field_department
+    - field.field.node.decision.field_media_document
+    - field.field.node.decision.field_related_content
+    - field.field.node.decision.field_teaser
+    - field.field.node.decision.field_top_images
+    - field.field.node.decision.field_type
+    - node.type.decision
+  module:
+    - datetime
+    - entity_reference_revisions
+    - options
+    - user
+id: node.decision.search_result
+targetEntityType: node
+bundle: decision
+mode: search_result
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_decision:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_decision_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_related_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_media_document: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

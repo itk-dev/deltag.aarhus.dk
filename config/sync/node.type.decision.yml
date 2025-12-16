@@ -1,0 +1,17 @@
+uuid: 45535a89-bf49-4136-9f4d-005a52be7abf
+langcode: da
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Afgørelse
+type: decision
+description: 'En afgørelse fra et byrådsmøde. Det er muligt at tilføje filer relateret til afgørelsen og linke til høringer, projekter og andet indhold relateret til afgørelsen.'
+help: null
+new_revision: false
+preview_mode: 0
+display_submitted: false

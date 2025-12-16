@@ -1,0 +1,14 @@
+uuid: e0257c0a-9d68-4955-a937-8c2e6232180a
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.decision_editor
+  module:
+    - user
+id: user_remove_role_action.decision_editor
+label: 'Remove the Beslutningsredaktør role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: decision_editor

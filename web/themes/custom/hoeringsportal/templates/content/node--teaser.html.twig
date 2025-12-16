@@ -150,7 +150,7 @@
       {% if type is not empty %}
         <span class="activity-teaser-type">{{ type }}</span>
       {% endif %}
-      <span class="activity-teaser-area is-comma-separated">{{ content.field_area }}</span>
+      <span class="tags-one-line"><i class="{{ node_type_class }} fa-solid fa-tags"></i><span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span></span>
     </span>
     <span class="activity-teaser-link "><i class="fa-solid fa-arrow-right float-right"></i></span>
   </div>

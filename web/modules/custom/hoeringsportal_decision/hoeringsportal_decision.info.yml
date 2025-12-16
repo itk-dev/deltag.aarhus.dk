@@ -1,0 +1,7 @@
+name: Hoeringsportal decision
+type: module
+description: "Decision functionality"
+package: Hoeringsportal
+core_version_requirement: ^10 || ^11
+interface translation project: hoeringsportal_decision
+interface translation server pattern: modules/custom/hoeringsportal_decision/translations/hoeringsportal_decision.%language.po

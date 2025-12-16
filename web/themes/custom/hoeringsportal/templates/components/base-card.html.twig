@@ -25,6 +25,9 @@
 {% elseif node_type == 'dialogue' %}
   {% set node_type_class = 'text-dialogue' %}
   {% set node_type_text = 'Dialogue'|t %}
+{% elseif node_type == 'decision' %}
+  {% set node_type_class = 'text-decision' %}
+  {% set node_type_text = 'Decision'|t %}
 {% endif %}
 
 {# Set image for Hearing, Project, Public meeting or Static page #}
@@ -47,7 +50,7 @@
     {% set image_url = file_url(image.field_itk_media_image_upload.entity.uri.value|image_style('responsive_small_teaser')) %}
     {% set image_alt = image.field_itk_media_image_upload.alt %}
   {% else %}
-    {% set image_url = directory ~ '/assets/images/default-img.png' %}
+    {% set image_url = '/' ~ directory ~ '/assets/images/default-img.png' %}
   {% endif %}
   <div class="card-header position-relative p-0 w-100 activity-teaser-image overflow-hidden">
     <img class="object-fit-cover" src="{{ image_url }}" alt="{{ image_alt|default('') }}">

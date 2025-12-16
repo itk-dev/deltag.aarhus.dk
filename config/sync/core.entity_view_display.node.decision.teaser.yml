@@ -1,0 +1,68 @@
+uuid: 53e0d791-db1f-49d0-9c1c-bef79f768ee4
+langcode: da
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.decision.field_area
+    - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_decision
+    - field.field.node.decision.field_decision_date
+    - field.field.node.decision.field_department
+    - field.field.node.decision.field_media_document
+    - field.field.node.decision.field_related_content
+    - field.field.node.decision.field_teaser
+    - field.field.node.decision.field_top_images
+    - field.field.node.decision.field_type
+    - node.type.decision
+  module:
+    - user
+id: node.decision.teaser
+targetEntityType: node
+bundle: decision
+mode: teaser
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_sections: true
+  field_decision: true
+  field_decision_date: true
+  field_department: true
+  field_media_document: true
+  field_related_content: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

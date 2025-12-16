@@ -1,0 +1,29 @@
+uuid: bd5dd147-942f-49bf-b4e2-1b7ba3357927
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_top_images
+    - media.type.image
+    - node.type.decision
+id: node.decision.field_top_images
+field_name: field_top_images
+entity_type: node
+bundle: decision
+label: Topbilleder
+description: 'Ved tilføjelse af flere billeder starter en billedkarussel hvor hvert billede vises i 15 sekunder.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

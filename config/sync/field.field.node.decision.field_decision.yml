@@ -1,0 +1,21 @@
+uuid: 0150d467-dac7-457d-a048-1f25efaf0b51
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_decision
+    - node.type.decision
+  module:
+    - options
+id: node.decision.field_decision
+field_name: field_decision
+entity_type: node
+bundle: decision
+label: Afgørelse
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -64,6 +64,8 @@ services:
         "--user-claims",
         '{"sub": "dialogue_editor", "email": "dialogue_editor@example.com", "groups": ["dialogue_editor"]}',
         "--user-claims",
+        '{"sub": "decision_editor", "email": "decision_editor@example.com", "groups": ["decision_editor"]}',
+        "--user-claims",
         '{"sub": "project_editor", "email": "project_editor@example.com", "groups": ["project_editor"]}',
         "--user-claims",
         '{"sub": "hearing_editor", "email": "hearing_editor@example.com", "groups": ["hearing_editor"]}',

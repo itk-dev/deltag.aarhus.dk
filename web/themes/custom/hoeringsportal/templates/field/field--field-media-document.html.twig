@@ -39,10 +39,10 @@
 #}
 
 {% if label_display == 'above' %}
-  <h2>{{ 'Materials'|t }} ({{ items|length }})</h2>
+  <h2>{{ label }}</h2>
 {% endif %}
-<div class="content-box--link-with-icons">
+<div>
   {% for item in items %}
-    <div class="content-box--link-with-icon mb-3" {{ item.attributes }}>{{ item.content }}</div>
+    <div{{ item.attributes }}>{{ item.content }}</div>
   {% endfor %}
 </div>
