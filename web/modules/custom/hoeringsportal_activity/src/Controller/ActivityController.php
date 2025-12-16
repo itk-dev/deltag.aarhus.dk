@@ -41,6 +41,6 @@ final class ActivityController extends ControllerBase {
    *   The access result.
    */
   public function access(AccountInterface $account) {
-    return AccessResult::allowedIf($account->hasPermission('create public_meeting content') || $account->hasPermission('create dialogue content'));
+    return AccessResult::allowedIf($account->hasPermission('create public_meeting content') || $account->hasPermission('create course content'));
   }
 }

@@ -47,10 +47,16 @@
                           <i class="fa-regular fa-circle-dot text-background-match"></i>
                         </div>
                         {% if element.type is same as('text') %}
-                          <div class="d-inline-block">
-                            <div class="text-background-match">{{ element.label }}</div>
+                        <div class="d-inline-block">
+                          <div class="text-background-match">{{ element.label }}</div>
+                          {% if element.value is iterable %}
+                            {% for value in element.value %}
+                              <div class="fw-bold">{{ value }}</div>
+                            {% endfor %}
+                          {% else %}
                             <div class="fw-bold">{{ element.value }}</div>
-                          </div>
+                          {% endif %}
+                        </div>
                         {% endif %}
                         {% if element.type is same as('link') %}
                           <div class="d-inline-block">

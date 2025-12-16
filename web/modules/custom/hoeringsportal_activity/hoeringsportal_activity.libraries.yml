@@ -3,3 +3,7 @@ backend:
   css:
     theme:
       assets/css/backend.css: {}
+course_form_alter:
+  version: VERSION
+  js:
+    assets/js/course-form.js: { scope: bottom, preprocess: false }

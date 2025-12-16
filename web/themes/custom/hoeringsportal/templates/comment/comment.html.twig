@@ -115,7 +115,7 @@
             data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
             href="{{ path('comment.reply', {entity_type: 'node', entity: comment.entity_id.value[0].target_id, field_name: 'field_comments', pid: comment.cid.value}) }}">
             {{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-reply.svg.html.twig') }}
-            {{ 'Reply'|t({}, {context: 'Comment reply  '}) }}
+            {{ 'Reply'|t({}, {context: 'Comment reply'}) }}
           </a>
         </div>
       </div>

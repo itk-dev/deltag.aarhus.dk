@@ -10,12 +10,14 @@
 {% elseif node_type == 'project_main_page' %}
   {% set node_type_class = 'text-project' %}
   {% set node_type_text = 'Project'|t %}
-{% elseif node_type == 'public_meeting' %}
+{% elseif node_type == 'public_meeting' or node_type == 'course' %}
   {% set node_type_class = 'text-public-meeting' %}
-  {% set node_type_text = 'Public meeting'|t %}
+  {% set node_type_text = 'Activity'|t %}
   {# Get the correct url for next meeting #}
-  {% set dates_delta = public_meeting_context.upcoming|first.name %}
-  {% set url = path('hoeringsportal_public_meeting.public_meeting_date', {node: node.id, dates_delta}) %}
+  {% if public_meeting_context %}
+    {% set dates_delta = public_meeting_context.upcoming|first.name %}
+    {% set url = path('hoeringsportal_public_meeting.public_meeting_date', {node: node.id, dates_delta}) %}
+  {% endif %}
 {% elseif node_type == 'static_page' %}
   {% set node_type_class = 'text-static-page' %}
   {% set node_type_text = 'Article'|t %}
@@ -56,7 +58,7 @@
     <img class="object-fit-cover" src="{{ image_url }}" alt="{{ image_alt|default('') }}">
 
     {# If we have a node of type hearing or public meeting we show a date splash on the card #}
-    {% if node_type in ['hearing', 'public_meeting'] %}
+    {% if node_type in ['hearing', 'public_meeting', 'course'] %}
       <div class="position-absolute bottom-0 start-0 py-2 px-4 bg-white flex-column d-flex align-items-center">
         {% block card_date %}
         {% endblock %}

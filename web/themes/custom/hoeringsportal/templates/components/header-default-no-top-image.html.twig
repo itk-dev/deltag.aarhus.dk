@@ -35,7 +35,13 @@
                         {% if element.type is same as('text') %}
                           <div class="d-inline-block">
                             <div class="text-background-match">{{ element.label }}</div>
-                            <div class="fw-bold">{{ element.value }}</div>
+                            {% if element.value is iterable %}
+                              {% for value in element.value %}
+                                <div class="fw-bold">{{ value }}</div>
+                              {% endfor %}
+                            {% else %}
+                              <div class="fw-bold">{{ element.value }}</div>
+                            {% endif %}
                           </div>
                         {% endif %}
                         {% if element.type is same as('link') %}

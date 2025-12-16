@@ -12,6 +12,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "Course"
+msgstr "Forløb"
+msgid "Duration"
+msgstr "Varighed"
+msgid
+msgstr
 msgid "Create event"
 msgstr "Opret begivenhed"
 msgid "Create course"

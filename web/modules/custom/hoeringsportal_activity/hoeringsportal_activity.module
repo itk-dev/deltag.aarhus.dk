@@ -1,5 +1,9 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\hoeringsportal_activity\Helper\ActivityHelper;
+
 /**
  * Implements hook_theme().
  */
@@ -12,4 +16,16 @@ function hoeringsportal_activity_theme($existing, $type, $theme, $path) : array 
       ],
     ],
   ];
+}
+
+function hoeringsportal_activity_entity_presave(EntityInterface $entity) {
+  Drupal::service(ActivityHelper::class)->coursePresave($entity);
+}
+
+function hoeringsportal_activity_form_node_course_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ActivityHelper::class)->courseFormAlter($form, $form_state);
+}
+
+function hoeringsportal_activity_form_node_course_edit_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ActivityHelper::class)->courseFormAlter($form, $form_state);
 }
