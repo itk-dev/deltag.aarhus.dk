@@ -3,7 +3,6 @@
 namespace Drupal\hoeringsportal_data\Helper;
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\hoeringsportal_deskpro\Service\HearingHelper as DeskproHearingHelper;
 use Drupal\Core\Logger\LoggerChannelInterface;
@@ -198,14 +197,13 @@ class HearingHelper implements LoggerAwareInterface {
   /**
    * Get decisions linked to a hearing.
    *
-   * @param NodeInterface $hearing
+   * @param \Drupal\node\Entity\NodeInterface $hearing
    *   A hearing node.
    *
-   * @return EntityInterface[]
+   * @return \Drupal\Core\Entity\EntityInterface[]
    *   A list of decision nodes.
    */
-  public function getDecisions(NodeInterface $hearing): array
-  {
+  public function getDecisions(NodeInterface $hearing): array {
     try {
       $decisionIds = $this->entityTypeManager->getStorage('node')->getQuery()
         ->accessCheck()
@@ -216,8 +214,10 @@ class HearingHelper implements LoggerAwareInterface {
 
       return $this->entityTypeManager->getStorage('node')->loadMultiple($decisionIds);
 
-    } catch (\Exception $exception) {
+    }
+    catch (\Exception $exception) {
       return [];
     }
   }
+
 }
