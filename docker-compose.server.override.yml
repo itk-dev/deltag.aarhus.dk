@@ -14,7 +14,7 @@ services:
       NGINX_MAX_BODY_SIZE: 90M
 
   clamav:
-    image: clamav/clamav:1.2
+    image: clamav/clamav:1.4
     restart: unless-stopped
     networks:
       - app
