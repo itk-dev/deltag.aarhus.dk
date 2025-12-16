@@ -51,7 +51,17 @@ $orange-light: #ffcfc1;
 $red: #d32f2f;
 $red-light: #f2c0c0;
 $color-white: $white;
-$color-petroleum-100: oklch(98% 0.017 196.88);
+
+$color-petroleum-100: oklch(95% 0.01 196.6518);
+$color-petroleum-200: oklch(90% 0.02 196.6518);
+$color-petroleum-300: oklch(85% 0.05 196.6518);
+$color-petroleum-400: oklch(70% 0.07 196.6518);
+$color-petroleum-500: oklch(55.61% 0.094687 196.6518);
+$color-petroleum-600: oklch(45% 0.094687 196.6518);
+$color-petroleum-700: oklch(35% 0.094687 196.6518);
+$color-petroleum-800: oklch(25% 0.063 196.6518);
+$color-petroleum-900: oklch(15% 0.0406 196.6518);
+
 $color-peach-100: oklch(94% 0.02 56.12);
 $color-peach-200: oklch(90% 0.02 56.12);
 $color-peach-600: oklch(50% 0.02 56.12);

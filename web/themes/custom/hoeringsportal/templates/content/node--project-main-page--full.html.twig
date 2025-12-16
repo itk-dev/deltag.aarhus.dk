@@ -1,0 +1,46 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: node.field_project_image,
+    category: content.field_project_category,
+    title: node.label,
+    description: content.field_short_description,
+    tags_fields: {0: content.field_area},
+    type: 'type-project',
+    image_half: false,
+    shortcuts: {},
+    right_content: {
+      0: {
+        type: 'text',
+        label: 'Status'|t,
+        value: content.field_project_status
+      }
+    }
+    })
+  }}
+{% endblock %}
+{% block content_main %}
+  {# Main container #}
+  <div class="container content__container">
+    <div class="row">
+      <div class="col-md-8">
+        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at', 'field_project_status') }}
+      </div>
+      <div class="col-md-4 pt-md-3">
+        {{ content.field_aside_block }}
+      </div>
+    </div>
+  </div>
+  <div class="sections d-flex flex-column">
+    {{ content.field_content_sections }}
+  </div>
+  <div class="sections d-flex flex-column">
+    <div class="container">
+      <div class="row">
+        {{ drupal_view('project_decisions', 'default', node.id) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

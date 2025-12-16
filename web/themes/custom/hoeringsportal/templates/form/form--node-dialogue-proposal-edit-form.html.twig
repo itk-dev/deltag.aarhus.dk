@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+
+<div class="container-fluid bg-white">
+  {% set parentNode = dialogue_helper.getParentNode() %}
+  {% set node = dialogue_helper.getCurrentProposal() %}
+  <div class="proposal-form-wrapper row justify-content-center">
+    <div class="proposal-layout">
+      <div class="breadcrumb mb-3">
+        {# @fixme Remove this hardcoded path! #}
+        <span class="me-2"><a href="/tidlig-inddragelse">{{ 'Early inclusion'|t }}</a></span>
+        {% if parentNode and node %}
+          <span>/</span>
+          <span class="mx-2">
+            <a href="{{ path('entity.node.canonical', {node: parentNode.id}) }}">{{ parentNode.label }}</a>
+          </span>
+          <span>/</span>
+          <span class="mx-2">
+            <a href="{{ path('entity.node.canonical', {node: node.id}) }}">{{ node.label }}</a>
+          </span>
+        {% endif %}
+      </div>
+      <form{{ attributes }}>
+        <h1>{{ 'Edit dialog proposal'|t }}</h1>
+        <div class="image-drag">
+          {{ children }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

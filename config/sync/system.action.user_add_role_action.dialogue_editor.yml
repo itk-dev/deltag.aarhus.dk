@@ -1,0 +1,14 @@
+uuid: e6787a25-5d50-4525-9946-b61d6b81d00d
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.dialogue_editor
+  module:
+    - user
+id: user_add_role_action.dialogue_editor
+label: 'Add the Dialog redaktør role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: dialogue_editor

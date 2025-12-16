@@ -1,0 +1,11 @@
+uuid: 04369832-085c-4a61-a229-0c1089a1a43f
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.dialogue
+id: node.dialogue
+target_entity_type_id: node
+target_bundle: dialogue
+default_langcode: site_default
+language_alterable: false

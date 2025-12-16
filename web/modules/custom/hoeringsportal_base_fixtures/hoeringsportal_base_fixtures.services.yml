@@ -52,6 +52,10 @@ services:
     tags:
       - { name: content_fixture }
 
+  Drupal\hoeringsportal_base_fixtures\Fixture\TermDialogueProposalCategoryFixture:
+    tags:
+      - { name: content_fixture }
+
   Drupal\hoeringsportal_base_fixtures\Fixture\TermHearingTypeFixture:
     tags:
       - { name: content_fixture }
@@ -72,6 +76,11 @@ services:
     tags:
       - { name: content_fixture }
 
+  Drupal\hoeringsportal_base_fixtures\Fixture\DecisionFixture:
+    tags:
+      - { name: content_fixture }
+
   Drupal\hoeringsportal_base_fixtures\Fixture\UserFixture:
     tags:
       - { name: content_fixture }
+

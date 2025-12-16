@@ -6,6 +6,52 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
+  * Let citizens cancel comments
+  * Added "(edited)" on edited content
+* [PR-574](https://github.com/itk-dev/deltag.aarhus.dk/pull/574)
+  Added settings for Anonymous edit
+* [PR-572](https://github.com/itk-dev/deltag.aarhus.dk/pull/572)
+  Updated anonymous edit UI
+* [PR-564](https://github.com/itk-dev/deltag.aarhus.dk/pull/564)
+  Added hoeringsportal_anonymous_edit module
+* [PR-569](https://github.com/itk-dev/deltag.aarhus.dk/pull/569)
+  * Align use of type, department and area in relevant content types
+* [PR-567](https://github.com/itk-dev/deltag.aarhus.dk/pull/567)
+  * Added skip-ssl flag to queries in readme regarding test-setup of deskpro
+* [PR-557](https://github.com/itk-dev/deltag.aarhus.dk/pull/557)
+  * Change dialogue proposal backend
+  * Add seperate view for dialogue proposal comments
+  * Deny access for admin comments tab in general
+  * Update user permissions
+  * Add access restrictions on unpublished comments
+  * Override default dialogue form
+  * Add promoted content feature
+  * Updated Drupal core 10.5.2 => 10.5.6
+  * Updated accessibility
+  * Add breadcrumb to dialogue
+  * Add map to dialogue
+  * Add map default display
+
+* [PR-555](https://github.com/itk-dev/deltag.aarhus.dk/pull/555)
+  * Add underline to active navigation.
+  * Adjust header witdt
+* [PR-556](https://github.com/itk-dev/deltag.aarhus.dk/pull/556)
+  * Change OIDC container
+
+* [PR-553](https://github.com/itk-dev/deltag.aarhus.dk/pull/553)
+  * Add animated svg icons comment, reply, thumbs-up
+
+* [PR-552](https://github.com/itk-dev/deltag.aarhus.dk/pull/552)
+  * Add styling for dialog proposal categories
+
+* [PR-551](https://github.com/itk-dev/deltag.aarhus.dk/pull/551)
+  * Remove old video field and disabled Azure video module
+  * Enable Comments module
+  * Add Support comment flag
+  * Add Honeypot module
+  * Add ITK Video module and Video paragraph for Video Tool
+
 ## [4.13.2] - 2025-12-01
 
 * [PR-570](https://github.com/itk-dev/deltag.aarhus.dk/pull/570)

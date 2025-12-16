@@ -1,0 +1,8 @@
+uuid: f524e7fb-c700-4c0a-8ea1-f1f993fc1a2a
+langcode: da
+status: true
+dependencies: {  }
+id: early_inclusion_comment
+label: Comment
+target_entity_type_id: node
+description: 'Comments related to early inclusion'

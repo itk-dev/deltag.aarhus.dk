@@ -1,0 +1,19 @@
+uuid: d8abb7ed-c89b-4abf-8f82-6cdcb7f5aa38
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_deskpro_department_id
+    - node.type.public_meeting
+id: node.public_meeting.field_deskpro_department_id
+field_name: field_deskpro_department_id
+entity_type: node
+bundle: public_meeting
+label: Afdeling
+description: 'Vælg afdeling for høringen.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

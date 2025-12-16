@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_section
     - node.type.static_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.introduction
     - paragraphs.paragraphs_type.text
@@ -27,24 +28,58 @@ settings:
       image: image
       introduction: introduction
       text: text
+      accordion: accordion
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: true
       content_block:
         weight: 8
         enabled: false
       content_list:
         weight: 9
         enabled: false
+      content_promotion:
+        weight: 21
+        enabled: false
+      files:
+        weight: 22
+        enabled: false
       image:
         weight: 7
         enabled: true
+      info_box:
+        weight: 24
+        enabled: false
       introduction:
         weight: 10
         enabled: true
+      link:
+        weight: 26
+        enabled: false
+      links_on_a_background_image:
+        weight: 27
+        enabled: false
+      projekt_billede_galleri:
+        weight: 28
+        enabled: false
       teaser_row:
         weight: 11
         enabled: false
       text:
         weight: 12
         enabled: true
+      text_aside_blocks_2_column:
+        weight: 31
+        enabled: false
+      timeline_items:
+        weight: 32
+        enabled: false
+      timeline_period:
+        weight: 33
+        enabled: false
+      video:
+        weight: 34
+        enabled: false
 field_type: entity_reference_revisions

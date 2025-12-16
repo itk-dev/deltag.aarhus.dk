@@ -1,0 +1,4 @@
+respect_cookie_information: 1
+providers_status:
+  video_tool: true
+  vimeo: false

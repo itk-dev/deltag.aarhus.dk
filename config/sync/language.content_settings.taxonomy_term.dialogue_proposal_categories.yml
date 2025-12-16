@@ -1,0 +1,11 @@
+uuid: 2c825d52-6b03-4d43-852c-7a9b3bead69d
+langcode: da
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dialogue_proposal_categories
+id: taxonomy_term.dialogue_proposal_categories
+target_entity_type_id: taxonomy_term
+target_bundle: dialogue_proposal_categories
+default_langcode: site_default
+language_alterable: false

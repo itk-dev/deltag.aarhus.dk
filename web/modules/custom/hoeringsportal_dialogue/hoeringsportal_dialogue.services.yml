@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    autowire: true
+
+  Drupal\hoeringsportal_dialogue\Helper\DialogueHelper:
+
+  Drupal\hoeringsportal_dialogue\Theme\ThemeDialogueNegotiator:
+    tags:
+      - { name: theme_negotiator, priority: 10 }
+
+  Drupal\hoeringsportal_dialogue\Controller\DialogueController:
+    arguments: ["@url_generator"]
+
+  Drupal\hoeringsportal_dialogue\EventSubscriber\AnonymousEditSubscriber:
+    tags:
+      - { name: event_subscriber }

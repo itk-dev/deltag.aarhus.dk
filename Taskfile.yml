@@ -284,7 +284,27 @@ tasks:
       # We need the pretix service to load public meeting fixtures (cf. https://docs.docker.com/compose/how-tos/environment-variables/envvars/#compose_profiles)
       - COMPOSE_PROFILES=pretix COMPOSE_UP_WAIT=true task compose-up
       - task drush -- --yes pm:enable hoeringsportal_base_fixtures $(find web/modules/custom -type f -name 'hoeringsportal_*_fixtures.info.yml' -exec basename -s .info.yml {} \;)
+      - task drush -- sql:query "TRUNCATE hoeringsportal_anonymous_edit_content"
+      - task drush -- sql:query "TRUNCATE hoeringsportal_anonymous_edit_owners"
       - task drush -- --yes content-fixtures:load
+      # We don't set/use browser cookies when loading fixtures, so we need a little clean up to make sure that an email is associated with just one token.
+      # Update content to use a single token (the smallest) per email
+      - |
+        task drush -- sql:query "
+          UPDATE hoeringsportal_anonymous_edit_content AS c
+            JOIN hoeringsportal_anonymous_edit_owners AS o ON c.owner_token = o.owner_token
+             SET c.owner_token = (SELECT MIN(owner_token) FROM hoeringsportal_anonymous_edit_owners WHERE hoeringsportal_anonymous_edit_owners.email = o.email)
+           WHERE o.email != ''
+           ;
+        "
+      # Delete all owners having an email and not the smallest token
+      - |
+        task drush -- sql:query "
+          DELETE FROM hoeringsportal_anonymous_edit_owners
+           WHERE email != ''
+             AND owner_token != (SELECT MIN(owner_token) FROM hoeringsportal_anonymous_edit_owners AS o WHERE hoeringsportal_anonymous_edit_owners.email = o.email)
+          ;
+        "
       - task drush -- --yes pm:uninstall content_fixtures
       # Update states on public meetings.
       - task drush -- --yes hoeringsportal:public_meeting:state-update
@@ -293,7 +313,7 @@ tasks:
 
   translations:import:
     cmds:
-      - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.da.po)'
+      - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.hoeringsportal_dialogue.da.po)'
       - task drush -- php:eval "var_export(\Drupal::state()->get('locale.translation.formulae', []))"
       - 'task drush -- php:eval "var_export(array_map(static fn (\$count) => (new \Drupal\Core\StringTranslation\PluralTranslatableMarkup(\$count, ''1 item'', ''@count items'', options: [''langcode'' => ''da'']))->render(), range(0, 5)));"'
       - 'task drush -- php:eval "var_export(array_map(static fn (\$count) => (new \Drupal\Core\StringTranslation\PluralTranslatableMarkup(\$count, ''1 item'', ''@count items'', options: [''langcode'' => ''en'']))->render(), range(0, 5)));"'
@@ -301,11 +321,11 @@ tasks:
 
   translations:export:
     cmds:
-      - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.da.po)'
+      - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.hoeringsportal_dialogue.da.po)'
       # Fix plurals spec in PO file
       # https://drupalsun.com/eelke/2020/08/17/tale-mistranslated-plurals
       # https://www.drupal.org/project/drupal/issues/3496223
-      - 'task compose -- exec phpfpm sed -i "s/Plural-Forms: nplurals=2; plural=(n > 1);/Plural-Forms: nplurals=2; plural=(n != 1);/" translations/custom-translations.da.po'
+      - 'task compose -- exec phpfpm sed -i "s/Plural-Forms: nplurals=2; plural=(n > 1);/Plural-Forms: nplurals=2; plural=(n != 1);/" translations/custom-translations.hoeringsportal_dialogue.da.po'
     silent: true
 
   # Development settings tasks (`/admin/config/development/settings`) (cf. https://www.drupal.org/docs/develop/development-tools/disabling-and-debugging-caching).

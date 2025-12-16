@@ -6,9 +6,12 @@ dependencies:
     - core.entity_view_mode.node.list_display
     - field.field.node.project_main_page.field_area
     - field.field.node.project_main_page.field_content_sections
+    - field.field.node.project_main_page.field_department
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
+    - field.field.node.project_main_page.field_project_status
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
     - text
@@ -49,8 +52,18 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
 hidden:
   field_content_sections: true
+  field_department: true
+  field_project_status: true
   langcode: true
   links: true
   published_at: true

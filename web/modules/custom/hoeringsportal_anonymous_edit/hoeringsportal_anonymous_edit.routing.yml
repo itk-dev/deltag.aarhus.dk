@@ -1,0 +1,56 @@
+hoeringsportal_anonymous_edit:
+  path: "/hoeringsportal-anonymous-edit"
+  defaults:
+    _title: "Main controller"
+    _controller: '\Drupal\hoeringsportal_anonymous_edit\Controller\HoeringsportalAnonymousEditController'
+  options:
+    no_cache: "TRUE"
+  requirements:
+    _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.content:
+  path: "/hoeringsportal-anonymous-edit/content"
+  defaults:
+    _title: "Content"
+    _controller: '\Drupal\hoeringsportal_anonymous_edit\Controller\HoeringsportalAnonymousEditContentController'
+  options:
+    no_cache: "TRUE"
+  requirements:
+    _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.comment.cancel_form:
+  path: "/hoeringsportal-anonymous-edit/comment/{comment}/cancel"
+  defaults:
+    _title: "Cancel comment"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\CommentCancelForm'
+  options:
+    parameters:
+      comment:
+        type: entity:comment
+  requirements:
+    _user_is_logged_in: "FALSE"
+    _custom_access: 'Drupal\hoeringsportal_anonymous_edit\Form\CommentCancelForm::access'
+
+hoeringsportal_anonymous_edit.content_request:
+  path: "/hoeringsportal-anonymous-edit/content/request"
+  defaults:
+    _title: "Request"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\RequestForm'
+  requirements:
+    _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.content_recover:
+  path: "/hoeringsportal-anonymous-edit/content/recover/{token}"
+  defaults:
+    _title: "Recover"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\RecoverForm'
+  requirements:
+    _user_is_logged_in: "FALSE"
+
+hoeringsportal_anonymous_edit.settings:
+  path: "/admin/hoeringsportal_anonymous_edit/settings"
+  defaults:
+    _title: "Settings"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\SettingsForm'
+  requirements:
+    _permission: "administer site configuration"

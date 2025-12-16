@@ -16,6 +16,7 @@ module:
   ckeditor5: 0
   clamav: 0
   color_field: 0
+  comment: 0
   config: 0
   config_ignore: 0
   config_import_locale: 0
@@ -40,7 +41,10 @@ module:
   field_group: 0
   field_ui: 0
   file: 0
+  file_resup: 0
   filter: 0
+  flag: 0
+  hoeringsportal_anonymous_edit: 0
   hoeringsportal_audit_log: 0
   hoeringsportal_citizen_proposal: 0
   hoeringsportal_citizen_proposal_archiving: 0
@@ -48,13 +52,16 @@ module:
   hoeringsportal_content_access: 0
   hoeringsportal_content_blocks: 0
   hoeringsportal_data: 0
+  hoeringsportal_decision: 0
   hoeringsportal_deskpro: 0
+  hoeringsportal_dialogue: 0
   hoeringsportal_forms: 0
   hoeringsportal_hearing: 0
   hoeringsportal_openid_connect: 0
   hoeringsportal_project_timeline: 0
   hoeringsportal_public_meeting: 0
   hoeringsportal_quicklinks: 0
+  honeypot: 0
   image: 0
   image_captcha: 0
   image_widget_crop: 0
@@ -62,10 +69,10 @@ module:
   inline_form_errors: 0
   itk_admin: 0
   itk_admin_links: 0
-  itk_azure_video: 0
   itk_media_entity: 0
   itk_pretix: 0
   itk_siteimprove: 0
+  itk_video: 0
   jquery_ui: 0
   jsonapi: 0
   language: 0
@@ -107,6 +114,7 @@ module:
   token: 0
   token_filter: 0
   toolbar: 0
+  twig_extensions: 0
   twig_tweak: 0
   update: 0
   user: 0

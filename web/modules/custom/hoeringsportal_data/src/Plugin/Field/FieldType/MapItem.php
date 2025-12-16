@@ -23,6 +23,7 @@ class MapItem extends FieldItemBase {
   const TYPE_LOCALPLANIDS = 'localplanids';
   const TYPE_LOCALPLANIDS_NODE = 'localplanids_node';
   const TYPE_POINT = 'point';
+  const TYPE_MAP_CONFIG = 'map_config';
 
   /**
    * {@inheritdoc}
@@ -42,9 +43,14 @@ class MapItem extends FieldItemBase {
           'type' => 'text',
           'size' => 'big',
         ],
+
         'localplanids' => [
           'type' => 'varchar',
           'length' => 255,
+        ],
+        'map_config' => [
+          'type' => 'text',
+          'size' => 'big',
         ],
         self::TYPE_POINT => [
           'type' => 'text',
@@ -75,6 +81,10 @@ class MapItem extends FieldItemBase {
         ->setLabel(t('Local plan ids'))
         ->setRequired(FALSE),
 
+      'map_config' => DataDefinition::create('string')
+        ->setLabel(t('Map config'))
+        ->setRequired(FALSE),
+
       self::TYPE_POINT => DataDefinition::create('string')
         ->setLabel(t('Point'))
         ->setRequired(FALSE),
@@ -95,6 +105,13 @@ class MapItem extends FieldItemBase {
    */
   public function getMapData() {
     return json_decode($this->data, TRUE);
+  }
+
+  /**
+   * Get map config.
+   */
+  public function getMapConfig() {
+    return json_decode($this->map_config, TRUE);
   }
 
 }

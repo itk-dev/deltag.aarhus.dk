@@ -4,6 +4,16 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_department
+    - node.type.dialogue
+    - node.type.dialogue_proposal
+    - node.type.hearing
+    - node.type.landing_page
+    - node.type.page_map
+    - node.type.project
+    - node.type.project_main_page
+    - node.type.project_page
+    - node.type.public_meeting
+    - node.type.static_page
   module:
     - csv_serialization
     - node
@@ -406,7 +416,16 @@ display:
           entity_field: type
           plugin_id: bundle
           operator: in
-          value: {  }
+          value:
+            public_meeting: public_meeting
+            dialogue: dialogue
+            hearing: hearing
+            page_map: page_map
+            landing_page: landing_page
+            project_main_page: project_main_page
+            project_page: project_page
+            project: project
+            static_page: static_page
           group: 1
           exposed: true
           expose:
@@ -424,8 +443,14 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              citizen_proposal_editor: '0'
               administrator: '0'
-            reduce: false
+              hearing_editor: '0'
+              project_editor: '0'
+              dialogue_editor: '0'
+              public_meeting_editor: '0'
+              page_editor: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''
@@ -541,6 +566,48 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+        type_1:
+          id: type_1
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: 'not in'
+          value:
+            dialogue_proposal: dialogue_proposal
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:

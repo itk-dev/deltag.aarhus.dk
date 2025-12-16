@@ -1,0 +1,47 @@
+{% block content_top %}
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: {0: node.field_project_image},
+    category: content.field_project_category,
+    title: node.label,
+    description: content.field_short_description,
+    tag_fields: {0: content.field_area},
+    shortcuts: {},
+    notification: {
+      header: 'Decision'|t,
+      message: 'At a council meeting @date a decision regarding this hearing was made: <strong>@decision</strong>'|t({'@date': 'd/m/Y', '@decision': 'vedtaget'}),
+      link: {
+        text: 'Read the entire decision'|t,
+        url: '#'
+      }
+    }
+  }
+  ) }}
+{% endblock %}
+{% block content_main %}
+  {# Main container #}
+  <div class="container content__container">
+    <div class="row">
+      <div class="col-md-8">
+        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at') }}
+      </div>
+      <div class="col-md-4 pt-md-3">
+        {{ content.field_aside_block }}
+      </div>
+    </div>
+  </div>
+  <div class="sections d-flex flex-column">
+    {{ content.field_content_sections }}
+  </div>
+  <div class="container">
+    <div class="row text-muted">
+      {{ content.published_at }}
+    </div>
+  </div>
+{% endblock %}
+{% block content_bottom %}
+  {# Newsletter signup #}
+  {% if node_newsletter %}
+    {{ include('@hoeringsportal/newsletter-bottom-link.html.twig') }}
+  {% endif %}
+{% endblock %}

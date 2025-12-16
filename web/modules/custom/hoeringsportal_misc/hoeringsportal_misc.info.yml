@@ -5,3 +5,5 @@ package: Custom
 core_version_requirement: ^10 || ^11
 dependencies:
   - drupal:toolbar
+interface translation project: hoeringsportal_misc
+interface translation server pattern: modules/custom/hoeringsportal_misc/translations/hoeringsportal_misc.%language.po

@@ -12,9 +12,109 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 2px;
       width: 100%;
       background-color: color.adjust($primary, $lightness: -10%);
+    }
+  }
+
+  &-transparent {
+    position: relative;
+    border: 0;
+
+    background-color: rgba(255, 255, 255, 0);
+    color: color.adjust($petroleum, $lightness: -10%);
+    border: 2px solid color.adjust($petroleum, $lightness: -10%);
+
+    &:hover {
+      color: color.adjust($petroleum, $lightness: -30%);
+      border: 2px solid color.adjust($petroleum, $lightness: -30%);
+    }
+  }
+}
+
+.btn-sm {
+  @extend .btn-sm;
+
+  padding: $spacer * 0.5 $spacer * 0.75;
+
+  &.btn-primary {
+    position: relative;
+    border: 0;
+    color: $white;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: transparent;
+    }
+  }
+}
+
+.btn-toggle {
+  background: $color-petroleum-800;
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+
+  &:has(input.btn-check:checked) {
+    background: $color-petroleum-900;
+  }
+
+  input.btn-check {
+    &:checked + .toggle-badge {
+      color: white;
+      background-color: $color-petroleum-800;
+      border: 1px solid $color-petroleum-800;
+      transform: translateY(-2px);
+
+      &:hover {
+        background-color: $color-petroleum-800;
+      }
+    }
+  }
+
+  label.toggle-badge {
+    display: block;
+    background: white;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: $font-size-small;
+    border: 1px solid $color-petroleum-800;
+    color: $color-petroleum-800;
+    padding: 8px 12px;
+    margin-bottom: 0;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 300ms cubic-bezier(0.3, 0.7, 0.4, 1),
+        background-color 0.1s ease-in;
+    }
+  }
+
+  &:hover label.toggle-badge {
+    color: $color-petroleum-800;
+    background-color: $color-petroleum-100;
+    border: 1px solid $color-petroleum-800;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translateY(-2px);
+      transition:
+        transform 200ms cubic-bezier(0.3, 0.7, 0.4, 1.5),
+        background-color 0.2s ease-out;
+    }
+  }
+
+  &:active label.toggle-badge {
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translateY(-2px);
+      transition:
+        transform 34ms,
+        background-color 0.2s ease-out;
     }
   }
 }

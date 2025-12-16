@@ -1,0 +1,166 @@
+.proposal-layout {
+  max-width: 840px !important;
+}
+
+.breadcrumb {
+  color: $color-petroleum-800;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.flag-wrapper {
+  .flag a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ajax-progress-throbber {
+    display: none;
+  }
+}
+
+.proposal-form-wrapper {
+  padding-top: 3rem;
+}
+
+.node-dialogue-proposal-form,
+.node-dialogue-proposal-edit-form {
+  .fieldset-legend {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  label,
+  legend {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    span.optional {
+      margin-left: 0.5rem;
+      font-weight: normal;
+    }
+  }
+
+  .form-required:after {
+    content: "";
+    margin-bottom: 0.5rem;
+  }
+
+  .image-widget {
+    @extend .d-flex;
+    @extend .flex-wrap;
+
+    img {
+      margin-right: 4rem;
+    }
+
+    .form-item {
+      @extend .flex-grow-1;
+      flex-basis: 50%;
+    }
+
+    .file--image {
+      display: none;
+    }
+
+    .js-form-submit {
+      flex-basis: 100%;
+    }
+
+    .drop-message {
+      padding: 1rem;
+    }
+
+    .button {
+      @extend .btn;
+      @extend .btn-primary;
+
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
+      position: inherit;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .field--name-field-dialogue-proposal-category .fieldset-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacer;
+
+    .form-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacer;
+      order: 2;
+    }
+    .description {
+      order: 1;
+    }
+  }
+}
+
+.dialogue-proposals {
+  font-size: $font-size-small;
+
+  .card-text {
+    line-clamp: 3;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 65px;
+    overflow: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.proposal-category-items {
+  .badge {
+    border: 1px solid $color-petroleum-800;
+    color: $color-petroleum-800;
+  }
+}
+
+.dialogue-proposal {
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  #map {
+    height: 300px !important;
+  }
+
+  .comments .indented {
+    border-left: 2px dashed $gray-600;
+    padding-left: 2em;
+  }
+}
+
+/* Target the full page (the body element) rather than `.dialogue-proposal` to also affect elements in modals. */
+.page--dialogue_proposal {
+  .comment-header,
+  .node-metadata {
+    display: flex;
+    gap: 1em;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .comment-time {
+    color: $gray-600;
+  }
+}

@@ -7,6 +7,12 @@ import { library, dom } from "@fortawesome/fontawesome-svg-core";
 
 // To keep the package size as small as possible we only import icons we use
 
+// Import the icons from the free regular package.
+import {
+  faWindowClose,
+  faCircleDot,
+} from "@fortawesome/free-regular-svg-icons";
+
 // Import the icons from the free solid package.
 import {
   faArrowRight,
@@ -31,6 +37,8 @@ import {
   faClock,
   faLocationDot,
   faComments,
+  faThumbsUp,
+  faTags,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Import icons from the free brands package
@@ -49,6 +57,9 @@ import {
 
 // Add the icons to the library for replacing <i class="fa-solid fa-sort"></i> with the intended svg.
 library.add(
+  // Regular
+  faWindowClose,
+  faCircleDot,
   // Solid
   faArrowRight,
   faArrowLeft,
@@ -71,6 +82,8 @@ library.add(
   faCalendarDay,
   faClock,
   faLocationDot,
+  faThumbsUp,
+  faTags,
   // Brand
   faDigg,
   faEvernote,
@@ -84,4 +97,9 @@ library.add(
   faXTwitter,
   faTriangleExclamation,
 );
-dom.i2svg();
+
+Drupal.behaviors.iconToSvg = {
+  attach: function (context, settings) {
+    dom.i2svg();
+  },
+};

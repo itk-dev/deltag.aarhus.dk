@@ -23,7 +23,7 @@ dependencies:
     - view_unpublished
 id: public_meeting_editor
 label: Begivenhedsredaktør
-weight: -4
+weight: -2
 is_admin: null
 permissions:
   - 'access content overview'

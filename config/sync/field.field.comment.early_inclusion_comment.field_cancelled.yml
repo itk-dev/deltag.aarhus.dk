@@ -1,0 +1,19 @@
+uuid: 549f6154-2b9c-43ce-97c0-70ee9bba5f3c
+langcode: da
+status: true
+dependencies:
+  config:
+    - comment.type.early_inclusion_comment
+    - field.storage.comment.field_cancelled
+id: comment.early_inclusion_comment.field_cancelled
+field_name: field_cancelled
+entity_type: comment
+bundle: early_inclusion_comment
+label: Cancelled
+description: 'Timestamp telling if – and when – comment has been cancelled by user.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

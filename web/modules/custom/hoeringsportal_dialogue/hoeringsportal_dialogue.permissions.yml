@@ -1,0 +1,7 @@
+administer dialogues:
+  title: "Administer dialogue module"
+  description: "Access dialogue admin pages"
+
+administer dialogue proposals:
+  title: "Administer dialogue proposals"
+  description: "Access dialogue proposal admin pages"

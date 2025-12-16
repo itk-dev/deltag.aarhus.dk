@@ -1,0 +1,11 @@
+uuid: 39ac6aa7-df64-4c53-b574-ceba2145fb8e
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.dialogue_proposal
+id: node.dialogue_proposal
+target_entity_type_id: node
+target_bundle: dialogue_proposal
+default_langcode: site_default
+language_alterable: false

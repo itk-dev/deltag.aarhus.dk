@@ -26,12 +26,16 @@ settings:
     default: default
   preselect_views:
     all_citizen_proposals: all_citizen_proposals
+    all_decisions: all_decisions
+    all_early_inclusion: all_early_inclusion
     all_hearings: all_hearings
     all_meetings: all_meetings
     all_projects: all_projects
-    latest_public_meetings: latest_public_meetings
     latest_citizen_proposals: latest_citizen_proposals
+    latest_decisions: latest_decisions
     latest_hearings: latest_hearings
     latest_projects: latest_projects
+    latest_public_meetings: latest_public_meetings
+    seneste_dialoger: seneste_dialoger
   enabled_settings: {  }
 field_type: viewsreference

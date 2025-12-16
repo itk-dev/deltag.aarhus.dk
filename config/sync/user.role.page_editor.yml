@@ -22,7 +22,7 @@ dependencies:
     - view_unpublished
 id: page_editor
 label: Sideredaktør
-weight: -3
+weight: -1
 is_admin: null
 permissions:
   - 'access content overview'

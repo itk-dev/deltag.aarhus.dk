@@ -1,0 +1,88 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="dialogue-proposal container-fluid bg-white content__container" id="content">
+    <div class="row justify-content-center pt-5">
+      <div class="proposal-layout">
+        <div class="breadcrumb mb-3">
+          <span class="me-2"><a href="/tidlig-inddragelse">{{ 'Early inclusion'|t }}</a></span>/
+          <span class="mx-2">
+            <a href="{{ path('entity.node.canonical', {node: node.field_dialogue.entity.id}) }}">{{ node.field_dialogue.entity.label }}</a>
+          </span>/
+          <span class="mx-2">{{ label }}</span>
+        </div>
+        <h1>{{ label }}</h1>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="d-flex flex-wrap px-0">
+              <div class="me-3">
+                <span class="flag-wrapper">{{ content.flag_support_proposal }}</span>
+              </div>
+              <div>
+                <a href="#comments" class="text-secondary">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-comment.svg.html.twig') }}<span>{% trans %}1 comment{% plural node.field_comments.comment_count %}{{ count }} comments{% endtrans %}</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          {{ content.field_dialogue_proposal_category }}
+        </div>
+        {% if content.field_image_upload %}
+          <div class="row mb-3">
+            <div class="col">
+              {{ content.field_image_upload }}
+            </div>
+          </div>
+        {% endif %}
+        <div class="row mb-3">
+          <div class="col">
+            {{ content.field_dialogue_proposal_descr }}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            {{ content.field_location }}
+          </div>
+        </div>
+
+        <div class="node-metadata small">
+          <div class="node-time">
+            {{ node.changed.value|time_diff }}
+            {% if node.changed.value > node.created.value %}
+              {{ '(edited)'|t({}, {context: 'node'}) }}
+            {% endif %}
+          </div>
+
+          {% if node.access('update') %}
+            <div class="node-edit">
+              <a class="text-primary"
+                href="{{ path('entity.node.edit_form', {node: node.id}) }}">
+                {{ 'Edit'|t({}, {context: 'node'}) }}
+              </a>
+            </div>
+          {% endif %}
+          {% if node.access('delete') %}
+            <div class="node-delete">
+              <a class="use-ajax text-danger"
+                data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
+                href="{{ path('entity.node.delete_form', {node: node.id}) }}">
+                {{ 'Delete'|t({}, {context: 'node'}) }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            {{ content.field_comments }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

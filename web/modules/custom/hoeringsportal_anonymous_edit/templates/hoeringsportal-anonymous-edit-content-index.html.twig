@@ -1,0 +1,79 @@
+{#
+/**
+ * @file
+ * Content list template.
+ *
+ * Available variables:
+ * - entities: a list of content grouped by bundle and type, e.g.
+ *   [
+ *     {
+ *       type: an instance of ContentEntityType,
+ *       bundles: [
+ *         {
+ *           type: the bundle type, e.g. "early_inclusion_comment",
+ *           entities: [
+ *             {
+ *               instance: an instance of EntityInterface
+ *               edit_query: a URL query to add when generating an edit URL, e.g. `{"edit_token": "17f4139a-8248-422b-b985-d1bb00ba266c"}`
+ *             },
+ *             {
+ *               instance: …,
+ *               edit_query: …
+ *             },
+ *             …
+ *           ]
+ *         },
+ *         {
+ *           type: …,
+ *           entities: …
+ *         },
+ *         …
+ *       ]
+ *     },
+ *     {
+ *       type: …,
+ *       bundles: …
+ *     },
+ *     …
+ *   ]
+ */
+#}
+<div class="anonymous-edit-content-list">
+{% if entities is empty %}
+  <div class="info">{{ "You don't have any content."|trans }}</div>
+
+  {# If entities is null, the user does not have an edit token #}
+  {% if entities is same as(null) %}
+    <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|trans }}</a>
+  {% endif %}
+{% else %}
+  {% for entity_type in entities %}
+    <fieldset>
+      <legend>{{ entity_type.type.label }}</legend>
+      {% for bundle in entity_type.bundles %}
+        <fieldset>
+          <legend>{{ bundle.type }}</legend>
+
+          <ul>
+            {% for entity in bundle.entities %}
+              <li>
+                {# @todo Clean this up #}
+                {% set instance = entity.instance %}
+                {% if instance.comment_type is defined and ('node' == instance.entity_type.string|default(false)) and instance.entity_id is defined %}
+                  {% set comment = instance %}
+                  {% set commentedEntity = comment.getCommentedEntity() %}
+                  {% set url = commentedEntity.toUrl(options: {fragment: 'comment-' ~ comment.id}) %}
+                  <a href="{{ url }}">{{ 'Comment #@comment on %title'|t({'@comment': comment.id, '%title': commentedEntity.label()}) }}</a>
+                {% else %}
+                  {{ entity.instance.toLink('Edit'|trans, 'edit-form', {query: entity.edit_query}) }}
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </fieldset>
+      {% endfor %}
+    </fieldset>
+  {% endfor %}
+
+{% endif %}
+</div>

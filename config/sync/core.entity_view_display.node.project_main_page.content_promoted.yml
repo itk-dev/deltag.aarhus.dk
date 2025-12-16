@@ -1,0 +1,56 @@
+uuid: c2e63dbc-6435-4d45-9887-a1ad3f77b731
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_promoted
+    - field.field.node.project_main_page.field_area
+    - field.field.node.project_main_page.field_content_sections
+    - field.field.node.project_main_page.field_department
+    - field.field.node.project_main_page.field_project_category
+    - field.field.node.project_main_page.field_project_image
+    - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_type
+    - node.type.project_main_page
+  module:
+    - user
+id: node.project_main_page.content_promoted
+targetEntityType: node
+bundle: project_main_page
+mode: content_promoted
+content:
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_area: true
+  field_content_sections: true
+  field_project_category: true
+  field_project_image: true
+  field_short_description: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

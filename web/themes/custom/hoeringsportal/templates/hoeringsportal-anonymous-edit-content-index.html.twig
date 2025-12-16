@@ -1,0 +1,62 @@
+{% extends 'themes/custom/hoeringsportal/templates/_partials/page-content.html.twig' %}
+
+{% block content_classes 'anonymous-edit-content-list' %}
+
+{% block content %}
+  {% if entities is empty %}
+    <div class="info">{{ "You don't have any content."|trans }}</div>
+
+    {# If entities is null, the user does not have an edit token #}
+    {% if entities is same as(null) %}
+      <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|t({}, {context: 'hoeringsportal_anonymous_edit'}) }}</a>
+    {% endif %}
+
+    {# @todo should we let users with an edit token (which may be invalid) recover their token to reset it? #}
+  {% else %}
+    {% set dialogue_proposals = null %}
+    {% set early_inclusion_comments = null %}
+    {# Dig for relevant content
+      @todo make this a little easier, e.g. by adding a getContentByType to the Anonymous edit helper
+    #}
+    {% for entity_type in entities %}
+      {% for bundle in entity_type.bundles %}
+        {% if bundle.type == 'dialogue_proposal' %}
+          {% set dialogue_proposals = bundle.entities %}
+        {% elseif bundle.type == 'early_inclusion_comment' %}
+          {% set early_inclusion_comments = bundle.entities %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    {% if dialogue_proposals %}
+      <h2>{{ 'Your dialogue proposals'|trans }}</h2>
+
+      <ul>
+        {% for entity in dialogue_proposals %}
+          {% set proposal = entity.instance %}
+          <li>
+            {{ proposal.toLink(proposal.label, options: {query: entity.edit_query}) }}
+            {% if proposal.access('update') %}
+              ({{ proposal.toLink('Edit proposal'|t({}, {context: 'hoeringsportal_anonymous_edit'}), 'edit-form', {query: entity.edit_query}) }})
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if early_inclusion_comments %}
+      <h2>{{ 'Your comments'|trans }}</h2>
+
+      <ul>
+        {% for entity in early_inclusion_comments %}
+          {% set comment = entity.instance %}
+          {% set commentedEntity = comment.getCommentedEntity() %}
+          {% set url = commentedEntity.toUrl(options: {fragment: 'comment-' ~ comment.id}) %}
+          <li>
+            <a href="{{ url }}">{{ 'Comment on @title'|t({'@comment': comment.id, '@title': commentedEntity.label}, {context: 'hoeringsportal_anonymous_edit'}) }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+{% endblock %}

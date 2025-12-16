@@ -1,0 +1,92 @@
+{% if images|length > 0 %}
+  {{ attach_library('hoeringsportal/image-fade') }}
+  <div class="header-v2 pb-5 {{ background_class ?? 'bg-white' }}">
+    {% block header_top_image %}
+      {% if images|length > 1 %}
+        <div class="{{ image_half ? 'image-wrapper-half' : 'image-wrapper' }} image-fade position-relative" data-image-duration="15000">
+          {% for key, image in images %}
+            <img id="img-{{ key }}" class="image-slide" src="{{ image|file_url }}" alt="">
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="{{ image_half ? 'image-wrapper-half' : 'image-wrapper' }}">
+          <img src="{{ images[0]|file_url }}" alt="">
+        </div>
+      {% endif %}
+    {% endblock %}
+    <div class="header-wrapper">
+      {% block notification %}
+        {% if notification %}
+          <div class="header-notification">
+            <div class="status-messages alert-warning alert mb-3">
+              <div class="container px-md-5">
+                <h3 class="m-0">{{ notification.header }}</h3>
+                <div>{{ notification.message }} <a href="{{ notification.link.url }}">{{ notification.link.text }}</a></div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endblock %}
+      {% block header_text_box %}
+        <div class="content-wrapper position-relative with-image {{ type ?? 'type-default' }}">
+          <div class="container px-md-5">
+            {% if category %}
+              <div class="small fw-semibold text-background-match">{{ category }}</div>
+            {% endif %}
+            <h1>{{ title }}</h1>
+            <div class="mb-5 row">
+              <div class="col-lg-8 mb-3">
+                {{ description }}
+              </div>
+              {% if right_content %}
+                <div class="col-lg-4 ps-3">
+                  <div class="border-start ps-3">
+                    {% for element in right_content %}
+                      <div>
+                        <div class="align-top d-inline-block me-2">
+                          <i class="fa-regular fa-circle-dot text-background-match"></i>
+                        </div>
+                        {% if element.type is same as('text') %}
+                          <div class="d-inline-block">
+                            <div class="text-background-match">{{ element.label }}</div>
+                            <div class="fw-bold">{{ element.value }}</div>
+                          </div>
+                        {% endif %}
+                        {% if element.type is same as('link') %}
+                          <div class="d-inline-block">
+                            <div class="text-background-match">{{ element.label }}</div>
+                            <div class="fw-bold"><a href="{{ element.href }}">{{ element.link_text }}</a></div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            {% if shortcuts %}
+              <div class="mb-5">
+                {% for shortcut in shortcuts %}
+                  <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if tags_fields %}
+              <div>
+                <button class="tags is-comma-separated text-background-match">
+                  {% for tags in tags_fields %}
+                    {% if tags %}
+                      {{ tags }}
+                    {% endif %}
+                  {% endfor %}
+                </button>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+  </div>
+{% else %}
+  {{ include(directory ~ '/templates/components/header-default-no-top-image.html.twig') }}
+{% endif %}

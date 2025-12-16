@@ -1,0 +1,40 @@
+uuid: 7cb85841-fd38-423f-848d-c7c71de0d2ca
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.dialogue_proposal_add
+    - field.field.node.dialogue.field_area
+    - field.field.node.dialogue.field_content_sections
+    - field.field.node.dialogue.field_department
+    - field.field.node.dialogue.field_dialogue_proposal_category
+    - field.field.node.dialogue.field_dialogue_proposal_config
+    - field.field.node.dialogue.field_dialogue_proposal_location
+    - field.field.node.dialogue.field_hidden_dialogue
+    - field.field.node.dialogue.field_teaser
+    - field.field.node.dialogue.field_top_images
+    - field.field.node.dialogue.field_type
+    - node.type.dialogue
+  module:
+    - user
+id: node.dialogue.dialogue_proposal_add
+targetEntityType: node
+bundle: dialogue
+mode: dialogue_proposal_add
+content: {  }
+hidden:
+  field_area: true
+  field_content_sections: true
+  field_department: true
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_config: true
+  field_dialogue_proposal_location: true
+  field_hidden_dialogue: true
+  field_teaser: true
+  field_top_images: true
+  field_type: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true
