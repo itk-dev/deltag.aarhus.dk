@@ -60,7 +60,7 @@ tasks:
     cmds:
       - task drush -- pm:install drupal_translation_extractor
       - cmd: |
-          {{.EXTRACT_COMMAND}} {{.ITEM.LOCALE}} --source=module:{{.ITEM.MODULE}}
+          {{.EXTRACT_COMMAND}} {{.ITEM.LOCALE}} module:{{.ITEM.MODULE}}
         for:
           matrix:
             LOCALE:
@@ -69,7 +69,7 @@ tasks:
               ref: .TRANSLATION_MODULES
 
       - cmd: |
-          {{.EXTRACT_COMMAND}} {{.ITEM.LOCALE}} --source=theme:{{.ITEM.THEME}}
+          {{.EXTRACT_COMMAND}} {{.ITEM.LOCALE}} theme:{{.ITEM.THEME}}
         for:
           matrix:
             LOCALE:
@@ -78,3 +78,5 @@ tasks:
               ref: .TRANSLATION_THEMES
     vars:
       EXTRACT_COMMAND: task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc --output '%source_dir/translations/%project.%language.po' --no-fill {{.CLI_ARGS}}
+      # EXTRACT_COMMAND: task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc --output '%source_dir/translations/%project.%language.po' {{.CLI_ARGS}}
+      # EXTRACT_COMMAND: task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc --output '%source_dir/translations/%project.%language.po' --fill-from-string-storage {{.CLI_ARGS}}

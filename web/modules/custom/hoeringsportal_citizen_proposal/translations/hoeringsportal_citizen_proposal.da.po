@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-14 13:22+0100\n"
-"PO-Revision-Date: 2025-12-14 13:22+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,314 +13,412 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+#, fuzzy
 msgid "(Not shown on proposal)"
 msgstr ""
 
+#, fuzzy
 msgid "@remaining characters left."
 msgstr ""
 
+#, fuzzy
 msgid "Access denied page"
 msgstr ""
 
+#, fuzzy
 msgid "Add form"
 msgstr ""
 
+#, fuzzy
 msgid "Allow email"
 msgstr ""
 
+#, fuzzy
 msgid "Allow email help"
 msgstr ""
 
+#, fuzzy
 msgid "Approve form"
 msgstr ""
 
+#, fuzzy
 msgid "Approve intro"
 msgstr ""
 
+#, fuzzy
 msgid "Approve proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Authenticate"
 msgstr ""
 
+#, fuzzy
 msgid "Authenticate link text"
 msgstr ""
 
+#, fuzzy
 msgid "Authenticate message"
 msgstr ""
 
+#, fuzzy
 msgid "Authenticate message (support)"
 msgstr ""
 
+#, fuzzy
 msgid "Authenticate with MitID"
 msgstr ""
 
+#, fuzzy
 msgid "Author intro"
 msgstr ""
 
+#, fuzzy
 msgid "Cancel proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Citizen proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Citizen proposal settings sucessfully saved."
 msgstr ""
 
+#, fuzzy
 msgid "Citizen proposal support"
 msgstr ""
 
+#, fuzzy
 msgid "Citizen proposal support related to citizen proposal nodes"
 msgstr ""
 
+#, fuzzy
 msgid "Citizen proposal supporters"
 msgstr ""
 
+#, fuzzy
 msgid "Consent help"
 msgstr ""
 
+#, fuzzy
 msgid "Content"
 msgstr ""
 
+#, fuzzy
 msgid "Could not find a proposal to approve."
 msgstr ""
 
+#, fuzzy
 msgid "Create new proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Create proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Created"
 msgstr ""
 
+#, fuzzy
 msgid "Display email"
 msgstr ""
 
+#, fuzzy
 msgid "E-mail"
 msgstr ""
 
+#, fuzzy
 msgid "Edit proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Editor email address"
 msgstr ""
 
+#, fuzzy
 msgid "Email"
 msgstr ""
 
+#, fuzzy
 msgid "Email display help"
 msgstr ""
 
+#, fuzzy
 msgid "Email help"
 msgstr ""
 
+#, fuzzy
 msgid "Emails"
 msgstr ""
 
+#, fuzzy
 msgid "Id"
 msgstr ""
 
+#, fuzzy
 msgid "If not set, the citizen will see the proposal after supporting it."
 msgstr ""
 
+#, fuzzy
 msgid "Name"
 msgstr ""
 
+#, fuzzy
 msgid "Name help"
 msgstr ""
 
+#, fuzzy
 msgid "Number of allowed characters for proposal field."
 msgstr ""
 
+#, fuzzy
 msgid "Number of allowed characters for remarks field."
 msgstr ""
 
+#, fuzzy
 msgid "Number of allowed characters for title field."
 msgstr ""
 
+#, fuzzy
 msgid "Number of supporters"
 msgstr ""
 
+#, fuzzy
 msgid "Personal data storage consent"
 msgstr ""
 
+#, fuzzy
 msgid "Phone"
 msgstr ""
 
+#, fuzzy
 msgid "Phone help"
 msgstr ""
 
+#, fuzzy
 msgid "Phone number"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter a path on the form /node/«id»."
 msgstr ""
 
+#, fuzzy
 msgid "Please enter a survey description."
 msgstr ""
 
+#, fuzzy
 msgid "Proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Proposal created (citizen)"
 msgstr ""
 
+#, fuzzy
 msgid "Proposal created (editor)"
 msgstr ""
 
+#, fuzzy
 msgid "Proposal help"
 msgstr ""
 
+#, fuzzy
 msgid "Proposal intro"
 msgstr ""
 
+#, fuzzy
 msgid "Proposal published (citizen)"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Proposal supporters. This will create 1 duplicate record for every "
 "comment. Usually if you need this it is better to create a supporter "
 "view."
 msgstr ""
 
+#, fuzzy
 msgid "Redirect URL after a proposal has been cancelled"
 msgstr ""
 
+#, fuzzy
 msgid "Redirect URL after a proposal has been submitted"
 msgstr ""
 
+#, fuzzy
 msgid "Redirect URL after a proposal has been supported"
 msgstr ""
 
+#, fuzzy
 msgid "Remarks"
 msgstr ""
 
+#, fuzzy
 msgid "Remarks help"
 msgstr ""
 
+#, fuzzy
 msgid "Save"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Select a survey to show as part of the form. <a href=\":url\">Manage "
 "surveys</a>."
 msgstr ""
 
+#, fuzzy
 msgid "Select survey webform"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Send citizens from outside the municipality to this page. Enter a path "
 "on the form <code>/node/«id»</code>, e.g. <code>/node/87</code>."
 msgstr ""
 
+#, fuzzy
 msgid "Sidebar"
 msgstr ""
 
+#, fuzzy
 msgid "Sidebar text"
 msgstr ""
 
+#, fuzzy
 msgid "Sign out"
 msgstr ""
 
+#, fuzzy
 msgid "Something went wrong. Your support was not registered."
 msgstr ""
 
+#, fuzzy
 msgid "Subject"
 msgstr ""
 
+#, fuzzy
 msgid "Submission text when a proposal has been submitted"
 msgstr ""
 
+#, fuzzy
 msgid "Submission text when a proposal has been supported"
 msgstr ""
 
+#, fuzzy
 msgid "Support form"
 msgstr ""
 
+#, fuzzy
 msgid "Support intro"
 msgstr ""
 
+#, fuzzy
 msgid "Support proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Support the proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Supporters"
 msgstr ""
 
+#, fuzzy
 msgid "Survey description"
 msgstr ""
 
+#, fuzzy
 msgid "Survey webform"
 msgstr ""
 
+#, fuzzy
 msgid "Tell a little about why the survey is shown."
 msgstr ""
 
+#, fuzzy
 msgid "Thank you for your submission."
 msgstr ""
 
+#, fuzzy
 msgid "Thank you for your support."
 msgstr ""
 
+#, fuzzy
 msgid "Title"
 msgstr ""
 
+#, fuzzy
 msgid "Title help"
 msgstr ""
 
+#, fuzzy
 msgid "Too many characters used."
 msgstr ""
 
+#, fuzzy
 msgid "Update proposal"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Use <code>&lt;a target=&quot;_blank&quot; href=&quot;…&quot;&gt;Read "
 "more about GDRP and data storage&lt;/a&gt;</code> to insert a link to "
 "details on what is stored and where and how."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Use <code>&lt;a target=&quot;_blank&quot; href=&quot;…&quot;&gt;Read "
 "more about the emails we may send&lt;/a&gt;</code> to insert a link to "
 "details on what emails might be sent."
 msgstr ""
 
+#, fuzzy
 msgid "User email"
 msgstr ""
 
+#, fuzzy
 msgid "User identifier"
 msgstr ""
 
+#, fuzzy
 msgid "User name"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "You already supported this proposal on @support_date. You can only "
 "support a proposal once."
 msgstr ""
 
+#, fuzzy
 msgid ""
 "You can use tokens in email subject and both tokens and Twig in email "
 "content."
 msgstr ""
 
+#, fuzzy
 msgid "You have to authenticate to add a proposal"
 msgstr ""
 
+#, fuzzy
 msgid "You have to authenticate to support a proposal"
 msgstr ""
 
+#, fuzzy
 msgid "You're currently authenticated as @name"
 msgstr ""
 
+#, fuzzy
 msgid "You're supporting @label on behalf of a citizen"
 msgstr ""
 
+#, fuzzy
 msgid "Your submission has been cancelled."
 msgstr ""
 

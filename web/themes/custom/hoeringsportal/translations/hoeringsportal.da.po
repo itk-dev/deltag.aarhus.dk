@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-14 13:22+0100\n"
-"PO-Revision-Date: 2025-12-14 13:22+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -18,464 +18,610 @@ msgid_plural "@count comments"
 msgstr[0] ""
 msgstr[1] ""
 
+#, fuzzy
 msgid ""
 "<a href=\"@sign_up_url\">Sign up to our message service</a> and be "
 "informed about your interests"
 msgstr ""
 
+#, fuzzy
 msgid "Aarhus Municipality"
 msgstr ""
 
+#, fuzzy
 msgid "Account activities"
 msgstr ""
 
+#, fuzzy
 msgid "Add hearing ticket"
 msgstr ""
 
+#, fuzzy
 msgid "Add new comment"
 msgstr ""
 
+#, fuzzy
 msgid "Article"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Before you can contribute you must validate your user account with "
 "NemID."
 msgstr ""
 
+#, fuzzy
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgid "Cancelled"
 msgstr ""
 
+#, fuzzy
 msgid "Change user information"
 msgstr ""
 
+#, fuzzy
 msgid "Citizen proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Comments"
 msgstr ""
 
+#, fuzzy
 msgid "Content"
 msgstr ""
 
+#, fuzzy
 msgid "Content on this page"
 msgstr ""
 
+#, fuzzy
 msgid "Copied to clipboard"
 msgstr ""
 
+#, fuzzy
 msgid "Copy to clipboard"
 msgstr ""
 
+#, fuzzy
 msgid "Create dialog proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Create your proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Current activity in the project"
 msgstr ""
 
+#, fuzzy
 msgid "Current occurrence"
 msgstr ""
 
+#, fuzzy
 msgid "Date"
 msgstr ""
 
+#, fuzzy
 msgid "Deadline:"
 msgstr ""
 
+#, fuzzy
 msgid "Dialogue"
 msgstr ""
 
+#, fuzzy
 msgid "Digg"
 msgstr ""
 
+#, fuzzy
 msgid "Drop images here, or click to upload."
 msgstr ""
 
+#, fuzzy
 msgid "Early inclusion"
 msgstr ""
 
+#, fuzzy
 msgid "Edit dialog proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Email"
 msgstr ""
 
+#, fuzzy
 msgid "End date"
 msgstr ""
 
+#, fuzzy
 msgid "Ended"
 msgstr ""
 
+#, fuzzy
 msgid "Evernote"
 msgstr ""
 
+#, fuzzy
 msgid "Expected finish"
 msgstr ""
 
+#, fuzzy
 msgid "Facebook"
 msgstr ""
 
+#, fuzzy
 msgid "Facebook messenger"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Fill out the form and send your proposal so other people can interact "
 "with it."
 msgstr ""
 
+#, fuzzy
 msgid "Finished"
 msgstr ""
 
+#, fuzzy
 msgid "First upcoming"
 msgstr ""
 
+#, fuzzy
 msgid "Go to next page"
 msgstr ""
 
+#, fuzzy
 msgid "Go to previous page"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing has been canceled"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing has ended"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing reply for"
 msgstr ""
 
+#, fuzzy
 msgid "Home"
 msgstr ""
 
+#, fuzzy
 msgid "Information page"
 msgstr ""
 
+#, fuzzy
 msgid "Initiative"
 msgstr ""
 
+#, fuzzy
 msgid "Last date for signup"
 msgstr ""
 
+#, fuzzy
 msgid "Latest proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Like this"
 msgstr ""
 
+#, fuzzy
 msgid "Linkedin"
 msgstr ""
 
+#, fuzzy
 msgid "Location"
 msgstr ""
 
+#, fuzzy
 msgid "Log out"
 msgstr ""
 
+#, fuzzy
 msgid "Map"
 msgstr ""
 
+#, fuzzy
 msgid "Materials"
 msgstr ""
 
+#, fuzzy
 msgid "Meeting has already been held"
 msgstr ""
 
+#, fuzzy
 msgid "Meeting has been cancelled"
 msgstr ""
 
+#, fuzzy
 msgid "Meeting has been held"
 msgstr ""
 
+#, fuzzy
 msgid "Next"
 msgstr ""
 
+#, fuzzy
 msgid "Next page"
 msgstr ""
 
+#, fuzzy
 msgid "No available spots left"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "No parent exists for this dialogue proposal! You should add a proposal "
 "from the appropriate dialogue page."
 msgstr ""
 
+#, fuzzy
 msgid "Not yet validated"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Number of supporters: @number_of_supporters of "
 "@required_number_of_supporters"
 msgstr ""
 
+#, fuzzy
 msgid "Open all"
 msgstr ""
 
+#, fuzzy
 msgid "Open project gallery"
 msgstr ""
 
+#, fuzzy
 msgid "Open search"
 msgstr ""
 
+#, fuzzy
 msgid "Opens in a new tab"
 msgstr ""
 
+#, fuzzy
 msgid "Options"
 msgstr ""
 
+#, fuzzy
 msgid "Page"
 msgstr ""
 
+#, fuzzy
 msgid "Pagination"
 msgstr ""
 
+#, fuzzy
 msgid "Participate with your proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Phone"
 msgstr ""
 
+#, fuzzy
 msgid "Pinterest"
 msgstr ""
 
+#, fuzzy
 msgid "Previous"
 msgstr ""
 
+#, fuzzy
 msgid "Previous page"
 msgstr ""
 
+#, fuzzy
 msgid "Primary tabs"
 msgstr ""
 
+#, fuzzy
 msgid "Print"
 msgstr ""
 
+#, fuzzy
 msgid "Progress"
 msgstr ""
 
+#, fuzzy
 msgid "Project"
 msgstr ""
 
+#, fuzzy
 msgid "Project info"
 msgstr ""
 
+#, fuzzy
 msgid "Proposals"
 msgstr ""
 
+#, fuzzy
 msgid "Proposals received"
 msgstr ""
 
+#, fuzzy
 msgid "Public meeting"
 msgstr ""
 
+#, fuzzy
 msgid "Reddit"
 msgstr ""
 
+#, fuzzy
 msgid "Registration"
 msgstr ""
 
+#, fuzzy
 msgid "Registration deadline passed"
 msgstr ""
 
+#, fuzzy
 msgid "Reply date"
 msgstr ""
 
+#, fuzzy
 msgid "Search"
 msgstr ""
 
+#, fuzzy
 msgid "Search and results will show up here"
 msgstr ""
 
+#, fuzzy
 msgid "Search for %search_terms returned no results"
 msgstr ""
 
+#, fuzzy
 msgid "Secondary tabs"
 msgstr ""
 
+#, fuzzy
 msgid "Share the proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Share to"
 msgstr ""
 
+#, fuzzy
 msgid "Show all hearings"
 msgstr ""
 
+#, fuzzy
 msgid "Show all meetings"
 msgstr ""
 
+#, fuzzy
 msgid "Show more hearings"
 msgstr ""
 
+#, fuzzy
 msgid "Show on map"
 msgstr ""
 
+#, fuzzy
 msgid "Show profile"
 msgstr ""
 
+#, fuzzy
 msgid "Show proposals on map"
 msgstr ""
 
+#, fuzzy
 msgid "Sign up"
 msgstr ""
 
+#, fuzzy
 msgid "Sign up for public meeting"
 msgstr ""
 
+#, fuzzy
 msgid "Skip to main content"
 msgstr ""
 
+#, fuzzy
 msgid "Spots"
 msgstr ""
 
+#, fuzzy
 msgid "Start"
 msgstr ""
 
+#, fuzzy
 msgid "Start date"
 msgstr ""
 
+#, fuzzy
 msgid "Support the proposal"
 msgstr ""
 
+#, fuzzy
 msgid "The hearing list is empty"
 msgstr ""
 
+#, fuzzy
 msgid "The meeting list is empty"
 msgstr ""
 
+#, fuzzy
 msgid "The proposal list is empty"
 msgstr ""
 
+#, fuzzy
 msgid "This dialogue is open for proposals!"
 msgstr ""
 
+#, fuzzy
 msgid "Time"
 msgstr ""
 
+#, fuzzy
 msgid "Try with less words or to phrase it differently"
 msgstr ""
 
+#, fuzzy
 msgid "Tumblr"
 msgstr ""
 
+#, fuzzy
 msgid "Upcoming"
 msgstr ""
 
+#, fuzzy
 msgid "User validated"
 msgstr ""
 
+#, fuzzy
 msgid "User validation"
 msgstr ""
 
+#, fuzzy
 msgid "Validate"
 msgstr ""
 
+#, fuzzy
 msgid "Validate account"
 msgstr ""
 
+#, fuzzy
 msgid "Validate with NemID"
 msgstr ""
 
+#, fuzzy
 msgid "Validated with NemID"
 msgstr ""
 
+#, fuzzy
 msgid "View all proposals"
 msgstr ""
 
+#, fuzzy
 msgid "Whatsapp"
 msgstr ""
 
+#, fuzzy
 msgid "Would you like a direct message when deltag.aarhus.dk has new content?"
 msgstr ""
 
+#, fuzzy
 msgid "X (Twitter)"
 msgstr ""
 
+#, fuzzy
 msgid "You"
 msgstr ""
 
+#, fuzzy
 msgid "You only have to do it once, and you can do it now."
 msgstr ""
 
+#, fuzzy
 msgid "Your information"
 msgstr ""
 
+#, fuzzy
 msgid "Your search yielded no result"
 msgstr ""
 
+#, fuzzy
 msgid "like this"
 msgstr ""
 
+#, fuzzy
 msgid "replies"
 msgstr ""
 
+#, fuzzy
 msgid "‹‹"
 msgstr ""
 
+#, fuzzy
 msgid "››"
 msgstr ""
 
+#, fuzzy
 msgctxt "comment"
 msgid "(edited)"
 msgstr ""
 
+#, fuzzy
 msgctxt "comment"
 msgid "Cancel"
 msgstr ""
 
+#, fuzzy
 msgctxt "comment"
 msgid "Delete"
 msgstr ""
 
+#, fuzzy
 msgctxt "comment"
 msgid "Edit"
 msgstr ""
 
+#, fuzzy
 msgctxt "Comment reply  "
 msgid "Reply"
 msgstr ""
 
+#, fuzzy
 msgctxt "node"
 msgid "(edited)"
 msgstr ""
 
+#, fuzzy
 msgctxt "node"
 msgid "Delete"
 msgstr ""
 
+#, fuzzy
 msgctxt "node"
 msgid "Edit"
 msgstr ""
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Comment on @title"
 msgstr ""
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit proposal"
 msgstr ""
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find my content"
 msgstr ""
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
 msgstr ""
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your comments"
 msgstr ""
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your dialogue proposals"
 msgstr ""

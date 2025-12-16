@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-14 13:22+0100\n"
-"PO-Revision-Date: 2025-12-14 13:22+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,95 +13,125 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+#, fuzzy
 msgid "Address"
 msgstr ""
 
+#, fuzzy
 msgid "Date"
 msgstr ""
 
+#, fuzzy
 msgid "Deadline:"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing deadline has passed"
 msgstr ""
 
+#, fuzzy
 msgid "Last signup date"
 msgstr ""
 
+#, fuzzy
 msgid "Meeting has already been held"
 msgstr ""
 
+#, fuzzy
 msgid "Meeting has been cancelled"
 msgstr ""
 
+#, fuzzy
 msgid "No available spots left"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Note: If this public meeting is cancelled you should go to @cancelLink "
 "to cancel all orders."
 msgstr ""
 
+#, fuzzy
 msgid "Opens in a new tab"
 msgstr ""
 
+#, fuzzy
 msgid "Place"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter a location"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter a start time"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter a value!"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter an address"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter an end time"
 msgstr ""
 
+#, fuzzy
 msgid "Please enter number of spots"
 msgstr ""
 
+#, fuzzy
 msgid "Public meeting cancelled"
 msgstr ""
 
+#, fuzzy
 msgid "Registration"
 msgstr ""
 
+#, fuzzy
 msgid "Registration deadline passed"
 msgstr ""
 
+#, fuzzy
 msgid "Sign up"
 msgstr ""
 
+#, fuzzy
 msgid "Spots"
 msgstr ""
 
+#, fuzzy
 msgid "The meeting end time must be after the start time."
 msgstr ""
 
+#, fuzzy
 msgid "The meeting time must not be in the past."
 msgstr ""
 
+#, fuzzy
 msgid "The registration deadline is required."
 msgstr ""
 
+#, fuzzy
 msgid "The registration deadline must not be after the meeting starts."
 msgstr ""
 
+#, fuzzy
 msgid "The registration deadline must not be in the past."
 msgstr ""
 
+#, fuzzy
 msgid "This event has multiple dates"
 msgstr ""
 
+#, fuzzy
 msgid "Time"
 msgstr ""
 
+#, fuzzy
 msgid "View the list"
 msgstr ""
 

@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-14 13:22+0100\n"
-"PO-Revision-Date: 2025-12-14 13:22+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,101 +13,127 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+#, fuzzy
 msgid "Allow cancel"
-msgstr ""
+msgstr "__Allow cancel"
 
+#, fuzzy
 msgid "Allow delete"
-msgstr ""
+msgstr "__Allow delete"
 
+#, fuzzy
 msgid "Allow update"
-msgstr ""
+msgstr "__Allow update"
 
+#, fuzzy
 msgid "Cancel comment"
-msgstr ""
+msgstr "__Cancel comment"
 
+#, fuzzy
 msgid "Cancel comment?"
-msgstr ""
+msgstr "__Cancel comment?"
 
+#, fuzzy
 msgid "Cancel texts"
-msgstr ""
+msgstr "__Cancel texts"
 
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 msgid "Comment #@comment on %title"
-msgstr ""
+msgstr "Kommentar #@comment på %title"
 
+#, fuzzy
 msgid "Comment cancelled"
-msgstr ""
+msgstr "__Comment cancelled"
 
 msgid "Email sent to @email"
-msgstr ""
+msgstr "E-mail sendt til @email"
 
 msgid "Error sending email @email"
-msgstr ""
+msgstr "Fejl ved afsendelse af e-mail til @email"
 
+#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "__General"
 
+#, fuzzy
 msgid ""
 "If you cancel the comment its content will be deleted, but any "
 "sub-comments will remain. This action cannot be undone."
 msgstr ""
+"__If you cancel the comment its content will be deleted, but any "
+"sub-comments will remain. This action cannot be undone."
 
+#, fuzzy
 msgid "Invalid cancel texts: @message"
-msgstr ""
+msgstr "__Invalid cancel texts: @message"
 
+#, fuzzy
 msgid "Keep comment"
-msgstr ""
+msgstr "__Keep comment"
 
+#, fuzzy
 msgid "Log level"
-msgstr ""
+msgstr "__Log level"
 
+#, fuzzy
 msgid "Node"
-msgstr ""
+msgstr "__Node"
 
+#, fuzzy
 msgid "Owner name format"
-msgstr ""
+msgstr "__Owner name format"
 
+#, fuzzy
 msgid ""
 "Text to set when cancelling a comment. Must be a YAML map from comment "
 "fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
 "blevet slettet af forfatteren.</pre></code>"
 msgstr ""
+"__Text to set when cancelling a comment. Must be a YAML map from "
+"comment fields to texts, e.g. <code><pre>field_comment: Denne "
+"kommentar er blevet slettet af forfatteren.</pre></code>"
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Confirm your email address"
-msgstr ""
+msgstr "__Confirm your email address"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Error recovering your edit token"
-msgstr ""
+msgstr "__Error recovering your edit token"
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find content"
-msgstr ""
+msgstr "__Find content"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find my content"
-msgstr ""
+msgstr "Find mit indhold"
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Invalid email address"
-msgstr ""
+msgstr "__Invalid email address"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
-msgstr ""
+msgstr "Du har ikke noget indhold."
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your edit token has been recovered"
-msgstr ""
+msgstr "__Your edit token has been recovered"
 
+#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your email address"
-msgstr ""
+msgstr "__Your email address"
 

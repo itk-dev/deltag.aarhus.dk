@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-14 13:22+0100\n"
-"PO-Revision-Date: 2025-12-14 13:22+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,42 +13,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+#, fuzzy
 msgid "Comment @commentId and it's children have been unpublished."
 msgstr ""
 
+#, fuzzy
 msgid "Dialogue proposals"
 msgstr ""
 
+#, fuzzy
 msgid "Early inclusion"
 msgstr ""
 
+#, fuzzy
 msgid "Edit your proposal"
 msgstr ""
 
+#, fuzzy
 msgid "Error fetching latest proposal: @message"
 msgstr ""
 
+#, fuzzy
 msgid "Error fetching map data"
 msgstr ""
 
+#, fuzzy
 msgid "Error fetching proposal count: @message"
 msgstr ""
 
+#, fuzzy
 msgid "Error fetching proposal locations: @message"
 msgstr ""
 
+#, fuzzy
 msgid "Map"
 msgstr ""
 
+#, fuzzy
 msgid "Map for @title"
 msgstr ""
 
+#, fuzzy
 msgid "Send your proposal"
 msgstr ""
 
+#, fuzzy
 msgid "View more"
 msgstr ""
 
+#, fuzzy
 msgid "optional"
 msgstr ""
 

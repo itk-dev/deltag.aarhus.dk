@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-14 13:22+0100\n"
-"PO-Revision-Date: 2025-12-14 13:22+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,47 +13,61 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+#, fuzzy
 msgid "About"
 msgstr ""
 
+#, fuzzy
 msgid "Add hearing reply"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "Example: "
 "<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
 msgstr ""
 
+#, fuzzy
 msgid "GIS data"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing deadline has passed"
 msgstr ""
 
+#, fuzzy
 msgid "Hearing deadline: @deadline"
 msgstr ""
 
+#, fuzzy
 msgid "Hearings"
 msgstr ""
 
+#, fuzzy
 msgid "Insert GIS minimap by UUID"
 msgstr ""
 
+#, fuzzy
 msgid "Invalid GIS map UUID: @map_uuid"
 msgstr ""
 
+#, fuzzy
 msgid "The delete date must not be before the reply deadline"
 msgstr ""
 
+#, fuzzy
 msgid "The delete date must not be in the past"
 msgstr ""
 
+#, fuzzy
 msgid "The reply deadline must not be before the start date"
 msgstr ""
 
+#, fuzzy
 msgid "The reply deadline must not be in the past"
 msgstr ""
 
+#, fuzzy
 msgid "The start date must not be in the past"
 msgstr ""
 
