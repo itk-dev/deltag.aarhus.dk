@@ -1,9 +1,8 @@
 {% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
 
 {% block content_top %}
-  {% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date': 'hoeringsportal_datetime' %}
-  {% set state_key = node.field_content_state[0].value %}
-  
+  {% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date_long': 'hoeringsportal_date_time_long' %}
+
   {# Header #}
   {{ include(directory ~ '/templates/components/header-default.html.twig', {
     images: node.field_top_images,
@@ -16,21 +15,30 @@
     right_content: {
       0: {
         type: 'text',
-        label: 'Duration'|t,
-        value: node.field_first_meeting_time.date|date('U')|format_date(dateFormat) ~ ' - ' ~ node.field_last_meeting_time.date|date('U')|format_date(dateFormat)
+        label: 'Category'|t,
+        value: node.field_activity_type.value ? content.field_activity_type : null,
+        icon: 'fa-solid fa-layer-group'
       },
       1: {
         type: 'text',
-        label: 'State'|t,
-        value: node.field_content_state.getSetting('allowed_values')[state_key]
+        label: 'From'|t,
+        value: node.field_first_meeting_time.date|date('U')|format_date(dateFormat),
+        icon: 'fa-solid fa-calendar'
       },
       2: {
+        type: 'text',
+        label: 'To'|t,
+        value: node.field_last_meeting_time.date|date('U')|format_date(dateFormat),
+        icon: 'fa-solid fa-calendar-days'
+      },
+      3: {
         type: 'text',
         label: 'Address'|t,
         value: [
           content.field_activity_location,
           content.field_address
-        ]
+        ],
+        icon: 'fa-solid fa-location-dot'
       }
     },
     category: 'Course'|t

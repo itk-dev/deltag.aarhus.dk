@@ -51,16 +51,24 @@
       ])
     %}
   {% endif %}
+  {% if node.field_last_meeting_time_end.value %}
+    {%
+      set items = items|merge([
+      {icon: 'fa-clock', value: node.field_last_meeting_time_end.value},
+    ])
+    %}
+  {% endif %}
 {% endif %}
-{%
-  set items = items|merge([
-    {icon: 'fa-location-dot', value: content.field_area},
-  ])
-%}
+{% if node.field_pretix_dates|first.value.location %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-location-dot', value: node.field_pretix_dates|first.value.location},
+    ])
+  %}
+{% endif %}
 
 {# Show card information #}
 {% block card_type_information %}
-
   {# Show text if meeting is canceled #}
   {% if (meetingIsCancelled) %}
     <div class="alert alert-warning"><h4 class="alert-heading mt-0">{{ 'Cancelled'|t }}</h4><p class="my-0">{{ content.field_cancelled_text|default('Meeting has been cancelled'|t) }}</p></div>
