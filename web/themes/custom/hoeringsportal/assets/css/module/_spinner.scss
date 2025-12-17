@@ -6,7 +6,7 @@
   > div {
     width: 18px;
     height: 18px;
-    background-color: $primary;
+    background-color: var(--interactive-primary);
     border-radius: 100%;
     display: inline-block;
     animation: bouncedelay 1.4s infinite ease-in-out both;

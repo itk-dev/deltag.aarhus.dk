@@ -3,7 +3,7 @@
 }
 
 .breadcrumb {
-  color: $color-petroleum-800;
+  color: var(--interactive-primary-hover);
 
   a {
     color: inherit;
@@ -127,8 +127,8 @@
 
 .proposal-category-items {
   .badge {
-    border: 1px solid $color-petroleum-800;
-    color: $color-petroleum-800;
+    border: 1px solid var(--interactive-primary-hover);
+    color: var(--interactive-primary-hover);
   }
 }
 
@@ -143,7 +143,7 @@
   }
 
   .comments .indented {
-    border-left: 2px dashed $gray-600;
+    border-left: 2px dashed var(--primitive-gray-600);
     padding-left: 2em;
   }
 }
@@ -161,6 +161,6 @@
   }
 
   .comment-time {
-    color: $gray-600;
+    color: var(--text-muted);
   }
 }

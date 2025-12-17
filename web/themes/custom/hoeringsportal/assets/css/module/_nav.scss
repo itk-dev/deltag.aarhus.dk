@@ -37,15 +37,15 @@ nav.navbar {
     font-size: $font-size-base;
     position: relative;
     display: block;
-    color: $black;
+    color: var(--text-primary);
     font-weight: $font-weight-bold;
 
     &:hover {
-      color: $primary;
+      color: var(--text-link);
     }
 
     &.active {
-      color: $primary;
+      color: var(--text-link);
       text-decoration: underline;
       text-underline-offset: 19px;
       text-decoration-thickness: 5px;
@@ -68,7 +68,7 @@ nav.navbar {
 
   &.is-secondary-navigation {
     .nav-link {
-      color: $gray-800;
+      color: var(--text-secondary);
       font-weight: normal;
       font-size: $font-size-sm;
 
@@ -79,11 +79,11 @@ nav.navbar {
       }
 
       &:hover {
-        color: $primary;
+        color: var(--text-link);
       }
 
       &.active {
-        color: $gray-700;
+        color: var(--text-muted);
       }
 
       &:last-child {
@@ -93,7 +93,7 @@ nav.navbar {
 
     .logout-link {
       font-weight: $font-weight-bold;
-      color: $black;
+      color: var(--text-primary);
     }
   }
 }
@@ -107,7 +107,7 @@ nav.navbar {
 
 .nav-divider:last-child {
   @include media-breakpoint-up(md) {
-    border-right: 1px $border-color solid;
+    border-right: 1px var(--border-default) solid;
     margin-right: $spacer;
     padding-right: $spacer * 0.5;
   }

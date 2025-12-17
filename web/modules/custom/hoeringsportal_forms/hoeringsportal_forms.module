@@ -15,7 +15,7 @@ use Drupal\field\FieldStorageConfigInterface;
  * Add a template suggestions for modifying the node form.
  */
 function hoeringsportal_forms_theme_suggestions_alter(array &$suggestions, array $variables, string $hook) {
-    if (isset($variables['form']) && $variables['theme_hook_original'] == 'node_edit_form') {
+  if (isset($variables['form']) && $variables['theme_hook_original'] == 'node_edit_form') {
     if ($variables['form']['#form_id'] == 'node_project_form' || $variables['form']['#form_id'] == 'node_project_edit_form') {
       $suggestions[] = $hook . '__hoeringsportal_project';
     }

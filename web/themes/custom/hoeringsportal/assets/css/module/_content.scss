@@ -1,5 +1,5 @@
 .content {
-  background: $white;
+  background: var(--bg-primary);
   padding-top: $spacer;
   padding-bottom: $spacer;
 
@@ -10,7 +10,7 @@
     bottom: 0;
     right: 100%;
     width: 200%;
-    background: $white;
+    background: var(--bg-primary);
   }
 }
 
@@ -35,7 +35,7 @@
 // Some headers in group right content should be smaller than usual
 .group-right {
   h3 {
-    border-top: 1px solid $gray-300;
+    border-top: 1px solid var(--border-default);
     padding-top: 1.5rem;
     margin-top: 0.5rem;
 
@@ -56,8 +56,8 @@
 }
 
 .content__header {
-  background: $primary;
-  color: $white;
+  background: var(--bg-accent);
+  color: var(--text-inverse);
 }
 
 .read-more {
@@ -93,25 +93,25 @@
 }
 
 .ticket-file {
-  color: $gray-900;
+  color: var(--text-primary);
   text-decoration: none !important;
   padding: 1em;
   box-sizing: border-box;
-  background: $gray-200;
+  background: var(--bg-tertiary);
   display: block;
 }
 
 .group-footer {
-  background: $gray-100;
+  background: var(--bg-secondary);
   padding-bottom: $spacer;
 
   & > {
     div:nth-child(odd) {
-      background: $gray-200;
+      background: var(--bg-tertiary);
     }
 
     div:nth-child(even) {
-      background: $gray-100;
+      background: var(--bg-secondary);
     }
   }
 }

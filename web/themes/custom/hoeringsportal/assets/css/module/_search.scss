@@ -1,6 +1,6 @@
 #search-block-form {
   .btn-search {
-    color: $primary;
+    color: var(--interactive-primary);
     display: block;
     cursor: pointer;
   }
@@ -10,27 +10,27 @@
   }
 
   .form-search {
-    border: 1px solid $gray-500;
+    border: 1px solid var(--primitive-gray-500);
     display: block;
     width: 100%;
     padding: $spacer * 0.25 $spacer * 0.5;
     border-radius: $border-radius-sm;
 
     &:focus-visible {
-      outline: 2px solid $primary;
+      outline: 2px solid var(--focus-ring-color);
     }
   }
 }
 
 .search-collapse-wrapper {
-  border-bottom: 1px solid $gray-400;
+  border-bottom: 1px solid var(--primitive-gray-400);
   padding-bottom: $spacer * 0.5;
 
   button svg {
-    color: $primary;
+    color: var(--interactive-primary);
 
     &:hover {
-      color: $black;
+      color: var(--text-primary);
     }
   }
 
@@ -52,7 +52,7 @@
   }
 
   @include media-breakpoint-up(md) {
-    border-bottom: 0 solid $gray-600;
+    border-bottom: 0 solid var(--primitive-gray-600);
     padding-bottom: 0;
 
     .collapse,
@@ -124,8 +124,8 @@
 
     &:hover,
     &:focus {
-      background: $gray-100;
-      border-left: 3px solid $gray-400;
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--primitive-gray-400);
       border-radius: $border-radius-sm;
     }
   }
@@ -141,7 +141,7 @@
       order: 1;
 
       .ui-autocomplete-field-term {
-        color: $primary;
+        color: var(--text-link);
       }
     }
 
@@ -154,15 +154,15 @@
 
       .ui-autocomplete-field-term {
         font-weight: bold;
-        color: $primary;
+        color: var(--text-link);
       }
     }
 
     .ui-autocomplete-field-type {
-      background-color: $primary;
+      background-color: var(--bg-accent);
       border-radius: $border-radius-sm;
       padding: 0 $spacer * 0.25;
-      color: $white;
+      color: var(--text-inverse);
       width: fit-content;
       order: 3;
       font-size: $font-size-sm;
