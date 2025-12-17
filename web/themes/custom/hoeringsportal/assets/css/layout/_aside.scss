@@ -1,5 +1,5 @@
 .aside-contact-info-text {
-  background-color: $color-petroleum-100;
+  background-color: var(--primitive-petroleum-100);
   padding: $spacer;
   border-bottom: 3px solid $color-petroleum-200;
 
@@ -23,17 +23,17 @@
   }
 
   &.mint {
-    background-color: $color-petroleum-100;
-    color: $petroleum;
+    background-color: var(--primitive-petroleum-100);
+    color: var(--interactive-primary);
   }
 
   &.peach {
-    background-color: $color-peach-100;
-    color: $color-peach-600;
+    background-color: var(--primitive-peach-100);
+    color: var(--primitive-peach-600);
   }
 
   &.stone {
-    background-color: $color-stone-100;
-    color: $color-stone-600;
+    background-color: var(--primitive-stone-100);
+    color: var(--primitive-stone-600);
   }
 }

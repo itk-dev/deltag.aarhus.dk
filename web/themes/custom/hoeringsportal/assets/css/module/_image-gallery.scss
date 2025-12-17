@@ -28,8 +28,8 @@
 }
 
 .image-gallery-link {
-  background: $petroleum;
-  color: $white;
+  background: var(--bg-accent);
+  color: var(--text-inverse);
   display: block;
   min-height: 100px;
   height: 100%;
@@ -39,7 +39,7 @@
   right: 0;
 
   &:hover {
-    color: $white;
+    color: var(--text-inverse);
     text-decoration: none;
   }
 
@@ -71,7 +71,7 @@
   .fa-video {
     position: absolute;
     z-index: 1;
-    color: $white;
+    color: var(--text-inverse);
     font-size: 1.5em;
     border: 2px solid;
     border-radius: 25px;
@@ -125,15 +125,15 @@
 }
 
 .slick-arrow {
-  border: 2px solid $primary;
+  border: 2px solid var(--interactive-primary);
   cursor: pointer;
   width: 40px;
   height: 40px;
   padding: 0;
   text-align: center;
   border-radius: 50%;
-  background: $white;
-  color: $primary;
+  background: var(--bg-primary);
+  color: var(--interactive-primary);
   z-index: 400;
   position: absolute;
   top: 50%;

@@ -1,7 +1,5 @@
-@use "sass:color";
-
 body {
-  background: $gray-100;
+  background: var(--bg-secondary);
   word-wrap: break-word;
   letter-spacing: 0.05em;
   padding-top: 96px;
@@ -29,7 +27,7 @@ a {
     border-bottom 0.2s ease-in;
 
   &:hover {
-    color: color.adjust($petroleum, $lightness: -10%);
+    color: var(--interactive-primary-hover);
     transition:
       color 0.4s ease-out,
       border-bottom 0.3s ease-out;
@@ -37,7 +35,7 @@ a {
 }
 
 .skip-to-main-content {
-  background-color: $white;
+  background-color: var(--bg-primary);
 }
 
 .text-decoration-underline {
@@ -49,12 +47,12 @@ a {
 }
 
 .ui-dialog-titlebar {
-  background-color: $white;
+  background-color: var(--bg-primary);
   border: 0;
 }
 
 .ui-button-icon {
-  background-color: $white;
+  background-color: var(--bg-primary);
 }
 
 input {

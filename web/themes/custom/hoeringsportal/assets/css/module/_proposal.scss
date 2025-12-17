@@ -8,15 +8,15 @@
   }
 
   .form-item--error-message {
-    color: $red;
+    color: var(--status-danger);
 
     @extend .small;
   }
 }
 
 .authenticate-wrapper {
-  border-top: 1px solid $gray-700;
-  border-bottom: 1px solid $gray-700;
+  border-top: 1px solid var(--primitive-gray-700);
+  border-bottom: 1px solid var(--primitive-gray-700);
 }
 
 .btn-sign-out {
@@ -31,10 +31,10 @@
 }
 
 .citizen-proposal-teaser {
-  border-bottom: 2px solid $gray-300;
+  border-bottom: 2px solid var(--border-default);
 
   &:hover {
-    border-bottom: 2px solid $primary;
+    border-bottom: 2px solid var(--interactive-primary);
     transition: border-bottom 400ms ease-out;
   }
 }
@@ -49,6 +49,6 @@
   .counter {
     order: 1;
     text-align: right;
-    color: $gray-700;
+    color: var(--text-muted);
   }
 }

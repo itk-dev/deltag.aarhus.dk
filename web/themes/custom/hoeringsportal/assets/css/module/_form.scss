@@ -5,7 +5,7 @@
 form {
   .form-required::after {
     content: " *";
-    color: $danger;
+    color: var(--status-danger);
   }
 
   .filter-wrapper {
@@ -18,7 +18,7 @@ form {
     padding: 1em 0;
 
     + fieldset {
-      border-top: solid 1px $secondary;
+      border-top: solid 1px var(--interactive-secondary);
     }
 
     legend {

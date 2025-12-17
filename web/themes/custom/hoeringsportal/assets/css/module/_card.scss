@@ -5,19 +5,19 @@
   --transition-easing-out: ease-out;
 
   .text-public-meeting {
-    color: $pink;
+    color: var(--primitive-pink-500);
   }
 
   .text-project,
   .text-static-page {
-    color: $blue;
+    color: var(--primitive-blue-500);
   }
 
   .text-hearing,
   .text-citizen-proposal,
   .text-decision,
   .text-dialogue {
-    color: $petroleum;
+    color: var(--primitive-petroleum-500);
   }
 
   border: 1px solid $gray-300;

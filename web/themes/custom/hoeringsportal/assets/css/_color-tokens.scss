@@ -1,0 +1,322 @@
+// =============================================================================
+// COLOR TOKENS
+// =============================================================================
+// This file defines all color tokens for the Hoeringsportal theme.
+// Architecture: Primitive tokens (raw values) + Semantic tokens (contextual usage)
+//
+// USAGE:
+// - Use semantic tokens in components: var(--text-primary), var(--bg-accent)
+// - Use primitive tokens only for decorative/brand-specific colors
+// - All colors have hex fallbacks for older browsers, with OKLCH overrides
+// =============================================================================
+
+/* stylelint-disable color-no-hex */
+
+:root {
+  // ===========================================================================
+  // PRIMITIVE TOKENS - Raw color values (don't change between themes)
+  // ===========================================================================
+
+  // ---------------------------------------------------------------------------
+  // Grayscale
+  // ---------------------------------------------------------------------------
+  --primitive-white: #fff;
+  --primitive-white: oklch(100% 0 0);
+
+  --primitive-black: #333;
+  --primitive-black: oklch(27% 0 0);
+
+  --primitive-gray-100: #f6f6f6;
+  --primitive-gray-100: oklch(97% 0 0);
+
+  --primitive-gray-200: #eaeaea;
+  --primitive-gray-200: oklch(93% 0 0);
+
+  --primitive-gray-300: #e6e6e6;
+  --primitive-gray-300: oklch(92% 0 0);
+
+  --primitive-gray-400: #dfdfdf;
+  --primitive-gray-400: oklch(90% 0 0);
+
+  --primitive-gray-500: #d6d6d6;
+  --primitive-gray-500: oklch(87% 0 0);
+
+  --primitive-gray-600: #9d9d9d;
+  --primitive-gray-600: oklch(68% 0 0);
+
+  --primitive-gray-700: #858585;
+  --primitive-gray-700: oklch(60% 0 0);
+
+  --primitive-gray-750: #7a7a7a;
+  --primitive-gray-750: oklch(55% 0 0);
+
+  --primitive-gray-800: #525252;
+  --primitive-gray-800: oklch(42% 0 0);
+
+  --primitive-gray-900: #333;
+  --primitive-gray-900: oklch(27% 0 0);
+
+  --primitive-gray-950: #1a1a1a;
+  --primitive-gray-950: oklch(17% 0 0);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Petroleum (Primary)
+  // ---------------------------------------------------------------------------
+  --primitive-petroleum-100: #e5eef0;
+  --primitive-petroleum-100: oklch(94.3% 0.012 212);
+
+  --primitive-petroleum-200: #cfe0e2;
+  --primitive-petroleum-200: oklch(89.4% 0.017 199);
+
+  --primitive-petroleum-300: #b2dada;
+  --primitive-petroleum-300: oklch(84.8% 0.037 194);
+
+  --primitive-petroleum-400: #8fcfcf;
+  --primitive-petroleum-400: oklch(80.1% 0.052 193);
+
+  --primitive-petroleum-500: #008486;
+  --primitive-petroleum-500: oklch(51.9% 0.089 195);
+
+  --primitive-petroleum-800: #3d6d6d;
+  --primitive-petroleum-800: oklch(46.7% 0.038 194);
+
+  --primitive-petroleum-900: #2a4a4a;
+  --primitive-petroleum-900: oklch(34% 0.027 195);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Peach
+  // ---------------------------------------------------------------------------
+  --primitive-peach-100: #f7f0e8;
+  --primitive-peach-100: oklch(94% 0.02 56.12);
+
+  --primitive-peach-200: #e8dfd4;
+  --primitive-peach-200: oklch(90% 0.02 56.12);
+
+  --primitive-peach-600: #7a6f64;
+  --primitive-peach-600: oklch(50% 0.02 56.12);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Stone (Neutral)
+  // ---------------------------------------------------------------------------
+  --primitive-stone-100: #f0f0f0;
+  --primitive-stone-100: oklch(96% 0 0);
+
+  --primitive-stone-600: #6b6b6b;
+  --primitive-stone-600: oklch(46% 0 0);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Pink
+  // ---------------------------------------------------------------------------
+  --primitive-pink-500: #ee0043;
+  --primitive-pink-500: oklch(55% 0.25 10);
+
+  --primitive-pink-200: #fab2c6;
+  --primitive-pink-200: oklch(82% 0.08 10);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Purple
+  // ---------------------------------------------------------------------------
+  --primitive-purple-500: #673ab7;
+  --primitive-purple-500: oklch(45% 0.18 300);
+
+  --primitive-purple-200: #d1c4e9;
+  --primitive-purple-200: oklch(83% 0.06 300);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Blue
+  // ---------------------------------------------------------------------------
+  --primitive-blue-100: #e8f0f5;
+  --primitive-blue-100: oklch(94.29% 0.01 212.52);
+
+  --primitive-blue-500: #3661d8;
+  --primitive-blue-500: oklch(50% 0.2 265);
+
+  --primitive-blue-200: #c2cff3;
+  --primitive-blue-200: oklch(85% 0.05 265);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Navy
+  // ---------------------------------------------------------------------------
+  --primitive-navy-500: #2b3ba2;
+  --primitive-navy-500: oklch(38% 0.17 270);
+
+  --primitive-navy-200: #bfc4e3;
+  --primitive-navy-200: oklch(82% 0.05 270);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Green
+  // ---------------------------------------------------------------------------
+  --primitive-green-500: #008850;
+  --primitive-green-500: oklch(52% 0.15 160);
+
+  --primitive-green-200: #b2dbca;
+  --primitive-green-200: oklch(85% 0.05 160);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Yellow
+  // ---------------------------------------------------------------------------
+  --primitive-yellow-500: #ffe13d;
+  --primitive-yellow-500: oklch(92% 0.17 95);
+
+  --primitive-yellow-200: #fff6c4;
+  --primitive-yellow-200: oklch(97% 0.06 95);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Orange
+  // ---------------------------------------------------------------------------
+  --primitive-orange-500: #ff5f31;
+  --primitive-orange-500: oklch(65% 0.22 35);
+
+  --primitive-orange-200: #ffcfc1;
+  --primitive-orange-200: oklch(88% 0.06 35);
+
+  // ---------------------------------------------------------------------------
+  // Brand Colors - Red
+  // ---------------------------------------------------------------------------
+  --primitive-red-500: #d32f2f;
+  --primitive-red-500: oklch(52% 0.2 25);
+
+  --primitive-red-200: #f2c0c0;
+  --primitive-red-200: oklch(84% 0.05 25);
+
+  // ===========================================================================
+  // SEMANTIC TOKENS - Contextual usage (change between themes)
+  // ===========================================================================
+
+  // ---------------------------------------------------------------------------
+  // Text Colors
+  // ---------------------------------------------------------------------------
+  --text-primary: var(--primitive-black);
+  --text-secondary: var(--primitive-gray-700);
+  --text-muted: var(--primitive-gray-600);
+  --text-inverse: var(--primitive-white);
+  --text-link: var(--primitive-petroleum-500);
+  --text-link-hover: var(--primitive-petroleum-800);
+
+  // ---------------------------------------------------------------------------
+  // Background Colors
+  // ---------------------------------------------------------------------------
+  --bg-primary: var(--primitive-white);
+  --bg-secondary: var(--primitive-gray-100);
+  --bg-tertiary: var(--primitive-gray-200);
+  --bg-accent: var(--primitive-petroleum-500);
+  --bg-accent-subtle: var(--primitive-petroleum-100);
+  --bg-accent-light: var(--primitive-petroleum-300);
+
+  // ---------------------------------------------------------------------------
+  // Border Colors
+  // ---------------------------------------------------------------------------
+  --border-default: var(--primitive-gray-300);
+  --border-strong: var(--primitive-black);
+  --border-subtle: var(--primitive-gray-200);
+  --border-accent: var(--primitive-petroleum-500);
+
+  // ---------------------------------------------------------------------------
+  // Interactive Colors
+  // ---------------------------------------------------------------------------
+  --interactive-primary: var(--primitive-petroleum-500);
+  --interactive-primary-hover: var(--primitive-petroleum-800);
+  --interactive-primary-active: var(--primitive-petroleum-900);
+  --interactive-secondary: var(--primitive-black);
+  --interactive-secondary-hover: var(--primitive-gray-800);
+
+  // ---------------------------------------------------------------------------
+  // Status Colors
+  // ---------------------------------------------------------------------------
+  --status-danger: var(--primitive-red-500);
+  --status-danger-subtle: var(--primitive-red-200);
+  --status-warning: var(--primitive-yellow-500);
+  --status-warning-subtle: var(--primitive-yellow-200);
+  --status-success: var(--primitive-green-500);
+  --status-success-subtle: var(--primitive-green-200);
+  --status-info: var(--primitive-blue-500);
+  --status-info-subtle: var(--primitive-blue-200);
+
+  // ---------------------------------------------------------------------------
+  // Focus States
+  // ---------------------------------------------------------------------------
+  --focus-ring-color: var(--primitive-petroleum-500);
+
+  // ---------------------------------------------------------------------------
+  // Component-Specific (for common patterns)
+  // ---------------------------------------------------------------------------
+  --card-bg: var(--bg-primary);
+  --card-border: var(--border-default);
+  --input-bg: var(--bg-primary);
+  --input-border: var(--border-default);
+  --input-text: var(--text-primary);
+  --button-primary-bg: var(--interactive-primary);
+  --button-primary-text: var(--text-inverse);
+  --button-secondary-bg: var(--interactive-secondary);
+  --button-secondary-text: var(--text-inverse);
+}
+
+// =============================================================================
+// THEME VARIANTS (Future Implementation)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Dark Mode - Automatic (respects system preference)
+// -----------------------------------------------------------------------------
+// @media (prefers-color-scheme: dark) {
+//   :root:not(.theme-light) {
+//     // Text colors - inverted
+//     --text-primary: var(--primitive-gray-100);
+//     --text-secondary: var(--primitive-gray-400);
+//     --text-muted: var(--primitive-gray-500);
+//     --text-inverse: var(--primitive-black);
+//
+//     // Background colors - inverted
+//     --bg-primary: var(--primitive-gray-900);
+//     --bg-secondary: var(--primitive-gray-800);
+//     --bg-tertiary: var(--primitive-gray-700);
+//
+//     // Border colors - adjusted
+//     --border-default: var(--primitive-gray-700);
+//     --border-strong: var(--primitive-white);
+//     --border-subtle: var(--primitive-gray-800);
+//
+//     // Component-specific
+//     --card-bg: var(--primitive-gray-800);
+//     --input-bg: var(--primitive-gray-800);
+//   }
+// }
+
+// -----------------------------------------------------------------------------
+// Dark Mode - Manual Toggle
+// -----------------------------------------------------------------------------
+// .theme-dark {
+//   --text-primary: var(--primitive-gray-100);
+//   --text-inverse: var(--primitive-black);
+//   --bg-primary: var(--primitive-gray-900);
+//   --bg-secondary: var(--primitive-gray-800);
+//   --border-default: var(--primitive-gray-700);
+//   --card-bg: var(--primitive-gray-800);
+//   --input-bg: var(--primitive-gray-800);
+// }
+
+// -----------------------------------------------------------------------------
+// High Contrast Accessibility Theme
+// -----------------------------------------------------------------------------
+// .theme-high-contrast {
+//   // Maximum contrast for text
+//   --text-primary: #000;
+//   --text-secondary: #000;
+//   --text-muted: #333;
+//   --text-inverse: #fff;
+//
+//   // Clean backgrounds
+//   --bg-primary: #fff;
+//   --bg-secondary: #f0f0f0;
+//   --bg-accent: #000;
+//
+//   // Strong borders
+//   --border-default: #000;
+//   --border-strong: #000;
+//   --border-subtle: #666;
+//
+//   // Enhanced focus states
+//   --focus-ring-color: #000;
+// }
+
+/* stylelint-enable */

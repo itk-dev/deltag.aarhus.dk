@@ -13,19 +13,19 @@
     &.vis-item.vis-range {
       border: 0;
       border-radius: 1rem;
-      background-color: $primary;
+      background-color: var(--interactive-primary);
 
       &.system,
       &.meeting {
-        background: $black;
+        background: var(--text-primary);
       }
 
       &.debate {
-        background: $petroleum-light;
+        background: var(--bg-accent-light);
       }
 
       .vis-item-content {
-        color: $white;
+        color: var(--text-inverse);
         cursor: pointer !important;
         font-size: 0.7rem;
         padding: 0;
@@ -48,17 +48,17 @@
 
     &.vis-item.vis-line,
     &.vis-item.vis-dot {
-      border-color: $primary;
-      background-color: $primary;
+      border-color: var(--interactive-primary);
+      background-color: var(--interactive-primary);
 
       &.system,
       &.meeting {
-        border-color: $black;
-        background: $black;
+        border-color: var(--text-primary);
+        background: var(--text-primary);
       }
 
       &.debate {
-        background: $petroleum-light;
+        background: var(--bg-accent-light);
       }
     }
   }
@@ -69,7 +69,7 @@
 
   .vis-grid.vis-vertical {
     border-right: 0;
-    border-left: 1px solid $gray-400;
+    border-left: 1px solid var(--primitive-gray-400);
   }
 
   .vis-bottom {
@@ -80,13 +80,13 @@
   }
 
   .vis-current-time {
-    background-color: $orange;
+    background-color: var(--primitive-orange-500);
 
     label {
       position: absolute;
       bottom: 0;
       padding: 0 7px 3px;
-      color: $orange;
+      color: var(--primitive-orange-500);
       margin: 0;
     }
   }
@@ -106,16 +106,16 @@
 }
 
 .project-type-label {
-  color: $primary;
+  color: var(--interactive-primary);
   display: inline-block;
   margin: 0 1rem;
   text-align: center;
 
   &.meeting {
-    color: $black;
+    color: var(--text-primary);
   }
 
   &.debate {
-    color: $petroleum-light;
+    color: var(--bg-accent-light);
   }
 }

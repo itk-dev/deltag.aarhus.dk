@@ -10,6 +10,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   Applied security patches
 * [PR-581](https://github.com/itk-dev/deltag.aarhus.dk/pull/581)
   * Update to ClamAV 1.4 (cf. <https://blog.clamav.net/2025/11/clamav-signature-retirement-announcement.html>).
+* [PR-580](https://github.com/itk-dev/deltag.aarhus.dk/pull/580)
+  Centralized color management using CSS custom properties
+  * Added `_color-tokens.scss` with primitive and semantic tokens
+  * Using OKLCH color space with hex fallbacks for older browsers
+  * Migrated all module SCSS files to use CSS custom properties
+  * Prepared architecture for future dark mode and high-contrast themes
 * [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
   * Let citizens cancel comments
   * Added "(edited)" on edited content

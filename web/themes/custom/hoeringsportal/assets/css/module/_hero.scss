@@ -1,31 +1,31 @@
 $hero-breakpoint: "sm";
 
 .hero {
-  color: $white;
-  background: $primary;
+  color: var(--text-inverse);
+  background: var(--bg-accent);
 
   .bg-light {
-    color: $black;
-    background: $gray-100;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
   }
 
   a,
   .link,
   .link::before {
-    color: $white;
+    color: var(--text-inverse);
 
     span {
-      color: $white;
+      color: var(--text-inverse);
     }
   }
 
   a:hover {
-    color: $white;
+    color: var(--text-inverse);
   }
 
   .underlined {
     &::after {
-      background: $white;
+      background: var(--text-inverse);
     }
   }
 
