@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.14.1] - 2025-12-17
+
 * [PR-550](https://github.com/itk-dev/deltag.aarhus.dk/pull/550)
   5603: Aligned development service config with prod config
 * [PR-579](https://github.com/itk-dev/deltag.aarhus.dk/pull/579)
@@ -18,6 +20,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Using OKLCH color space with hex fallbacks for older browsers
   * Migrated all module SCSS files to use CSS custom properties
   * Prepared architecture for future dark mode and high-contrast themes
+
+## [4.14.0] - 2025-12-16
+
 * [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
   * Let citizens cancel comments
   * Added "(edited)" on edited content
@@ -606,7 +611,9 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.14.1...HEAD
+[4.14.1]: https://github.com/itk-dev/hoeringsportal/compare/4.14.0...4.14.1
+[4.14.0]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...4.14.0
 [4.13.2]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...4.13.2
 [4.13.1]: https://github.com/itk-dev/hoeringsportal/compare/4.13.0...4.13.1
 [4.13.0]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...4.13.0
