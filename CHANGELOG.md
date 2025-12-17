@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-581](https://github.com/itk-dev/deltag.aarhus.dk/pull/581)
+  * Update to ClamAV 1.4 (cf. <https://blog.clamav.net/2025/11/clamav-signature-retirement-announcement.html>).
 * [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
   * Let citizens cancel comments
   * Added "(edited)" on edited content
