@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-579](https://github.com/itk-dev/deltag.aarhus.dk/pull/579)
+  Applied security patches
 * [PR-581](https://github.com/itk-dev/deltag.aarhus.dk/pull/581)
   * Update to ClamAV 1.4 (cf. <https://blog.clamav.net/2025/11/clamav-signature-retirement-announcement.html>).
 * [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
