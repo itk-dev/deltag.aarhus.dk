@@ -11,13 +11,13 @@
     type: 'type-project',
     image_half: false,
     shortcuts: {},
-    right_content: {
+    right_content: node.field_project_status.value ? {
       0: {
         type: 'text',
         label: 'Status'|t,
         value: content.field_project_status
       }
-    }
+    } : null
     })
   }}
 {% endblock %}
@@ -26,7 +26,7 @@
   <div class="container content__container">
     <div class="row">
       <div class="col-md-8">
-        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at', 'field_project_status') }}
+        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at', 'field_project_status', 'field_department', 'field_type') }}
       </div>
       <div class="col-md-4 pt-md-3">
         {{ content.field_aside_block }}
