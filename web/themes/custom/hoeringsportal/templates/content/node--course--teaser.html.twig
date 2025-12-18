@@ -4,7 +4,6 @@
 
 {# Show teaser description #}
 {% block card_content %}
-  {{ content.field_teaser[0]['#context'].value|truncate(95, true, true) }}
 {% endblock %}
 
 
@@ -21,7 +20,7 @@
 
 {%
   set items = items|merge([
-  {icon: 'fa-location-dot', value: content.field_area},
+  {icon: 'fa-location-dot', value: node.field_activity_location.value},
 ])
 %}
 

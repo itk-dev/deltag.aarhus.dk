@@ -14,8 +14,11 @@
   {# Set start and end time for next meeting #}
   {% set meetingDateStartTime = public_meeting_context.upcoming|first.time_from %}
   {% set meetingDateEndTime = public_meeting_context.upcoming|first.time_to %}
+  {% set meetingLocation = public_meeting_context.upcoming|first.location %}
 {% else %}
-  {% set meetingDateStartTime = content.field_last_meeting_time['#items'].value %}
+  {% set meetingDateStartTime = node.field_last_meeting_time.date %}
+  {% set meetingDateEndTime = node.field_last_meeting_time_end.date %}
+  {% set meetingLocation = node.field_pretix_dates|first.value.location %}
 {% endif %}
 
 {# Show a date splash on the card #}
@@ -33,7 +36,6 @@
 
 {# Show teaser description #}
 {% block card_content %}
-  {{ content.field_teaser[0]['#context'].value|truncate(95, true, true) }}
 {% endblock %}
 
 {# Collect data for information lines on card #}
@@ -51,18 +53,11 @@
       ])
     %}
   {% endif %}
-  {% if node.field_last_meeting_time_end.value %}
-    {%
-      set items = items|merge([
-      {icon: 'fa-clock', value: node.field_last_meeting_time_end.value},
-    ])
-    %}
-  {% endif %}
 {% endif %}
 {% if node.field_pretix_dates|first.value.location %}
   {%
     set items = items|merge([
-      {icon: 'fa-location-dot', value: node.field_pretix_dates|first.value.location},
+      {icon: 'fa-location-dot', value: meetingLocation},
     ])
   %}
 {% endif %}
