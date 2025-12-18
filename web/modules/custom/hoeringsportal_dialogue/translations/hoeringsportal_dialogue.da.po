@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-16 15:13+0100\n"
-"PO-Revision-Date: 2025-12-16 15:13+0100\n"
+"POT-Creation-Date: 2025-12-18 09:43+0100\n"
+"PO-Revision-Date: 2025-12-18 09:43+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,17 +13,61 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+msgid "1 day ago"
+msgid_plural "@count days ago"
+msgstr[0] "1 dag siden"
+msgstr[1] "@count dage siden"
+
+msgid "1 hour ago"
+msgid_plural "@count hours ago"
+msgstr[0] "1 time siden"
+msgstr[1] "@count timer siden"
+
+msgid "1 minute ago"
+msgid_plural "@count minutes ago"
+msgstr[0] "1 minut siden"
+msgstr[1] "@count minutter siden"
+
+msgid "1 second ago"
+msgid_plural "@count seconds ago"
+msgstr[0] "1 sekund siden"
+msgstr[1] "@count sekunder siden"
+
+msgid "@size limit."
+msgstr "@size begrænsning."
+
+msgid "Add new comment"
+msgstr "Tilføj ny kommentar"
+
 #, fuzzy
 msgid "Comment @commentId and it's children have been unpublished."
 msgstr ""
 
-#, fuzzy
-msgid "Dialogue proposals"
-msgstr ""
+msgid "Comments"
+msgstr "Kommentarer"
 
-#, fuzzy
+msgid "Create dialog proposal"
+msgstr "Opret dialogforslag"
+
+msgid "Current activity in the project"
+msgstr "Nuværende aktivitet i projektet"
+
+msgid "Dialogue"
+msgstr "Dialog"
+
+msgid "Dialogue proposal replies"
+msgstr "Dialogforslags svar"
+
+msgid "Dialogue proposals"
+msgstr "Dialogforslag"
+
+msgid "Drop a file here or click <em>Browse</em> below."
+msgid_plural "Drop up to @count files here or click <em>Browse</em> below."
+msgstr[0] "Flyt en fil hertil eller tryk <em>Browse</em> herunder."
+msgstr[1] "Flyt @count filer hertil eller tryk <em>Browse</em> herunder."
+
 msgid "Early inclusion"
-msgstr ""
+msgstr "Tidlig dialog"
 
 #, fuzzy
 msgid "Edit your proposal"
@@ -33,35 +77,87 @@ msgstr ""
 msgid "Error fetching latest proposal: @message"
 msgstr ""
 
-#, fuzzy
 msgid "Error fetching map data"
-msgstr ""
+msgstr "Fejl ved hentning af data"
 
 #, fuzzy
 msgid "Error fetching proposal count: @message"
 msgstr ""
 
-#, fuzzy
 msgid "Error fetching proposal locations: @message"
-msgstr ""
+msgstr "Fejl ved hentning af lokationer på dialogforslag: @message"
 
-#, fuzzy
+msgid ""
+"Fill out the form and send your proposal so other people can interact "
+"with it."
+msgstr ""
+"Udfyld formularen og send dit forslag så andre kan interagere med "
+"det."
+
+msgid "Latest proposal"
+msgstr "Seneste forslag"
+
 msgid "Map"
-msgstr ""
+msgstr "Kort"
 
-#, fuzzy
 msgid "Map for @title"
-msgstr ""
+msgstr "Kort til @title"
 
-#, fuzzy
+msgid ""
+"No parent exists for this dialogue proposal! You should add a proposal "
+"from the appropriate dialogue page."
+msgstr ""
+"Ingen dialog findes til dette dialogforslag! Du skal tilføje dit "
+"forslag fra den korrekte dialogside."
+
+msgid "One file only."
+msgid_plural "Maximum @count files."
+msgstr[0] "Kun en fil"
+msgstr[1] "Maksimalt @count filer"
+
+msgid "Participate with your proposal"
+msgstr "Deltag med dit forslag"
+
+msgid "Proposal replies"
+msgstr "Svar til dialogforslag"
+
+msgid "Proposals"
+msgstr "Forslag"
+
+msgid "Reply"
+msgstr "Svar"
+
+msgid "Save"
+msgstr "Gem"
+
 msgid "Send your proposal"
-msgstr ""
+msgstr "Send dit forslag"
 
-#, fuzzy
+msgid "Show proposals on map"
+msgstr "Vis forslag på kort"
+
+msgid "View all proposals"
+msgstr "Se alle forslag"
+
 msgid "View more"
-msgstr ""
+msgstr "Se mere"
 
-#, fuzzy
+msgid "Your comment has been posted."
+msgstr "Din kommentar er blevet publiseret"
+
+msgid "comment"
+msgstr "Kommentar"
+
+msgid "like this"
+msgstr "synes om"
+
+msgid "now"
+msgstr "nu"
+
 msgid "optional"
-msgstr ""
+msgstr "Valgfrit"
+
+msgctxt "Comment reply"
+msgid "Reply"
+msgstr "Svar"
 

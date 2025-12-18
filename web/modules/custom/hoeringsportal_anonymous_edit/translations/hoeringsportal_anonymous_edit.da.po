@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-18 09:31+0100\n"
-"PO-Revision-Date: 2025-12-18 09:31+0100\n"
+"POT-Creation-Date: 2025-12-18 09:43+0100\n"
+"PO-Revision-Date: 2025-12-18 09:43+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -41,21 +41,36 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#, fuzzy
 msgid "Comment #@comment on %title"
-msgstr ""
+msgstr "Kommentar #@comment på %title"
 
 #, fuzzy
 msgid "Comment cancelled"
 msgstr ""
 
-#, fuzzy
-msgid "Email sent to @email"
-msgstr ""
+msgid "Confirm your email address"
+msgstr "Bekræft din email adresse\""
 
-#, fuzzy
+msgid "Edit"
+msgstr "Redigér"
+
+msgid "Edit proposal"
+msgstr "Redigér forslag"
+
+msgid "Email sent to @email"
+msgstr "E-mail sendt til @email"
+
+msgid "Error recovering your edit token"
+msgstr "Fejl ved genoprettelse af din redigeringstoken"
+
 msgid "Error sending email @email"
-msgstr ""
+msgstr "Fejl ved afsendelse af e-mail til @email"
+
+msgid "Find content"
+msgstr "Find indhold"
+
+msgid "Find my content"
+msgstr "Find mit indhold"
 
 #, fuzzy
 msgid "General"
@@ -70,6 +85,9 @@ msgstr ""
 #, fuzzy
 msgid "Invalid cancel texts: @message"
 msgstr ""
+
+msgid "Invalid email address"
+msgstr "Ugyldig email adresse"
 
 #, fuzzy
 msgid "Keep comment"
@@ -93,6 +111,15 @@ msgid ""
 "fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
 "blevet slettet af forfatteren.</pre></code>"
 msgstr ""
+
+msgid "You don't have any content."
+msgstr "Du har ikke noget indhold."
+
+msgid "Your edit token has been recovered"
+msgstr "Din redigeringstoken er blevet genoprettet"
+
+msgid "Your email address"
+msgstr "Din email adresse"
 
 #, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
