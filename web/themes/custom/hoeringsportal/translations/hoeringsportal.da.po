@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-16 15:13+0100\n"
-"PO-Revision-Date: 2025-12-16 15:13+0100\n"
+"POT-Creation-Date: 2025-12-18 09:32+0100\n"
+"PO-Revision-Date: 2025-12-18 09:32+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,12 @@ msgstr ""
 
 #, fuzzy
 msgid "Article"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"At a council meeting @date a decision regarding this hearing was made: "
+"<strong>@decision</strong>"
 msgstr ""
 
 #, fuzzy
@@ -108,6 +114,14 @@ msgstr ""
 
 #, fuzzy
 msgid "Deadline:"
+msgstr ""
+
+#, fuzzy
+msgid "Decision"
+msgstr ""
+
+#, fuzzy
+msgid "Decision date"
 msgstr ""
 
 #, fuzzy
@@ -237,10 +251,6 @@ msgid "Map"
 msgstr ""
 
 #, fuzzy
-msgid "Materials"
-msgstr ""
-
-#, fuzzy
 msgid "Meeting has already been held"
 msgstr ""
 
@@ -361,6 +371,10 @@ msgid "Public meeting"
 msgstr ""
 
 #, fuzzy
+msgid "Read the entire decision"
+msgstr ""
+
+#, fuzzy
 msgid "Reddit"
 msgstr ""
 
@@ -449,6 +463,10 @@ msgid "Start date"
 msgstr ""
 
 #, fuzzy
+msgid "Status"
+msgstr ""
+
+#, fuzzy
 msgid "Support the proposal"
 msgstr ""
 
@@ -462,6 +480,10 @@ msgstr ""
 
 #, fuzzy
 msgid "The proposal list is empty"
+msgstr ""
+
+#, fuzzy
+msgid "This decision relates to these activities"
 msgstr ""
 
 #, fuzzy
