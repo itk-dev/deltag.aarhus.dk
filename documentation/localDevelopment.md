@@ -158,20 +158,42 @@ task coding-standards:markdown:check
 
 ## About translations
 
-Import translations by running
+We use [the "translation server" stuff from the Interface Translation
+module](https://git.drupalcode.org/project/drupal/-/blob/11.x/core/modules/locale/locale.api.phh) for translations (see
+[hoeringsportal.info.yml](web/themes/custom/hoeringsportal/hoeringsportal.info.yml) for an example).
+
+Update and import translations by running
 
 ```sh
-(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.hoeringsportal_dialogue.da.po)
+task drush -- locale:check
+task drush -- locale:update
+task drush -- cache:rebuild
 ```
 
-Export translations by running
+Update module and theme translations by running
 
 ```sh
-(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.hoeringsportal_dialogue.da.po)
+task translation:extract
+```
+
+Use `task translation:diff` to check for any changes. New (or empty) translations are marked as
+"[fuzzy](https://www.gnu.org/software/gettext/manual/html_node/Fuzzy-Entries.html)" and default Danish translations for
+these must be added.
+
+> [!TIP]
+> [Poedit](https://poedit.net/) is an excellent tools for editing po files.
+
+<details>
+<summary>Do we still use/need this</summary>
+
+```sh
+(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.da.po)
 ```
 
 Open `translations/custom-translations.da.po` with the latest version of [Poedit](https://poedit.net/) to clean up and
 then save the file.
+
+</details>
 
 See [How to deploy drupal interface
 translations](https://medium.com/limoengroen/how-to-deploy-drupal-interface-translations-5653294c4af6) for further

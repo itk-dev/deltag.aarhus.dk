@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-576](https://github.com/itk-dev/deltag.aarhus.dk/pull/576)
+  Updates translations and added translations handling to deployment
+
 ## [4.14.2] - 2025-12-17
 
 * [583](https://github.com/itk-dev/deltag.aarhus.dk/pull/583)

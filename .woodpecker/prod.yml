@@ -25,6 +25,9 @@ steps:
       pre_up:
         - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes cache:rebuild
         - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes deploy
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes locale:check
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes locale:update
+        - itkdev-docker-compose-server run --rm phpfpm vendor/bin/drush --yes cache:rebuild
       cron:
         cron:
           minute: "*/5"
