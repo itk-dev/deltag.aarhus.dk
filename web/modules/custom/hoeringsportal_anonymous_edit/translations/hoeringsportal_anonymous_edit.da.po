@@ -41,7 +41,7 @@ msgid "Comment cancelled"
 msgstr "Kommentar annulleret"
 
 msgid "Confirm your email address"
-msgstr "Bekræft din email adresse\""
+msgstr "Bekræft din e-mailadresse"
 
 msgid "Edit"
 msgstr "Redigér"
