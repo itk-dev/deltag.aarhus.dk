@@ -23,7 +23,7 @@ msgid "Deadline:"
 msgstr "Frist:"
 
 msgid "Hearing deadline has passed"
-msgstr "Høringsfristen er udløbet"
+msgstr "Høringsfristen er overskredet"
 
 msgid "Last signup date"
 msgstr "Sidste tilmeldingsdato"
