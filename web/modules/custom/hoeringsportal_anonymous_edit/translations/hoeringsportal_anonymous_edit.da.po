@@ -133,7 +133,7 @@ msgstr "Find mit indhold"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Invalid email address"
-msgstr "Ugyldig email adresse"
+msgstr "Ugyldig e-mailadresse"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
