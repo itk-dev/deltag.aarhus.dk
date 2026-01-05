@@ -84,7 +84,7 @@ msgid "Keep comment"
 msgstr "Behold kommentar"
 
 msgid "Log level"
-msgstr "Log niveau"
+msgstr "Logniveau"
 
 msgid "Node"
 msgstr "Node"
