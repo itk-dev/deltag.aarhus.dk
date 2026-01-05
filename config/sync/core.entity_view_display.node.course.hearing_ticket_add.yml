@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.hearing_ticket_add
     - field.field.node.course.field_activity_location
+    - field.field.node.course.field_activity_type
     - field.field.node.course.field_address
     - field.field.node.course.field_area
     - field.field.node.course.field_content_sections
@@ -53,6 +54,7 @@ content:
     region: content
 hidden:
   field_activity_location: true
+  field_activity_type: true
   field_address: true
   field_content_sections: true
   field_content_state: true

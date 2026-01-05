@@ -5,6 +5,7 @@ dependencies:
   config:
     - entity_browser.browser.itk_image_browser
     - field.field.node.course.field_activity_location
+    - field.field.node.course.field_activity_type
     - field.field.node.course.field_address
     - field.field.node.course.field_area
     - field.field.node.course.field_content_sections
@@ -76,6 +77,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_activity_type:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_address:
     type: string_textfield

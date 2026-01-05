@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.course.field_activity_location
+    - field.field.node.course.field_activity_type
     - field.field.node.course.field_address
     - field.field.node.course.field_area
     - field.field.node.course.field_content_sections
@@ -35,6 +36,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 9
+    region: content
+  field_activity_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 11
     region: content
   field_address:
     type: string

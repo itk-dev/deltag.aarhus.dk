@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.list_display
+    - field.field.node.public_meeting.field_activity_type
     - field.field.node.public_meeting.field_area
     - field.field.node.public_meeting.field_cancelled_date
     - field.field.node.public_meeting.field_cancelled_text
@@ -74,6 +75,7 @@ content:
     weight: 2
     region: content
 hidden:
+  field_activity_type: true
   field_cancelled_date: true
   field_cancelled_text: true
   field_contact: true
