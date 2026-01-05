@@ -17,7 +17,7 @@ msgid "@site_name settings"
 msgstr "@site_name indstillinger"
 
 msgid "@site_name settings."
-msgstr "@site_name indstillinger."
+msgstr "Indstillinger for @site_name."
 
 msgid "Configure"
 msgstr "Konfigurér"
