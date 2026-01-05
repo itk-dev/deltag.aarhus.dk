@@ -1,0 +1,85 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+  {% if public_meeting_context.upcoming is not empty %}
+    {# Set start and end time for next meeting #}
+    {% set meetingDateStartTime = public_meeting_context.upcoming|first.time_from %}
+    {% set meetingDateEndTime = public_meeting_context.upcoming|first.time_to %}
+    {% set meetingLocation = public_meeting_context.upcoming|first.location %}
+    {% set meetingAddress = public_meeting_context.upcoming|first.address %}
+  {% else %}
+    {% set meetingDateStartTime = node.field_last_meeting_time.date %}
+    {% set meetingDateEndTime = node.field_last_meeting_time_end.date %}
+    {% set meetingLocation = node.field_pretix_dates|first.value.location %}
+  {% endif %}
+
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: node.field_media_image_single,
+    type: node.bundle,
+    title: node.label,
+    description: content.field_teaser,
+    tags_fields: {0: content.field_area, 1: content.field_type},
+    shortcuts: {},
+    background_class: 'bg-white',
+    right_content: {
+      0: {
+        type: 'text',
+        label: 'Category'|t,
+        value: node.field_activity_type.value ? node.field_activity_type.entity.label : null,
+        icon: 'fa-solid fa-layer-group'
+      },
+      1: {
+        type: 'text',
+        label: 'Date'|t,
+        value: meetingDateStartTime|date('U')|format_date('hoeringsportal_date_long'),
+        icon: 'fa-solid fa-calendar-day'
+      },
+      2: {
+        type: 'text',
+        label: 'Time'|t,
+        value: meetingDateStartTime|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|date('U')|format_date('hoeringsportal_time'),
+        icon: 'fa-solid fa-clock'
+      },
+      3: {
+        type: 'text',
+        label: 'Address'|t,
+        value: [
+          meetingLocation,
+          meetingAddress
+        ],
+        icon: 'fa-solid fa-location-dot'
+      }
+    },
+    category: 'Event'|t,
+    notification: node.field_public_meeting_cancelled.value ? {
+      header: 'Cancelled'|t,
+      message: node.field_cancelled_text.value
+    }: null
+  }) }}
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="bg-white pb-5 mb-5">
+    <div class="container content__container" id="content">
+      <div class="sections d-flex flex-column">
+        {{ content.field_section }}
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {{ content.field_pretix_dates }}
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {{ content.field_map }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
