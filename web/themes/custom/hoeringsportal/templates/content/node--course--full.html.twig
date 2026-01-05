@@ -16,7 +16,7 @@
       0: {
         type: 'text',
         label: 'Category'|t,
-        value: node.field_activity_type.value ? content.field_activity_type : null,
+        value: node.field_activity_type.value ? node.field_activity_type.entity.label : null,
         icon: 'fa-solid fa-layer-group'
       },
       1: {
@@ -35,8 +35,8 @@
         type: 'text',
         label: 'Address'|t,
         value: [
-          content.field_activity_location,
-          content.field_address
+          node.field_activity_location.value,
+          node.field_address.value
         ],
         icon: 'fa-solid fa-location-dot'
       }
@@ -48,7 +48,6 @@
 {% block content_main %}
   {# Main container #}
   <div class="bg-white pb-5 mb-5">
-    {{ dateFormat }}
     <div class="container content__container" id="content">
       <div class="sections d-flex flex-column">
         {{ content.field_content_sections }}

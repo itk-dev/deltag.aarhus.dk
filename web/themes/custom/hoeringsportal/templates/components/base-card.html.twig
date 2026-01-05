@@ -10,13 +10,22 @@
 {% elseif node_type == 'project_main_page' %}
   {% set node_type_class = 'text-project' %}
   {% set node_type_text = 'Project'|t %}
-{% elseif node_type == 'public_meeting' or node_type == 'course' %}
+{% elseif node_type == 'public_meeting'%}
   {% set node_type_class = 'text-public-meeting' %}
-  {% set node_type_text = 'Activity'|t %}
+  {% set node_type_text = 'Event' %}
+  {% if node.field_activity_type.value %}
+    {% set node_type_text = node_type_text ~ ' - ' ~ node.field_activity_type.entity.label %}
+  {% endif %}
   {# Get the correct url for next meeting #}
   {% if public_meeting_context %}
     {% set dates_delta = public_meeting_context.upcoming|first.name %}
     {% set url = path('hoeringsportal_public_meeting.public_meeting_date', {node: node.id, dates_delta}) %}
+  {% endif %}
+{% elseif node_type == 'course' %}
+  {% set node_type_class = 'text-public-meeting' %}
+  {% set node_type_text = 'Course'|t %}
+  {% if node.field_activity_type.value %}
+    {% set node_type_text = node_type_text ~ ' - ' ~ node.field_activity_type.entity.label %}
   {% endif %}
 {% elseif node_type == 'static_page' %}
   {% set node_type_class = 'text-static-page' %}

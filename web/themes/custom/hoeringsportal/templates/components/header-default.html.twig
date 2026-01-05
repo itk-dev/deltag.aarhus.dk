@@ -62,36 +62,32 @@
                 <div class="col-lg-4 ps-3">
                   <div class="border-start ps-3">
                     {% for element in right_content %}
-                      {% set icon = element.icon ?? 'fa-regular fa-circle-dot' %}
-                      <div class="text-nowrap">
-                        <div class="align-top d-inline-block me-2">
-                          <i class="{{ icon }} text-background-match"></i>
-                        </div>
-                        {% if element.type is same as('text') %}
-                          <div class="d-inline-block">
-                            <div class="text-background-match">{{ element.label }}</div>
-                            {% if element.value is not iterable %}
-                              <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
-                            {% else %}
-                              {% if 'field' == element.value['#theme']  %}
+                      {% if element.value is not null %}
+                        {% set icon = element.icon ?? 'fa-regular fa-circle-dot' %}
+                        <div class="text-nowrap">
+                          <div class="align-top d-inline-block me-2">
+                            <i class="{{ icon }} text-background-match"></i>
+                          </div>
+                          {% if element.type is same as('text') %}
+                            <div class="d-inline-block">
+                              <div class="text-background-match">{{ element.label }}</div>
+                              {% if element.value is not iterable %}
                                 <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
                               {% else %}
                                 {% for value in element.value %}
-                                  {% if value['#theme'] %}
-                                    <div class="text-wrap text-capitalize-first-word">{{ value }}</div>
-                                  {% endif %}
+                                  <div class="text-wrap text-capitalize-first-word">{{ value }}</div>
                                 {% endfor %}
                               {% endif %}
-                            {% endif %}
-                          </div>
-                        {% endif %}
-                        {% if element.type is same as('link') %}
-                          <div class="d-inline-block">
-                            <div class="text-background-match">{{ element.label }}</div>
-                            <div class="text-wrap text-capitalize-first-word"><a href="{{ element.href }}">{{ element.link_text }}</a></div>
-                          </div>
-                        {% endif %}
-                      </div>
+                            </div>
+                          {% endif %}
+                          {% if element.type is same as('link') %}
+                            <div class="d-inline-block">
+                              <div class="text-background-match">{{ element.label }}</div>
+                              <div class="text-wrap text-capitalize-first-word"><a href="{{ element.href }}">{{ element.link_text }}</a></div>
+                            </div>
+                          {% endif %}
+                        </div>
+                      {% endif %}
                     {% endfor %}
                   </div>
                 </div>
