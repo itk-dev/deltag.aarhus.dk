@@ -42,7 +42,7 @@ msgid "Aarhus Municipality"
 msgstr "Aarhus Kommune"
 
 msgid "Account activities"
-msgstr "Konto aktiviteter"
+msgstr "Kontoaktiviteter"
 
 msgid "Add hearing ticket"
 msgstr "Tilføj høringssvar"
