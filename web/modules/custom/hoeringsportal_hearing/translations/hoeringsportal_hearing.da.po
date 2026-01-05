@@ -39,7 +39,7 @@ msgid "Hearings"
 msgstr "Høringer"
 
 msgid "Insert GIS minimap by UUID"
-msgstr "Indsæt GIS minikort med UUID"
+msgstr "Indsæt GIS-minikort med UUID"
 
 msgid "Invalid GIS map UUID: @map_uuid"
 msgstr "Ugyldig GIS kort UUID: @map_uuid"
