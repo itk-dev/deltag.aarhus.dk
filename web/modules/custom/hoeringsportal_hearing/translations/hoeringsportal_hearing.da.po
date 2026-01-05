@@ -42,7 +42,7 @@ msgid "Insert GIS minimap by UUID"
 msgstr "Indsæt GIS-minikort med UUID"
 
 msgid "Invalid GIS map UUID: @map_uuid"
-msgstr "Ugyldig GIS kort UUID: @map_uuid"
+msgstr "Ugyldigt GIS-kort-UUID: @map_uuid"
 
 msgid "The delete date must not be before the reply deadline"
 msgstr "Sletningsdatoen må ikke være før svarfristen"
