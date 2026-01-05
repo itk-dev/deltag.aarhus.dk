@@ -145,5 +145,5 @@ msgstr "Din redigeringstoken er blevet genoprettet"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your email address"
-msgstr "Din email adresse"
+msgstr "Din e-mailadresse"
 
