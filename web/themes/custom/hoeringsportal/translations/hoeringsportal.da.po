@@ -105,7 +105,7 @@ msgid "Copied to clipboard"
 msgstr "Kopieret til udklipsholder"
 
 msgid "Copy to clipboard"
-msgstr "Kopier til udklipsholder"
+msgstr "Kopiér til udklipsholder"
 
 msgid "Create dialog proposal"
 msgstr "Opret dialogforslag"
