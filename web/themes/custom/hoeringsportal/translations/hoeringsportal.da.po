@@ -366,7 +366,7 @@ msgid "Project finish"
 msgstr "Initiativ afslutning"
 
 msgid "Project info"
-msgstr "Projekt info"
+msgstr "Projektinformation"
 
 msgid "Project not secure"
 msgstr "Initiativ ikke sikkert"
