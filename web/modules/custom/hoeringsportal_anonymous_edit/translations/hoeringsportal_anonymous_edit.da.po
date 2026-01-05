@@ -1,10 +1,10 @@
-# Danish translation of
+# Danish translation of 
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-18 09:43+0100\n"
-"PO-Revision-Date: 2025-12-18 09:43+0100\n"
+"POT-Creation-Date: 2026-01-05 12:24+0100\n"
+"PO-Revision-Date: 2026-01-05 12:24+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -97,9 +97,10 @@ msgid ""
 "fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
 "blevet slettet af forfatteren.</pre></code>"
 msgstr ""
-"Tekst der skal indstilles ved annullering af en kommentar. Skal være en YAML map fra kommentar "
-"felter til tekster, f.eks. <code><pre>field_comment: Denne kommentar er "
-"blevet slettet af forfatteren.</pre></code>"
+"Tekst der skal indstilles ved annullering af en kommentar. Skal være "
+"en YAML map fra kommentar felter til tekster, f.eks. "
+"<code><pre>field_comment: Denne kommentar er blevet slettet af "
+"forfatteren.</pre></code>"
 
 msgid "You don't have any content."
 msgstr "Du har ikke noget indhold."
@@ -145,3 +146,4 @@ msgstr "Din redigeringstoken er blevet genoprettet"
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your email address"
 msgstr "Din email adresse"
+
