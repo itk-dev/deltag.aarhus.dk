@@ -7,4 +7,3 @@ hoeringsportal_activity.activity_add:
     _custom_access: '\Drupal\hoeringsportal_activity\Controller\ActivityController::access'
   options:
     _admin_route: TRUE
-
