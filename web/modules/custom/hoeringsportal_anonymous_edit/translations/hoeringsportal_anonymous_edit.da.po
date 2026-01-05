@@ -1,40 +1,168 @@
-# Danish translation of anonymous edit module
+# Danish translation of 
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-04 14:19+0100\n"
-"PO-Revision-Date: 2025-12-04 14:19+0100\n"
+"POT-Creation-Date: 2025-12-18 09:43+0100\n"
+"PO-Revision-Date: 2025-12-18 09:43+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+#, fuzzy
+msgid "Allow cancel"
+msgstr ""
+
+#, fuzzy
+msgid "Allow delete"
+msgstr ""
+
+#, fuzzy
+msgid "Allow update"
+msgstr ""
+
+#, fuzzy
+msgid "Cancel comment"
+msgstr ""
+
+#, fuzzy
+msgid "Cancel comment?"
+msgstr ""
+
+#, fuzzy
+msgid "Cancel texts"
+msgstr ""
+
+#, fuzzy
+msgid "Comment"
+msgstr ""
+
+msgid "Comment #@comment on %title"
+msgstr "Kommentar #@comment på %title"
+
+#, fuzzy
+msgid "Comment cancelled"
+msgstr ""
+
+msgid "Confirm your email address"
+msgstr "Bekræft din email adresse\""
+
+msgid "Edit"
+msgstr "Redigér"
+
+msgid "Edit proposal"
+msgstr "Redigér forslag"
+
+msgid "Email sent to @email"
+msgstr "E-mail sendt til @email"
+
+msgid "Error recovering your edit token"
+msgstr "Fejl ved genoprettelse af din redigeringstoken"
+
+msgid "Error sending email @email"
+msgstr "Fejl ved afsendelse af e-mail til @email"
+
+msgid "Find content"
+msgstr "Find indhold"
+
+msgid "Find my content"
+msgstr "Find mit indhold"
+
+#, fuzzy
+msgid "General"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"If you cancel the comment its content will be deleted, but any "
+"sub-comments will remain. This action cannot be undone."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid cancel texts: @message"
+msgstr ""
+
+msgid "Invalid email address"
+msgstr "Ugyldig email adresse"
+
+#, fuzzy
+msgid "Keep comment"
+msgstr ""
+
+#, fuzzy
+msgid "Log level"
+msgstr ""
+
+#, fuzzy
+msgid "Node"
+msgstr ""
+
+#, fuzzy
+msgid "Owner name format"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Text to set when cancelling a comment. Must be a YAML map from comment "
+"fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
+"blevet slettet af forfatteren.</pre></code>"
+msgstr ""
 
 msgid "You don't have any content."
 msgstr "Du har ikke noget indhold."
-msgid "Find my content"
-msgstr "Find mit indhold"
-msgid "Comment #@comment on %title"
-msgstr "Kommentar #@comment på %title"
-msgid "Edit"
-msgstr "Redigér"
-msgid "Your email address"
-msgstr "Din email adresse"
-msgid "Find content"
-msgstr "Find indhold"
-msgid "Email sent to @email"
-msgstr "E-mail sendt til @email"
-msgid "Error sending email @email"
-msgstr "Fejl ved afsendelse af e-mail til @email"
-msgid "Confirm your email address"
-msgstr "Bekræft din email adresse""
-msgid "Invalid email address"
-msgstr "Ugyldig email adresse"
+
 msgid "Your edit token has been recovered"
 msgstr "Din redigeringstoken er blevet genoprettet"
+
+msgid "Your email address"
+msgstr "Din email adresse"
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Confirm your email address"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Edit"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
 msgid "Error recovering your edit token"
-msgstr "Fejl ved genoprettelse af din redigeringstoken"
-msgid "Edit proposal"
-msgstr "Redigér forslag"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Find content"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Find my content"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Invalid email address"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "You don't have any content."
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Your edit token has been recovered"
+msgstr ""
+
+#, fuzzy
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Your email address"
+msgstr ""
+

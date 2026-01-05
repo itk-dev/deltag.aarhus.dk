@@ -4,7 +4,7 @@
 
 {% block content %}
   {% if entities is empty %}
-    <div class="info">{{ "You don't have any content."|trans }}</div>
+    <div class="info">{{ "You don't have any content."|t({}, {context: 'hoeringsportal_anonymous_edit'}) }}</div>
 
     {# If entities is null, the user does not have an edit token #}
     {% if entities is same as(null) %}
@@ -29,7 +29,7 @@
     {% endfor %}
 
     {% if dialogue_proposals %}
-      <h2>{{ 'Your dialogue proposals'|trans }}</h2>
+      <h2>{{ 'Your dialogue proposals'|t({}, {context: 'hoeringsportal_anonymous_edit'}) }}</h2>
 
       <ul>
         {% for entity in dialogue_proposals %}
@@ -45,7 +45,7 @@
     {% endif %}
 
     {% if early_inclusion_comments %}
-      <h2>{{ 'Your comments'|trans }}</h2>
+      <h2>{{ 'Your comments'|t({}, {context: 'hoeringsportal_anonymous_edit'}) }}</h2>
 
       <ul>
         {% for entity in early_inclusion_comments %}

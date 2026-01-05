@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-18 09:43+0100\n"
-"PO-Revision-Date: 2025-12-18 09:43+0100\n"
+"POT-Creation-Date: 2025-12-16 15:13+0100\n"
+"PO-Revision-Date: 2025-12-16 15:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,12 +13,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-msgid "Edit this page"
-msgstr "Redigér denne side"
+#, fuzzy
+msgid "Expected end date"
+msgstr ""
 
-msgid "Go to administration"
-msgstr "Gå til administrationen"
+#, fuzzy
+msgid "Expected finish"
+msgstr ""
 
-msgid "Log off"
-msgstr "Log af"
+#, fuzzy
+msgid "Hearing"
+msgstr ""
+
+#, fuzzy
+msgid "Project start"
+msgstr ""
+
+#, fuzzy
+msgid "Public meeting"
+msgstr ""
+
+#, fuzzy
+msgid "Start"
+msgstr ""
 

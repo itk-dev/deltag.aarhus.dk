@@ -1,0 +1,15 @@
+diff --git a/vendor/vincentlanglet/twig-cs-fixer/src/Environment/StubbedEnvironment.php b/vendor/vincentlanglet/twig-cs-fixer/src/Environment/StubbedEnvironment.php
+index ae8bd844..541853cc 100644
+--- a/vendor/vincentlanglet/twig-cs-fixer/src/Environment/StubbedEnvironment.php
++++ b/vendor/vincentlanglet/twig-cs-fixer/src/Environment/StubbedEnvironment.php
+@@ -135,9 +135,7 @@ private function handleOptionalDependencies(): void
+         if (class_exists(TransDefaultDomainTokenParser::class)) {
+             $this->addTokenParser(new TransDefaultDomainTokenParser());
+         }
+-        if (class_exists(TransTokenParser::class)) {
+-            $this->addTokenParser(new TransTokenParser());
+-        }
++        // Symfony Twig bridge's trans tag conflicts with Drupal's.
+         if (class_exists(CacheTokenParser::class)) {
+             $this->addTokenParser(new CacheTokenParser());
+         }
