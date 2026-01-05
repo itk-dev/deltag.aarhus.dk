@@ -1,4 +1,4 @@
-@import "custom-variables", "bootstrap-custom", "layout/aside",
+@import "custom-variables", "bootstrap-custom", "color-tokens", "layout/aside",
   "layout/page-map", "layout/page-project", "base", "module/nav",
   "module/accordion", "module/hero", "module/btn", "module/card",
   "module/footer", "module/content", "module/drupal", "module/underline",
@@ -8,8 +8,8 @@
   "module/social-sharing-buttons", "module/form", "module/image-gallery",
   "module/spinner", "module/signup", "module/list", "module/pager",
   "module/paragraph-background-image", "module/paragraph-content-promotion",
-  "module/files", "module/paragraph-link", "module/info_box",
-  "module/search", "module/search-page", "module/newsletter", "module/proposal",
+  "module/files", "module/paragraph-link", "module/info_box", "module/search",
+  "module/search-page", "module/newsletter", "module/proposal",
   "module/animation", "module/header-v2", "module/animated-svg",
   "module/_promoted", "../../node_modules/slick-carousel/slick/slick";
 

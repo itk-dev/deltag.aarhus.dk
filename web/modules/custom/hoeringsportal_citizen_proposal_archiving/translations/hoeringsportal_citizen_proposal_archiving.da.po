@@ -1,0 +1,57 @@
+# Danish translation of 
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-01-05 12:24+0100\n"
+"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid "Archive URL"
+msgstr "Arkiv URL"
+
+msgid "Archived at"
+msgstr "Arkiveret den"
+
+msgid "Author"
+msgstr "Forfatter"
+
+msgid "Citizen proposal"
+msgstr "Borgerforslag"
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Printed at"
+msgstr "Udskrevet den"
+
+msgid "Proposal"
+msgstr "Forslag"
+
+msgid "Remarks"
+msgstr "Bemærkninger"
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Vote end"
+msgstr "Afstemning slut"
+
+msgid "Vote start"
+msgstr "Afstemning start"
+

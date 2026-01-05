@@ -12,7 +12,6 @@ dependencies:
     - field.field.node.public_meeting.field_content_state
     - field.field.node.public_meeting.field_department
     - field.field.node.public_meeting.field_description
-    - field.field.node.public_meeting.field_deskpro_department_id
     - field.field.node.public_meeting.field_email_address
     - field.field.node.public_meeting.field_first_meeting_time
     - field.field.node.public_meeting.field_hidden_signup
@@ -150,7 +149,6 @@ hidden:
   field_contact: true
   field_department: true
   field_description: true
-  field_deskpro_department_id: true
   field_email_address: true
   field_hidden_signup: true
   field_last_meeting_time_end: true

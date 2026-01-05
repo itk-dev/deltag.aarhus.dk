@@ -18,6 +18,19 @@ hoeringsportal_anonymous_edit.content:
   requirements:
     _user_is_logged_in: "FALSE"
 
+hoeringsportal_anonymous_edit.comment.cancel_form:
+  path: "/hoeringsportal-anonymous-edit/comment/{comment}/cancel"
+  defaults:
+    _title: "Cancel comment"
+    _form: 'Drupal\hoeringsportal_anonymous_edit\Form\CommentCancelForm'
+  options:
+    parameters:
+      comment:
+        type: entity:comment
+  requirements:
+    _user_is_logged_in: "FALSE"
+    _custom_access: 'Drupal\hoeringsportal_anonymous_edit\Form\CommentCancelForm::access'
+
 hoeringsportal_anonymous_edit.content_request:
   path: "/hoeringsportal-anonymous-edit/content/request"
   defaults:

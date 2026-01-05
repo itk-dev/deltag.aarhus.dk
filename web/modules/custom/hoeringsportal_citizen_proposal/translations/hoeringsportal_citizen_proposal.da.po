@@ -1,0 +1,347 @@
+# Danish translation of 
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-01-05 12:24+0100\n"
+"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid "(Not shown on proposal)"
+msgstr "(Vises ikke på forslaget)"
+
+msgid "@remaining characters left."
+msgstr "@remaining tegn tilbage."
+
+msgid "Access denied page"
+msgstr "Adgang nægtet side"
+
+msgid "Add form"
+msgstr "Tilføj formular"
+
+msgid "Allow email"
+msgstr "Tillad e-mail"
+
+msgid "Allow email help"
+msgstr "Tillad e-mail hjælp"
+
+msgid "Approve form"
+msgstr "Godkend formular"
+
+msgid "Approve intro"
+msgstr "Godkend introduktion"
+
+msgid "Approve proposal"
+msgstr "Godkend forslag"
+
+msgid "Authenticate"
+msgstr "Autentificer"
+
+msgid "Authenticate link text"
+msgstr "Autentificer link tekst"
+
+msgid "Authenticate message"
+msgstr "Autentificer besked"
+
+msgid "Authenticate message (support)"
+msgstr "Autentificer besked (støtte)"
+
+msgid "Authenticate with MitID"
+msgstr "Autentificer med MitID"
+
+msgid "Author intro"
+msgstr "Forfatter introduktion"
+
+msgid "Cancel proposal"
+msgstr "Annullér forslag"
+
+msgid "Citizen proposal"
+msgstr "Borgerforslag"
+
+msgid "Citizen proposal settings sucessfully saved."
+msgstr "Borgerforslag indstillinger gemt med succes."
+
+msgid "Citizen proposal support"
+msgstr "Borgerforslag støtte"
+
+msgid "Citizen proposal support related to citizen proposal nodes"
+msgstr "Borgerforslag støtte relateret til borgerforslag noder"
+
+msgid "Citizen proposal supporters"
+msgstr "Borgerforslag støtter"
+
+msgid "Consent help"
+msgstr "Samtykke hjælp"
+
+msgid "Content"
+msgstr "Indhold"
+
+msgid "Could not find a proposal to approve."
+msgstr "Kunne ikke finde et forslag at godkende."
+
+msgid "Create new proposal"
+msgstr "Opret nyt forslag"
+
+msgid "Create proposal"
+msgstr "Opret forslag"
+
+msgid "Created"
+msgstr "Oprettet"
+
+msgid "Display email"
+msgstr "Vis e-mail"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Edit proposal"
+msgstr "Redigér forslag"
+
+msgid "Editor email address"
+msgstr "Redaktør e-mail adresse"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email display help"
+msgstr "E-mail visning hjælp"
+
+msgid "Email help"
+msgstr "E-mail hjælp"
+
+msgid "Emails"
+msgstr "E-mails"
+
+msgid "Id"
+msgstr "Id"
+
+msgid "If not set, the citizen will see the proposal after supporting it."
+msgstr ""
+"Hvis ikke angivet, vil borgeren se forslaget efter at have støttet "
+"det."
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Name help"
+msgstr "Navn hjælp"
+
+msgid "Number of allowed characters for proposal field."
+msgstr "Antal tilladte tegn for forslag felt."
+
+msgid "Number of allowed characters for remarks field."
+msgstr "Antal tilladte tegn for bemærkninger felt."
+
+msgid "Number of allowed characters for title field."
+msgstr "Antal tilladte tegn for titel felt."
+
+msgid "Number of supporters"
+msgstr "Antal støtter"
+
+msgid "Personal data storage consent"
+msgstr "Samtykke til opbevaring af persondata"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Phone help"
+msgstr "Telefon hjælp"
+
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+msgid "Please enter a path on the form /node/«id»."
+msgstr "Indtast venligst en sti på formen /node/«id»."
+
+msgid "Please enter a survey description."
+msgstr "Indtast venligst en undersøgelses beskrivelse."
+
+msgid "Proposal"
+msgstr "Forslag"
+
+msgid "Proposal created (citizen)"
+msgstr "Forslag oprettet (borger)"
+
+msgid "Proposal created (editor)"
+msgstr "Forslag oprettet (redaktør)"
+
+msgid "Proposal help"
+msgstr "Forslag hjælp"
+
+msgid "Proposal intro"
+msgstr "Forslag introduktion"
+
+msgid "Proposal published (citizen)"
+msgstr "Forslag publiceret (borger)"
+
+msgid ""
+"Proposal supporters. This will create 1 duplicate record for every "
+"comment. Usually if you need this it is better to create a supporter "
+"view."
+msgstr ""
+"Forslag støtter. Dette vil oprette 1 duplikat post for hver "
+"kommentar. Normalt, hvis du har brug for dette, er det bedre at "
+"oprette en støtter visning."
+
+msgid "Redirect URL after a proposal has been cancelled"
+msgstr "Omdirigerings URL efter et forslag er blevet annulleret"
+
+msgid "Redirect URL after a proposal has been submitted"
+msgstr "Omdirigerings URL efter et forslag er blevet indsendt"
+
+msgid "Redirect URL after a proposal has been supported"
+msgstr "Omdirigerings URL efter et forslag er blevet støttet"
+
+msgid "Remarks"
+msgstr "Bemærkninger"
+
+msgid "Remarks help"
+msgstr "Bemærkninger hjælp"
+
+msgid "Save"
+msgstr "Gem"
+
+msgid ""
+"Select a survey to show as part of the form. <a href=\":url\">Manage "
+"surveys</a>."
+msgstr ""
+"Vælg en undersøgelse at vise som del af formularen. <a "
+"href=\":url\">Administrer undersøgelser</a>."
+
+msgid "Select survey webform"
+msgstr "Vælg undersøgelses webformular"
+
+msgid ""
+"Send citizens from outside the municipality to this page. Enter a path "
+"on the form <code>/node/«id»</code>, e.g. <code>/node/87</code>."
+msgstr ""
+"Send borgere fra uden for kommunen til denne side. Indtast en sti på "
+"formen <code>/node/«id»</code>, f.eks. <code>/node/87</code>."
+
+msgid "Sidebar"
+msgstr "Sidebar"
+
+msgid "Sidebar text"
+msgstr "Sidebar tekst"
+
+msgid "Sign out"
+msgstr "Log ud"
+
+msgid "Something went wrong. Your support was not registered."
+msgstr "Noget gik galt. Din støtte blev ikke registreret."
+
+msgid "Subject"
+msgstr "Emne"
+
+msgid "Submission text when a proposal has been submitted"
+msgstr "Indsendelse tekst når et forslag er blevet indsendt"
+
+msgid "Submission text when a proposal has been supported"
+msgstr "Indsendelse tekst når et forslag er blevet støttet"
+
+msgid "Support form"
+msgstr "Støtte formular"
+
+msgid "Support intro"
+msgstr "Støtte introduktion"
+
+msgid "Support proposal"
+msgstr "Støt forslag"
+
+msgid "Support the proposal"
+msgstr "Støt forslaget"
+
+msgid "Supporters"
+msgstr "Støtter"
+
+msgid "Survey description"
+msgstr "Undersøgelses beskrivelse"
+
+msgid "Survey webform"
+msgstr "Undersøgelses webformular"
+
+msgid "Tell a little about why the survey is shown."
+msgstr "Fortæl lidt om hvorfor undersøgelsen vises."
+
+msgid "Thank you for your submission."
+msgstr "Tak for din indsendelse."
+
+msgid "Thank you for your support."
+msgstr "Tak for din støtte."
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Title help"
+msgstr "Titel hjælp"
+
+msgid "Too many characters used."
+msgstr "For mange tegn brugt."
+
+msgid "Update proposal"
+msgstr "Opdatér forslag"
+
+msgid ""
+"Use <code>&lt;a target=&quot;_blank&quot; href=&quot;…&quot;&gt;Read "
+"more about GDRP and data storage&lt;/a&gt;</code> to insert a link to "
+"details on what is stored and where and how."
+msgstr ""
+"Brug <code>&lt;a target=&quot;_blank&quot; "
+"href=&quot;…&quot;&gt;Læs mere om GDPR og "
+"dataopbevaring&lt;/a&gt;</code> for at indsætte et link til detaljer "
+"om hvad der gemmes og hvor og hvordan."
+
+msgid ""
+"Use <code>&lt;a target=&quot;_blank&quot; href=&quot;…&quot;&gt;Read "
+"more about the emails we may send&lt;/a&gt;</code> to insert a link to "
+"details on what emails might be sent."
+msgstr ""
+"Brug <code>&lt;a target=&quot;_blank&quot; "
+"href=&quot;…&quot;&gt;Læs mere om de e-mails vi måske "
+"sender&lt;/a&gt;</code> for at indsætte et link til detaljer om "
+"hvilke e-mails der måske sendes."
+
+msgid "User email"
+msgstr "Bruger e-mail"
+
+msgid "User identifier"
+msgstr "Bruger identifikator"
+
+msgid "User name"
+msgstr "Brugernavn"
+
+msgid ""
+"You already supported this proposal on @support_date. You can only "
+"support a proposal once."
+msgstr ""
+"Du har allerede støttet dette forslag den @support_date. Du kan kun "
+"støtte et forslag én gang."
+
+msgid ""
+"You can use tokens in email subject and both tokens and Twig in email "
+"content."
+msgstr ""
+"Du kan bruge tokens i e-mail emne og både tokens og Twig i e-mail "
+"indhold."
+
+msgid "You have to authenticate to add a proposal"
+msgstr "Du skal autentificere for at tilføje et forslag"
+
+msgid "You have to authenticate to support a proposal"
+msgstr "Du skal autentificere for at støtte et forslag"
+
+msgid "You're currently authenticated as @name"
+msgstr "Du er i øjeblikket autentificeret som @name"
+
+msgid "You're supporting @label on behalf of a citizen"
+msgstr "Du støtter @label på vegne af en borger"
+
+msgid "Your submission has been cancelled."
+msgstr "Din indsendelse er blevet annulleret."
+

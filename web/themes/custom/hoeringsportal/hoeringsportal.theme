@@ -21,6 +21,7 @@ function hoeringsportal_preprocess(&$vars) {
   $vars['citizen_proposal_helper'] = \Drupal::service(CitizenProposalHelper::class);
   $vars['dialogue_helper'] = \Drupal::service(DialogueHelper::class);
   $vars['anonymous_edit_helper'] = \Drupal::service(AnonymousEditHelper::class);
+  $vars['route_name'] = \Drupal::routeMatch()->getRouteName();
 }
 
 /**

@@ -1,0 +1,109 @@
+# Danish translation of 
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-01-05 12:24+0100\n"
+"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Date"
+msgstr "Dato"
+
+msgid "Deadline:"
+msgstr "Frist:"
+
+msgid "Hearing deadline has passed"
+msgstr "Høringsfristen er udløbet"
+
+msgid "Last signup date"
+msgstr "Sidste tilmeldingsdato"
+
+msgid "Meeting has already been held"
+msgstr "Mødet er allerede blevet afholdt"
+
+msgid "Meeting has been cancelled"
+msgstr "Mødet er blevet aflyst"
+
+msgid "No available spots left"
+msgstr "Ingen ledige pladser tilbage"
+
+msgid ""
+"Note: If this public meeting is cancelled you should go to @cancelLink "
+"to cancel all orders."
+msgstr ""
+"Bemærk: Hvis dette borgermøde aflyst, bør du gå til @cancelLink "
+"for at annullere alle ordrer."
+
+msgid "Opens in a new tab"
+msgstr "Åbner i et nyt faneblad"
+
+msgid "Place"
+msgstr "Sted"
+
+msgid "Please enter a location"
+msgstr "Indtast venligst et sted"
+
+msgid "Please enter a start time"
+msgstr "Indtast venligst et starttidspunkt"
+
+msgid "Please enter a value!"
+msgstr "Indtast venligst en værdi!"
+
+msgid "Please enter an address"
+msgstr "Indtast venligst en adresse"
+
+msgid "Please enter an end time"
+msgstr "Indtast venligst et sluttidspunkt"
+
+msgid "Please enter number of spots"
+msgstr "Indtast venligst antal pladser"
+
+msgid "Public meeting cancelled"
+msgstr "Borgermøde aflyst"
+
+msgid "Registration"
+msgstr "Tilmelding"
+
+msgid "Registration deadline passed"
+msgstr "Tilmeldingsfristen er udløbet"
+
+msgid "Sign up"
+msgstr "Tilmeld dig"
+
+msgid "Spots"
+msgstr "Pladser"
+
+msgid "The meeting end time must be after the start time."
+msgstr "Mødets sluttidspunkt skal være efter starttidspunktet."
+
+msgid "The meeting time must not be in the past."
+msgstr "Mødetidspunktet må ikke være i fortiden."
+
+msgid "The registration deadline is required."
+msgstr "Tilmeldingsfristen er påkrævet."
+
+msgid "The registration deadline must not be after the meeting starts."
+msgstr "Tilmeldingsfristen må ikke være efter mødet starter."
+
+msgid "The registration deadline must not be in the past."
+msgstr "Tilmeldingsfristen må ikke være i fortiden."
+
+msgid "This event has multiple dates"
+msgstr "Denne begivenhed har flere datoer"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "View the list"
+msgstr "Se listen"
+

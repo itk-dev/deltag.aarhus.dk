@@ -3,6 +3,7 @@ _core:
 langcode: da
 mode: simple
 ignored_config_entities:
+  - hoeringsportal_anonymous_edit.settings
   - itk_pretix.pretixconfig
   - site_status_message.settings
   - 'webform.webform.*'

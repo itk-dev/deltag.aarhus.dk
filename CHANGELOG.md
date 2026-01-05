@@ -6,6 +6,38 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-576](https://github.com/itk-dev/deltag.aarhus.dk/pull/576)
+  Updates translations and added translations handling to deployment
+* [PR-584](https://github.com/itk-dev/deltag.aarhus.dk/pull/584)
+  Removed field_deskpro_department_id from public_meeting content type
+* [PR-585](https://github.com/itk-dev/deltag.aarhus.dk/pull/585)
+  Added translations to multiple modules
+
+## [4.14.2] - 2025-12-17
+
+* [583](https://github.com/itk-dev/deltag.aarhus.dk/pull/583)
+  Fixed bug in project display of status and terms
+
+## [4.14.1] - 2025-12-17
+
+* [PR-550](https://github.com/itk-dev/deltag.aarhus.dk/pull/550)
+  5603: Aligned development service config with prod config
+* [PR-579](https://github.com/itk-dev/deltag.aarhus.dk/pull/579)
+  Applied security patches
+* [PR-581](https://github.com/itk-dev/deltag.aarhus.dk/pull/581)
+  * Update to ClamAV 1.4 (cf. <https://blog.clamav.net/2025/11/clamav-signature-retirement-announcement.html>).
+* [PR-580](https://github.com/itk-dev/deltag.aarhus.dk/pull/580)
+  Centralized color management using CSS custom properties
+  * Added `_color-tokens.scss` with primitive and semantic tokens
+  * Using OKLCH color space with hex fallbacks for older browsers
+  * Migrated all module SCSS files to use CSS custom properties
+  * Prepared architecture for future dark mode and high-contrast themes
+
+## [4.14.0] - 2025-12-16
+
+* [PR-578](https://github.com/itk-dev/deltag.aarhus.dk/pull/578)
+  * Let citizens cancel comments
+  * Added "(edited)" on edited content
 * [PR-574](https://github.com/itk-dev/deltag.aarhus.dk/pull/574)
   Added settings for Anonymous edit
 * [PR-572](https://github.com/itk-dev/deltag.aarhus.dk/pull/572)
@@ -591,7 +623,9 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.14.1...HEAD
+[4.14.1]: https://github.com/itk-dev/hoeringsportal/compare/4.14.0...4.14.1
+[4.14.0]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...4.14.0
 [4.13.2]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...4.13.2
 [4.13.1]: https://github.com/itk-dev/hoeringsportal/compare/4.13.0...4.13.1
 [4.13.0]: https://github.com/itk-dev/hoeringsportal/compare/4.12.0...4.13.0

@@ -25,7 +25,6 @@
   }
 }
 
-
 .header-v2,
 .header-v2-no-image {
   .header-notification {
@@ -46,7 +45,7 @@
     padding-bottom: $spacer * 2;
 
     .text-background-match {
-      color: $petroleum;
+      color: var(--interactive-primary);
     }
 
     @include media-breakpoint-up(md) {
@@ -57,13 +56,13 @@
     }
 
     @include media-breakpoint-up(xxl) {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1400px;
     }
 
     .type {
-      color: $petroleum;
+      color: var(--interactive-primary);
     }
 
     .tags {
@@ -111,7 +110,7 @@
     display: flex;
     column-gap: $spacer * 1.5;
     span {
-      color: $color-peach-600;
+      color: var(--primitive-peach-600);
     }
   }
 }

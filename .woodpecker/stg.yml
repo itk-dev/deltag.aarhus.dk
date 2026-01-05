@@ -40,4 +40,7 @@ steps:
         - docker compose run --rm node npm --prefix web/themes/custom/hoeringsportal install
         - docker compose run --rm node npm --prefix web/themes/custom/hoeringsportal run build
         - docker compose run --rm node rm -rf web/themes/custom/hoeringsportal/node_modules
+        # Update translations
+        - itkdev-docker-compose-server exec phpfpm vendor/bin/drush --yes locale:check
+        - itkdev-docker-compose-server exec phpfpm vendor/bin/drush --yes locale:update
         - itkdev-docker-compose-server exec phpfpm vendor/bin/drush --yes cache:rebuild
