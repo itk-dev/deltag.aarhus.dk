@@ -29,7 +29,7 @@ msgid "Cancel comment?"
 msgstr "Annullér kommentar?"
 
 msgid "Cancel texts"
-msgstr "Annullér tekster"
+msgstr "Annullértekster"
 
 msgid "Comment"
 msgstr "Kommentar"
