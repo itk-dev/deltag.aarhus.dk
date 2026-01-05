@@ -113,7 +113,7 @@ msgstr "Din e-mailadresse"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Confirm your email address"
-msgstr "Bekræft din email adresse"
+msgstr "Bekræft din e-mailadresse"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit"
