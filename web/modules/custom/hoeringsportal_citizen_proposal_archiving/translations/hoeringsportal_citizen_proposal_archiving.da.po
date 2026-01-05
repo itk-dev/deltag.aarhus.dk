@@ -1,4 +1,4 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
@@ -13,59 +13,44 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "Archive URL"
-msgstr ""
+msgstr "Arkiv URL"
 
-#, fuzzy
 msgid "Archived at"
-msgstr ""
+msgstr "Arkiveret den"
 
-#, fuzzy
 msgid "Author"
-msgstr ""
+msgstr "Forfatter"
 
-#, fuzzy
 msgid "Citizen proposal"
-msgstr ""
+msgstr "Borgerforslag"
 
-#, fuzzy
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
-#, fuzzy
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
-#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
-#, fuzzy
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
-#, fuzzy
 msgid "Printed at"
-msgstr ""
+msgstr "Udskrevet den"
 
-#, fuzzy
 msgid "Proposal"
-msgstr ""
+msgstr "Forslag"
 
-#, fuzzy
 msgid "Remarks"
-msgstr ""
+msgstr "Bemærkninger"
 
-#, fuzzy
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
-#, fuzzy
 msgid "Vote end"
-msgstr ""
+msgstr "Afstemning slut"
 
-#, fuzzy
 msgid "Vote start"
-msgstr ""
-
+msgstr "Afstemning start"

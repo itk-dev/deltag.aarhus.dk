@@ -1,4 +1,4 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
@@ -13,61 +13,48 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "About"
-msgstr ""
+msgstr "Om"
 
-#, fuzzy
 msgid "Add hearing reply"
-msgstr ""
+msgstr "Tilføj høringssvar"
 
-#, fuzzy
 msgid ""
 "Example: "
 "<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
 msgstr ""
+"Eksempel: "
+"<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
 
-#, fuzzy
 msgid "GIS data"
-msgstr ""
+msgstr "GIS data"
 
-#, fuzzy
 msgid "Hearing deadline has passed"
-msgstr ""
+msgstr "Høringsfristen er udløbet"
 
-#, fuzzy
 msgid "Hearing deadline: @deadline"
-msgstr ""
+msgstr "Høringsfrist: @deadline"
 
-#, fuzzy
 msgid "Hearings"
-msgstr ""
+msgstr "Høringer"
 
-#, fuzzy
 msgid "Insert GIS minimap by UUID"
-msgstr ""
+msgstr "Indsæt GIS minikort med UUID"
 
-#, fuzzy
 msgid "Invalid GIS map UUID: @map_uuid"
-msgstr ""
+msgstr "Ugyldig GIS kort UUID: @map_uuid"
 
-#, fuzzy
 msgid "The delete date must not be before the reply deadline"
-msgstr ""
+msgstr "Sletningsdatoen må ikke være før svarfristen"
 
-#, fuzzy
 msgid "The delete date must not be in the past"
-msgstr ""
+msgstr "Sletningsdatoen må ikke være i fortiden"
 
-#, fuzzy
 msgid "The reply deadline must not be before the start date"
-msgstr ""
+msgstr "Svarfristen må ikke være før startdatoen"
 
-#, fuzzy
 msgid "The reply deadline must not be in the past"
-msgstr ""
+msgstr "Svarfristen må ikke være i fortiden"
 
-#, fuzzy
 msgid "The start date must not be in the past"
-msgstr ""
-
+msgstr "Startdatoen må ikke være i fortiden"

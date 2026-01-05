@@ -1,4 +1,4 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
@@ -13,27 +13,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "Expected end date"
-msgstr ""
+msgstr "Forventet slutdato"
 
-#, fuzzy
 msgid "Expected finish"
-msgstr ""
+msgstr "Forventet afslutning"
 
-#, fuzzy
 msgid "Hearing"
-msgstr ""
+msgstr "Høring"
 
-#, fuzzy
 msgid "Project start"
-msgstr ""
+msgstr "Projekt start"
 
-#, fuzzy
 msgid "Public meeting"
-msgstr ""
+msgstr "Borgermøde"
 
-#, fuzzy
 msgid "Start"
-msgstr ""
-
+msgstr "Start"

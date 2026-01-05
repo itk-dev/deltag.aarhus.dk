@@ -1,4 +1,4 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
@@ -13,40 +13,32 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "Allow cancel"
-msgstr ""
+msgstr "Tillad annullering"
 
-#, fuzzy
 msgid "Allow delete"
-msgstr ""
+msgstr "Tillad sletning"
 
-#, fuzzy
 msgid "Allow update"
-msgstr ""
+msgstr "Tillad opdatering"
 
-#, fuzzy
 msgid "Cancel comment"
-msgstr ""
+msgstr "Annullér kommentar"
 
-#, fuzzy
 msgid "Cancel comment?"
-msgstr ""
+msgstr "Annullér kommentar?"
 
-#, fuzzy
 msgid "Cancel texts"
-msgstr ""
+msgstr "Annullér tekster"
 
-#, fuzzy
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 msgid "Comment #@comment on %title"
 msgstr "Kommentar #@comment på %title"
 
-#, fuzzy
 msgid "Comment cancelled"
-msgstr ""
+msgstr "Kommentar annulleret"
 
 msgid "Confirm your email address"
 msgstr "Bekræft din email adresse\""
@@ -72,45 +64,42 @@ msgstr "Find indhold"
 msgid "Find my content"
 msgstr "Find mit indhold"
 
-#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
-#, fuzzy
 msgid ""
 "If you cancel the comment its content will be deleted, but any "
 "sub-comments will remain. This action cannot be undone."
 msgstr ""
+"Hvis du annullerer kommentaren, vil indholdet blive slettet, men alle "
+"underkommentarer vil forblive. Denne handling kan ikke fortrydes."
 
-#, fuzzy
 msgid "Invalid cancel texts: @message"
-msgstr ""
+msgstr "Ugyldige annulleringstekster: @message"
 
 msgid "Invalid email address"
 msgstr "Ugyldig email adresse"
 
-#, fuzzy
 msgid "Keep comment"
-msgstr ""
+msgstr "Behold kommentar"
 
-#, fuzzy
 msgid "Log level"
-msgstr ""
+msgstr "Log niveau"
 
-#, fuzzy
 msgid "Node"
-msgstr ""
+msgstr "Node"
 
-#, fuzzy
 msgid "Owner name format"
-msgstr ""
+msgstr "Ejer navn format"
 
-#, fuzzy
 msgid ""
 "Text to set when cancelling a comment. Must be a YAML map from comment "
 "fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
 "blevet slettet af forfatteren.</pre></code>"
 msgstr ""
+"Tekst der skal indstilles ved annullering af en kommentar. Skal være en YAML map fra kommentar "
+"felter til tekster, f.eks. <code><pre>field_comment: Denne kommentar er "
+"blevet slettet af forfatteren.</pre></code>"
 
 msgid "You don't have any content."
 msgstr "Du har ikke noget indhold."
@@ -121,48 +110,38 @@ msgstr "Din redigeringstoken er blevet genoprettet"
 msgid "Your email address"
 msgstr "Din email adresse"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Confirm your email address"
-msgstr ""
+msgstr "Bekræft din email adresse"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit"
-msgstr ""
+msgstr "Redigér"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Error recovering your edit token"
-msgstr ""
+msgstr "Fejl ved genoprettelse af din redigeringstoken"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find content"
-msgstr ""
+msgstr "Find indhold"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find my content"
-msgstr ""
+msgstr "Find mit indhold"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Invalid email address"
-msgstr ""
+msgstr "Ugyldig email adresse"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
-msgstr ""
+msgstr "Du har ikke noget indhold."
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your edit token has been recovered"
-msgstr ""
+msgstr "Din redigeringstoken er blevet genoprettet"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your email address"
-msgstr ""
-
+msgstr "Din email adresse"
