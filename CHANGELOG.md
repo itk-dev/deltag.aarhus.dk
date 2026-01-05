@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-576](https://github.com/itk-dev/deltag.aarhus.dk/pull/576)
   Updates translations and added translations handling to deployment
+* [PR-584](https://github.com/itk-dev/deltag.aarhus.dk/pull/584)
+  Removed field_deskpro_department_id from public_meeting content type
 
 ## [4.14.2] - 2025-12-17
 
