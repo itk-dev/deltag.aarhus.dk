@@ -23,7 +23,7 @@ msgid "Hearing"
 msgstr "Høring"
 
 msgid "Project start"
-msgstr "Projekt start"
+msgstr "Projektstart"
 
 msgid "Public meeting"
 msgstr "Borgermøde"
