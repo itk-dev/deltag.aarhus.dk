@@ -109,7 +109,7 @@ msgid "Your edit token has been recovered"
 msgstr "Din redigeringstoken er blevet genoprettet"
 
 msgid "Your email address"
-msgstr "Din email adresse"
+msgstr "Din e-mailadresse"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Confirm your email address"
