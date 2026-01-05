@@ -90,7 +90,7 @@ msgid "Node"
 msgstr "Indhold"
 
 msgid "Owner name format"
-msgstr "Ejer navn format"
+msgstr "Ejernavneformat"
 
 msgid ""
 "Text to set when cancelling a comment. Must be a YAML map from comment "
