@@ -1,10 +1,10 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-05 12:24+0100\n"
-"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -30,9 +30,6 @@ msgstr "Annullér kommentar?"
 
 msgid "Cancel texts"
 msgstr "Annullértekster"
-
-msgid "Comment"
-msgstr "Kommentar"
 
 msgid "Comment #@comment on %title"
 msgstr "Kommentar #@comment på %title"
@@ -110,6 +107,10 @@ msgstr "Din redigeringstoken er blevet genoprettet"
 
 msgid "Your email address"
 msgstr "Din e-mailadresse"
+
+msgctxt "anonymous_edit_config_form"
+msgid "Comment"
+msgstr "Kommentar"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Confirm your email address"
