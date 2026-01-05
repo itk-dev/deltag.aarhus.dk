@@ -117,7 +117,7 @@ msgid "Create your proposal"
 msgstr "Opret dit forslag"
 
 msgid "Current activity in the project"
-msgstr "Nuværende aktivitet i projektet"
+msgstr "Aktuel aktivitet i projektet"
 
 msgid "Current occurrence"
 msgstr "Nuværende forekomst"
