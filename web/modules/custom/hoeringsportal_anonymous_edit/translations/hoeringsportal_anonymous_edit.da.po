@@ -87,7 +87,7 @@ msgid "Log level"
 msgstr "Logniveau"
 
 msgid "Node"
-msgstr "Node"
+msgstr "Indhold"
 
 msgid "Owner name format"
 msgstr "Ejer navn format"
