@@ -1,10 +1,10 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-05 12:24+0100\n"
-"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgid "Aarhus Municipality"
 msgstr "Aarhus Kommune"
 
 msgid "Account activities"
-msgstr "Konto aktiviteter"
+msgstr "Kontoaktiviteter"
 
 msgid "Add hearing ticket"
 msgstr "Tilføj høringssvar"
@@ -83,6 +83,9 @@ msgstr "Aflyst"
 msgid "Cancelled"
 msgstr "Aflyst"
 
+msgid "Category"
+msgstr "Kategori"
+
 msgid "Change user information"
 msgstr "Skift brugerinformation"
 
@@ -105,7 +108,10 @@ msgid "Copied to clipboard"
 msgstr "Kopieret til udklipsholder"
 
 msgid "Copy to clipboard"
-msgstr "Kopier til udklipsholder"
+msgstr "Kopiér til udklipsholder"
+
+msgid "Course"
+msgstr "Forløb"
 
 msgid "Create dialog proposal"
 msgstr "Opret dialogforslag"
@@ -117,7 +123,7 @@ msgid "Create your proposal"
 msgstr "Opret dit forslag"
 
 msgid "Current activity in the project"
-msgstr "Nuværende aktivitet i projektet"
+msgstr "Aktuel aktivitet i projektet"
 
 msgid "Current occurrence"
 msgstr "Nuværende forekomst"
@@ -167,6 +173,9 @@ msgstr "Slutdato"
 msgid "Ended"
 msgstr "Afsluttet"
 
+msgid "Event"
+msgstr "Begivenhed"
+
 msgid "Evernote"
 msgstr "Evernote"
 
@@ -194,6 +203,9 @@ msgstr "Slut"
 
 msgid "First upcoming"
 msgstr "Næste kommende"
+
+msgid "From"
+msgstr "Fra"
 
 msgid "Go to next page"
 msgstr "Gå til næste side"
@@ -366,7 +378,7 @@ msgid "Project finish"
 msgstr "Initiativ afslutning"
 
 msgid "Project info"
-msgstr "Projekt info"
+msgstr "Projektinformation"
 
 msgid "Project not secure"
 msgstr "Initiativ ikke sikkert"
@@ -503,6 +515,9 @@ msgstr ""
 
 msgid "Time"
 msgstr "Tid"
+
+msgid "To"
+msgstr "Til"
 
 msgid "Try with less words or to phrase it differently"
 msgstr "Prøv med færre ord eller at formulere det anderledes"

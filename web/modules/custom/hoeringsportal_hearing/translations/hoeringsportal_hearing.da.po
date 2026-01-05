@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-05 12:24+0100\n"
-"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
 
 msgid "GIS data"
-msgstr "GIS data"
+msgstr "GIS-data"
 
 msgid "Hearing deadline has passed"
 msgstr "Høringsfristen er udløbet"
@@ -39,10 +39,10 @@ msgid "Hearings"
 msgstr "Høringer"
 
 msgid "Insert GIS minimap by UUID"
-msgstr "Indsæt GIS minikort med UUID"
+msgstr "Indsæt GIS-minikort med UUID"
 
 msgid "Invalid GIS map UUID: @map_uuid"
-msgstr "Ugyldig GIS kort UUID: @map_uuid"
+msgstr "Ugyldigt GIS-kort-UUID: @map_uuid"
 
 msgid "The delete date must not be before the reply deadline"
 msgstr "Sletningsdatoen må ikke være før svarfristen"

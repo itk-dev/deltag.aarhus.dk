@@ -1,10 +1,10 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-05 12:24+0100\n"
-"PO-Revision-Date: 2026-01-05 12:24+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -29,10 +29,7 @@ msgid "Cancel comment?"
 msgstr "Annullér kommentar?"
 
 msgid "Cancel texts"
-msgstr "Annullér tekster"
-
-msgid "Comment"
-msgstr "Kommentar"
+msgstr "Annullértekster"
 
 msgid "Comment #@comment on %title"
 msgstr "Kommentar #@comment på %title"
@@ -41,7 +38,7 @@ msgid "Comment cancelled"
 msgstr "Kommentar annulleret"
 
 msgid "Confirm your email address"
-msgstr "Bekræft din email adresse\""
+msgstr "Bekræft din e-mailadresse"
 
 msgid "Edit"
 msgstr "Redigér"
@@ -84,21 +81,21 @@ msgid "Keep comment"
 msgstr "Behold kommentar"
 
 msgid "Log level"
-msgstr "Log niveau"
+msgstr "Logniveau"
 
 msgid "Node"
-msgstr "Node"
+msgstr "Indhold"
 
 msgid "Owner name format"
-msgstr "Ejer navn format"
+msgstr "Ejernavneformat"
 
 msgid ""
 "Text to set when cancelling a comment. Must be a YAML map from comment "
 "fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
 "blevet slettet af forfatteren.</pre></code>"
 msgstr ""
-"Tekst der skal indstilles ved annullering af en kommentar. Skal være "
-"en YAML map fra kommentar felter til tekster, f.eks. "
+"Tekst der skal indsættes ved annullering af en kommentar. Skal være "
+"en YAML-afbildning fra kommentarfelter til tekster, f.eks. "
 "<code><pre>field_comment: Denne kommentar er blevet slettet af "
 "forfatteren.</pre></code>"
 
@@ -109,11 +106,15 @@ msgid "Your edit token has been recovered"
 msgstr "Din redigeringstoken er blevet genoprettet"
 
 msgid "Your email address"
-msgstr "Din email adresse"
+msgstr "Din e-mailadresse"
+
+msgctxt "anonymous_edit_config_form"
+msgid "Comment"
+msgstr "Kommentar"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Confirm your email address"
-msgstr "Bekræft din email adresse"
+msgstr "Bekræft din e-mailadresse"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit"
@@ -133,7 +134,7 @@ msgstr "Find mit indhold"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Invalid email address"
-msgstr "Ugyldig email adresse"
+msgstr "Ugyldig e-mailadresse"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
@@ -145,5 +146,5 @@ msgstr "Din redigeringstoken er blevet genoprettet"
 
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your email address"
-msgstr "Din email adresse"
+msgstr "Din e-mailadresse"
 
