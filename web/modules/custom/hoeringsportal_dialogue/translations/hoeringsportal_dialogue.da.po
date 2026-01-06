@@ -1,10 +1,10 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-18 11:55+0100\n"
-"PO-Revision-Date: 2025-12-18 11:55+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -43,9 +43,8 @@ msgstr "@size begrænsning."
 msgid "Add new comment"
 msgstr "Tilføj ny kommentar"
 
-#, fuzzy
 msgid "Comment @commentId and it's children have been unpublished."
-msgstr ""
+msgstr "Kommentaren @commentId og dens underkommentarer er blevet afpubliceret."
 
 msgid "Comments"
 msgstr "Kommentarer"
@@ -73,20 +72,17 @@ msgstr[1] "Flyt @count filer hertil eller tryk <em>Browse</em> herunder."
 msgid "Early inclusion"
 msgstr "Tidlig dialog"
 
-#, fuzzy
 msgid "Edit your proposal"
-msgstr ""
+msgstr "Redigér dit forslag"
 
-#, fuzzy
 msgid "Error fetching latest proposal: @message"
-msgstr ""
+msgstr "Fejl ved hentning af seneste forslag: @message"
 
 msgid "Error fetching map data"
 msgstr "Fejl ved hentning af data"
 
-#, fuzzy
 msgid "Error fetching proposal count: @message"
-msgstr ""
+msgstr "Fejl ved hentning af forslagsantal: @message"
 
 msgid "Error fetching proposal locations: @message"
 msgstr "Fejl ved hentning af lokationer på dialogforslag: @message"

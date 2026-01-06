@@ -1,10 +1,10 @@
-# Danish translation of 
+# Danish translation of
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-18 11:55+0100\n"
-"PO-Revision-Date: 2025-12-18 11:55+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,22 +13,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgctxt "Comment reply  "
 msgid "Reply"
-msgstr ""
+msgstr "Svar"
 
-#, fuzzy
 msgid "1 comment"
 msgid_plural "@count comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 kommentar"
+msgstr[1] "@count kommentarer"
 
-#, fuzzy
 msgid ""
 "<a href=\"@sign_up_url\">Sign up to our message service</a> and be "
 "informed about your interests"
 msgstr ""
+"<a href=\"@sign_up_url\">Tilmeld dig vores beskedservice</a> og bliv "
+"informeret om dine interesser"
 
 msgid "<strong>Note!</strong> Hearing deadline approaching."
 msgstr "<strong>Note!</strong> Hørings tidsfristen nærmer sig."
@@ -39,20 +38,17 @@ msgstr "<strong>Note!</strong> Hørings tidsfristen er forbi."
 msgid "<strong>Note!</strong> This hearing has not started yet"
 msgstr "<strong>Note!</strong> Denne høring er ikke startet endnu."
 
-#, fuzzy
 msgid "Aarhus Municipality"
-msgstr ""
+msgstr "Aarhus Kommune"
 
-#, fuzzy
 msgid "Account activities"
-msgstr ""
+msgstr "Kontoaktiviteter"
 
 msgid "Add hearing ticket"
 msgstr "Tilføj høringssvar"
 
-#, fuzzy
 msgid "Add new comment"
-msgstr ""
+msgstr "Tilføj ny kommentar"
 
 msgid "Address"
 msgstr "Adresse"
@@ -63,189 +59,168 @@ msgstr "Bidrag #@number af @name"
 msgid "Answer @number by @name"
 msgstr "Bidrag @number af @name"
 
-#, fuzzy
 msgid "Article"
-msgstr ""
+msgstr "Artikel"
 
-#, fuzzy
 msgid ""
 "At a council meeting @date a decision regarding this hearing was made: "
 "<strong>@decision</strong>"
 msgstr ""
+"Til et byrådsmøde @date blev der truffet en afgørelse vedrørende "
+"denne høring: <strong>@decision</strong>"
 
 msgid "Attachments"
 msgstr "Vedhæftninger"
 
-#, fuzzy
 msgid ""
 "Before you can contribute you must validate your user account with "
 "NemID."
-msgstr ""
+msgstr "Før du kan bidrage, skal du validere din brugerkonto med NemID."
 
-#, fuzzy
 msgid "Canceled"
-msgstr ""
+msgstr "Aflyst"
 
-#, fuzzy
 msgid "Cancelled"
-msgstr ""
+msgstr "Aflyst"
 
-#, fuzzy
+msgid "Category"
+msgstr "Kategori"
+
 msgid "Change user information"
-msgstr ""
+msgstr "Skift brugerinformation"
 
-#, fuzzy
 msgid "Citizen proposal"
-msgstr ""
+msgstr "Borgerforslag"
 
-#, fuzzy
 msgid "Comments"
-msgstr ""
+msgstr "Kommentarer"
 
 msgid "Confirm email address"
 msgstr "Bekræft e-mailadresse"
 
-#, fuzzy
 msgid "Content"
-msgstr ""
+msgstr "Indhold"
 
 msgid "Content on this page"
 msgstr "Indhold på denne side"
 
-#, fuzzy
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopieret til udklipsholder"
 
-#, fuzzy
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiér til udklipsholder"
 
-#, fuzzy
+msgid "Course"
+msgstr "Forløb"
+
 msgid "Create dialog proposal"
-msgstr ""
+msgstr "Opret dialogforslag"
 
 msgid "Create hearing reply"
 msgstr "Skriv høringssvar"
 
-#, fuzzy
 msgid "Create your proposal"
-msgstr ""
+msgstr "Opret dit forslag"
 
-#, fuzzy
 msgid "Current activity in the project"
-msgstr ""
+msgstr "Aktuel aktivitet i projektet"
 
-#, fuzzy
 msgid "Current occurrence"
-msgstr ""
+msgstr "Nuværende forekomst"
 
-#, fuzzy
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
-#, fuzzy
 msgid "Deadline:"
-msgstr ""
+msgstr "Frist:"
 
 msgid "Debate"
 msgstr "Debat"
 
-#, fuzzy
 msgid "Decision"
-msgstr ""
+msgstr "Afgørelse"
 
-#, fuzzy
 msgid "Decision date"
-msgstr ""
+msgstr "Afgørelsesdato"
 
-#, fuzzy
 msgid "Dialogue"
-msgstr ""
+msgstr "Dialog"
 
-#, fuzzy
 msgid "Digg"
-msgstr ""
+msgstr "Digg"
 
 msgid "Download ticket as pdf"
 msgstr "Download høringssvar som pdf"
 
-#, fuzzy
 msgid "Drop images here, or click to upload."
-msgstr ""
+msgstr "Slip billeder her, eller klik for at uploade."
 
-#, fuzzy
 msgid "Early inclusion"
-msgstr ""
+msgstr "Tidlig inddragelse"
 
-#, fuzzy
 msgid "Edit dialog proposal"
-msgstr ""
+msgstr "Redigér dialogforslag"
 
-#, fuzzy
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 msgid "Email address"
 msgstr "E-mailadresse"
 
-#, fuzzy
 msgid "End date"
-msgstr ""
+msgstr "Slutdato"
 
-#, fuzzy
 msgid "Ended"
-msgstr ""
+msgstr "Afsluttet"
 
-#, fuzzy
+msgid "Event"
+msgstr "Begivenhed"
+
 msgid "Evernote"
-msgstr ""
+msgstr "Evernote"
 
 msgid "Expected end date"
 msgstr "Forventet slutdato"
 
-#, fuzzy
 msgid "Expected finish"
-msgstr ""
+msgstr "Forventet afslutning"
 
-#, fuzzy
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
-#, fuzzy
 msgid "Facebook messenger"
-msgstr ""
+msgstr "Facebook messenger"
 
-#, fuzzy
 msgid ""
 "Fill out the form and send your proposal so other people can interact "
 "with it."
 msgstr ""
+"Udfyld formularen og send dit forslag, så andre kan interagere med "
+"det."
 
 msgid "Finished"
 msgstr "Slut"
 
-#, fuzzy
 msgid "First upcoming"
-msgstr ""
+msgstr "Næste kommende"
 
-#, fuzzy
+msgid "From"
+msgstr "Fra"
+
 msgid "Go to next page"
-msgstr ""
+msgstr "Gå til næste side"
 
-#, fuzzy
 msgid "Go to previous page"
-msgstr ""
+msgstr "Gå til forrige side"
 
 msgid "Hearing"
 msgstr "Høring"
 
-#, fuzzy
 msgid "Hearing has been canceled"
-msgstr ""
+msgstr "Høring er blevet aflyst"
 
-#, fuzzy
 msgid "Hearing has ended"
-msgstr ""
+msgstr "Høring er afsluttet"
 
 msgid "Hearing reply by @name"
 msgstr "Høringssvar fra @name"
@@ -259,9 +234,8 @@ msgstr "Høringssvar"
 msgid "Hearing tickets (@count)"
 msgstr "Høringssvar (@count)"
 
-#, fuzzy
 msgid "Home"
-msgstr ""
+msgstr "Hjem"
 
 msgid "I have red the terms and give my consent"
 msgstr "Jeg har læst betingelserne og giver mit samtykke"
@@ -272,52 +246,41 @@ msgstr "Jeg udtaler mig som"
 msgid "Information page"
 msgstr "Information"
 
-#, fuzzy
 msgid "Initiative"
-msgstr ""
+msgstr "Initiativ"
 
-#, fuzzy
 msgid "Last date for signup"
-msgstr ""
+msgstr "Sidste dato for tilmelding"
 
-#, fuzzy
 msgid "Latest proposal"
-msgstr ""
+msgstr "Seneste forslag"
 
-#, fuzzy
 msgid "Like this"
-msgstr ""
+msgstr "Synes om"
 
-#, fuzzy
 msgid "Linkedin"
-msgstr ""
+msgstr "Linkedin"
 
-#, fuzzy
 msgid "Location"
-msgstr ""
+msgstr "Lokation"
 
-#, fuzzy
 msgid "Log out"
-msgstr ""
+msgstr "Log ud"
 
-#, fuzzy
 msgid "Map"
-msgstr ""
+msgstr "Kort"
 
 msgid "Meeting"
 msgstr "Møde"
 
-#, fuzzy
 msgid "Meeting has already been held"
-msgstr ""
+msgstr "Mødet er allerede blevet afholdt"
 
-#, fuzzy
 msgid "Meeting has been cancelled"
-msgstr ""
+msgstr "Mødet er blevet aflyst"
 
-#, fuzzy
 msgid "Meeting has been held"
-msgstr ""
+msgstr "Mødet er blevet afholdt"
 
 msgid "Message"
 msgstr "Besked"
@@ -328,40 +291,37 @@ msgstr "Min adresse er hemmelig"
 msgid "Name"
 msgstr "Navn"
 
-#, fuzzy
 msgid "Next"
-msgstr ""
+msgstr "Næste"
 
-#, fuzzy
 msgid "Next page"
-msgstr ""
+msgstr "Næste side"
 
-#, fuzzy
 msgid "No available spots left"
-msgstr ""
+msgstr "Ingen ledige pladser tilbage"
 
-#, fuzzy
 msgid ""
 "No parent exists for this dialogue proposal! You should add a proposal "
 "from the appropriate dialogue page."
 msgstr ""
+"Ingen forælder eksisterer for dette dialogforslag! Du bør tilføje "
+"et forslag fra den passende dialogside."
 
-#, fuzzy
 msgid "Not yet validated"
-msgstr ""
+msgstr "Endnu ikke valideret"
 
 msgid "Note! Hearing deadline has passed."
 msgstr "Note! Hørings tidsfristen er forbi."
 
-#, fuzzy
 msgid ""
 "Number of supporters: @number_of_supporters of "
 "@required_number_of_supporters"
 msgstr ""
+"Antal støtter: @number_of_supporters af "
+"@required_number_of_supporters"
 
-#, fuzzy
 msgid "Open all"
-msgstr ""
+msgstr "Åbn alle"
 
 msgid "Open project gallery"
 msgstr "Åbn projekt galleri"
@@ -369,60 +329,47 @@ msgstr "Åbn projekt galleri"
 msgid "Open search"
 msgstr "Åben søgning"
 
-#, fuzzy
 msgid "Opens in a new tab"
-msgstr ""
+msgstr "Åbner i et nyt faneblad"
 
-#, fuzzy
 msgid "Options"
-msgstr ""
+msgstr "Muligheder"
 
 msgid "Organization"
 msgstr "Organisation"
 
-#, fuzzy
 msgid "Page"
-msgstr ""
+msgstr "Side"
 
-#, fuzzy
 msgid "Pagination"
-msgstr ""
+msgstr "Sideinddeling"
 
-#, fuzzy
 msgid "Participate with your proposal"
-msgstr ""
+msgstr "Deltag med dit forslag"
 
-#, fuzzy
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
-#, fuzzy
 msgid "Pinterest"
-msgstr ""
+msgstr "Pinterest"
 
-#, fuzzy
 msgid "Previous"
-msgstr ""
+msgstr "Forrige"
 
-#, fuzzy
 msgid "Previous page"
-msgstr ""
+msgstr "Forrige side"
 
-#, fuzzy
 msgid "Primary tabs"
-msgstr ""
+msgstr "Primære faner"
 
-#, fuzzy
 msgid "Print"
-msgstr ""
+msgstr "Udskriv"
 
-#, fuzzy
 msgid "Progress"
-msgstr ""
+msgstr "Fremskridt"
 
-#, fuzzy
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 msgid "Project end"
 msgstr "Initiativ slut"
@@ -430,9 +377,8 @@ msgstr "Initiativ slut"
 msgid "Project finish"
 msgstr "Initiativ afslutning"
 
-#, fuzzy
 msgid "Project info"
-msgstr ""
+msgstr "Projektinformation"
 
 msgid "Project not secure"
 msgstr "Initiativ ikke sikkert"
@@ -446,33 +392,26 @@ msgstr "Initiativ tilbagekaldt"
 msgid "Project start"
 msgstr "Initiativ start"
 
-#, fuzzy
 msgid "Proposals"
-msgstr ""
+msgstr "Forslag"
 
-#, fuzzy
 msgid "Proposals received"
-msgstr ""
+msgstr "Forslag modtaget"
 
-#, fuzzy
 msgid "Public meeting"
-msgstr ""
+msgstr "Borgermøde"
 
-#, fuzzy
 msgid "Read the entire decision"
-msgstr ""
+msgstr "Læs hele afgørelsen"
 
-#, fuzzy
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
-#, fuzzy
 msgid "Registration"
-msgstr ""
+msgstr "Registrering"
 
-#, fuzzy
 msgid "Registration deadline passed"
-msgstr ""
+msgstr "Registreringsfristen er udløbet"
 
 msgid "Replies"
 msgstr "Bidrag"
@@ -486,109 +425,86 @@ msgstr "Bidrag dato"
 msgid "SAML login"
 msgstr "ADFS-login"
 
-#, fuzzy
 msgid "Search"
-msgstr ""
+msgstr "Søg"
 
-#, fuzzy
 msgid "Search and results will show up here"
-msgstr ""
+msgstr "Søg og resultater vil vises her"
 
-#, fuzzy
 msgid "Search for %search_terms returned no results"
-msgstr ""
+msgstr "Søgning efter %search_terms gav ingen resultater"
 
-#, fuzzy
 msgid "Secondary tabs"
-msgstr ""
+msgstr "Sekundære faner"
 
 msgid "Select a file"
 msgstr "Vælg en fil"
 
-#, fuzzy
 msgid "Share the proposal"
-msgstr ""
+msgstr "Del forslaget"
 
-#, fuzzy
 msgid "Share to"
-msgstr ""
+msgstr "Del til"
 
-#, fuzzy
 msgid "Show all hearings"
-msgstr ""
+msgstr "Vis alle høringer"
 
-#, fuzzy
 msgid "Show all meetings"
-msgstr ""
+msgstr "Vis alle møder"
 
 msgid "Show more hearings"
 msgstr "Vis flere høringer"
 
-#, fuzzy
 msgid "Show on map"
-msgstr ""
+msgstr "Vis på kort"
 
-#, fuzzy
 msgid "Show profile"
-msgstr ""
+msgstr "Vis profil"
 
-#, fuzzy
 msgid "Show proposals on map"
-msgstr ""
+msgstr "Vis forslag på kort"
 
-#, fuzzy
 msgid "Sign up"
-msgstr ""
+msgstr "Tilmeld dig"
 
-#, fuzzy
 msgid "Sign up for public meeting"
-msgstr ""
+msgstr "Tilmeld dig borgermøde"
 
-#, fuzzy
 msgid "Skip to main content"
-msgstr ""
+msgstr "Spring til hovedindhold"
 
-#, fuzzy
 msgid "Spots"
-msgstr ""
+msgstr "Pladser"
 
-#, fuzzy
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgid "Start date"
 msgstr "Start dato"
 
-#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "Subject"
 msgstr "Emne"
 
-#, fuzzy
 msgid "Support the proposal"
-msgstr ""
+msgstr "Støt forslaget"
 
-#, fuzzy
 msgid "The hearing list is empty"
-msgstr ""
+msgstr "Høringslisten er tom"
 
-#, fuzzy
 msgid "The meeting list is empty"
-msgstr ""
+msgstr "Mødelisten er tom"
 
-#, fuzzy
 msgid "The proposal list is empty"
-msgstr ""
+msgstr "Forslagslisten er tom"
 
-#, fuzzy
 msgid "This decision relates to these activities"
-msgstr ""
+msgstr "Denne afgørelse relaterer sig til disse aktiviteter"
 
-#, fuzzy
 msgid "This dialogue is open for proposals!"
-msgstr ""
+msgstr "Denne dialog er åben for forslag!"
 
 msgid ""
 "This question is for testing whether or not you are a human visitor "
@@ -597,155 +513,124 @@ msgstr ""
 "Please type the text you see in the captcha image to prove you are "
 "human"
 
-#, fuzzy
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
-#, fuzzy
+msgid "To"
+msgstr "Til"
+
 msgid "Try with less words or to phrase it differently"
-msgstr ""
+msgstr "Prøv med færre ord eller at formulere det anderledes"
 
-#, fuzzy
 msgid "Tumblr"
-msgstr ""
+msgstr "Tumblr"
 
-#, fuzzy
 msgid "Upcoming"
-msgstr ""
+msgstr "Kommende"
 
-#, fuzzy
 msgid "User validated"
-msgstr ""
+msgstr "Bruger valideret"
 
-#, fuzzy
 msgid "User validation"
-msgstr ""
+msgstr "Brugervalidering"
 
-#, fuzzy
 msgid "Validate"
-msgstr ""
+msgstr "Valider"
 
-#, fuzzy
 msgid "Validate account"
-msgstr ""
+msgstr "Valider konto"
 
-#, fuzzy
 msgid "Validate with NemID"
-msgstr ""
+msgstr "Valider med NemID"
 
-#, fuzzy
 msgid "Validated with NemID"
-msgstr ""
+msgstr "Valideret med NemID"
 
-#, fuzzy
 msgid "View all proposals"
-msgstr ""
+msgstr "Se alle forslag"
 
-#, fuzzy
 msgid "Whatsapp"
-msgstr ""
+msgstr "Whatsapp"
 
-#, fuzzy
 msgid "Would you like a direct message when deltag.aarhus.dk has new content?"
-msgstr ""
+msgstr "Vil du have en direkte besked, når deltag.aarhus.dk har nyt indhold?"
 
-#, fuzzy
 msgid "X (Twitter)"
-msgstr ""
+msgstr "X (Twitter)"
 
-#, fuzzy
 msgid "You"
-msgstr ""
+msgstr "Du"
 
-#, fuzzy
 msgid "You only have to do it once, and you can do it now."
-msgstr ""
+msgstr "Du behøver kun at gøre det én gang, og du kan gøre det nu."
 
-#, fuzzy
 msgid "Your information"
-msgstr ""
+msgstr "Dine oplysninger"
 
 msgid "Your search yielded no result"
 msgstr "Din søgning gav ingen resultater."
 
-#, fuzzy
 msgid "like this"
-msgstr ""
+msgstr "synes om"
 
-#, fuzzy
 msgid "replies"
-msgstr ""
+msgstr "svar"
 
-#, fuzzy
 msgid "‹‹"
-msgstr ""
+msgstr "‹‹"
 
-#, fuzzy
 msgid "››"
-msgstr ""
+msgstr "››"
 
-#, fuzzy
 msgctxt "comment"
 msgid "(edited)"
-msgstr ""
+msgstr "(redigeret)"
 
-#, fuzzy
 msgctxt "comment"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuller"
 
-#, fuzzy
 msgctxt "comment"
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
-#, fuzzy
 msgctxt "comment"
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Comment on @title"
-msgstr ""
+msgstr "Kommentar til @title"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Edit proposal"
-msgstr ""
+msgstr "Rediger forslag"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Find my content"
-msgstr ""
+msgstr "Find mit indhold"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "You don't have any content."
-msgstr ""
+msgstr "Du har ikke noget indhold."
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your comments"
-msgstr ""
+msgstr "Dine kommentarer"
 
-#, fuzzy
 msgctxt "hoeringsportal_anonymous_edit"
 msgid "Your dialogue proposals"
-msgstr ""
+msgstr "Dine dialogforslag"
 
-#, fuzzy
 msgctxt "node"
 msgid "(edited)"
-msgstr ""
+msgstr "(redigeret)"
 
-#, fuzzy
 msgctxt "node"
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
-#, fuzzy
 msgctxt "node"
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 

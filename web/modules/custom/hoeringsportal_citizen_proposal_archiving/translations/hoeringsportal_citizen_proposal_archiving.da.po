@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-16 15:13+0100\n"
-"PO-Revision-Date: 2025-12-16 15:13+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,59 +13,45 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "Archive URL"
-msgstr ""
+msgstr "Arkiv URL"
 
-#, fuzzy
 msgid "Archived at"
-msgstr ""
+msgstr "Arkiveret den"
 
-#, fuzzy
 msgid "Author"
-msgstr ""
+msgstr "Forfatter"
 
-#, fuzzy
 msgid "Citizen proposal"
-msgstr ""
+msgstr "Borgerforslag"
 
-#, fuzzy
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
-#, fuzzy
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
-#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
-#, fuzzy
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
-#, fuzzy
 msgid "Printed at"
-msgstr ""
+msgstr "Udskrevet den"
 
-#, fuzzy
 msgid "Proposal"
-msgstr ""
+msgstr "Forslag"
 
-#, fuzzy
 msgid "Remarks"
-msgstr ""
+msgstr "Bemærkninger"
 
-#, fuzzy
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
-#, fuzzy
 msgid "Vote end"
-msgstr ""
+msgstr "Afstemning slut"
 
-#, fuzzy
 msgid "Vote start"
-msgstr ""
+msgstr "Afstemning start"
 

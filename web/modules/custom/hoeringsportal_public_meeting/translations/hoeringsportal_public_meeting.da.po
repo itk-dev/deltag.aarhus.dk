@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-16 15:13+0100\n"
-"PO-Revision-Date: 2025-12-16 15:13+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,125 +13,97 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
-#, fuzzy
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
-#, fuzzy
 msgid "Deadline:"
-msgstr ""
+msgstr "Frist:"
 
-#, fuzzy
 msgid "Hearing deadline has passed"
-msgstr ""
+msgstr "Høringsfristen er overskredet"
 
-#, fuzzy
 msgid "Last signup date"
-msgstr ""
+msgstr "Sidste tilmeldingsdato"
 
-#, fuzzy
 msgid "Meeting has already been held"
-msgstr ""
+msgstr "Mødet er allerede blevet afholdt"
 
-#, fuzzy
 msgid "Meeting has been cancelled"
-msgstr ""
+msgstr "Mødet er blevet aflyst"
 
-#, fuzzy
 msgid "No available spots left"
-msgstr ""
+msgstr "Ingen ledige pladser tilbage"
 
-#, fuzzy
 msgid ""
 "Note: If this public meeting is cancelled you should go to @cancelLink "
 "to cancel all orders."
 msgstr ""
+"Bemærk: Hvis dette borgermøde aflyst, bør du gå til @cancelLink "
+"for at annullere alle ordrer."
 
-#, fuzzy
 msgid "Opens in a new tab"
-msgstr ""
+msgstr "Åbner i et nyt faneblad"
 
-#, fuzzy
 msgid "Place"
-msgstr ""
+msgstr "Sted"
 
-#, fuzzy
 msgid "Please enter a location"
-msgstr ""
+msgstr "Indtast venligst et sted"
 
-#, fuzzy
 msgid "Please enter a start time"
-msgstr ""
+msgstr "Indtast venligst et starttidspunkt"
 
-#, fuzzy
 msgid "Please enter a value!"
-msgstr ""
+msgstr "Indtast venligst en værdi!"
 
-#, fuzzy
 msgid "Please enter an address"
-msgstr ""
+msgstr "Indtast venligst en adresse"
 
-#, fuzzy
 msgid "Please enter an end time"
-msgstr ""
+msgstr "Indtast venligst et sluttidspunkt"
 
-#, fuzzy
 msgid "Please enter number of spots"
-msgstr ""
+msgstr "Indtast venligst antal pladser"
 
-#, fuzzy
 msgid "Public meeting cancelled"
-msgstr ""
+msgstr "Borgermøde aflyst"
 
-#, fuzzy
 msgid "Registration"
-msgstr ""
+msgstr "Tilmelding"
 
-#, fuzzy
 msgid "Registration deadline passed"
-msgstr ""
+msgstr "Tilmeldingsfristen er udløbet"
 
-#, fuzzy
 msgid "Sign up"
-msgstr ""
+msgstr "Tilmeld dig"
 
-#, fuzzy
 msgid "Spots"
-msgstr ""
+msgstr "Pladser"
 
-#, fuzzy
 msgid "The meeting end time must be after the start time."
-msgstr ""
+msgstr "Mødets sluttidspunkt skal være efter starttidspunktet."
 
-#, fuzzy
 msgid "The meeting time must not be in the past."
-msgstr ""
+msgstr "Mødetidspunktet må ikke være i fortiden."
 
-#, fuzzy
 msgid "The registration deadline is required."
-msgstr ""
+msgstr "Tilmeldingsfristen er påkrævet."
 
-#, fuzzy
 msgid "The registration deadline must not be after the meeting starts."
-msgstr ""
+msgstr "Tilmeldingsfristen må ikke være efter mødet starter."
 
-#, fuzzy
 msgid "The registration deadline must not be in the past."
-msgstr ""
+msgstr "Tilmeldingsfristen må ikke være i fortiden."
 
-#, fuzzy
 msgid "This event has multiple dates"
-msgstr ""
+msgstr "Denne begivenhed har flere datoer"
 
-#, fuzzy
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
-#, fuzzy
 msgid "View the list"
-msgstr ""
+msgstr "Se listen"
 

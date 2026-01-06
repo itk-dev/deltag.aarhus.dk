@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-16 15:13+0100\n"
-"PO-Revision-Date: 2025-12-16 15:13+0100\n"
+"POT-Creation-Date: 2026-01-05 13:40+0100\n"
+"PO-Revision-Date: 2026-01-05 13:40+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,412 +13,335 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#, fuzzy
 msgid "(Not shown on proposal)"
-msgstr ""
+msgstr "(Vises ikke på forslaget)"
 
-#, fuzzy
 msgid "@remaining characters left."
-msgstr ""
+msgstr "@remaining tegn tilbage."
 
-#, fuzzy
 msgid "Access denied page"
-msgstr ""
+msgstr "Adgang nægtet side"
 
-#, fuzzy
 msgid "Add form"
-msgstr ""
+msgstr "Tilføj formular"
 
-#, fuzzy
 msgid "Allow email"
-msgstr ""
+msgstr "Tillad e-mail"
 
-#, fuzzy
 msgid "Allow email help"
-msgstr ""
+msgstr "Tillad e-mail hjælp"
 
-#, fuzzy
 msgid "Approve form"
-msgstr ""
+msgstr "Godkend formular"
 
-#, fuzzy
 msgid "Approve intro"
-msgstr ""
+msgstr "Godkend introduktion"
 
-#, fuzzy
 msgid "Approve proposal"
-msgstr ""
+msgstr "Godkend forslag"
 
-#, fuzzy
 msgid "Authenticate"
-msgstr ""
+msgstr "Autentificer"
 
-#, fuzzy
 msgid "Authenticate link text"
-msgstr ""
+msgstr "Autentificer link tekst"
 
-#, fuzzy
 msgid "Authenticate message"
-msgstr ""
+msgstr "Autentificer besked"
 
-#, fuzzy
 msgid "Authenticate message (support)"
-msgstr ""
+msgstr "Autentificer besked (støtte)"
 
-#, fuzzy
 msgid "Authenticate with MitID"
-msgstr ""
+msgstr "Autentificer med MitID"
 
-#, fuzzy
 msgid "Author intro"
-msgstr ""
+msgstr "Forfatter introduktion"
 
-#, fuzzy
 msgid "Cancel proposal"
-msgstr ""
+msgstr "Annullér forslag"
 
-#, fuzzy
 msgid "Citizen proposal"
-msgstr ""
+msgstr "Borgerforslag"
 
-#, fuzzy
 msgid "Citizen proposal settings sucessfully saved."
-msgstr ""
+msgstr "Borgerforslag indstillinger gemt med succes."
 
-#, fuzzy
 msgid "Citizen proposal support"
-msgstr ""
+msgstr "Borgerforslag støtte"
 
-#, fuzzy
 msgid "Citizen proposal support related to citizen proposal nodes"
-msgstr ""
+msgstr "Borgerforslag støtte relateret til borgerforslag noder"
 
-#, fuzzy
 msgid "Citizen proposal supporters"
-msgstr ""
+msgstr "Borgerforslag støtter"
 
-#, fuzzy
 msgid "Consent help"
-msgstr ""
+msgstr "Samtykke hjælp"
 
-#, fuzzy
 msgid "Content"
-msgstr ""
+msgstr "Indhold"
 
-#, fuzzy
 msgid "Could not find a proposal to approve."
-msgstr ""
+msgstr "Kunne ikke finde et forslag at godkende."
 
-#, fuzzy
 msgid "Create new proposal"
-msgstr ""
+msgstr "Opret nyt forslag"
 
-#, fuzzy
 msgid "Create proposal"
-msgstr ""
+msgstr "Opret forslag"
 
-#, fuzzy
 msgid "Created"
-msgstr ""
+msgstr "Oprettet"
 
-#, fuzzy
 msgid "Display email"
-msgstr ""
+msgstr "Vis e-mail"
 
-#, fuzzy
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
-#, fuzzy
 msgid "Edit proposal"
-msgstr ""
+msgstr "Redigér forslag"
 
-#, fuzzy
 msgid "Editor email address"
-msgstr ""
+msgstr "Redaktør e-mail adresse"
 
-#, fuzzy
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
-#, fuzzy
 msgid "Email display help"
-msgstr ""
+msgstr "E-mail visning hjælp"
 
-#, fuzzy
 msgid "Email help"
-msgstr ""
+msgstr "E-mail hjælp"
 
-#, fuzzy
 msgid "Emails"
-msgstr ""
+msgstr "E-mails"
 
-#, fuzzy
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
-#, fuzzy
 msgid "If not set, the citizen will see the proposal after supporting it."
 msgstr ""
+"Hvis ikke angivet, vil borgeren se forslaget efter at have støttet "
+"det."
 
-#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
-#, fuzzy
 msgid "Name help"
-msgstr ""
+msgstr "Navn hjælp"
 
-#, fuzzy
 msgid "Number of allowed characters for proposal field."
-msgstr ""
+msgstr "Antal tilladte tegn for forslag felt."
 
-#, fuzzy
 msgid "Number of allowed characters for remarks field."
-msgstr ""
+msgstr "Antal tilladte tegn for bemærkninger felt."
 
-#, fuzzy
 msgid "Number of allowed characters for title field."
-msgstr ""
+msgstr "Antal tilladte tegn for titel felt."
 
-#, fuzzy
 msgid "Number of supporters"
-msgstr ""
+msgstr "Antal støtter"
 
-#, fuzzy
 msgid "Personal data storage consent"
-msgstr ""
+msgstr "Samtykke til opbevaring af persondata"
 
-#, fuzzy
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
-#, fuzzy
 msgid "Phone help"
-msgstr ""
+msgstr "Telefon hjælp"
 
-#, fuzzy
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
-#, fuzzy
 msgid "Please enter a path on the form /node/«id»."
-msgstr ""
+msgstr "Indtast venligst en sti på formen /node/«id»."
 
-#, fuzzy
 msgid "Please enter a survey description."
-msgstr ""
+msgstr "Indtast venligst en undersøgelses beskrivelse."
 
-#, fuzzy
 msgid "Proposal"
-msgstr ""
+msgstr "Forslag"
 
-#, fuzzy
 msgid "Proposal created (citizen)"
-msgstr ""
+msgstr "Forslag oprettet (borger)"
 
-#, fuzzy
 msgid "Proposal created (editor)"
-msgstr ""
+msgstr "Forslag oprettet (redaktør)"
 
-#, fuzzy
 msgid "Proposal help"
-msgstr ""
+msgstr "Forslag hjælp"
 
-#, fuzzy
 msgid "Proposal intro"
-msgstr ""
+msgstr "Forslag introduktion"
 
-#, fuzzy
 msgid "Proposal published (citizen)"
-msgstr ""
+msgstr "Forslag publiceret (borger)"
 
-#, fuzzy
 msgid ""
 "Proposal supporters. This will create 1 duplicate record for every "
 "comment. Usually if you need this it is better to create a supporter "
 "view."
 msgstr ""
+"Forslag støtter. Dette vil oprette 1 duplikat post for hver "
+"kommentar. Normalt, hvis du har brug for dette, er det bedre at "
+"oprette en støtter visning."
 
-#, fuzzy
 msgid "Redirect URL after a proposal has been cancelled"
-msgstr ""
+msgstr "Omdirigerings URL efter et forslag er blevet annulleret"
 
-#, fuzzy
 msgid "Redirect URL after a proposal has been submitted"
-msgstr ""
+msgstr "Omdirigerings URL efter et forslag er blevet indsendt"
 
-#, fuzzy
 msgid "Redirect URL after a proposal has been supported"
-msgstr ""
+msgstr "Omdirigerings URL efter et forslag er blevet støttet"
 
-#, fuzzy
 msgid "Remarks"
-msgstr ""
+msgstr "Bemærkninger"
 
-#, fuzzy
 msgid "Remarks help"
-msgstr ""
+msgstr "Bemærkninger hjælp"
 
-#, fuzzy
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
-#, fuzzy
 msgid ""
 "Select a survey to show as part of the form. <a href=\":url\">Manage "
 "surveys</a>."
 msgstr ""
+"Vælg en undersøgelse at vise som del af formularen. <a "
+"href=\":url\">Administrer undersøgelser</a>."
 
-#, fuzzy
 msgid "Select survey webform"
-msgstr ""
+msgstr "Vælg undersøgelses webformular"
 
-#, fuzzy
 msgid ""
 "Send citizens from outside the municipality to this page. Enter a path "
 "on the form <code>/node/«id»</code>, e.g. <code>/node/87</code>."
 msgstr ""
+"Send borgere fra uden for kommunen til denne side. Indtast en sti på "
+"formen <code>/node/«id»</code>, f.eks. <code>/node/87</code>."
 
-#, fuzzy
 msgid "Sidebar"
-msgstr ""
+msgstr "Sidebar"
 
-#, fuzzy
 msgid "Sidebar text"
-msgstr ""
+msgstr "Sidebar tekst"
 
-#, fuzzy
 msgid "Sign out"
-msgstr ""
+msgstr "Log ud"
 
-#, fuzzy
 msgid "Something went wrong. Your support was not registered."
-msgstr ""
+msgstr "Noget gik galt. Din støtte blev ikke registreret."
 
-#, fuzzy
 msgid "Subject"
-msgstr ""
+msgstr "Emne"
 
-#, fuzzy
 msgid "Submission text when a proposal has been submitted"
-msgstr ""
+msgstr "Indsendelse tekst når et forslag er blevet indsendt"
 
-#, fuzzy
 msgid "Submission text when a proposal has been supported"
-msgstr ""
+msgstr "Indsendelse tekst når et forslag er blevet støttet"
 
-#, fuzzy
 msgid "Support form"
-msgstr ""
+msgstr "Støtte formular"
 
-#, fuzzy
 msgid "Support intro"
-msgstr ""
+msgstr "Støtte introduktion"
 
-#, fuzzy
 msgid "Support proposal"
-msgstr ""
+msgstr "Støt forslag"
 
-#, fuzzy
 msgid "Support the proposal"
-msgstr ""
+msgstr "Støt forslaget"
 
-#, fuzzy
 msgid "Supporters"
-msgstr ""
+msgstr "Støtter"
 
-#, fuzzy
 msgid "Survey description"
-msgstr ""
+msgstr "Undersøgelses beskrivelse"
 
-#, fuzzy
 msgid "Survey webform"
-msgstr ""
+msgstr "Undersøgelses webformular"
 
-#, fuzzy
 msgid "Tell a little about why the survey is shown."
-msgstr ""
+msgstr "Fortæl lidt om hvorfor undersøgelsen vises."
 
-#, fuzzy
 msgid "Thank you for your submission."
-msgstr ""
+msgstr "Tak for din indsendelse."
 
-#, fuzzy
 msgid "Thank you for your support."
-msgstr ""
+msgstr "Tak for din støtte."
 
-#, fuzzy
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
-#, fuzzy
 msgid "Title help"
-msgstr ""
+msgstr "Titel hjælp"
 
-#, fuzzy
 msgid "Too many characters used."
-msgstr ""
+msgstr "For mange tegn brugt."
 
-#, fuzzy
 msgid "Update proposal"
-msgstr ""
+msgstr "Opdatér forslag"
 
-#, fuzzy
 msgid ""
 "Use <code>&lt;a target=&quot;_blank&quot; href=&quot;…&quot;&gt;Read "
 "more about GDRP and data storage&lt;/a&gt;</code> to insert a link to "
 "details on what is stored and where and how."
 msgstr ""
+"Brug <code>&lt;a target=&quot;_blank&quot; "
+"href=&quot;…&quot;&gt;Læs mere om GDPR og "
+"dataopbevaring&lt;/a&gt;</code> for at indsætte et link til detaljer "
+"om hvad der gemmes og hvor og hvordan."
 
-#, fuzzy
 msgid ""
 "Use <code>&lt;a target=&quot;_blank&quot; href=&quot;…&quot;&gt;Read "
 "more about the emails we may send&lt;/a&gt;</code> to insert a link to "
 "details on what emails might be sent."
 msgstr ""
+"Brug <code>&lt;a target=&quot;_blank&quot; "
+"href=&quot;…&quot;&gt;Læs mere om de e-mails vi måske "
+"sender&lt;/a&gt;</code> for at indsætte et link til detaljer om "
+"hvilke e-mails der måske sendes."
 
-#, fuzzy
 msgid "User email"
-msgstr ""
+msgstr "Bruger e-mail"
 
-#, fuzzy
 msgid "User identifier"
-msgstr ""
+msgstr "Bruger identifikator"
 
-#, fuzzy
 msgid "User name"
-msgstr ""
+msgstr "Brugernavn"
 
-#, fuzzy
 msgid ""
 "You already supported this proposal on @support_date. You can only "
 "support a proposal once."
 msgstr ""
+"Du har allerede støttet dette forslag den @support_date. Du kan kun "
+"støtte et forslag én gang."
 
-#, fuzzy
 msgid ""
 "You can use tokens in email subject and both tokens and Twig in email "
 "content."
 msgstr ""
+"Du kan bruge tokens i e-mail emne og både tokens og Twig i e-mail "
+"indhold."
 
-#, fuzzy
 msgid "You have to authenticate to add a proposal"
-msgstr ""
+msgstr "Du skal autentificere for at tilføje et forslag"
 
-#, fuzzy
 msgid "You have to authenticate to support a proposal"
-msgstr ""
+msgstr "Du skal autentificere for at støtte et forslag"
 
-#, fuzzy
 msgid "You're currently authenticated as @name"
-msgstr ""
+msgstr "Du er i øjeblikket autentificeret som @name"
 
-#, fuzzy
 msgid "You're supporting @label on behalf of a citizen"
-msgstr ""
+msgstr "Du støtter @label på vegne af en borger"
 
-#, fuzzy
 msgid "Your submission has been cancelled."
-msgstr ""
+msgstr "Din indsendelse er blevet annulleret."
 
