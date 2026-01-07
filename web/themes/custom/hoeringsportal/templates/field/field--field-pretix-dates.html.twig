@@ -129,7 +129,7 @@
                 <i class="fa-solid fa-ticket-alt fa-xs me-2"></i>{{ 'Sign up'|t }}
                 <span class="sr-only">({{ 'Opens in a new tab'|trans }})</span>
               </a>
-              <span class="small d-block">{{ 'Deadline:'|t({}, {'context' : 'signup'}) }} {{ variables.registration_deadline|date('U')|format_date('hoeringsportal_date_long') }}</span>
+              <span class="small d-block">{{ 'Deadline:'|t({}, {context: 'signup'}) }} {{ variables.registration_deadline|date('U')|format_date('hoeringsportal_date_long') }}</span>
             {% endif %}
           {% endif %}
         </div>

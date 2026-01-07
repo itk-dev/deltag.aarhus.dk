@@ -149,10 +149,10 @@
                           {% if node.field_public_meeting_cancelled.value %}
                             <strong>{{ 'Cancelled'|t }}</strong>
                           {% elseif node.field_registration_deadline.date|date('U') < 'now'|date('U') %}
-                            <strong>{{ 'Deadline exceeded'|t({}, {'context' : 'signup'}) }}</strong>
+                            <strong>{{ 'Deadline exceeded'|t({}, {context: 'signup'}) }}</strong>
                           {% else %}
                             <strong><a class="btn btn-sm btn-pink text-white rounded py-1 px-3" href="{{ node.field_signup_link.value[0].uri }}">{{ node.field_signup_link.value[0].title }}</a></strong>
-                            <span class="small d-block">{{ 'Deadline:'|t({}, {'context' : 'signup'}) }} {{ node.field_registration_deadline.date|date('U')|format_date('hoeringsportal_date_long') }}</span>
+                            <span class="small d-block">{{ 'Deadline:'|t({}, {context: 'signup'}) }} {{ node.field_registration_deadline.date|date('U')|format_date('hoeringsportal_date_long') }}</span>
                           {% endif %}
                         </div>
                       </div>
