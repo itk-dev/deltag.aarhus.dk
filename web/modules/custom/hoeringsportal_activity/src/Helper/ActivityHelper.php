@@ -12,7 +12,7 @@ use Drupal\node\NodeInterface;
 /**
  * Provides utility methods for handling activity-related operations.
  */
-#[AllowDynamicProperties]
+#[\AllowDynamicProperties]
 class ActivityHelper {
 
   const string NODE_TYPE_COURSE = 'course';
