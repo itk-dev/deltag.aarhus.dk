@@ -1,5 +1,5 @@
-uuid: null
-langcode: en
+uuid: a0ec9e59-af5b-4f21-bd96-c2225efda49a
+langcode: da
 status: true
 dependencies:
   enforced:
@@ -8,6 +8,4 @@ dependencies:
 name: 'Webform (Default) - DO NOT EDIT'
 format: webform_default
 weight: 100
-roles:
-  - authenticated
 filters: {  }

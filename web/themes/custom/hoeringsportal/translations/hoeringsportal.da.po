@@ -645,4 +645,3 @@ msgstr "Slet"
 msgctxt "node"
 msgid "Edit"
 msgstr "Rediger"
-
