@@ -5,6 +5,7 @@ and this project adheres to [Semantic
 Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 * [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)
   * Added course content type
   * Added activity wrapper for public_events and courses
