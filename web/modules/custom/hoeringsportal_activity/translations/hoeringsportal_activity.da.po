@@ -16,8 +16,6 @@ msgid "Course"
 msgstr "Forløb"
 msgid "Duration"
 msgstr "Varighed"
-msgid
-msgstr
 msgid "Create event"
 msgstr "Opret begivenhed"
 msgid "Create course"
