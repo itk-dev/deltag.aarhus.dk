@@ -134,11 +134,9 @@ msgstr "Nuværende forekomst"
 msgid "Date"
 msgstr "Dato"
 
-msgctxt "signup"
 msgid "Deadline exceeded"
 msgstr "Tilmeldingsfrist overskredet"
 
-msgctxt "signup"
 msgid "Deadline:"
 msgstr "Tilmeldingsfrist:"
 
