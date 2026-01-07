@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Drupal\hoeringsportal_activity\Controller;
 
 use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Session\AccountInterface;
 
@@ -23,9 +22,9 @@ final class ActivityController extends ControllerBase {
       '#theme' => 'hoeringsportal_activity_add_activity',
       '#attached' => [
         'library' => [
-          'hoeringsportal_activity/backend'
-        ]
-      ]
+          'hoeringsportal_activity/backend',
+        ],
+      ],
     ];
 
     return $build;
@@ -34,13 +33,14 @@ final class ActivityController extends ControllerBase {
   /**
    * Checks access for a specific request.
    *
-   * @param AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   Run access checks for this account.
    *
-   * @return AccessResultInterface
+   * @return \Drupal\Core\Access\AccessResultInterface
    *   The access result.
    */
   public function access(AccountInterface $account) {
     return AccessResult::allowedIf($account->hasPermission('create public_meeting content') || $account->hasPermission('create course content'));
   }
+
 }

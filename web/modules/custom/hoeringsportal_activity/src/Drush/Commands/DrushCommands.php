@@ -86,4 +86,5 @@ final class DrushCommands extends BaseDrushCommands {
   private function getLastRunKey(string $method): string {
     return $method . '_last_run_at';
   }
+
 }

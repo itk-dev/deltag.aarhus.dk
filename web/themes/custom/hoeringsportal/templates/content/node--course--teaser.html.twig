@@ -6,8 +6,7 @@
 {% block card_content %}
 {% endblock %}
 
-
-{% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date': 'hoeringsportal_datetime' %}
+{% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date' : 'hoeringsportal_datetime' %}
 
 {# Collect data for information lines on card #}
 {%
@@ -16,7 +15,6 @@
     {icon: 'fa-calendar-days', value: 'To'|t ~ ': ' ~ node.field_last_meeting_time.date|date('U')|format_date(dateFormat)},
   ]
 %}
-
 
 {%
   set items = items|merge([

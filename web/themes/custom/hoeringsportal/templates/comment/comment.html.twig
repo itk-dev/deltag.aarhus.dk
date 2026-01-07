@@ -101,9 +101,8 @@
                   data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"
                   href="{{ path('entity.comment.edit_form', {comment: comment.id}) }}">
                   {{ 'Edit'|t({}, {context: 'comment'}) }}
-              </a>
-            </div>
-            {% endif %}
+                </a>
+              </div>
               <div class="comment-edit">
                 <a class="use-ajax text-primary"
                   data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"

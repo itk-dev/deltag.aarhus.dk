@@ -1,7 +1,7 @@
 {% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
 
 {% block content_top %}
-  {% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date_long': 'hoeringsportal_date_time_long' %}
+  {% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date_long' : 'hoeringsportal_date_time_long' %}
 
   {# Header #}
   {{ include(directory ~ '/templates/components/header-default.html.twig', {

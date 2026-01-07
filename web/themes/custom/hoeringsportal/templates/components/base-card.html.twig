@@ -10,7 +10,7 @@
 {% elseif node_type == 'project_main_page' %}
   {% set node_type_class = 'text-project' %}
   {% set node_type_text = 'Project'|t %}
-{% elseif node_type == 'public_meeting'%}
+{% elseif node_type == 'public_meeting' %}
   {% set node_type_class = 'text-public-meeting' %}
   {% set node_type_text = 'Event' %}
   {% if node.field_activity_type.value %}

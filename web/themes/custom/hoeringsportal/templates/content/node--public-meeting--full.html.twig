@@ -18,7 +18,7 @@
       label: 'Content'|t,
       href: '#content',
     }
-  }  %}
+  } %}
 
   {% if not node.field_hidden_signup.value %}
     {% set shortcuts = shortcuts|merge([{
@@ -76,9 +76,8 @@
     notification: node.field_public_meeting_cancelled.value ? {
       header: 'Cancelled'|t,
       message: node.field_cancelled_text.value
-    }: null
+    } : null
   }) }}
-
 
 {% endblock %}
 
@@ -149,7 +148,7 @@
                         <div>
                           {% if node.field_public_meeting_cancelled.value %}
                             <strong>{{ 'Cancelled'|t }}</strong>
-                          {% elseif node.field_registration_deadline.date|date('U') < 'now'|date('U')  %}
+                          {% elseif node.field_registration_deadline.date|date('U') < 'now'|date('U') %}
                             <strong>{{ 'Deadline exceeded'|t }}</strong>
                           {% else %}
                             <strong><a class="btn btn-sm btn-pink text-white rounded py-1 px-3" href="{{ node.field_signup_link.value[0].uri }}">{{ node.field_signup_link.value[0].title }}</a></strong>

@@ -48,7 +48,6 @@
 
 {% set bundles = bundles|filter((v, k) => k != 'public_meeting' and k != 'course') %}
 
-
 {% if bundles is not empty %}
   <dl{{ attributes.addClass('admin-list') }}>
     <div{{ create_attribute({class: item_classes}) }}>

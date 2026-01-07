@@ -60,7 +60,7 @@
                               {% if element.value is not iterable %}
                                 <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
                               {% else %}
-                                {% if 'field' == element.value['#theme']  %}
+                                {% if 'field' == element.value['#theme'] %}
                                   <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
                                   {% else %}
                                     {% for value in element.value %}
