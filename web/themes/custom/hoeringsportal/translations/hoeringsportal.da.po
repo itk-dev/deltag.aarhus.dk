@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-05 13:40+0100\n"
-"PO-Revision-Date: 2026-01-05 13:40+0100\n"
+"POT-Creation-Date: 2026-01-07 12:00+0100\n"
+"PO-Revision-Date: 2026-01-07 12:00+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,9 @@ msgstr "Kommentarer"
 msgid "Confirm email address"
 msgstr "Bekræft e-mailadresse"
 
+msgid "Contact"
+msgstr "Kontakt"
+
 msgid "Content"
 msgstr "Indhold"
 
@@ -131,8 +134,13 @@ msgstr "Nuværende forekomst"
 msgid "Date"
 msgstr "Dato"
 
+msgctxt "signup"
+msgid "Deadline exceeded"
+msgstr "Tilmeldingsfrist overskredet"
+
+msgctxt "signup"
 msgid "Deadline:"
-msgstr "Frist:"
+msgstr "Tilmeldingsfrist:"
 
 msgid "Debate"
 msgstr "Debat"
@@ -142,6 +150,9 @@ msgstr "Afgørelse"
 
 msgid "Decision date"
 msgstr "Afgørelsesdato"
+
+msgid "Description"
+msgstr "Beskrivelse"
 
 msgid "Dialogue"
 msgstr "Dialog"
@@ -469,6 +480,9 @@ msgstr "Tilmeld dig"
 
 msgid "Sign up for public meeting"
 msgstr "Tilmeld dig borgermøde"
+
+msgid "Signup"
+msgstr "Tilmelding"
 
 msgid "Skip to main content"
 msgstr "Spring til hovedindhold"
