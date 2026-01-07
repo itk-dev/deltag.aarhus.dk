@@ -3,7 +3,9 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.public_meeting.field_activity_location
     - field.field.node.public_meeting.field_activity_type
+    - field.field.node.public_meeting.field_address
     - field.field.node.public_meeting.field_area
     - field.field.node.public_meeting.field_cancelled_date
     - field.field.node.public_meeting.field_cancelled_text
@@ -68,6 +70,14 @@ targetEntityType: node
 bundle: public_meeting
 mode: default
 content:
+  field_activity_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_activity_type:
     type: entity_reference_label
     label: hidden
@@ -75,6 +85,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 14
+    region: content
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_cancelled_text:
     type: string

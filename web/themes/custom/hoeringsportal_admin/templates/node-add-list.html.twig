@@ -46,7 +46,7 @@
 ]
 %}
 
-{% set bundles = bundles|filter((v, k) => k != 'public_meeting') %}
+{% set bundles = bundles|filter((v, k) => k != 'public_meeting' and k != 'course') %}
 
 
 {% if bundles is not empty %}

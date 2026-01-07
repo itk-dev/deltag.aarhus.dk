@@ -117,10 +117,17 @@ function hoeringsportal_public_meeting_form_node_form_alter(&$form, FormStateInt
     $form['field_registration_deadline']['#states'] = [
       'visible' => $signUpManual,
     ];
+
     $form['field_last_meeting_time']['#states'] = [
       'visible' => $signUpManual,
     ];
     $form['field_last_meeting_time_end']['#states'] = [
+      'visible' => $signUpManual,
+    ];
+    $form['field_activity_location']['#states'] = [
+      'visible' => $signUpManual,
+    ];
+    $form['field_address']['#states'] = [
       'visible' => $signUpManual,
     ];
 
@@ -162,6 +169,19 @@ function hoeringsportal_public_meeting_form_node_form_alter(&$form, FormStateInt
 
     $form['#attached']['library'][] = 'hoeringsportal_public_meeting/public-meeting-form';
     $form['field_area']['widget']['#description_display'] = 'before';
+
+    // Hide deprecated fields that still might contain data from yesteryear.
+    // This prevents the fields from being displayed in the form for future
+    // events.
+    if (empty($form['field_description']['widget'][0]['#default_value'])) {
+      $form['field_description']['#access'] = FALSE;
+    }
+    if (empty($form['field_email_address']['widget'][0]['value']['#default_value'])) {
+      $form['field_email_address']['#access'] = FALSE;
+    }
+    if (empty($form['field_contact']['widget'][0]['#default_value'])) {
+      $form['field_contact']['#access'] = FALSE;
+    }
   }
 }
 

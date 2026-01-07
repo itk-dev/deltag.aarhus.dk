@@ -42,7 +42,9 @@
                 {% if shortcuts %}
                   <div class="mb-5">
                     {% for shortcut in shortcuts %}
-                      <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
+                      {% if shortcut.label %}
+                        <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
+                      {% endif %}
                     {% endfor %}
                   </div>
                 {% endif %}

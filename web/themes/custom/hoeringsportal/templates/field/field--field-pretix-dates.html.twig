@@ -40,8 +40,9 @@
 {# sort items by time_from #}
 {% set items = items|sort((a, b) => a.content['#variables'].time_from <=> b.content['#variables'].time_from) %}
 
-<div class="mb-5 mx-3 mx-lg-0">
+<div class="mb-5 mx-3 mx-lg-0 my-5">
 
+  <h2>{{ 'Signup'|t }}</h2>
   {# Headers for table like expirence on larger screens. #}
   <div class="row row-gap-2 py-2 d-none d-lg-flex">
     <label class="col-lg-3 col-xl-3 fw-bold small text-body-secondary">{{ 'Location'|t }}</label>
@@ -69,29 +70,29 @@
 
       {% set url = path('hoeringsportal_public_meeting.public_meeting_date', {node: node.id, dates_delta}) %}
 
-      <div class="signup-multiple-dates row row-gap-2 py-2 py-lg-3 position-relative {% if meeting_has_been_held %}bg-body-tertiary text-muted {% else %}bg-white {% endif %} rounded {% if is_current %}pt-4 border border-primary {% elseif is_first_upcoming %}pt-4 border border-dark {% endif %}">
+      <div class="signup-multiple-dates row row-gap-2 py-2 py-lg-3 position-relative {% if meeting_has_been_held %}bg-white text-muted {% else %}bg-white {% endif %} rounded {% if is_current %}pt-4 border-pink {% elseif is_first_upcoming %}pt-4 border border-dark {% endif %}">
 
         {% if is_current %}
-          <span class="position-absolute top-0 start-0 ms-3 translate-middle-y bg-primary text-white rounded-pill small w-auto px-2">{{ 'Current occurrence'|t }}</span>
+          <span class="position-absolute top-0 start-0 ms-3 translate-middle-y bg-pink text-white rounded-pill small w-auto px-2">{{ 'Current occurrence'|t }}</span>
         {% elseif is_first_upcoming %}
           <span class="position-absolute top-0 start-0 ms-3 translate-middle-y bg-dark text-white rounded-pill small w-auto px-2">{{ 'First upcoming'|t }}</span>
         {% endif %}
 
         <div class="col-auto col-sm-12 col-lg-3 col-xl-3 d-flex">
 
-          <a href="{{ url }}">
-            <i class="d-none fa-solid fa-ticket-alt text-primary opacity-50 me-3 mt-1 d-lg-block"></i>
-          </a>
+          <span>
+            <i class="d-none fa-solid fa-ticket-alt opacity-50 me-3 mt-1 d-lg-block"></i>
+          </span>
           <div>
             <label class="d-block d-lg-none fw-bold small text-body-secondary">{{ 'Location'|t }}</label>
-            <p class="fw-semibold mb-1"><a href="{{ url }}">{{ variables.location }}</a></p>
-            <p class="small mb-0"><a href="{{ url }}">{{ variables.address }}</a></p>
+            <p class="fw-semibold mb-1"><span>{{ variables.location }}</span></p>
+            <p class="small mb-0"><span>{{ variables.address }}</span></p>
           </div>
         </div>
 
         <div class="col-12 col-sm-12 col-lg-3 col-xl-3">
           <label class="d-block d-lg-none fw-bold small text-body-secondary">{{ 'Date'|t }}</label>
-          <a href="{{ url }}"><span class="fw-semibold">{{ variables.time_from|date('U')|format_date('hoeringsportal_date_long') }}</small></a>
+          <span><small class="fw-semibold">{{ variables.time_from|date('U')|format_date('hoeringsportal_date_long') }}</small></span >
         </div>
 
         <div class="col-12 col-sm-6 col-lg-1 col-xl-2">
@@ -124,7 +125,7 @@
             {% elseif 0 == availability.available_number %}
               <div>{{ 'No available spots left'|t }}</div>
             {% elseif sign_up_url %}
-              <a href="{{ sign_up_url }}" class="btn btn-sm bg-primary text-white rounded py-1 px-3" target="_blank">
+              <a href="{{ sign_up_url }}" class="btn btn-sm btn-pink text-white rounded py-1 px-3" target="_blank">
                 <i class="fa-solid fa-ticket-alt fa-xs me-2"></i>{{ 'Sign up'|t }}
                 <span class="sr-only">({{ 'Opens in a new tab'|trans }})</span>
               </a>

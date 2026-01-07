@@ -1,0 +1,19 @@
+uuid: b1fcc7f9-e483-4add-8634-9bce1b992918
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.public_meeting
+id: node.public_meeting.field_address
+field_name: field_address
+entity_type: node
+bundle: public_meeting
+label: Adresse
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

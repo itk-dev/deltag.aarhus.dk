@@ -23,9 +23,17 @@ function hoeringsportal_activity_entity_presave(EntityInterface $entity) {
 }
 
 function hoeringsportal_activity_form_node_course_form_alter(&$form, FormStateInterface $form_state) {
-  Drupal::service(ActivityHelper::class)->courseFormAlter($form, $form_state);
+  Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
 }
 
 function hoeringsportal_activity_form_node_course_edit_form_alter(&$form, FormStateInterface $form_state) {
-  Drupal::service(ActivityHelper::class)->courseFormAlter($form, $form_state);
+  Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
+}
+
+function hoeringsportal_activity_form_node_public_meeting_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
+}
+
+function hoeringsportal_activity_form_node_public_meeting_edit_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
 }

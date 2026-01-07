@@ -36,9 +36,11 @@ class ActivityHelper {
     }
   }
 
-  public function courseFormAlter(&$form, $form_state) {
+  public function activityFormAlter(&$form, $form_state) {
     // Handle js changes to form in custom javascript, it's too complex for form states.
-    $form['#attached']['library'][] = 'hoeringsportal_activity/course_form_alter';
+    if ('course' === $form_state->getFormObject()->getEntity()->bundle()) {
+      $form['#attached']['library'][] = 'hoeringsportal_activity/course_form_alter';
+    }
 
     // Dawa functionality to address field.
     $form['field_address']['widget'][0]['value']['#attributes']['class'][] = 'js-dawa-element';

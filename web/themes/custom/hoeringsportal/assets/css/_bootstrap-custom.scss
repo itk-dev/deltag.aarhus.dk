@@ -33,7 +33,7 @@ $grays: map.merge(
 $white: #fff;
 $black: #333;
 $pink: #ee0043;
-$pink-light: #fab2c6;
+$pink-light: var(--primitive-pink-100);
 $purple: #673ab7;
 $purple-light: #d1c4e9;
 $blue: #3661d8;

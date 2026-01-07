@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.itk_image_browser
+    - field.field.node.public_meeting.field_activity_location
     - field.field.node.public_meeting.field_activity_type
+    - field.field.node.public_meeting.field_address
     - field.field.node.public_meeting.field_area
     - field.field.node.public_meeting.field_cancelled_date
     - field.field.node.public_meeting.field_cancelled_text
@@ -96,6 +98,8 @@ third_party_settings:
         - field_registration_deadline
         - field_last_meeting_time
         - field_last_meeting_time_end
+        - field_activity_location
+        - field_address
         - field_signup_link
         - field_signup_text
         - field_pretix_dates
@@ -132,11 +136,27 @@ targetEntityType: node
 bundle: public_meeting
 mode: default
 content:
+  field_activity_location:
+    type: string_textfield
+    weight: 19
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_activity_type:
     type: options_select
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: string_textfield
+    weight: 20
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_area:
     type: options_buttons
@@ -160,7 +180,7 @@ content:
     third_party_settings: {  }
   field_contact:
     type: text_textarea
-    weight: 7
+    weight: 10
     region: content
     settings:
       rows: 5
@@ -182,7 +202,7 @@ content:
     third_party_settings: {  }
   field_email_address:
     type: email_default
-    weight: 51
+    weight: 11
     region: content
     settings:
       placeholder: ''
@@ -190,20 +210,20 @@ content:
     third_party_settings: {  }
   field_hidden_signup:
     type: boolean_checkbox
-    weight: 11
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_last_meeting_time:
     type: datetime_default
-    weight: 13
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_last_meeting_time_end:
     type: datetime_default
-    weight: 14
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -219,7 +239,7 @@ content:
     third_party_settings: {  }
   field_media_document:
     type: entity_browser_entity_reference
-    weight: 5
+    weight: 6
     region: content
     settings:
       entity_browser: itk_document_browser
@@ -234,7 +254,7 @@ content:
     third_party_settings: {  }
   field_media_image_single:
     type: entity_browser_entity_reference
-    weight: 6
+    weight: 7
     region: content
     settings:
       entity_browser: itk_image_browser
@@ -249,7 +269,7 @@ content:
     third_party_settings: {  }
   field_pretix_dates:
     type: pretix_date_widget
-    weight: 17
+    weight: 24
     region: content
     settings:
       hide_end_date: true
@@ -258,7 +278,7 @@ content:
     third_party_settings: {  }
   field_pretix_event_settings:
     type: pretix_event_settings_widget
-    weight: 18
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -271,25 +291,25 @@ content:
     third_party_settings: {  }
   field_registration_deadline:
     type: datetime_default
-    weight: 12
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   field_section:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 5
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: content_block
     third_party_settings: {  }
   field_signup_link:
     type: link_default
-    weight: 15
+    weight: 22
     region: content
     settings:
       placeholder_url: 'Url til dit eget tilmeldingssystem'
@@ -297,13 +317,13 @@ content:
     third_party_settings: {  }
   field_signup_selection:
     type: options_buttons
-    weight: 10
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   field_signup_text:
     type: text_textarea
-    weight: 16
+    weight: 23
     region: content
     settings:
       rows: 5
@@ -325,7 +345,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 16
+    weight: 15
     region: content
     settings:
       include_locked: true
@@ -338,7 +358,7 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 13
+    weight: 10
     region: content
     settings:
       display_label: true
