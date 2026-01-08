@@ -1,10 +1,10 @@
-# Danish translation of
+# Danish translation of hoeringsportal theme
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-05 13:40+0100\n"
-"PO-Revision-Date: 2026-01-05 13:40+0100\n"
+"POT-Creation-Date: 2026-01-08 08:39+0100\n"
+"PO-Revision-Date: 2026-01-08 08:39+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,9 @@ msgstr "Kommentarer"
 msgid "Confirm email address"
 msgstr "Bekræft e-mailadresse"
 
+msgid "Contact"
+msgstr "Kontakt"
+
 msgid "Content"
 msgstr "Indhold"
 
@@ -131,9 +134,6 @@ msgstr "Nuværende forekomst"
 msgid "Date"
 msgstr "Dato"
 
-msgid "Deadline:"
-msgstr "Frist:"
-
 msgid "Debate"
 msgstr "Debat"
 
@@ -142,6 +142,9 @@ msgstr "Afgørelse"
 
 msgid "Decision date"
 msgstr "Afgørelsesdato"
+
+msgid "Description"
+msgstr "Beskrivelse"
 
 msgid "Dialogue"
 msgstr "Dialog"
@@ -206,6 +209,9 @@ msgstr "Næste kommende"
 
 msgid "From"
 msgstr "Fra"
+
+msgid "From: @from"
+msgstr "Fra: @from"
 
 msgid "Go to next page"
 msgstr "Gå til næste side"
@@ -470,6 +476,9 @@ msgstr "Tilmeld dig"
 msgid "Sign up for public meeting"
 msgstr "Tilmeld dig borgermøde"
 
+msgid "Signup"
+msgstr "Tilmelding"
+
 msgid "Skip to main content"
 msgstr "Spring til hovedindhold"
 
@@ -518,6 +527,9 @@ msgstr "Tid"
 
 msgid "To"
 msgstr "Til"
+
+msgid "To: @to"
+msgstr "Til: @to"
 
 msgid "Try with less words or to phrase it differently"
 msgstr "Prøv med færre ord eller at formulere det anderledes"
@@ -633,4 +645,12 @@ msgstr "Slet"
 msgctxt "node"
 msgid "Edit"
 msgstr "Rediger"
+
+msgctxt "signup"
+msgid "Deadline exceeded"
+msgstr "Tilmeldingsfrist overskredet"
+
+msgctxt "signup"
+msgid "Deadline:"
+msgstr "Tilmeldingsfrist:"
 

@@ -11,3 +11,10 @@ user-login-form:
       css/user-login-form.css: { media: screen }
   js:
     js/user-login-form.js: {}
+
+dawa-support-text-field:
+  version: VERSION
+  js:
+    js/apply-dawa.js: {}
+    https://cdn.dataforsyningen.dk/dawa/assets/dawa-autocomplete2/1.0.2/unfilled/dawa-autocomplete2.min.js:
+      { type: external }

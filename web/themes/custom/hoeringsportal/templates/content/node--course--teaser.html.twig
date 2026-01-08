@@ -1,0 +1,46 @@
+{# Template for Public meeting extending base-card #}
+
+{% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
+
+{# Show teaser description #}
+{% block card_content %}
+{% endblock %}
+
+{% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date' : 'hoeringsportal_datetime' %}
+
+{# Collect data for information lines on card #}
+{%
+  set items = [
+    {icon: 'fa-calendar', value: 'From: @from'|t({'@from': node.field_first_meeting_time.date|date('U')|format_date(dateFormat)})},
+    {icon: 'fa-calendar-days', value: 'To: @to'|t({'@to': node.field_last_meeting_time.date|date('U')|format_date(dateFormat)})},
+  ]
+%}
+
+{%
+  set items = items|merge([
+  {icon: 'fa-location-dot', value: node.field_activity_location.value},
+])
+%}
+
+{# Show a date splash on the card #}
+{% block card_date %}
+  {# When deadline field exists show date. #}
+  {% if (node.field_content_state.value != 'finished') %}
+    {% if node.field_first_meeting_time %}
+      <div class="fw-semibold">{{ node.field_first_meeting_time.date|date('U')|format_date('hoeringsportal_day_only') }}</div>
+      <div class="small">{{ node.field_first_meeting_time.date|date('U')|format_date('hoeringsportal_month_short') }}</div>
+    {% endif %}
+  {% else %}
+    {{ 'Finished'|t }}
+  {% endif %}
+{% endblock %}
+
+{# Show card information #}
+{% block card_type_information %}
+  {% for item in items %}
+    <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
+      <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-public-meeting"></i>
+      <p class="small">{{ item.value }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}

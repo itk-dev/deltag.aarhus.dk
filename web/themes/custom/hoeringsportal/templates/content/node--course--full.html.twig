@@ -1,0 +1,64 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+  {% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date_long' : 'hoeringsportal_date_time_long' %}
+
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: node.field_top_images,
+    type: node.bundle,
+    title: node.label,
+    description: content.field_teaser,
+    tags_fields: {0: content.field_area, 1: content.field_type},
+    shortcuts: {},
+    background_class: 'bg-white',
+    right_content: {
+      0: {
+        type: 'text',
+        label: 'Category'|t,
+        value: node.field_activity_type.value ? node.field_activity_type.entity.label : null,
+        icon: 'fa-solid fa-layer-group'
+      },
+      1: {
+        type: 'text',
+        label: 'From'|t,
+        value: node.field_first_meeting_time.date|date('U')|format_date(dateFormat),
+        icon: 'fa-solid fa-calendar'
+      },
+      2: {
+        type: 'text',
+        label: 'To'|t,
+        value: node.field_last_meeting_time.date|date('U')|format_date(dateFormat),
+        icon: 'fa-solid fa-calendar-days'
+      },
+      3: {
+        type: 'text',
+        label: 'Address'|t,
+        value: [
+          node.field_activity_location.value,
+          node.field_address.value
+        ],
+        icon: 'fa-solid fa-location-dot'
+      }
+    },
+    category: 'Course'|t
+  }) }}
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="bg-white pb-5 mb-5">
+    <div class="container content__container" id="content">
+      <div class="sections d-flex flex-column">
+        {{ content.field_content_sections }}
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {{ content.field_map }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

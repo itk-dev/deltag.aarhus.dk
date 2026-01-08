@@ -10,6 +10,7 @@ includes:
       TRANSLATION_MODULES:
         # - aarhus_hero
 
+        - hoeringsportal_activity
         - hoeringsportal_anonymous_edit
         # - hoeringsportal_audit_log
         # - hoeringsportal_base_fixtures

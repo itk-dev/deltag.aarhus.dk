@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - node.type.course
     - node.type.public_meeting
     - taxonomy.vocabulary.area
     - taxonomy.vocabulary.type
@@ -15,9 +16,9 @@ dependencies:
     - taxonomy
     - user
 id: all_meetings
-label: 'Alle begivenheder'
+label: 'Alle aktiviteter'
 module: views
-description: 'En liste af alle begivenheder'
+description: 'En liste af alle aktiviteter'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -246,6 +247,7 @@ display:
           operator: in
           value:
             public_meeting: public_meeting
+            course: course
           group: 1
           exposed: false
           expose:

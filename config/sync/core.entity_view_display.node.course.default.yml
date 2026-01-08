@@ -1,0 +1,121 @@
+uuid: 0539b292-621e-4f9b-894c-9a6a8974d081
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.node.course.field_activity_location
+    - field.field.node.course.field_activity_type
+    - field.field.node.course.field_address
+    - field.field.node.course.field_area
+    - field.field.node.course.field_content_sections
+    - field.field.node.course.field_content_state
+    - field.field.node.course.field_department
+    - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_time
+    - field.field.node.course.field_last_meeting_time
+    - field.field.node.course.field_map
+    - field.field.node.course.field_teaser
+    - field.field.node.course.field_top_images
+    - field.field.node.course.field_type
+    - node.type.course
+  module:
+    - entity_reference_revisions
+    - user
+id: node.course.default
+targetEntityType: node
+bundle: course
+mode: default
+content:
+  field_activity_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_activity_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_content_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_department:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_hide_time:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_top_images:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_content_state: true
+  field_first_meeting_time: true
+  field_last_meeting_time: true
+  field_map: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
+  sharing_buttons: true

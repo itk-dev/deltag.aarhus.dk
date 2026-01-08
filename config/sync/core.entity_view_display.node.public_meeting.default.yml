@@ -3,6 +3,9 @@ langcode: da
 status: true
 dependencies:
   config:
+    - field.field.node.public_meeting.field_activity_location
+    - field.field.node.public_meeting.field_activity_type
+    - field.field.node.public_meeting.field_address
     - field.field.node.public_meeting.field_area
     - field.field.node.public_meeting.field_cancelled_date
     - field.field.node.public_meeting.field_cancelled_text
@@ -42,93 +45,13 @@ dependencies:
     - text
     - user
 third_party_settings:
-  ds:
-    layout:
-      id: ds_2col_stacked
-      library: ds/ds_2col_stacked
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-        classes:
-          layout_class: {  }
-        wrappers:
-          header: div
-          left: div
-          right: div
-          footer: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-    regions:
-      header:
-        - 'dynamic_block_field:node-public_meeting_warning'
-        - node_title
-      left:
-        - field_public_meeting_cancelled
-        - field_cancelled_text
-        - field_teaser
-        - field_description
-        - field_media_document
-      right:
-        - 'dynamic_block_field:node-public_meeting_summary'
-        - field_contact
-      footer:
-        - field_hidden_signup
-        - group_signup
-        - field_signup_selection
-        - field_pretix_dates
-        - 'dynamic_block_field:node-project_timeline'
-        - field_registration_deadline
-        - field_section
-        - field_map
-        - field_signup_link
-        - 'dynamic_block_field:node-related_public_meeting'
-        - field_signup_text
-    fields:
-      'dynamic_block_field:node-project_timeline':
-        plugin_id: 'dynamic_block_field:node-project_timeline'
-        weight: 10
-        label: above
-        formatter: default
-      'dynamic_block_field:node-public_meeting_summary':
-        plugin_id: 'dynamic_block_field:node-public_meeting_summary'
-        weight: 7
-        label: above
-        formatter: default
-      'dynamic_block_field:node-public_meeting_warning':
-        plugin_id: 'dynamic_block_field:node-public_meeting_warning'
-        weight: 0
-        label: hidden
-        formatter: default
-      'dynamic_block_field:node-related_public_meeting':
-        plugin_id: 'dynamic_block_field:node-related_public_meeting'
-        weight: 13
-        label: above
-        formatter: default
-      node_title:
-        plugin_id: node_title
-        weight: 1
-        label: hidden
-        formatter: default
-        settings:
-          link: false
-          wrapper: ''
-          class: ''
   field_group:
     group_signup:
-      children:
-        - field_hidden_signup
-        - field_signup_selection
-        - field_pretix_dates
-        - field_registration_deadline
-        - field_signup_link
-        - field_signup_text
+      children: {  }
       label: Tilmelding
       parent_name: ''
-      region: footer
-      weight: 9
+      region: hidden
+      weight: 33
       format_type: html_element
       format_settings:
         classes: ''
@@ -147,28 +70,52 @@ targetEntityType: node
 bundle: public_meeting
 mode: default
 content:
+  field_activity_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_activity_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_cancelled_text:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
-    region: left
+    weight: 1
+    region: content
   field_contact:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 8
-    region: right
+    weight: 5
+    region: content
   field_description:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 5
-    region: left
+    weight: 3
+    region: content
   field_hidden_signup:
     type: boolean
     label: above
@@ -177,15 +124,15 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 8
-    region: footer
+    weight: 6
+    region: content
   field_map:
     type: hoeringsportal_data_map_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 12
-    region: footer
+    weight: 11
+    region: content
   field_media_document:
     type: entity_reference_entity_view
     label: above
@@ -195,15 +142,15 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
-    weight: 6
-    region: left
+    weight: 4
+    region: content
   field_pretix_dates:
     type: pretix_date_formatter
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 10
-    region: footer
+    weight: 8
+    region: content
   field_public_meeting_cancelled:
     type: boolean
     label: hidden
@@ -212,16 +159,16 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 2
-    region: left
+    weight: 0
+    region: content
   field_registration_deadline:
     type: datetime_plain
     label: hidden
     settings:
       timezone_override: ''
     third_party_settings: {  }
-    weight: 11
-    region: footer
+    weight: 9
+    region: content
   field_section:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -229,8 +176,8 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 11
-    region: footer
+    weight: 10
+    region: content
   field_signup_link:
     type: link
     label: hidden
@@ -241,34 +188,35 @@ content:
       rel: '0'
       target: _blank
     third_party_settings: {  }
-    weight: 13
-    region: footer
+    weight: 12
+    region: content
   field_signup_selection:
     type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 9
-    region: footer
+    weight: 7
+    region: content
   field_signup_text:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 14
-    region: footer
+    weight: 13
+    region: content
   field_teaser:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
-    region: left
+    weight: 2
+    region: content
 hidden:
   field_area: true
   field_cancelled_date: true
   field_content_state: true
   field_department: true
+  field_deskpro_department_id: true
   field_email_address: true
   field_first_meeting_time: true
   field_last_meeting_time: true

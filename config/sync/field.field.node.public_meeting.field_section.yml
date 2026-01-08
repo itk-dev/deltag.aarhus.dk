@@ -8,6 +8,9 @@ dependencies:
     - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.info_box
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.text_aside_blocks_2_column
+    - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
 id: node.public_meeting.field_section
@@ -26,12 +29,21 @@ settings:
     target_bundles:
       content_block: content_block
       info_box: info_box
+      text: text
       accordion: accordion
+      text_aside_blocks_2_column: text_aside_blocks_2_column
+      video: video
     negate: 0
     target_bundles_drag_drop:
       accordion:
         weight: 18
         enabled: true
+      accordion_item:
+        weight: 21
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 22
+        enabled: false
       content_block:
         weight: 9
         enabled: true
@@ -67,10 +79,10 @@ settings:
         enabled: false
       text:
         weight: 15
-        enabled: false
+        enabled: true
       text_aside_blocks_2_column:
         weight: 31
-        enabled: false
+        enabled: true
       timeline_items:
         weight: 16
         enabled: false
@@ -79,5 +91,5 @@ settings:
         enabled: false
       video:
         weight: 34
-        enabled: false
+        enabled: true
 field_type: entity_reference_revisions
