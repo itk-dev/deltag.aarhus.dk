@@ -69,7 +69,7 @@ class ActivityHelper {
   public function loadCourses(array $conditions = []): array {
     $query = $this->entityTypeManager->getStorage('node')->getQuery();
     $query->accessCheck();
-    $query->condition('type', 'course');
+    $query->condition('type', self::NODE_TYPE_COURSE);
     $nids = $query->execute();
 
     return Node::loadMultiple($nids);
