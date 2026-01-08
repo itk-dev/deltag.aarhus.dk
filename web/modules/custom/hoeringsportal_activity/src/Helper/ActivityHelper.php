@@ -17,11 +17,11 @@ class ActivityHelper {
 
   const string NODE_TYPE_COURSE = 'course';
 
-  const STATE_UPCOMING = 'upcoming';
+  const string STATE_UPCOMING = 'upcoming';
 
-  const STATE_ACTIVE = 'active';
+  const string STATE_ACTIVE = 'active';
 
-  const STATE_FINISHED = 'finished';
+  const string STATE_FINISHED = 'finished';
 
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
