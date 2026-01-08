@@ -1,4 +1,4 @@
-# Danish translation of 
+# Danish translation of module hoeringsportal_project_timeline
 #
 msgid ""
 msgstr ""

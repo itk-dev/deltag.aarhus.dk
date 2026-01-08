@@ -1,4 +1,4 @@
-# Danish translation of hoeringsportal theme
+# Danish translation of theme hoeringsportal
 #
 msgid ""
 msgstr ""

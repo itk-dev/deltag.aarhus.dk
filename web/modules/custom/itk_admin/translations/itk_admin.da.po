@@ -1,4 +1,4 @@
-# Danish translation of 
+# Danish translation of module itk_admin
 #
 msgid ""
 msgstr ""
