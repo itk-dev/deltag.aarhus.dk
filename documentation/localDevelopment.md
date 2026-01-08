@@ -158,30 +158,7 @@ task coding-standards:markdown:check
 
 ## About translations
 
-We use [the "translation server" stuff from the Interface Translation
-module](https://git.drupalcode.org/project/drupal/-/blob/11.x/core/modules/locale/locale.api.phh) for translations (see
-[hoeringsportal.info.yml](web/themes/custom/hoeringsportal/hoeringsportal.info.yml) for an example).
-
-Update and import translations by running
-
-```sh
-task drush -- locale:check
-task drush -- locale:update
-task drush -- cache:rebuild
-```
-
-Update module and theme translations by running
-
-```sh
-task translation:extract
-```
-
-Use `task translation:diff` to check for any changes. New (or empty) translations are marked as
-"[fuzzy](https://www.gnu.org/software/gettext/manual/html_node/Fuzzy-Entries.html)" and default Danish translations for
-these must be added.
-
-> [!TIP]
-> [Poedit](https://poedit.net/) is an excellent tools for editing po files.
+See [Translations](Translations.md) for details on how we handle translations.
 
 <details>
 <summary>Do we still use/need this</summary>

@@ -4,8 +4,8 @@ version: "3"
 dotenv: [".env.local", ".env"]
 
 includes:
-  translation:
-    taskfile: ./task/Taskfile.translation.yml
+  translations:
+    taskfile: ./task/Taskfile.translations.yml
     vars:
       TRANSLATION_MODULES:
         # - aarhus_hero
@@ -352,6 +352,7 @@ tasks:
     silent: true
 
   translations:import:
+    desc: Import and update translations
     cmds:
       - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.da.po)'
       - task drush -- locale:check
