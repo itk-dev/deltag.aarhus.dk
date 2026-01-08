@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5df341d840b19534623024ff067a679f",
+    "content-hash": "584b16c246cd2bf5c0dc6c30cece6cd8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -16574,16 +16574,16 @@
         },
         {
             "name": "itk-dev/drupal_translation_extractor",
-            "version": "dev-itk_translation_extractor",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_translation_extractor.git",
-                "reference": "3426e8f21c284c44b03344316780cf3dd495615c"
+                "reference": "fcb8d44640a0a3a90edfecbfe9ce925118b7674d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/3426e8f21c284c44b03344316780cf3dd495615c",
-                "reference": "3426e8f21c284c44b03344316780cf3dd495615c",
+                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/fcb8d44640a0a3a90edfecbfe9ce925118b7674d",
+                "reference": "fcb8d44640a0a3a90edfecbfe9ce925118b7674d",
                 "shasum": ""
             },
             "require": {
@@ -16600,22 +16600,16 @@
                 "vincentlanglet/twig-cs-fixer": "^3.11"
             },
             "type": "drupal-module",
-            "autoload-dev": {
-                "psr-4": {
-                    "Drupal\\drupal_translation_extractor\\": "src/",
-                    "Drupal\\drupal_translation_extractor\\Test\\": "tests/",
-                    "Drupal\\locale\\": "vendor/drupal/core/modules/locale/src/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "drupal_translation_extractor",
             "support": {
-                "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/itk_translation_extractor",
-                "issues": "https://github.com/itk-dev/drupal_translation_extractor/issues"
+                "issues": "https://github.com/itk-dev/drupal_translation_extractor/issues",
+                "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/1.0.0"
             },
-            "time": "2025-12-18T20:46:45+00:00"
+            "time": "2026-01-08T08:35:38+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -21569,8 +21563,7 @@
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
-        "drupal/webform": 10,
-        "itk-dev/drupal_translation_extractor": 20
+        "drupal/webform": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -21578,5 +21571,5 @@
         "php": "^8.4.0"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

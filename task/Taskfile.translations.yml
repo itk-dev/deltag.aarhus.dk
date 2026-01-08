@@ -31,31 +31,6 @@ tasks:
         find translations web/*/custom/* -name '*.*.po' -ls
     silent: true
 
-  diff:
-    desc: "`git diff` all translation files ignoring some date metadata changes"
-    cmds:
-      # Ignore some PO metadata when git diff'ing, e.g.
-      #
-      # "POT-Creation-Date: 2025-03-12 18:18+0100\n"
-      # "PO-Revision-Date: 2025-03-12 18:18+0100\n"
-      - git diff --exit-code --ignore-blank-lines --ignore-matching-lines='^"PO.*-Date' '*.po'
-
-  checkout:
-    desc: '`git checkout` all translation file changes if only date metadata is changed (cf. `task {{.TASK | replace ":checkout" ":diff" }}`)'
-    cmds:
-      - git checkout '*.po'
-    # https://taskfile.dev/reference/schema#precondition
-    preconditions:
-      - sh: task {{.TASK | replace ":checkout" ":diff" }}
-        msg: |
-          Translations seem to have changed.
-
-          Run
-
-              task {{.TASK | replace ":checkout" ":diff" }}
-
-          to check.
-
   extract:
     cmds:
       - task drush -- pm:install drupal_translation_extractor
@@ -76,7 +51,37 @@ tasks:
               ref: .TRANSLATION_LANGUAGES
             THEME:
               ref: .TRANSLATION_THEMES
+
+      # Git restore po files that contain only timestamp changes.
+      - cmd: |
+          git restore $(comm -23 <(git diff --name-only --ignore-blank-lines '*.po' | sort) <(git diff --name-only --ignore-blank-lines --ignore-matching-lines='^"PO.*-Date' '*.po' | sort))
+
     vars:
       EXTRACT_COMMAND: task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc --output '%source_dir/translations/%project.%language.po' --no-fill {{.CLI_ARGS}}
       # EXTRACT_COMMAND: task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc --output '%source_dir/translations/%project.%language.po' {{.CLI_ARGS}}
       # EXTRACT_COMMAND: task drush -- drupal_translation_extractor:translation:extract --dump-messages --force --sort=asc --output '%source_dir/translations/%project.%language.po' --fill-from-string-storage {{.CLI_ARGS}}
+
+  git:diff:
+    desc: "`git diff` all translation files ignoring timestamp changes"
+    cmds:
+      # Ignore some PO metadata when git diff'ing, e.g.
+      #
+      # "POT-Creation-Date: 2025-03-12 18:18+0100\n"
+      # "PO-Revision-Date: 2025-03-12 18:18+0100\n"
+      - git diff --exit-code --ignore-blank-lines --ignore-matching-lines='^"PO.*-Date' '*.po'
+
+  git:restore:
+    desc: '`git restore` all translation file changes if only timestamps are changed (cf. `task {{.TASK | replace ":restore" ":diff" }}`)'
+    cmds:
+      - git restore '*.po'
+    # https://taskfile.dev/reference/schema#precondition
+    preconditions:
+      - sh: task {{.TASK | replace ":restore" ":diff" }}
+        msg: |
+          Translations seem to have changed.
+
+          Run
+
+              task {{.TASK | replace ":restore" ":diff" }}
+
+          to check.

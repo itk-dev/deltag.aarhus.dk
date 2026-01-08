@@ -1,4 +1,4 @@
-# Danish translation of
+# Danish translation of module hoeringsportal_activity
 #
 msgid ""
 msgstr ""
@@ -46,3 +46,4 @@ msgstr ""
 
 msgid "Examples: Public meeting, Guided walk, Workshop."
 msgstr "Eksempler: Borgermøder, guidede ture eller workshops."
+
