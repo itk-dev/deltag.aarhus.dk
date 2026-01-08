@@ -8,24 +8,22 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\hoeringsportal_activity\Helper\ActivityHelper;
+use Drupal\Core\Hook\Attribute\LegacyHook;
 
 /**
  * Implements hook_theme().
  */
+// @phpstan-ignore-next-line
+#[LegacyHook]
 function hoeringsportal_activity_theme($existing, $type, $theme, $path) : array {
-  return [
-    'hoeringsportal_activity_add_activity' => [
-      'variables' => [
-        'entities' => NULL,
-        'module_path' => $path,
-      ],
-    ],
-  ];
+  return Drupal::service(ActivityHelper::class)->activityTheme($existing, $type, $theme, $path);
 }
 
 /**
  * Implements hook_entity_presave().
  */
+// @phpstan-ignore-next-line
+#[LegacyHook]
 function hoeringsportal_activity_entity_presave(EntityInterface $entity) {
   Drupal::service(ActivityHelper::class)->coursePresave($entity);
 }
@@ -33,6 +31,8 @@ function hoeringsportal_activity_entity_presave(EntityInterface $entity) {
 /**
  * Implements hook_form_FORMID_alter().
  */
+// @phpstan-ignore-next-line
+#[LegacyHook]
 function hoeringsportal_activity_form_node_course_form_alter(&$form, FormStateInterface $form_state) {
   Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
 }
@@ -40,6 +40,8 @@ function hoeringsportal_activity_form_node_course_form_alter(&$form, FormStateIn
 /**
  * Implements hook_form_FORMID_alter().
  */
+// @phpstan-ignore-next-line
+#[LegacyHook]
 function hoeringsportal_activity_form_node_course_edit_form_alter(&$form, FormStateInterface $form_state) {
   Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
 }
@@ -47,6 +49,8 @@ function hoeringsportal_activity_form_node_course_edit_form_alter(&$form, FormSt
 /**
  * Implements hook_form_FORMID_alter().
  */
+// @phpstan-ignore-next-line
+#[LegacyHook]
 function hoeringsportal_activity_form_node_public_meeting_form_alter(&$form, FormStateInterface $form_state) {
   Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
 }
@@ -54,6 +58,8 @@ function hoeringsportal_activity_form_node_public_meeting_form_alter(&$form, For
 /**
  * Implements hook_form_FORMID_alter().
  */
+// @phpstan-ignore-next-line
+#[LegacyHook]
 function hoeringsportal_activity_form_node_public_meeting_edit_form_alter(&$form, FormStateInterface $form_state) {
   Drupal::service(ActivityHelper::class)->activityFormAlter($form, $form_state);
 }

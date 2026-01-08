@@ -5,7 +5,9 @@ namespace Drupal\hoeringsportal_activity\Helper;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\node\NodeInterface;
+
 
 /**
  * Provides utility methods for handling activity-related operations.
@@ -27,11 +29,38 @@ class ActivityHelper {
   }
 
   /**
+   * Theme hook for adding activity content.
+   *
+   * @param array $existing
+   *   List of existing theme hooks.
+   * @param string $type
+   *   The type of theme hook.
+   * @param string $theme
+   *   The theme name.
+   * @param string $path
+   *   The path to the module.
+   *
+   * @return array
+   */
+  #[Hook('theme')]
+  public function activityTheme(array $existing, string $type, string $theme, string $path): array {
+    return [
+      'hoeringsportal_activity_add_activity' => [
+        'variables' => [
+          'entities' => NULL,
+          'module_path' => $path,
+        ],
+      ],
+    ];
+  }
+
+  /**
    * Set content state on course save.
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity.
    */
+  #[Hook('entity_presave')]
   public function coursePresave(EntityInterface $entity): void {
     if ($entity instanceof NodeInterface) {
       $newState = $this->computeState($entity);
@@ -49,6 +78,10 @@ class ActivityHelper {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state.
    */
+  #[Hook('form_node_course_form_alter')]
+  #[Hook('form_node_course_edit_form_alter')]
+  #[Hook('form_node_public_meeting_form_alter')]
+  #[Hook('form_node_public_meeting_edit_form_alter')]
   public function activityFormAlter(&$form, $form_state): void {
     // Handle js changes to form in custom javascript, it's too complex for
     // form states.
@@ -61,7 +94,16 @@ class ActivityHelper {
   }
 
   /**
-   * Load public_meetings.
+   * Load courses.
+   *
+   * @param array $conditions
+   *   Optional conditions for the query.
+   *
+   * @return array
+   *   An array of course nodes.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function loadCourses(array $conditions = []): array {
     $storage = $this->entityTypeManager->getStorage('node');
