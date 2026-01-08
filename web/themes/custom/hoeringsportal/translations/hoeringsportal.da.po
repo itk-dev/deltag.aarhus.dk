@@ -134,12 +134,6 @@ msgstr "Nuværende forekomst"
 msgid "Date"
 msgstr "Dato"
 
-msgid "Deadline exceeded"
-msgstr "Tilmeldingsfrist overskredet"
-
-msgid "Deadline:"
-msgstr "Tilmeldingsfrist:"
-
 msgid "Debate"
 msgstr "Debat"
 
