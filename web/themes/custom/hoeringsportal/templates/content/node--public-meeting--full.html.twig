@@ -13,14 +13,16 @@
     {% set meetingLocation = node.field_pretix_dates|first.value.location %}
   {% endif %}
 
-  {% set shortcuts = {
-    0: {
+  {% set shortcuts = {} %}
+
+  {% if node.field_section.value or node.field_description.value %}
+    {% set shortcuts = shortcuts|merge([{
       label: 'Content'|t,
       href: '#content',
-    }
-  } %}
+    }]) %}
+  {% endif %}
 
-  {% if not node.field_hidden_signup.value %}
+  {% if not node.field_hidden_signup.value and not node.field_signup_selection.value == 'no_signup' %}
     {% set shortcuts = shortcuts|merge([{
       label: 'Signup'|t,
       href: '#content-pretix-dates',
@@ -108,11 +110,11 @@
         {{ content.field_media_document }}
       </div>
     </div>
-    {% if not node.field_hidden_signup.value %}
+    {% if not node.field_hidden_signup.value and node.field_signup_selection.value != 'no_signup' %}
       <div class="content__dates-container pb-5">
         <div class="container" id="content-pretix-dates">
           <div class="row">
-            <div class="col-md-12">
+             <div class="col-md-12">
               {% if 'pretix' == node.field_signup_selection.value %}
                 {{ content.field_pretix_dates }}
               {% elseif 'manual' == node.field_signup_selection.value %}
@@ -173,14 +175,22 @@
         </div>
       {% endif %}
     </div>
-    <div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            {{ content.field_map }}
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {{ content.field_map }}
         </div>
       </div>
     </div>
+    {% if node.field_related_content.value %}
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3 class="px-3">{{ 'Related to this activity'|t }}</h3>
+          </div>
+          {{ content.field_related_content }}
+        </div>
+      </div>
+    {% endif %}
   </div>
 {% endblock %}

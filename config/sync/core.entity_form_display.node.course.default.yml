@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.course.field_hide_time
     - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_related_content
     - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
@@ -55,7 +56,7 @@ third_party_settings:
       label: Lokation
       region: content
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: details
       format_settings:
         classes: ''
@@ -94,13 +95,13 @@ content:
     third_party_settings: {  }
   field_area:
     type: options_buttons
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_content_sections:
     type: paragraphs
-    weight: 6
+    weight: 5
     region: content
     settings:
       title: Paragraph
@@ -145,7 +146,7 @@ content:
     third_party_settings: {  }
   field_map:
     type: hoeringsportal_data_map_default
-    weight: 7
+    weight: 6
     region: content
     settings:
       available_types:
@@ -153,9 +154,19 @@ content:
         localplanids: 0
         localplanids_node: 0
     third_party_settings: {  }
+  field_related_content:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_teaser:
     type: string_textarea
-    weight: 2
+    weight: 3
     region: content
     settings:
       rows: 5
@@ -178,7 +189,7 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }

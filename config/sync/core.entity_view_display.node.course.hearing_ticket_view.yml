@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.course.field_hide_time
     - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_related_content
     - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
@@ -63,6 +64,7 @@ hidden:
   field_hide_time: true
   field_last_meeting_time: true
   field_map: true
+  field_related_content: true
   field_teaser: true
   field_top_images: true
   langcode: true

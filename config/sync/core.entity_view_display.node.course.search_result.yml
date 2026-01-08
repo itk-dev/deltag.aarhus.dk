@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.course.field_hide_time
     - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_related_content
     - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
@@ -51,6 +52,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_related_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_teaser:
     type: basic_string

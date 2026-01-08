@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.public_meeting.field_project_reference
     - field.field.node.public_meeting.field_public_meeting_cancelled
     - field.field.node.public_meeting.field_registration_deadline
+    - field.field.node.public_meeting.field_related_content
     - field.field.node.public_meeting.field_section
     - field.field.node.public_meeting.field_signup_link
     - field.field.node.public_meeting.field_signup_selection
@@ -152,7 +153,7 @@ content:
     third_party_settings: {  }
   field_address:
     type: string_textfield
-    weight: 20
+    weight: 21
     region: content
     settings:
       size: 60
@@ -295,6 +296,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_related_content:
+    type: entity_reference_autocomplete
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_section:
     type: paragraphs
     weight: 6
@@ -353,7 +364,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 15
+    weight: 16
     region: content
     settings:
       include_locked: true
@@ -380,7 +391,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

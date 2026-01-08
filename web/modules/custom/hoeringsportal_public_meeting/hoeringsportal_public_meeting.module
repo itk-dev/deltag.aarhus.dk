@@ -104,6 +104,10 @@ function hoeringsportal_public_meeting_form_node_form_alter(&$form, FormStateInt
   if ($form_id == 'node_public_meeting_edit_form' || $form_id == 'node_public_meeting_form') {
     $signUpPretix = [':input[name="field_signup_selection"]' => ['value' => 'pretix']];
     $signUpManual = [':input[name="field_signup_selection"]' => ['value' => 'manual']];
+    $signUpNoneOrManual = [':input[name="field_signup_selection"]' => [
+      ['value' => 'manual'],
+      ['value' => 'no_signup']
+    ]];
     $signUpHidden = [':input[name="field_hidden_signup[value]"]' => ['checked' => TRUE]];
 
     $node = $form_state->getFormObject()->getEntity();
@@ -119,16 +123,16 @@ function hoeringsportal_public_meeting_form_node_form_alter(&$form, FormStateInt
     ];
 
     $form['field_last_meeting_time']['#states'] = [
-      'visible' => $signUpManual,
+      'visible' => $signUpNoneOrManual,
     ];
     $form['field_last_meeting_time_end']['#states'] = [
-      'visible' => $signUpManual,
+      'visible' => $signUpNoneOrManual,
     ];
     $form['field_activity_location']['#states'] = [
-      'visible' => $signUpManual,
+      'visible' => $signUpNoneOrManual,
     ];
     $form['field_address']['#states'] = [
-      'visible' => $signUpManual,
+      'visible' => $signUpNoneOrManual,
     ];
 
     _hoeringsportal_public_meeting_set_states($form['field_pretix_dates'], [

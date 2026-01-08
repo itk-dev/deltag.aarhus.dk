@@ -54,10 +54,10 @@
     %}
   {% endif %}
 {% endif %}
-{% if node.field_pretix_dates|first.value.location %}
+{% if node.field_pretix_dates|first.value.location or node.field_activity_location.value %}
   {%
     set items = items|merge([
-      {icon: 'fa-location-dot', value: meetingLocation},
+      {icon: 'fa-location-dot', value: meetingLocation ?? node.field_activity_location.value},
     ])
   %}
 {% endif %}

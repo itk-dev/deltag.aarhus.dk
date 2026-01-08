@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.public_meeting.field_project_reference
     - field.field.node.public_meeting.field_public_meeting_cancelled
     - field.field.node.public_meeting.field_registration_deadline
+    - field.field.node.public_meeting.field_related_content
     - field.field.node.public_meeting.field_section
     - field.field.node.public_meeting.field_signup_link
     - field.field.node.public_meeting.field_signup_selection
@@ -97,6 +98,7 @@ hidden:
   field_project_reference: true
   field_public_meeting_cancelled: true
   field_registration_deadline: true
+  field_related_content: true
   field_section: true
   field_signup_link: true
   field_signup_selection: true

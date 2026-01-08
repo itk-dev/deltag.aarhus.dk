@@ -16,7 +16,10 @@ settings:
       label: 'Benyt tilmeldingssystem'
     -
       value: manual
-      label: 'Benyt ikke tilmeldingssystem'
+      label: 'Benyt manuel tilmelding'
+    -
+      value: no_signup
+      label: 'Benyt ikke tilmelding'
   allowed_values_function: ''
 module: options
 locked: false

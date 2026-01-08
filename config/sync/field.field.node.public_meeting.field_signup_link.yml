@@ -12,7 +12,7 @@ field_name: field_signup_link
 entity_type: node
 bundle: public_meeting
 label: Tilmeldingslink
-description: 'Skiv en god og præcis linktekst der forklarer hvad der sker når man trykker på linket, fx “Gå til tilmelding på NemTilmeld”.'
+description: "Skiv en god og præcis linktekst der forklarer hvad der sker når man trykker på linket, fx “Gå til tilmelding på NemTilmeld”.\r\nVed telefonisk tilmelding kan bruges \"tel:12345678\" som URL."
 required: false
 translatable: false
 default_value: {  }

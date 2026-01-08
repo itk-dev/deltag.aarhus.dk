@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_short_description
     - field.storage.node.field_teaser
     - field.storage.node.field_type
+    - node.type.course
     - node.type.decision
     - node.type.dialogue
     - node.type.hearing
@@ -1235,6 +1236,7 @@ display:
             decision: decision
             public_meeting: public_meeting
             dialogue: dialogue
+            course: course
             hearing: hearing
             project_main_page: project_main_page
           group: 1
