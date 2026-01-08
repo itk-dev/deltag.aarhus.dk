@@ -8,7 +8,6 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\node\NodeInterface;
 
-
 /**
  * Provides utility methods for handling activity-related operations.
  */
@@ -41,6 +40,7 @@ class ActivityHelper {
    *   The path to the module.
    *
    * @return array
+   *   Information about the theme implementation.
    */
   #[Hook('theme')]
   public function activityTheme(array $existing, string $type, string $theme, string $path): array {
