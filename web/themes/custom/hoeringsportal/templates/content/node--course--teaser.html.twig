@@ -11,8 +11,8 @@
 {# Collect data for information lines on card #}
 {%
   set items = [
-    {icon: 'fa-calendar', value: 'From'|t ~ ': ' ~ node.field_first_meeting_time.date|date('U')|format_date(dateFormat)},
-    {icon: 'fa-calendar-days', value: 'To'|t ~ ': ' ~ node.field_last_meeting_time.date|date('U')|format_date(dateFormat)},
+    {icon: 'fa-calendar', value: 'From: @from'|t({'@from': node.field_first_meeting_time.date|date('U')|format_date(dateFormat)})},
+    {icon: 'fa-calendar-days', value: 'To: @to'|t({'@to': node.field_last_meeting_time.date|date('U')|format_date(dateFormat)})},
   ]
 %}
 

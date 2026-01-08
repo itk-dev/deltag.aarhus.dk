@@ -25,7 +25,7 @@ const buildDawaAutocompleteElements = (context) => {
 }
 
 addEventListener('load', () => {
-  Drupal.behaviors.itk_pretix = {
+  Drupal.behaviors.text_field_dawa = {
     attach: (context, settings) => {
       buildDawaAutocompleteElements(context)
     }

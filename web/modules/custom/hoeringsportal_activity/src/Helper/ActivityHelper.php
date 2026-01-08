@@ -5,7 +5,6 @@ namespace Drupal\hoeringsportal_activity\Helper;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 
@@ -25,7 +24,6 @@ class ActivityHelper {
 
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
-    RouteMatchInterface $routeMatch,
   ) {
   }
 
@@ -67,12 +65,13 @@ class ActivityHelper {
    * Load public_meetings.
    */
   public function loadCourses(array $conditions = []): array {
-    $query = $this->entityTypeManager->getStorage('node')->getQuery();
+    $storage = $this->entityTypeManager->getStorage('node');
+    $query = $storage->getQuery();
     $query->accessCheck();
     $query->condition('type', self::NODE_TYPE_COURSE);
     $nids = $query->execute();
 
-    return Node::loadMultiple($nids);
+    return $storage->loadMultiple($nids);
   }
 
   /**
