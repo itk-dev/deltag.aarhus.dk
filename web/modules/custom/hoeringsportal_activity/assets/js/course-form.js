@@ -13,8 +13,9 @@ hideTimeCheckbox.addEventListener('click', function(event) {
     const now = new Date();
     const currentHours = ("0" + now.getHours()).slice(-2);
     const currentMinutes = ("0" + now.getMinutes()).slice(-2);
-    fromTimeField.value = currentHours + ':' + currentMinutes;
-    toTimeField.value = currentHours + ':' + currentMinutes;
+    const formattedTime = currentHours + ':' + currentMinutes;
+    fromTimeField.value = formattedTime;
+    toTimeField.value = formattedTime;
   }
 })
 
