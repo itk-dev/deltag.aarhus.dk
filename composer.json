@@ -96,7 +96,7 @@
         "drupal/masquerade": "^2.0",
         "drupal/webprofiler": "^10.3",
         "ergebnis/composer-normalize": "^2.44",
-        "itk-dev/drupal_translation_extractor": "dev-itk_translation_extractor",
+        "itk-dev/drupal_translation_extractor": "^1.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan-deprecation-rules": "^1.1",
@@ -187,10 +187,6 @@
                     "drupal/hoeringsportal_citizen_proposal_archiving": "1.0-dev"
                 }
             }
-        },
-        "itk-dev/drupal_translation_extractor": {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/drupal_translation_extractor"
         },
         "// @see web/modules/contrib/search_autocomplete/readme.md": {
             "type": "package",
