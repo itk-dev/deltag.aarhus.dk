@@ -5,7 +5,6 @@ namespace Drupal\hoeringsportal_activity\Helper;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 
 /**
