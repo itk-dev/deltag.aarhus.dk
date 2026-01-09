@@ -22,7 +22,7 @@
     }]) %}
   {% endif %}
 
-  {% if not node.field_hidden_signup.value and not node.field_signup_selection.value == 'no_signup' %}
+  {% if not node.field_hidden_signup.value and node.field_signup_selection.value != 'no_signup' %}
     {% set shortcuts = shortcuts|merge([{
       label: 'Signup'|t,
       href: '#content-pretix-dates',
