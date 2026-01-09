@@ -53,7 +53,6 @@ $settings['config_sync_directory'] = '../config/sync';
 // Exclude development modules from configuration synchronization
 // https://www.drupal.org/node/3079028
 $settings['config_exclude_modules'] = [
-  'masquerade',
   'devel', 'tracer', 'webprofiler',
   'potx',
   'drupal_translation_extractor',
