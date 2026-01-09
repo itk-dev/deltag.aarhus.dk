@@ -158,7 +158,19 @@ function applyMap () {
 
     if (target !== null) {
       const resetMap = (data) => {
-        // Override default view coordinates if target is present, and map config is not.
+        config.map.layer[1].data = { 'type': 'FeatureCollection', 'features': [] }
+
+        if (typeof map !== 'undefined') {
+          map.setConfig(config)
+        }
+
+        // project modifies its first argument, so we pass it a deep clone.
+        target.value = ''
+        mapConfig.value = ''
+      }
+
+      // We have to build map config before initializing the map.
+      if (data !== null) {
         if (mapConfig == null) {
           // Center map on point.
           const coordinates = data.features[0].geometry.coordinates
@@ -168,17 +180,8 @@ function applyMap () {
 
         config.map.layer[1].data = data
 
-        if (typeof map !== 'undefined') {
-          map.setConfig(config)
-        }
-
         // project modifies its first argument, so we pass it a deep clone.
         target.value = JSON.stringify(project(JSON.parse(JSON.stringify(data)), config.map.srs || defaultMapProjection, targetMapProjection))
-      }
-
-      // We have to build map config before initializing the map.
-      if (data !== null) {
-        resetMap(data)
       }
 
       const map = new WidgetAPI(container, config)
