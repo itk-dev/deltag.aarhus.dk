@@ -52,13 +52,15 @@
       <div class="sections d-flex flex-column">
         {{ content.field_content_sections }}
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            {{ content.field_map }}
+      {% if node.field_map.value[0].point %}
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              {{ content.field_map }}
+            </div>
           </div>
         </div>
-      </div>
+      {% endif %}
       <div class="container">
         <div class="row">
           <div class="col">
