@@ -11,9 +11,14 @@ dependencies:
     - node.type.landing_page
     - node.type.project
     - node.type.static_page
+    - taxonomy.vocabulary.activity_type
     - taxonomy.vocabulary.area
+    - taxonomy.vocabulary.dialogue_proposal_categories
     - taxonomy.vocabulary.hearing_type
     - taxonomy.vocabulary.media_library
+    - taxonomy.vocabulary.project_categories
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.type
   module:
     - aarhus_hero
     - block_content
@@ -62,9 +67,14 @@ permissions:
   - 'create media'
   - 'create project content'
   - 'create static_page content'
+  - 'create terms in activity_type'
   - 'create terms in area'
+  - 'create terms in dialogue_proposal_categories'
   - 'create terms in hearing_type'
   - 'create terms in media_library'
+  - 'create terms in project_categories'
+  - 'create terms in tags'
+  - 'create terms in type'
   - 'create url aliases'
   - 'delete any aside_contact_info block content'
   - 'delete any aside_contact_info block content revisions'

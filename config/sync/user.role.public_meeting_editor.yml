@@ -12,6 +12,7 @@ dependencies:
     - media.type.image
     - node.type.course
     - node.type.public_meeting
+    - taxonomy.vocabulary.activity_type
   module:
     - block_content
     - entity_browser
@@ -22,10 +23,11 @@ dependencies:
     - publishcontent
     - quick_node_clone
     - system
+    - taxonomy
     - toolbar
     - view_unpublished
 id: public_meeting_editor
-label: Begivenhedsredaktør
+label: Aktivitetsredaktør
 weight: -2
 is_admin: null
 permissions:
@@ -44,6 +46,7 @@ permissions:
   - 'create image media'
   - 'create media'
   - 'create public_meeting content'
+  - 'create terms in activity_type'
   - 'delete any aside_contact_info block content'
   - 'delete any aside_contact_info block content revisions'
   - 'delete any course content'
