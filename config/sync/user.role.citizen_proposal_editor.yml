@@ -3,9 +3,11 @@ langcode: da
 status: true
 dependencies:
   config:
+    - block_content.type.aside_contact_info
     - filter.format.email_html
     - node.type.citizen_proposal
   module:
+    - block_content
     - file
     - filter
     - hoeringsportal_citizen_proposal
@@ -21,25 +23,32 @@ label: Borgerforslagsredaktør
 weight: -8
 is_admin: null
 permissions:
+  - 'access block library'
   - 'access content overview'
   - 'access toolbar'
   - 'access webform overview'
   - 'access webform submission user'
   - 'administer citizen proposal'
+  - 'create aside_contact_info block content'
   - 'create webform'
+  - 'delete any aside_contact_info block content'
+  - 'delete any aside_contact_info block content revisions'
   - 'delete any citizen_proposal content'
   - 'delete citizen_proposal revisions'
   - 'delete own citizen_proposal content'
   - 'delete own files'
+  - 'edit any aside_contact_info block content'
   - 'edit any citizen_proposal content'
   - 'edit any webform'
   - 'edit own citizen_proposal content'
   - 'publish any node type citizen_proposal'
+  - 'revert any aside_contact_info block content revisions'
   - 'revert citizen_proposal revisions'
   - 'set citizen_proposal published on date'
   - 'support citizen proposal on behalf of citizen'
   - 'unpublish any node type citizen_proposal'
   - 'use text format email_html'
+  - 'view any aside_contact_info block content history'
   - 'view any unpublished citizen_proposal content'
   - 'view any webform submission'
   - 'view citizen_proposal revisions'

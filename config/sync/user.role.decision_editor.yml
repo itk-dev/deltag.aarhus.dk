@@ -3,6 +3,7 @@ langcode: da
 status: true
 dependencies:
   config:
+    - block_content.type.aside_contact_info
     - entity_browser.browser.itk_document_browser
     - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
@@ -10,6 +11,7 @@ dependencies:
     - media.type.image
     - node.type.decision
   module:
+    - block_content
     - entity_browser
     - media
     - node
@@ -23,29 +25,36 @@ weight: -3
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access content overview'
   - 'access itk_document_browser entity browser pages'
   - 'access itk_icon_browser entity browser pages'
   - 'access itk_image_browser entity browser pages'
   - 'access media overview'
   - 'clone decision content'
+  - 'create aside_contact_info block content'
   - 'create decision content'
   - 'create document media'
   - 'create image media'
   - 'create media'
+  - 'delete any aside_contact_info block content'
+  - 'delete any aside_contact_info block content revisions'
   - 'delete any decision content'
   - 'delete decision revisions'
   - 'delete own decision content'
   - 'delete own document media'
   - 'delete own image media'
+  - 'edit any aside_contact_info block content'
   - 'edit any decision content'
   - 'edit own decision content'
   - 'edit own document media'
   - 'edit own image media'
   - 'publish any node type decision'
+  - 'revert any aside_contact_info block content revisions'
   - 'revert decision revisions'
   - 'unpublish any node type decision'
   - 'update media'
+  - 'view any aside_contact_info block content history'
   - 'view any unpublished decision content'
   - 'view own unpublished media'
   - 'view the administration theme'

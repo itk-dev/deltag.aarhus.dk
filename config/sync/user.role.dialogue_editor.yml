@@ -3,6 +3,7 @@ langcode: da
 status: true
 dependencies:
   config:
+    - block_content.type.aside_contact_info
     - entity_browser.browser.itk_document_browser
     - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
@@ -12,6 +13,7 @@ dependencies:
     - node.type.dialogue
     - node.type.dialogue_proposal
   module:
+    - block_content
     - comment
     - entity_browser
     - hoeringsportal_dialogue
@@ -26,6 +28,7 @@ weight: -4
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access content overview'
   - 'access itk_document_browser entity browser pages'
   - 'access itk_icon_browser entity browser pages'
@@ -37,10 +40,13 @@ permissions:
   - 'administer nodes'
   - 'clone dialogue content'
   - 'clone dialogue_proposal content'
+  - 'create aside_contact_info block content'
   - 'create dialogue content'
   - 'create document media'
   - 'create image media'
   - 'create media'
+  - 'delete any aside_contact_info block content'
+  - 'delete any aside_contact_info block content revisions'
   - 'delete any dialogue content'
   - 'delete any dialogue_proposal content'
   - 'delete dialogue revisions'
@@ -49,15 +55,18 @@ permissions:
   - 'delete own dialogue_proposal content'
   - 'delete own document media'
   - 'delete own image media'
+  - 'edit any aside_contact_info block content'
   - 'edit any dialogue content'
   - 'edit any dialogue_proposal content'
   - 'edit own dialogue content'
   - 'edit own dialogue_proposal content'
   - 'edit own document media'
   - 'edit own image media'
+  - 'revert any aside_contact_info block content revisions'
   - 'revert dialogue revisions'
   - 'revert dialogue_proposal revisions'
   - 'update media'
+  - 'view any aside_contact_info block content history'
   - 'view any unpublished decision content'
   - 'view any unpublished dialogue content'
   - 'view any unpublished dialogue_proposal content'

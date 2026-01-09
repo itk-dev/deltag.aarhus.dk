@@ -3,6 +3,7 @@ langcode: da
 status: true
 dependencies:
   config:
+    - block_content.type.aside_contact_info
     - entity_browser.browser.itk_document_browser
     - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
@@ -11,6 +12,7 @@ dependencies:
     - media.type.image
     - node.type.hearing
   module:
+    - block_content
     - entity_browser
     - file
     - filter
@@ -26,6 +28,7 @@ label: Høringsredaktør
 weight: -6
 is_admin: null
 permissions:
+  - 'access block library'
   - 'access content overview'
   - 'access itk_document_browser entity browser pages'
   - 'access itk_icon_browser entity browser pages'
@@ -33,23 +36,29 @@ permissions:
   - 'access media overview'
   - 'access toolbar'
   - 'clone hearing content'
+  - 'create aside_contact_info block content'
   - 'create document media'
   - 'create hearing content'
   - 'create image media'
+  - 'delete any aside_contact_info block content'
+  - 'delete any aside_contact_info block content revisions'
   - 'delete any hearing content'
   - 'delete hearing revisions'
   - 'delete own document media'
   - 'delete own files'
   - 'delete own hearing content'
   - 'delete own image media'
+  - 'edit any aside_contact_info block content'
   - 'edit any hearing content'
   - 'edit own document media'
   - 'edit own hearing content'
   - 'edit own image media'
   - 'publish any node type hearing'
+  - 'revert any aside_contact_info block content revisions'
   - 'revert hearing revisions'
   - 'unpublish any node type hearing'
   - 'use text format email_html'
+  - 'view any aside_contact_info block content history'
   - 'view any unpublished hearing content'
   - 'view hearing revisions'
   - 'view own unpublished media'

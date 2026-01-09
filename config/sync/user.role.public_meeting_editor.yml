@@ -3,14 +3,17 @@ langcode: da
 status: true
 dependencies:
   config:
+    - block_content.type.aside_contact_info
     - entity_browser.browser.itk_document_browser
     - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
     - filter.format.email_html
     - media.type.document
     - media.type.image
+    - node.type.course
     - node.type.public_meeting
   module:
+    - block_content
     - entity_browser
     - file
     - filter
@@ -26,33 +29,53 @@ label: Begivenhedsredaktør
 weight: -2
 is_admin: null
 permissions:
+  - 'access block library'
   - 'access content overview'
   - 'access itk_document_browser entity browser pages'
   - 'access itk_icon_browser entity browser pages'
   - 'access itk_image_browser entity browser pages'
   - 'access media overview'
   - 'access toolbar'
+  - 'clone course content'
   - 'clone public_meeting content'
+  - 'create aside_contact_info block content'
+  - 'create course content'
   - 'create document media'
   - 'create image media'
   - 'create media'
   - 'create public_meeting content'
+  - 'delete any aside_contact_info block content'
+  - 'delete any aside_contact_info block content revisions'
+  - 'delete any course content'
   - 'delete any public_meeting content'
+  - 'delete course revisions'
+  - 'delete own course content'
   - 'delete own document media'
   - 'delete own files'
   - 'delete own image media'
   - 'delete own public_meeting content'
   - 'delete public_meeting revisions'
+  - 'edit any aside_contact_info block content'
+  - 'edit any course content'
   - 'edit any public_meeting content'
+  - 'edit own course content'
   - 'edit own document media'
   - 'edit own image media'
   - 'edit own public_meeting content'
+  - 'publish any node type course'
   - 'publish any node type public_meeting'
+  - 'publish editable node type course'
+  - 'revert any aside_contact_info block content revisions'
+  - 'revert course revisions'
   - 'revert public_meeting revisions'
+  - 'unpublish any node type course'
   - 'unpublish any node type public_meeting'
   - 'update media'
   - 'use text format email_html'
+  - 'view any aside_contact_info block content history'
+  - 'view any unpublished course content'
   - 'view any unpublished public_meeting content'
+  - 'view course revisions'
   - 'view own unpublished media'
   - 'view public_meeting revisions'
   - 'view the administration theme'

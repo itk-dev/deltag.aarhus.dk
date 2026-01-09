@@ -3,6 +3,7 @@ langcode: da
 status: true
 dependencies:
   config:
+    - block_content.type.aside_contact_info
     - entity_browser.browser.itk_document_browser
     - entity_browser.browser.itk_icon_browser
     - entity_browser.browser.itk_image_browser
@@ -15,6 +16,7 @@ dependencies:
     - taxonomy.vocabulary.media_library
   module:
     - aarhus_hero
+    - block_content
     - entity_browser
     - file
     - hoeringsportal_data
@@ -34,6 +36,7 @@ weight: -7
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access content overview'
   - 'access deskpro settings'
   - 'access hero configuration'
@@ -53,6 +56,7 @@ permissions:
   - 'administer url aliases'
   - 'administer users'
   - 'bypass node access'
+  - 'create aside_contact_info block content'
   - 'create hearing content'
   - 'create landing_page content'
   - 'create media'
@@ -62,6 +66,8 @@ permissions:
   - 'create terms in hearing_type'
   - 'create terms in media_library'
   - 'create url aliases'
+  - 'delete any aside_contact_info block content'
+  - 'delete any aside_contact_info block content revisions'
   - 'delete any hearing content'
   - 'delete any landing_page content'
   - 'delete any project content'
@@ -74,6 +80,7 @@ permissions:
   - 'delete terms in area'
   - 'delete terms in hearing_type'
   - 'delete terms in media_library'
+  - 'edit any aside_contact_info block content'
   - 'edit any hearing content'
   - 'edit any landing_page content'
   - 'edit any project content'
@@ -85,7 +92,9 @@ permissions:
   - 'edit terms in area'
   - 'edit terms in hearing_type'
   - 'edit terms in media_library'
+  - 'revert any aside_contact_info block content revisions'
   - 'translate interface'
   - 'update media'
+  - 'view any aside_contact_info block content history'
   - 'view own unpublished content'
   - 'view the administration theme'
