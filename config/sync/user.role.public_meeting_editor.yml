@@ -37,6 +37,7 @@ permissions:
   - 'access itk_icon_browser entity browser pages'
   - 'access itk_image_browser entity browser pages'
   - 'access media overview'
+  - 'access taxonomy overview'
   - 'access toolbar'
   - 'clone course content'
   - 'clone public_meeting content'

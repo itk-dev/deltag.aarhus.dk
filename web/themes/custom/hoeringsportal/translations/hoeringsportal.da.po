@@ -418,7 +418,7 @@ msgstr "Registrering"
 
 msgid "Registration deadline passed"
 msgstr "Registreringsfristen er udløbet"
-  
+
 msgid "Related to this activity"
 msgstr "Relateret til denne aktivitet"
 
