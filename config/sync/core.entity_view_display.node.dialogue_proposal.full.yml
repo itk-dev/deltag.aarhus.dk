@@ -1,9 +1,10 @@
-uuid: 9b2fde90-6e46-46f6-9c7d-d03b19b500f2
+uuid: 8cb0d170-373f-4ab3-a948-f91b0884de2d
 langcode: da
 status: true
 dependencies:
   config:
     - core.entity_view_display.comment.early_inclusion_comment.default
+    - core.entity_view_mode.node.full
     - field.field.node.dialogue_proposal.field_age_span
     - field.field.node.dialogue_proposal.field_area
     - field.field.node.dialogue_proposal.field_comments
@@ -19,12 +20,20 @@ dependencies:
     - comment
     - hoeringsportal_data
     - svg_image
+    - taxonomy
     - user
-id: node.dialogue_proposal.default
+id: node.dialogue_proposal.full
 targetEntityType: node
 bundle: dialogue_proposal
-mode: default
+mode: full
 content:
+  field_area:
+    type: entity_reference_rss_category
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
   field_comments:
     type: comment_default
     label: hidden
@@ -32,15 +41,15 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
-    weight: 6
+    weight: 4
     region: content
   field_dialogue:
     type: entity_reference_label
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
-    weight: 3
+    weight: 5
     region: content
   field_dialogue_proposal_category:
     type: entity_reference_label
@@ -48,14 +57,14 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 5
+    weight: 7
     region: content
   field_dialogue_proposal_descr:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_image_upload:
     type: image
@@ -70,14 +79,14 @@ content:
         height: null
       svg_render_as_image: true
     third_party_settings: {  }
-    weight: 2
+    weight: 6
     region: content
   field_location:
     type: hoeringsportal_data_map_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 9
     region: content
   field_owner_email:
     type: basic_string
@@ -92,18 +101,25 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 7
+    weight: 10
     region: content
   flag_support_proposal:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   field_age_span: true
-  field_area: true
   langcode: true
-  links: true
   published_at: true
   search_api_excerpt: true
-  sharing_buttons: true
