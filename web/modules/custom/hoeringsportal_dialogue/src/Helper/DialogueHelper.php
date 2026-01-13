@@ -234,6 +234,14 @@ class DialogueHelper {
       if (!in_array('use_age_on_proposals', $config)) {
         $form['field_age_span']['#access'] = FALSE;
       }
+      
+      if (!in_array('use_name_on_proposals', $config)) {
+        $form['field_owner_name']['#access'] = FALSE;
+      }
+
+      if (!in_array('use_email_on_proposals', $config)) {
+        $form['field_owner_email']['#access'] = FALSE;
+      }
 
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
       $parentMapConfig = json_decode($parentLocationSelection[0]['map_config'] ?? '');
