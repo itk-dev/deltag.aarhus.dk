@@ -382,6 +382,7 @@ display:
           flag: support_proposal
           user_scope: any
       use_ajax: true
+      group_by: true
       header: {  }
       footer: {  }
       display_extenders: {  }
