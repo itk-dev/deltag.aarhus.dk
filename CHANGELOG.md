@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.14.3] - 2026-01-16
+
+* [589](https://github.com/itk-dev/deltag.aarhus.dk/pull/589)
+  Fixed bug in dialog proposal view
+
 ## [4.14.2] - 2025-12-17
 
 * [583](https://github.com/itk-dev/deltag.aarhus.dk/pull/583)
