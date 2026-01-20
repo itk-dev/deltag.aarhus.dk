@@ -62,7 +62,6 @@ third_party_settings:
         - field_description
         - field_media_document
         - field_media_image
-        - field_video
         - 'dynamic_block_field:node-hearing_tickets'
       right:
         - 'dynamic_block_field:node-quicklinks'
@@ -77,7 +76,6 @@ third_party_settings:
         - field_more_info
         - sharing_buttons
       footer:
-        - 'dynamic_block_field:node-project_timeline'
         - field_map
         - 'dynamic_block_field:node-nearest_hearings'
     fields:
@@ -95,11 +93,6 @@ third_party_settings:
         plugin_id: 'dynamic_block_field:node-nearest_hearings'
         weight: 21
         label: above
-        formatter: default
-      'dynamic_block_field:node-project_timeline':
-        plugin_id: 'dynamic_block_field:node-project_timeline'
-        weight: 19
-        label: hidden
         formatter: default
       'dynamic_block_field:node-quicklinks':
         plugin_id: 'dynamic_block_field:node-quicklinks'

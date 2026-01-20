@@ -43,21 +43,6 @@ function hoeringsportal_preprocess_field(&$variables) {
     }
   }
 
-  if ($variables['field_name'] == 'dynamic_block_field:node-project_timeline') {
-    $query = \Drupal::entityQuery('taxonomy_term');
-    $query->accessCheck();
-    $query->condition('vid', 'timeline_item_types');
-    $tids = $query->execute();
-    $terms = Term::loadMultiple($tids);
-    $variables['timeline_terms'] = [];
-    foreach ($terms as $term) {
-      $variables['timeline_terms'][] = [
-        'name' => $term->getName(),
-        'color' => $term->field_timeline_item_color->color,
-      ];
-    }
-  }
-
   if ($variables['field_name'] == 'field_pretix_dates') {
     foreach ($variables['items'] as $delta => $item) {
       // For some reason ['content']['#variables']['data'] only contains
