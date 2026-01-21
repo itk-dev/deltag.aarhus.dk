@@ -45,6 +45,12 @@
 .project-timeline {
   position: relative;
   padding: 1rem 0;
+  cursor: default;
+}
+
+/* Override theme's grab cursor from old Vis.js timeline */
+.project-timeline[data-project-timeline] div {
+  cursor: default !important;
 }
 
 /* =============================================================================
@@ -286,6 +292,7 @@
   transition: box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
+  cursor: default;
 }
 
 .project-timeline-card__content:hover {
@@ -695,7 +702,6 @@
   min-height: 10px;
   border-radius: 50%;
   background: var(--primitive-gray-400, #dfdfdf);
-  cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
