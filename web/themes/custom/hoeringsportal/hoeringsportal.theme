@@ -8,7 +8,6 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\node\NodeInterface;
-use Drupal\taxonomy\Entity\Term;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper as CitizenProposalHelper;
 use Drupal\hoeringsportal_anonymous_edit\Helper\Helper as AnonymousEditHelper;
 
