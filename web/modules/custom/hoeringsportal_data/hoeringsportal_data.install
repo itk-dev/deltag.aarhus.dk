@@ -166,3 +166,28 @@ function hoeringsportal_data_update_10003() {
 
   _hoeringsportal_data_add_columns_to_schema($columns_to_add, $field_id);
 }
+
+/**
+ * Delete old timeline nodes and terms.
+ */
+function hoeringsportal_data_update_10004() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  $nodeStorage = $entity_type_manager->getStorage('node');
+  $nids = $nodeStorage->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('type', 'project')
+    ->execute();
+
+  $nodes = $nodeStorage->loadMultiple($nids);
+  $nodeStorage->delete($nodes);
+
+  $termStorage = $entity_type_manager->getStorage('taxonomy_term');
+  $tids = $termStorage->getQuery()
+    ->accessCheck(FALSE)
+    ->condition('vid', 'timeline_item_types')
+    ->execute();
+
+  $terms = $termStorage->loadMultiple($tids);
+  $termStorage->delete($terms);
+}
