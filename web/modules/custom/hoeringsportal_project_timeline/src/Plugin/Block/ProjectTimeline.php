@@ -4,7 +4,6 @@ namespace Drupal\hoeringsportal_project_timeline\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Datetime\Entity\DateFormat;
 use Drupal\itk_pretix\Plugin\Field\FieldType\PretixDate;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
@@ -41,153 +40,291 @@ class ProjectTimeline extends BlockBase {
       $node = $current_node;
     }
 
-    $nid = $node->id();
-    $now = new DrupalDateTime('now');
-    $now_timestamp = $now->getTimestamp();
+    $timeline_items = $this->collectTimelineItems($node);
 
-    $timeline_items = [];
+    // Sort items by date.
+    usort($timeline_items, function ($a, $b) {
+      return strtotime($a['date']) <=> strtotime($b['date']);
+    });
 
-    // Add start and end date to timeline items.
-    if (isset($node->field_project_start->date)) {
-      $project_start_timestamp = $node->field_project_start->date->getTimestamp();
-      $timeline_items[] = [
-        'title' => t('Start'),
-        'startDate' => $node->field_project_start->date->format(\DateTimeInterface::ATOM),
-        'endDate' => NULL,
-        'type' => 'system',
-        'description' => NULL,
-        'state' => $project_start_timestamp < $now_timestamp ? 'passed' : 'upcomming',
-        'nid' => 0,
-        'link' => NULL,
-        'color' => '#858585',
-        'label' => t('Project start'),
-      ];
+    // Assign unique IDs.
+    foreach ($timeline_items as $index => &$item) {
+      $item['id'] = 'timeline-item-' . $index;
     }
 
-    if (isset($node->field_project_finish->date)) {
-      $project_end_timestamp = $node->field_project_finish->date->getTimestamp();
-      $timeline_items[] = [
-        'title' => t('Expected finish'),
-        'startDate' => $node->field_project_finish->date->format(\DateTimeInterface::ATOM),
-        'endDate' => NULL,
-        'type' => 'system',
-        'description' => NULL,
-        'state' => $project_end_timestamp < $now_timestamp ? 'passed' : 'upcomming',
-        'nid' => 0,
-        'link' => NULL,
-        'color' => '#858585',
-        'label' => t('Expected end date'),
-      ];
-    }
-
-    // Add hearings to timeline items.
-    $query = \Drupal::entityQuery('node');
-    $query->accessCheck();
-    $query->condition('field_project_reference', $nid);
-    $query->condition('type', 'hearing');
-    $entity_ids = $query->execute();
-    if (!empty($entity_ids)) {
-      $hearings = Node::loadMultiple($entity_ids);
-      foreach ($hearings as $hearing) {
-        if (isset($hearing->field_reply_deadline->date)) {
-          $timeline_items[] = [
-            'title' => $hearing->title->value,
-            'startDate' => $hearing->field_reply_deadline->date->format(\DateTimeInterface::ATOM),
-            'endDate' => NULL,
-            'type' => 'hearing',
-            'description' => $hearing->field_teaser->value,
-            'state' => $hearing->field_reply_deadline->date->getTimestamp() < $now_timestamp ? 'passed' : 'upcomming',
-            'nid' => $hearing->nid->value,
-            'link' => NULL,
-            'color' => '#008486',
-            'label' => t('Hearing'),
-          ];
-        }
-      }
-    }
-
-    // Add public meetings to timeline items.
-    $query = \Drupal::entityQuery('node');
-    $query->accessCheck();
-    $query->condition('field_project_reference', $nid);
-    $query->condition('type', 'public_meeting');
-    $entity_ids = $query->execute();
-    if (!empty($entity_ids)) {
-      $meetings_nodes = Node::loadMultiple($entity_ids);
-      foreach ($meetings_nodes as $meeting_node) {
-        /** @var \Drupal\Core\Field\FieldItemList $meetings */
-        $meetings = iterator_to_array($meeting_node->get('field_pretix_dates'));
-        // Sort ascending by start time.
-        usort($meetings, static function (PretixDate $a, PretixDate $b) {
-          return $a->time_from <=> $b->time_from;
-        });
-        /** @var \Drupal\itk_pretix\Plugin\Field\FieldType\PretixDate $last_meeting */
-        $last_meeting = end($meetings);
-        if ($last_meeting) {
-          $timeline_items[] = [
-            'title' => $meeting_node->title->value,
-            // Only one date is used in JS and we want it to be end date.
-            'startDate' => $last_meeting->time_from->format(\DateTimeInterface::ATOM),
-            'endDate' => $last_meeting->time_from->format(\DateTimeInterface::ATOM),
-            'type' => 'meeting',
-            'description' => NULL,
-            'state' => $last_meeting->time_from < $now ? 'passed' : 'upcomming',
-            'nid' => $meeting_node->nid->value,
-            'link' => NULL,
-            'color' => '#333333',
-            'label' => t('Public meeting'),
-          ];
-        }
-      }
-    }
-
-    // Add paragraph field values to timeline.
-    foreach ($node->field_timeline_items->getValue() as $paragraph_item) {
-      $paragraph_obj = Paragraph::load($paragraph_item['target_id']);
-      $color = '#858585';
-      $label = $node->getTitle();
-      if (isset($paragraph_obj->field_timeline_taxonomy_type->target_id)) {
-        $term = Term::load($paragraph_obj->field_timeline_taxonomy_type->target_id);
-        if (NULL !== $term) {
-          $color = $term->field_timeline_item_color->color;
-          $label = $term->getName();
-        }
-      }
-
-      if (isset($paragraph_obj->field_timeline_date->date)) {
-        $timeline_items[] = [
-          'title' => $paragraph_obj->field_timeline_title->value,
-          'startDate' => $paragraph_obj->field_timeline_date->date->format(\DateTimeInterface::ATOM),
-          'endDate' => isset($paragraph_obj->field_timeline_end_date->date) ? $paragraph_obj->field_timeline_end_date->date->format(\DateTimeInterface::ATOM) : NULL,
-          'type' => isset($label) ? str_replace(' ', '_', $label) : '',
-          'description' => $paragraph_obj->field_timeline_description->value,
-          'state' => $paragraph_obj->field_timeline_date->date->getTimestamp() < $now_timestamp ? 'passed' : 'upcomming',
-          'nid' => NULL,
-          'link' => $paragraph_obj->field_timeline_link->uri,
-          'color' => $color,
-          'label' => $label,
-        ];
-      }
-    }
-
-    /** @var \Drupal\Core\Datetime\Entity\DateFormat $date_format */
-    $date_format = DateFormat::load('hoeringsportal_date');
+    $legend_items = $this->getLegendItems();
 
     return [
       '#theme' => 'hoeringsportal_project_timeline',
-      '#node' => $node,
+      '#items' => $timeline_items,
+      '#legend_items' => $legend_items,
+      '#default_view' => 'vertical',
       '#attached' => [
         'library' => [
           'hoeringsportal_project_timeline/project_timeline',
         ],
-        'drupalSettings' => [
-          'timeline' => [
-            'items' => $timeline_items,
-            'options' => [
-              'date_format' => NULL !== $date_format ? $date_format->getPattern() : 'd/m/Y',
-            ],
-          ],
-        ],
+      ],
+    ];
+  }
+
+  /**
+   * Collects all timeline items from various sources.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *   The project node.
+   *
+   * @return array
+   *   Array of timeline items.
+   */
+  protected function collectTimelineItems(Node $node): array {
+    $items = [];
+    $now = new DrupalDateTime('now');
+    $now_timestamp = $now->getTimestamp();
+    $nid = $node->id();
+
+    // Add project start date.
+    if (isset($node->field_project_start->date)) {
+      $date = $node->field_project_start->date;
+      $items[] = $this->createTimelineItem(
+        $date,
+        $this->t('Project Start'),
+        NULL,
+        NULL,
+        $date->getTimestamp() < $now_timestamp ? 'completed' : 'upcoming',
+        NULL,
+        NULL
+      );
+    }
+
+    // Add project end date.
+    if (isset($node->field_project_finish->date)) {
+      $date = $node->field_project_finish->date;
+      $items[] = $this->createTimelineItem(
+        $date,
+        $this->t('Expected Finish'),
+        NULL,
+        NULL,
+        $date->getTimestamp() < $now_timestamp ? 'completed' : 'upcoming',
+        NULL,
+        NULL
+      );
+    }
+
+    // Add hearings.
+    $hearings = $this->loadRelatedNodes($nid, 'hearing');
+    foreach ($hearings as $hearing) {
+      if (isset($hearing->field_reply_deadline->date)) {
+        $date = $hearing->field_reply_deadline->date;
+        $items[] = $this->createTimelineItem(
+          $date,
+          $hearing->title->value,
+          $this->t('Hearing'),
+          $hearing->field_teaser->value ?? NULL,
+          $this->determineStatus($date->getTimestamp(), $now_timestamp),
+          '/node/' . $hearing->nid->value,
+          $this->t('Go to hearing')
+        );
+      }
+    }
+
+    // Add public meetings.
+    $meetings = $this->loadRelatedNodes($nid, 'public_meeting');
+    foreach ($meetings as $meeting_node) {
+      $pretix_dates = iterator_to_array($meeting_node->get('field_pretix_dates'));
+      usort($pretix_dates, static function (PretixDate $a, PretixDate $b) {
+        return $a->time_from <=> $b->time_from;
+      });
+      $last_meeting = end($pretix_dates);
+      if ($last_meeting) {
+        $items[] = $this->createTimelineItem(
+          $last_meeting->time_from,
+          $meeting_node->title->value,
+          $this->t('Public meeting'),
+          NULL,
+          $this->determineStatus($last_meeting->time_from->getTimestamp(), $now_timestamp),
+          '/node/' . $meeting_node->nid->value,
+          $this->t('Go to public meeting')
+        );
+      }
+    }
+
+    // Add paragraph field values.
+    foreach ($node->field_timeline_items->getValue() as $paragraph_item) {
+      $paragraph = Paragraph::load($paragraph_item['target_id']);
+      if (!$paragraph || !isset($paragraph->field_timeline_date->date)) {
+        continue;
+      }
+
+      $date = $paragraph->field_timeline_date->date;
+      $label = $node->getTitle();
+      $accentColor = NULL;
+
+      if (isset($paragraph->field_timeline_taxonomy_type->target_id)) {
+        $term = Term::load($paragraph->field_timeline_taxonomy_type->target_id);
+        if ($term !== NULL) {
+          $label = $term->getName();
+          $accentColor = $this->mapColorToAccent($term->field_timeline_item_color->color ?? NULL);
+        }
+      }
+
+      $items[] = $this->createTimelineItem(
+        $date,
+        $paragraph->field_timeline_title->value,
+        $label,
+        $paragraph->field_timeline_description->value ?? NULL,
+        $this->determineStatus($date->getTimestamp(), $now_timestamp),
+        $paragraph->field_timeline_link->uri ?? NULL,
+        $this->t('Read more'),
+        $accentColor
+      );
+    }
+
+    return $items;
+  }
+
+  /**
+   * Creates a timeline item array.
+   *
+   * @param \Drupal\Core\Datetime\DrupalDateTime|\DateTimeInterface $date
+   *   The date object.
+   * @param string $title
+   *   The item title.
+   * @param string|null $subtitle
+   *   Optional subtitle.
+   * @param string|null $description
+   *   Optional description.
+   * @param string $status
+   *   The status (completed, current, upcoming, note).
+   * @param string|null $link
+   *   Optional link URL.
+   * @param string|null $linkText
+   *   Optional link text.
+   * @param string|null $accentColor
+   *   Optional accent color (pink, blue).
+   *
+   * @return array
+   *   The timeline item array.
+   */
+  protected function createTimelineItem(
+    $date,
+    string $title,
+    ?string $subtitle,
+    ?string $description,
+    string $status,
+    ?string $link,
+    ?string $linkText,
+    ?string $accentColor = NULL,
+  ): array {
+    $formatter = \Drupal::service('date.formatter');
+    $month = $formatter->format($date->getTimestamp(), 'custom', 'F Y');
+
+    return [
+      'id' => '',
+      'date' => $date->format('Y-m-d'),
+      'month' => $month,
+      'title' => $title,
+      'subtitle' => $subtitle,
+      'description' => $description,
+      'status' => $status,
+      'image' => NULL,
+      'link' => $link,
+      'linkText' => $linkText,
+      'accentColor' => $accentColor,
+    ];
+  }
+
+  /**
+   * Determines the status based on timestamp comparison.
+   *
+   * @param int $item_timestamp
+   *   The item timestamp.
+   * @param int $now_timestamp
+   *   The current timestamp.
+   *
+   * @return string
+   *   The status string.
+   */
+  protected function determineStatus(int $item_timestamp, int $now_timestamp): string {
+    // Consider items within 7 days as "current".
+    $week_in_seconds = 7 * 24 * 60 * 60;
+    if ($item_timestamp < $now_timestamp - $week_in_seconds) {
+      return 'completed';
+    }
+    elseif ($item_timestamp <= $now_timestamp + $week_in_seconds) {
+      return 'current';
+    }
+    return 'upcoming';
+  }
+
+  /**
+   * Maps a hex color to an accent color name.
+   *
+   * @param string|null $hex_color
+   *   The hex color value.
+   *
+   * @return string|null
+   *   The accent color name or NULL.
+   */
+  protected function mapColorToAccent(?string $hex_color): ?string {
+    if (!$hex_color) {
+      return NULL;
+    }
+
+    $color_map = [
+      '#ee0043' => 'pink',
+      '#fab2c6' => 'pink',
+      '#3661d8' => 'blue',
+      '#c2cff3' => 'blue',
+    ];
+
+    $hex_lower = strtolower($hex_color);
+    return $color_map[$hex_lower] ?? NULL;
+  }
+
+  /**
+   * Loads related nodes by project reference.
+   *
+   * @param int $project_nid
+   *   The project node ID.
+   * @param string $bundle
+   *   The node bundle type.
+   *
+   * @return \Drupal\node\Entity\Node[]
+   *   Array of loaded nodes.
+   */
+  protected function loadRelatedNodes(int $project_nid, string $bundle): array {
+    $query = \Drupal::entityQuery('node');
+    $query->accessCheck();
+    $query->condition('field_project_reference', $project_nid);
+    $query->condition('type', $bundle);
+    $entity_ids = $query->execute();
+
+    if (empty($entity_ids)) {
+      return [];
+    }
+
+    return Node::loadMultiple($entity_ids);
+  }
+
+  /**
+   * Returns legend items.
+   *
+   * @return array
+   *   Array of legend items.
+   */
+  protected function getLegendItems(): array {
+    return [
+      [
+        'status' => 'completed',
+        'label' => $this->t('Completed'),
+      ],
+      [
+        'status' => 'current',
+        'label' => $this->t('Current'),
+      ],
+      [
+        'status' => 'upcoming',
+        'label' => $this->t('Upcoming'),
       ],
     ];
   }

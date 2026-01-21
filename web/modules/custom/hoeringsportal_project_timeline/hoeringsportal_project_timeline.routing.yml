@@ -1,0 +1,7 @@
+hoeringsportal_project_timeline.demo:
+  path: '/vertical-timeline-demo'
+  defaults:
+    _controller: '\Drupal\hoeringsportal_project_timeline\Controller\DemoController::render'
+    _title: 'Project Timeline Demo'
+  requirements:
+    _access: 'TRUE'

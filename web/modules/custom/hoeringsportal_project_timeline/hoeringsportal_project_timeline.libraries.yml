@@ -1,12 +1,11 @@
 project_timeline:
-  version: 1.x
+  version: 2.x
   css:
     theme:
-      assets/public/build/project-timeline.css: {}
+      assets/css/project-timeline.css: {}
   js:
-    assets/public/build/project-timeline.js: { preprocess: false }
+    assets/js/project-timeline.js: { preprocess: false }
   dependencies:
-    - core/jquery
     - core/drupalSettings
     - core/once
 

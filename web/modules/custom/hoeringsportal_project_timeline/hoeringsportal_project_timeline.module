@@ -15,7 +15,27 @@ function hoeringsportal_project_timeline_theme() {
     'hoeringsportal_project_timeline' => [
       'template' => 'hoeringsportal-project-timeline',
       'variables' => [
-        'node' => NULL,
+        'items' => [],
+        'legend_items' => [],
+        'default_view' => 'vertical',
+      ],
+    ],
+    'project_timeline_card' => [
+      'template' => 'project-timeline-card',
+      'variables' => [
+        'item' => [],
+      ],
+    ],
+    'project_timeline_mini_nav' => [
+      'template' => 'project-timeline-mini-nav',
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+    'project_timeline_legend' => [
+      'template' => 'project-timeline-legend',
+      'variables' => [
+        'items' => [],
       ],
     ],
   ];
