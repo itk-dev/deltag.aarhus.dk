@@ -31,6 +31,9 @@ settings:
       accordion_item:
         weight: 19
         enabled: true
+      aktuelt_i_projektet:
+        weight: 20
+        enabled: false
       content_block:
         weight: 21
         enabled: false
@@ -69,12 +72,6 @@ settings:
         enabled: false
       text_aside_blocks_2_column:
         weight: 33
-        enabled: false
-      timeline_items:
-        weight: 34
-        enabled: false
-      timeline_period:
-        weight: 35
         enabled: false
       video:
         weight: 36

@@ -32,10 +32,6 @@ services:
     tags:
       - { name: content_fixture }
 
-  Drupal\hoeringsportal_base_fixtures\Fixture\ProjectTimeLineFixture:
-    tags:
-      - { name: content_fixture }
-
   Drupal\hoeringsportal_base_fixtures\Fixture\PublicMeetingFixture:
     tags:
       - { name: content_fixture }
@@ -65,10 +61,6 @@ services:
       - { name: content_fixture }
 
   Drupal\hoeringsportal_base_fixtures\Fixture\TermTagFixture:
-    tags:
-      - { name: content_fixture }
-
-  Drupal\hoeringsportal_base_fixtures\Fixture\TermTimelineItemFixture:
     tags:
       - { name: content_fixture }
 
