@@ -1,16 +1,27 @@
+# Use this file to enable test OIDC login on a test server, e.g.
+#
+# ``` sh
+# # .env.docker.local
+# COMPOSE_FILES=…,docker-compose.server.oidc.yml
+# ```
+
 services:
-  # https://github.com/geigerzaehler/oidc-provider-mock
   idp-citizen:
     image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
-    # Let this container be accessible both internally and externally on the same domain.
-    container_name: idp-citizen.${COMPOSE_DOMAIN}
+    restart: unless-stopped
     networks:
       - app
       - frontend
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-idp.rule=Host(`idp-citizen.${COMPOSE_DOMAIN}`)"
+      - "traefik.http.routers.idp-citizen_${COMPOSE_PROJECT_NAME}-http.rule=Host(`idp-citizen.${COMPOSE_SERVER_DOMAIN}`)"
+      - "traefik.http.routers.idp-citizen_${COMPOSE_PROJECT_NAME}-http.entrypoints=web"
+      - "traefik.http.routers.idp-citizen_${COMPOSE_PROJECT_NAME}-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.idp-citizen_${COMPOSE_PROJECT_NAME}.rule=Host(`idp-citizen.${COMPOSE_SERVER_DOMAIN}`)"
+      - "traefik.http.routers.idp-citizen_${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.services.idp-citizen_${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=9400"
     command:
       [
         "--user-claims",
@@ -29,15 +40,19 @@ services:
 
   idp-employee:
     image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
-    # Let this container be accessible both internally and externally on the same domain.
-    container_name: idp-employee.${COMPOSE_DOMAIN}
     networks:
       - app
       - frontend
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-employee.rule=Host(`idp-employee.${COMPOSE_DOMAIN}`)"
+      - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME}-http.rule=Host(`idp-employee.${COMPOSE_SERVER_DOMAIN}`)"
+      - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME}-http.entrypoints=web"
+      - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME}-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME}.rule=Host(`idp-employee.${COMPOSE_SERVER_DOMAIN}`)"
+      - "traefik.http.routers.idp-employee_${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.services.idp-employee_${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=9400"
     command:
       [
         "--user-claims",
@@ -59,19 +74,3 @@ services:
         "--user-claims",
         '{"sub": "administrator", "email": "administrator@example.com", "groups": ["administrator"]}',
       ]
-
-  idp_mock_api:
-    image: dotronglong/faker:stable
-    profiles:
-      - oidc-api
-    networks:
-      - app
-      - frontend
-    volumes:
-      - ./mocks:/app/mocks
-    ports:
-      - "3030"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp_mock_api.rule=Host(`idp_mock_api.${COMPOSE_DOMAIN}`)"
