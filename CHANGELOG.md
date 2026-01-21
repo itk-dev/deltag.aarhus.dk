@@ -6,6 +6,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-592](https://github.com/itk-dev/deltag.aarhus.dk/pull/592)
+  Redesigned project timeline with card-based alternating layout (markup/JS example)
+  * New card-based timeline design with alternating left/right layout
+  * Vertical and horizontal (carousel) view modes
+  * Mini-navigation sidebar with scroll tracking
+  * Demo page at `/vertical-timeline-demo`
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
   * Cleaned up local OIDC setup
   * Added test server OIDC setup
