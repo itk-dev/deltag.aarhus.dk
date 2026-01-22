@@ -9,60 +9,160 @@
  * - Fixed mini-nav on right side
  */
 
-/* =============================================================================
-   CSS Custom Properties
-   ============================================================================= */
-.project-timeline {
-  /* Status colors */
-  --timeline-status-completed: var(--primitive-petroleum-500, #008486);
-  --timeline-status-completed-bg: var(--primitive-petroleum-100, #e5eef0);
-  --timeline-status-current: var(--primitive-orange-500, #ff5f31);
-  --timeline-status-current-bg: var(--primitive-gray-100, #f6f6f6);
-  --timeline-status-upcoming: var(--primitive-gray-600, #9d9d9d);
-  --timeline-status-upcoming-bg: var(--primitive-gray-200, #eaeaea);
-  --timeline-status-note: #3661d8;
-  --timeline-status-note-bg: #c4d4f5;
+// =============================================================================
+// SCSS Variables & Mixins
+// =============================================================================
 
-  /* Accent colors */
-  --timeline-accent-pink: #e91e63;
-  --timeline-accent-pink-bg: #fce4ec;
-  --timeline-accent-blue: #3661d8;
-  --timeline-accent-blue-bg: #c4d4f5;
+// Layout variables
+$timeline-max-width: 900px;
+$timeline-card-gap: $spacer * 2; // 32px
+$timeline-line-width: 2px;
+$timeline-dot-size: 12px;
+$timeline-card-padding: $spacer * 1.5; // 24px
+$timeline-card-padding-sm: $spacer; // 16px
 
-  /* Layout */
-  --timeline-max-width: 900px;
-  --timeline-card-gap: 32px;
-  --timeline-line-width: 2px;
-  --timeline-dot-size: 12px;
+// Status color mappings using project tokens
+$timeline-statuses: (
+  "completed": (
+    "color": var(--primitive-petroleum-500),
+    "bg": var(--primitive-petroleum-100),
+    "hover": var(--primitive-petroleum-800),
+  ),
+  "current": (
+    "color": var(--primitive-orange-500),
+    "bg": var(--primitive-gray-100),
+    "hover": var(--primitive-orange-500),
+  ),
+  "upcoming": (
+    "color": var(--primitive-gray-600),
+    "bg": var(--primitive-gray-200),
+    "hover": var(--primitive-gray-700),
+  ),
+  "note": (
+    "color": var(--primitive-blue-500),
+    "bg": var(--primitive-blue-200),
+    "hover": var(--primitive-navy-500),
+  ),
+);
 
-  /* Base styles */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+// Accent color mappings using project tokens
+$timeline-accents: (
+  "pink": (
+    "color": var(--primitive-pink-500),
+    "bg": var(--primitive-pink-100),
+    "hover": var(--primitive-pink-500),
+  ),
+  "blue": (
+    "color": var(--primitive-blue-500),
+    "bg": var(--primitive-blue-200),
+    "hover": var(--primitive-navy-500),
+  ),
+);
+
+// Mixin for generating status variant styles
+@mixin timeline-card-status-variant($color, $bg, $hover) {
+  .project-timeline-card__dot {
+    background: $color;
+  }
+
+  &::after {
+    background: $color;
+  }
+
+  .project-timeline-card__content::before {
+    background: $color;
+  }
+
+  .project-timeline-card__date-wrapper {
+    background: $bg;
+  }
+
+  .project-timeline-card__status {
+    background: $color;
+  }
+
+  .project-timeline-card__subtitle {
+    color: $color;
+  }
+
+  .project-timeline-card__link {
+    background: $color;
+
+    &:hover {
+      background: $hover;
+      color: var(--primitive-white);
+    }
+  }
 }
 
-/* =============================================================================
-   Main Container
-   ============================================================================= */
+// Mixin for accent variants (includes date wrapper color)
+@mixin timeline-card-accent-variant($color, $bg, $hover) {
+  @include timeline-card-status-variant($color, $bg, $hover);
+
+  .project-timeline-card__date-wrapper {
+    color: $color;
+  }
+}
+
+// Mixin for mini-nav status dot colors
+@mixin timeline-mini-nav-status($color, $is-current: false) {
+  .project-timeline-mini-nav__dot {
+    @if $is-current {
+      background: var(--primitive-white);
+      border: 2px solid $color;
+    } @else {
+      background: $color;
+    }
+  }
+}
+
+// =============================================================================
+// CSS Custom Properties
+// =============================================================================
 .project-timeline {
+  // Status colors
+  --timeline-status-completed: var(--primitive-petroleum-500);
+  --timeline-status-completed-bg: var(--primitive-petroleum-100);
+  --timeline-status-current: var(--primitive-orange-500);
+  --timeline-status-current-bg: var(--primitive-gray-100);
+  --timeline-status-upcoming: var(--primitive-gray-600);
+  --timeline-status-upcoming-bg: var(--primitive-gray-200);
+  --timeline-status-note: var(--primitive-blue-500);
+  --timeline-status-note-bg: var(--primitive-blue-200);
+
+  // Accent colors
+  --timeline-accent-pink: var(--primitive-pink-500);
+  --timeline-accent-pink-bg: var(--primitive-pink-100);
+  --timeline-accent-blue: var(--primitive-blue-500);
+  --timeline-accent-blue-bg: var(--primitive-blue-200);
+
+  // Layout
+  --timeline-max-width: #{$timeline-max-width};
+  --timeline-card-gap: #{$timeline-card-gap};
+  --timeline-line-width: #{$timeline-line-width};
+  --timeline-dot-size: #{$timeline-dot-size};
+
+  // Main container styles
   position: relative;
-  padding: 1rem 0;
+  padding: $spacer 0;
   cursor: default;
 }
 
-/* Override theme's grab cursor from old Vis.js timeline */
+// Override theme's grab cursor from old Vis.js timeline
 .project-timeline[data-project-timeline] div {
   cursor: default !important;
 }
 
-/* =============================================================================
-   Timeline Header (Title + Description + View Toggle)
-   ============================================================================= */
+// =============================================================================
+// Timeline Header (Title + Description + View Toggle)
+// =============================================================================
 .project-timeline__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: $spacer;
+  margin-bottom: $timeline-card-padding;
 }
 
 .project-timeline__header-content {
@@ -71,26 +171,26 @@
 }
 
 .project-timeline__title {
-  margin: 0 0 8px;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--primitive-black, #333);
+  margin: 0 0 ($spacer * 0.5);
+  font-size: $h1-font-size;
+  font-weight: $headings-font-weight;
+  color: var(--text-primary);
 }
 
 .project-timeline__description {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--primitive-gray-700, #858585);
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: var(--text-secondary);
   max-width: 600px;
 }
 
-/* =============================================================================
-   View Toggle
-   ============================================================================= */
+// =============================================================================
+// View Toggle
+// =============================================================================
 .project-timeline__view-toggle {
   display: inline-flex;
-  background: var(--primitive-gray-100, #f6f6f6);
+  background: var(--bg-secondary);
   padding: 4px;
   flex-shrink: 0;
 }
@@ -100,14 +200,28 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: ($spacer * 0.5) $spacer;
   border: none;
   background: transparent;
-  color: var(--primitive-gray-800, #525252);
+  color: var(--text-primary);
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: $font-size-small;
+  font-weight: $font-weight-bold;
   transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &[aria-selected="true"] {
+    background: var(--interactive-primary);
+    color: var(--text-inverse);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
 }
 
 .project-timeline__view-icon {
@@ -119,23 +233,9 @@
   line-height: 1;
 }
 
-.project-timeline__view-btn:hover {
-  color: var(--primitive-black, #333);
-}
-
-.project-timeline__view-btn[aria-selected="true"] {
-  background: var(--primitive-petroleum-500, #008486);
-  color: var(--primitive-white, #fff);
-}
-
-.project-timeline__view-btn:focus-visible {
-  outline: 2px solid var(--focus-ring-color, #008486);
-  outline-offset: 2px;
-}
-
-/* =============================================================================
-   Vertical View - Centered Timeline with Alternating Cards
-   ============================================================================= */
+// =============================================================================
+// Vertical View - Centered Timeline with Alternating Cards
+// =============================================================================
 .project-timeline__vertical {
   position: relative;
 }
@@ -150,100 +250,74 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 40px 0 120px;
+  padding: ($spacer * 2.5) 0 ($spacer * 7.5);
   max-width: var(--timeline-max-width);
   margin: 0 auto;
-}
 
-/* Centered timeline vertical line */
-.project-timeline__cards::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: var(--timeline-line-width);
-  background: linear-gradient(
+  // Centered timeline vertical line
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: var(--timeline-line-width);
+    background: linear-gradient(
       180deg,
-      var(--primitive-gray-800, #525252) 0%,
-      var(--primitive-gray-800, #525252) 72%,
-      var(--primitive-gray-300, #e6e6e6) 80%,
-      var(--primitive-gray-300, #e6e6e6) 100%
-  );
-  transform: translateX(-50%);
+      var(--primitive-gray-800) 0%,
+      var(--primitive-gray-800) 72%,
+      var(--border-default) 80%,
+      var(--border-default) 100%
+    );
+    transform: translateX(-50%);
+  }
 }
 
-/* =============================================================================
-   Timeline Card - Alternating Layout
-   ============================================================================= */
+// =============================================================================
+// Timeline Card - Alternating Layout
+// =============================================================================
 .project-timeline-card {
   display: flex;
   position: relative;
-  margin-bottom: -60px;
+  margin-bottom: -($spacer * 3.75); // -60px overlap
   z-index: 1;
+
+  // Alternating: odd cards align left, even cards align right
+  &:nth-child(odd) {
+    justify-content: flex-start;
+  }
+
+  &:nth-child(even) {
+    justify-content: flex-end;
+  }
+
+  // Z-index stacking for overlapping cards (generated via loop)
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      z-index: 11 - $i;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-/* Alternating: odd cards align left, even cards align right */
-.project-timeline-card:nth-child(odd) {
-  justify-content: flex-start;
-}
-
-.project-timeline-card:nth-child(even) {
-  justify-content: flex-end;
-}
-
-/* Reset z-index for proper stacking */
-.project-timeline-card:nth-child(1) {
-  z-index: 10;
-}
-.project-timeline-card:nth-child(2) {
-  z-index: 9;
-}
-.project-timeline-card:nth-child(3) {
-  z-index: 8;
-}
-.project-timeline-card:nth-child(4) {
-  z-index: 7;
-}
-.project-timeline-card:nth-child(5) {
-  z-index: 6;
-}
-.project-timeline-card:nth-child(6) {
-  z-index: 5;
-}
-.project-timeline-card:nth-child(7) {
-  z-index: 4;
-}
-.project-timeline-card:nth-child(8) {
-  z-index: 3;
-}
-.project-timeline-card:nth-child(9) {
-  z-index: 2;
-}
-.project-timeline-card:nth-child(10) {
-  z-index: 1;
-}
-
-.project-timeline-card:last-child {
-  margin-bottom: 0;
-}
-
-/* Timeline dot - centered, ensure circular shape */
+// Timeline dot - centered, ensure circular shape
 .project-timeline-card__connector {
   position: absolute;
   left: 50%;
-  top: 24px;
+  top: $timeline-card-padding;
   transform: translateX(-50%);
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-/* Adjust dot position when card has image */
-.project-timeline-card:has(.project-timeline-card__image-wrapper)
-.project-timeline-card__connector {
-  top: 60px;
+  // Adjust dot position when card has image
+  .project-timeline-card:has(.project-timeline-card__image-wrapper) & {
+    top: ($spacer * 3.75); // 60px
+  }
 }
 
 .project-timeline-card__dot {
@@ -253,63 +327,71 @@
   min-height: var(--timeline-dot-size);
   border-radius: 50%;
   background: var(--timeline-status-upcoming);
-  border: 3px solid var(--primitive-white, #fff);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 3px solid var(--bg-primary);
+  box-shadow: $shadow;
   flex-shrink: 0;
 }
 
-/* Horizontal connector line from card to dot */
+// Horizontal connector line from card to dot
 .project-timeline-card::after {
   content: "";
   position: absolute;
   top: 29px;
-  width: 32px;
-  height: 2px;
+  width: $timeline-card-gap;
+  height: $timeline-line-width;
   background: var(--timeline-status-upcoming);
 }
 
-/* Adjust connector position when card has image */
+// Adjust connector position when card has image
 .project-timeline-card:has(.project-timeline-card__image-wrapper)::after {
   top: 65px;
 }
 
-/* Connector position for odd cards (left side) */
+// Connector position for odd cards (left side)
 .project-timeline-card:nth-child(odd)::after {
-  left: calc(50% - 32px);
+  left: calc(50% - #{$timeline-card-gap});
 }
 
-/* Connector position for even cards (right side) */
+// Connector position for even cards (right side)
 .project-timeline-card:nth-child(even)::after {
   left: 50%;
 }
 
-/* Card content container */
+// Card content container
+$timeline-image-height: 140px;
+
 .project-timeline-card__content {
-  width: calc(50% - 32px);
-  background: var(--primitive-white, #fff);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--primitive-gray-300, #e6e6e6);
+  width: calc(50% - #{$timeline-card-gap});
+  background: var(--card-bg);
+  box-shadow: $shadow;
+  border: 1px solid var(--card-border);
   transition: box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
   cursor: default;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  }
+
+  // Accent bar on card edge
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--timeline-status-upcoming);
+  }
+
+  // Move accent bar below image if present
+  &:has(.project-timeline-card__image-wrapper)::before {
+    top: $timeline-image-height;
+    height: calc(100% - #{$timeline-image-height});
+  }
 }
 
-.project-timeline-card__content:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* Accent bar on card edge */
-.project-timeline-card__content::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--timeline-status-upcoming);
-}
-
-/* Accent bar on right for odd cards, left for even */
+// Accent bar on right for odd cards, left for even
 .project-timeline-card:nth-child(odd) .project-timeline-card__content::before {
   right: 0;
 }
@@ -318,20 +400,12 @@
   left: 0;
 }
 
-/* Move accent bar below image if present */
-.project-timeline-card__content:has(
-    .project-timeline-card__image-wrapper
-  )::before {
-  top: 140px;
-  height: calc(100% - 140px);
-}
-
-/* Card header with date */
+// Card header with date
 .project-timeline-card__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px 24px 0;
+  padding: ($spacer * 1.25) $timeline-card-padding 0;
 }
 
 .project-timeline-card__date-wrapper {
@@ -340,34 +414,39 @@
   gap: 6px;
   padding: 4px 10px;
   background: var(--timeline-status-upcoming-bg);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
 }
 
 .project-timeline-card__month {
-  color: var(--primitive-petroleum-800, #3d6d6d);
+  color: var(--primitive-petroleum-800);
 }
 
-/* Status badge */
+// Status badge
 .project-timeline-card__status {
   position: absolute;
-  top: 8px;
-  right: 12px;
-  padding: 3px 8px;
+  top: ($spacer * 0.5);
+  right: ($spacer * 0.75);
+  padding: 3px ($spacer * 0.5);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: $font-weight-bold;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--primitive-white, #fff);
+  color: var(--text-inverse);
   background: var(--timeline-status-upcoming);
+
+  // When image is present, move status badge down
+  .project-timeline-card__content:has(.project-timeline-card__image-wrapper) & {
+    top: ($timeline-image-height + 8px);
+  }
 }
 
-/* Image */
+// Image
 .project-timeline-card__image-wrapper {
   width: 100%;
-  height: 140px;
+  height: $timeline-image-height;
   overflow: hidden;
-  border-bottom: 1px solid var(--primitive-gray-200, #eaeaea);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .project-timeline-card__image {
@@ -376,29 +455,23 @@
   object-fit: cover;
 }
 
-/* When image is present, move status badge down */
-.project-timeline-card__content:has(.project-timeline-card__image-wrapper)
-.project-timeline-card__status {
-  top: 148px;
-}
-
-/* Card body */
+// Card body
 .project-timeline-card__body {
-  padding: 12px 24px 20px;
+  padding: ($spacer * 0.75) $timeline-card-padding ($spacer * 1.25);
 }
 
 .project-timeline-card__title {
   margin: 0 0 4px;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--primitive-black, #333);
+  font-size: $h3-font-size;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: var(--text-primary);
 }
 
 .project-timeline-card__subtitle {
-  margin: 0 0 10px;
-  font-size: 12px;
-  font-weight: 600;
+  margin: 0 0 ($spacer * 0.625);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
   color: var(--timeline-status-upcoming);
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -406,255 +479,135 @@
 
 .project-timeline-card__description {
   margin: 0;
-  font-size: 14px;
+  font-size: $font-size-small;
   line-height: 1.55;
-  color: var(--primitive-gray-800, #525252);
+  color: var(--text-primary);
 }
 
-/* Card footer with link */
+// Card footer with link
 .project-timeline-card__footer {
-  padding: 0 24px 20px;
+  padding: 0 $timeline-card-padding ($spacer * 1.25);
 }
 
 .project-timeline-card__link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: ($spacer * 0.5) ($spacer * 0.875);
   background: var(--timeline-status-upcoming);
-  color: var(--primitive-white, #fff);
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--text-inverse);
+  font-size: $font-size-small;
+  font-weight: $font-weight-bold;
   text-decoration: none;
   transition: background 0.2s ease;
-}
 
-.project-timeline-card__link:hover {
-  background: var(--primitive-gray-700, #858585);
-  color: var(--primitive-white, #fff);
-  text-decoration: none;
+  &:hover {
+    background: var(--primitive-gray-700);
+    color: var(--text-inverse);
+    text-decoration: none;
+  }
 }
 
 .project-timeline-card__link-icon {
   transition: transform 0.15s ease;
+
+  .project-timeline-card__link:hover & {
+    transform: translateX(2px);
+  }
 }
 
-.project-timeline-card__link:hover .project-timeline-card__link-icon {
-  transform: translateX(2px);
+// =============================================================================
+// Card Status Variants
+// =============================================================================
+
+// Completed
+.project-timeline-card--completed {
+  @include timeline-card-status-variant(
+    var(--timeline-status-completed),
+    var(--timeline-status-completed-bg),
+    var(--primitive-petroleum-800)
+  );
 }
 
-/* =============================================================================
-   Card Status Variants
-   ============================================================================= */
+// Current - special case with hollow dot
+.project-timeline-card--current {
+  @include timeline-card-status-variant(
+    var(--timeline-status-current),
+    var(--timeline-status-current-bg),
+    var(--primitive-orange-500)
+  );
 
-/* Completed */
-.project-timeline-card--completed .project-timeline-card__dot {
-  background: var(--timeline-status-completed);
+  // Override dot to be hollow (current indicator)
+  .project-timeline-card__dot {
+    background: var(--bg-primary);
+    border: 2px solid var(--timeline-status-current);
+  }
 }
 
-.project-timeline-card--completed::after {
-  background: var(--timeline-status-completed);
+// Note
+.project-timeline-card--note {
+  @include timeline-card-status-variant(
+    var(--timeline-status-note),
+    var(--timeline-status-note-bg),
+    var(--primitive-navy-500)
+  );
 }
 
-.project-timeline-card--completed .project-timeline-card__content::before {
-  background: var(--timeline-status-completed);
-}
-
-.project-timeline-card--completed .project-timeline-card__date-wrapper {
-  background: var(--timeline-status-completed-bg);
-}
-
-.project-timeline-card--completed .project-timeline-card__status {
-  background: var(--timeline-status-completed);
-}
-
-.project-timeline-card--completed .project-timeline-card__subtitle {
-  color: var(--timeline-status-completed);
-}
-
-.project-timeline-card--completed .project-timeline-card__link {
-  background: var(--timeline-status-completed);
-}
-
-.project-timeline-card--completed .project-timeline-card__link:hover {
-  background: var(--primitive-petroleum-800, #3d6d6d);
-  color: var(--primitive-white, #fff);
-}
-
-/* Current */
-.project-timeline-card--current .project-timeline-card__dot {
-  background: var(--primitive-white, #fff);
-  border: 2px solid var(--timeline-status-current);
-}
-
-.project-timeline-card--current::after {
-  background: var(--timeline-status-current);
-}
-
-.project-timeline-card--current .project-timeline-card__content::before {
-  background: var(--timeline-status-current);
-}
-
-.project-timeline-card--current .project-timeline-card__date-wrapper {
-  background: var(--timeline-status-current-bg);
-}
-
-.project-timeline-card--current .project-timeline-card__status {
-  background: var(--timeline-status-current);
-}
-
-.project-timeline-card--current .project-timeline-card__subtitle {
-  color: var(--timeline-status-current);
-}
-
-.project-timeline-card--current .project-timeline-card__link {
-  background: var(--timeline-status-current);
-}
-
-.project-timeline-card--current .project-timeline-card__link:hover {
-  background: #e54a20;
-  color: var(--primitive-white, #fff);
-}
-
-/* Note */
-.project-timeline-card--note .project-timeline-card__dot {
-  background: var(--timeline-status-note);
-}
-
-.project-timeline-card--note::after {
-  background: var(--timeline-status-note);
-}
-
-.project-timeline-card--note .project-timeline-card__content::before {
-  background: var(--timeline-status-note);
-}
-
-.project-timeline-card--note .project-timeline-card__date-wrapper {
-  background: var(--timeline-status-note-bg);
-}
-
-.project-timeline-card--note .project-timeline-card__status {
-  background: var(--timeline-status-note);
-}
-
-.project-timeline-card--note .project-timeline-card__subtitle {
-  color: var(--timeline-status-note);
-}
-
-.project-timeline-card--note .project-timeline-card__link {
-  background: var(--timeline-status-note);
-}
-
-.project-timeline-card--note .project-timeline-card__link:hover {
-  background: #2a4db5;
-  color: var(--primitive-white, #fff);
-}
-
-/* Upcoming - lower opacity */
+// Upcoming - lower opacity
 .project-timeline-card--upcoming {
   opacity: 0.6;
 }
 
-/* =============================================================================
-   Card Accent Color Variants
-   ============================================================================= */
+// =============================================================================
+// Card Accent Color Variants
+// =============================================================================
 
-/* Pink accent */
-.project-timeline-card--accent-pink .project-timeline-card__dot {
-  background: var(--timeline-accent-pink);
+// Pink accent
+.project-timeline-card--accent-pink {
+  @include timeline-card-accent-variant(
+    var(--timeline-accent-pink),
+    var(--timeline-accent-pink-bg),
+    var(--primitive-pink-500)
+  );
 }
 
-.project-timeline-card--accent-pink::after {
-  background: var(--timeline-accent-pink);
+// Blue accent
+.project-timeline-card--accent-blue {
+  @include timeline-card-accent-variant(
+    var(--timeline-accent-blue),
+    var(--timeline-accent-blue-bg),
+    var(--primitive-navy-500)
+  );
 }
 
-.project-timeline-card--accent-pink .project-timeline-card__content::before {
-  background: var(--timeline-accent-pink);
-}
+// =============================================================================
+// Mini Navigation - Fixed on Right Side
+// =============================================================================
+$mini-nav-dot-size: 10px;
 
-.project-timeline-card--accent-pink .project-timeline-card__date-wrapper {
-  background: var(--timeline-accent-pink-bg);
-  color: var(--timeline-accent-pink);
-}
-
-.project-timeline-card--accent-pink .project-timeline-card__status {
-  background: var(--timeline-accent-pink);
-}
-
-.project-timeline-card--accent-pink .project-timeline-card__subtitle {
-  color: var(--timeline-accent-pink);
-}
-
-.project-timeline-card--accent-pink .project-timeline-card__link {
-  background: var(--timeline-accent-pink);
-}
-
-.project-timeline-card--accent-pink .project-timeline-card__link:hover {
-  background: #c2185b;
-  color: var(--primitive-white, #fff);
-}
-
-/* Blue accent */
-.project-timeline-card--accent-blue .project-timeline-card__dot {
-  background: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue::after {
-  background: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue .project-timeline-card__content::before {
-  background: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue .project-timeline-card__date-wrapper {
-  background: var(--timeline-accent-blue-bg);
-  color: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue .project-timeline-card__status {
-  background: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue .project-timeline-card__subtitle {
-  color: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue .project-timeline-card__link {
-  background: var(--timeline-accent-blue);
-}
-
-.project-timeline-card--accent-blue .project-timeline-card__link:hover {
-  background: #2a4db5;
-  color: var(--primitive-white, #fff);
-}
-
-/* =============================================================================
-   Mini Navigation - Fixed on Right Side
-   ============================================================================= */
 .project-timeline-mini-nav {
   position: fixed;
-  right: 20px;
+  right: ($spacer * 1.25);
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 10px;
-  background: var(--primitive-white, #fff);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
-  border: 1px solid var(--primitive-gray-300, #e6e6e6);
+  padding: $spacer ($spacer * 0.625);
+  background: var(--bg-primary);
+  box-shadow: $shadow;
+  border: 1px solid var(--border-default);
 }
 
-/* Vertical "TIDSLINJE" header */
+// Vertical "TIDSLINJE" header
 .project-timeline-mini-nav__header {
   font-size: 9px;
-  font-weight: 600;
-  color: var(--primitive-petroleum-500, #008486);
+  font-weight: $font-weight-bold;
+  color: var(--interactive-primary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: ($spacer * 0.75);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
 }
@@ -673,14 +626,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-/* Connecting line between dots */
-.project-timeline-mini-nav__item:not(:last-child)::after {
-  content: "";
-  width: 2px;
-  height: 16px;
-  background: var(--primitive-gray-300, #e6e6e6);
+  // Connecting line between dots
+  &:not(:last-child)::after {
+    content: "";
+    width: $timeline-line-width;
+    height: $spacer;
+    background: var(--border-default);
+  }
+
+  // Connecting line colors based on progress
+  &:has(.project-timeline-mini-nav__link--completed)::after {
+    background: var(--primitive-gray-800);
+  }
 }
 
 .project-timeline-mini-nav__link {
@@ -693,37 +651,43 @@
   background: none;
   border: none;
   cursor: pointer;
+
+  &:hover,
+  &.is-active {
+    .project-timeline-mini-nav__dot {
+      transform: scale(1.3);
+    }
+  }
+
+  &.is-active .project-timeline-mini-nav__dot {
+    outline: 2px solid var(--primitive-petroleum-200);
+    outline-offset: 2px;
+  }
+
+  &:hover .project-timeline-mini-nav__label {
+    opacity: 1;
+  }
 }
 
 .project-timeline-mini-nav__dot {
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
-  min-height: 10px;
+  width: $mini-nav-dot-size;
+  height: $mini-nav-dot-size;
+  min-width: $mini-nav-dot-size;
+  min-height: $mini-nav-dot-size;
   border-radius: 50%;
-  background: var(--primitive-gray-400, #dfdfdf);
+  background: var(--primitive-gray-400);
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
-.project-timeline-mini-nav__link:hover .project-timeline-mini-nav__dot,
-.project-timeline-mini-nav__link.is-active .project-timeline-mini-nav__dot {
-  transform: scale(1.3);
-}
-
-.project-timeline-mini-nav__link.is-active .project-timeline-mini-nav__dot {
-  outline: 2px solid var(--primitive-petroleum-200, #cfe0e2);
-  outline-offset: 2px;
-}
-
-/* Hide label by default, show on hover */
+// Hide label by default, show on hover
 .project-timeline-mini-nav__label {
   position: absolute;
-  right: 20px;
+  right: ($spacer * 1.25);
   top: 50%;
   transform: translateY(-50%);
-  background: var(--primitive-gray-900, #333);
-  color: var(--primitive-white, #fff);
+  background: var(--primitive-gray-900);
+  color: var(--text-inverse);
   padding: 6px 10px;
   font-size: 11px;
   font-weight: 500;
@@ -733,38 +697,26 @@
   transition: opacity 0.15s ease;
 }
 
-.project-timeline-mini-nav__link:hover .project-timeline-mini-nav__label {
-  opacity: 1;
+// Mini nav status colors
+.project-timeline-mini-nav__link--completed {
+  @include timeline-mini-nav-status(var(--timeline-status-completed));
 }
 
-/* Mini nav status colors */
-.project-timeline-mini-nav__link--completed .project-timeline-mini-nav__dot {
-  background: var(--timeline-status-completed);
+.project-timeline-mini-nav__link--current {
+  @include timeline-mini-nav-status(var(--timeline-status-current), true);
 }
 
-.project-timeline-mini-nav__link--current .project-timeline-mini-nav__dot {
-  background: var(--primitive-white, #fff);
-  border: 2px solid var(--timeline-status-current);
+.project-timeline-mini-nav__link--upcoming {
+  @include timeline-mini-nav-status(var(--timeline-status-upcoming));
 }
 
-.project-timeline-mini-nav__link--upcoming .project-timeline-mini-nav__dot {
-  background: var(--timeline-status-upcoming);
+.project-timeline-mini-nav__link--note {
+  @include timeline-mini-nav-status(var(--timeline-status-note));
 }
 
-.project-timeline-mini-nav__link--note .project-timeline-mini-nav__dot {
-  background: var(--timeline-status-note);
-}
-
-/* Connecting line colors based on progress */
-.project-timeline-mini-nav__item:has(
-    .project-timeline-mini-nav__link--completed
-  )::after {
-  background: var(--primitive-gray-800, #525252);
-}
-
-/* "I dag" indicator at bottom */
+// "I dag" indicator at bottom
 .project-timeline-mini-nav__today {
-  margin-top: 12px;
+  margin-top: ($spacer * 0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -772,99 +724,102 @@
 }
 
 .project-timeline-mini-nav__today-dot {
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
-  min-height: 10px;
+  width: $mini-nav-dot-size;
+  height: $mini-nav-dot-size;
+  min-width: $mini-nav-dot-size;
+  min-height: $mini-nav-dot-size;
   border-radius: 50%;
   border: 2px solid var(--timeline-status-current);
-  background: var(--primitive-white, #fff);
+  background: var(--bg-primary);
   flex-shrink: 0;
 }
 
 .project-timeline-mini-nav__today-label {
   font-size: 9px;
-  color: var(--primitive-gray-700, #858585);
+  color: var(--text-secondary);
   text-align: center;
 }
 
-/* =============================================================================
-   Horizontal View (Carousel)
-   ============================================================================= */
+// =============================================================================
+// Horizontal View (Carousel)
+// =============================================================================
+$carousel-min-height: 280px;
+$carousel-padding-horizontal: ($spacer * 2.25); // 36px
+
 .project-timeline__horizontal {
   position: relative;
   max-width: var(--timeline-max-width);
   margin: 0 auto;
-  padding: 24px 0;
-}
+  padding: $timeline-card-padding 0;
 
-/* Progress bar at top */
-.project-timeline__horizontal::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--primitive-gray-300, #e6e6e6);
+  // Progress bar at top
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--border-default);
+  }
 }
 
 .project-timeline__carousel-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 28px;
+  gap: $spacer;
+  margin-top: ($spacer * 1.75);
 }
 
 .project-timeline__carousel-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: ($spacer * 3);
+  height: ($spacer * 3);
   padding: 0;
   border: none;
-  background: var(--primitive-petroleum-500, #008486);
-  color: var(--primitive-white, #fff);
+  background: var(--interactive-primary);
+  color: var(--text-inverse);
   cursor: pointer;
-  font-size: 20px;
+  font-size: $font-size-large;
   transition: all 0.2s ease;
-}
 
-.project-timeline__carousel-btn:hover:not(:disabled) {
-  background: var(--primitive-petroleum-800, #3d6d6d);
-  color: var(--primitive-white, #fff);
-}
+  &:hover:not(:disabled) {
+    background: var(--interactive-primary-hover);
+    color: var(--text-inverse);
+  }
 
-.project-timeline__carousel-btn:disabled {
-  background: var(--primitive-gray-200, #eaeaea);
-  color: var(--primitive-gray-600, #9d9d9d);
-  cursor: not-allowed;
-}
+  &:disabled {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    cursor: not-allowed;
+  }
 
-.project-timeline__carousel-btn:focus-visible {
-  outline: 2px solid var(--focus-ring-color, #008486);
-  outline-offset: 2px;
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
 }
 
 .project-timeline__carousel-indicator {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: $font-size-small;
   font-weight: 500;
-  color: var(--primitive-gray-700, #858585);
-}
+  color: var(--text-secondary);
 
-.project-timeline__carousel-indicator [data-carousel-current] {
-  font-weight: 700;
-  color: var(--primitive-black, #333);
+  [data-carousel-current] {
+    font-weight: $headings-font-weight;
+    color: var(--text-primary);
+  }
 }
 
 .project-timeline__carousel-viewport {
   overflow: hidden;
-  margin-top: 32px;
+  margin-top: $timeline-card-gap;
 }
 
 .project-timeline__carousel-track {
@@ -874,162 +829,163 @@
 
 .project-timeline__carousel-slide {
   flex: 0 0 100%;
-  padding: 0 8px;
+  padding: 0 ($spacer * 0.5);
   box-sizing: border-box;
 }
 
-/* Carousel card styles - full width, side-by-side image */
-.project-timeline__horizontal .project-timeline-card {
-  margin-bottom: 0;
-  justify-content: center;
+// Carousel card styles - full width, side-by-side image
+.project-timeline__horizontal {
+  .project-timeline-card {
+    margin-bottom: 0;
+    justify-content: center;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .project-timeline-card__connector {
+    display: none;
+  }
+
+  .project-timeline-card__content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: $carousel-min-height;
+
+    &::before {
+      left: 0;
+      right: auto;
+    }
+
+    &:has(.project-timeline-card__image-wrapper) {
+      &::before {
+        top: 0;
+        height: 100%;
+      }
+
+      .project-timeline-card__status {
+        top: $spacer;
+      }
+    }
+  }
+
+  .project-timeline-card__image-wrapper {
+    width: 40%;
+    height: auto;
+    min-height: $carousel-min-height;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .project-timeline-card__header {
+    padding: ($spacer * 3) $carousel-padding-horizontal 0;
+  }
+
+  .project-timeline-card__body {
+    padding: ($spacer * 0.75) $carousel-padding-horizontal ($spacer * 1.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .project-timeline-card__title {
+    font-size: $font-size-teaser;
+  }
+
+  .project-timeline-card__description {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .project-timeline-card__footer {
+    padding: $timeline-card-gap 0;
+  }
+
+  .project-timeline-card__link {
+    padding: ($spacer * 0.625) ($spacer * 1.125);
+    font-size: $font-size-small;
+  }
 }
 
-.project-timeline__horizontal .project-timeline-card::after {
-  display: none;
-}
-
-.project-timeline__horizontal .project-timeline-card__connector {
-  display: none;
-}
-
-.project-timeline__horizontal .project-timeline-card__content {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  min-height: 280px;
-}
-
-.project-timeline__horizontal .project-timeline-card__content::before {
-  left: 0;
-  right: auto;
-}
-
-.project-timeline__horizontal .project-timeline-card__image-wrapper {
-  width: 40%;
-  height: auto;
-  min-height: 280px;
-  flex-shrink: 0;
-  border-bottom: none;
-  border-right: 1px solid var(--primitive-gray-200, #eaeaea);
-}
-
-.project-timeline__horizontal
-.project-timeline-card__content:has(
-    .project-timeline-card__image-wrapper
-  )::before {
-  top: 0;
-  height: 100%;
-}
-
-.project-timeline__horizontal
-.project-timeline-card__content:has(.project-timeline-card__image-wrapper)
-.project-timeline-card__status {
-  top: 16px;
-}
-
-.project-timeline__horizontal .project-timeline-card__header {
-  padding: 48px 36px 0;
-}
-
-.project-timeline__horizontal .project-timeline-card__body {
-  padding: 12px 36px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.project-timeline__horizontal .project-timeline-card__title {
-  font-size: 26px;
-}
-
-.project-timeline__horizontal .project-timeline-card__description {
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.project-timeline__horizontal .project-timeline-card__footer {
-  padding: 32px 0;
-}
-
-.project-timeline__horizontal .project-timeline-card__link {
-  padding: 10px 18px;
-  font-size: 14px;
-}
-
-/* =============================================================================
-   Legend
-   ============================================================================= */
+// =============================================================================
+// Legend
+// =============================================================================
 .project-timeline-legend {
   max-width: 500px;
-  margin: 32px auto 0;
-  padding: 20px 24px;
-  background: var(--primitive-white, #fff);
-  border: 1px solid var(--primitive-gray-300, #e6e6e6);
+  margin: $timeline-card-gap auto 0;
+  padding: ($spacer * 1.25) $timeline-card-padding;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
 }
 
 .project-timeline-legend__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: ($spacer * 1.25);
   list-style: none;
   margin: 0;
   padding: 0;
-}
 
-.project-timeline-legend__list::before {
-  content: "Forklaring";
-  display: block;
-  width: 100%;
-  margin-bottom: 14px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--primitive-black, #333);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  &::before {
+    content: "Forklaring";
+    display: block;
+    width: 100%;
+    margin-bottom: ($spacer * 0.875);
+    font-size: $font-size-xs;
+    font-weight: $headings-font-weight;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
 }
 
 .project-timeline-legend__item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: ($spacer * 0.5);
+
+  // Status color variants
+  &--completed .project-timeline-legend__dot {
+    background: var(--timeline-status-completed);
+  }
+
+  &--current .project-timeline-legend__dot {
+    background: var(--bg-primary);
+    border: 2px solid var(--timeline-status-current);
+  }
+
+  &--upcoming .project-timeline-legend__dot {
+    background: var(--timeline-status-upcoming);
+  }
+
+  &--note .project-timeline-legend__dot {
+    background: var(--timeline-status-note);
+  }
 }
 
 .project-timeline-legend__dot {
-  width: 12px;
-  height: 12px;
-  min-width: 12px;
-  min-height: 12px;
+  width: var(--timeline-dot-size);
+  height: var(--timeline-dot-size);
+  min-width: var(--timeline-dot-size);
+  min-height: var(--timeline-dot-size);
   border-radius: 50%;
-  background: var(--primitive-gray-400, #dfdfdf);
+  background: var(--primitive-gray-400);
   flex-shrink: 0;
 }
 
 .project-timeline-legend__label {
-  font-size: 13px;
-  color: var(--primitive-gray-800, #525252);
+  font-size: $font-size-small;
+  color: var(--text-primary);
 }
 
-/* Legend status colors */
-.project-timeline-legend__item--completed .project-timeline-legend__dot {
-  background: var(--timeline-status-completed);
-}
+// =============================================================================
+// Responsive: Mobile
+// =============================================================================
+$mobile-image-height: 160px;
 
-.project-timeline-legend__item--current .project-timeline-legend__dot {
-  background: var(--primitive-white, #fff);
-  border: 2px solid var(--timeline-status-current);
-}
-
-.project-timeline-legend__item--upcoming .project-timeline-legend__dot {
-  background: var(--timeline-status-upcoming);
-}
-
-.project-timeline-legend__item--note .project-timeline-legend__dot {
-  background: var(--timeline-status-note);
-}
-
-/* =============================================================================
-   Responsive: Mobile
-   ============================================================================= */
 @media (max-width: 767px) {
   .project-timeline__header {
     flex-direction: column;
@@ -1045,82 +1001,86 @@
 
   .project-timeline__horizontal {
     display: block !important;
-  }
 
-  .project-timeline__horizontal[hidden] {
-    display: block !important;
+    &[hidden] {
+      display: block !important;
+    }
   }
 
   .project-timeline-mini-nav {
     display: none;
   }
 
-  /* Mobile carousel card layout */
-  .project-timeline__horizontal .project-timeline-card__content {
-    flex-direction: column;
-    min-height: auto;
-  }
+  // Mobile carousel card layout
+  .project-timeline__horizontal {
+    .project-timeline-card__content {
+      flex-direction: column;
+      min-height: auto;
 
-  .project-timeline__horizontal .project-timeline-card__image-wrapper {
-    width: 100%;
-    height: 160px;
-    min-height: 160px;
-    border-right: none;
-    border-bottom: 1px solid var(--primitive-gray-200, #eaeaea);
-  }
+      &:has(.project-timeline-card__image-wrapper)
+        .project-timeline-card__status {
+        top: ($mobile-image-height + 8px);
+      }
+    }
 
-  .project-timeline__horizontal .project-timeline-card__header {
-    padding: 16px;
-  }
+    .project-timeline-card__image-wrapper {
+      width: 100%;
+      height: $mobile-image-height;
+      min-height: $mobile-image-height;
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+    }
 
-  .project-timeline__horizontal .project-timeline-card__body {
-    padding: 8px 16px 16px;
-  }
+    .project-timeline-card__header {
+      padding: $timeline-card-padding-sm;
+    }
 
-  .project-timeline__horizontal .project-timeline-card__title {
-    font-size: 18px;
-  }
+    .project-timeline-card__body {
+      padding: ($spacer * 0.5) $timeline-card-padding-sm
+        $timeline-card-padding-sm;
+    }
 
-  .project-timeline__horizontal .project-timeline-card__description {
-    font-size: 13px;
-  }
+    .project-timeline-card__title {
+      font-size: $h3-font-size;
+    }
 
-  .project-timeline__horizontal .project-timeline-card__footer {
-    padding: 0 16px 16px;
-  }
+    .project-timeline-card__description {
+      font-size: $font-size-small;
+    }
 
-  .project-timeline__horizontal .project-timeline-card__link {
-    padding: 8px 14px;
-    font-size: 13px;
-  }
+    .project-timeline-card__footer {
+      padding: 0 $timeline-card-padding-sm $timeline-card-padding-sm;
+    }
 
-  .project-timeline__horizontal
-  .project-timeline-card__content:has(.project-timeline-card__image-wrapper)
-  .project-timeline-card__status {
-    top: 168px;
+    .project-timeline-card__link {
+      padding: ($spacer * 0.5) ($spacer * 0.875);
+      font-size: $font-size-small;
+    }
   }
 }
 
-/* =============================================================================
-   Responsive: Tablet - Show vertical but with adjusted layout
-   ============================================================================= */
+// =============================================================================
+// Responsive: Tablet - Show vertical but with adjusted layout
+// =============================================================================
+$tablet-card-gap: $timeline-card-padding;
+
 @media (min-width: 768px) and (max-width: 991px) {
   .project-timeline-card__content {
-    width: calc(50% - 24px);
+    width: calc(50% - #{$tablet-card-gap});
   }
 
   .project-timeline-card::after {
-    width: 24px;
+    width: $tablet-card-gap;
   }
 
   .project-timeline-card:nth-child(odd)::after {
-    left: calc(50% - 24px);
+    left: calc(50% - #{$tablet-card-gap});
   }
 }
 
-/* =============================================================================
-   Reduced Motion
-   ============================================================================= */
+// =============================================================================
+// Reduced Motion
+// =============================================================================
 @media (prefers-reduced-motion: reduce) {
   .project-timeline-card__content,
   .project-timeline-card__link-icon,
@@ -1134,9 +1094,9 @@
   }
 }
 
-/* =============================================================================
-   Print Styles
-   ============================================================================= */
+// =============================================================================
+// Print Styles
+// =============================================================================
 @media print {
   .project-timeline__view-toggle,
   .project-timeline-mini-nav,
@@ -1146,20 +1106,20 @@
 
   .project-timeline__vertical {
     display: block !important;
-  }
 
-  .project-timeline__vertical[hidden] {
-    display: block !important;
+    &[hidden] {
+      display: block !important;
+    }
   }
 
   .project-timeline-card {
-    margin-bottom: 24px;
+    margin-bottom: $timeline-card-padding;
     opacity: 1 !important;
   }
 
   .project-timeline-card__content {
     break-inside: avoid;
     box-shadow: none;
-    border: 1px solid #000;
+    border: 1px solid var(--border-strong);
   }
 }
