@@ -1,101 +1,259 @@
-{% set data = {
-  "images": {
-    "logo": "https://deltag.aarhus.dk/themes/custom/hoeringsportal/static/images/AAK_02_venstrejusteret_sh.svg",
-    "logoWhite": "https://deltag.aarhus.dk/themes/custom/hoeringsportal/static/images/AAK_02_venstrejusteret_hvid.svg",
-    "hero": "https://deltag.aarhus.dk/sites/default/files/images/IMG_1251_cropped_0.jpg",
-    "gaatur": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1064_cropped.jpg",
-    "workshop": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1227%20%281%29%20-%20cropped.jpg",
-    "popup": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/Billede3.jpg",
-    "digital": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/Kategorier_stor_0.png"
-  },
+{% set items = {
   "timelineData": [
     {
-      "id": 1,
-      "date": "2023",
-      "month": "",
-      "title": "Udpegning",
-      "subtitle": "Strategisk Byrumsplan",
-      "description": "Hjortshøj Stationsplads udpeges som ét af 13 byrum i Aarhus Kommunes Strategiske Byrumsplan.",
-      "status": "completed",
-      "link": "https://aarhus.dk/nyt/teknik-og-miljoe/2023/august-2023/raadmand-vil-puste-nyt-liv-i-13-af-byens-rum",
-      "linkText": "Læs om byrumsplanen"
+      'id' : 'item-1',
+      'date' : '2023-08-01',
+      'month' : 'August 2023',
+      'title' : 'Udpegning',
+      'subtitle' : 'Dialog',
+      'description' : 'Hjortshøj Stationsplads udpeges som ét af 13 byrum i Aarhus Kommunes Strategiske Byrumsplan.',
+      'status' : 'completed',
+      'image' : NULL,
+      'link' : 'https://aarhus.dk/nyt/teknik-og-miljoe/2023/august-2023/raadmand-vil-puste-nyt-liv-i-13-af-byens-rum',
+      'linkText' : 'Læs om byrumsplanen',
+      'accentColor' : NULL,
     },
     {
-      "id": 2,
-      "date": "2025",
-      "month": "Forår",
-      "title": "Dialog med Fællesråd",
-      "subtitle": "Hjortshøj Landsbyforum",
-      "description": "Gåtur på Stationspladsen og efterfølgende møde om stedets identitet og potentialer med fællesrådet.",
-      "status": "completed",
-      "image": "gaatur",
-      "link": "https://deltag.aarhus.dk/public_meeting/1296",
-      "linkText": "Se detaljer om mødet"
+      'id' : 'item-2',
+      'date' : '2025-04-01',
+      'month' : 'April 2025',
+      'title' : 'Dialog med Fællesråd',
+      'subtitle' : 'Dialog',
+      'description' : 'Gåtur på Stationspladsen og efterfølgende møde om stedets identitet og potentialer med fællesrådet.',
+      'status' : 'completed',
+      'image' : 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1064_cropped.jpg',
+      'link' : '/public_meeting/1296',
+      'linkText' : 'Se detaljer om mødet',
+      'accentColor' : NULL,
     },
     {
-      "id": 3,
-      "date": "2025",
-      "month": "August",
-      "title": "Workshop med Virupskolen",
-      "subtitle": "Børne- og ungeperspektiv",
-      "description": "Formiddag sammen med skoleelever fra Virupskolen om fremtidens stationsplads.",
-      "status": "completed",
-      "image": "workshop",
-      "link": "https://deltag.aarhus.dk/public_meeting/1298",
-      "linkText": "Se workshoppen",
-      "accentColor": "pink"
+      'id' : 'item-3',
+      'date' : '2025-08-01',
+      'month' : 'August 2025',
+      'title' : 'Workshop med Virupskolen',
+      'subtitle' : 'Begivenhed',
+      'description' : 'Formiddag sammen med skoleelever fra Virupskolen om fremtidens stationsplads.',
+      'status' : 'completed',
+      'image' : 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1227%20%281%29%20-%20cropped.jpg',
+      'link' : '/public_meeting/1298',
+      'linkText' : 'Se workshoppen',
+      'accentColor' : 'pink',
     },
     {
-      "id": 6,
-      "date": "2025",
-      "month": "Efterår",
-      "title": "Udarbejdelse af Forslag",
-      "subtitle": "Design & Planlægning",
-      "description": "De mange input danner fundament for udarbejdelse af et forslag til omdannelsen af Hjortshøj Stationsplads.",
-      "status": "current"
+      'id' : 'item-4',
+      'date' : '2025-08-15',
+      'month' : 'August 2025',
+      'title' : 'Pop-up Dialog',
+      'subtitle' : 'Dialog',
+      'description' : 'Pop-up og kaffe på Stationspladsen med borgere. Mange gode input fra det brede lokale borgerperspektiv.',
+      'status' : 'completed',
+      'image' : 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/Kategorier_stor_0.png',
+      'link' : '/public_meeting/1212',
+      'linkText' : 'Se pop-up dialogen',
+      'accentColor' : NULL,
     },
     {
-      "id": 9,
-      "date": "Note",
-      "month": "",
-      "title": "Redaktionel bemærkning",
-      "subtitle": "Note",
-      "description": "Dette er en redaktionel note fra projektteamet med vigtig information om projektet.",
-      "status": "note",
-      "accentColor": "blue"
+      'id' : 'item-5',
+      'date' : '2025-09-01',
+      'month' : 'September 2025',
+      'title' : 'Digital Dialog',
+      'subtitle' : 'Høring',
+      'description' : 'Mulighed for at berige og kvalificere de identificerede temaer, samt komme med supplerende nye input.',
+      'status' : 'completed',
+      'image' : 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1064_cropped.jpg',
+      'link' : '/public_meeting/1299',
+      'linkText' : 'Se den digitale dialog',
+      'accentColor' : NULL,
+    },
+    {
+      'id' : 'item-6',
+      'date' : '2025-10-01',
+      'month' : 'Oktober 2025',
+      'title' : 'Udarbejdelse af Forslag',
+      'subtitle' : 'Dialog',
+      'description' : 'De mange input danner fundament for udarbejdelse af et forslag til omdannelsen af Hjortshøj Stationsplads.',
+      'status' : 'current',
+      'image' : NULL,
+      'link' : NULL,
+      'linkText' : NULL,
+      'accentColor' : NULL,
+    },
+    {
+      'id' : 'item-7',
+      'date' : '2025-10-15',
+      'month' : 'Oktober 2025',
+      'title' : 'Redaktionel bemærkning',
+      'subtitle' : 'Note',
+      'description' : 'Dette er en redaktionel note fra projektteamet med vigtig information om projektet.',
+      'status' : 'note',
+      'image' : NULL,
+      'link' : NULL,
+      'linkText' : NULL,
+      'accentColor' : 'blue',
+    },
+    {
+      'id' : 'item-8',
+      'date' : '2026-01-01',
+      'month' : 'Januar 2026',
+      'title' : 'Offentlig Høring',
+      'subtitle' : 'Høring',
+      'description' : 'Forslaget til omdannelse af Stationspladsen sendes i offentlig høring.',
+      'status' : 'upcoming',
+      'image' : NULL,
+      'link' : NULL,
+      'linkText' : NULL,
+      'accentColor' : NULL,
+    },
+    {
+      'id' : 'item-9',
+      'date' : '2027-01-01',
+      'month' : 'Januar 2027',
+      'title' : 'Realisering',
+      'subtitle' : 'Note',
+      'description' : 'Omdannelsen af Hjortshøj Stationsplads realiseres.',
+      'status' : 'upcoming',
+      'image' : NULL,
+      'link' : NULL,
+      'linkText' : NULL,
+      'accentColor' : NULL,
     }
   ]
 } %}
 
-<section class="timeline-section">
-  <div class="timeline-header">
-    <h2>Projektets tidslinje</h2>
-    <button id="view-toggle">↔ Horisontal</button>
-  </div>
+{% set default_view = 'horizontal' %}
 
-  <div class="timeline-vertical">
-    <div class="timeline-line"></div>
-
-    {% for item in data.timelineData %}
-      <div class="timeline-item {{ loop.index0 is even ? 'left' : 'right' }}" id="item-{{ item.id }}">
-        <div class="timeline-card">
-          {% if item.image %}
-            <img src="{{ data.images[item.image] }}" alt="{{ item.title }}" style="width: 100%">
-          {% endif %}
-
-          <div class="card-content" style="padding: 20px;">
-                            <span class="status-tag" style="background: {{ item.status == 'completed' ? '#e5eef0' : '#f6f6f6' }}">
-                                {{ item.month }} {{ item.date }}
-                            </span>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-
-            {% if item.link %}
-              <a href="{{ item.link }}" class="btn-link">{{ item.linkText }} →</a>
-            {% endif %}
-          </div>
-        </div>
+{#
+/**
+ * @file
+ * Project timeline block template.
+ *
+ * Available variables:
+ * - items: Array of timeline items with: id, date, month, title, subtitle,
+ *   description, status (completed|current|upcoming|note), image, link,
+ *   linkText, accentColor (pink|blue|null).
+ * - legend_items: Array of legend items with: status, label, color.
+ * - default_view: Default view mode ('vertical' or 'horizontal').
+ * - title: Optional timeline title (defaults to 'Projektets tidslinje').
+ * - description: Optional timeline description.
+ */
+#}
+<section
+  class="project-timeline"
+  data-project-timeline
+  data-default-view="{{ default_view }}"
+  aria-label="{{ 'Project timeline'|t }}"
+>
+  {# Header with title and view toggle - wrapped in container to match site layout #}
+  <div class="container">
+    <div class="project-timeline__header">
+      <div class="project-timeline__header-content">
+        <h2 class="project-timeline__title">{{ title|default('Projektets tidslinje'|t) }}</h2>
+        {% if description is not empty %}
+          <p class="project-timeline__description">{{ description }}</p>
+        {% else %}
+          <p class="project-timeline__description">{{ 'Følg med i inddragelsesprocessen og se hvordan dit input former fremtidens projekt.'|t }}</p>
+        {% endif %}
       </div>
-    {% endfor %}
+
+      {# View mode toggle #}
+      <div class="project-timeline__view-toggle" role="tablist" aria-label="{{ 'Timeline view options'|t }}">
+        <button
+          type="button"
+          class="project-timeline__view-btn project-timeline__view-btn--vertical"
+          role="tab"
+          aria-selected="{{ default_view == 'vertical' ? 'true' : 'false' }}"
+          aria-controls="project-timeline-vertical"
+          data-view="vertical"
+        >
+          <span class="project-timeline__view-icon" aria-hidden="true">↕</span>
+          <span class="project-timeline__view-text">{{ 'Vertikal'|t }}</span>
+        </button>
+        <button
+          type="button"
+          class="project-timeline__view-btn project-timeline__view-btn--horizontal"
+          role="tab"
+          aria-selected="{{ default_view == 'horizontal' ? 'true' : 'false' }}"
+          aria-controls="project-timeline-horizontal"
+          data-view="horizontal"
+        >
+          <span class="project-timeline__view-icon" aria-hidden="true">↔</span>
+          <span class="project-timeline__view-text">{{ 'Horisontal'|t }}</span>
+        </button>
+      </div>
+    </div>
   </div>
+
+  {# Vertical view (default desktop) #}
+  <div
+    id="project-timeline-vertical"
+    class="project-timeline__vertical"
+    role="tabpanel"
+    aria-label="{{ 'Vertical timeline view'|t }}"
+    {% if default_view != 'vertical' %}hidden{% endif %}
+  >
+    <div class="project-timeline__vertical-wrapper">
+      {# Mini navigation sidebar #}
+      {{ include(directory ~ '/templates/components/project-timeline-mini-nav.html.twig', {items: items.timelineData}) }}
+      {# Timeline cards #}
+      <div class="project-timeline__cards">
+        {% for item in items.timelineData %}
+          {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {# Horizontal view (carousel) #}
+  <div
+    id="project-timeline-horizontal"
+    class="project-timeline__horizontal"
+    role="tabpanel"
+    aria-label="{{ 'Horizontal timeline carousel'|t }}"
+    {% if default_view != 'horizontal' %}hidden{% endif %}
+  >
+    {# Carousel navigation #}
+    <div class="project-timeline__carousel-controls">
+      <button
+        type="button"
+        class="project-timeline__carousel-btn project-timeline__carousel-btn--prev"
+        aria-label="{{ 'Previous item'|t }}"
+        data-carousel-prev
+        disabled
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="project-timeline__carousel-indicator" aria-live="polite">
+        <span data-carousel-current>1</span> / <span data-carousel-total>{{ items.timelineData|length }}</span>
+      </div>
+      <button
+        type="button"
+        class="project-timeline__carousel-btn project-timeline__carousel-btn--next"
+        aria-label="{{ 'Next item'|t }}"
+        data-carousel-next
+        {{ items.timelineData|length <= 1 ? 'disabled' : '' }}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    {# Carousel track #}
+    <div class="project-timeline__carousel-viewport">
+      <div class="project-timeline__carousel-track" data-carousel-track>
+        {% for item in items.timelineData %}
+          <div class="project-timeline__carousel-slide" data-carousel-slide>
+            {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {# Legend #}
+  {% if legend_items|length > 0 %}
+    {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {items: legend_items}) }}
+  {% endif %}
 </section>

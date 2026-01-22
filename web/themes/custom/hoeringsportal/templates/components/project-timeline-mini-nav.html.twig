@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Mini navigation sidebar for vertical timeline view.
+ *
+ * Available variables:
+ * - items: Array of timeline items with: id, month, status, title.
+ */
+#}
+<nav class="project-timeline-mini-nav" aria-label="{{ 'Timeline navigation'|t }}" data-mini-nav>
+  {# Vertical "TIDSLINJE" label at top #}
+  <span class="project-timeline-mini-nav__header">{{ 'Tidslinje'|t }}</span>
+
+  <ul class="project-timeline-mini-nav__list">
+    {% for item in items %}
+      <li class="project-timeline-mini-nav__item">
+        <a
+          href="#card-{{ item.id }}"
+          class="project-timeline-mini-nav__link project-timeline-mini-nav__link--{{ item.status }}"
+          data-nav-link="{{ item.id }}"
+          aria-label="{{ item.title|default(item.month) }}"
+          title="{{ item.title|default(item.month) }}"
+        >
+          <span class="project-timeline-mini-nav__dot" aria-hidden="true"></span>
+          <span class="project-timeline-mini-nav__label">{{ item.title|default(item.month) }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {# "I dag" indicator at bottom #}
+  <div class="project-timeline-mini-nav__today">
+    <span class="project-timeline-mini-nav__today-dot" aria-hidden="true"></span>
+    <span class="project-timeline-mini-nav__today-label">{{ 'I dag'|t }}</span>
+  </div>
+</nav>
