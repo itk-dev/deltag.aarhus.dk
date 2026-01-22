@@ -8,20 +8,25 @@
 (function (Drupal, once) {
   "use strict";
 
+  // Constants
+  const SWIPE_THRESHOLD = 50;
+  const OBSERVER_ROOT_MARGIN = "-30% 0px -30% 0px";
+  const CAROUSEL_SLIDE_PERCENT = 100;
+
   /**
    * Timeline component initialization.
    *
    * @type {Drupal~behavior}
    */
   Drupal.behaviors.projectTimeline = {
-    attach: function (context) {
-      var timelines = once(
+    attach(context) {
+      const timelines = once(
         "project-timeline",
         "[data-project-timeline]",
         context,
       );
 
-      timelines.forEach(function (timeline) {
+      timelines.forEach((timeline) => {
         initTimeline(timeline);
       });
     },
@@ -34,7 +39,7 @@
    *   The timeline container element.
    */
   function initTimeline(timeline) {
-    var state = {
+    const state = {
       currentView: timeline.dataset.defaultView || "vertical",
       carouselIndex: 0,
       carouselTotal: 0,
@@ -42,7 +47,7 @@
     };
 
     // Cache DOM elements
-    var elements = {
+    const elements = {
       viewButtons: timeline.querySelectorAll("[data-view]"),
       verticalPanel: timeline.querySelector("#project-timeline-vertical"),
       horizontalPanel: timeline.querySelector("#project-timeline-horizontal"),
@@ -70,9 +75,9 @@
      * Initialize view mode toggle buttons.
      */
     function initViewToggle() {
-      elements.viewButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-          var view = button.dataset.view;
+      elements.viewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const { view } = button.dataset;
           if (view !== state.currentView) {
             switchView(view);
           }
@@ -90,18 +95,18 @@
       state.currentView = view;
 
       // Update button states
-      elements.viewButtons.forEach(function (btn) {
-        var isSelected = btn.dataset.view === view;
+      elements.viewButtons.forEach((btn) => {
+        const isSelected = btn.dataset.view === view;
         btn.setAttribute("aria-selected", isSelected ? "true" : "false");
       });
 
       // Toggle panel visibility
       if (view === "vertical") {
-        elements.verticalPanel.removeAttribute("hidden");
-        elements.horizontalPanel.setAttribute("hidden", "");
+        elements.verticalPanel?.removeAttribute("hidden");
+        elements.horizontalPanel?.setAttribute("hidden", "");
       } else {
-        elements.horizontalPanel.removeAttribute("hidden");
-        elements.verticalPanel.setAttribute("hidden", "");
+        elements.horizontalPanel?.removeAttribute("hidden");
+        elements.verticalPanel?.setAttribute("hidden", "");
         updateCarouselPosition();
       }
     }
@@ -110,19 +115,17 @@
      * Initialize mini navigation click handlers.
      */
     function initMiniNavigation() {
-      elements.navLinks.forEach(function (link) {
-        link.addEventListener("click", function (e) {
+      elements.navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
           e.preventDefault();
-          var cardId = link.dataset.navLink;
-          var targetCard = timeline.querySelector(
-            '[data-card-id="' + cardId + '"]',
+          const { navLink: cardId } = link.dataset;
+          const targetCard = timeline.querySelector(
+            `[data-card-id="${cardId}"]`,
           );
-          if (targetCard) {
-            targetCard.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
+          targetCard?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
         });
       });
     }
@@ -135,22 +138,22 @@
         return;
       }
 
-      var observerOptions = {
+      const observerOptions = {
         root: null,
-        rootMargin: "-30% 0px -30% 0px",
+        rootMargin: OBSERVER_ROOT_MARGIN,
         threshold: 0,
       };
 
-      state.observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
+      state.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            var cardId = entry.target.dataset.cardId;
+            const { cardId } = entry.target.dataset;
             updateActiveNavLink(cardId);
           }
         });
       }, observerOptions);
 
-      elements.cards.forEach(function (card) {
+      elements.cards.forEach((card) => {
         state.observer.observe(card);
       });
     }
@@ -162,8 +165,8 @@
      *   The ID of the active card.
      */
     function updateActiveNavLink(cardId) {
-      elements.navLinks.forEach(function (link) {
-        var isActive = link.dataset.navLink === cardId;
+      elements.navLinks.forEach((link) => {
+        const isActive = link.dataset.navLink === cardId;
         link.classList.toggle("is-active", isActive);
       });
     }
@@ -172,17 +175,13 @@
      * Initialize carousel navigation.
      */
     function initCarousel() {
-      if (elements.carouselPrev) {
-        elements.carouselPrev.addEventListener("click", function () {
-          goToSlide(state.carouselIndex - 1);
-        });
-      }
+      elements.carouselPrev?.addEventListener("click", () => {
+        goToSlide(state.carouselIndex - 1);
+      });
 
-      if (elements.carouselNext) {
-        elements.carouselNext.addEventListener("click", function () {
-          goToSlide(state.carouselIndex + 1);
-        });
-      }
+      elements.carouselNext?.addEventListener("click", () => {
+        goToSlide(state.carouselIndex + 1);
+      });
 
       // Touch/swipe support
       initTouchNavigation();
@@ -196,8 +195,11 @@
      */
     function goToSlide(index) {
       // Clamp index to valid range
-      index = Math.max(0, Math.min(index, state.carouselTotal - 1));
-      state.carouselIndex = index;
+      const clampedIndex = Math.max(
+        0,
+        Math.min(index, state.carouselTotal - 1),
+      );
+      state.carouselIndex = clampedIndex;
       updateCarouselPosition();
     }
 
@@ -206,8 +208,8 @@
      */
     function updateCarouselPosition() {
       if (elements.carouselTrack) {
-        var offset = state.carouselIndex * -100;
-        elements.carouselTrack.style.transform = "translateX(" + offset + "%)";
+        const offset = state.carouselIndex * -CAROUSEL_SLIDE_PERCENT;
+        elements.carouselTrack.style.transform = `translateX(${offset}%)`;
       }
 
       // Update indicator
@@ -233,7 +235,7 @@
         return;
       }
 
-      var touchState = {
+      const touchState = {
         startX: 0,
         startY: 0,
         deltaX: 0,
@@ -242,7 +244,7 @@
 
       elements.carouselTrack.addEventListener(
         "touchstart",
-        function (e) {
+        (e) => {
           touchState.startX = e.touches[0].clientX;
           touchState.startY = e.touches[0].clientY;
           touchState.isSwiping = false;
@@ -252,9 +254,9 @@
 
       elements.carouselTrack.addEventListener(
         "touchmove",
-        function (e) {
+        (e) => {
           touchState.deltaX = e.touches[0].clientX - touchState.startX;
-          var deltaY = e.touches[0].clientY - touchState.startY;
+          const deltaY = e.touches[0].clientY - touchState.startY;
 
           // Determine if horizontal swipe
           if (
@@ -267,12 +269,11 @@
         { passive: true },
       );
 
-      elements.carouselTrack.addEventListener("touchend", function () {
+      elements.carouselTrack.addEventListener("touchend", () => {
         if (touchState.isSwiping) {
-          var threshold = 50;
-          if (touchState.deltaX > threshold) {
+          if (touchState.deltaX > SWIPE_THRESHOLD) {
             goToSlide(state.carouselIndex - 1);
-          } else if (touchState.deltaX < -threshold) {
+          } else if (touchState.deltaX < -SWIPE_THRESHOLD) {
             goToSlide(state.carouselIndex + 1);
           }
         }
@@ -285,7 +286,7 @@
      * Initialize keyboard navigation.
      */
     function initKeyboardNavigation() {
-      timeline.addEventListener("keydown", function (e) {
+      timeline.addEventListener("keydown", (e) => {
         // Only handle keyboard navigation when carousel is visible
         if (state.currentView !== "horizontal") {
           return;
@@ -301,20 +302,20 @@
       });
 
       // View toggle keyboard navigation
-      elements.viewButtons.forEach(function (button) {
-        button.addEventListener("keydown", function (e) {
-          var buttons = Array.from(elements.viewButtons);
-          var currentIndex = buttons.indexOf(button);
+      elements.viewButtons.forEach((button) => {
+        button.addEventListener("keydown", (e) => {
+          const buttons = Array.from(elements.viewButtons);
+          const currentIndex = buttons.indexOf(button);
 
           if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
             e.preventDefault();
-            var prevIndex =
+            const prevIndex =
               (currentIndex - 1 + buttons.length) % buttons.length;
             buttons[prevIndex].focus();
             buttons[prevIndex].click();
           } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
             e.preventDefault();
-            var nextIndex = (currentIndex + 1) % buttons.length;
+            const nextIndex = (currentIndex + 1) % buttons.length;
             buttons[nextIndex].focus();
             buttons[nextIndex].click();
           }
