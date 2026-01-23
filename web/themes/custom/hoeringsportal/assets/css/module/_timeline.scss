@@ -558,10 +558,7 @@ $timeline-image-height: 140px;
   );
 }
 
-// Upcoming - lower opacity
-.project-timeline-card--upcoming {
-  opacity: 0.6;
-}
+// Upcoming - uses default styling (no opacity to avoid contrast issues)
 
 // =============================================================================
 // Card Accent Color Variants
