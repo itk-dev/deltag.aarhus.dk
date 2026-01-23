@@ -27,13 +27,15 @@ Replace the current "I gang" (In progress) status card with an auto-generated "I
 
 The project status text will come from a Drupal field on the project content type. This allows editors to update the status without modifying timeline code.
 
-**Suggested field**: `field_project_status` (or existing field if available)
+**Field**: `field_project_status` (placeholder - exact field name TBD)
 
 **Example values**:
 - "Åben for inddragelse"
 - "Under behandling"
 - "Afventer høring"
 - "Afsluttet"
+
+**Empty field behavior**: If the project status field is empty, the "I dag" card is still displayed but **without the status text**.
 
 ## Technical Implementation
 
@@ -81,6 +83,11 @@ The "I dag" card should be inserted at the correct chronological position:
 3. Insert the "I dag" card at that position
 4. Remove any manually configured `status: 'current'` items (or convert them to regular items)
 
+**Edge cases - today outside timeline range**:
+- If today is **before** the first timeline item → show "I dag" card as the **first** item
+- If today is **after** the last timeline item → show "I dag" card as the **last** item
+- The "I dag" card is always shown (unless project status field is empty)
+
 ### 4. CSS Adjustments
 
 **File**: `web/themes/custom/hoeringsportal/assets/css/module/_timeline.scss`
@@ -122,14 +129,22 @@ Ensure minimum card height for the current/today card:
 - [ ] Project status text displays from Drupal field
 - [ ] Card maintains proper height (no overlap)
 - [ ] Card appears at correct chronological position
+- [ ] Card appears as **first** item when today is before timeline start
+- [ ] Card appears as **last** item when today is after timeline end
+- [ ] Card is shown **without status text** when project status field is empty
 - [ ] Vertical view displays correctly
 - [ ] Horizontal/carousel view displays correctly
 - [ ] Mini-nav highlights today correctly
 - [ ] Mobile responsive layout works
 - [ ] Translation strings work
 
-## Open Questions
+## Resolved Questions
 
-1. What is the exact Drupal field name for project status? (or should we create a new one?)
-2. Should there be a fallback text if the project status field is empty?
-3. Should the "I dag" card be hidden if today's date is outside the project timeline range?
+1. **What is the exact Drupal field name for project status?**
+   → Use placeholder `field_project_status` for now (exact field name TBD)
+
+2. **Should there be a fallback text if the project status field is empty?**
+   → No. The card is still shown, but without the status text.
+
+3. **Should the "I dag" card be hidden if today's date is outside the project timeline range?**
+   → No. The card should appear as the first or last item on the timeline.
