@@ -27,7 +27,7 @@
 
 {% set status_labels = {
   completed: '✓ Afsluttet'|t,
-  current: 'I gang'|t,
+  current: 'I dag'|t,
   upcoming: 'Kommende'|t,
   note: 'Note'|t,
 } %}
@@ -76,7 +76,9 @@
 
     {# Body #}
     <div class="project-timeline-card__body">
-      <h3 class="project-timeline-card__title">{{ item.title }}</h3>
+      {% if item.title %}
+        <h3 class="project-timeline-card__title">{{ item.title }}</h3>
+      {% endif %}
 
       {% if item.subtitle %}
         <p class="project-timeline-card__subtitle">{{ item.subtitle }}</p>

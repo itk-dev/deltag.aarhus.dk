@@ -40,7 +40,9 @@
     <div class="container">
       <div class="row">
         <div class="timeline">
-          {{ include(directory ~ '/templates/components/timeline.html.twig') }}
+          {{ include(directory ~ '/templates/components/timeline.html.twig', {
+            project_status: node.field_project_status.value
+          }) }}
         </div>
       </div>
     </div>
