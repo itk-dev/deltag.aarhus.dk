@@ -13,8 +13,8 @@
 // SCSS Variables & Mixins
 // =============================================================================
 
-// Layout variables
-$timeline-max-width: 900px;
+// Layout variables - using Bootstrap container widths for consistency
+$timeline-max-width: map-get($container-max-widths, lg); // 960px
 $timeline-card-gap: $spacer * 2; // 32px
 $timeline-line-width: 2px;
 $timeline-dot-size: 12px;
@@ -182,7 +182,7 @@ $timeline-accents: (
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: map-get($container-max-widths, sm); // 540px - text container
 }
 
 // =============================================================================
@@ -914,7 +914,7 @@ $carousel-padding-horizontal: ($spacer * 2.25); // 36px
 // Legend
 // =============================================================================
 .project-timeline-legend {
-  max-width: 500px;
+  max-width: map-get($container-max-widths, sm); // 540px - text container
   margin: $timeline-card-gap auto 0;
   padding: ($spacer * 1.25) $timeline-card-padding;
   background: var(--card-bg);
