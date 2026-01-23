@@ -1,186 +1,4 @@
 {#
-  Timeline sample data (without status: 'current' - that is auto-generated as "I dag" card).
-  Status for each item is determined by comparing item date to today's date.
-#}
-{% set today_date = 'now'|date('Y-m-d') %}
-{% set today_month_year = 'now'|date('F Y') %}
-
-{# Danish month names mapping #}
-{% set danish_months = {
-  January: 'Januar',
-  February: 'Februar',
-  March: 'Marts',
-  April: 'April',
-  May: 'Maj',
-  June: 'Juni',
-  July: 'Juli',
-  August: 'August',
-  September: 'September',
-  October: 'Oktober',
-  November: 'November',
-  December: 'December'
-} %}
-
-{# Get Danish month name for today #}
-{% set today_english_month = 'now'|date('F') %}
-{% set today_danish_month = danish_months[today_english_month] ~ ' ' ~ 'now'|date('Y') %}
-
-{# Sample timeline items (these would normally come from a field) #}
-{% set timeline_items = [
-  {
-    id: 'item-1',
-    date: '2023-08-01',
-    month: 'August 2023',
-    title: 'Udpegning',
-    subtitle: 'Dialog',
-    description: 'Hjortshøj Stationsplads udpeges som ét af 13 byrum i Aarhus Kommunes Strategiske Byrumsplan.',
-    image: NULL,
-    link: 'https://aarhus.dk/nyt/teknik-og-miljoe/2023/august-2023/raadmand-vil-puste-nyt-liv-i-13-af-byens-rum',
-    linkText: 'Læs om byrumsplanen',
-    accentColor: NULL,
-  },
-  {
-    id: 'item-2',
-    date: '2025-04-01',
-    month: 'April 2025',
-    title: 'Dialog med Fællesråd',
-    subtitle: 'Dialog',
-    description: 'Gåtur på Stationspladsen og efterfølgende møde om stedets identitet og potentialer med fællesrådet.',
-    image: 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1064_cropped.jpg',
-    link: '/public_meeting/1296',
-    linkText: 'Se detaljer om mødet',
-    accentColor: NULL,
-  },
-  {
-    id: 'item-3',
-    date: '2025-08-01',
-    month: 'August 2025',
-    title: 'Workshop med Virupskolen',
-    subtitle: 'Begivenhed',
-    description: 'Formiddag sammen med skoleelever fra Virupskolen om fremtidens stationsplads.',
-    image: 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1227%20%281%29%20-%20cropped.jpg',
-    link: '/public_meeting/1298',
-    linkText: 'Se workshoppen',
-    accentColor: 'pink',
-  },
-  {
-    id: 'item-4',
-    date: '2025-08-15',
-    month: 'August 2025',
-    title: 'Pop-up Dialog',
-    subtitle: 'Dialog',
-    description: 'Pop-up og kaffe på Stationspladsen med borgere. Mange gode input fra det brede lokale borgerperspektiv.',
-    image: 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/Kategorier_stor_0.png',
-    link: '/public_meeting/1212',
-    linkText: 'Se pop-up dialogen',
-    accentColor: NULL,
-  },
-  {
-    id: 'item-5',
-    date: '2025-09-01',
-    month: 'September 2025',
-    title: 'Digital Dialog',
-    subtitle: 'Høring',
-    description: 'Mulighed for at berige og kvalificere de identificerede temaer, samt komme med supplerende nye input.',
-    image: 'https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1064_cropped.jpg',
-    link: '/public_meeting/1299',
-    linkText: 'Se den digitale dialog',
-    accentColor: NULL,
-  },
-  {
-    id: 'item-6',
-    date: '2025-10-15',
-    month: 'Oktober 2025',
-    title: 'Redaktionel bemærkning',
-    subtitle: 'Note',
-    description: 'Dette er en redaktionel note fra projektteamet med vigtig information om projektet.',
-    image: NULL,
-    link: NULL,
-    linkText: NULL,
-    accentColor: 'blue',
-  },
-  {
-    id: 'item-7',
-    date: '2026-01-01',
-    month: 'Januar 2026',
-    title: 'Offentlig Høring',
-    subtitle: 'Høring',
-    description: 'Forslaget til omdannelse af Stationspladsen sendes i offentlig høring.',
-    image: NULL,
-    link: NULL,
-    linkText: NULL,
-    accentColor: NULL,
-  },
-  {
-    id: 'item-8',
-    date: '2027-01-01',
-    month: 'Januar 2027',
-    title: 'Realisering',
-    subtitle: 'Note',
-    description: 'Omdannelsen af Hjortshøj Stationsplads realiseres.',
-    image: NULL,
-    link: NULL,
-    linkText: NULL,
-    accentColor: NULL,
-  }
-] %}
-
-{# Auto-generate the "I dag" (Today) card #}
-{# Demo: Use hardcoded status text until real field integration #}
-{% set demo_status = 'Åben for borgerindragelse' %}
-{% set effective_status = project_status|default(demo_status) %}
-
-{# If no status, hide both title and description #}
-{% set today_card = {
-  id: 'today',
-  date: today_date,
-  month: today_danish_month,
-  title: effective_status ? 'Projektstatus'|t : NULL,
-  subtitle: NULL,
-  description: effective_status,
-  status: 'current',
-  image: NULL,
-  link: NULL,
-  linkText: NULL,
-  accentColor: NULL,
-} %}
-
-{# Build final timeline with status determined by date comparison and today card inserted #}
-{% set final_items = [] %}
-{% set today_inserted = false %}
-
-{% for item in timeline_items %}
-  {# Determine status based on date comparison #}
-  {% if item.accentColor == 'blue' %}
-    {% set item_status = 'note' %}
-  {% elseif item.date < today_date %}
-    {% set item_status = 'completed' %}
-  {% else %}
-    {% set item_status = 'upcoming' %}
-  {% endif %}
-
-  {# Insert today card at correct chronological position #}
-  {% if not today_inserted and item.date >= today_date %}
-    {% set final_items = final_items|merge([today_card]) %}
-    {% set today_inserted = true %}
-  {% endif %}
-
-  {# Add item with computed status #}
-  {% set final_items = final_items|merge([item|merge({status: item_status})]) %}
-{% endfor %}
-
-{# If today is after all items, append today card at the end #}
-{% if not today_inserted %}
-  {% set final_items = final_items|merge([today_card]) %}
-{% endif %}
-
-{% set items = {
-  timelineData: final_items
-} %}
-
-{% set default_view = 'vertical' %}
-
-{#
 /**
  * @file
  * Project timeline block template.
@@ -251,10 +69,10 @@
   >
     <div class="project-timeline__vertical-wrapper">
       {# Mini navigation sidebar #}
-      {{ include(directory ~ '/templates/components/project-timeline-mini-nav.html.twig', {items: items.timelineData}) }}
+      {{ include(directory ~ '/templates/components/project-timeline-mini-nav.html.twig', {items: external_project_references}) }}
       {# Timeline cards #}
       <div class="project-timeline__cards">
-        {% for item in items.timelineData %}
+        {% for item in external_project_references %}
           {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
         {% endfor %}
       </div>
@@ -283,14 +101,14 @@
         </svg>
       </button>
       <div class="project-timeline__carousel-indicator" aria-live="polite">
-        <span data-carousel-current>1</span> / <span data-carousel-total>{{ items.timelineData|length }}</span>
+        <span data-carousel-current>1</span> / <span data-carousel-total>{{ external_project_references|length }}</span>
       </div>
       <button
         type="button"
         class="project-timeline__carousel-btn project-timeline__carousel-btn--next"
         aria-label="{{ 'Next item'|t }}"
         data-carousel-next
-        {{ items.timelineData|length <= 1 ? 'disabled' : '' }}
+        {{ external_project_references|length <= 1 ? 'disabled' : '' }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -301,7 +119,7 @@
     {# Carousel track #}
     <div class="project-timeline__carousel-viewport">
       <div class="project-timeline__carousel-track" data-carousel-track>
-        {% for item in items.timelineData %}
+        {% for item in external_project_references %}
           <div class="project-timeline__carousel-slide" data-carousel-slide>
             {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
           </div>

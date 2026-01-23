@@ -1,0 +1,24 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\hoeringsportal_project\Helper\ProjectHelper;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+#[LegacyHook]
+function hoeringsportal_project_preprocess_node(&$variables) : void {
+  Drupal::service(ProjectHelper::class)->projectPreprocess($variables);
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+#[LegacyHook]
+function hoeringsportal_project_entity_presave(EntityInterface $entity): void {
+  if ($entity instanceof NodeInterface) {
+    Drupal::service(ProjectHelper::class)->nodePresave($entity);
+  }
+}
