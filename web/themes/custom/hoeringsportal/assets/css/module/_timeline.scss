@@ -21,6 +21,10 @@ $timeline-dot-size: 12px;
 $timeline-card-padding: $spacer * 1.5; // 24px
 $timeline-card-padding-sm: $spacer; // 16px
 
+// Shadow variables - subtle default, prominent on hover
+$timeline-shadow-default: 0 2px 4px rgb(0 0 0 / 6%);
+$timeline-shadow-hover: 0 4px 12px rgb(0 0 0 / 12%);
+
 // Status color mappings using project tokens
 $timeline-statuses: (
   "completed": (
@@ -328,7 +332,7 @@ $timeline-accents: (
   border-radius: 50%;
   background: var(--timeline-status-upcoming);
   border: 3px solid var(--bg-primary);
-  box-shadow: $shadow;
+  box-shadow: $timeline-shadow-default;
   flex-shrink: 0;
 }
 
@@ -363,7 +367,7 @@ $timeline-image-height: 140px;
 .project-timeline-card__content {
   width: calc(50% - #{$timeline-card-gap});
   background: var(--card-bg);
-  box-shadow: $shadow;
+  box-shadow: $timeline-shadow-default;
   border: 1px solid var(--card-border);
   transition: box-shadow 0.2s ease;
   position: relative;
@@ -371,7 +375,7 @@ $timeline-image-height: 140px;
   cursor: default;
 
   &:hover {
-    box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+    box-shadow: $timeline-shadow-hover;
   }
 
   // Accent bar on card edge
@@ -598,7 +602,7 @@ $mini-nav-dot-size: 10px;
   align-items: center;
   padding: $spacer ($spacer * 0.625);
   background: var(--bg-primary);
-  box-shadow: $shadow;
+  box-shadow: $timeline-shadow-default;
   border: 1px solid var(--border-default);
 }
 
