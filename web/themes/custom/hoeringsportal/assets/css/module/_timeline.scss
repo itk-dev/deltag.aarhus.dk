@@ -529,13 +529,18 @@ $timeline-image-height: 140px;
   );
 }
 
-// Current - special case with hollow dot
+// Current - special case with hollow dot (used for "I dag" card)
 .project-timeline-card--current {
   @include timeline-card-status-variant(
     var(--timeline-status-current),
     var(--timeline-status-current-bg),
     var(--primitive-orange-500)
   );
+
+  // Ensure minimum height to prevent overlap with adjacent cards
+  .project-timeline-card__content {
+    min-height: 200px;
+  }
 
   // Override dot to be hollow (current indicator)
   .project-timeline-card__dot {
