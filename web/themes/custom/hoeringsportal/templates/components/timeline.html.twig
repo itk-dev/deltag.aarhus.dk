@@ -126,13 +126,18 @@
 ] %}
 
 {# Auto-generate the "I dag" (Today) card #}
+{# Demo: Use hardcoded status text until real field integration #}
+{% set demo_status = 'Åben for borgerindragelse' %}
+{% set effective_status = project_status|default(demo_status) %}
+
+{# If no status, hide both title and description #}
 {% set today_card = {
   id: 'today',
   date: today_date,
   month: today_danish_month,
-  title: 'Projektstatus'|t,
+  title: effective_status ? 'Projektstatus'|t : NULL,
   subtitle: NULL,
-  description: project_status|default(NULL),
+  description: effective_status,
   status: 'current',
   image: NULL,
   link: NULL,
