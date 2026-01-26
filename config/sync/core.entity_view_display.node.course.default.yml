@@ -11,9 +11,11 @@ dependencies:
     - field.field.node.course.field_content_state
     - field.field.node.course.field_department
     - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_in_timeline
     - field.field.node.course.field_hide_time
     - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_project_reference
     - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
@@ -32,7 +34,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: content
   field_activity_type:
     type: entity_reference_label
@@ -40,7 +42,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 16
+    weight: 9
     region: content
   field_address:
     type: string
@@ -48,7 +50,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: content
   field_area:
     type: entity_reference_label
@@ -56,7 +58,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_content_sections:
     type: entity_reference_revisions_entity_view
@@ -65,7 +67,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   field_department:
     type: entity_reference_label
@@ -83,14 +85,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_teaser:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_top_images:
     type: entity_reference_entity_view
@@ -107,13 +109,15 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
 hidden:
   field_content_state: true
   field_first_meeting_time: true
+  field_hide_in_timeline: true
   field_last_meeting_time: true
   field_map: true
+  field_project_reference: true
   langcode: true
   links: true
   published_at: true

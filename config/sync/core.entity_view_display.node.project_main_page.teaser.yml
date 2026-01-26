@@ -11,6 +11,8 @@ dependencies:
     - field.field.node.project_main_page.field_project_image
     - field.field.node.project_main_page.field_project_status
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_show_timeline
+    - field.field.node.project_main_page.field_timeline
     - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
@@ -65,6 +67,8 @@ hidden:
   field_content_sections: true
   field_department: true
   field_project_status: true
+  field_show_timeline: true
+  field_timeline: true
   langcode: true
   links: true
   published_at: true

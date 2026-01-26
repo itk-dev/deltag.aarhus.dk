@@ -13,6 +13,9 @@
  * - description: Optional timeline description.
  */
 #}
+
+{% set default_view = 'vertical' %}
+
 <section
   class="project-timeline"
   data-project-timeline
@@ -69,10 +72,10 @@
   >
     <div class="project-timeline__vertical-wrapper">
       {# Mini navigation sidebar #}
-      {{ include(directory ~ '/templates/components/project-timeline-mini-nav.html.twig', {items: external_project_references}) }}
+      {{ include(directory ~ '/templates/components/project-timeline-mini-nav.html.twig', {items: timeline_items}) }}
       {# Timeline cards #}
       <div class="project-timeline__cards">
-        {% for item in external_project_references %}
+        {% for item in timeline_items %}
           {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
         {% endfor %}
       </div>
@@ -101,14 +104,14 @@
         </svg>
       </button>
       <div class="project-timeline__carousel-indicator" aria-live="polite">
-        <span data-carousel-current>1</span> / <span data-carousel-total>{{ external_project_references|length }}</span>
+        <span data-carousel-current>1</span> / <span data-carousel-total>{{ timeline_items|length }}</span>
       </div>
       <button
         type="button"
         class="project-timeline__carousel-btn project-timeline__carousel-btn--next"
         aria-label="{{ 'Next item'|t }}"
         data-carousel-next
-        {{ external_project_references|length <= 1 ? 'disabled' : '' }}
+        {{ timeline_items|length <= 1 ? 'disabled' : '' }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -119,7 +122,7 @@
     {# Carousel track #}
     <div class="project-timeline__carousel-viewport">
       <div class="project-timeline__carousel-track" data-carousel-track>
-        {% for item in external_project_references %}
+        {% for item in timeline_items %}
           <div class="project-timeline__carousel-slide" data-carousel-slide>
             {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
           </div>

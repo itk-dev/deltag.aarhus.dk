@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.public_meeting.field_email_address
     - field.field.node.public_meeting.field_first_meeting_time
     - field.field.node.public_meeting.field_hidden_signup
+    - field.field.node.public_meeting.field_hide_in_timeline
     - field.field.node.public_meeting.field_last_meeting_time
     - field.field.node.public_meeting.field_last_meeting_time_end
     - field.field.node.public_meeting.field_map
@@ -23,6 +24,7 @@ dependencies:
     - field.field.node.public_meeting.field_media_image_single
     - field.field.node.public_meeting.field_pretix_dates
     - field.field.node.public_meeting.field_pretix_event_settings
+    - field.field.node.public_meeting.field_project_reference
     - field.field.node.public_meeting.field_public_meeting_cancelled
     - field.field.node.public_meeting.field_registration_deadline
     - field.field.node.public_meeting.field_section
@@ -50,7 +52,7 @@ third_party_settings:
       label: Tilmelding
       parent_name: ''
       region: hidden
-      weight: 33
+      weight: 35
       format_type: html_element
       format_settings:
         classes: ''
@@ -75,7 +77,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: content
   field_activity_type:
     type: entity_reference_label
@@ -83,7 +85,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 14
+    weight: 16
     region: content
   field_address:
     type: string
@@ -123,14 +125,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: content
   field_map:
     type: hoeringsportal_data_map_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_media_document:
     type: entity_reference_entity_view
@@ -148,7 +150,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 10
     region: content
   field_public_meeting_cancelled:
     type: boolean
@@ -166,7 +168,7 @@ content:
     settings:
       timezone_override: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 11
     region: content
   field_section:
     type: entity_reference_revisions_entity_view
@@ -175,7 +177,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 10
+    weight: 12
     region: content
   field_signup_link:
     type: link
@@ -187,21 +189,21 @@ content:
       rel: '0'
       target: _blank
     third_party_settings: {  }
-    weight: 12
+    weight: 14
     region: content
   field_signup_selection:
     type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 9
     region: content
   field_signup_text:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 13
+    weight: 15
     region: content
   field_teaser:
     type: basic_string
@@ -218,10 +220,12 @@ hidden:
   field_deskpro_department_id: true
   field_email_address: true
   field_first_meeting_time: true
+  field_hide_in_timeline: true
   field_last_meeting_time: true
   field_last_meeting_time_end: true
   field_media_image_single: true
   field_pretix_event_settings: true
+  field_project_reference: true
   field_type: true
   langcode: true
   links: true

@@ -3,7 +3,9 @@
 namespace Drupal\hoeringsportal_project\Helper;
 
 use DateMalformedStringException;
+use DateTime;
 use DateTimeImmutable;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
@@ -26,45 +28,23 @@ class ProjectHelper {
   #[Hook('preprocess')]
   public function projectPreprocess(&$variables): void {
     if ('full' === $variables['view_mode'] && 'project_main_page' === $variables['node']->bundle()) {
-      $nodeStorage = $this->entityTypeManagerInterface->getStorage('node');
-
-      $referenceQuery = $nodeStorage->getQuery();
-      $dateFieldQuery = $referenceQuery->orConditionGroup()
-        ->exists('field_decision_date')
-        ->exists('field_start_date')
-        ->exists('field_first_meeting_time')
-        ->condition('type', 'dialogue', '=');
-
-      $referenceQuery->accessCheck();
-      $referenceQuery->exists('field_project_reference');
-      $referenceQuery->condition('field_project_reference', $variables['node']->id());
-      $referenceQuery->condition('field_hide_in_timeline', FALSE);
-      $referenceQuery->condition($dateFieldQuery);
-      $references = $referenceQuery->execute();
-
-      $nodes = $nodeStorage->loadMultiple($references);
-
+      $variables['timeline_items'] = [];
       $now = new DateTimeImmutable();
 
-      /** @var NodeInterface $node */
-      foreach ($nodes as $node) {
-        $date = $this->determineDate($node);
-        $image = $this->determineImage($node)?->getFileUri();
+      $nodes = $this->getTimelineNodes($variables);
 
-        $variables['external_project_references'][] = [
-          'id' => $node->id(),
-          'date' => $date->format('d-m-Y'), // change
-          'month' => $date->format('F Y'), // change
-          'title' => $node->getTitle(),
-          'subtitle' => $node->type->entity->label(),
-          'description' => $node->field_teaser->value,
-          'status' => $this->determineStatus($node, $date, $now),
-          'image' => ImageStyle::load('responsive_medium_default')->buildUrl($image),
-          'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
-          'linkText' => $this->t('View @type', ['@type' => $node->type->entity->label()]),
-          'accentColor' => $this->determineColor($node->bundle()),
-        ];
+      foreach ($nodes as $node) {
+        $variables['timeline_items'][] = $this->addNodeAsTimelineItem($node, $now);
       }
+
+      $notes = $this->getTimelineNotes($variables);
+
+      foreach ($notes as $note) {
+        $variables['timeline_items'][] = $this->addNoteAsTimelineItem($note, $now);
+      }
+
+      $variables['timeline_items'][] = $this->addNowAsTimelineItem($now);
+      usort($variables['timeline_items'], static fn(array $a, array $b): int => $a['date'] <=> $b['date']);
     }
   }
 
@@ -106,6 +86,89 @@ class ProjectHelper {
     $this->entityTypeManagerInterface->getStorage('node')->resetCache($idsToReset);
   }
 
+  private function getTimelineNodes($variables) : ?array {
+    $nodeStorage = $this->entityTypeManagerInterface->getStorage('node');
+
+    $referenceQuery = $nodeStorage->getQuery();
+    $dateFieldQuery = $referenceQuery->orConditionGroup()
+      ->exists('field_decision_date')
+      ->exists('field_start_date')
+      ->exists('field_first_meeting_time')
+      ->condition('type', 'dialogue', '=');
+
+    $referenceQuery->accessCheck();
+    $referenceQuery->exists('field_project_reference');
+    $referenceQuery->condition('field_project_reference', $variables['node']->id());
+    $referenceQuery->condition('field_hide_in_timeline', FALSE);
+    $referenceQuery->condition($dateFieldQuery);
+    $references = $referenceQuery->execute();
+
+    return $nodeStorage->loadMultiple($references);
+  }
+
+  private function getTimelineNotes($variables) : ?array {
+    $paragraphStorage = $this->entityTypeManagerInterface->getStorage('paragraph');
+    $noteQuery = $paragraphStorage->getQuery();
+    $noteQuery->accessCheck();
+    $noteQuery->condition('parent_id', $variables['node']->id());
+    $noteQuery->condition('type', 'timeline_note');
+    $noteIds = $noteQuery->execute();
+
+    return $paragraphStorage->loadMultiple($noteIds);
+  }
+
+  private function addNodeAsTimelineItem(mixed $node, $now): array {
+    $date = $this->determineDate($node);
+    $image = $this->determineImage($node)?->getFileUri();
+
+    return [
+      'id' => $node->id(),
+      'date' => $date->format('Y-m-d'), // change
+      'month' => $date->format('F Y'), // change
+      'title' => $node->getTitle(),
+      'subtitle' => $node->type->entity->label(),
+      'description' => $node->field_teaser->value,
+      'status' => $this->determineStatus($node, $date, $now),
+      'image' => ImageStyle::load('responsive_medium_default')->buildUrl($image),
+      'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
+      'linkText' => $this->t('View @type', ['@type' => $node->type->entity->label()]),
+      'accentColor' => $this->determineColor($node->bundle()),
+    ];
+  }
+
+  private function addNoteAsTimelineItem(mixed $paragraph, $now): array {
+    $date = $paragraph->field_date->date;
+
+    return [
+      'id' => '',
+      'date' => $date->format('Y-m-d'), // change
+      'month' => $date->format('F Y'), // change
+      'title' => $paragraph->field_title->value,
+      'subtitle' => $paragraph->field_subtitle->value,
+      'description' => $paragraph->field_note->value,
+      'status' => $this->determineStatus($paragraph, $date->getPhpDateTime(), $now),
+      'image' => '',
+      'link' => '',
+      'linkText' => $this->t('View more'),
+      'accentColor' => $this->determineColor('note'),
+    ];
+  }
+
+  private function addNowAsTimelineItem($now): array {
+    return [
+      'id' => 'today',
+      'date' => $now->format('Y-m-d'), // change
+      'month' => $now->format('d-m-Y'), // change
+      'title' => $this->t('Projektstatus'),
+      'subtitle' => NULL,
+      'description' => NULL,
+      'status' => 'current',
+      'image' => NULL,
+      'link' => NULL,
+      'linkText' => NULL,
+      'accentColor' => NULL,
+    ];
+  }
 
   private function determineDate(NodeInterface $node): ?DateTimeImmutable {
     try {
@@ -149,13 +212,20 @@ class ProjectHelper {
       case 'hearing':
       case 'decision':
         return '#008486';
+      case 'note':
+        return '#3661d8';
     }
   }
 
-  private function determineStatus(NodeInterface $node, ?DateTimeImmutable $date, DateTimeImmutable $now): string {
-    if ($now > $date) {
-      return $this->t('Upcoming');
+  private function determineStatus(EntityInterface $entity, DateTimeImmutable|DateTime|null $date, DateTimeImmutable $now): string {
+      switch (TRUE) {
+      case $date > $now:
+        return 'upcoming';
+      case $entity->getEntityTypeId() === 'node':
+        return 'completed';
+      case $entity->getEntityTypeId() === 'paragraph':
+        return 'note';
     }
-    return $this->t('Active');
   }
+
 }

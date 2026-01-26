@@ -10,6 +10,8 @@ dependencies:
     - field.field.node.project_main_page.field_project_image
     - field.field.node.project_main_page.field_project_status
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_show_timeline
+    - field.field.node.project_main_page.field_timeline
     - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
@@ -77,6 +79,25 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_show_timeline:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_timeline:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_type:
     type: entity_reference_label
