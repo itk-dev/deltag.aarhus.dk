@@ -22,3 +22,19 @@ function hoeringsportal_project_entity_presave(EntityInterface $entity): void {
     Drupal::service(ProjectHelper::class)->nodePresave($entity);
   }
 }
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+#[LegacyHook]
+function hoeringsportal_project_form_node_project_main_page_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ProjectHelper::class)->projectFormAlter($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+#[LegacyHook]
+function hoeringsportal_project_form_node_project_main_page_edit_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ProjectHelper::class)->projectFormAlter($form, $form_state);
+}

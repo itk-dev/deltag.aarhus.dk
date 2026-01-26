@@ -2,12 +2,11 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
-use DateMalformedStringException;
-use DateTime;
 use DateTimeImmutable;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\file\Entity\File;
@@ -28,6 +27,10 @@ class ProjectHelper {
   #[Hook('preprocess')]
   public function projectPreprocess(&$variables): void {
     if ('full' === $variables['view_mode'] && 'project_main_page' === $variables['node']->bundle()) {
+      if (!$variables['node']->field_show_timeline->value) {
+        return;
+      }
+
       $variables['timeline_items'] = [];
       $now = new DateTimeImmutable();
 
@@ -46,6 +49,18 @@ class ProjectHelper {
       $variables['timeline_items'][] = $this->addNowAsTimelineItem($now);
       usort($variables['timeline_items'], static fn(array $a, array $b): int => $a['date'] <=> $b['date']);
     }
+  }
+
+  #[Hook('form_node_project_main_page_form_alter')]
+  #[Hook('form_node_project_main_page_edit_form_alter')]
+  public function projectFormAlter(&$form, FormStateInterface $form_state): void {
+    $timelineSelector = ':input[name="field_show_timeline[value]"]';
+
+    $form['field_timeline']['#states'] = [
+      'visible' => [
+        $timelineSelector => ['checked' => true],
+      ],
+    ];
   }
 
   /**
@@ -93,7 +108,7 @@ class ProjectHelper {
     $dateFieldQuery = $referenceQuery->orConditionGroup()
       ->exists('field_decision_date')
       ->exists('field_start_date')
-      ->exists('field_first_meeting_time')
+      ->exists('field_last_meeting_time')
       ->condition('type', 'dialogue', '=');
 
     $referenceQuery->accessCheck();
@@ -123,42 +138,42 @@ class ProjectHelper {
 
     return [
       'id' => $node->id(),
-      'date' => $date->format('Y-m-d'), // change
-      'month' => $date->format('F Y'), // change
+      'date' => $date->format('Y-m-d'),
+      'month' => $date->format('F Y'),
       'title' => $node->getTitle(),
       'subtitle' => $node->type->entity->label(),
       'description' => $node->field_teaser->value,
-      'status' => $this->determineStatus($node, $date, $now),
-      'image' => ImageStyle::load('responsive_medium_default')->buildUrl($image),
+      'status' => $this->determineStatus($node, $date->format('Y-m-d'), $now->format('Y-m-d')),
+      'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
       'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
       'linkText' => $this->t('View @type', ['@type' => $node->type->entity->label()]),
-      'accentColor' => $this->determineColor($node->bundle()),
+      'accentColor' => ($node->bundle() == 'course' || $node->bundle() == 'public_meeting') ? 'pink' : NULL,
     ];
   }
 
   private function addNoteAsTimelineItem(mixed $paragraph, $now): array {
     $date = $paragraph->field_date->date;
+    $image = $paragraph?->field_paragraph_image?->entity?->field_itk_media_image_upload?->entity?->getFileUri();
 
     return [
       'id' => '',
-      'date' => $date->format('Y-m-d'), // change
-      'month' => $date->format('F Y'), // change
+      'date' => $date->format('Y-m-d'),
+      'month' => $date->format('F Y'),
       'title' => $paragraph->field_title->value,
       'subtitle' => $paragraph->field_subtitle->value,
       'description' => $paragraph->field_note->value,
-      'status' => $this->determineStatus($paragraph, $date->getPhpDateTime(), $now),
-      'image' => '',
-      'link' => '',
+      'status' => $this->determineStatus($paragraph, $date->format('Y-m-d'), $now->format('Y-m-d')),
+      'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
+      'link' => $paragraph?->field_external_link?->uri ?? '',
       'linkText' => $this->t('View more'),
-      'accentColor' => $this->determineColor('note'),
     ];
   }
 
   private function addNowAsTimelineItem($now): array {
     return [
       'id' => 'today',
-      'date' => $now->format('Y-m-d'), // change
-      'month' => $now->format('d-m-Y'), // change
+      'date' => $now->format('Y-m-d'),
+      'month' => $now->format('d-m-Y'),
       'title' => $this->t('Projektstatus'),
       'subtitle' => NULL,
       'description' => NULL,
@@ -166,59 +181,29 @@ class ProjectHelper {
       'image' => NULL,
       'link' => NULL,
       'linkText' => NULL,
-      'accentColor' => NULL,
     ];
   }
 
-  private function determineDate(NodeInterface $node): ?DateTimeImmutable {
-    try {
-      switch (TRUE) {
-        case $node->hasField('field_decision_date'):
-          return new \DateTimeImmutable($node->field_decision_date->value);
-        case $node->hasField('field_start_date'):
-          return new \DateTimeImmutable($node->field_start_date->value);
-        case $node->hasField('field_first_meeting_time'):
-          return new \DateTimeImmutable($node->field_first_meeting_time->value);
-        case 'dialogue' === $node->getType();
-          return new \DateTimeImmutable(strtotime($node->getCreatedTime()));
-        default:
-          return NULL;
-      }
-    }
-    catch (DateMalformedStringException $exception) {
-      return NULL;
-    }
-
+  private function determineDate(NodeInterface $node): ?DrupalDateTime {
+    return match (TRUE) {
+      $node->hasField('field_decision_date') => new DrupalDateTime($node->field_decision_date->value),
+      $node->hasField('field_start_date') => new DrupalDateTime($node->field_start_date->value),
+      $node->hasField('field_last_meeting_time') => new DrupalDateTime($node->field_last_meeting_time->value),
+      'dialogue' === $node->getType() => new DrupalDateTime(strtotime($node->getCreatedTime())),
+      default => NULL,
+    };
   }
   private function determineImage(NodeInterface $node): ?File {
+    return match (TRUE) {
+      $node->hasField('field_media_image') => $node->field_media_image->entity->field_itk_media_image_upload->entity,
+      $node->hasField('field_media_image_single') => $node->field_media_image_single->entity->field_itk_media_image_upload->entity,
+      $node->hasField('field_top_images') => $node->field_top_images->entity->field_itk_media_image_upload->entity,
+      default => NULL,
+    };
+  }
+
+  private function determineStatus(EntityInterface $entity, string $date, string $now): string {
     switch (TRUE) {
-      case $node->hasField('field_media_image'):
-        return $node->field_media_image->entity->field_itk_media_image_upload->entity;
-      case $node->hasField('field_media_image_single'):
-        return $node->field_media_image_single->entity->field_itk_media_image_upload->entity;
-      case $node->hasField('field_top_images'):
-        return $node->field_top_images->entity->field_itk_media_image_upload->entity;
-      default:
-        return NULL;
-    }
-  }
-
-  private function determineColor(string $bundle): string {
-    switch ($bundle) {
-      case 'public_meeting':
-      case 'course':
-        return '#e91e63';
-      case 'dialogue':
-      case 'hearing':
-      case 'decision':
-        return '#008486';
-      case 'note':
-        return '#3661d8';
-    }
-  }
-
-  private function determineStatus(EntityInterface $entity, DateTimeImmutable|DateTime|null $date, DateTimeImmutable $now): string {
-      switch (TRUE) {
       case $date > $now:
         return 'upcoming';
       case $entity->getEntityTypeId() === 'node':

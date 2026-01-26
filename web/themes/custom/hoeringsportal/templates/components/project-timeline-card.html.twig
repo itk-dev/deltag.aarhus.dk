@@ -27,7 +27,7 @@
 } %}
 
 {% set status_labels = {
-  completed: '✓ Afsluttet'|t,
+  completed: "now"|date("Y-m-d") == item.date ? 'I dag'|t : '✓ Afsluttet'|t,
   current: 'I dag'|t,
   upcoming: 'Kommende'|t,
   note: 'Note'|t,
@@ -37,7 +37,7 @@
 
 <article
   id="card-{{ item.id }}"
-  class="project-timeline-card {{ status_classes[item.status]|default('') }} {{ accent_class }}"
+  class="project-timeline-card {{ status_classes[item.status]|default('') }} {{ not completed ?? accent_class }}"
   data-timeline-card
   data-card-id="{{ item.id }}"
   data-card-status="{{ item.status }}"

@@ -36,17 +36,19 @@
   <div class="sections d-flex flex-column">
     {{ content.field_content_sections }}
   </div>
-  <div class="sections d-flex flex-column">
-    <div class="container">
-      <div class="row">
-        <div class="timeline">
-          {{ include(directory ~ '/templates/components/timeline.html.twig', {
-            project_status: node.field_project_status.value
-          }) }}
+  {% if node.field_show_timeline.value %}
+    <div class="sections d-flex flex-column">
+      <div class="container">
+        <div class="row">
+          <div class="timeline">
+            {{ include(directory ~ '/templates/components/timeline.html.twig', {
+              project_status: node.field_project_status.value
+            }) }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {% endif %}
   <div class="sections d-flex flex-column">
     <div class="container">
       <div class="row">

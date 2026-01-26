@@ -4,12 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.timeline_note.field_date
+    - field.field.paragraph.timeline_note.field_external_link
     - field.field.paragraph.timeline_note.field_note
+    - field.field.paragraph.timeline_note.field_paragraph_image
     - field.field.paragraph.timeline_note.field_subtitle
     - field.field.paragraph.timeline_note.field_title
     - paragraphs.paragraphs_type.timeline_note
   module:
     - datetime
+    - link
 id: paragraph.timeline_note.default
 targetEntityType: paragraph
 bundle: timeline_note
@@ -24,12 +27,33 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_note:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_paragraph_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser_display
+      link: false
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_subtitle:
     type: string
