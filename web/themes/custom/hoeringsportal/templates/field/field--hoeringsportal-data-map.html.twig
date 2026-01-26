@@ -1,11 +1,11 @@
 {{ attach_library('hoeringsportal/map-display') }}
 
-{% if not label_hidden %}
-  <h5 class="mt-3">{{ label }}</h5>
+{% if items|length > 0 %}
+  {% set map_data = element['#items'].0.data %}
+  {% if map_data and map_data != 'null' %}
+    <div class="my-5">
+      <h2 class="mb-4">{{ 'Map'|t }}</h2>
+      <div id="hoeringsportal-map" data-geojson="{{ map_data }}" style="height: 600px;"></div>
+    </div>
+  {% endif %}
 {% endif %}
-
-<div class="my-5">
-  {% for item in element['#items']|slice(0, 1) %}
-    <div id="map" data-geojson="{{ item.data }}" style="height: 600px;"></div>
-  {% endfor %}
-</div>

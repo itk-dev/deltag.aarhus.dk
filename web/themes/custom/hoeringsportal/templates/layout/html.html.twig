@@ -44,5 +44,21 @@
     {{ page }}
     {{ page_bottom }}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
-  </body>
+  
+
+
+<!-- Claude Code Browser Feedback Widget (dev only) -->
+<script>
+  (function() {
+    var h = location.hostname;
+    var isDevHost = h === 'deltag.local.itkdev.dk';
+    if (isDevHost) {
+      var s = document.createElement('script');
+      s.src = 'http://localhost:9877/widget.js';
+      s.id = 'claude-feedback-widget-script';
+      document.body.appendChild(s);
+    }
+  })();
+</script>
+</body>
 </html>

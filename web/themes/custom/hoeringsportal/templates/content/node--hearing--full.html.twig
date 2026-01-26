@@ -1,0 +1,227 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+  {# Get decision info for notification banner #}
+  {% set relatedDecision = hearing_helper.getDecisions(node)|first %}
+  {% set decision = relatedDecision ? relatedDecision.field_decision.value %}
+  {% set decisionDate = relatedDecision ? relatedDecision.field_decision_date.value|date('U')|format_date('long') %}
+
+  {# Build notification for related decision #}
+  {% set notification = relatedDecision ? {
+    header: 'Decision'|t,
+    message: 'At a council meeting @date a decision regarding this hearing was made: <strong>@decision</strong>'|t({'@date': decisionDate, '@decision': decision}),
+    link: {
+      text: 'Read the entire decision'|t,
+      url: url('entity.node.canonical', {node: relatedDecision.nid.value})
+    }
+  } %}
+
+  {# Get hearing status and data for right-side info box #}
+  {% set content_state = hearing_helper.getState(node) %}
+  {% set repliesCount = hearing_helper.getNumberOfReplies(node) %}
+  {% set deadlineDate = hearing_helper.getDeadlineDate(node) %}
+
+  {# Map content state to display label #}
+  {% set stateLabels = {
+    upcoming: 'Upcoming'|t,
+    active: 'Active'|t,
+    finished: 'Ended'|t,
+    canceled: 'Cancelled'|t
+  } %}
+  {% set stateLabel = stateLabels[content_state]|default(content_state) %}
+
+  {# Build shortcuts navigation #}
+  {% set shortcuts = [
+    {
+      label: 'Content'|t,
+      href: '#content',
+    }
+  ] %}
+
+  {# Add submit reply shortcut only if hearing is active #}
+  {% if content_state == 'active' %}
+    {% set shortcuts = shortcuts|merge([{
+      label: 'Submit reply'|t,
+      href: '#hearing-tickets',
+    }]) %}
+  {% endif %}
+
+  {# Add documents shortcut if documents exist #}
+  {% if node.field_media_document|length > 0 %}
+    {% set shortcuts = shortcuts|merge([{
+      label: 'Documents'|t,
+      href: '#documents',
+    }]) %}
+  {% endif %}
+
+  {# Add map shortcut if map data exists #}
+  {% if node.field_map.value[0].data is defined and node.field_map.value[0].data != 'null' %}
+    {% set shortcuts = shortcuts|merge([{
+      label: 'Map'|t,
+      href: '#map',
+    }]) %}
+  {% endif %}
+
+  {# Build tags list from raw entity values (area and type) #}
+  {% set tags_list = [] %}
+  {% if node.field_area.entity %}
+    {% set tags_list = tags_list|merge([node.field_area.entity.label]) %}
+  {% endif %}
+  {% if node.field_type.entity %}
+    {% set tags_list = tags_list|merge([node.field_type.entity.label]) %}
+  {% endif %}
+
+  {# Header with hero image #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: node.field_media_image,
+    type: 'type-hearing',
+    title: node.label,
+    description: content.field_teaser,
+    tags_list: tags_list,
+    shortcuts: shortcuts,
+    background_class: 'bg-white',
+    right_content: {
+      0: {
+        type: 'text',
+        label: 'Deadline'|t,
+        value: deadlineDate ? deadlineDate|date('U')|format_date('hoeringsportal_date_long') : null,
+        icon: 'fa-solid fa-calendar-day'
+      },
+      1: {
+        type: 'text',
+        label: 'Status'|t,
+        value: stateLabel,
+        icon: 'fa-solid fa-circle-info'
+      },
+      2: {
+        type: 'text',
+        label: 'Replies'|t,
+        value: repliesCount ~ ' ' ~ 'replies'|t,
+        icon: 'fa-solid fa-comments'
+      },
+      3: {
+        type: 'text',
+        label: 'Area'|t,
+        value: node.field_area.entity ? node.field_area.entity.label : null,
+        icon: 'fa-solid fa-location-dot'
+      }
+    },
+    category: 'Hearing'|t,
+    notification: notification
+  }) }}
+
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="bg-white pb-5 mb-5" id="content">
+    {# Description and contact info #}
+    <div class="container description_contact__container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if node.field_description.value %}
+            {{ content.field_description }}
+          {% endif %}
+        </div>
+        <div class="col-md-4">
+          {% if node.field_contact.value %}
+            <div class="aside-contact-info-text">
+              <div class="small fw-semibold text-primary mb-3">{{ 'Contact'|t }}</div>
+              <div class="mb-3">{{ content.field_contact }}</div>
+            </div>
+          {% endif %}
+          {% if node.field_more_info.value %}
+            <div class="aside-contact-info-text mt-4">
+              <div class="small fw-semibold text-primary mb-3">{{ 'More information'|t }}</div>
+              <div>{{ content.field_more_info }}</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {# Documents section #}
+    {% if node.field_media_document|length > 0 %}
+      <div class="container content__container mb-5" id="documents">
+        <div class="sections d-flex flex-column">
+          {{ content.field_media_document }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Image gallery - show remaining images if more than one #}
+    {% if node.field_media_image|length > 1 %}
+      <div class="container content__container mb-5">
+        <div class="row">
+          {{ content.field_media_image }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Video embed #}
+    {% if content.field_video_embed %}
+      <div class="container content__container mb-5">
+        <div class="row">
+          {{ content.field_video_embed }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Hearing tickets / replies section #}
+    <div class="content__hearing-tickets-container pb-5" id="hearing-tickets">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {{ drupal_block('hoeringsportal_deskpro_hearingtickets_block') }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# Lokalplaner if available #}
+    {% if node.field_lokalplaner.value %}
+      <div class="container content__container mb-5">
+        {{ content.field_lokalplaner }}
+      </div>
+    {% endif %}
+
+  </div>
+{% endblock %}
+
+{% block content_bottom %}
+  {# Project timeline if linked to project #}
+  {% if node.field_project_reference.entity %}
+    {{ drupal_block('project_timeline') }}
+  {% endif %}
+
+  {# Map section - check raw field data for consistency with shortcuts #}
+  {% if node.field_map.value[0].data is defined and node.field_map.value[0].data and node.field_map.value[0].data != 'null' %}
+    <div id="map">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {{ content.field_map }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {# Nearest hearings view - only show section if there are results #}
+  {% set related_hearings = drupal_view('nearest_hearings', 'block_1', node.id) %}
+  {% if related_hearings is not empty %}
+    <section class="container pt-5 pb-5">
+      <h2 class="mt-2 pt-4">{{ 'Other ongoing hearings'|t }}</h2>
+      <div class="row">
+        <div class="col">
+          {{ related_hearings }}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# Newsletter signup #}
+  {% if node_newsletter %}
+    {{ include('@hoeringsportal/newsletter-bottom-link.html.twig') }}
+  {% endif %}
+{% endblock %}

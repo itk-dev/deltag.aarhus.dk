@@ -60,47 +60,55 @@
           <h2>{{ 'Hearing tickets (@count)'|trans({'@count': tickets|length}) }}</h2>
         {% endif %}
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 text-md-end">
         {% if not is_deadline_passed and is_hearing_started %}
-          <div class="float-md-right">
-            <a href="{{ hearing_ticket_add_url }}" class="btn btn-primary mt-md-3">
-              {{ hearing_ticket_add_title }}
-            </a>
-          </div>
+          <a href="{{ hearing_ticket_add_url }}" class="btn btn-primary mt-md-3">
+            {{ hearing_ticket_add_title }}
+          </a>
         {% endif %}
       </div>
     </div>
 
     {% if not has_external_hearing_tickets and tickets %}
-      {% for ticket in tickets %}
-        <a href="{{ path('hoeringsportal_deskpro.hearing.ticket_view', {node: node.id, ticket: ticket.id}) }}" class="hearing-ticket card">
-          <h3 class="card-header">
-            {{ ticket.subject }}
-          </h3>
-          <div class="card-body">
-            {% set message = ticket.fields.message|default('') %}
-            {{ message|length > 180 ? message|slice(0, 180)|raw ~ '…' : message|raw }}
+      <div class="row">
+        {% for ticket in tickets %}
+          <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
+            <a href="{{ path('hoeringsportal_deskpro.hearing.ticket_view', {node: node.id, ticket: ticket.id}) }}" class="hearing-ticket-link">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h3 class="card-title h2 fw-normal">{{ ticket.subject }}</h3>
+                  <div class="card-text mb-3">
+                    {% set message = ticket.fields.message|default('') %}
+                    {{ message|length > 180 ? message|slice(0, 180)|raw ~ '...' : message|raw }}
+                  </div>
+                  <div class="ticket-meta small border-top pt-3">
+                    {% set person_name = ticket.fields.person_name|default(ticket.person.display_name) %}
+                    {% set organization_type = deskpro_ticket_custom_field(ticket, 'representation') %}
+                    {% set organization = deskpro_ticket_custom_field(ticket, 'organization') %}
+                    <div class="ticket-author fw-medium">
+                      {% if organization_type and organization %}
+                        {{ '@name, @organization'|trans({'@name': person_name, '@organization': organization}) }}
+                      {% else %}
+                        {{ person_name }}
+                      {% endif %}
+                    </div>
+                    <div class="ticket-time mt-1">
+                      {{ ticket.date_created|date('U')|time_diff }}
+                    </div>
+                  </div>
+                  {% if ticket.fields.keywords|default([]) %}
+                    <div class="ticket-tags">
+                      {% for keyword in ticket.fields.keywords %}
+                        <span class="badge rounded-pill">{{ keyword }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
           </div>
-          <div class="card-footer">
-            {% set person_name = ticket.fields.person_name|default(ticket.person.display_name) %}
-            {% set organization_type = deskpro_ticket_custom_field(ticket, 'representation') %}
-            {% set organization = deskpro_ticket_custom_field(ticket, 'organization') %}
-
-            {% if organization_type and organization %}
-              {{ '@ticket_ref by @person_name on behalf of @organization (@organization_type)'|trans({
-                '@ticket_ref': ticket.ref,
-                '@person_name': person_name,
-                '@organization': organization,
-                '@organization_type': organization_type,
-                }) }}
-            {% else %}
-              {{ '@ticket_ref by @person_name'|trans({'@ticket_ref': ticket.ref, '@person_name': person_name}) }}
-            {% endif %}
-            | <span class="ticket-date_created">{{ ticket.date_created|date('U')|format_date('hoeringsportal_datetime') }}</span>
-            <i class="fa fa-arrow-right float-right"></i>
-          </div>
-        </a>
-      {% endfor %}
+        {% endfor %}
+      </div>
     {% endif %}
 
     {% endif %}

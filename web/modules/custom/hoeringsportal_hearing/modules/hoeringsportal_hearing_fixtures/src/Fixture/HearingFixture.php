@@ -34,6 +34,22 @@ class HearingFixture extends AbstractFixture implements DependentFixtureInterfac
     $this->deleteAllHearingReplies();
 
     foreach (range(1, 3) as $i) {
+      // Vary content state and dates to have active hearings for "other ongoing hearings" section.
+      $contentState = match ($i) {
+        1 => 'active',
+        2 => 'active',
+        default => 'upcoming',
+      };
+      $startDate = match ($i) {
+        1, 2 => strtotime('-7 days'),
+        default => strtotime('tomorrow'),
+      };
+      $replyDeadline = match ($i) {
+        1 => strtotime('+14 days'),
+        2 => strtotime('+30 days'),
+        default => strtotime('tomorrow'),
+      };
+
       // Hearing node.
       $entity = Node::create([
         'type' => 'hearing',
@@ -50,15 +66,13 @@ Dette er en høring. Den har ID node:landing_page:Hearing1 ',
           ['target_id' => $this->getReference('media:Medium2')->id()],
           ['target_id' => $this->getReference('media:Map1')->id()],
         ],
-        'field_content_state' => 'upcoming',
+        'field_content_state' => $contentState,
         'field_media_document' => [
           ['target_id' => $this->getReference('media:Document1')->id()],
           ['target_id' => $this->getReference('media:Pdf1')->id()],
         ],
-        'field_start_date' => DrupalDateTime::createFromFormat('U',
-          strtotime('tomorrow'))->format('Y-m-d\TH:i:s'),
-        'field_reply_deadline' => DrupalDateTime::createFromFormat('U',
-          strtotime('tomorrow'))->format('Y-m-d\TH:i:s'),
+        'field_start_date' => DrupalDateTime::createFromFormat('U', $startDate)->format('Y-m-d\TH:i:s'),
+        'field_reply_deadline' => DrupalDateTime::createFromFormat('U', $replyDeadline)->format('Y-m-d\TH:i:s'),
         'field_edoc_casefile_id' => '',
         'field_tags' => [
           'target_id' => $this->getReference('tags:Kultur og borgerservice')
@@ -235,20 +249,80 @@ EOD,
       ],
     ]);
 
+    // Sample data for realistic fixtures.
+    $subjects = [
+      'Bekymring over trafikstøj',
+      'Støtte til projektet',
+      'Forslag til alternativ placering',
+      'Spørgsmål om byggehøjde',
+      'Indsigelse mod parkeringsforhold',
+      'Ønske om flere grønne områder',
+      'Kommentar til tidsplan',
+      'Bekymring for lokal biodiversitet',
+      'Forslag til forbedret adgang',
+      'Spørgsmål om miljøvurdering',
+    ];
+
+    $messages = [
+      'Jeg er bekymret for den øgede trafikstøj, som projektet vil medføre. Har kommunen overvejet støjdæmpende foranstaltninger langs vejen? Det vil have stor betydning for os, der bor i området.',
+      'Som nabo til området vil jeg gerne udtrykke min fulde støtte til projektet. Det vil være en stor forbedring for hele kvarteret og skabe nye muligheder for fællesskab.',
+      'Har kommunen overvejet en alternativ placering af bygningen? Den nuværende placering vil skygge for flere boliger i området i de sene eftermiddagstimer.',
+      'Jeg vil gerne have oplyst, hvor høj bygningen præcist bliver, og om der er taget højde for de eksisterende bebyggelseslinjer i lokalplanen.',
+      'De planlagte parkeringsforhold virker utilstrækkelige i forhold til det forventede antal besøgende. Jeg foreslår, at der etableres yderligere parkeringspladser.',
+      'Det er vigtigt, at der bevares så mange træer som muligt, og at der plantes nye for at sikre grønne områder til glæde for beboere og dyreliv.',
+      'Hvornår forventes projektet at være færdigt? Vi har brug for at vide, hvor længe byggearbejdet vil påvirke vores dagligdag.',
+      'Området er levested for flere beskyttede arter. Jeg opfordrer til, at der laves en grundig undersøgelse af konsekvenserne for den lokale biodiversitet.',
+      'Kan der etableres bedre stiforbindelser, så cyklister og fodgængere får lettere adgang til området? Det vil øge brugen af bæredygtig transport.',
+      'Er der lavet en fuld miljøvurdering af projektet? Jeg vil gerne se dokumentation for, at alle miljømæssige hensyn er taget.',
+    ];
+
+    $names = [
+      'Anders Jensen', 'Mette Pedersen', 'Lars Nielsen', 'Hanne Christensen',
+      'Peter Andersen', 'Kirsten Larsen', 'Jens Hansen', 'Anne Sørensen',
+      'Thomas Rasmussen', 'Lone Petersen', 'Michael Madsen', 'Pia Olsen',
+      'Henrik Thomsen', 'Gitte Mortensen', 'Søren Poulsen', 'Lise Jørgensen',
+    ];
+
+    $organizations = [
+      'Grundejerforeningen Skovparken',
+      'Beboerforeningen Vesterbro',
+      'Danmarks Naturfredningsforening, Lokalafdeling',
+      'Erhvervsforeningen Midtbyen',
+      'Seniorrådet',
+      'Friluftsrådet',
+      'Handicaprådet',
+      'Cyklistforbundet',
+    ];
+
+    // Keywords mapped to each subject/message pair.
+    $keywords = [
+      ['Trafik', 'Støj', 'Miljø'],
+      ['Støtte', 'Fællesskab'],
+      ['Placering', 'Skygge', 'Boliger'],
+      ['Byggehøjde', 'Lokalplan'],
+      ['Parkering', 'Tilgængelighed'],
+      ['Grønne områder', 'Træer', 'Natur'],
+      ['Tidsplan', 'Byggeri'],
+      ['Biodiversitet', 'Dyreliv', 'Natur'],
+      ['Stiforbindelser', 'Cykling', 'Transport'],
+      ['Miljøvurdering', 'Dokumentation'],
+    ];
+
     for ($i = 0; $i < $numberOfReplies; $i++) {
       $data = [
         'id' => 1000 * (int) $node->id() + $i,
-        'date_created' => (new \DateTimeImmutable('2001-01-01'))->modify(sprintf('+%d days', $i))->format(\DateTimeImmutable::ATOM),
-        'subject' => sprintf('Reply %d', $i + 1),
+        'date_created' => (new \DateTimeImmutable('now'))->modify(sprintf('-%d hours', $i * 3 + rand(1, 12)))->format(\DateTimeImmutable::ATOM),
+        'subject' => $subjects[$i % count($subjects)],
         'fields' => [
-          'person_name' => sprintf('Citizen %d', $i + 1),
+          'person_name' => $names[$i % count($names)],
           'representation' => [
             5 => [
               'id' => 5,
               'title' => 'Privatperson',
             ],
           ],
-          'message' => 'This is the message',
+          'message' => $messages[$i % count($messages)],
+          'keywords' => $keywords[$i % count($keywords)],
         ],
       ];
 
@@ -259,7 +333,7 @@ EOD,
             'title' => 'Forening, organisation eller bestyrelse',
           ],
         ];
-        $data['fields']['organization'] = 'Foreningen';
+        $data['fields']['organization'] = $organizations[$i % count($organizations)];
       }
 
       $this->database->insert(

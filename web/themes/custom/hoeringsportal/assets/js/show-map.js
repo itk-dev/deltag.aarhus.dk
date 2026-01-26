@@ -15,8 +15,25 @@ import { defaults as defaultInteractions } from "ol/interaction.js";
 
 require("./ol.css");
 
-const mapElement = document.getElementById("map");
-if (mapElement !== null && mapElement.dataset.geojson) {
+function initMap() {
+  const mapElement = document.getElementById("hoeringsportal-map") || document.getElementById("map");
+
+  if (mapElement === null) {
+    return;
+  }
+
+  if (!mapElement.dataset.geojson) {
+    return;
+  }
+
+  if (mapElement.dataset.mapInitialized) {
+    return;
+  }
+
+  // Mark as initialized to prevent double initialization
+  mapElement.dataset.mapInitialized = "true";
+
+  try {
   const image = new Icon({
     src: "/themes/custom/hoeringsportal/static/images/flag.png",
     anchor: [0.5, 1],
@@ -111,7 +128,7 @@ if (mapElement !== null && mapElement.dataset.geojson) {
       }),
       vectorLayer,
     ],
-    target: "map",
+    target: mapElement,
     controls: defaultControls({
       attributionOptions: {
         collapsible: false,
@@ -132,4 +149,26 @@ if (mapElement !== null && mapElement.dataset.geojson) {
   if (map.getView().getZoom() > 15) {
     map.getView().setZoom(15);
   }
+
+  } catch (error) {
+    // Map initialization failed silently
+  }
+}
+
+// Initialize map when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function() {
+    initMap();
+  });
+} else {
+  initMap();
+}
+
+// Also support Drupal AJAX if Drupal is available
+if (typeof Drupal !== "undefined" && Drupal.behaviors) {
+  Drupal.behaviors.showMap = {
+    attach: function (context, settings) {
+      initMap();
+    },
+  };
 }

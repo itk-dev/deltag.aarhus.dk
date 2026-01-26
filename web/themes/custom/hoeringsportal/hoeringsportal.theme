@@ -272,6 +272,30 @@ function hoeringsportal_preprocess_ds_1col(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_node().
+ */
+function hoeringsportal_preprocess_node(&$variables) {
+  $node = $variables['node'] ?? NULL;
+  $view_mode = $variables['view_mode'] ?? '';
+
+  // Set variables related to newsletter if any newsletter config is set.
+  // This is needed for node templates (like hearing full view) that use
+  // the newsletter-bottom-link.html.twig include.
+  if ($node && $view_mode === 'full') {
+    $moduleHandler = \Drupal::service('module_handler');
+    if ($moduleHandler->moduleExists('hoeringsportal_config_settings')) {
+      $itk_config = \Drupal::getContainer()->get('itk_admin.itk_config');
+      $variables['node_newsletter'] = $itk_config->get('newsletter_node');
+    }
+  }
+
+  // Attach dialog library for hearing nodes.
+  if ($node && $node->bundle() === 'hearing') {
+    $variables['#attached']['library'][] = 'core/drupal.dialog.ajax';
+  }
+}
+
+/**
  * Implements hook_preprocess_ds_1col().
  */
 function hoeringsportal_preprocess_ds_2col_stacked(&$variables) {

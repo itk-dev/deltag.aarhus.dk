@@ -48,7 +48,14 @@
                     {% endfor %}
                   </div>
                 {% endif %}
-                {% if tags_fields %}
+                {% if tags_list is defined and tags_list|length > 0 %}
+                  {# New format: simple array of tag labels #}
+                  <div>
+                    <span class="visually-hidden">{{ 'Tags'|t }}:</span>
+                    <span class="tags text-background-match">{{ tags_list|join(', ') }}</span>
+                  </div>
+                {% elseif tags_fields %}
+                  {# Legacy format: rendered field content #}
                   <div>
                     <button class="tags is-comma-separated text-background-match">
                       {% for tags in tags_fields %}
@@ -66,8 +73,8 @@
                     {% for element in right_content %}
                       {% if element.value is not null %}
                         {% set icon = element.icon ?? 'fa-regular fa-circle-dot' %}
-                        <div class="text-nowrap">
-                          <div class="align-top d-inline-block me-2">
+                        <div class="d-flex align-items-start mb-2">
+                          <div class="flex-shrink-0 me-2">
                             <i class="{{ icon }} text-background-match"></i>
                           </div>
                           {% if element.type is same as('text') %}
