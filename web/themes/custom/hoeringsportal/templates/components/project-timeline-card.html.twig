@@ -27,7 +27,7 @@
 } %}
 
 {% set status_labels = {
-  completed: "now"|date("Y-m-d") == item.date ? 'I dag'|t : '✓ Afsluttet'|t,
+  completed: 'now'|date('Y-m-d') == item.date ? 'I dag'|t : '✓ Afsluttet'|t,
   current: 'I dag'|t,
   upcoming: 'Kommende'|t,
   note: 'Note'|t,
@@ -61,47 +61,47 @@
       </div>
     {% endif %}
 
-    {# Status badge (absolutely positioned) #}
-    <span class="project-timeline-card__status">
-      {{ status_labels[item.status]|default(item.status) }}
-    </span>
+    {# Text content wrapper for proper flex layout in horizontal view #}
+    <div class="project-timeline-card__text-content">
+      {# Status badge (absolutely positioned) #}
+      <span class="project-timeline-card__status">
+        {{ status_labels[item.status]|default(item.status) }}
+      </span>
 
-    {# Header with date #}
-    <header class="project-timeline-card__header">
-      <div class="project-timeline-card__date-wrapper">
-        <time class="project-timeline-card__month" datetime="{{ item.date }}">
-          {{ item.month }}
-        </time>
+      {# Header with date #}
+      <header class="project-timeline-card__header">
+        <div class="project-timeline-card__date-wrapper">
+          <time class="project-timeline-card__month" datetime="{{ item.date }}">
+            {{ item.month }}
+          </time>
+        </div>
+      </header>
+
+      {# Body #}
+      <div class="project-timeline-card__body">
+        {% if item.title %}
+          <h3 class="project-timeline-card__title">{{ item.title }}</h3>
+        {% endif %}
+
+        {% if item.subtitle %}
+          <p class="project-timeline-card__subtitle">{{ item.subtitle }}</p>
+        {% endif %}
+
+        {% if item.description %}
+          <p class="project-timeline-card__description">{{ item.description }}</p>
+        {% endif %}
+
+        {% if item.link %}
+          <footer class="project-timeline-card__footer">
+            <a href="{{ item.link }}" class="project-timeline-card__link">
+              {{ item.linkText|default('Læs mere'|t) }}
+              <svg class="project-timeline-card__link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </footer>
+        {% endif %}
       </div>
-    </header>
-
-    {# Body #}
-    <div class="project-timeline-card__body">
-      {% if item.title %}
-        <h3 class="project-timeline-card__title">{{ item.title }}</h3>
-      {% endif %}
-
-      {% if item.subtitle %}
-        <p class="project-timeline-card__subtitle">{{ item.subtitle }}</p>
-      {% endif %}
-
-      {% if item.description %}
-        <p class="project-timeline-card__description">{{ item.description }}</p>
-      {% endif %}
-
-      {% if item.link %}
-        <footer class="project-timeline-card__footer">
-          <a href="{{ item.link }}" class="project-timeline-card__link">
-            {{ item.linkText|default('Læs mere'|t) }}
-            <svg class="project-timeline-card__link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </footer>
-      {% endif %}
     </div>
-
-    {# Link (if present) #}
-
   </div>
 </article>

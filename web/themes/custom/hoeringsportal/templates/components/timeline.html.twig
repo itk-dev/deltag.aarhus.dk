@@ -83,6 +83,7 @@
   </div>
 
   {# Horizontal view (carousel) #}
+  {% set slide_items = timeline_items|filter(item => not item.is_today_marker|default(false)) %}
   <div
     id="project-timeline-horizontal"
     class="project-timeline__horizontal"
@@ -90,7 +91,44 @@
     aria-label="{{ 'Horizontal timeline carousel'|t }}"
     {% if default_view != 'horizontal' %}hidden{% endif %}
   >
-    {# Carousel navigation #}
+    {# 1. Horizontal timeline with dots FIRST #}
+    <div class="project-timeline__horizontal-line">
+      {% set slide_index = 0 %}
+      {% for item in timeline_items %}
+        <div class="project-timeline__horizontal-dot-wrapper">
+          <button type="button"
+            class="project-timeline__horizontal-dot project-timeline__horizontal-dot--{{ item.status }}{% if item.is_today_marker|default(false) %} project-timeline__horizontal-dot--today{% endif %}{% if loop.first %} is-active{% endif %}"
+            {% if not item.is_today_marker|default(false) %}data-slide-index="{{ slide_index }}"{% endif %}
+            aria-label="{{ item.title }}"
+            {% if item.is_today_marker|default(false) %}data-today-marker{% endif %}>
+          </button>
+          <div class="project-timeline__horizontal-label">
+            {% if item.is_today_marker|default(false) %}
+              <span class="project-timeline__horizontal-month">{{ 'I dag'|t }}</span>
+            {% else %}
+              <span class="project-timeline__horizontal-month">{{ item.date|date('M') }}</span>
+              <span class="project-timeline__horizontal-year">{{ item.date|date('Y') }}</span>
+            {% endif %}
+          </div>
+        </div>
+        {% if not item.is_today_marker|default(false) %}
+          {% set slide_index = slide_index + 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {# 2. Carousel viewport SECOND #}
+    <div class="project-timeline__carousel-viewport">
+      <div class="project-timeline__carousel-track" data-carousel-track>
+        {% for item in slide_items %}
+          <div class="project-timeline__carousel-slide" data-carousel-slide>
+            {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# 3. Carousel navigation LAST #}
     <div class="project-timeline__carousel-controls">
       <button
         type="button"
@@ -104,35 +142,26 @@
         </svg>
       </button>
       <div class="project-timeline__carousel-indicator" aria-live="polite">
-        <span data-carousel-current>1</span> / <span data-carousel-total>{{ timeline_items|length }}</span>
+        <span data-carousel-current>1</span> / <span data-carousel-total>{{ slide_items|length }}</span>
       </div>
       <button
         type="button"
         class="project-timeline__carousel-btn project-timeline__carousel-btn--next"
         aria-label="{{ 'Next item'|t }}"
         data-carousel-next
-        {{ timeline_items|length <= 1 ? 'disabled' : '' }}
+        {{ slide_items|length <= 1 ? 'disabled' : '' }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </div>
-
-    {# Carousel track #}
-    <div class="project-timeline__carousel-viewport">
-      <div class="project-timeline__carousel-track" data-carousel-track>
-        {% for item in timeline_items %}
-          <div class="project-timeline__carousel-slide" data-carousel-slide>
-            {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
   </div>
 
   {# Legend #}
-  {% if legend_items|length > 0 %}
-    {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {items: legend_items}) }}
+  {% if legend_items|default([])|length > 0 %}
+    <div class="container">
+      {{ include(directory ~ '/templates/components/project-timeline-legend.html.twig', {items: legend_items}) }}
+    </div>
   {% endif %}
 </section>

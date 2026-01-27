@@ -239,8 +239,48 @@
         goToSlide(state.carouselIndex + 1);
       });
 
+      // Horizontal dot click navigation
+      const horizontalDots = timeline.querySelectorAll(
+        ".project-timeline__horizontal-dot:not([data-today-marker])",
+      );
+      horizontalDots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = parseInt(dot.dataset.slideIndex, 10);
+          goToSlide(index);
+        });
+      });
+
+      // Set initial slide to the card closest to today that is not upcoming
+      const initialIndex = findInitialSlideIndex();
+      if (initialIndex > 0) {
+        state.carouselIndex = initialIndex;
+        updateCarouselPosition();
+      }
+
       // Touch/swipe support
       initTouchNavigation();
+    }
+
+    /**
+     * Find the initial slide index (closest to today, not upcoming).
+     *
+     * @return {number}
+     *   The index of the slide to start on.
+     */
+    function findInitialSlideIndex() {
+      let lastNonUpcomingIndex = 0;
+
+      elements.carouselSlides.forEach((slide, index) => {
+        const card = slide.querySelector("[data-card-status]");
+        if (card) {
+          const status = card.dataset.cardStatus;
+          if (status !== "upcoming") {
+            lastNonUpcomingIndex = index;
+          }
+        }
+      });
+
+      return lastNonUpcomingIndex;
     }
 
     /**
@@ -281,6 +321,15 @@
         elements.carouselNext.disabled =
           state.carouselIndex >= state.carouselTotal - 1;
       }
+
+      // Update horizontal dot active states
+      const horizontalDots = timeline.querySelectorAll(
+        ".project-timeline__horizontal-dot:not([data-today-marker])",
+      );
+      horizontalDots.forEach((dot) => {
+        const dotIndex = parseInt(dot.dataset.slideIndex, 10);
+        dot.classList.toggle("is-active", dotIndex === state.carouselIndex);
+      });
     }
 
     /**
