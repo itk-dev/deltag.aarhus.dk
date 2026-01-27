@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.14.4] - 2026-01-27
+
 * [PR-588](https://github.com/itk-dev/deltag.aarhus.dk/pull/588)
   Added area and age span selection to dialogue proposal form
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
