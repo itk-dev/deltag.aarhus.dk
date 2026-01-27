@@ -39,8 +39,14 @@
    *   The timeline container element.
    */
   function initTimeline(timeline) {
+    // Determine default view based on viewport
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const defaultView = isMobile
+      ? "horizontal"
+      : timeline.dataset.defaultView || "vertical";
+
     const state = {
-      currentView: timeline.dataset.defaultView || "vertical",
+      currentView: defaultView,
       carouselIndex: 0,
       carouselTotal: 0,
       observer: null,
@@ -64,6 +70,18 @@
     };
 
     state.carouselTotal = elements.carouselSlides.length;
+
+    // Update toggle buttons to reflect actual default
+    elements.viewButtons.forEach((btn) => {
+      const isSelected = btn.dataset.view === defaultView;
+      btn.setAttribute("aria-selected", isSelected ? "true" : "false");
+    });
+
+    // Show/hide panels based on actual default
+    if (defaultView === "horizontal") {
+      elements.verticalPanel?.setAttribute("hidden", "");
+      elements.horizontalPanel?.removeAttribute("hidden");
+    }
 
     // Initialize components
     initViewToggle();

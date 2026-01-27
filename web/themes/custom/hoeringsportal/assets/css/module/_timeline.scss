@@ -61,6 +61,11 @@ $timeline-accents: (
     "bg": var(--primitive-blue-200),
     "hover": var(--primitive-navy-500),
   ),
+  "green": (
+    "color": var(--primitive-petroleum-500),
+    "bg": var(--primitive-petroleum-100),
+    "hover": var(--primitive-petroleum-800),
+  ),
 );
 
 // Mixin for generating status variant styles
@@ -139,6 +144,8 @@ $timeline-accents: (
   --timeline-accent-pink-bg: var(--primitive-pink-100);
   --timeline-accent-blue: var(--primitive-blue-500);
   --timeline-accent-blue-bg: var(--primitive-blue-200);
+  --timeline-accent-green: var(--primitive-petroleum-500);
+  --timeline-accent-green-bg: var(--primitive-petroleum-100);
 
   // Layout
   --timeline-max-width: #{$timeline-max-width};
@@ -285,6 +292,8 @@ $timeline-accents: (
   position: relative;
   margin-bottom: -($spacer * 3.75); // -60px overlap
   z-index: 1;
+  // Prevent hover events on the wrapper - only the visible content should be interactive
+  pointer-events: none;
 
   // Alternating: odd cards align left, even cards align right
   &:nth-child(odd) {
@@ -373,6 +382,8 @@ $timeline-image-height: 140px;
   position: relative;
   overflow: hidden;
   cursor: default;
+  // Re-enable pointer events on the visible card content
+  pointer-events: auto;
 
   &:hover {
     box-shadow: $timeline-shadow-hover;
@@ -434,7 +445,7 @@ $timeline-image-height: 140px;
   color: var(--primitive-petroleum-800);
 }
 
-// Status badge
+// Status badge - positioned relative to .project-timeline-card__text-content
 .project-timeline-card__status {
   position: absolute;
   top: ($spacer * 0.5);
@@ -446,11 +457,6 @@ $timeline-image-height: 140px;
   letter-spacing: 0.04em;
   color: var(--text-inverse);
   background: var(--timeline-status-upcoming);
-
-  // When image is present, move status badge down
-  .project-timeline-card__content:has(.project-timeline-card__image-wrapper) & {
-    top: ($timeline-image-height + 8px);
-  }
 }
 
 // Image
@@ -599,6 +605,15 @@ $timeline-image-height: 140px;
   );
 }
 
+// Green accent (petroleum - for hearings, decisions, and dialogues)
+.project-timeline-card--accent-green {
+  @include timeline-card-accent-variant(
+    var(--timeline-accent-green),
+    var(--timeline-accent-green-bg),
+    var(--primitive-petroleum-800)
+  );
+}
+
 // =============================================================================
 // Upcoming Cards - Gray Default with Accent Color on Hover
 // =============================================================================
@@ -607,7 +622,8 @@ $timeline-image-height: 140px;
 .project-timeline-card--upcoming {
   // Override accent variants to use gray by default
   &.project-timeline-card--accent-pink,
-  &.project-timeline-card--accent-blue {
+  &.project-timeline-card--accent-blue,
+  &.project-timeline-card--accent-green {
     @include timeline-card-status-variant(
       var(--timeline-status-upcoming),
       var(--timeline-status-upcoming-bg),
@@ -635,8 +651,19 @@ $timeline-image-height: 140px;
     transition: background-color 0.2s ease;
   }
 
+  // Default hover for upcoming cards without accent color
+  &:has(.project-timeline-card__content:hover) {
+    @include timeline-card-status-variant(
+      var(--primitive-gray-700),
+      var(--timeline-status-upcoming-bg),
+      var(--primitive-gray-800)
+    );
+  }
+
   // Reveal pink accent on hover
-  &.project-timeline-card--accent-pink:hover {
+  &.project-timeline-card--accent-pink:has(
+      .project-timeline-card__content:hover
+    ) {
     @include timeline-card-accent-variant(
       var(--timeline-accent-pink),
       var(--timeline-accent-pink-bg),
@@ -645,11 +672,24 @@ $timeline-image-height: 140px;
   }
 
   // Reveal blue accent on hover
-  &.project-timeline-card--accent-blue:hover {
+  &.project-timeline-card--accent-blue:has(
+      .project-timeline-card__content:hover
+    ) {
     @include timeline-card-accent-variant(
       var(--timeline-accent-blue),
       var(--timeline-accent-blue-bg),
       var(--primitive-navy-500)
+    );
+  }
+
+  // Reveal green accent on hover
+  &.project-timeline-card--accent-green:has(
+      .project-timeline-card__content:hover
+    ) {
+    @include timeline-card-accent-variant(
+      var(--timeline-accent-green),
+      var(--timeline-accent-green-bg),
+      var(--primitive-petroleum-800)
     );
   }
 }
@@ -709,8 +749,9 @@ $mini-nav-dot-size: 10px;
     background: var(--border-default);
   }
 
-  // Connecting line colors based on progress
-  &:has(.project-timeline-mini-nav__link--completed)::after {
+  // Connecting line colors based on progress - dark for completed and notes
+  &:has(.project-timeline-mini-nav__link--completed)::after,
+  &:has(.project-timeline-mini-nav__link--note)::after {
     background: var(--primitive-gray-800);
   }
 }
@@ -882,6 +923,9 @@ $carousel-padding-horizontal: ($spacer * 2.25); // 36px
 
 .project-timeline__carousel-viewport {
   overflow: hidden;
+  // Add padding so box-shadow isn't clipped
+  padding: ($spacer * 0.5);
+  margin: -($spacer * 0.5);
 }
 
 // =============================================================================
@@ -1033,10 +1077,6 @@ $carousel-padding-horizontal: ($spacer * 2.25); // 36px
         top: 0;
         height: 100%;
       }
-
-      .project-timeline-card__status {
-        top: $spacer;
-      }
     }
   }
 
@@ -1164,18 +1204,6 @@ $mobile-image-height: 160px;
     align-self: flex-start;
   }
 
-  .project-timeline__vertical {
-    display: none !important;
-  }
-
-  .project-timeline__horizontal {
-    display: block !important;
-
-    &[hidden] {
-      display: block !important;
-    }
-  }
-
   .project-timeline-mini-nav {
     display: none;
   }
@@ -1221,11 +1249,6 @@ $mobile-image-height: 160px;
     .project-timeline-card__content {
       flex-direction: column;
       min-height: auto;
-
-      &:has(.project-timeline-card__image-wrapper)
-        .project-timeline-card__status {
-        top: ($mobile-image-height + 8px);
-      }
     }
 
     .project-timeline-card__image-wrapper {
@@ -1254,12 +1277,77 @@ $mobile-image-height: 160px;
     }
 
     .project-timeline-card__footer {
-      padding: 0 $timeline-card-padding-sm $timeline-card-padding-sm;
+      // No horizontal padding - body already provides it
+      padding: 0 0 $timeline-card-padding-sm;
     }
 
     .project-timeline-card__link {
       padding: ($spacer * 0.5) ($spacer * 0.875);
       font-size: $font-size-small;
+    }
+  }
+
+  // Mobile vertical view - single column layout (timeline left, cards right)
+  .project-timeline__vertical {
+    .project-timeline__cards {
+      position: relative;
+      padding-left: ($spacer * 1.25);
+
+      // Timeline line on left edge instead of center
+      &::before {
+        left: 5px;
+        transform: none;
+      }
+    }
+
+    // All cards align right (no alternating)
+    .project-timeline-card {
+      justify-content: flex-end;
+      margin-bottom: $spacer;
+
+      // Remove alternating alignment
+      &:nth-child(odd),
+      &:nth-child(even) {
+        justify-content: flex-end;
+      }
+
+      // Short connector line from dot to card
+      // Dot ends at -20px + 12px = -8px, connector goes from there to card edge (0px)
+      &::after {
+        display: block;
+        left: -8px;
+        width: 8px;
+      }
+
+      &:nth-child(odd)::after,
+      &:nth-child(even)::after {
+        left: -8px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Card takes full width, connecting to the timeline
+    .project-timeline-card__content {
+      width: 100%;
+
+      // Accent bar always on left side
+      &::before {
+        left: 0;
+        right: auto;
+      }
+    }
+
+    // Dot centered on timeline line
+    // Line is at left: 5px on .project-timeline__cards (center at 6px)
+    // Connector is relative to .project-timeline-card which starts after 20px padding
+    // Line center relative to card: 6px - 20px = -14px
+    // Dot is 12px wide, so left edge: -14px - 6px = -20px
+    .project-timeline-card__connector {
+      left: -20px;
+      transform: none;
     }
   }
 }
