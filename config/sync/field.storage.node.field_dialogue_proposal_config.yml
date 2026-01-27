@@ -15,6 +15,12 @@ settings:
       value: public_proposals
       label: 'Åbn forslag for offentligheden'
     -
+      value: use_age_on_proposals
+      label: 'Anvend aldersangivelse på dialogforslag'
+    -
+      value: use_area_on_proposals
+      label: 'Anvend område på dialogforslag'
+    -
       value: use_map_on_proposals
       label: 'Anvend kort på dialogforslag'
     -

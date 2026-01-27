@@ -223,6 +223,18 @@ class DialogueHelper {
         $form['field_location']['#access'] = FALSE;
       }
 
+      if (!in_array('use_image_on_proposals', $config)) {
+        $form['field_image_upload']['#access'] = FALSE;
+      }
+
+      if (!in_array('use_area_on_proposals', $config)) {
+        $form['field_area']['#access'] = FALSE;
+      }
+
+      if (!in_array('use_age_on_proposals', $config)) {
+        $form['field_age_span']['#access'] = FALSE;
+      }
+
       if (!in_array('use_name_on_proposals', $config)) {
         $form['field_owner_name']['#access'] = FALSE;
       }
