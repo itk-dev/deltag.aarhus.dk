@@ -14,6 +14,7 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Hook\Attribute\Hook;
 
 /**
  * Helper class for project-related operations.
@@ -74,9 +75,9 @@ class ProjectHelper {
       usort($variables['timeline_items'], static fn(array $a, array $b): int => $a['date'] <=> $b['date']);
 
       $variables['legend_items'] = [
-        ['status' => 'completed', 'label' => $this->t('Afsluttet')],
-        ['status' => 'current', 'label' => $this->t('I gang nu')],
-        ['status' => 'upcoming', 'label' => $this->t('Kommende')],
+        ['status' => 'completed', 'label' => $this->t('Finished')],
+        ['status' => 'current', 'label' => $this->t('In progress')],
+        ['status' => 'upcoming', 'label' => $this->t('Upcoming')],
         ['status' => 'note', 'label' => $this->t('Note')],
       ];
     }
@@ -300,7 +301,7 @@ class ProjectHelper {
       'id' => 'today',
       'date' => $now->format('Y-m-d'),
       'month' => $now->format('d-m-Y'),
-      'title' => $this->t('Projektstatus'),
+      'title' => $this->t('Project status'),
       'subtitle' => NULL,
       'description' => NULL,
       'status' => 'current',

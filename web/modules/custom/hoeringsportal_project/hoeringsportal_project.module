@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\hoeringsportal_project\Helper\ProjectHelper;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Hook\Attribute\LegacyHook;
 
 /**
  * Implements hook_preprocess_node().
