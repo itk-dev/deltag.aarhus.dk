@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-611](https://github.com/itk-dev/deltag.aarhus.dk/pull/611)
+  Added windowed dot navigation on mobile horizontal timeline view
 * [PR-610](https://github.com/itk-dev/deltag.aarhus.dk/pull/610)
   Added hover effect to reveal accent colors on upcoming timeline cards
 * [PR-593](https://github.com/itk-dev/deltag.aarhus.dk/pull/593)

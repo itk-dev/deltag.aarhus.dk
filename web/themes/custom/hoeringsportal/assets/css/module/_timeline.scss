@@ -907,6 +907,11 @@ $carousel-padding-horizontal: ($spacer * 2.25); // 36px
   }
 }
 
+// Inner wrapper for dots - enables windowed view on mobile
+.project-timeline__horizontal-line-inner {
+  display: contents;
+}
+
 .project-timeline__horizontal-dot-wrapper {
   display: flex;
   flex-direction: column;
@@ -1175,6 +1180,42 @@ $mobile-image-height: 160px;
     display: none;
   }
 
+  // Mobile horizontal dot navigation - windowed view
+  .project-timeline__horizontal-line {
+    overflow: hidden;
+    justify-content: flex-start;
+    padding: 0;
+
+    // Hide the connecting line on mobile (handled by inner wrapper)
+    &::before {
+      display: none;
+    }
+  }
+
+  .project-timeline__horizontal-line-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: ($spacer * 2.5);
+    transition: transform 0.3s ease;
+    padding: 0 50%;
+    position: relative;
+
+    // Connecting line behind dots
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 6px;
+      height: 2px;
+      background: var(--border-default);
+    }
+  }
+
+  .project-timeline__horizontal-dot-wrapper {
+    flex-shrink: 0;
+  }
+
   // Mobile carousel card layout
   .project-timeline__horizontal {
     .project-timeline-card__content {
@@ -1251,6 +1292,7 @@ $tablet-card-gap: $timeline-card-padding;
   .project-timeline-mini-nav__dot,
   .project-timeline-mini-nav__label,
   .project-timeline__carousel-track,
+  .project-timeline__horizontal-line-inner,
   .project-timeline__view-btn,
   .project-timeline__carousel-btn,
   .project-timeline-card__link {

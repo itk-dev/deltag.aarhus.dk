@@ -93,28 +93,30 @@
   >
     {# 1. Horizontal timeline with dots FIRST #}
     <div class="project-timeline__horizontal-line">
-      {% set slide_index = 0 %}
-      {% for item in timeline_items %}
-        <div class="project-timeline__horizontal-dot-wrapper">
-          <button type="button"
-            class="project-timeline__horizontal-dot project-timeline__horizontal-dot--{{ item.status }}{% if item.is_today_marker|default(false) %} project-timeline__horizontal-dot--today{% endif %}{% if loop.first %} is-active{% endif %}"
-            {% if not item.is_today_marker|default(false) %}data-slide-index="{{ slide_index }}"{% endif %}
-            aria-label="{{ item.title }}"
-            {% if item.is_today_marker|default(false) %}data-today-marker{% endif %}>
-          </button>
-          <div class="project-timeline__horizontal-label">
-            {% if item.is_today_marker|default(false) %}
-              <span class="project-timeline__horizontal-month">{{ 'Today'|t }}</span>
-            {% else %}
-              <span class="project-timeline__horizontal-month">{{ item.date|date('M') }}</span>
-              <span class="project-timeline__horizontal-year">{{ item.date|date('Y') }}</span>
-            {% endif %}
+      <div class="project-timeline__horizontal-line-inner" data-dot-track>
+        {% set slide_index = 0 %}
+        {% for item in timeline_items %}
+          <div class="project-timeline__horizontal-dot-wrapper">
+            <button type="button"
+              class="project-timeline__horizontal-dot project-timeline__horizontal-dot--{{ item.status }}{% if item.is_today_marker|default(false) %} project-timeline__horizontal-dot--today{% endif %}{% if loop.first %} is-active{% endif %}"
+              {% if not item.is_today_marker|default(false) %}data-slide-index="{{ slide_index }}"{% endif %}
+              aria-label="{{ item.title }}"
+              {% if item.is_today_marker|default(false) %}data-today-marker{% endif %}>
+            </button>
+            <div class="project-timeline__horizontal-label">
+              {% if item.is_today_marker|default(false) %}
+                <span class="project-timeline__horizontal-month">{{ 'Today'|t }}</span>
+              {% else %}
+                <span class="project-timeline__horizontal-month">{{ item.date|date('M') }}</span>
+                <span class="project-timeline__horizontal-year">{{ item.date|date('Y') }}</span>
+              {% endif %}
+            </div>
           </div>
-        </div>
-        {% if not item.is_today_marker|default(false) %}
-          {% set slide_index = slide_index + 1 %}
-        {% endif %}
-      {% endfor %}
+          {% if not item.is_today_marker|default(false) %}
+            {% set slide_index = slide_index + 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
 
     {# 2. Carousel viewport SECOND #}
