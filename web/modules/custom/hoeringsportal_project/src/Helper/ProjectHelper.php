@@ -2,7 +2,6 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
-use DateTimeImmutable;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -13,6 +12,9 @@ use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 
+/**
+ *
+ */
 class ProjectHelper {
   use StringTranslationTrait;
 
@@ -32,7 +34,7 @@ class ProjectHelper {
       }
 
       $variables['timeline_items'] = [];
-      $now = new DateTimeImmutable();
+      $now = new \DateTimeImmutable();
 
       $nodes = $this->getTimelineNodes($variables);
 
@@ -48,9 +50,19 @@ class ProjectHelper {
 
       $variables['timeline_items'][] = $this->addNowAsTimelineItem($now);
       usort($variables['timeline_items'], static fn(array $a, array $b): int => $a['date'] <=> $b['date']);
+
+      $variables['legend_items'] = [
+        ['status' => 'completed', 'label' => $this->t('Afsluttet')],
+        ['status' => 'current', 'label' => $this->t('I gang nu')],
+        ['status' => 'upcoming', 'label' => $this->t('Kommende')],
+        ['status' => 'note', 'label' => $this->t('Note')],
+      ];
     }
   }
 
+  /**
+ *
+ */
   #[Hook('form_node_project_main_page_form_alter')]
   #[Hook('form_node_project_main_page_edit_form_alter')]
   public function projectFormAlter(&$form, FormStateInterface $form_state): void {
@@ -58,7 +70,7 @@ class ProjectHelper {
 
     $form['field_timeline']['#states'] = [
       'visible' => [
-        $timelineSelector => ['checked' => true],
+        $timelineSelector => ['checked' => TRUE],
       ],
     ];
   }
@@ -74,7 +86,7 @@ class ProjectHelper {
 
     $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
 
-    $originalEntity = $entity->original ?? null;
+    $originalEntity = $entity->original ?? NULL;
     $oldTargetId = 0;
     if ($originalEntity->hasField('field_project_reference')) {
       $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
@@ -101,6 +113,9 @@ class ProjectHelper {
     $this->entityTypeManagerInterface->getStorage('node')->resetCache($idsToReset);
   }
 
+  /**
+   *
+   */
   private function getTimelineNodes($variables) : ?array {
     $nodeStorage = $this->entityTypeManagerInterface->getStorage('node');
 
@@ -121,6 +136,9 @@ class ProjectHelper {
     return $nodeStorage->loadMultiple($references);
   }
 
+  /**
+   *
+   */
   private function getTimelineNotes($variables) : ?array {
     $paragraphStorage = $this->entityTypeManagerInterface->getStorage('paragraph');
     $noteQuery = $paragraphStorage->getQuery();
@@ -132,6 +150,9 @@ class ProjectHelper {
     return $paragraphStorage->loadMultiple($noteIds);
   }
 
+  /**
+   *
+   */
   private function addNodeAsTimelineItem(mixed $node, $now): array {
     $date = $this->determineDate($node);
     $image = $this->determineImage($node)?->getFileUri();
@@ -151,6 +172,9 @@ class ProjectHelper {
     ];
   }
 
+  /**
+   *
+   */
   private function addNoteAsTimelineItem(mixed $paragraph, $now): array {
     $date = $paragraph->field_date->date;
     $image = $paragraph?->field_paragraph_image?->entity?->field_itk_media_image_upload?->entity?->getFileUri();
@@ -169,6 +193,9 @@ class ProjectHelper {
     ];
   }
 
+  /**
+   *
+   */
   private function addNowAsTimelineItem($now): array {
     return [
       'id' => 'today',
@@ -181,9 +208,13 @@ class ProjectHelper {
       'image' => NULL,
       'link' => NULL,
       'linkText' => NULL,
+      'is_today_marker' => TRUE,
     ];
   }
 
+  /**
+   *
+   */
   private function determineDate(NodeInterface $node): ?DrupalDateTime {
     return match (TRUE) {
       $node->hasField('field_decision_date') => new DrupalDateTime($node->field_decision_date->value),
@@ -193,6 +224,10 @@ class ProjectHelper {
       default => NULL,
     };
   }
+
+  /**
+   *
+   */
   private function determineImage(NodeInterface $node): ?File {
     return match (TRUE) {
       $node->hasField('field_media_image') => $node->field_media_image->entity->field_itk_media_image_upload->entity,
@@ -202,12 +237,17 @@ class ProjectHelper {
     };
   }
 
+  /**
+   *
+   */
   private function determineStatus(EntityInterface $entity, string $date, string $now): string {
     switch (TRUE) {
       case $date > $now:
         return 'upcoming';
+
       case $entity->getEntityTypeId() === 'node':
         return 'completed';
+
       case $entity->getEntityTypeId() === 'paragraph':
         return 'note';
     }
