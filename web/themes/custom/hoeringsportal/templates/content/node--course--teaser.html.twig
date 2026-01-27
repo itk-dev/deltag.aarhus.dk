@@ -6,7 +6,7 @@
 {% block card_content %}
 {% endblock %}
 
-{% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date' : 'hoeringsportal_datetime' %}
+{% set dateFormat = node.field_hide_time.value ? 'hoeringsportal_date_long' : 'hoeringsportal_date_time_long' %}
 
 {# Collect data for information lines on card #}
 {%
