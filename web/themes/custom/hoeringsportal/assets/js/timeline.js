@@ -39,8 +39,14 @@
    *   The timeline container element.
    */
   function initTimeline(timeline) {
+    // Determine default view based on viewport
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const defaultView = isMobile
+      ? "horizontal"
+      : timeline.dataset.defaultView || "vertical";
+
     const state = {
-      currentView: timeline.dataset.defaultView || "vertical",
+      currentView: defaultView,
       carouselIndex: 0,
       carouselTotal: 0,
       observer: null,
@@ -60,9 +66,22 @@
       carouselCurrent: timeline.querySelector("[data-carousel-current]"),
       carouselTotal: timeline.querySelector("[data-carousel-total]"),
       navLinks: timeline.querySelectorAll("[data-nav-link]"),
+      dotTrack: timeline.querySelector("[data-dot-track]"),
     };
 
     state.carouselTotal = elements.carouselSlides.length;
+
+    // Update toggle buttons to reflect actual default
+    elements.viewButtons.forEach((btn) => {
+      const isSelected = btn.dataset.view === defaultView;
+      btn.setAttribute("aria-selected", isSelected ? "true" : "false");
+    });
+
+    // Show/hide panels based on actual default
+    if (defaultView === "horizontal") {
+      elements.verticalPanel?.setAttribute("hidden", "");
+      elements.horizontalPanel?.removeAttribute("hidden");
+    }
 
     // Initialize components
     initViewToggle();
@@ -70,6 +89,7 @@
     initCarousel();
     initScrollTracking();
     initKeyboardNavigation();
+    initResizeHandler();
 
     /**
      * Initialize view mode toggle buttons.
@@ -330,6 +350,62 @@
         const dotIndex = parseInt(dot.dataset.slideIndex, 10);
         dot.classList.toggle("is-active", dotIndex === state.carouselIndex);
       });
+
+      // Update dot navigation position on mobile
+      updateDotPosition();
+    }
+
+    /**
+     * Update dot navigation position to center active dot (mobile windowed view).
+     */
+    function updateDotPosition() {
+      const dotTrack = elements.dotTrack;
+      if (!dotTrack) {
+        return;
+      }
+
+      const dots = dotTrack.querySelectorAll(
+        ".project-timeline__horizontal-dot-wrapper",
+      );
+      if (!dots.length) {
+        return;
+      }
+
+      // Only apply windowed view on mobile
+      if (window.innerWidth >= 768) {
+        dotTrack.style.transform = "";
+        return;
+      }
+
+      // Find the active dot wrapper by matching slide index
+      // Need to account for today markers which don't have slide indices
+      let activeDotWrapper = null;
+      let dotIndex = 0;
+
+      for (const wrapper of dots) {
+        const dot = wrapper.querySelector(".project-timeline__horizontal-dot");
+        if (dot?.dataset.slideIndex !== undefined) {
+          if (parseInt(dot.dataset.slideIndex, 10) === state.carouselIndex) {
+            activeDotWrapper = wrapper;
+            break;
+          }
+          dotIndex++;
+        }
+      }
+
+      if (!activeDotWrapper) {
+        return;
+      }
+
+      // Calculate offset to center the active dot
+      const containerRect = dotTrack.parentElement.getBoundingClientRect();
+      const containerCenter = containerRect.width / 2;
+      const dotRect = activeDotWrapper.getBoundingClientRect();
+      const dotCenterRelativeToTrack =
+        activeDotWrapper.offsetLeft + dotRect.width / 2;
+      const offset = containerCenter - dotCenterRelativeToTrack;
+
+      dotTrack.style.transform = `translateX(${offset}px)`;
     }
 
     /**
@@ -426,6 +502,24 @@
           }
         });
       });
+    }
+
+    /**
+     * Initialize resize handler for dot navigation.
+     */
+    function initResizeHandler() {
+      let resizeTimeout;
+
+      window.addEventListener("resize", () => {
+        // Debounce resize events
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          updateDotPosition();
+        }, 100);
+      });
+
+      // Initial position update
+      updateDotPosition();
     }
   }
 })(Drupal, once);
