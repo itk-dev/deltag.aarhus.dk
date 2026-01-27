@@ -1184,7 +1184,7 @@ $mobile-image-height: 160px;
   .project-timeline__horizontal-line {
     overflow: hidden;
     justify-content: flex-start;
-    padding: 0;
+    padding: 4px 0; // Vertical padding to prevent clipping scaled dots
 
     // Hide the connecting line on mobile (handled by inner wrapper)
     &::before {
