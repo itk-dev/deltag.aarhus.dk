@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-593](https://github.com/itk-dev/deltag.aarhus.dk/pull/593)
+  * Add project timeline
+  * Add project reference fields to several node types to display on timeline
+  * Add paragraph for adding custom elements to timeline
+  * Add CLAUDE.md file to project
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
   * Cleaned up local OIDC setup
   * Added test server OIDC setup
