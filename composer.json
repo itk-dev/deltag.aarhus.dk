@@ -96,6 +96,7 @@
         "drupal/masquerade": "^2.0",
         "drupal/webprofiler": "^10.3",
         "ergebnis/composer-normalize": "^2.44",
+        "itk-dev/drupal_translation_extractor": "^1.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan-deprecation-rules": "^1.1",
@@ -317,6 +318,9 @@
             },
             "drupal/site_status_message": {
                 "Add cache support (https://www.drupal.org/project/site_status_message/issues/3497218)": "https://git.drupalcode.org/project/site_status_message/-/merge_requests/8.diff"
+            },
+            "vincentlanglet/twig-cs-fixer": {
+                "Drupal's trans tag has an optional plural tag which conflicts with the trans tag from Symfony's Twig bridge (cf. https://github.com/VincentLanglet/Twig-CS-Fixer/pull/134#issuecomment-1756924889)": "patches/vincentlanglet/twig-cs-fixer/token-parser.patch"
             }
         },
         "scripts": {

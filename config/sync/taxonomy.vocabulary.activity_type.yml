@@ -1,0 +1,9 @@
+uuid: 7cc1d7e8-f1d5-4072-bfa2-116a01f0f8dd
+langcode: da
+status: true
+dependencies: {  }
+name: Aktivitetstype
+vid: activity_type
+description: 'Bruges til specificering af aktiviteter'
+weight: 0
+new_revision: false

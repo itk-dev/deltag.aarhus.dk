@@ -1,0 +1,10 @@
+name: Hoeringsportal activity
+type: module
+description: "Activity module extends the public meeting event to include other activities"
+package: Hoeringsportal
+core_version_requirement: ^10 || ^11
+interface translation project: hoeringsportal_activity
+interface translation server pattern: modules/custom/hoeringsportal_activity/translations/hoeringsportal_activity.%language.po
+
+dependencies:
+  - hoeringsportal_public_meeting:hoeringsportal_public_meeting

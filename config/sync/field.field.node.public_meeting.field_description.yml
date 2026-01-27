@@ -14,7 +14,7 @@ entity_type: node
 bundle: public_meeting
 label: Beskrivelse
 description: 'Beskrivelse af borgemødet.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

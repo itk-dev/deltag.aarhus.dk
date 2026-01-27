@@ -1,0 +1,60 @@
+uuid: 63797078-17e8-4921-8ea2-8c150b9f4bc4
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.hearing_ticket_add
+    - field.field.node.dialogue_proposal.field_age_span
+    - field.field.node.dialogue_proposal.field_area
+    - field.field.node.dialogue_proposal.field_comments
+    - field.field.node.dialogue_proposal.field_dialogue
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_category
+    - field.field.node.dialogue_proposal.field_dialogue_proposal_descr
+    - field.field.node.dialogue_proposal.field_image_upload
+    - field.field.node.dialogue_proposal.field_location
+    - field.field.node.dialogue_proposal.field_owner_email
+    - field.field.node.dialogue_proposal.field_owner_name
+    - node.type.dialogue_proposal
+  module:
+    - user
+id: node.dialogue_proposal.hearing_ticket_add
+targetEntityType: node
+bundle: dialogue_proposal
+mode: hearing_ticket_add
+content:
+  field_area:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: right
+  flag_support_proposal:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_age_span: true
+  field_comments: true
+  field_dialogue: true
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_descr: true
+  field_image_upload: true
+  field_location: true
+  field_owner_email: true
+  field_owner_name: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

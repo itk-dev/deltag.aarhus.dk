@@ -21,54 +21,71 @@
           <h1>{{ title }}</h1>
           <div class="mb-5 row">
             <div class="col-lg-8 mb-3 lead-text">
-              {{ description }}
+              <div class="mb-5">
+                {{ description }}
+              </div>
+              {% if shortcuts %}
+                <div class="mb-5">
+                  {% for shortcut in shortcuts %}
+                    <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if tags_fields %}
+                <div>
+                  <button class="tags is-comma-separated text-background-match">
+                    {% for tags in tags_fields %}
+                      {% if tags %}
+                        {{ tags }}
+                      {% endif %}
+                    {% endfor %}
+                  </button>
+                </div>
+              {% endif %}
             </div>
             {% if right_content %}
               <div class="col-lg-4 ps-3">
                 <div class="aside-contact-info-text {{ type ?? 'type-default' }}">
                   <div class="border-start ps-3">
                     {% for element in right_content %}
-                      <div>
-                        <div class="align-top d-inline-block me-2">
-                          <i class="fa-regular fa-circle-dot text-background-match"></i>
+                      {% if element.value is not null %}
+                        {% set icon = element.icon ?? 'fa-regular fa-circle-dot' %}
+                        <div class="text-nowrap">
+                          <div class="align-top d-inline-block me-2">
+                            <i class="{{ icon }} text-background-match"></i>
+                          </div>
+                          {% if element.type is same as('text') %}
+                            <div class="d-inline-block">
+                              <div class="text-background-match">{{ element.label }}</div>
+                              {% if element.value is not iterable %}
+                                <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
+                              {% else %}
+                                {% if 'field' == element.value['#theme'] %}
+                                  <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
+                                  {% else %}
+                                    {% for value in element.value %}
+                                      {% if value['#theme'] %}
+                                        <div class="text-wrap text-capitalize-first-word">{{ value }}</div>
+                                      {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                              {% endif %}
+                            </div>
+                          {% endif %}
+                          {% if element.type is same as('link') %}
+                            <div class="d-inline-block">
+                              <div class="text-background-match">{{ element.label }}</div>
+                              <div class="text-capitalize-first-word"><a href="{{ element.href }}">{{ element.link_text }}</a></div>
+                            </div>
+                          {% endif %}
                         </div>
-                        {% if element.type is same as('text') %}
-                          <div class="d-inline-block">
-                            <div class="text-background-match">{{ element.label }}</div>
-                            <div class="fw-bold">{{ element.value }}</div>
-                          </div>
-                        {% endif %}
-                        {% if element.type is same as('link') %}
-                          <div class="d-inline-block">
-                            <div class="text-background-match">{{ element.label }}</div>
-                            <div class="fw-bold"><a href="{{ element.href }}">{{ element.link_text }}</a></div>
-                          </div>
-                        {% endif %}
-                      </div>
+                      {% endif %}
                     {% endfor %}
                   </div>
                 </div>
               </div>
             {% endif %}
           </div>
-          {% if shortcuts %}
-            <div class="mb-5">
-              {% for shortcut in shortcuts %}
-                <a href="{{ shortcut.href is iterable ? path(shortcut.href.route, shortcut.href.parameters) : shortcut.href }}" class="btn border border-dark">{{ shortcut.label }}</a>
-              {% endfor %}
-            </div>
-          {% endif %}
-          {% if tags_fields %}
-            <div>
-              <button class="tags is-comma-separated text-background-match">
-                {% for tags in tags_fields %}
-                  {% if tags %}
-                    {{ tags }}
-                  {% endif %}
-                {% endfor %}
-              </button>
-            </div>
-          {% endif %}
         </div>
       </div>
     {% endblock %}

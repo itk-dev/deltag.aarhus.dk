@@ -1,0 +1,70 @@
+uuid: 05bac741-1597-4982-8115-e63967768401
+langcode: da
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.hearing_ticket_view
+    - field.field.node.course.field_activity_location
+    - field.field.node.course.field_activity_type
+    - field.field.node.course.field_address
+    - field.field.node.course.field_area
+    - field.field.node.course.field_content_sections
+    - field.field.node.course.field_content_state
+    - field.field.node.course.field_department
+    - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_time
+    - field.field.node.course.field_last_meeting_time
+    - field.field.node.course.field_map
+    - field.field.node.course.field_teaser
+    - field.field.node.course.field_top_images
+    - field.field.node.course.field_type
+    - node.type.course
+  module:
+    - user
+id: node.course.hearing_ticket_view
+targetEntityType: node
+bundle: course
+mode: hearing_ticket_view
+content:
+  field_area:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 10
+    region: right
+  field_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: right
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_activity_location: true
+  field_activity_type: true
+  field_address: true
+  field_content_sections: true
+  field_content_state: true
+  field_department: true
+  field_first_meeting_time: true
+  field_hide_time: true
+  field_last_meeting_time: true
+  field_map: true
+  field_teaser: true
+  field_top_images: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

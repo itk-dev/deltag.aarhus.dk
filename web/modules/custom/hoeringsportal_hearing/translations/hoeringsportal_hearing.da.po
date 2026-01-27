@@ -1,0 +1,61 @@
+# Danish translation of module hoeringsportal_hearing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-01-07 12:56+0100\n"
+"PO-Revision-Date: 2026-01-07 12:56+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid "About"
+msgstr "Om"
+
+msgid "Add hearing reply"
+msgstr "Tilføj høringssvar"
+
+msgid ""
+"Example: "
+"<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
+msgstr ""
+"Eksempel: "
+"<code>[gis:minimap:409c1dc9-b604-4f1e-9df9-2768d050acb4]</code>"
+
+msgid "GIS data"
+msgstr "GIS-data"
+
+msgid "Hearing deadline has passed"
+msgstr "Høringsfristen er udløbet"
+
+msgid "Hearing deadline: @deadline"
+msgstr "Høringsfrist: @deadline"
+
+msgid "Hearings"
+msgstr "Høringer"
+
+msgid "Insert GIS minimap by UUID"
+msgstr "Indsæt GIS-minikort med UUID"
+
+msgid "Invalid GIS map UUID: @map_uuid"
+msgstr "Ugyldigt GIS-kort-UUID: @map_uuid"
+
+msgid "The delete date must not be before the reply deadline"
+msgstr "Sletningsdatoen må ikke være før svarfristen"
+
+msgid "The delete date must not be in the past"
+msgstr "Sletningsdatoen må ikke være i fortiden"
+
+msgid "The reply deadline must not be before the start date"
+msgstr "Svarfristen må ikke være før startdatoen"
+
+msgid "The reply deadline must not be in the past"
+msgstr "Svarfristen må ikke være i fortiden"
+
+msgid "The start date must not be in the past"
+msgstr "Startdatoen må ikke være i fortiden"
+

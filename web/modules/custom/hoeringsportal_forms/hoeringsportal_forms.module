@@ -28,6 +28,9 @@ function hoeringsportal_forms_theme_suggestions_alter(array &$suggestions, array
     if ($variables['form']['#form_id'] == 'node_public_meeting_form' || $variables['form']['#form_id'] == 'node_public_meeting_edit_form') {
       $suggestions[] = $hook . '__hoeringsportal_public_meeting';
     }
+    if ($variables['form']['#form_id'] == 'node_course_form' || $variables['form']['#form_id'] == 'node_course_edit_form') {
+      $suggestions[] = $hook . '__hoeringsportal_course';
+    }
     if ($variables['form']['#form_id'] == 'node_dialogue_form' || $variables['form']['#form_id'] == 'node_dialogue_edit_form') {
       $suggestions[] = $hook . '__hoeringsportal_dialogue';
     }
@@ -58,6 +61,9 @@ function hoeringsportal_forms_theme($existing, $type, $theme, $path) {
     'node_edit_form__hoeringsportal_public_meeting' => [
       'render element' => 'form',
     ],
+    'node_edit_form__hoeringsportal_course' => [
+      'render element' => 'form',
+    ],
     'node_edit_form__hoeringsportal_dialogue' => [
       'render element' => 'form',
     ],
@@ -76,6 +82,7 @@ function hoeringsportal_forms_form_node_form_alter(&$form, FormStateInterface $f
   $form['advanced']['#attributes']['style'] = 'margin-top:1em';
 
   $form['#attached']['library'][] = 'hoeringsportal_forms/form_styles';
+  $form['#attached']['library'][] = 'hoeringsportal_forms/dawa-support-text-field';
   $form['field_media_image']['widget']['entity_browser']['#weight'] = -10;
   $form['field_media_image']['widget']['current']['#weight'] = -50;
 

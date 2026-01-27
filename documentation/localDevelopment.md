@@ -111,8 +111,8 @@ Start docker
 ```sh
 docker compose pull
 docker compose up --detach
-# Note: If you want to start pretix and the mock OIDC IdP you have to enable the "pretix" and "oidc" profiles (cf. https://docs.docker.com/compose/profiles/):
-# docker compose --profile pretix --profile oidc up --detach
+# Note: If you want to start pretix you have to enable the "pretix" profile (cf. https://docs.docker.com/compose/profiles/):
+# docker compose --profile pretix up --detach
 docker compose exec phpfpm composer install
 docker compose exec phpfpm vendor/bin/drush --yes site:install --existing-config
 
@@ -158,20 +158,19 @@ task coding-standards:markdown:check
 
 ## About translations
 
-Import translations by running
+See [Translations](Translations.md) for details on how we handle translations.
+
+<details>
+<summary>Do we still use/need this</summary>
 
 ```sh
-(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.hoeringsportal_dialogue.da.po)
-```
-
-Export translations by running
-
-```sh
-(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.hoeringsportal_dialogue.da.po)
+(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.da.po)
 ```
 
 Open `translations/custom-translations.da.po` with the latest version of [Poedit](https://poedit.net/) to clean up and
 then save the file.
+
+</details>
 
 See [How to deploy drupal interface
 translations](https://medium.com/limoengroen/how-to-deploy-drupal-interface-translations-5653294c4af6) for further

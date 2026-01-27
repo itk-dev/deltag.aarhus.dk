@@ -1,0 +1,108 @@
+uuid: 09f0c614-a5fb-4064-965f-c5ffd6f69d41
+langcode: da
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.course.field_activity_location
+    - field.field.node.course.field_activity_type
+    - field.field.node.course.field_address
+    - field.field.node.course.field_area
+    - field.field.node.course.field_content_sections
+    - field.field.node.course.field_content_state
+    - field.field.node.course.field_department
+    - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_time
+    - field.field.node.course.field_last_meeting_time
+    - field.field.node.course.field_map
+    - field.field.node.course.field_teaser
+    - field.field.node.course.field_top_images
+    - field.field.node.course.field_type
+    - node.type.course
+  module:
+    - datetime
+    - options
+    - user
+id: node.course.teaser
+targetEntityType: node
+bundle: course
+mode: teaser
+content:
+  field_area:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_content_state:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_first_meeting_time:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: Europe/Copenhagen
+      format_type: html_datetime
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_last_meeting_time:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: Europe/Copenhagen
+      format_type: html_datetime
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_teaser:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_top_images:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: teaser_display
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  field_activity_location: true
+  field_activity_type: true
+  field_address: true
+  field_content_sections: true
+  field_department: true
+  field_hide_time: true
+  field_map: true
+  langcode: true
+  published_at: true
+  search_api_excerpt: true

@@ -8,7 +8,7 @@
   }
 
   @include media-breakpoint-up(md) {
-    padding: $spacer * 2.5 0 $spacer * 2.5 $spacer * 2.5;
+    padding: $spacer * 2.5;
   }
 }
 

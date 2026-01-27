@@ -2,24 +2,17 @@ services:
   # https://github.com/geigerzaehler/oidc-provider-mock
   idp-citizen:
     image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
-    profiles:
-      - oidc
-      - test
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-citizen.${COMPOSE_DOMAIN}
     networks:
       - app
       - frontend
-    ports:
-      - "80"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-idp.rule=Host(`idp-citizen.${COMPOSE_DOMAIN}`)"
     command:
       [
-        "--port",
-        "80",
         "--user-claims",
         '{"sub": "citizen1", "dk_ssn": "1111111111", "name": "Anders And", "zip": "1111"}',
         "--user-claims",
@@ -34,27 +27,19 @@ services:
         '{"sub": "aarhusianer", "dk_ssn": "2611740000", "name": "Betina Henningsentest"}',
       ]
 
-  # https://github.com/Soluto/oidc-server-mock
   idp-employee:
     image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
-    profiles:
-      - oidc
-      - test
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-employee.${COMPOSE_DOMAIN}
     networks:
       - app
       - frontend
-    ports:
-      - "80"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-employee.rule=Host(`idp-employee.${COMPOSE_DOMAIN}`)"
     command:
       [
-        "--port",
-        "80",
         "--user-claims",
         '{"sub": "user", "email": "user@example.com", "groups": ["authenticated"]}',
         "--user-claims",
@@ -78,7 +63,7 @@ services:
   idp_mock_api:
     image: dotronglong/faker:stable
     profiles:
-      - oidc
+      - oidc-api
     networks:
       - app
       - frontend

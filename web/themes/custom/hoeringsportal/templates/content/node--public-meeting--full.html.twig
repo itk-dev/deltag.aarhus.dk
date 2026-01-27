@@ -1,0 +1,186 @@
+{% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
+
+{% block content_top %}
+  {% if public_meeting_context.upcoming is not empty %}
+    {# Set start and end time for next meeting #}
+    {% set meetingDateStartTime = public_meeting_context.upcoming|first.time_from %}
+    {% set meetingDateEndTime = public_meeting_context.upcoming|first.time_to %}
+    {% set meetingLocation = public_meeting_context.upcoming|first.location %}
+    {% set meetingAddress = public_meeting_context.upcoming|first.address %}
+  {% else %}
+    {% set meetingDateStartTime = node.field_last_meeting_time.date %}
+    {% set meetingDateEndTime = node.field_last_meeting_time_end.date %}
+    {% set meetingLocation = node.field_pretix_dates|first.value.location %}
+  {% endif %}
+
+  {% set shortcuts = {
+    0: {
+      label: 'Content'|t,
+      href: '#content',
+    }
+  } %}
+
+  {% if not node.field_hidden_signup.value %}
+    {% set shortcuts = shortcuts|merge([{
+      label: 'Signup'|t,
+      href: '#content-pretix-dates',
+    }]) %}
+  {% endif %}
+
+  {% if node.field_map.value[0].data != 'null' %}
+    {% set shortcuts = shortcuts|merge([{
+      label: 'Map'|t,
+      href: '#map',
+    }]) %}
+  {% endif %}
+
+  {# Header #}
+  {{ include(directory ~ '/templates/components/header-default.html.twig', {
+    images: node.field_media_image_single,
+    type: node.bundle,
+    title: node.label,
+    description: content.field_teaser,
+    tags_fields: {0: content.field_area, 1: content.field_type},
+    shortcuts: shortcuts,
+    background_class: 'bg-white',
+    right_content: {
+      0: {
+        type: 'text',
+        label: 'Category'|t,
+        value: node.field_activity_type.value ? node.field_activity_type.entity.label : null,
+        icon: 'fa-solid fa-layer-group'
+      },
+      1: {
+        type: 'text',
+        label: 'Date'|t,
+        value: meetingDateStartTime|date('U')|format_date('hoeringsportal_date_long'),
+        icon: 'fa-solid fa-calendar-day'
+      },
+      2: {
+        type: 'text',
+        label: 'Time'|t,
+        value: meetingDateStartTime|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|date('U')|format_date('hoeringsportal_time'),
+        icon: 'fa-solid fa-clock'
+      },
+      3: {
+        type: 'text',
+        label: 'Address'|t,
+        value: [
+          meetingLocation ?? node.field_activity_location.value,
+          meetingAddress ?? node.field_address.value
+        ],
+        icon: 'fa-solid fa-location-dot'
+      }
+    },
+    category: 'Event'|t,
+    notification: node.field_public_meeting_cancelled.value ? {
+      header: 'Cancelled'|t,
+      message: node.field_cancelled_text.value
+    } : null
+  }) }}
+
+{% endblock %}
+
+{% block content_main %}
+  {# Main container #}
+  <div class="bg-white pb-5 mb-5" id="content">
+    <div class="container description_contact__container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if node.field_description.value %}
+            {{ content.field_description }}
+          {% endif %}
+        </div>
+        <div class="col-md-4">
+          {% if node.field_contact.value or node.field_email_address.value %}
+            <div class="aside-contact-info-text">
+              <div class="small fw-semibold text-primary mb-3">{{ 'Contact'|t }}</div>
+              <div class="mb-3">{{ content.field_contact }}</div>
+              <div>{{ content.field_email_address }}</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="container content__container mb-5">
+      <div class="sections d-flex flex-column">
+        {{ content.field_section }}
+        {{ content.field_media_document }}
+      </div>
+    </div>
+    {% if not node.field_hidden_signup.value %}
+      <div class="content__dates-container pb-5">
+        <div class="container" id="content-pretix-dates">
+          <div class="row">
+            <div class="col-md-12">
+              {% if 'pretix' == node.field_signup_selection.value %}
+                {{ content.field_pretix_dates }}
+              {% elseif 'manual' == node.field_signup_selection.value %}
+                <div class="mb-5 mx-3 mx-lg-0 my-5">
+                  <h2>{{ 'Signup'|t }}</h2>
+                  <div class="row row-gap-2 py-2 d-none d-lg-flex">
+                    <label class="col-lg-3 col-xl-3 fw-bold small text-body-secondary">{{ 'Location'|t }}</label>
+                    <label class="col-lg-3 col-xl-3 fw-bold small text-body-secondary">{{ 'Date'|t }}</label>
+                    <label class="col-lg-1 col-xl-2 fw-bold small text-body-secondary">{{ 'Time'|t }}</label>
+                  </div>
+                  <div class="d-flex flex-column gap-4">
+                    <div class="signup-multiple-dates row row-gap-2 py-2 py-lg-3 position-relative bg-white text-muted rounded">
+                      <div class="col-auto col-sm-12 col-lg-3 col-xl-3 d-flex">
+                        <span>
+                          <svg class="svg-inline--fa fa-ticket-simple d-lg-block d-none me-3 mt-1 opacity-50" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="ticket-simple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 128C0 92.7 28.7 64 64 64l448 0c35.3 0 64 28.7 64 64l0 64c0 8.8-7.4 15.7-15.7 18.6C541.5 217.1 528 235 528 256s13.5 38.9 32.3 45.4c8.3 2.9 15.7 9.8 15.7 18.6l0 64c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64l0-64c0-8.8 7.4-15.7 15.7-18.6C34.5 294.9 48 277 48 256s-13.5-38.9-32.3-45.4C7.4 207.7 0 200.8 0 192l0-64z"></path></svg><!-- <i class="d-none fa-solid fa-ticket-alt opacity-50 me-3 mt-1 d-lg-block"></i> Font Awesome fontawesome.com -->
+                        </span>
+                        <div>
+                          <label class="d-block d-lg-none fw-bold small text-body-secondary">{{ 'Location'|t }}</label>
+                          <p class="fw-semibold mb-1"><span>{{ node.field_activity_location.value }}</span></p>
+                          <p class="small mb-0"><span>{{ node.field_address.value }}</span></p>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12 col-lg-3 col-xl-3">
+                        <label class="d-block d-lg-none fw-bold small text-body-secondary">{{ 'Date'|t }}</label>
+                        <span><small class="fw-semibold">{{ node.field_last_meeting_time.date|date('U')|format_date('hoeringsportal_date_long') }}</small></span>
+                      </div>
+                      <div class="col-12 col-sm-6 col-lg-1 col-xl-2">
+                        <label class="d-block d-lg-none fw-bold small text-body-secondary">{{ 'Time'|t }}</label>
+                        <span>{{ node.field_last_meeting_time.date|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ node.field_last_meeting_time_end.date|date('U')|format_date('hoeringsportal_time') }}</span>
+                      </div>
+                      <div class="col-auto col-sm-12 col-lg-3 col-xl-3">
+                        <label class="d-block d-lg-none fw-bold small text-body-secondary"></label>
+                        <div>
+                          {% if node.field_public_meeting_cancelled.value %}
+                            <strong>{{ 'Cancelled'|t }}</strong>
+                          {% elseif node.field_registration_deadline.date|date('U') < 'now'|date('U') %}
+                            <strong>{{ 'Deadline exceeded'|t({}, {context: 'signup'}) }}</strong>
+                          {% else %}
+                            <strong><a class="btn btn-sm btn-pink text-white rounded py-1 px-3" href="{{ node.field_signup_link.value[0].uri }}">{{ node.field_signup_link.value[0].title }}</a></strong>
+                            <span class="small d-block">{{ 'Deadline:'|t({}, {context: 'signup'}) }} {{ node.field_registration_deadline.date|date('U')|format_date('hoeringsportal_date_long') }}</span>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% if node.field_signup_text.value %}
+                  <div>
+                    <div class="col-12 col-sm-6 col-lg-1 col-xl-1">
+                      <label class="fw-bold">{{ 'Description'|t }}</label>
+                      <span>{{ node.field_signup_text.value|raw }}</span>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {{ content.field_map }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

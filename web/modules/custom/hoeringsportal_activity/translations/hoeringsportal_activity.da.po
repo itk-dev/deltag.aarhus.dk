@@ -1,0 +1,49 @@
+# Danish translation of module hoeringsportal_activity
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-01-08 08:39+0100\n"
+"PO-Revision-Date: 2026-01-08 08:39+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid ""
+"A course represents a period of time where different activities can "
+"occur. Courses may stretch over days, weeks or months. Users cannot "
+"sign up or buy tickets for courses."
+msgstr ""
+"Et forløb repræsenterer en periode, hvor der kan afvikles en række "
+"aktiviteter. Forløb kan strække sig over dage, uger eller måneder. "
+"Brugere kan ikke melde sig til forløb eller købe billetter."
+
+msgid ""
+"An event represents a scheduled activity for a specific day and time. "
+"It is possible to add signup and ticket system for an event, but it is "
+"not required."
+msgstr ""
+"En begivenhed repræsenterer en planlagt aktivitet på et specifikt "
+"tidspunkt. Det er muligt at tilføje tilmeldingssystem og billetter "
+"til en begivenhed, men det er ikke påkrævet."
+
+msgid "Create course"
+msgstr "Opret forløb"
+
+msgid "Create event"
+msgstr "Opret begivenhed"
+
+msgid ""
+"Examples: Project period where citizens can participate through "
+"different activities."
+msgstr ""
+"Eksempler: Projektperiode hvor borgere kan deltage igennem forskellige "
+"aktiviteter."
+
+msgid "Examples: Public meeting, Guided walk, Workshop."
+msgstr "Eksempler: Borgermøder, guidede ture eller workshops."
+

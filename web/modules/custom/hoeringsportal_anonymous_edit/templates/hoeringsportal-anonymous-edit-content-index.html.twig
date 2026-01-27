@@ -40,11 +40,11 @@
 #}
 <div class="anonymous-edit-content-list">
 {% if entities is empty %}
-  <div class="info">{{ "You don't have any content."|trans }}</div>
+  <div class="info">{{ "You don't have any content."|t({}, {context: 'hoeringsportal_anonymous_edit'}) }}</div>
 
   {# If entities is null, the user does not have an edit token #}
   {% if entities is same as(null) %}
-    <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|trans }}</a>
+    <a class="btn btn-primary" href="{{ path('hoeringsportal_anonymous_edit.content_request') }}">{{ 'Find my content'|t({}, {context: 'hoeringsportal_anonymous_edit'}) }}</a>
   {% endif %}
 {% else %}
   {% for entity_type in entities %}
@@ -65,7 +65,7 @@
                   {% set url = commentedEntity.toUrl(options: {fragment: 'comment-' ~ comment.id}) %}
                   <a href="{{ url }}">{{ 'Comment #@comment on %title'|t({'@comment': comment.id, '%title': commentedEntity.label()}) }}</a>
                 {% else %}
-                  {{ entity.instance.toLink('Edit'|trans, 'edit-form', {query: entity.edit_query}) }}
+                  {{ entity.instance.toLink('Edit'|t({}, {context: 'hoeringsportal_anonymous_edit'}), 'edit-form', {query: entity.edit_query}) }}
                 {% endif %}
               </li>
             {% endfor %}

@@ -1,40 +1,150 @@
-# Danish translation of anonymous edit module
+# Danish translation of module hoeringsportal_anonymous_edit
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2025-12-04 14:19+0100\n"
-"PO-Revision-Date: 2025-12-04 14:19+0100\n"
+"POT-Creation-Date: 2026-01-07 12:56+0100\n"
+"PO-Revision-Date: 2026-01-07 12:56+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid "Allow cancel"
+msgstr "Tillad annullering"
+
+msgid "Allow delete"
+msgstr "Tillad sletning"
+
+msgid "Allow update"
+msgstr "Tillad opdatering"
+
+msgid "Cancel comment"
+msgstr "Annullér kommentar"
+
+msgid "Cancel comment?"
+msgstr "Annullér kommentar?"
+
+msgid "Cancel texts"
+msgstr "Annullértekster"
+
+msgid "Comment #@comment on %title"
+msgstr "Kommentar #@comment på %title"
+
+msgid "Comment cancelled"
+msgstr "Kommentar annulleret"
+
+msgid "Confirm your email address"
+msgstr "Bekræft din e-mailadresse"
+
+msgid "Edit"
+msgstr "Redigér"
+
+msgid "Edit proposal"
+msgstr "Redigér forslag"
+
+msgid "Email sent to @email"
+msgstr "E-mail sendt til @email"
+
+msgid "Error recovering your edit token"
+msgstr "Fejl ved genoprettelse af din redigeringstoken"
+
+msgid "Error sending email @email"
+msgstr "Fejl ved afsendelse af e-mail til @email"
+
+msgid "Find content"
+msgstr "Find indhold"
+
+msgid "Find my content"
+msgstr "Find mit indhold"
+
+msgid "General"
+msgstr "Generelt"
+
+msgid ""
+"If you cancel the comment its content will be deleted, but any "
+"sub-comments will remain. This action cannot be undone."
+msgstr ""
+"Hvis du annullerer kommentaren, vil indholdet blive slettet, men alle "
+"underkommentarer vil forblive. Denne handling kan ikke fortrydes."
+
+msgid "Invalid cancel texts: @message"
+msgstr "Ugyldige annulleringstekster: @message"
+
+msgid "Invalid email address"
+msgstr "Ugyldig email adresse"
+
+msgid "Keep comment"
+msgstr "Behold kommentar"
+
+msgid "Log level"
+msgstr "Logniveau"
+
+msgid "Node"
+msgstr "Indhold"
+
+msgid "Owner name format"
+msgstr "Ejernavneformat"
+
+msgid ""
+"Text to set when cancelling a comment. Must be a YAML map from comment "
+"fields to texts, e.g. <code><pre>field_comment: Denne kommentar er "
+"blevet slettet af forfatteren.</pre></code>"
+msgstr ""
+"Tekst der skal indsættes ved annullering af en kommentar. Skal være "
+"en YAML-afbildning fra kommentarfelter til tekster, f.eks. "
+"<code><pre>field_comment: Denne kommentar er blevet slettet af "
+"forfatteren.</pre></code>"
 
 msgid "You don't have any content."
 msgstr "Du har ikke noget indhold."
-msgid "Find my content"
-msgstr "Find mit indhold"
-msgid "Comment #@comment on %title"
-msgstr "Kommentar #@comment på %title"
-msgid "Edit"
-msgstr "Redigér"
-msgid "Your email address"
-msgstr "Din email adresse"
-msgid "Find content"
-msgstr "Find indhold"
-msgid "Email sent to @email"
-msgstr "E-mail sendt til @email"
-msgid "Error sending email @email"
-msgstr "Fejl ved afsendelse af e-mail til @email"
-msgid "Confirm your email address"
-msgstr "Bekræft din email adresse""
-msgid "Invalid email address"
-msgstr "Ugyldig email adresse"
+
 msgid "Your edit token has been recovered"
 msgstr "Din redigeringstoken er blevet genoprettet"
+
+msgid "Your email address"
+msgstr "Din e-mailadresse"
+
+msgctxt "anonymous_edit_config_form"
+msgid "Comment"
+msgstr "Kommentar"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Confirm your email address"
+msgstr "Bekræft din e-mailadresse"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Edit"
+msgstr "Redigér"
+
+msgctxt "hoeringsportal_anonymous_edit"
 msgid "Error recovering your edit token"
 msgstr "Fejl ved genoprettelse af din redigeringstoken"
-msgid "Edit proposal"
-msgstr "Redigér forslag"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Find content"
+msgstr "Find indhold"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Find my content"
+msgstr "Find mit indhold"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Invalid email address"
+msgstr "Ugyldig e-mailadresse"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "You don't have any content."
+msgstr "Du har ikke noget indhold."
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Your edit token has been recovered"
+msgstr "Din redigeringstoken er blevet genoprettet"
+
+msgctxt "hoeringsportal_anonymous_edit"
+msgid "Your email address"
+msgstr "Din e-mailadresse"
+

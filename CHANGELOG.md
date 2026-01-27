@@ -6,6 +6,25 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.14.4] - 2026-01-27
+
+* [PR-588](https://github.com/itk-dev/deltag.aarhus.dk/pull/588)
+  Added area and age span selection to dialogue proposal form
+* [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
+  * Cleaned up local OIDC setup
+  * Added test server OIDC setup
+* [PR-587](https://github.com/itk-dev/deltag.aarhus.dk/pull/587)
+  Cleaned up translations
+* [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)
+  * Added course content type
+  * Added activity wrapper for public_events and courses
+* [PR-576](https://github.com/itk-dev/deltag.aarhus.dk/pull/576)
+  Updates translations and added translations handling to deployment
+* [PR-584](https://github.com/itk-dev/deltag.aarhus.dk/pull/584)
+  Removed field_deskpro_department_id from public_meeting content type
+* [PR-585](https://github.com/itk-dev/deltag.aarhus.dk/pull/585)
+  Added translations to multiple modules
+
 ## [4.14.3] - 2026-01-16
 
 * [589](https://github.com/itk-dev/deltag.aarhus.dk/pull/589)

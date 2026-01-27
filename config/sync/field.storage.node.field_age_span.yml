@@ -1,0 +1,51 @@
+uuid: c0b70c1f-5948-433e-9996-a4b963348aaa
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_age_span
+field_name: field_age_span
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: ikke_angivet
+      label: 'Ikke angivet'
+    -
+      value: under_16
+      label: 'Under 16'
+    -
+      value: '16_29'
+      label: '16-29'
+    -
+      value: '30_39'
+      label: '30-39'
+    -
+      value: '40_49'
+      label: '40-49'
+    -
+      value: '50_59'
+      label: '50-59'
+    -
+      value: '60_69'
+      label: '60-69'
+    -
+      value: '70_79'
+      label: '70-79'
+    -
+      value: '80_90'
+      label: '80-90'
+    -
+      value: over_90
+      label: 'Over 90'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

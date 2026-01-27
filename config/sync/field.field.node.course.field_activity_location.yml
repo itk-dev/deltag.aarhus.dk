@@ -1,0 +1,19 @@
+uuid: 029997ac-37b2-4133-98df-75e8ef328eeb
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_activity_location
+    - node.type.course
+id: node.course.field_activity_location
+field_name: field_activity_location
+entity_type: node
+bundle: course
+label: Lokation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

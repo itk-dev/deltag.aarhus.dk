@@ -3,6 +3,46 @@ version: "3"
 # https://taskfile.dev/usage/#env-files
 dotenv: [".env.local", ".env"]
 
+includes:
+  translations:
+    taskfile: ./task/Taskfile.translations.yml
+    vars:
+      TRANSLATION_MODULES:
+        # - aarhus_hero
+
+        - hoeringsportal_activity
+        - hoeringsportal_anonymous_edit
+        # - hoeringsportal_audit_log
+        # - hoeringsportal_base_fixtures
+        - hoeringsportal_citizen_proposal
+        - hoeringsportal_citizen_proposal_archiving
+        # - hoeringsportal_config_settings
+        # - hoeringsportal_content_access
+        # - hoeringsportal_content_blocks
+        # - hoeringsportal_data
+        # - hoeringsportal_deskpro
+        - hoeringsportal_dialogue
+        # - hoeringsportal_forms
+        - hoeringsportal_hearing
+        # - hoeringsportal_misc
+        # - hoeringsportal_openid_connect
+        # - hoeringsportal_project
+        - hoeringsportal_project_timeline
+        - hoeringsportal_public_meeting
+        - hoeringsportal_quicklinks
+        # - hoeringsportal_test_delta_sync_fixtures
+
+        - itk_admin
+        - itk_admin_links
+        # - itk_media_entity
+
+      TRANSLATION_THEMES:
+        - hoeringsportal
+        # - hoeringsportal_admin
+
+      TRANSLATION_LANGUAGES:
+        - da
+
 vars:
   # https://taskfile.dev/reference/templating/
   BASE_URL: '{{.TASK_BASE_URL | default .COMPOSE_SERVER_DOMAIN | default .COMPOSE_DOMAIN | default "https://deltag.local.itkdev.dk"}}'
@@ -312,20 +352,12 @@ tasks:
     silent: true
 
   translations:import:
+    desc: Import and update translations
     cmds:
       - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:import --type=customized --override=all da ../translations/custom-translations.da.po)'
-      - task drush -- php:eval "var_export(\Drupal::state()->get('locale.translation.formulae', []))"
-      - 'task drush -- php:eval "var_export(array_map(static fn (\$count) => (new \Drupal\Core\StringTranslation\PluralTranslatableMarkup(\$count, ''1 item'', ''@count items'', options: [''langcode'' => ''da'']))->render(), range(0, 5)));"'
-      - 'task drush -- php:eval "var_export(array_map(static fn (\$count) => (new \Drupal\Core\StringTranslation\PluralTranslatableMarkup(\$count, ''1 item'', ''@count items'', options: [''langcode'' => ''en'']))->render(), range(0, 5)));"'
-    silent: true
-
-  translations:export:
-    cmds:
-      - task compose -- exec phpfpm bash -c '(cd web && ../vendor/bin/drush locale:export da --types=customized > ../translations/custom-translations.da.po)'
-      # Fix plurals spec in PO file
-      # https://drupalsun.com/eelke/2020/08/17/tale-mistranslated-plurals
-      # https://www.drupal.org/project/drupal/issues/3496223
-      - 'task compose -- exec phpfpm sed -i "s/Plural-Forms: nplurals=2; plural=(n > 1);/Plural-Forms: nplurals=2; plural=(n != 1);/" translations/custom-translations.da.po'
+      - task drush -- locale:check
+      - task drush -- locale:update
+      - task drush -- cache:rebuild
     silent: true
 
   # Development settings tasks (`/admin/config/development/settings`) (cf. https://www.drupal.org/docs/develop/development-tools/disabling-and-debugging-caching).

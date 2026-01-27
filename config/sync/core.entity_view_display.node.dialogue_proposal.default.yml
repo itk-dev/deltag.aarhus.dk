@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_display.comment.early_inclusion_comment.default
+    - field.field.node.dialogue_proposal.field_age_span
+    - field.field.node.dialogue_proposal.field_area
     - field.field.node.dialogue_proposal.field_comments
     - field.field.node.dialogue_proposal.field_dialogue
     - field.field.node.dialogue_proposal.field_dialogue_proposal_category
@@ -98,6 +100,8 @@ content:
     weight: 0
     region: content
 hidden:
+  field_age_span: true
+  field_area: true
   langcode: true
   links: true
   published_at: true

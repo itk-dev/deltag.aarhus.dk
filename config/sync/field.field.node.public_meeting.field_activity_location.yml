@@ -1,0 +1,19 @@
+uuid: 62271de4-e9ea-4130-9d23-67be54486dc7
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_activity_location
+    - node.type.public_meeting
+id: node.public_meeting.field_activity_location
+field_name: field_activity_location
+entity_type: node
+bundle: public_meeting
+label: Lokation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

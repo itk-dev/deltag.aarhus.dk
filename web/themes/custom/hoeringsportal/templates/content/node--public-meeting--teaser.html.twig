@@ -14,8 +14,11 @@
   {# Set start and end time for next meeting #}
   {% set meetingDateStartTime = public_meeting_context.upcoming|first.time_from %}
   {% set meetingDateEndTime = public_meeting_context.upcoming|first.time_to %}
+  {% set meetingLocation = public_meeting_context.upcoming|first.location %}
 {% else %}
-  {% set meetingDateStartTime = content.field_last_meeting_time['#items'].value %}
+  {% set meetingDateStartTime = node.field_last_meeting_time.date %}
+  {% set meetingDateEndTime = node.field_last_meeting_time_end.date %}
+  {% set meetingLocation = node.field_pretix_dates|first.value.location %}
 {% endif %}
 
 {# Show a date splash on the card #}
@@ -33,7 +36,6 @@
 
 {# Show teaser description #}
 {% block card_content %}
-  {{ content.field_teaser[0]['#context'].value|truncate(95, true, true) }}
 {% endblock %}
 
 {# Collect data for information lines on card #}
@@ -52,15 +54,16 @@
     %}
   {% endif %}
 {% endif %}
-{%
-  set items = items|merge([
-    {icon: 'fa-location-dot', value: content.field_area},
-  ])
-%}
+{% if node.field_pretix_dates|first.value.location %}
+  {%
+    set items = items|merge([
+      {icon: 'fa-location-dot', value: meetingLocation},
+    ])
+  %}
+{% endif %}
 
 {# Show card information #}
 {% block card_type_information %}
-
   {# Show text if meeting is canceled #}
   {% if (meetingIsCancelled) %}
     <div class="alert alert-warning"><h4 class="alert-heading mt-0">{{ 'Cancelled'|t }}</h4><p class="my-0">{{ content.field_cancelled_text|default('Meeting has been cancelled'|t) }}</p></div>
@@ -68,17 +71,17 @@
 
   {# Show details for next meeting #}
   {% if (content_state == 'upcoming' or content_state == 'active') %}
-  {% for item in items %}
-    <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
-      <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-public-meeting"></i>
-      <p class="small">{{ item.value }}</p>
-    </div>
-  {% endfor %}
+    {% for item in items %}
+      <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
+        <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-public-meeting"></i>
+        <p class="small">{{ item.value }}</p>
+      </div>
+    {% endfor %}
 
-  {# Show text for finished meeting #}
-  {% elseif (content_state == 'finished') %}
-    <p>{{ 'Meeting has been held'|t }}</p>
-  {% endif %}
+    {# Show text for finished meeting #}
+    {% elseif (content_state == 'finished') %}
+      <p>{{ 'Meeting has been held'|t }}</p>
+    {% endif %}
 
   {% endif %}
 {% endblock %}

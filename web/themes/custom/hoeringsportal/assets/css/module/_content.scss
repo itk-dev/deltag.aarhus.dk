@@ -60,6 +60,23 @@
   color: var(--text-inverse);
 }
 
+.content__dates-container {
+  background: $pink-light;
+
+  .border-pink {
+    border: 1px solid $pink;
+  }
+
+  .btn-pink,
+  .bg-pink {
+    background-color: $pink;
+  }
+
+  .color-pink {
+    color: $pink;
+  }
+}
+
 .read-more {
   font-size: $h3-font-size;
   text-decoration: underline;

@@ -58,7 +58,7 @@ final class SettingsForm extends ConfigFormBase {
 
     $form['comment'] = [
       '#type' => 'fieldset',
-      '#title' => $this->t('Comment'),
+      '#title' => $this->t('Comment', [], ['context' => 'anonymous_edit_config_form']),
       '#tree' => TRUE,
 
       'allow_update' => [
