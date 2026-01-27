@@ -27,9 +27,9 @@
 } %}
 
 {% set status_labels = {
-  completed: 'now'|date('Y-m-d') == item.date ? 'I dag'|t : '✓ Afsluttet'|t,
-  current: 'I dag'|t,
-  upcoming: 'Kommende'|t,
+  completed: 'now'|date('Y-m-d') == item.date ? 'Today'|t : '✓ Finished'|t,
+  current: 'Today'|t,
+  upcoming: 'Upcoming'|t,
   note: 'Note'|t,
 } %}
 
@@ -94,7 +94,7 @@
         {% if item.link %}
           <footer class="project-timeline-card__footer">
             <a href="{{ item.link }}" class="project-timeline-card__link">
-              {{ item.linkText|default('Læs mere'|t) }}
+              {{ item.linkText|default('Read more'|t) }}
               <svg class="project-timeline-card__link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>

@@ -26,11 +26,11 @@
   <div class="container">
     <div class="project-timeline__header">
       <div class="project-timeline__header-content">
-        <h2 class="project-timeline__title">{{ title|default('Projektets tidslinje'|t) }}</h2>
+        <h2 class="project-timeline__title">{{ title|default('Project timeline'|t) }}</h2>
         {% if description is not empty %}
           <p class="project-timeline__description">{{ description }}</p>
         {% else %}
-          <p class="project-timeline__description">{{ 'Følg med i inddragelsesprocessen og se hvordan dit input former fremtidens projekt.'|t }}</p>
+          <p class="project-timeline__description">{{ 'Follow the engagement process and see how your input shapes the future project.'|t }}</p>
         {% endif %}
       </div>
 
@@ -45,7 +45,7 @@
           data-view="vertical"
         >
           <span class="project-timeline__view-icon" aria-hidden="true">↕</span>
-          <span class="project-timeline__view-text">{{ 'Vertikal'|t }}</span>
+          <span class="project-timeline__view-text">{{ 'Vertical'|t }}</span>
         </button>
         <button
           type="button"
@@ -56,7 +56,7 @@
           data-view="horizontal"
         >
           <span class="project-timeline__view-icon" aria-hidden="true">↔</span>
-          <span class="project-timeline__view-text">{{ 'Horisontal'|t }}</span>
+          <span class="project-timeline__view-text">{{ 'Horizontal'|t }}</span>
         </button>
       </div>
     </div>
@@ -104,7 +104,7 @@
           </button>
           <div class="project-timeline__horizontal-label">
             {% if item.is_today_marker|default(false) %}
-              <span class="project-timeline__horizontal-month">{{ 'I dag'|t }}</span>
+              <span class="project-timeline__horizontal-month">{{ 'Today'|t }}</span>
             {% else %}
               <span class="project-timeline__horizontal-month">{{ item.date|date('M') }}</span>
               <span class="project-timeline__horizontal-year">{{ item.date|date('Y') }}</span>
