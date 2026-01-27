@@ -2,7 +2,6 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
-use DateTimeImmutable;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -17,6 +16,9 @@ use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Exception;
 
+/**
+ *
+ */
 class ProjectHelper {
   use StringTranslationTrait;
 
@@ -49,7 +51,7 @@ class ProjectHelper {
       }
 
       $variables['timeline_items'] = [];
-      $now = new DateTimeImmutable();
+      $now = new \DateTimeImmutable();
 
       $nodes = $this->getTimelineNodes($variables);
 
@@ -71,6 +73,13 @@ class ProjectHelper {
 
       $variables['timeline_items'][] = $this->addNowAsTimelineItem($now);
       usort($variables['timeline_items'], static fn(array $a, array $b): int => $a['date'] <=> $b['date']);
+
+      $variables['legend_items'] = [
+        ['status' => 'completed', 'label' => $this->t('Afsluttet')],
+        ['status' => 'current', 'label' => $this->t('I gang nu')],
+        ['status' => 'upcoming', 'label' => $this->t('Kommende')],
+        ['status' => 'note', 'label' => $this->t('Note')],
+      ];
     }
   }
 
@@ -89,7 +98,7 @@ class ProjectHelper {
 
     $form['field_timeline']['#states'] = [
       'visible' => [
-        $timelineSelector => ['checked' => true],
+        $timelineSelector => ['checked' => TRUE],
       ],
     ];
   }
@@ -299,6 +308,7 @@ class ProjectHelper {
       'image' => NULL,
       'link' => NULL,
       'linkText' => NULL,
+      'is_today_marker' => TRUE,
     ];
   }
 

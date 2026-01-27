@@ -3,4 +3,3 @@ type: module
 description: "Provides project functionality for Hoeringsportal."
 core_version_requirement: ^10 || ^11
 package: ITK
-
