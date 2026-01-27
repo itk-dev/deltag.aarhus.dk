@@ -76,7 +76,7 @@ class ProjectHelper {
 
     $originalEntity = $entity->original ?? null;
     $oldTargetId = 0;
-    if ($originalEntity->hasField('field_project_reference')) {
+    if ($originalEntity?->hasField('field_project_reference')) {
       $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
     }
 
