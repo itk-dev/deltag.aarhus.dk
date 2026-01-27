@@ -138,6 +138,9 @@
         return;
       }
 
+      // Track all currently intersecting cards
+      const visibleCards = new Set();
+
       const observerOptions = {
         root: null,
         rootMargin: OBSERVER_ROOT_MARGIN,
@@ -145,12 +148,65 @@
       };
 
       state.observer = new IntersectionObserver((entries) => {
+        // Update the visibility set with changed entries
+        // Only track cards that are actually visible (have dimensions)
         entries.forEach((entry) => {
+          const { cardId } = entry.target.dataset;
+          const rect = entry.boundingClientRect;
+          const isVisible = rect.height > 0 && rect.width > 0;
+
+          // Only process events from visible cards (ignore hidden horizontal duplicates)
+          if (!isVisible) {
+            return;
+          }
+
           if (entry.isIntersecting) {
-            const { cardId } = entry.target.dataset;
-            updateActiveNavLink(cardId);
+            visibleCards.add(cardId);
+          } else {
+            visibleCards.delete(cardId);
           }
         });
+
+        // Find the card that best overlaps the viewport center
+        // Prefer the topmost card whose bounds contain the center point
+        const viewportCenter = window.innerHeight / 2;
+        let bestCardId = null;
+        let bestScore = -Infinity;
+
+        visibleCards.forEach((cardId) => {
+          // Find the visible card (not the hidden horizontal view duplicate)
+          const cards = timeline.querySelectorAll(`[data-card-id="${cardId}"]`);
+          const card = Array.from(cards).find(
+            (c) => c.getBoundingClientRect().height > 0,
+          );
+          if (card) {
+            const rect = card.getBoundingClientRect();
+
+            // Score based on how well the card covers the viewport center
+            // Higher score = card contains or is closer to center
+            let score;
+            if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+              // Card contains the center point - highest priority
+              // Prefer cards where center is further from the edges (more centered)
+              const distFromTop = viewportCenter - rect.top;
+              const distFromBottom = rect.bottom - viewportCenter;
+              score = 1000 + Math.min(distFromTop, distFromBottom);
+            } else {
+              // Card doesn't contain center - score by distance
+              const cardCenter = rect.top + rect.height / 2;
+              score = -Math.abs(cardCenter - viewportCenter);
+            }
+
+            if (score > bestScore) {
+              bestScore = score;
+              bestCardId = cardId;
+            }
+          }
+        });
+
+        if (bestCardId) {
+          updateActiveNavLink(bestCardId);
+        }
       }, observerOptions);
 
       elements.cards.forEach((card) => {
