@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-588](https://github.com/itk-dev/deltag.aarhus.dk/pull/588)
   Added area and age span selection to dialogue proposal form
+* [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
+  * Cleaned up local OIDC setup
+  * Added test server OIDC setup
 * [PR-587](https://github.com/itk-dev/deltag.aarhus.dk/pull/587)
   Cleaned up translations
 * [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)
@@ -19,6 +22,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   Removed field_deskpro_department_id from public_meeting content type
 * [PR-585](https://github.com/itk-dev/deltag.aarhus.dk/pull/585)
   Added translations to multiple modules
+
+## [4.14.3] - 2026-01-16
+
+* [589](https://github.com/itk-dev/deltag.aarhus.dk/pull/589)
+  Fixed bug in dialog proposal view
 
 ## [4.14.2] - 2025-12-17
 
