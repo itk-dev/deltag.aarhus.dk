@@ -269,7 +269,7 @@ class ProjectHelper {
       $image = $paragraph?->field_paragraph_image?->entity?->field_itk_media_image_upload?->entity?->getFileUri();
 
       return [
-        'id' => '',
+        'id' => 'note-' . $paragraph->id(),
         'date' => $date->format('Y-m-d'),
         'month' => $date->format('F Y'),
         'title' => $paragraph->field_title->value,
