@@ -240,7 +240,7 @@ class ProjectHelper {
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
         'linkText' => $this->t('View @type', ['@type' => $node->type->entity->label()]),
-        'accentColor' => ($node->bundle() == 'course' || $node->bundle() == 'public_meeting') ? 'pink' : NULL,
+        'accentColor' => $this->determineAccentColor($node->bundle()),
       ];
     }
     catch (\Exception $e) {
@@ -279,6 +279,7 @@ class ProjectHelper {
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $paragraph?->field_external_link?->uri ?? '',
         'linkText' => $this->t('View more'),
+        'accentColor' => 'blue',
       ];
     }
     catch (\Exception $e) {
@@ -386,6 +387,23 @@ class ProjectHelper {
       $entity->getEntityTypeId() === 'node' => 'completed',
       $entity->getEntityTypeId() === 'paragraph' => 'note',
       default => '',
+    };
+  }
+
+  /**
+   * Determine accent color based on content type.
+   *
+   * @param string $bundle
+   *   The entity bundle/type.
+   *
+   * @return string|null
+   *   The accent color (green, pink, blue) or NULL.
+   */
+  private function determineAccentColor(string $bundle): ?string {
+    return match ($bundle) {
+      'hearing', 'decision', 'dialogue' => 'green',
+      'course', 'public_meeting' => 'pink',
+      default => NULL,
     };
   }
 

@@ -15,7 +15,7 @@
  *   - image: Optional image URL.
  *   - link: Optional link URL.
  *   - linkText: Optional link text.
- *   - accentColor: Optional 'pink' or 'blue' for color override.
+ *   - accentColor: Optional 'green', 'pink', or 'blue' for color override.
  */
 #}
 
@@ -37,7 +37,7 @@
 
 <article
   id="card-{{ item.id }}"
-  class="project-timeline-card {{ status_classes[item.status]|default('') }} {{ not completed ?? accent_class }}"
+  class="project-timeline-card {{ status_classes[item.status]|default('') }} {{ accent_class }}"
   data-timeline-card
   data-card-id="{{ item.id }}"
   data-card-status="{{ item.status }}"

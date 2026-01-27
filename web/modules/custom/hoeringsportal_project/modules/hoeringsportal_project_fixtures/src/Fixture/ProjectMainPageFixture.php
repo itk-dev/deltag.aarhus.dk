@@ -184,10 +184,17 @@ BODY,
     $this->addReference('node:project_main_page:timeline_demo', $timelineProject);
 
     // Update existing nodes to reference this project for timeline display.
+    // PAST content (completed) - one of each type.
     $this->updateNodeProjectReference('node:hearing:Hearing1', $timelineProject, '-2 months');
-    $this->updateNodeProjectReference('node:dialogue:Test Dialogue - proposals full', $timelineProject);
+    $this->updateNodeProjectReference('node:dialogue:Test Dialogue - proposals full', $timelineProject, '-45 days');
     $this->updateNodeProjectReference('node:decision:En vigtig afgørelse', $timelineProject, '-1 month');
-    $this->updateNodeProjectReference('public_meeting:fixture-1', $timelineProject);
+    $this->updateNodeProjectReference('public_meeting:fixture-1', $timelineProject, '-8 months');
+
+    // FUTURE content (upcoming) - one of each type to test hover color reveal.
+    $this->updateNodeProjectReference('node:hearing:Hearing2', $timelineProject, '+2 months');
+    $this->updateNodeProjectReference('node:decision:En ny afgørelse afvist', $timelineProject, '+4 months');
+    $this->updateNodeProjectReference('node:dialogue:Test Dialogue - name and email', $timelineProject, '+5 months');
+    $this->updateNodeProjectReference('public_meeting:fixture-future', $timelineProject);
   }
 
   /**
@@ -207,11 +214,19 @@ BODY,
 
     if ($dateModifier !== NULL) {
       $date = (new \DateTimeImmutable($dateModifier))->format('Y-m-d\TH:i:s');
-      if ($node->hasField('field_start_date')) {
+      // Set the appropriate date field based on content type.
+      if ($node->hasField('field_start_date') && $node->bundle() === 'hearing') {
         $node->set('field_start_date', $date);
       }
       if ($node->hasField('field_decision_date')) {
         $node->set('field_decision_date', $date);
+      }
+      if ($node->hasField('field_last_meeting_time')) {
+        $node->set('field_last_meeting_time', $date);
+      }
+      // For dialogues, set created time since that's what the timeline uses.
+      if ($node->bundle() === 'dialogue') {
+        $node->setCreatedTime((new \DateTimeImmutable($dateModifier))->getTimestamp());
       }
     }
 
