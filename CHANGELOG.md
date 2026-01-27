@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-610](https://github.com/itk-dev/deltag.aarhus.dk/pull/610)
+  Added hover effect to reveal accent colors on upcoming timeline cards
 * [PR-593](https://github.com/itk-dev/deltag.aarhus.dk/pull/593)
   * Add project timeline
   * Add project reference fields to several node types to display on timeline

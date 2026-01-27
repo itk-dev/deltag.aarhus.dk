@@ -600,6 +600,61 @@ $timeline-image-height: 140px;
 }
 
 // =============================================================================
+// Upcoming Cards - Gray Default with Accent Color on Hover
+// =============================================================================
+
+// Reset accent colors to gray for upcoming cards
+.project-timeline-card--upcoming {
+  // Override accent variants to use gray by default
+  &.project-timeline-card--accent-pink,
+  &.project-timeline-card--accent-blue {
+    @include timeline-card-status-variant(
+      var(--timeline-status-upcoming),
+      var(--timeline-status-upcoming-bg),
+      var(--primitive-gray-700)
+    );
+
+    .project-timeline-card__date-wrapper {
+      color: inherit;
+    }
+  }
+
+  // Add transitions for smooth color reveal on hover
+  .project-timeline-card__dot,
+  .project-timeline-card__status,
+  .project-timeline-card__link,
+  .project-timeline-card__subtitle,
+  .project-timeline-card__date-wrapper {
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  &::after,
+  .project-timeline-card__content::before {
+    transition: background-color 0.2s ease;
+  }
+
+  // Reveal pink accent on hover
+  &.project-timeline-card--accent-pink:hover {
+    @include timeline-card-accent-variant(
+      var(--timeline-accent-pink),
+      var(--timeline-accent-pink-bg),
+      var(--primitive-pink-500)
+    );
+  }
+
+  // Reveal blue accent on hover
+  &.project-timeline-card--accent-blue:hover {
+    @include timeline-card-accent-variant(
+      var(--timeline-accent-blue),
+      var(--timeline-accent-blue-bg),
+      var(--primitive-navy-500)
+    );
+  }
+}
+
+// =============================================================================
 // Mini Navigation - Fixed on Right Side
 // =============================================================================
 $mini-nav-dot-size: 10px;
@@ -1200,6 +1255,19 @@ $tablet-card-gap: $timeline-card-padding;
   .project-timeline__carousel-btn,
   .project-timeline-card__link {
     transition: none;
+  }
+
+  // Disable hover color transitions for upcoming cards
+  .project-timeline-card--upcoming {
+    .project-timeline-card__dot,
+    .project-timeline-card__status,
+    .project-timeline-card__link,
+    .project-timeline-card__subtitle,
+    .project-timeline-card__date-wrapper,
+    &::after,
+    .project-timeline-card__content::before {
+      transition: none;
+    }
   }
 }
 
