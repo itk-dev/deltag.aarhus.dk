@@ -2,7 +2,6 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
-use DateTimeImmutable;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -15,10 +14,9 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Exception;
 
 /**
- *
+ * Helper class for project-related operations.
  */
 class ProjectHelper {
   use StringTranslationTrait;
@@ -89,7 +87,7 @@ class ProjectHelper {
    *
    * @param array $form
    *   The form array.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state object.
    */
   #[Hook('form_node_project_main_page_form_alter')]
@@ -107,7 +105,7 @@ class ProjectHelper {
   /**
    * Implements hook_preprocess_node().
    *
-   * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity being saved.
    */
   #[Hook('entity_presave')]
@@ -119,7 +117,7 @@ class ProjectHelper {
 
       $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
 
-      $originalEntity = $entity->original ?? null;
+      $originalEntity = $entity->original ?? NULL;
       $oldTargetId = 0;
       if ($originalEntity?->hasField('field_project_reference')) {
         $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
@@ -145,7 +143,7 @@ class ProjectHelper {
       $idsToReset = array_values(array_unique($idsToReset));
       $this->entityTypeManagerInterface->getStorage('node')->resetCache($idsToReset);
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
     }
   }
@@ -179,7 +177,7 @@ class ProjectHelper {
 
       return $nodeStorage->loadMultiple($references);
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->logger->error('Error getting timeline nodes: @message', ['@message' => $e->getMessage()]);
       return [];
     }
@@ -205,7 +203,7 @@ class ProjectHelper {
 
       return $paragraphStorage->loadMultiple($noteIds);
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->logger->error('Error getting timeline notes: @message', ['@message' => $e->getMessage()]);
       return [];
     }
@@ -214,15 +212,15 @@ class ProjectHelper {
   /**
    * Add node as timeline item.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   The node entity to add.
-   * @param DateTimeImmutable $now
+   * @param \DateTimeImmutable $now
    *   The current date and time.
    *
    * @return array
    *   The timeline item array.
    */
-  private function addNodeAsTimelineItem(NodeInterface $node, DateTimeImmutable $now): array {
+  private function addNodeAsTimelineItem(NodeInterface $node, \DateTimeImmutable $now): array {
     try {
       $date = $this->determineDate($node);
       if (!$date) {
@@ -244,7 +242,7 @@ class ProjectHelper {
         'accentColor' => ($node->bundle() == 'course' || $node->bundle() == 'public_meeting') ? 'pink' : NULL,
       ];
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->logger->error('Error adding node as timeline item: @message', ['@message' => $e->getMessage()]);
       return [];
     }
@@ -253,15 +251,15 @@ class ProjectHelper {
   /**
    * Add note as timeline item.
    *
-   * @param ParagraphInterface $paragraph
+   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
    *   The paragraph entity to add.
-   * @param DateTimeImmutable $now
+   * @param \DateTimeImmutable $now
    *   The current date and time.
    *
    * @return array
    *   The timeline item array.
    */
-  private function addNoteAsTimelineItem(ParagraphInterface $paragraph, DateTimeImmutable $now): array {
+  private function addNoteAsTimelineItem(ParagraphInterface $paragraph, \DateTimeImmutable $now): array {
     try {
       $date = $paragraph->field_date->date;
       if (!$date) {
@@ -282,7 +280,7 @@ class ProjectHelper {
         'linkText' => $this->t('View more'),
       ];
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       $this->logger->error('Error adding note as timeline item: @message', ['@message' => $e->getMessage()]);
       return [];
     }
@@ -291,13 +289,13 @@ class ProjectHelper {
   /**
    * Add "today" timeline item.
    *
-   * @param DateTimeImmutable $now
+   * @param \DateTimeImmutable $now
    *   The current date and time.
    *
    * @return array
    *   The timeline item array.
    */
-  private function addNowAsTimelineItem(DateTimeImmutable $now): array {
+  private function addNowAsTimelineItem(\DateTimeImmutable $now): array {
     return [
       'id' => 'today',
       'date' => $now->format('Y-m-d'),
@@ -316,10 +314,10 @@ class ProjectHelper {
   /**
    * Determine date for timeline item.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   The node entity to extract the date from.
    *
-   * @return DrupalDateTime|null
+   * @return \Drupal\Core\Datetime\DrupalDateTime|null
    *   The determined date or NULL if no date could be determined.
    */
   private function determineDate(NodeInterface $node): ?DrupalDateTime {
@@ -332,8 +330,11 @@ class ProjectHelper {
         default => NULL,
       };
     }
-    catch (Exception $e) {
-      $this->logger->error('Error determining date for node @nid: @message', ['@nid' => $node->id(), '@message' => $e->getMessage()]);
+    catch (\Exception $e) {
+      $this->logger->error('Error determining date for node @nid: @message', [
+        '@nid' => $node->id()
+        , '@message' => $e->getMessage(),
+      ]);
       return NULL;
     }
   }
@@ -341,10 +342,10 @@ class ProjectHelper {
   /**
    * Determine image for timeline item.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   The node entity to extract the image from.
    *
-   * @return File|null
+   * @return \Drupal\file\Entity\File|null
    *   The file entity or NULL if no image found.
    */
   private function determineImage(NodeInterface $node): ?File {
@@ -356,8 +357,11 @@ class ProjectHelper {
         default => NULL,
       };
     }
-    catch (Exception $e) {
-      $this->logger->error('Error determining image for node @nid: @message', ['@nid' => $node->id(), '@message' => $e->getMessage()]);
+    catch (\Exception $e) {
+      $this->logger->error('Error determining image for node @nid: @message', [
+        '@nid' => $node->id(),
+        '@message' => $e->getMessage(),
+      ]);
       return NULL;
     }
   }
@@ -365,7 +369,7 @@ class ProjectHelper {
   /**
    * Determine status of timeline item.
    *
-   * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity to determine status for.
    * @param string $date
    *   The item date in Y-m-d format.
