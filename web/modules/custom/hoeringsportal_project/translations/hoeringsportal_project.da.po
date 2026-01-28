@@ -28,7 +28,6 @@ msgstr "Projektstatus"
 msgid "Upcoming"
 msgstr "Kommende"
 
-#, fuzzy
 msgid "View <span>@type</span>"
 msgstr "Vis <span>@type</span>"
 
