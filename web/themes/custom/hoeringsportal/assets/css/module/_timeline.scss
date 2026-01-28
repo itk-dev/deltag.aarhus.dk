@@ -443,6 +443,7 @@ $timeline-image-height: 140px;
 
 .project-timeline-card__month {
   color: var(--primitive-petroleum-800);
+  text-transform: capitalize;
 }
 
 // Status badge - positioned relative to .project-timeline-card__text-content
@@ -528,6 +529,10 @@ $timeline-image-height: 140px;
     background: var(--primitive-gray-700);
     color: var(--text-inverse);
     text-decoration: none;
+  }
+
+  span {
+    text-transform: lowercase;
   }
 }
 
@@ -815,6 +820,10 @@ $mini-nav-dot-size: 10px;
 // Mini nav status colors
 .project-timeline-mini-nav__link--completed {
   @include timeline-mini-nav-status(var(--timeline-status-completed));
+
+  &.pink {
+    @include timeline-mini-nav-status(var(--primitive-pink-500));
+  }
 }
 
 .project-timeline-mini-nav__link--current {
@@ -992,6 +1001,10 @@ $carousel-padding-horizontal: ($spacer * 2.25); // 36px
 
   &--completed {
     background: var(--timeline-status-completed);
+    
+    &.pink {
+      background: var(--timeline-accent-pink);
+    }
   }
 
   &--current {
@@ -1006,6 +1019,10 @@ $carousel-padding-horizontal: ($spacer * 2.25); // 36px
 
   &--note {
     background: var(--timeline-status-note);
+  }
+
+  &--activity {
+    background: var(--timeline-accent-pink);
   }
 
   &--today {

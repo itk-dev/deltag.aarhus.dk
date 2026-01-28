@@ -16,7 +16,7 @@
       <li class="project-timeline-mini-nav__item">
         <a
           href="#card-{{ item.id }}"
-          class="project-timeline-mini-nav__link project-timeline-mini-nav__link--{{ item.status }}"
+          class="project-timeline-mini-nav__link project-timeline-mini-nav__link--{{ item.status }} {{ item.accentColor }}"
           data-nav-link="{{ item.id }}"
           aria-label="{{ item.title|default(item.month) }}"
           title="{{ item.title|default(item.month) }}"

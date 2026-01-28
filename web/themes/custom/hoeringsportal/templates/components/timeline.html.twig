@@ -98,7 +98,7 @@
         {% for item in timeline_items %}
           <div class="project-timeline__horizontal-dot-wrapper">
             <button type="button"
-              class="project-timeline__horizontal-dot project-timeline__horizontal-dot--{{ item.status }}{% if item.is_today_marker|default(false) %} project-timeline__horizontal-dot--today{% endif %}{% if loop.first %} is-active{% endif %}"
+              class="project-timeline__horizontal-dot project-timeline__horizontal-dot--{{ item.status }} {{ item.accentColor }}{% if item.is_today_marker|default(false) %} project-timeline__horizontal-dot--today{% endif %}{% if loop.first %} is-active{% endif %}"
               {% if not item.is_today_marker|default(false) %}data-slide-index="{{ slide_index }}"{% endif %}
               aria-label="{{ item.title }}"
               {% if item.is_today_marker|default(false) %}data-today-marker{% endif %}>

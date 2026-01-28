@@ -239,7 +239,7 @@ class ProjectHelper {
         'status' => $this->determineStatus($node, $date->format('Y-m-d'), $now->format('Y-m-d')),
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
-        'linkText' => $this->t('View @type', ['@type' => $node->type->entity->label()]),
+        'linkText' => $this->t('View <span>@type</span>', ['@type' => $node->type->entity->label()]),
         'accentColor' => $this->determineAccentColor($node->bundle()),
       ];
     }
