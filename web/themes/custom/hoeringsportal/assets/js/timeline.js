@@ -10,7 +10,6 @@
 
   // Constants
   const SWIPE_THRESHOLD = 50;
-  const OBSERVER_ROOT_MARGIN = "-30% 0px -30% 0px";
   const CAROUSEL_SLIDE_PERCENT = 100;
 
   /**
@@ -49,7 +48,7 @@
       currentView: defaultView,
       carouselIndex: 0,
       carouselTotal: 0,
-      observer: null,
+      isProgrammaticScroll: false,
     };
 
     // Cache DOM elements
@@ -142,96 +141,110 @@
           const targetCard = timeline.querySelector(
             `[data-card-id="${cardId}"]`,
           );
+
+          // Prevent IntersectionObserver from overriding during smooth scroll
+          state.isProgrammaticScroll = true;
+          updateActiveNavLink(cardId);
+
           targetCard?.scrollIntoView({
             behavior: "smooth",
             block: "center",
           });
+
+          // Re-enable observer updates after scroll completes
+          // Use scrollend event if available, otherwise fallback to timeout
+          if ("onscrollend" in window) {
+            window.addEventListener(
+              "scrollend",
+              () => {
+                state.isProgrammaticScroll = false;
+              },
+              { once: true },
+            );
+          } else {
+            // Fallback for browsers without scrollend support
+            setTimeout(() => {
+              state.isProgrammaticScroll = false;
+            }, 500);
+          }
         });
       });
     }
 
     /**
-     * Initialize scroll tracking with IntersectionObserver.
+     * Initialize scroll tracking using scroll events.
+     *
+     * Uses a scroll listener instead of IntersectionObserver for more reliable
+     * tracking of all cards, including smaller ones like notes.
      */
     function initScrollTracking() {
-      if (!("IntersectionObserver" in window)) {
-        return;
-      }
+      let scrollTimeout;
 
-      // Track all currently intersecting cards
-      const visibleCards = new Set();
+      const updateActiveCard = () => {
+        // Skip updates during programmatic scrolling
+        if (state.isProgrammaticScroll) {
+          return;
+        }
 
-      const observerOptions = {
-        root: null,
-        rootMargin: OBSERVER_ROOT_MARGIN,
-        threshold: 0,
-      };
+        // Only update when vertical view is active
+        if (state.currentView !== "vertical") {
+          return;
+        }
 
-      state.observer = new IntersectionObserver((entries) => {
-        // Update the visibility set with changed entries
-        // Only track cards that are actually visible (have dimensions)
-        entries.forEach((entry) => {
-          const { cardId } = entry.target.dataset;
-          const rect = entry.boundingClientRect;
-          const isVisible = rect.height > 0 && rect.width > 0;
-
-          // Only process events from visible cards (ignore hidden horizontal duplicates)
-          if (!isVisible) {
-            return;
-          }
-
-          if (entry.isIntersecting) {
-            visibleCards.add(cardId);
-          } else {
-            visibleCards.delete(cardId);
-          }
-        });
-
-        // Find the card that best overlaps the viewport center
-        // Prefer the topmost card whose bounds contain the center point
         const viewportCenter = window.innerHeight / 2;
         let bestCardId = null;
         let bestScore = -Infinity;
 
-        visibleCards.forEach((cardId) => {
-          // Find the visible card (not the hidden horizontal view duplicate)
-          const cards = timeline.querySelectorAll(`[data-card-id="${cardId}"]`);
-          const card = Array.from(cards).find(
-            (c) => c.getBoundingClientRect().height > 0,
-          );
-          if (card) {
-            const rect = card.getBoundingClientRect();
+        // Check all vertical view cards
+        const verticalCards = elements.verticalPanel?.querySelectorAll(
+          "[data-timeline-card]",
+        );
+        if (!verticalCards) {
+          return;
+        }
 
-            // Score based on how well the card covers the viewport center
-            // Higher score = card contains or is closer to center
-            let score;
-            if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
-              // Card contains the center point - highest priority
-              // Prefer cards where center is further from the edges (more centered)
-              const distFromTop = viewportCenter - rect.top;
-              const distFromBottom = rect.bottom - viewportCenter;
-              score = 1000 + Math.min(distFromTop, distFromBottom);
-            } else {
-              // Card doesn't contain center - score by distance
-              const cardCenter = rect.top + rect.height / 2;
-              score = -Math.abs(cardCenter - viewportCenter);
-            }
+        verticalCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
 
-            if (score > bestScore) {
-              bestScore = score;
-              bestCardId = cardId;
-            }
+          // Skip cards with no dimensions
+          if (rect.height === 0 || rect.width === 0) {
+            return;
+          }
+
+          const cardId = card.dataset.cardId;
+          let score;
+
+          if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+            // Card contains the center point - highest priority
+            // Prefer cards where center is further from the edges
+            const distFromTop = viewportCenter - rect.top;
+            const distFromBottom = rect.bottom - viewportCenter;
+            score = 1000 + Math.min(distFromTop, distFromBottom);
+          } else {
+            // Card doesn't contain center - score by distance to center
+            const cardCenter = rect.top + rect.height / 2;
+            score = -Math.abs(cardCenter - viewportCenter);
+          }
+
+          if (score > bestScore) {
+            bestScore = score;
+            bestCardId = cardId;
           }
         });
 
         if (bestCardId) {
           updateActiveNavLink(bestCardId);
         }
-      }, observerOptions);
+      };
 
-      elements.cards.forEach((card) => {
-        state.observer.observe(card);
+      // Debounced scroll handler for smooth performance
+      window.addEventListener("scroll", () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveCard, 16);
       });
+
+      // Initial update
+      updateActiveCard();
     }
 
     /**

@@ -838,32 +838,6 @@ $mini-nav-dot-size: 10px;
   @include timeline-mini-nav-status(var(--timeline-status-note));
 }
 
-// "I dag" indicator at bottom
-.project-timeline-mini-nav__today {
-  margin-top: ($spacer * 0.75);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.project-timeline-mini-nav__today-dot {
-  width: $mini-nav-dot-size;
-  height: $mini-nav-dot-size;
-  min-width: $mini-nav-dot-size;
-  min-height: $mini-nav-dot-size;
-  border-radius: 50%;
-  border: 2px solid var(--timeline-status-current);
-  background: var(--bg-primary);
-  flex-shrink: 0;
-}
-
-.project-timeline-mini-nav__today-label {
-  font-size: 9px;
-  color: var(--text-secondary);
-  text-align: center;
-}
-
 // =============================================================================
 // Horizontal View (Carousel)
 // =============================================================================
