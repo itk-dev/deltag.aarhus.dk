@@ -15,6 +15,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Add project reference fields to several node types to display on timeline
   * Add paragraph for adding custom elements to timeline
   * Add CLAUDE.md file to project
+
+## [4.14.4] - 2026-01-27
+
+* [PR-588](https://github.com/itk-dev/deltag.aarhus.dk/pull/588)
+  Added area and age span selection to dialogue proposal form
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
   * Cleaned up local OIDC setup
   * Added test server OIDC setup

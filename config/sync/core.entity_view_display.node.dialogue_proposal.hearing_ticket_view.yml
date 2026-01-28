@@ -1,9 +1,9 @@
-uuid: d0775ba9-b2c5-4111-911b-e1f53c493fe6
+uuid: f78d29b9-35e0-46af-9f51-e6a589e57a1b
 langcode: da
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.list_display
+    - core.entity_view_mode.node.hearing_ticket_view
     - field.field.node.dialogue_proposal.field_age_span
     - field.field.node.dialogue_proposal.field_area
     - field.field.node.dialogue_proposal.field_comments
@@ -17,42 +17,44 @@ dependencies:
     - node.type.dialogue_proposal
   module:
     - user
-id: node.dialogue_proposal.list_display
+id: node.dialogue_proposal.hearing_ticket_view
 targetEntityType: node
 bundle: dialogue_proposal
-mode: list_display
+mode: hearing_ticket_view
 content:
-  field_dialogue_proposal_category:
+  field_area:
     type: entity_reference_label
-    label: hidden
+    label: above
     settings:
       link: false
     third_party_settings: {  }
-    weight: 2
-    region: content
-  field_dialogue_proposal_descr:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
+    weight: 10
+    region: right
   flag_support_proposal:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  sharing_buttons:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_age_span: true
-  field_area: true
   field_comments: true
   field_dialogue: true
+  field_dialogue_proposal_category: true
+  field_dialogue_proposal_descr: true
   field_image_upload: true
   field_location: true
   field_owner_email: true
   field_owner_name: true
   langcode: true
-  links: true
   published_at: true
   search_api_excerpt: true
-  sharing_buttons: true
