@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-27 10:41+0100\n"
-"PO-Revision-Date: 2026-01-27 10:41+0100\n"
+"POT-Creation-Date: 2026-01-28 10:13+0100\n"
+"PO-Revision-Date: 2026-01-28 10:13+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,10 @@ msgstr "Projektstatus"
 
 msgid "Upcoming"
 msgstr "Kommende"
+
+#, fuzzy
+msgid "View <span>@type</span>"
+msgstr "Vis <span>@type</span>"
 
 msgid "View @type"
 msgstr "Vis @type"
