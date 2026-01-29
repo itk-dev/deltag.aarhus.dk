@@ -167,7 +167,7 @@ class ProjectHelper {
         ->exists('field_decision_date')
         ->exists('field_start_date')
         ->exists('field_last_meeting_time')
-        ->condition('type', 'dialogue', '=');
+        ->condition('type', 'dialogue');
 
       $referenceQuery->accessCheck();
       $referenceQuery->exists('field_project_reference');
