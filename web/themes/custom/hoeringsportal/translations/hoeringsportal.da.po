@@ -3,8 +3,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-20 12:40+0100\n"
-"PO-Revision-Date: 2026-01-20 12:40+0100\n"
+
+"POT-Creation-Date: 2026-01-27 10:41+0100\n"
+"PO-Revision-Date: 2026-01-27 10:41+0100\n"
+
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -207,6 +209,13 @@ msgstr "Slut"
 msgid "First upcoming"
 msgstr "Næste kommende"
 
+msgid ""
+"Follow the engagement process and see how your input shapes the future "
+"project."
+msgstr ""
+"Følg med i inddragelsesprocessen og se hvordan dit input former "
+"fremtidens projekt."
+
 msgid "From"
 msgstr "Fra"
 
@@ -242,6 +251,12 @@ msgstr "Høringssvar (@count)"
 
 msgid "Home"
 msgstr "Hjem"
+
+msgid "Horizontal"
+msgstr "Horisontal"
+
+msgid "Horizontal timeline carousel"
+msgstr "Horisontal tidslinje karrusel"
 
 msgid "I have red the terms and give my consent"
 msgstr "Jeg har læst betingelserne og giver mit samtykke"
@@ -300,6 +315,9 @@ msgstr "Navn"
 msgid "Next"
 msgstr "Næste"
 
+msgid "Next item"
+msgstr "Næste element"
+
 msgid "Next page"
 msgstr "Næste side"
 
@@ -318,6 +336,9 @@ msgstr "Endnu ingen forslag. Vær den første til at deltage med et forslag."
 
 msgid "Not yet validated"
 msgstr "Endnu ikke valideret"
+
+msgid "Note"
+msgstr "Note"
 
 msgid "Note! Hearing deadline has passed."
 msgstr "Note! Hørings tidsfristen er forbi."
@@ -365,6 +386,9 @@ msgstr "Pinterest"
 msgid "Previous"
 msgstr "Forrige"
 
+msgid "Previous item"
+msgstr "Forrige element"
+
 msgid "Previous page"
 msgstr "Forrige side"
 
@@ -401,6 +425,9 @@ msgstr "Initiativ tilbagekaldt"
 msgid "Project start"
 msgstr "Initiativ start"
 
+msgid "Project timeline"
+msgstr "Projektets tidslinje"
+
 msgid "Proposals"
 msgstr "Forslag"
 
@@ -409,6 +436,9 @@ msgstr "Forslag modtaget"
 
 msgid "Public meeting"
 msgstr "Borgermøde"
+
+msgid "Read more"
+msgstr "Læs mere"
 
 msgid "Read the entire decision"
 msgstr "Læs hele afgørelsen"
@@ -528,11 +558,26 @@ msgstr ""
 msgid "Time"
 msgstr "Tid"
 
+msgid "Timeline"
+msgstr "Tidslinje"
+
+msgid "Timeline navigation"
+msgstr "Tidslinje navigation"
+
+msgid "Timeline status legend"
+msgstr "Tidslinje status legende"
+
+msgid "Timeline view options"
+msgstr "Tidslinje visningsmuligheder"
+
 msgid "To"
 msgstr "Til"
 
 msgid "To: @to"
 msgstr "Til: @to"
+
+msgid "Today"
+msgstr "I dag"
 
 msgid "Try with less words or to phrase it differently"
 msgstr "Prøv med færre ord eller at formulere det anderledes"
@@ -560,6 +605,12 @@ msgstr "Valider med NemID"
 
 msgid "Validated with NemID"
 msgstr "Valideret med NemID"
+
+msgid "Vertical"
+msgstr "Vertikal"
+
+msgid "Vertical timeline view"
+msgstr "Vertikal tidslinje visning"
 
 msgid "View all proposals"
 msgstr "Se alle forslag"
@@ -596,6 +647,9 @@ msgstr "‹‹"
 
 msgid "››"
 msgstr "››"
+
+msgid "✓ Finished"
+msgstr "✓ Afsluttet"
 
 msgctxt "comment"
 msgid "(edited)"

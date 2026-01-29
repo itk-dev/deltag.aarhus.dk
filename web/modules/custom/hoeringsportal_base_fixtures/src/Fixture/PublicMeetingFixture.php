@@ -94,6 +94,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->set('field_registration_deadline', (new \DateTimeImmutable('today + 12 hours + 4 years'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
     $node->set('field_last_meeting_time', (new \DateTimeImmutable('today + 19 hours + 4 years'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
     $node->set('field_last_meeting_time_end', (new \DateTimeImmutable('today + 21 hours + 4 years'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
+    $this->addReference('public_meeting:fixture-future', $node);
     $node->save();
 
     // A public meeting that has signup with Pretix.

@@ -1,25 +1,29 @@
-uuid: b2d6b691-f683-4851-8e34-a9b04fc9c3b2
+uuid: 3d631068-e87c-48f4-ad53-f19bfdc023b2
 langcode: da
 status: true
 dependencies:
   config:
     - field.storage.node.field_project_reference
+    - node.type.project_main_page
     - node.type.public_meeting
 id: node.public_meeting.field_project_reference
 field_name: field_project_reference
 entity_type: node
 bundle: public_meeting
-label: Projekttidslinje
-description: 'Vælg tidslinje som borgermødet er knyttet til.'
+label: 'Projekt reference'
+description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: views
+  handler: 'default:node'
   handler_settings:
-    view:
-      view_name: form_list_active_projects
-      display_name: entity_reference_1
-      arguments: {  }
+    target_bundles:
+      project_main_page: project_main_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference

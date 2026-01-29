@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.public_meeting.field_email_address
     - field.field.node.public_meeting.field_first_meeting_time
     - field.field.node.public_meeting.field_hidden_signup
+    - field.field.node.public_meeting.field_hide_in_timeline
     - field.field.node.public_meeting.field_last_meeting_time
     - field.field.node.public_meeting.field_last_meeting_time_end
     - field.field.node.public_meeting.field_map
@@ -116,14 +117,6 @@ content:
     third_party_settings: {  }
     weight: 8
     region: header
-  field_project_reference:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
-    region: header
   field_registration_deadline:
     type: datetime_default
     label: above
@@ -174,11 +167,13 @@ hidden:
   field_email_address: true
   field_first_meeting_time: true
   field_hidden_signup: true
+  field_hide_in_timeline: true
   field_last_meeting_time: true
   field_last_meeting_time_end: true
   field_map: true
   field_pretix_dates: true
   field_pretix_event_settings: true
+  field_project_reference: true
   field_public_meeting_cancelled: true
   field_signup_link: true
   field_signup_selection: true

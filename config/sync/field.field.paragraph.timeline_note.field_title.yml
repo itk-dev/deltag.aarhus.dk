@@ -1,0 +1,19 @@
+uuid: 20ff6960-a6c4-45f3-a8c5-9904058fbe20
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.timeline_note
+id: paragraph.timeline_note.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: timeline_note
+label: Title
+description: 'Used for the title'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

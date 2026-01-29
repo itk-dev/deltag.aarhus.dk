@@ -6,6 +6,16 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-611](https://github.com/itk-dev/deltag.aarhus.dk/pull/611)
+  Added windowed dot navigation on mobile horizontal timeline view
+* [PR-610](https://github.com/itk-dev/deltag.aarhus.dk/pull/610)
+  Added hover effect to reveal accent colors on upcoming timeline cards
+* [PR-593](https://github.com/itk-dev/deltag.aarhus.dk/pull/593)
+  * Add project timeline
+  * Add project reference fields to several node types to display on timeline
+  * Add paragraph for adding custom elements to timeline
+  * Add CLAUDE.md file to project
+
 ## [4.14.4] - 2026-01-27
 
 * [PR-588](https://github.com/itk-dev/deltag.aarhus.dk/pull/588)
@@ -13,6 +23,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
   * Cleaned up local OIDC setup
   * Added test server OIDC setup
+* [PR-590](https://github.com/itk-dev/deltag.aarhus.dk/pull/590)
+  Deleted old timeline.
 * [PR-587](https://github.com/itk-dev/deltag.aarhus.dk/pull/587)
   Cleaned up translations
 * [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)

@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.public_meeting.field_email_address
     - field.field.node.public_meeting.field_first_meeting_time
     - field.field.node.public_meeting.field_hidden_signup
+    - field.field.node.public_meeting.field_hide_in_timeline
     - field.field.node.public_meeting.field_last_meeting_time
     - field.field.node.public_meeting.field_last_meeting_time_end
     - field.field.node.public_meeting.field_map
@@ -48,6 +49,7 @@ third_party_settings:
   field_group:
     group_information:
       children:
+        - group_project_reference
         - field_department
         - field_type
         - field_area
@@ -131,6 +133,23 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+    group_project_reference:
+      children:
+        - field_project_reference
+        - field_hide_in_timeline
+      label: 'Projekt reference'
+      region: hidden
+      parent_name: group_information
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: false
 id: node.public_meeting.default
 targetEntityType: node
 bundle: public_meeting
@@ -138,7 +157,7 @@ mode: default
 content:
   field_activity_location:
     type: string_textfield
-    weight: 19
+    weight: 20
     region: content
     settings:
       size: 60
@@ -152,7 +171,7 @@ content:
     third_party_settings: {  }
   field_address:
     type: string_textfield
-    weight: 20
+    weight: 21
     region: content
     settings:
       size: 60
@@ -160,7 +179,7 @@ content:
     third_party_settings: {  }
   field_area:
     type: options_buttons
-    weight: 11
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -188,7 +207,7 @@ content:
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 9
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -202,7 +221,7 @@ content:
     third_party_settings: {  }
   field_email_address:
     type: email_default
-    weight: 11
+    weight: 12
     region: content
     settings:
       placeholder: ''
@@ -211,6 +230,13 @@ content:
   field_hidden_signup:
     type: boolean_checkbox
     weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_hide_in_timeline:
+    type: boolean_checkbox
+    weight: 18
     region: content
     settings:
       display_label: true
@@ -282,6 +308,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_project_reference:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_public_meeting_cancelled:
     type: boolean_checkbox
     weight: 0
@@ -339,7 +375,7 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 10
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -381,7 +417,6 @@ hidden:
   field_content_state: true
   field_deskpro_department_id: true
   field_first_meeting_time: true
-  field_project_reference: true
   path: true
   promote: true
   sticky: true

@@ -9,7 +9,10 @@ dependencies:
     - field.field.node.project_main_page.field_department
     - field.field.node.project_main_page.field_project_category
     - field.field.node.project_main_page.field_project_image
+    - field.field.node.project_main_page.field_project_status
     - field.field.node.project_main_page.field_short_description
+    - field.field.node.project_main_page.field_show_timeline
+    - field.field.node.project_main_page.field_timeline
     - field.field.node.project_main_page.field_type
     - node.type.project_main_page
   module:
@@ -52,6 +55,8 @@ hidden:
   field_project_image: true
   field_project_status: true
   field_short_description: true
+  field_show_timeline: true
+  field_timeline: true
   langcode: true
   published_at: true
   search_api_excerpt: true

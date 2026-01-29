@@ -83,12 +83,6 @@ settings:
       text_aside_blocks_2_column:
         weight: 31
         enabled: true
-      timeline_items:
-        weight: 16
-        enabled: false
-      timeline_period:
-        weight: 33
-        enabled: false
       video:
         weight: 34
         enabled: true

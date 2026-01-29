@@ -1,0 +1,8 @@
+name: Hoeringsportal project
+type: module
+description: "Provides project functionality for Hoeringsportal."
+core_version_requirement: ^10 || ^11
+package: ITK
+
+"interface translation project": hoeringsportal_project
+"interface translation server pattern": modules/custom/%project/translations/%project.%language.po

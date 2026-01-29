@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Hooks related to hoeringsportal_project module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\hoeringsportal_project\Helper\ProjectHelper;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Hook\Attribute\LegacyHook;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+#[LegacyHook]
+function hoeringsportal_project_preprocess_node(&$variables) : void {
+  Drupal::service(ProjectHelper::class)->projectPreprocess($variables);
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+#[LegacyHook]
+function hoeringsportal_project_entity_presave(EntityInterface $entity): void {
+  if ($entity instanceof NodeInterface) {
+    Drupal::service(ProjectHelper::class)->nodePresave($entity);
+  }
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+#[LegacyHook]
+function hoeringsportal_project_form_node_project_main_page_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ProjectHelper::class)->projectFormAlter($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+#[LegacyHook]
+function hoeringsportal_project_form_node_project_main_page_edit_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(ProjectHelper::class)->projectFormAlter($form, $form_state);
+}

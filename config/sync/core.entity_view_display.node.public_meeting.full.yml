@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.public_meeting.field_email_address
     - field.field.node.public_meeting.field_first_meeting_time
     - field.field.node.public_meeting.field_hidden_signup
+    - field.field.node.public_meeting.field_hide_in_timeline
     - field.field.node.public_meeting.field_last_meeting_time
     - field.field.node.public_meeting.field_last_meeting_time_end
     - field.field.node.public_meeting.field_map
@@ -145,6 +146,7 @@ hidden:
   field_department: true
   field_first_meeting_time: true
   field_hidden_signup: true
+  field_hide_in_timeline: true
   field_last_meeting_time: true
   field_last_meeting_time_end: true
   field_media_image_single: true

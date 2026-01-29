@@ -59,7 +59,7 @@ module:
   hoeringsportal_forms: 0
   hoeringsportal_hearing: 0
   hoeringsportal_openid_connect: 0
-  hoeringsportal_project_timeline: 0
+  hoeringsportal_project: 0
   hoeringsportal_public_meeting: 0
   hoeringsportal_quicklinks: 0
   honeypot: 0

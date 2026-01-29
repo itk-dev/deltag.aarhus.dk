@@ -12,9 +12,11 @@ dependencies:
     - field.field.node.course.field_content_state
     - field.field.node.course.field_department
     - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_in_timeline
     - field.field.node.course.field_hide_time
     - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_project_reference
     - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
@@ -83,9 +85,11 @@ hidden:
   field_address: true
   field_content_state: true
   field_first_meeting_time: true
+  field_hide_in_timeline: true
   field_hide_time: true
   field_last_meeting_time: true
   field_map: true
+  field_project_reference: true
   field_top_images: true
   langcode: true
   published_at: true

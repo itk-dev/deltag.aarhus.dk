@@ -1,0 +1,169 @@
+{#
+/**
+ * @file
+ * Project timeline block template.
+ *
+ * Available variables:
+ * - items: Array of timeline items with: id, date, month, title, subtitle,
+ *   description, status (completed|current|upcoming|note), image, link,
+ *   linkText, accentColor (pink|blue|null).
+ * - legend_items: Array of legend items with: status, label, color.
+ * - default_view: Default view mode ('vertical' or 'horizontal').
+ * - title: Optional timeline title (defaults to 'Projektets tidslinje').
+ * - description: Optional timeline description.
+ */
+#}
+
+{% set default_view = 'vertical' %}
+
+<section
+  class="project-timeline"
+  data-project-timeline
+  data-default-view="{{ default_view }}"
+  aria-label="{{ 'Project timeline'|t }}"
+>
+  {# Header with title and view toggle - wrapped in container to match site layout #}
+  <div class="container">
+    <div class="project-timeline__header">
+      <div class="project-timeline__header-content">
+        <h2 class="project-timeline__title">{{ title|default('Project timeline'|t) }}</h2>
+        {% if description is not empty %}
+          <p class="project-timeline__description">{{ description }}</p>
+        {% else %}
+          <p class="project-timeline__description">{{ 'Follow the engagement process and see how your input shapes the future project.'|t }}</p>
+        {% endif %}
+      </div>
+
+      {# View mode toggle #}
+      <div class="project-timeline__view-toggle" role="tablist" aria-label="{{ 'Timeline view options'|t }}">
+        <button
+          type="button"
+          class="project-timeline__view-btn project-timeline__view-btn--vertical"
+          role="tab"
+          aria-selected="{{ default_view == 'vertical' ? 'true' : 'false' }}"
+          aria-controls="project-timeline-vertical"
+          data-view="vertical"
+        >
+          <span class="project-timeline__view-icon" aria-hidden="true">↕</span>
+          <span class="project-timeline__view-text">{{ 'Vertical'|t }}</span>
+        </button>
+        <button
+          type="button"
+          class="project-timeline__view-btn project-timeline__view-btn--horizontal"
+          role="tab"
+          aria-selected="{{ default_view == 'horizontal' ? 'true' : 'false' }}"
+          aria-controls="project-timeline-horizontal"
+          data-view="horizontal"
+        >
+          <span class="project-timeline__view-icon" aria-hidden="true">↔</span>
+          <span class="project-timeline__view-text">{{ 'Horizontal'|t }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {# Vertical view (default desktop) #}
+  <div
+    id="project-timeline-vertical"
+    class="project-timeline__vertical"
+    role="tabpanel"
+    aria-label="{{ 'Vertical timeline view'|t }}"
+    {% if default_view != 'vertical' %}hidden{% endif %}
+  >
+    <div class="project-timeline__vertical-wrapper">
+      {# Mini navigation sidebar #}
+      {{ include(directory ~ '/templates/components/project-timeline-mini-nav.html.twig', {items: timeline_items}) }}
+      {# Timeline cards #}
+      <div class="project-timeline__cards">
+        {% for item in timeline_items %}
+          {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {# Horizontal view (carousel) #}
+  {% set slide_items = timeline_items|filter(item => not item.is_today_marker|default(false)) %}
+  <div
+    id="project-timeline-horizontal"
+    class="project-timeline__horizontal"
+    role="tabpanel"
+    aria-label="{{ 'Horizontal timeline carousel'|t }}"
+    {% if default_view != 'horizontal' %}hidden{% endif %}
+  >
+    {# 1. Horizontal timeline with dots FIRST #}
+    <div class="project-timeline__horizontal-line">
+      <div class="project-timeline__horizontal-line-inner" data-dot-track>
+        {% set slide_index = 0 %}
+        {% for item in timeline_items %}
+          <div class="project-timeline__horizontal-dot-wrapper">
+            <button type="button"
+              class="project-timeline__horizontal-dot project-timeline__horizontal-dot--{{ item.status }} {{ item.accentColor }}{% if item.is_today_marker|default(false) %} project-timeline__horizontal-dot--today{% endif %}{% if loop.first %} is-active{% endif %}"
+              {% if not item.is_today_marker|default(false) %}data-slide-index="{{ slide_index }}"{% endif %}
+              aria-label="{{ item.title }}"
+              {% if item.is_today_marker|default(false) %}data-today-marker{% endif %}>
+            </button>
+            <div class="project-timeline__horizontal-label">
+              {% if item.is_today_marker|default(false) %}
+                <span class="project-timeline__horizontal-month">{{ 'Today'|t }}</span>
+              {% else %}
+                <span class="project-timeline__horizontal-month">{{ item.date|date('M') }}</span>
+                <span class="project-timeline__horizontal-year">{{ item.date|date('Y') }}</span>
+              {% endif %}
+            </div>
+          </div>
+          {% if not item.is_today_marker|default(false) %}
+            {% set slide_index = slide_index + 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {# 2. Carousel viewport SECOND #}
+    <div class="project-timeline__carousel-viewport">
+      <div class="project-timeline__carousel-track" data-carousel-track>
+        {% for item in slide_items %}
+          <div class="project-timeline__carousel-slide" data-carousel-slide>
+            {{ include(directory ~ '/templates/components/project-timeline-card.html.twig', {item: item}) }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# 3. Carousel navigation LAST #}
+    <div class="project-timeline__carousel-controls">
+      <button
+        type="button"
+        class="project-timeline__carousel-btn project-timeline__carousel-btn--prev"
+        aria-label="{{ 'Previous item'|t }}"
+        data-carousel-prev
+        disabled
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="project-timeline__carousel-indicator" aria-live="polite">
+        <span data-carousel-current>1</span> / <span data-carousel-total>{{ slide_items|length }}</span>
+      </div>
+      <button
+        type="button"
+        class="project-timeline__carousel-btn project-timeline__carousel-btn--next"
+        aria-label="{{ 'Next item'|t }}"
+        data-carousel-next
+        {{ slide_items|length <= 1 ? 'disabled' : '' }}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  {# Legend #}
+  {% if legend_items|default([])|length > 0 %}
+    <div class="container">
+      {{ include(directory ~ '/templates/components/project-timeline-legend.html.twig', {items: legend_items}) }}
+    </div>
+  {% endif %}
+</section>

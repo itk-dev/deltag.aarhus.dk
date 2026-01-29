@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Status legend for timeline.
+ *
+ * Available variables:
+ * - items: Array of legend items with: status, label.
+ */
+#}
+<div class="project-timeline-legend" aria-label="{{ 'Timeline status legend'|t }}">
+  <ul class="project-timeline-legend__list">
+    {% for item in items %}
+      <li class="project-timeline-legend__item project-timeline-legend__item--{{ item.status }}">
+        <span class="project-timeline-legend__dot" aria-hidden="true"></span>
+        <span class="project-timeline-legend__label">{{ item.label }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

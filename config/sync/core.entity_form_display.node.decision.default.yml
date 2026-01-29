@@ -9,7 +9,9 @@ dependencies:
     - field.field.node.decision.field_decision
     - field.field.node.decision.field_decision_date
     - field.field.node.decision.field_department
+    - field.field.node.decision.field_hide_in_timeline
     - field.field.node.decision.field_media_document
+    - field.field.node.decision.field_project_reference
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
@@ -26,6 +28,7 @@ third_party_settings:
       children:
         - field_decision
         - field_decision_date
+        - group_project_reference
         - field_department
         - field_area
         - field_type
@@ -42,6 +45,23 @@ third_party_settings:
         open: true
         description: ''
         required_fields: false
+    group_project_reference:
+      children:
+        - field_project_reference
+        - field_hide_in_timeline
+      label: 'Projekt reference'
+      region: hidden
+      parent_name: group_information
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: false
 id: node.decision.default
 targetEntityType: node
 bundle: decision
@@ -49,7 +69,7 @@ mode: default
 content:
   field_area:
     type: options_buttons
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -87,9 +107,16 @@ content:
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_hide_in_timeline:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_media_document:
     type: entity_browser_entity_reference
@@ -105,6 +132,16 @@ content:
       field_widget_display_settings:
         view_mode: node_form_display
       selection_mode: selection_append
+    third_party_settings: {  }
+  field_project_reference:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_related_content:
     type: entity_reference_autocomplete
@@ -141,7 +178,7 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

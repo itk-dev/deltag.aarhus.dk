@@ -1,0 +1,68 @@
+{
+  "images": {
+    "logo": "https://deltag.aarhus.dk/themes/custom/hoeringsportal/static/images/AAK_02_venstrejusteret_sh.svg",
+    "logoWhite": "https://deltag.aarhus.dk/themes/custom/hoeringsportal/static/images/AAK_02_venstrejusteret_hvid.svg",
+    "hero": "https://deltag.aarhus.dk/sites/default/files/images/IMG_1251_cropped_0.jpg",
+    "gaatur": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1064_cropped.jpg",
+    "workshop": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/IMG_1227%20%281%29%20-%20cropped.jpg",
+    "popup": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/Billede3.jpg",
+    "digital": "https://deltag.aarhus.dk/sites/default/files/styles/responsive_small_teaser/public/images/Kategorier_stor_0.png"
+  },
+  "timelineData": [
+    {
+      "id": 1,
+      "date": "2023",
+      "month": "",
+      "title": "Udpegning",
+      "subtitle": "Strategisk Byrumsplan",
+      "description": "Hjortshøj Stationsplads udpeges som ét af 13 byrum i Aarhus Kommunes Strategiske Byrumsplan.",
+      "status": "completed",
+      "link": "https://aarhus.dk/nyt/teknik-og-miljoe/2023/august-2023/raadmand-vil-puste-nyt-liv-i-13-af-byens-rum",
+      "linkText": "Læs om byrumsplanen"
+    },
+    {
+      "id": 2,
+      "date": "2025",
+      "month": "Forår",
+      "title": "Dialog med Fællesråd",
+      "subtitle": "Hjortshøj Landsbyforum",
+      "description": "Gåtur på Stationspladsen og efterfølgende møde om stedets identitet og potentialer med fællesrådet.",
+      "status": "completed",
+      "image": "gaatur",
+      "link": "https://deltag.aarhus.dk/public_meeting/1296",
+      "linkText": "Se detaljer om mødet"
+    },
+    {
+      "id": 3,
+      "date": "2025",
+      "month": "August",
+      "title": "Workshop med Virupskolen",
+      "subtitle": "Børne- og ungeperspektiv",
+      "description": "Formiddag sammen med skoleelever fra Virupskolen om fremtidens stationsplads.",
+      "status": "completed",
+      "image": "workshop",
+      "link": "https://deltag.aarhus.dk/public_meeting/1298",
+      "linkText": "Se workshoppen",
+      "accentColor": "pink"
+    },
+    {
+      "id": 6,
+      "date": "2025",
+      "month": "Efterår",
+      "title": "Udarbejdelse af Forslag",
+      "subtitle": "Design & Planlægning",
+      "description": "De mange input danner fundament for udarbejdelse af et forslag til omdannelsen af Hjortshøj Stationsplads.",
+      "status": "current"
+    },
+    {
+      "id": 9,
+      "date": "Note",
+      "month": "",
+      "title": "Redaktionel bemærkning",
+      "subtitle": "Note",
+      "description": "Dette er en redaktionel note fra projektteamet med vigtig information om projektet.",
+      "status": "note",
+      "accentColor": "blue"
+    }
+  ]
+}

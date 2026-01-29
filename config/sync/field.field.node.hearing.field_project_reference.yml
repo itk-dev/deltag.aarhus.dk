@@ -1,25 +1,29 @@
-uuid: c9d2051a-a1f5-4d82-84b3-9ceeaadee0c1
+uuid: 0a231d25-ed97-440d-903a-37b162e64437
 langcode: da
 status: true
 dependencies:
   config:
     - field.storage.node.field_project_reference
     - node.type.hearing
+    - node.type.project_main_page
 id: node.hearing.field_project_reference
 field_name: field_project_reference
 entity_type: node
 bundle: hearing
-label: Projekttidslinje
-description: 'Vælg den projekttidslinje som høringen er tilknyttet.'
+label: 'Projekt reference'
+description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: views
+  handler: 'default:node'
   handler_settings:
-    view:
-      view_name: form_list_active_projects
-      display_name: entity_reference_1
-      arguments: {  }
+    target_bundles:
+      project_main_page: project_main_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference
