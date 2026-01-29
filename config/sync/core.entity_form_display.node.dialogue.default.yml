@@ -66,7 +66,7 @@ third_party_settings:
       children:
         - field_project_reference
         - field_hide_in_timeline
-      label: 'Projekt reference'
+      label: 'Projektreference'
       region: hidden
       parent_name: group_information
       weight: 32
