@@ -8,6 +8,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-623](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
   Add nginx block of bots to flags
+* [PR-624](https://github.com/itk-dev/deltag.aarhus.dk/pull/624)
+  Fixed issue with project status
 
 ## [4.14.4] - 2026-01-27
 
