@@ -10,7 +10,7 @@ id: node.course.field_project_reference
 field_name: field_project_reference
 entity_type: node
 bundle: course
-label: 'Projekt reference'
+label: 'Projektreference'
 description: ''
 required: false
 translatable: false
