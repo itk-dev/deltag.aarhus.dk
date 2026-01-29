@@ -86,6 +86,16 @@ server {
         fastcgi_pass ${NGINX_FPM_SERVICE};
     }
 
+    # Define which paths to protect
+    location ~ ^/(flag/flag|admin|user/login) {
+        # Block bots on these paths only
+        if ($http_user_agent ~* (bot|crawler|spider|scraper)) {
+            return 403;
+        }
+
+        try_files $uri /index.php?$query_string;
+    }
+
     # Enforce clean URLs
     #
     # Removes index.php from urls like www.example.com/index.php/my-page --> www.example.com/my-page
