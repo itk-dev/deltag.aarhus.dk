@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.14.6] - 2026-01-29
+
+* [PR-626](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
+  Invalidate node cache when node is flagged.
+
 ## [4.14.5] - 2026-01-29
 
 * [PR-623](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
