@@ -334,8 +334,8 @@ class ProjectHelper {
     }
     catch (\Exception $e) {
       $this->logger->error('Error determining date for node @nid: @message', [
-        '@nid' => $node->id()
-        , '@message' => $e->getMessage(),
+        '@nid' => $node->id(),
+        '@message' => $e->getMessage(),
       ]);
       return NULL;
     }
