@@ -11,6 +11,15 @@ server {
     real_ip_recursive on;
     real_ip_header X-Forwarded-For;
 
+
+    # Define which paths to protect
+    location ~ ^/(flag/flag|admin|user/login) {
+        # Block bots on these paths only
+        if ($http_user_agent ~* (bot|crawler|spider|scraper)) {
+            return 403;
+        }
+    }
+
     location = /favicon.ico {
         log_not_found off;
         access_log off;
