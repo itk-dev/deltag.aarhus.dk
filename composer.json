@@ -106,12 +106,12 @@
     },
     "repositories": {
         "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8",
             "exclude": [
                 "drupal/pluginformalter",
                 "drupal/toolbar_visibility"
-            ]
+            ],
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
         },
         "asset-packagist": {
             "type": "composer",
@@ -126,105 +126,105 @@
             "url": "https://github.com/itk-dev/itk_pretix.git"
         },
         "drupal/hoeringsportal_data": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_data",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_data": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_data"
         },
         "drupal/hoeringsportal_deskpro": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_deskpro",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_deskpro": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_deskpro"
         },
         "drupal/hoeringsportal_dialogue": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_dialogue",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_dialogue": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_dialogue"
         },
         "drupal/hoeringsportal_audit_log": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_audit_log",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_audit_log": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_audit_log"
         },
         "drupal/hoeringsportal_openid_connect": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_openid_connect",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_openid_connect": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_openid_connect"
         },
         "drupal/hoeringsportal_citizen_proposal": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_citizen_proposal",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_citizen_proposal": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_citizen_proposal"
         },
         "drupal/hoeringsportal_citizen_proposal_archiving": {
-            "type": "path",
-            "url": "web/modules/custom/hoeringsportal_citizen_proposal_archiving",
             "options": {
                 "symlink": false,
                 "versions": {
                     "drupal/hoeringsportal_citizen_proposal_archiving": "1.0-dev"
                 }
-            }
+            },
+            "type": "path",
+            "url": "web/modules/custom/hoeringsportal_citizen_proposal_archiving"
         },
         "// @see web/modules/contrib/search_autocomplete/readme.md": {
-            "type": "package",
             "package": {
                 "name": "cure53/dompurify",
-                "type": "drupal-library",
-                "version": "3.0.3",
                 "source": {
+                    "reference": "3.0.3",
                     "type": "git",
-                    "url": "https://github.com/cure53/DOMPurify.git",
-                    "reference": "3.0.3"
-                }
-            }
+                    "url": "https://github.com/cure53/DOMPurify.git"
+                },
+                "type": "drupal-library",
+                "version": "3.0.3"
+            },
+            "type": "package"
         },
         "deskpro/deskpro-api-client-php": {
-            "type": "package",
             "package": {
-                "name": "deskpro/deskpro-api-client-php",
-                "type": "library",
-                "version": "4.1.0",
                 "autoload": {
                     "psr-0": {
                         "Deskpro\\": "src/"
                     }
                 },
+                "name": "deskpro/deskpro-api-client-php",
                 "source": {
+                    "reference": "hotfix/change-psr-log-dependency",
                     "type": "git",
-                    "url": "https://github.com/itk-dev/deskpro-api-client-php.git",
-                    "reference": "hotfix/change-psr-log-dependency"
-                }
-            }
+                    "url": "https://github.com/itk-dev/deskpro-api-client-php.git"
+                },
+                "type": "library",
+                "version": "4.1.0"
+            },
+            "type": "package"
         },
         "0": {
             "type": "git",
