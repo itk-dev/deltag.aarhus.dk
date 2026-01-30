@@ -19,7 +19,7 @@
   {# Get the correct url for next meeting #}
   {% if public_meeting_context %}
     {% set dates_delta = public_meeting_context.upcoming|first.name %}
-    {% set url = path('hoeringsportal_public_meeting.public_meeting_date', {node: node.id, dates_delta}) %}
+    {% set url = path('hoeringsportal_public_meeting.public_meeting_date', {node: node.id, dates_delta: dates_delta}) %}
   {% endif %}
 {% elseif node_type == 'course' %}
   {% set node_type_class = 'text-public-meeting' %}
