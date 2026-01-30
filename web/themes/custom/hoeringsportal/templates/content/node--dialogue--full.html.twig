@@ -10,14 +10,14 @@
     1: {
       label: 'Proposals'|t,
       href: '#proposals',
-    }
+    },
   }
   %}
 
   {%
     set shortcuts = 'use_map_on_proposals' in dialogue_helper.getProposalConfig(node) ? shortcuts|merge([{
       label: 'Map'|t,
-      href: {route: 'hoeringsportal_dialogue.map_view', parameters: {node: node.id}}
+      href: {route: 'hoeringsportal_dialogue.map_view', parameters: {node: node.id}},
     }]) : shortcuts
   %}
 
@@ -28,7 +28,7 @@
     description: content.field_teaser,
     tags_fields: {0: content.field_area, 1: content.field_type},
     shortcuts: shortcuts,
-    category: 'Dialogue'|t
+    category: 'Dialogue'|t,
   }) }}
 {% endblock %}
 

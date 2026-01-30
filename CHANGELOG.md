@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-629](https://github.com/itk-dev/deltag.aarhus.dk/pull/629)
+  * Update drupal core to 11.3
+  * Update additional modules
+  * Update config to match d11
+
 ## [4.14.5] - 2026-01-29
 
 * [PR-623](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
