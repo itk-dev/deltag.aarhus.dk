@@ -37,14 +37,14 @@ final class SettingsForm extends ConfigFormBase {
    * @param \Drupal\hoeringsportal_audit_log\Helpers\ConfigHelper $configHelper
    *   The configuration helper.
    * @param \Drupal\Core\Config\TypedConfigManagerInterface $typedConfigManager
-   *   The typed config manager
- */
+   *   The typed config manager.
+   */
   public function __construct(
     ConfigFactoryInterface $configFactory,
     protected RouteProviderInterface $routeProvider,
     protected EntityTypeManagerInterface $entityTypeManager,
     protected ConfigHelper $configHelper,
-    TypedConfigManagerInterface $typedConfigManager
+    TypedConfigManagerInterface $typedConfigManager,
   ) {
     parent::__construct(
       $configFactory,
