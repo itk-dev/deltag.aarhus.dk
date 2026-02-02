@@ -48,7 +48,7 @@ final class SettingsForm extends ConfigFormBase {
   ) {
     parent::__construct(
       $configFactory,
-      $this->typedConfigManager = $typedConfigManager,
+      $typedConfigManager,
     );
   }
 

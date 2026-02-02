@@ -10,16 +10,12 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8",
             "exclude": ["drupal/toolbar_visibility"]
-        },
-        "itk-dev/serviceplatformen": {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/serviceplatformen.git"
         }
     },
     "require": {
         "drupal/entity_events": "^2.0",
         "drupal/symfony_mailer": "^1.3",
         "drush/drush": "^13",
-        "itk-dev/serviceplatformen": "dev-hotfix/update-symfony-string"
+        "itk-dev/serviceplatformen": "^1.8"
     }
 }

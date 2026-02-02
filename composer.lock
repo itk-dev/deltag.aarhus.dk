@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5e56d51932d0afe72c56c3f7800c239",
+    "content-hash": "67ba341de97d703ed40464532fa1bf2f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4933,26 +4933,29 @@
         },
         {
             "name": "drupal/site_status_message",
-            "version": "dev-2.1.x",
+            "version": "2.1.0-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/site_status_message.git",
-                "reference": "9bf603239d21ffb52ee1d13828533b0c592a7b13"
+                "reference": "2.1.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/site_status_message-2.1.0-alpha1.zip",
+                "reference": "2.1.0-alpha1",
+                "shasum": "42fb02b61e1deb5a58872d92c6b0acfd3257aca9"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.1.x": "2.1.x-dev"
-                },
                 "drupal": {
-                    "version": "2.1.0-alpha1+1-dev",
-                    "datestamp": "1765467411",
+                    "version": "2.1.0-alpha1",
+                    "datestamp": "1762428102",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -7201,16 +7204,16 @@
         },
         {
             "name": "itk-dev/itk_pretix",
-            "version": "dev-hotfix/update-deprecated-merge-key",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/itk_pretix.git",
-                "reference": "96ae2aad63ce6c62c605d3a9b8f98244bcd2f113"
+                "reference": "916185284eae371451f58828c936eb4814846c9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/96ae2aad63ce6c62c605d3a9b8f98244bcd2f113",
-                "reference": "96ae2aad63ce6c62c605d3a9b8f98244bcd2f113",
+                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/916185284eae371451f58828c936eb4814846c9d",
+                "reference": "916185284eae371451f58828c936eb4814846c9d",
                 "shasum": ""
             },
             "require": {
@@ -7251,10 +7254,10 @@
                 "Drupal"
             ],
             "support": {
-                "source": "https://github.com/itk-dev/itk_pretix/tree/hotfix/update-deprecated-merge-key",
+                "source": "https://github.com/itk-dev/itk_pretix/tree/1.4.0",
                 "issues": "https://github.com/itk-dev/itk_pretix/issues"
             },
-            "time": "2026-01-30T09:44:33+00:00"
+            "time": "2026-02-02T10:10:11+00:00"
         },
         {
             "name": "itk-dev/itk_siteimprove",
@@ -21754,12 +21757,9 @@
         "drupal/entityqueue": 15,
         "drupal/hoeringsportal_dialogue": 20,
         "drupal/openid_connect": 15,
-        "drupal/site_status_message": 20,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
-        "drupal/webform": 10,
-        "itk-dev/itk_pretix": 20,
-        "itk-dev/serviceplatformen": 20
+        "drupal/webform": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
