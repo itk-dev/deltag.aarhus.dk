@@ -13,6 +13,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\hoeringsportal_audit_log\Helpers\ConfigHelper;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
+use Drupal\Core\Config\TypedConfigManagerInterface;
 
 /**
  * Settings form.
@@ -35,9 +36,20 @@ final class SettingsForm extends ConfigFormBase {
    *   The entity type manager.
    * @param \Drupal\hoeringsportal_audit_log\Helpers\ConfigHelper $configHelper
    *   The configuration helper.
+   * @param \Drupal\Core\Config\TypedConfigManagerInterface $typedConfigManager
+   *   The typed config manager.
    */
-  public function __construct(ConfigFactoryInterface $configFactory, protected RouteProviderInterface $routeProvider, protected EntityTypeManagerInterface $entityTypeManager, protected ConfigHelper $configHelper) {
-    parent::__construct($configFactory);
+  public function __construct(
+    ConfigFactoryInterface $configFactory,
+    protected RouteProviderInterface $routeProvider,
+    protected EntityTypeManagerInterface $entityTypeManager,
+    protected ConfigHelper $configHelper,
+    TypedConfigManagerInterface $typedConfigManager,
+  ) {
+    parent::__construct(
+      $configFactory,
+      $typedConfigManager,
+    );
   }
 
   /**

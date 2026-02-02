@@ -17,7 +17,7 @@
     0: {
       label: 'Content'|t,
       href: '#content',
-    }
+    },
   } %}
 
   {% if not node.field_hidden_signup.value %}
@@ -48,35 +48,35 @@
         type: 'text',
         label: 'Category'|t,
         value: node.field_activity_type.value ? node.field_activity_type.entity.label : null,
-        icon: 'fa-solid fa-layer-group'
+        icon: 'fa-solid fa-layer-group',
       },
       1: {
         type: 'text',
         label: 'Date'|t,
         value: meetingDateStartTime|date('U')|format_date('hoeringsportal_date_long'),
-        icon: 'fa-solid fa-calendar-day'
+        icon: 'fa-solid fa-calendar-day',
       },
       2: {
         type: 'text',
         label: 'Time'|t,
         value: meetingDateStartTime|date('U')|format_date('hoeringsportal_time') ~ ' - ' ~ meetingDateEndTime|date('U')|format_date('hoeringsportal_time'),
-        icon: 'fa-solid fa-clock'
+        icon: 'fa-solid fa-clock',
       },
       3: {
         type: 'text',
         label: 'Address'|t,
         value: [
           meetingLocation ?? node.field_activity_location.value,
-          meetingAddress ?? node.field_address.value
+          meetingAddress ?? node.field_address.value,
         ],
-        icon: 'fa-solid fa-location-dot'
-      }
+        icon: 'fa-solid fa-location-dot',
+      },
     },
     category: 'Event'|t,
     notification: node.field_public_meeting_cancelled.value ? {
       header: 'Cancelled'|t,
-      message: node.field_cancelled_text.value
-    } : null
+      message: node.field_cancelled_text.value,
+    } : null,
   }) }}
 
 {% endblock %}

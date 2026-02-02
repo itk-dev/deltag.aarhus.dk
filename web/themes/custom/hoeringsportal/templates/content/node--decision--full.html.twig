@@ -14,15 +14,15 @@
       0: {
         type: 'text',
         label: 'Decision'|t,
-        value: content.field_decision
+        value: content.field_decision[0]['#markup'],
       },
       1: {
         type: 'text',
         label: 'Decision date'|t,
-        value: content.field_decision_date
-      }
+        value: content.field_decision_date[0]['#text'],
+      },
     },
-    category: 'Decision'|t
+    category: 'Decision'|t,
   }) }}
 {% endblock %}
 
