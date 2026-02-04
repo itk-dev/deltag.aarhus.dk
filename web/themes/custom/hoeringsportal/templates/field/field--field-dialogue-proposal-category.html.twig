@@ -37,14 +37,17 @@
  */
 #}
 
-<div class="proposal-category-items">
+<label class="visually-hidden" for="proposal-categories">
+  {{ 'Proposal categories'|t }}
+</label>
+<ul class="proposal-category-items" id="proposal-categories">
   {% if (items[0]) %}
-    <span class="badge rounded-pill">{{ items[0].content }}</span>
+    <li class="badge rounded-pill">{{ items[0].content }}</li>
   {% endif %}
   {% if (items[1]) %}
-    <span class="badge rounded-pill">{{ items[1].content }}</span>
+    <li class="badge rounded-pill">{{ items[1].content }}</li>
   {% endif %}
   {% if (items|length > 2) %}
-    <span class="badge rounded-pill">+{{ items|length - 2 }}</span>
+    <li class="badge rounded-pill">+{{ items|length - 2 }}</li>
   {% endif %}
-</div>
+</ul>
