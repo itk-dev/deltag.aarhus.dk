@@ -6,9 +6,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-630](https://github.com/itk-dev/deltag.aarhus.dk/pull/630)
+  Updated accessibility
+
 ## [4.15.2] - 2026-02-26
-
-
 
 ## [4.15.1] - 2026-02-25
 
