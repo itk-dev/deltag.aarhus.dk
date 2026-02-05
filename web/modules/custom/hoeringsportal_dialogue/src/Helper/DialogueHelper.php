@@ -251,7 +251,7 @@ class DialogueHelper {
       $form['actions']['back'] = [
         '#url' => Url::fromRoute('entity.node.canonical', ['node' => $parent->id()]),
         '#type' => 'link',
-        '#title' => $this->t('Back'),
+        '#title' => $this->t('Back to dialogue'),
         '#attributes' => ['class' => ['btn', 'btn-secondary', 'mb-2', 'border-0']],
         '#weight' => 10,
       ];

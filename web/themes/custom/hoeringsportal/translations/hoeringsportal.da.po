@@ -72,8 +72,8 @@ msgstr ""
 msgid "Attachments"
 msgstr "Vedhæftninger"
 
-msgid "Back"
-msgstr "Tilbage"
+msgid "Back to dialogue"
+msgstr "Tilbage til dialog"
 
 msgid ""
 "Before you can contribute you must validate your user account with "
