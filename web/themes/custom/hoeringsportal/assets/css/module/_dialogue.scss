@@ -62,6 +62,7 @@
       flex-basis: 50%;
     }
 
+    .button.upload,
     .file--image {
       display: none;
     }
@@ -105,6 +106,16 @@
       order: 1;
     }
   }
+
+  .form-actions {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--primitive-gray-500);
+
+    .btn {
+      margin-right: 1rem;
+    }
+  }
 }
 
 .dialogue-proposals {
@@ -146,6 +157,28 @@
   .comments .indented {
     border-left: 2px dashed var(--primitive-gray-600);
     padding-left: 2em;
+  }
+
+  .comment-form {
+    .form-submit {
+      @extend .btn;
+      @extend .btn-primary;
+
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border-radius: 0.2rem;
+      position: inherit;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .action-container {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--primitive-gray-500);
   }
 }
 

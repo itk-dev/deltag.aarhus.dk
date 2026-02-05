@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-07 12:56+0100\n"
-"PO-Revision-Date: 2026-01-07 12:56+0100\n"
+"POT-Creation-Date: 2026-02-05 08:47+0100\n"
+"PO-Revision-Date: 2026-02-05 08:47+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,9 @@ msgstr "@size begrænsning."
 
 msgid "Add new comment"
 msgstr "Tilføj ny kommentar"
+
+msgid "Back to dialogue"
+msgstr "Tilbage til dialog"
 
 msgid "Comment @commentId and it's children have been unpublished."
 msgstr ""

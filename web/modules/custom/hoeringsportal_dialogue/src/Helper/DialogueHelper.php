@@ -11,6 +11,7 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeForm;
 use Drupal\node\NodeInterface;
@@ -246,6 +247,14 @@ class DialogueHelper {
       $parentLocationSelection = $parent->get('field_dialogue_proposal_location')->getValue();
       $parentMapConfig = json_decode($parentLocationSelection[0]['map_config'] ?? '');
       $form['field_location']['widget'][0]['map_config']['#default_value'] = json_encode($parentMapConfig);
+
+      $form['actions']['back'] = [
+        '#url' => Url::fromRoute('entity.node.canonical', ['node' => $parent->id()]),
+        '#type' => 'link',
+        '#title' => $this->t('Back to dialogue'),
+        '#attributes' => ['class' => ['btn', 'btn-secondary', 'mb-2', 'border-0']],
+        '#weight' => 10,
+      ];
     }
 
     if ($parent) {

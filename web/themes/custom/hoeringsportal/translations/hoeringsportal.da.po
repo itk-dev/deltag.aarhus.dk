@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-20 12:40+0100\n"
-"PO-Revision-Date: 2026-01-20 12:40+0100\n"
+"POT-Creation-Date: 2026-02-05 08:47+0100\n"
+"PO-Revision-Date: 2026-02-05 08:47+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -71,6 +71,9 @@ msgstr ""
 
 msgid "Attachments"
 msgstr "Vedhæftninger"
+
+msgid "Back to dialogue"
+msgstr "Tilbage til dialog"
 
 msgid ""
 "Before you can contribute you must validate your user account with "
@@ -400,6 +403,9 @@ msgstr "Initiativ tilbagekaldt"
 
 msgid "Project start"
 msgstr "Initiativ start"
+
+msgid "Proposal categories"
+msgstr "Forslagskategorier"
 
 msgid "Proposals"
 msgstr "Forslag"
