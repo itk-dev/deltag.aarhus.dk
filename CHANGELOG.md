@@ -7,7 +7,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 * [PR-630](https://github.com/itk-dev/deltag.aarhus.dk/pull/630)
-  Updated accessibility
+  * Updated accessibility
+  * Added back to dialogue buttons.
 
 ## [4.14.5] - 2026-01-29
 
