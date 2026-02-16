@@ -119,7 +119,6 @@ BODY,
 
     $entity->save();
 
-<<<<<<< Updated upstream
     // Create Timeline Demo Project with timeline enabled.
     $timelineProject = Node::create([
       'type' => 'project_main_page',
@@ -196,43 +195,7 @@ BODY,
     $this->updateNodeProjectReference('node:decision:En ny afgørelse afvist', $timelineProject, '+4 months');
     $this->updateNodeProjectReference('node:dialogue:Test Dialogue - name and email', $timelineProject, '+5 months');
     $this->updateNodeProjectReference('public_meeting:fixture-future', $timelineProject);
-  }
 
-  /**
-   * Update a node to reference a project for timeline display.
-   *
-   * @param string $reference
-   *   The fixture reference key for the node.
-   * @param \Drupal\node\NodeInterface $project
-   *   The project node to reference.
-   * @param string|null $dateModifier
-   *   Optional date modifier string (e.g. '-2 months') to set the node's date.
-   */
-  private function updateNodeProjectReference(string $reference, NodeInterface $project, ?string $dateModifier = NULL): void {
-    $node = $this->getReference($reference);
-    $node->set('field_project_reference', ['target_id' => $project->id()]);
-    $node->set('field_hide_in_timeline', FALSE);
-
-    if ($dateModifier !== NULL) {
-      $date = (new \DateTimeImmutable($dateModifier))->format('Y-m-d\TH:i:s');
-      // Set the appropriate date field based on content type.
-      if ($node->hasField('field_start_date') && $node->bundle() === 'hearing') {
-        $node->set('field_start_date', $date);
-      }
-      if ($node->hasField('field_decision_date')) {
-        $node->set('field_decision_date', $date);
-      }
-      if ($node->hasField('field_last_meeting_time')) {
-        $node->set('field_last_meeting_time', $date);
-      }
-      // For dialogues, set created time since that's what the timeline uses.
-      if ($node->bundle() === 'dialogue') {
-        $node->setCreatedTime((new \DateTimeImmutable($dateModifier))->getTimestamp());
-      }
-    }
-
-    $node->save();
-=======
     // Project with all paragraph types.
     $entity = Node
       ::create([
@@ -437,7 +400,42 @@ BODY,
 
     $entity->save();
     $this->addReference('node:project_main_page:comprehensive', $entity);
->>>>>>> Stashed changes
+  }
+
+  /**
+   * Update a node to reference a project for timeline display.
+   *
+   * @param string $reference
+   *   The fixture reference key for the node.
+   * @param \Drupal\node\NodeInterface $project
+   *   The project node to reference.
+   * @param string|null $dateModifier
+   *   Optional date modifier string (e.g. '-2 months') to set the node's date.
+   */
+  private function updateNodeProjectReference(string $reference, NodeInterface $project, ?string $dateModifier = NULL): void {
+    $node = $this->getReference($reference);
+    $node->set('field_project_reference', ['target_id' => $project->id()]);
+    $node->set('field_hide_in_timeline', FALSE);
+
+    if ($dateModifier !== NULL) {
+      $date = (new \DateTimeImmutable($dateModifier))->format('Y-m-d\TH:i:s');
+      // Set the appropriate date field based on content type.
+      if ($node->hasField('field_start_date') && $node->bundle() === 'hearing') {
+        $node->set('field_start_date', $date);
+      }
+      if ($node->hasField('field_decision_date')) {
+        $node->set('field_decision_date', $date);
+      }
+      if ($node->hasField('field_last_meeting_time')) {
+        $node->set('field_last_meeting_time', $date);
+      }
+      // For dialogues, set created time since that's what the timeline uses.
+      if ($node->bundle() === 'dialogue') {
+        $node->setCreatedTime((new \DateTimeImmutable($dateModifier))->getTimestamp());
+      }
+    }
+
+    $node->save();
   }
 
   /**
@@ -451,14 +449,10 @@ BODY,
       ParagraphFixture::class,
       ProjectPageFixture::class,
       TermAreaFixture::class,
-<<<<<<< Updated upstream
       HearingFixture::class,
       DialogueFixture::class,
       DecisionFixture::class,
       PublicMeetingFixture::class,
-=======
-      \Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueFixture::class,
->>>>>>> Stashed changes
     ];
   }
 
