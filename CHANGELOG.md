@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-631](https://github.com/itk-dev/deltag.aarhus.dk/pull/631)
+  6727: Updated citizen proposal view
+
 ## [4.14.6] - 2026-01-29
 
 * [PR-626](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
