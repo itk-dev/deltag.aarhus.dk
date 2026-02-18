@@ -2400,6 +2400,29 @@ display:
     display_options:
       defaults:
         fields: true
+        header: false
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<div class="float-end"><a href="/admin/citizen-proposal/support-list">Vis alle borgerforslagsstøttere</a></div>'
+          tokenize: false
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: true
+          content: 'Viser @start-@end af @total'
       display_extenders: {  }
       path: admin/citizen-proposal
     cache_metadata:

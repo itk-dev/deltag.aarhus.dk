@@ -5,6 +5,9 @@ description: "A custom theme extending Claro core theme."
 package: ITK
 core_version_requirement: ^10 || ^11
 
+libraries:
+  - hoeringsportal_admin/global
+
 regions:
   header: "Header"
   pre_content: "Pre-content"
