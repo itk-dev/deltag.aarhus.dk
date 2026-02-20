@@ -6,6 +6,16 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.14.7] - 2026-02-19
+
+* [PR-631](https://github.com/itk-dev/deltag.aarhus.dk/pull/631)
+  Updated citizen proposal view. Added “All citizen proposal supporters” view.
+
+## [4.14.6] - 2026-01-29
+
+* [PR-626](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
+  Invalidate node cache when node is flagged.
+
 ## [4.14.5] - 2026-01-29
 
 * [PR-623](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
@@ -649,7 +659,13 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.14.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.14.7...HEAD
+[4.14.7]: https://github.com/itk-dev/hoeringsportal/compare/4.14.6...4.14.7
+[4.14.6]: https://github.com/itk-dev/hoeringsportal/compare/4.14.5...4.14.6
+[4.14.5]: https://github.com/itk-dev/hoeringsportal/compare/4.14.4...4.14.5
+[4.14.4]: https://github.com/itk-dev/hoeringsportal/compare/4.14.3...4.14.4
+[4.14.3]: https://github.com/itk-dev/hoeringsportal/compare/4.14.2...4.14.3
+[4.14.2]: https://github.com/itk-dev/hoeringsportal/compare/4.14.1...4.14.2
 [4.14.1]: https://github.com/itk-dev/hoeringsportal/compare/4.14.0...4.14.1
 [4.14.0]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...4.14.0
 [4.13.2]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...4.13.2
