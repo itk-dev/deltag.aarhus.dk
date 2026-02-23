@@ -14,12 +14,12 @@
       0: {
         type: 'text',
         label: 'Decision'|t,
-        value: content.field_decision
+        value: node.field_decision.value
       },
       1: {
         type: 'text',
         label: 'Decision date'|t,
-        value: content.field_decision_date
+        value: node.field_decision_date.date|date('U')|format_date('hoeringsportal_date_long')
       }
     },
     category: 'Decision'|t
