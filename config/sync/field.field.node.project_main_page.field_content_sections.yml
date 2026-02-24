@@ -15,6 +15,7 @@ dependencies:
     - paragraphs.paragraphs_type.teaser_row
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.text_aside_blocks_2_column
+    - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
 id: node.project_main_page.field_content_sections
@@ -41,6 +42,7 @@ settings:
       files: files
       aktuelt_i_projektet: aktuelt_i_projektet
       accordion: accordion
+      video: video
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -99,5 +101,5 @@ settings:
         enabled: false
       video:
         weight: 38
-        enabled: false
+        enabled: true
 field_type: entity_reference_revisions

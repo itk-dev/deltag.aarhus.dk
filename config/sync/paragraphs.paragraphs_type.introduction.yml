@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: introduction
-label: Introduktion
+label: 'Tekst (overskrift + tekst + link-knap)'
 icon_uuid: null
 icon_default: null
 description: 'En simpel introduktionstekst med mulighed for header og link'
