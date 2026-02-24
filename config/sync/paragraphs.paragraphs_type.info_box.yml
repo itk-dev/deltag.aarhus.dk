@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: info_box
-label: Infoboks
+label: 'Farvet tekstboks'
 icon_uuid: null
 icon_default: null
 description: ''

@@ -1,0 +1,29 @@
+uuid: cdb19e8d-c220-4257-a40f-f344b27ee51e
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area
+    - node.type.dialogue_proposal
+    - taxonomy.vocabulary.area
+id: node.dialogue_proposal.field_area
+field_name: field_area
+entity_type: node
+bundle: dialogue_proposal
+label: Område
+description: 'Vælg områder som forslaget vedrører. Markér "Hele Kommunen" hvis forslaget vedrører hele kommunen.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      area: area
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -17,6 +17,7 @@
 4. [Pretix setup](documentation/pretix.md)
 5. [Custom Høringsportalen theme](web/themes/custom/hoeringsportal/README.md)
 6. [Testing](documentation/Testing.md)
+7. [Server](documentation/Server.md)
 
 ## Database dumps
 

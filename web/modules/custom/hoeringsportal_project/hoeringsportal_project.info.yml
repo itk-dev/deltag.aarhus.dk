@@ -1,0 +1,3 @@
+type: module
+core_version_requirement: ^10 || ^11
+name: hoeringsportal_project

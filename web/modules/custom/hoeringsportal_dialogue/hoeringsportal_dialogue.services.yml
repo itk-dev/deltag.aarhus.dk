@@ -14,3 +14,7 @@ services:
   Drupal\hoeringsportal_dialogue\EventSubscriber\AnonymousEditSubscriber:
     tags:
       - { name: event_subscriber }
+
+  Drupal\hoeringsportal_dialogue\EventSubscriber\FlagCacheInvalidationSubscriber:
+    tags:
+      - { name: event_subscriber }

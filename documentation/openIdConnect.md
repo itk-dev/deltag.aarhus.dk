@@ -34,9 +34,9 @@ docker compose exec phpfpm vendor/bin/drush config:get --include-overridden open
 See the [Høringsportalen OpenID Connect module](../web/modules/custom/hoeringsportal_openid_connect/README.md) for
 details on configuring OpenID Connect authentification for citizens.
 
-For local testing we use [OpenId Connect Server Mock](https://github.com/Soluto/oidc-server-mock) for (almost) real
+For local testing we use [OpenID Provider Mock](https://github.com/geigerzaehler/oidc-provider-mock) for (almost) real
 OpenID Connect. Users and their claims are defined in
-[`docker-compose.override.yml`](../../../../docker-compose.override.yml).
+[`docker-compose.oidc.yml`](../../../../docker-compose.oidc.yml).
 
 ## Employee authentification
 
@@ -56,23 +56,15 @@ docker compose exec phpfpm vendor/bin/drush php:eval "\Drupal\taxonomy\Entity\Te
 ## Debugging OpenID Connect authentification
 
 ```sh
-docker compose --profile oidc up --detach
+docker compose up --detach
 ```
 
 ### Local OIDC test
 
-During (local) development we use [OpenId Connect Server Mock](https://github.com/Soluto/oidc-server-mock) (cf.
+During (local) development we use [OpenID Provider Mock](https://github.com/geigerzaehler/oidc-provider-mock) (cf.
 [`docker-compose.oidc.yml`](docker-compose.oidc.yml) which is
 [included](https://docs.docker.com/compose/how-tos/multiple-compose-files/include/) in
 [`docker-compose.override.yml`](docker-compose.override.yml)).
-
-#### Employees
-
-| Username            | Password             | Groups        |
-|---------------------|----------------------|---------------|
-| department1-admin   | department1-admin    | administrator |
-| department2-editor  | department2-editor   | editor        |
-| department3-editor  | department3-editor   | editor        |
 
 ## Debug OIDC
 
@@ -106,13 +98,13 @@ The json files with mock returns are located in the `mocks` folder in the root o
 To test if this works, patiently wait for:
 
 ```sh
-docker compose --profile oidc up --detach
+docker compose up --detach
 ```
 
 To test if it works, run (should return something starting with `HTTP/1.1 200 OK`)
 
 ```sh
-curl -d '{}' "http://$(docker compose --profile oidc port idp_mock_api 3030)/users"
+curl -d '{}' "http://$(docker compose port idp_mock_api 3030)/users"
 ```
 
 or
@@ -188,6 +180,6 @@ above config file (here, `userprincipalname`).
 ### Test delta sync
 
 ```sh
-docker compose --profile oidc up --detach
+docker compose --profile oidc-api up --detach
 ./test-delta-sync
 ```

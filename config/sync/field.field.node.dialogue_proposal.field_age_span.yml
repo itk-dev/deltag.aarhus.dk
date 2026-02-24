@@ -1,0 +1,23 @@
+uuid: b12817bb-9366-4d43-8abd-da5628c7cc26
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_age_span
+    - node.type.dialogue_proposal
+  module:
+    - options
+id: node.dialogue_proposal.field_age_span
+field_name: field_age_span
+entity_type: node
+bundle: dialogue_proposal
+label: Alder
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ikke_angivet
+default_value_callback: ''
+settings: {  }
+field_type: list_string

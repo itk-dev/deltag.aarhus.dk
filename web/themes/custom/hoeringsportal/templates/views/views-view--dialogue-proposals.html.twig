@@ -58,6 +58,17 @@
   </div>
   {{ attachment_before }}
 
+  {% if rows is empty %}
+    <div class="d-flex justify-content-center list--empty-text">
+      <div>
+        <h3>{{ 'No proposals yet. Be the first to participate with a proposal.'|t }}</h3>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-primary btn-sm" href="{{ path('node.add', {node_type: 'dialogue_proposal', dialogue: view.args[0]}) }}">{{ 'Participate with your proposal'|t }}</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   {{ rows }}
   {{ empty }}
   {{ pager }}
