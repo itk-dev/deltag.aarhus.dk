@@ -2,7 +2,6 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
-use DateTimeImmutable;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -378,7 +377,7 @@ class ProjectHelper {
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity to determine status for.
-   * @param DrupalDateTime $date
+   * @param \Drupal\Core\Datetime\DrupalDateTime $date
    *   The item date.
    * @param \DateTimeImmutable $now
    *   The current date.
@@ -386,7 +385,7 @@ class ProjectHelper {
    * @return string
    *   The status string (upcoming, completed, or note).
    */
-  private function determineStatus(EntityInterface $entity, DrupalDateTime $date, DateTimeImmutable $now): string {
+  private function determineStatus(EntityInterface $entity, DrupalDateTime $date, \DateTimeImmutable $now): string {
     return match (TRUE) {
       $date > $now => 'upcoming',
       $entity->getEntityTypeId() === 'node' => 'completed',
