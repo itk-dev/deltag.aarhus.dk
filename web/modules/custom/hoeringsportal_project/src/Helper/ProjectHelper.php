@@ -2,6 +2,7 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
+use DateTimeImmutable;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -10,6 +11,7 @@ use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\file\Entity\File;
+use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
@@ -110,42 +112,45 @@ class ProjectHelper {
    *   The entity being saved.
    */
   #[Hook('entity_presave')]
-  public function nodePresave(EntityInterface $entity): void {
-    try {
-      if (!$entity->hasField('field_project_reference')) {
-        return;
-      }
+  public function entityPresave(EntityInterface $entity): void {
+    if ($entity instanceof NodeInterface) {
+      try {
+        if (!$entity->hasField('field_project_reference')) {
+          return;
+        }
 
-      $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
+        $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
 
-      $originalEntity = $entity->original ?? NULL;
-      $oldTargetId = 0;
-      if ($originalEntity?->hasField('field_project_reference')) {
-        $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
-      }
+        $originalEntity = $entity->original ?? NULL;
+        $oldTargetId = 0;
+        if ($originalEntity?->hasField('field_project_reference')) {
+          $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
+        }
 
-      // Only act if the reference actually changed.
-      if ($oldTargetId === $newTargetId) {
-        return;
-      }
+        // Only act if the reference actually changed.
+        if ($oldTargetId === $newTargetId) {
+          return;
+        }
 
-      $idsToReset = [];
-      if ($oldTargetId > 0) {
-        $idsToReset[] = $oldTargetId;
-      }
-      if ($newTargetId > 0) {
-        $idsToReset[] = $newTargetId;
-      }
+        $idsToReset = [];
+        if ($oldTargetId > 0) {
+          $idsToReset[] = $oldTargetId;
+        }
+        if ($newTargetId > 0) {
+          $idsToReset[] = $newTargetId;
+        }
 
-      if ($idsToReset === []) {
-        return;
-      }
+        if ($idsToReset === []) {
+          return;
+        }
 
-      $idsToReset = array_values(array_unique($idsToReset));
-      $this->entityTypeManagerInterface->getStorage('node')->resetCache($idsToReset);
-    }
-    catch (\Exception $e) {
-      $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
+        $idsToReset = array_values(array_unique($idsToReset));
+        $this->entityTypeManagerInterface->getStorage('node')
+          ->resetCache($idsToReset);
+      }
+      catch (\Exception $e) {
+        $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
+      }
     }
   }
 
@@ -167,7 +172,7 @@ class ProjectHelper {
         ->exists('field_decision_date')
         ->exists('field_start_date')
         ->exists('field_last_meeting_time')
-        ->condition('type', 'dialogue');
+        ->condition('type', DialogueHelper::DIALOGUE_TYPE, '=');
 
       $referenceQuery->accessCheck();
       $referenceQuery->exists('field_project_reference');
@@ -236,7 +241,7 @@ class ProjectHelper {
         'title' => $node->getTitle(),
         'subtitle' => $node->type->entity->label(),
         'description' => $node->field_teaser->value,
-        'status' => $this->determineStatus($node, $date->format('Y-m-d'), $now->format('Y-m-d')),
+        'status' => $this->determineStatus($node, $date, $now),
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
         'linkText' => $this->t('View <span>@type</span>', ['@type' => $node->type->entity->label()]),
@@ -275,7 +280,7 @@ class ProjectHelper {
         'title' => $paragraph->field_title->value,
         'subtitle' => $paragraph->field_subtitle->value,
         'description' => $paragraph->field_note->value,
-        'status' => $this->determineStatus($paragraph, $date->format('Y-m-d'), $now->format('Y-m-d')),
+        'status' => $this->determineStatus($paragraph, $date, $now),
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $paragraph?->field_external_link?->uri ?? '',
         'linkText' => $this->t('View more'),
@@ -373,15 +378,15 @@ class ProjectHelper {
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity to determine status for.
-   * @param string $date
-   *   The item date in Y-m-d format.
-   * @param string $now
-   *   The current date in Y-m-d format.
+   * @param DrupalDateTime $date
+   *   The item date.
+   * @param \DateTimeImmutable $now
+   *   The current date.
    *
    * @return string
    *   The status string (upcoming, completed, or note).
    */
-  private function determineStatus(EntityInterface $entity, string $date, string $now): string {
+  private function determineStatus(EntityInterface $entity, DrupalDateTime $date, DateTimeImmutable $now): string {
     return match (TRUE) {
       $date > $now => 'upcoming',
       $entity->getEntityTypeId() === 'node' => 'completed',
