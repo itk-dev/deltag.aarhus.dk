@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: text_aside_blocks_2_column
-label: 'Text + aside blocks (2 column)'
+label: 'Tekst + infoboks fx kontaktinfo'
 icon_uuid: null
 icon_default: null
 description: 'Used to create a content section with texts and aside blocks in 2 columns.'

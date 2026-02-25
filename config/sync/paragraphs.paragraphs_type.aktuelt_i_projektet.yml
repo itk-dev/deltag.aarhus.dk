@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: aktuelt_i_projektet
-label: 'Aktuelt i projektet'
+label: 'Aktuelt i projektet (fx. indlejring af dialogforum)'
 icon_uuid: null
 icon_default: null
 description: 'Promote a specific activity in the project.'
