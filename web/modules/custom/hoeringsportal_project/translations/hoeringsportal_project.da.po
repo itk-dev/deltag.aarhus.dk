@@ -1,0 +1,39 @@
+# Danish translation of module hoeringsportal_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-01-28 10:13+0100\n"
+"PO-Revision-Date: 2026-01-28 10:13+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid "Finished"
+msgstr "Afsluttet"
+
+msgid "In progress"
+msgstr "I gang"
+
+msgid "Note"
+msgstr "Note"
+
+msgid "Project status"
+msgstr "Projektstatus"
+
+msgid "Upcoming"
+msgstr "Kommende"
+
+msgid "View <span>@type</span>"
+msgstr "Vis <span>@type</span>"
+
+msgid "View @type"
+msgstr "Vis @type"
+
+msgid "View more"
+msgstr "Vis mere"
+

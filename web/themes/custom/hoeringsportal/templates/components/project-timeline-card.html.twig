@@ -1,0 +1,107 @@
+{#
+/**
+ * @file
+ * Individual timeline card template.
+ *
+ * Available variables:
+ * - item: Timeline item with:
+ *   - id: Unique identifier.
+ *   - date: Date in Y-m-d format.
+ *   - month: Month name for display.
+ *   - title: Card title.
+ *   - subtitle: Optional subtitle.
+ *   - description: Card description text.
+ *   - status: One of 'completed', 'current', 'upcoming', 'note'.
+ *   - image: Optional image URL.
+ *   - link: Optional link URL.
+ *   - linkText: Optional link text.
+ *   - accentColor: Optional 'green', 'pink', or 'blue' for color override.
+ */
+#}
+
+{% set status_classes = {
+  completed: 'project-timeline-card--completed',
+  current: 'project-timeline-card--current',
+  upcoming: 'project-timeline-card--upcoming',
+  note: 'project-timeline-card--note',
+} %}
+
+{% set status_labels = {
+  completed: 'now'|date('Y-m-d') == item.date ? 'Today'|t : '✓ Finished'|t,
+  current: 'Today'|t,
+  upcoming: 'Upcoming'|t,
+  note: 'Note'|t,
+} %}
+
+{% set accent_class = item.accentColor ? 'project-timeline-card--accent-' ~ item.accentColor : '' %}
+
+<article
+  id="card-{{ item.id }}"
+  class="project-timeline-card {{ status_classes[item.status]|default('') }} {{ accent_class }}"
+  data-timeline-card
+  data-card-id="{{ item.id }}"
+  data-card-status="{{ item.status }}"
+>
+  {# Timeline connector dot #}
+  <div class="project-timeline-card__connector">
+    <span class="project-timeline-card__dot" aria-hidden="true"></span>
+  </div>
+
+  {# Card content #}
+  <div class="project-timeline-card__content">
+    {# Image (if present) - appears first for proper visual stacking #}
+    {% if item.image %}
+      <div class="project-timeline-card__image-wrapper">
+        <img
+          src="{{ item.image }}"
+          alt=""
+          class="project-timeline-card__image"
+          loading="lazy"
+        />
+      </div>
+    {% endif %}
+
+    {# Text content wrapper for proper flex layout in horizontal view #}
+    <div class="project-timeline-card__text-content">
+      {# Status badge (absolutely positioned) #}
+      <span class="project-timeline-card__status">
+        {{ status_labels[item.status]|default(item.status) }}
+      </span>
+
+      {# Header with date #}
+      <header class="project-timeline-card__header">
+        <div class="project-timeline-card__date-wrapper">
+          <time class="project-timeline-card__month" datetime="{{ item.date }}">
+            {{ item.month }}
+          </time>
+        </div>
+      </header>
+
+      {# Body #}
+      <div class="project-timeline-card__body">
+        {% if item.title %}
+          <h3 class="project-timeline-card__title">{{ item.title }}</h3>
+        {% endif %}
+
+        {% if item.subtitle %}
+          <p class="project-timeline-card__subtitle">{{ item.subtitle }}</p>
+        {% endif %}
+
+        {% if item.description %}
+          <p class="project-timeline-card__description">{{ item.description }}</p>
+        {% endif %}
+
+        {% if item.link %}
+          <footer class="project-timeline-card__footer">
+            <a href="{{ item.link }}" class="project-timeline-card__link">
+              {{ item.linkText|default('Read more'|t) }}
+              <svg class="project-timeline-card__link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </footer>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

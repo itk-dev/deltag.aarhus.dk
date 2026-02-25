@@ -26,7 +26,7 @@
   <div class="container content__container">
     <div class="row">
       <div class="col-md-8">
-        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at', 'field_project_status', 'field_department', 'field_type') }}
+        {{ content|without('field_project_image', 'field_short_description', 'field_aside_block', 'field_content_sections', 'field_project_category', 'field_area', 'published_at', 'field_project_status', 'field_department', 'field_type', 'field_show_timeline', 'field_timeline') }}
       </div>
       <div class="col-md-4 pt-md-3">
         {{ content.field_aside_block }}
@@ -36,6 +36,19 @@
   <div class="sections d-flex flex-column">
     {{ content.field_content_sections }}
   </div>
+  {% if node.field_show_timeline.value %}
+    <div class="sections d-flex flex-column">
+      <div class="container">
+        <div class="row">
+          <div class="timeline">
+            {{ include(directory ~ '/templates/components/timeline.html.twig', {
+              project_status: node.field_project_status.value
+            }) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
   <div class="sections d-flex flex-column">
     <div class="container">
       <div class="row">

@@ -26,9 +26,9 @@ includes:
         - hoeringsportal_hearing
         # - hoeringsportal_misc
         # - hoeringsportal_openid_connect
-        # - hoeringsportal_project
+        - hoeringsportal_project
         - hoeringsportal_public_meeting
-        - hoeringsportal_quicklinks
+        # - hoeringsportal_quicklinks
         # - hoeringsportal_test_delta_sync_fixtures
 
         - itk_admin
