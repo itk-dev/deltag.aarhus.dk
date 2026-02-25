@@ -25,11 +25,23 @@ settings:
       link: link
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 18
+        enabled: false
+      accordion_item:
+        weight: 19
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 20
+        enabled: false
       content_block:
         weight: 14
         enabled: false
       content_list:
         weight: 15
+        enabled: false
+      content_promotion:
+        weight: 23
         enabled: false
       files:
         weight: 16
@@ -61,10 +73,7 @@ settings:
       text_aside_blocks_2_column:
         weight: 24
         enabled: false
-      timeline_items:
-        weight: 25
-        enabled: false
-      timeline_period:
-        weight: 26
+      video:
+        weight: 34
         enabled: false
 field_type: entity_reference_revisions

@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.15.0] - 2026-02-25
+
+* [PR-590](https://github.com/itk-dev/deltag.aarhus.dk/pull/590)
+  Deleted old timeline.
+
 ## [4.14.7] - 2026-02-19
 
 * [PR-631](https://github.com/itk-dev/deltag.aarhus.dk/pull/631)

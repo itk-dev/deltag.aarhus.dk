@@ -186,7 +186,6 @@ BODY,
   public function getDependencies() {
     return [
       MediaFixture::class,
-      TermTimelineItemFixture::class,
     ];
   }
 

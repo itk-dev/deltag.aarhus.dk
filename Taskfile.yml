@@ -27,7 +27,6 @@ includes:
         # - hoeringsportal_misc
         # - hoeringsportal_openid_connect
         # - hoeringsportal_project
-        - hoeringsportal_project_timeline
         - hoeringsportal_public_meeting
         - hoeringsportal_quicklinks
         # - hoeringsportal_test_delta_sync_fixtures

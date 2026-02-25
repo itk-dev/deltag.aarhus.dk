@@ -6,14 +6,6 @@ type_label: 'Block field'
 entities:
   node: node
 properties:
-  block: 'views_block:timeline_related_items-block_1'
+  block: aarhus_hero
   use_block_title: false
   add_block_wrappers: false
-  config:
-    id: 'views_block:timeline_related_items-block_1'
-    label: ''
-    label_display: visible
-    provider: views
-    context_mapping: {  }
-    views_label: ''
-    items_per_page: none

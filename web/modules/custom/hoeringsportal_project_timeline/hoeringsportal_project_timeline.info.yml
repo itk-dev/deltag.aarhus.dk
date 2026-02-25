@@ -1,5 +1,5 @@
 name: "Hoeringsportal project timeline"
 type: module
-description: "Provides timeline block for projects"
+description: "Provides timeline block for projects - Disabled, ready for removal"
 core_version_requirement: ^8.8 || ^9 || ^10 || ^11
 package: Hoeringsportal

@@ -24,7 +24,6 @@ dependencies:
     - field.field.node.public_meeting.field_media_image_single
     - field.field.node.public_meeting.field_pretix_dates
     - field.field.node.public_meeting.field_pretix_event_settings
-    - field.field.node.public_meeting.field_project_reference
     - field.field.node.public_meeting.field_public_meeting_cancelled
     - field.field.node.public_meeting.field_registration_deadline
     - field.field.node.public_meeting.field_section
@@ -115,14 +114,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 8
-    region: header
-  field_project_reference:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
     region: header
   field_registration_deadline:
     type: datetime_default
