@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.15.1] - 2026-02-25
+
 * [PR-611](https://github.com/itk-dev/deltag.aarhus.dk/pull/611)
   Added windowed dot navigation on mobile horizontal timeline view
 * [PR-610](https://github.com/itk-dev/deltag.aarhus.dk/pull/610)
@@ -47,13 +49,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
   * Cleaned up local OIDC setup
   * Added test server OIDC setup
-<<<<<<< HEAD
 * [PR-590](https://github.com/itk-dev/deltag.aarhus.dk/pull/590)
   Deleted old timeline.
-=======
-
->>>>>>> develop
-
 * [PR-587](https://github.com/itk-dev/deltag.aarhus.dk/pull/587)
   Cleaned up translations
 * [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)
