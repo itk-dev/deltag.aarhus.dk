@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: image
-label: Billede
+label: 'Stort billede'
 icon_uuid: null
 icon_default: null
 description: 'Et billede til visning i fuld bredde'

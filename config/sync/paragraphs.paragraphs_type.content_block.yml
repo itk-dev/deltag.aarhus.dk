@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: content_block
-label: Indholdsblok
+label: 'Tekst + billede'
 icon_uuid: null
 icon_default: null
 description: 'En indholdsblok til visning af kort text med mulighed for at tilknytte et billede.'

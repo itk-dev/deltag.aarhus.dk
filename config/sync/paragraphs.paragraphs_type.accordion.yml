@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: accordion
-label: Accordion
+label: 'Fold ud-menu med underpunkter, fx FAQ'
 icon_uuid: null
 icon_default: null
 description: 'An accordion to show/collapse text elements'
