@@ -1,0 +1,82 @@
+uuid: b79c95ae-6255-4eb8-a0c4-a08324e38fee
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timeline
+    - node.type.project_main_page
+    - paragraphs.paragraphs_type.timeline_note
+  module:
+    - entity_reference_revisions
+id: node.project_main_page.field_timeline
+field_name: field_timeline
+entity_type: node
+bundle: project_main_page
+label: Tidslinje
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      timeline_note: timeline_note
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 20
+        enabled: false
+      accordion_item:
+        weight: 21
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 22
+        enabled: false
+      content_block:
+        weight: 23
+        enabled: false
+      content_list:
+        weight: 24
+        enabled: false
+      content_promotion:
+        weight: 25
+        enabled: false
+      files:
+        weight: 26
+        enabled: false
+      image:
+        weight: 27
+        enabled: false
+      info_box:
+        weight: 28
+        enabled: false
+      introduction:
+        weight: 29
+        enabled: false
+      link:
+        weight: 30
+        enabled: false
+      links_on_a_background_image:
+        weight: 31
+        enabled: false
+      projekt_billede_galleri:
+        weight: 32
+        enabled: false
+      teaser_row:
+        weight: 33
+        enabled: false
+      text:
+        weight: 34
+        enabled: false
+      text_aside_blocks_2_column:
+        weight: 35
+        enabled: false
+      timeline_note:
+        weight: 19
+        enabled: true
+      video:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

@@ -21,6 +21,7 @@ require("./modify-dialogue-form.js");
 require("./modify-dialogue-proposal-comments.js");
 require("./animated-svg.js");
 require("./accordion.js");
+require("./timeline.js");
 
 // Enable popovers.
 $(function () {

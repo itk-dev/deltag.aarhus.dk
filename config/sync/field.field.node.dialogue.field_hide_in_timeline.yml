@@ -1,0 +1,21 @@
+uuid: 75bf28b8-e2b2-4a15-8ae5-f23444a363a5
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_in_timeline
+    - node.type.dialogue
+id: node.dialogue.field_hide_in_timeline
+field_name: field_hide_in_timeline
+entity_type: node
+bundle: dialogue
+label: 'Skjul på tidslinje'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Hide in timeline'
+  off_label: 'Show in timeline'
+field_type: boolean
