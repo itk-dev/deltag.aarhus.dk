@@ -6,6 +6,8 @@
  * Hide Paragraph option in project_page content section form element.
  * We don't delete it because some project pages use the paragraph.
  */
-.page-node-type-project-main-page .paragraphs-add-dialog-row input[name="field_content_sections_text_add_more"] {
+.page-node-type-project-main-page
+  .paragraphs-add-dialog-row
+  input[name="field_content_sections_text_add_more"] {
   display: none;
 }

@@ -51,7 +51,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-590](https://github.com/itk-dev/deltag.aarhus.dk/pull/590)
   Deleted old timeline.
 =======
+
 >>>>>>> develop
+
 * [PR-587](https://github.com/itk-dev/deltag.aarhus.dk/pull/587)
   Cleaned up translations
 * [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)
