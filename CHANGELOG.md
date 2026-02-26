@@ -6,9 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* Added crawl as user agent to block on flags
+
 ## [4.15.2] - 2026-02-26
 
-
+* Readded missing view
 
 ## [4.15.1] - 2026-02-25
 
