@@ -72,6 +72,9 @@ msgstr ""
 msgid "Attachments"
 msgstr "Vedhæftninger"
 
+msgid "Back to dialogue"
+msgstr "Tilbage til dialog"
+
 msgid ""
 "Before you can contribute you must validate your user account with "
 "NemID."
@@ -425,6 +428,9 @@ msgstr "Initiativ start"
 
 msgid "Project timeline"
 msgstr "Projektets tidslinje"
+
+msgid "Proposal categories"
+msgstr "Forslagskategorier"
 
 msgid "Proposals"
 msgstr "Forslag"
