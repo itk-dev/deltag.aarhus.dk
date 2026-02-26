@@ -1,0 +1,21 @@
+uuid: 98e146a6-3005-496a-9245-0f72987ea58d
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_in_timeline
+    - node.type.hearing
+id: node.hearing.field_hide_in_timeline
+field_name: field_hide_in_timeline
+entity_type: node
+bundle: hearing
+label: 'Skjul på tidslinje'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Hide in timeline'
+  off_label: 'Show in timeline'
+field_type: boolean

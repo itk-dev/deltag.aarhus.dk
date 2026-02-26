@@ -11,6 +11,8 @@ dependencies:
     - field.field.node.dialogue.field_dialogue_proposal_config
     - field.field.node.dialogue.field_dialogue_proposal_location
     - field.field.node.dialogue.field_hidden_dialogue
+    - field.field.node.dialogue.field_hide_in_timeline
+    - field.field.node.dialogue.field_project_reference
     - field.field.node.dialogue.field_teaser
     - field.field.node.dialogue.field_top_images
     - field.field.node.dialogue.field_type
@@ -30,6 +32,8 @@ hidden:
   field_dialogue_proposal_config: true
   field_dialogue_proposal_location: true
   field_hidden_dialogue: true
+  field_hide_in_timeline: true
+  field_project_reference: true
   field_teaser: true
   field_top_images: true
   field_type: true

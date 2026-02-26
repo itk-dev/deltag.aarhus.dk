@@ -1,0 +1,75 @@
+uuid: 1ceb7913-18b2-4203-9b21-28e4eb226643
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_note.field_date
+    - field.field.paragraph.timeline_note.field_external_link
+    - field.field.paragraph.timeline_note.field_note
+    - field.field.paragraph.timeline_note.field_paragraph_image
+    - field.field.paragraph.timeline_note.field_subtitle
+    - field.field.paragraph.timeline_note.field_title
+    - paragraphs.paragraphs_type.timeline_note
+  module:
+    - datetime
+    - link
+id: paragraph.timeline_note.default
+targetEntityType: paragraph
+bundle: timeline_note
+mode: default
+content:
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_note:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_paragraph_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser_display
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true

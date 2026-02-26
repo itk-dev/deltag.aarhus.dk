@@ -1,0 +1,21 @@
+uuid: 2cdaee17-181e-43b3-9941-521eb68555d9
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_timeline
+    - node.type.project_main_page
+id: node.project_main_page.field_show_timeline
+field_name: field_show_timeline
+entity_type: node
+bundle: project_main_page
+label: 'Brug tidslinje'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Brug tidslinje'
+  off_label: 'Brug ikke tidslinje'
+field_type: boolean

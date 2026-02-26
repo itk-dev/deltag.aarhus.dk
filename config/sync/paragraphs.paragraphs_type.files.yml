@@ -3,7 +3,7 @@ langcode: da
 status: true
 dependencies: {  }
 id: files
-label: Files
+label: Filer
 icon_uuid: null
 icon_default: null
 description: 'Used to upload files that the user can download'

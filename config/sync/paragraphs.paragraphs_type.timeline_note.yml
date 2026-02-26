@@ -1,0 +1,10 @@
+uuid: 5dd11919-748a-4250-b792-b88674fcf052
+langcode: da
+status: true
+dependencies: {  }
+id: timeline_note
+label: 'Noter til tidslinje'
+icon_uuid: null
+icon_default: null
+description: 'Opret en note på tidslinjen'
+behavior_plugins: {  }

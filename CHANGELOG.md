@@ -11,6 +11,37 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Update additional modules
   * Update config to match d11
 
+## [4.15.2] - 2026-02-26
+
+
+
+## [4.15.1] - 2026-02-25
+
+* [PR-611](https://github.com/itk-dev/deltag.aarhus.dk/pull/611)
+  Added windowed dot navigation on mobile horizontal timeline view
+* [PR-610](https://github.com/itk-dev/deltag.aarhus.dk/pull/610)
+  Added hover effect to reveal accent colors on upcoming timeline cards
+* [PR-593](https://github.com/itk-dev/deltag.aarhus.dk/pull/593)
+  * Add project timeline
+  * Add project reference fields to several node types to display on timeline
+  * Add paragraph for adding custom elements to timeline
+  * Add CLAUDE.md file to project
+
+## [4.15.0] - 2026-02-25
+
+* [PR-590](https://github.com/itk-dev/deltag.aarhus.dk/pull/590)
+  Deleted old timeline.
+
+## [4.14.7] - 2026-02-19
+
+* [PR-631](https://github.com/itk-dev/deltag.aarhus.dk/pull/631)
+  Updated citizen proposal view. Added “All citizen proposal supporters” view.
+
+## [4.14.6] - 2026-01-29
+
+* [PR-626](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
+  Invalidate node cache when node is flagged.
+
 ## [4.14.5] - 2026-01-29
 
 * [PR-623](https://github.com/itk-dev/deltag.aarhus.dk/pull/623)
@@ -27,6 +58,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-591](https://github.com/itk-dev/deltag.aarhus.dk/pull/591)
   * Cleaned up local OIDC setup
   * Added test server OIDC setup
+* [PR-590](https://github.com/itk-dev/deltag.aarhus.dk/pull/590)
+  Deleted old timeline.
 * [PR-587](https://github.com/itk-dev/deltag.aarhus.dk/pull/587)
   Cleaned up translations
 * [PR-586](https://github.com/itk-dev/hoeringsportal/pull/586)
@@ -654,7 +687,16 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.14.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.15.2...HEAD
+[4.15.2]: https://github.com/itk-dev/hoeringsportal/compare/4.15.1...4.15.2
+[4.15.1]: https://github.com/itk-dev/hoeringsportal/compare/4.15.0...4.15.1
+[4.15.0]: https://github.com/itk-dev/hoeringsportal/compare/4.14.7...4.15.0
+[4.14.7]: https://github.com/itk-dev/hoeringsportal/compare/4.14.6...4.14.7
+[4.14.6]: https://github.com/itk-dev/hoeringsportal/compare/4.14.5...4.14.6
+[4.14.5]: https://github.com/itk-dev/hoeringsportal/compare/4.14.4...4.14.5
+[4.14.4]: https://github.com/itk-dev/hoeringsportal/compare/4.14.3...4.14.4
+[4.14.3]: https://github.com/itk-dev/hoeringsportal/compare/4.14.2...4.14.3
+[4.14.2]: https://github.com/itk-dev/hoeringsportal/compare/4.14.1...4.14.2
 [4.14.1]: https://github.com/itk-dev/hoeringsportal/compare/4.14.0...4.14.1
 [4.14.0]: https://github.com/itk-dev/hoeringsportal/compare/4.13.2...4.14.0
 [4.13.2]: https://github.com/itk-dev/hoeringsportal/compare/4.13.1...4.13.2

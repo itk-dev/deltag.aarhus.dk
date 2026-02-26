@@ -9,7 +9,9 @@ dependencies:
     - field.field.node.decision.field_decision
     - field.field.node.decision.field_decision_date
     - field.field.node.decision.field_department
+    - field.field.node.decision.field_hide_in_timeline
     - field.field.node.decision.field_media_document
+    - field.field.node.decision.field_project_reference
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
@@ -100,7 +102,9 @@ content:
     weight: 100
     region: content
 hidden:
+  field_hide_in_timeline: true
   field_media_document: true
+  field_project_reference: true
   field_top_images: true
   langcode: true
   published_at: true

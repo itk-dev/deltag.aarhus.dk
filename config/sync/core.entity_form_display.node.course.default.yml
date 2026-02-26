@@ -12,9 +12,11 @@ dependencies:
     - field.field.node.course.field_content_state
     - field.field.node.course.field_department
     - field.field.node.course.field_first_meeting_time
+    - field.field.node.course.field_hide_in_timeline
     - field.field.node.course.field_hide_time
     - field.field.node.course.field_last_meeting_time
     - field.field.node.course.field_map
+    - field.field.node.course.field_project_reference
     - field.field.node.course.field_teaser
     - field.field.node.course.field_top_images
     - field.field.node.course.field_type
@@ -32,13 +34,14 @@ third_party_settings:
         - field_first_meeting_time
         - field_last_meeting_time
         - field_hide_time
+        - group_project_reference
         - field_department
         - field_type
         - field_area
       label: Informationer
       region: content
       parent_name: ''
-      weight: 8
+      weight: 7
       format_type: details
       format_settings:
         classes: ''
@@ -55,7 +58,24 @@ third_party_settings:
       label: Lokation
       region: content
       parent_name: ''
-      weight: 3
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: false
+    group_project_reference:
+      children:
+        - field_project_reference
+        - field_hide_in_timeline
+      label: 'Projekt reference'
+      region: hidden
+      parent_name: group_information
+      weight: 14
       format_type: details
       format_settings:
         classes: ''
@@ -94,13 +114,13 @@ content:
     third_party_settings: {  }
   field_area:
     type: options_buttons
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_content_sections:
     type: paragraphs
-    weight: 6
+    weight: 5
     region: content
     settings:
       title: Paragraph
@@ -120,7 +140,7 @@ content:
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -129,6 +149,13 @@ content:
     weight: 11
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_hide_in_timeline:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_hide_time:
     type: boolean_checkbox
@@ -145,7 +172,7 @@ content:
     third_party_settings: {  }
   field_map:
     type: hoeringsportal_data_map_default
-    weight: 7
+    weight: 6
     region: content
     settings:
       available_types:
@@ -153,9 +180,19 @@ content:
         localplanids: 0
         localplanids_node: 0
     third_party_settings: {  }
+  field_project_reference:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_teaser:
     type: string_textarea
-    weight: 2
+    weight: 3
     region: content
     settings:
       rows: 5
@@ -178,13 +215,13 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 9
+    weight: 8
     region: content
     settings:
       display_label: true
