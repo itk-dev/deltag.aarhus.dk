@@ -83,7 +83,7 @@
   </div>
 
   {# Horizontal view (carousel) #}
-  {% set slide_items = timeline_items|filter(item => not item.is_today_marker|default(false)) %}
+  {% set slide_items = (timeline_items|default([]))|filter(item => not item.is_today_marker|default(false)) %}
   <div
     id="project-timeline-horizontal"
     class="project-timeline__horizontal"
