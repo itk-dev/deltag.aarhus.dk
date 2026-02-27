@@ -6,6 +6,6 @@ dependencies:
     - media
 id: media.image
 label: Image
-description: ''
+description: null
 targetEntityType: media
 cache: true

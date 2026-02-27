@@ -41,8 +41,7 @@ final class MapsController extends ControllerBase {
    * Index action.
    */
   public function index(Request $request) {
-    $widget = $request->get('widget', 'alles-zusammen');
-
+    $widget = $request->query->get('widget', 'alles-zusammen');
     if (NULL !== $widget) {
       $widgetUrl = $this->urlGenerator->generateFromRoute('hoeringsportal_data.maps_controller_widget', ['id' => $widget]);
 
@@ -71,7 +70,7 @@ final class MapsController extends ControllerBase {
       throw new BadRequestHttpException('Invalid widget: ' . $id);
     }
 
-    if ('dump-data-url' === $request->get('action')) {
+    if ('dump-data-url' === $request->query->get('action')) {
       foreach ($widget['map']['layer'] as $layer) {
         if (isset($layer['features_host'])) {
           $url = $layer['features_host'];

@@ -224,7 +224,7 @@ final class OpenIDConnectController implements ContainerInjectionInterface {
     ];
     $authorizationUrl = $this->isLocalTestMode()
       ? Url::fromRoute('hoeringsportal_openid_connect.openid_connect_authenticate', $options + [
-        self::QUERY_STRING_DESTINATION => $request->get(self::QUERY_STRING_DESTINATION),
+        self::QUERY_STRING_DESTINATION => $request->query->get(self::QUERY_STRING_DESTINATION),
         'test' => TRUE,
       ])->toString(TRUE)->getGeneratedUrl()
       : $provider->getAuthorizationUrl($options);
@@ -257,7 +257,7 @@ final class OpenIDConnectController implements ContainerInjectionInterface {
    */
   private function getPostLogoutRedirectUri(Request $request): string {
     try {
-      $url = $request->get(self::QUERY_STRING_DESTINATION) ?? '/';
+      $url = $request->query->get(self::QUERY_STRING_DESTINATION) ?? '/';
 
       return Url::fromUserInput($url, [
         'path_processing' => FALSE,
@@ -302,9 +302,9 @@ final class OpenIDConnectController implements ContainerInjectionInterface {
    * Process OpenID Connect response.
    */
   private function process(Request $request): Response {
-    if ($this->isLocalTestMode() && (bool) $request->get('test')) {
+    if ($this->isLocalTestMode() && (bool) $request->query->get('test')) {
       $users = $this->getLocalTestUsers();
-      $userId = $request->get('user');
+      $userId = $request->query->get('user');
       if (isset($users[$userId])) {
         $token = $users[$userId] + ['local_test' => TRUE];
       }

@@ -3,3 +3,5 @@ services:
     autowire: true
 
   Drupal\hoeringsportal_activity\Helper\ActivityHelper:
+
+  Drupal\hoeringsportal_activity\Hook\ActivityHooks:
