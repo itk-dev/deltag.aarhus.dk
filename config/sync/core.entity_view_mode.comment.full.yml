@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: N4mUjXpPckUkVRY1PbKw4GGoL1i2ECU7PL3EreiKStk
 id: comment.full
-label: 'Full comment'
+label: 'Fuld kommentar'
 description: ''
 targetEntityType: comment
 cache: true
