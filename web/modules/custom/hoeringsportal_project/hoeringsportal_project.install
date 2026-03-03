@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the hoeringsportal_project module.
+ */
+
+/**
+ * Delete orphaned timeline_note paragraphs that are no longer referenced.
+ */
+function hoeringsportal_project_update_10001(): string {
+  $paragraphStorage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+
+  // Get all timeline_note paragraphs.
+  $query = $paragraphStorage->getQuery();
+  $query->accessCheck(FALSE);
+  $query->condition('type', 'timeline_note');
+  $paragraphIds = $query->execute();
+
+  if (empty($paragraphIds)) {
+    return t('No timeline_note paragraphs found.');
+  }
+
+  // Get all nodes with field_timeline.
+  $nodeQuery = $nodeStorage->getQuery();
+  $nodeQuery->accessCheck(FALSE);
+  $nodeQuery->exists('field_timeline');
+  $nodeIds = $nodeQuery->execute();
+
+  // Collect all referenced paragraph IDs.
+  $referencedParagraphIds = [];
+  if (!empty($nodeIds)) {
+    $nodes = $nodeStorage->loadMultiple($nodeIds);
+    foreach ($nodes as $node) {
+      if ($node->hasField('field_timeline') && !$node->get('field_timeline')->isEmpty()) {
+        foreach ($node->get('field_timeline') as $item) {
+          if ($item->target_id) {
+            $referencedParagraphIds[] = $item->target_id;
+          }
+        }
+      }
+    }
+  }
+
+  // Find orphaned paragraphs.
+  $orphanedParagraphIds = array_diff($paragraphIds, $referencedParagraphIds);
+
+  if (empty($orphanedParagraphIds)) {
+    return t('No orphaned timeline_note paragraphs found.');
+  }
+
+  // Delete orphaned paragraphs.
+  $paragraphs = $paragraphStorage->loadMultiple($orphanedParagraphIds);
+  foreach ($paragraphs as $paragraph) {
+    $paragraph->delete();
+  }
+
+  $count = count($orphanedParagraphIds);
+  return t('Deleted @count orphaned timeline_note paragraph(s).', ['@count' => $count]);
+}
