@@ -148,10 +148,11 @@ class ProjectHelper {
       catch (\Exception $e) {
         $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
       }
-    }
 
-    // Delete orphaned paragraphs when references are removed.
-    if ($entity->hasField('field_timeline')) {
+      $this->entityTypeManagerInterface->getStorage('node')
+        ->resetCache([$entity->id()]);
+
+      // Delete orphaned paragraphs when references are removed.
       $this->deleteOrphanedParagraphs($entity);
     }
   }
