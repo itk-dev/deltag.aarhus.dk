@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the hoeringsportal_project module.
+ * Install, update and uninstall hooks for the hoeringsportal_project module.
  */
 
 /**

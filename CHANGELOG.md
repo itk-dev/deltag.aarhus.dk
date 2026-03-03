@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [633](https://github.com/itk-dev/deltag.aarhus.dk/pull/633)
+  Added handling of orphaned timeline note paragraphs.
 * [PR-630](https://github.com/itk-dev/deltag.aarhus.dk/pull/630)
   * Updated accessibility
   * Added back to dialogue buttons.
