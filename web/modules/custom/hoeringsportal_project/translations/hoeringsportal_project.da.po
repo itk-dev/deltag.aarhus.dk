@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-28 10:13+0100\n"
-"PO-Revision-Date: 2026-01-28 10:13+0100\n"
+"POT-Creation-Date: 2026-03-03 13:18+0100\n"
+"PO-Revision-Date: 2026-03-03 13:18+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -13,11 +13,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
+msgid "Deleted @count orphaned timeline_note paragraph(s)."
+msgstr "Slet @count løse tidslinjenoter paragraf(fer)"
+
 msgid "Finished"
 msgstr "Afsluttet"
 
 msgid "In progress"
 msgstr "I gang"
+
+msgid "No orphaned timeline_note paragraphs found."
+msgstr "Ingen løse tidslinjenoter fundet"
+
+msgid "No timeline_note paragraphs found."
+msgstr "Ingen tidslinjenote fundet"
 
 msgid "Note"
 msgstr "Note"
