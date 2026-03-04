@@ -16,6 +16,8 @@ dependencies:
     - field.field.node.hearing.field_getorganized_case_id
     - field.field.node.hearing.field_hearing_ticket_add
     - field.field.node.hearing.field_hearing_ticket_list
+    - field.field.node.hearing.field_hide_hearing_replies
+    - field.field.node.hearing.field_hide_hearing_replies_msg
     - field.field.node.hearing.field_hide_in_timeline
     - field.field.node.hearing.field_lokalplaner
     - field.field.node.hearing.field_map
@@ -55,7 +57,7 @@ third_party_settings:
       label: Informationer
       region: content
       parent_name: ''
-      weight: 6
+      weight: 8
       format_type: details
       format_settings:
         classes: ''
@@ -68,7 +70,7 @@ third_party_settings:
       label: Systemindstillinger
       region: content
       parent_name: ''
-      weight: 8
+      weight: 10
       format_type: details
       format_settings:
         classes: ''
@@ -82,7 +84,7 @@ third_party_settings:
       label: Deskpro
       region: content
       parent_name: ''
-      weight: 7
+      weight: 9
       format_type: details
       format_settings:
         classes: ''
@@ -95,7 +97,7 @@ third_party_settings:
       label: eDoc
       region: content
       parent_name: ''
-      weight: 10
+      weight: 12
       format_type: details
       format_settings:
         classes: ''
@@ -108,7 +110,7 @@ third_party_settings:
       label: Kontakt
       region: content
       parent_name: ''
-      weight: 12
+      weight: 13
       format_type: details
       format_settings:
         classes: ''
@@ -122,7 +124,7 @@ third_party_settings:
       label: 'Vil du vide mere?'
       region: content
       parent_name: ''
-      weight: 14
+      weight: 15
       format_type: details
       format_settings:
         classes: ''
@@ -136,7 +138,7 @@ third_party_settings:
       label: GetOrganized
       region: content
       parent_name: ''
-      weight: 13
+      weight: 14
       format_type: details
       format_settings:
         classes: ''
@@ -152,7 +154,7 @@ third_party_settings:
       label: Høringssvarsystem
       region: content
       parent_name: ''
-      weight: 16
+      weight: 17
       format_type: details
       format_settings:
         classes: ''
@@ -211,7 +213,7 @@ content:
     third_party_settings: {  }
   field_description:
     type: text_textarea
-    weight: 2
+    weight: 4
     region: content
     settings:
       rows: 5
@@ -269,6 +271,21 @@ content:
       placeholder_url: 'Url til visning af høringssvar i eksternt høringssvarsystem'
       placeholder_title: ''
     third_party_settings: {  }
+  field_hide_hearing_replies:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_hide_hearing_replies_msg:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_hide_in_timeline:
     type: boolean_checkbox
     weight: 19
@@ -284,7 +301,7 @@ content:
     third_party_settings: {  }
   field_map:
     type: hoeringsportal_data_map_default
-    weight: 5
+    weight: 7
     region: content
     settings:
       available_types:
@@ -294,7 +311,7 @@ content:
     third_party_settings: {  }
   field_media_document:
     type: entity_browser_entity_reference
-    weight: 3
+    weight: 5
     region: content
     settings:
       entity_browser: itk_document_browser
@@ -309,7 +326,7 @@ content:
     third_party_settings: {  }
   field_media_image:
     type: entity_browser_entity_reference
-    weight: 4
+    weight: 6
     region: content
     settings:
       entity_browser: itk_image_browser
@@ -361,7 +378,7 @@ content:
     third_party_settings: {  }
   field_teaser:
     type: string_textarea
-    weight: 1
+    weight: 3
     region: content
     settings:
       rows: 5
@@ -375,7 +392,7 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -399,7 +416,7 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
   url_redirects:
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }

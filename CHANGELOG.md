@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-634](https://github.com/itk-dev/deltag.aarhus.dk/pull/634)
+  Added “Hide hearing replies” option
 * [633](https://github.com/itk-dev/deltag.aarhus.dk/pull/633)
   Added handling of orphaned timeline note paragraphs.
 * [PR-630](https://github.com/itk-dev/deltag.aarhus.dk/pull/630)
