@@ -75,11 +75,11 @@
 
     {% if not has_external_hearing_tickets and tickets %}
       {% if hide_hearing_replies %}
-      <div class="col-md-12 q">
-        <div class="alert alert-info mb-3" role="alert">
-          <div class="mb-0">{{ hide_hearing_replies_msg|raw }}</div>
+        <div class="col-md-12 q">
+          <div class="alert alert-info mb-3" role="alert">
+            <div class="mb-0">{{ hide_hearing_replies_msg|raw }}</div>
+          </div>
         </div>
-      </div>
       {% else %}
         {% for ticket in tickets %}
           <a href="{{ path('hoeringsportal_deskpro.hearing.ticket_view', {node: node.id, ticket: ticket.id}) }}" class="hearing-ticket card">
