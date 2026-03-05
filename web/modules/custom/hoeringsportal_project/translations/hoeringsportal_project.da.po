@@ -14,7 +14,7 @@ msgstr ""
 "Language: da\n"
 
 msgid "Deleted @count orphaned timeline_note paragraph(s)."
-msgstr "Slet @count løse tidslinjenoter paragraf(fer)"
+msgstr "Slettede @count løse tidslinjenoteparagraf(fer)"
 
 msgid "Finished"
 msgstr "Afsluttet"
