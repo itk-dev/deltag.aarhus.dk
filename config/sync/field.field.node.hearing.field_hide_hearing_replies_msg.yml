@@ -9,7 +9,7 @@ id: node.hearing.field_hide_hearing_replies_msg
 field_name: field_hide_hearing_replies_msg
 entity_type: node
 bundle: hearing
-label: '”Skjul høringssvar”-besked'
+label: Besked
 description: 'Besked der vises i stedet for høringssvar hvis høringssvar er skjult.'
 required: false
 translatable: false

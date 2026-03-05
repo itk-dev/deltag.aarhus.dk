@@ -180,6 +180,23 @@ third_party_settings:
         open: true
         description: ''
         required_fields: false
+    group_hide_hearing_replies:
+      children:
+        - field_hide_hearing_replies
+        - field_hide_hearing_replies_msg
+      label: 'Skjul høringssvar'
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
 id: node.hearing.default
 targetEntityType: node
 bundle: hearing
