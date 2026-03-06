@@ -2,6 +2,7 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -113,24 +114,26 @@ class ProjectHelper {
   #[Hook('entity_presave')]
   public function entityPresave(EntityInterface $entity): void {
     if ($entity instanceof NodeInterface) {
+      // When changing references, we must clear cache for nodes that was
+      // previously referenced as well as new referenced nodes.
       try {
         if ($entity->hasField('field_project_reference')) {
           $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
 
           $originalEntity = $entity->original ?? NULL;
-          $oldTargetId = 0;
+          $originalTargetId = 0;
           if ($originalEntity?->hasField('field_project_reference')) {
-            $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
+            $originalTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
           }
 
           // Only act if the reference actually changed.
-          if ($oldTargetId === $newTargetId) {
+          if ($originalTargetId === $newTargetId) {
             return;
           }
 
           $idsToReset = [];
-          if ($oldTargetId > 0) {
-            $idsToReset[] = $oldTargetId;
+          if ($originalTargetId > 0) {
+            $idsToReset[] = $originalTargetId;
           }
           if ($newTargetId > 0) {
             $idsToReset[] = $newTargetId;
@@ -140,17 +143,18 @@ class ProjectHelper {
             return;
           }
 
+          // Clear cache for project nodes when we change an entity pointing to
+          // it.
           $idsToReset = array_values(array_unique($idsToReset));
-          $this->entityTypeManagerInterface->getStorage('node')
-            ->resetCache($idsToReset);
+          $nodes = $this->entityTypeManagerInterface->getStorage('node')->load($idsToReset);
+          foreach ($nodes as $node) {
+            Cache::invalidateTags($node->getCacheTags());
+          }
         }
       }
       catch (\Exception $e) {
         $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
       }
-
-      $this->entityTypeManagerInterface->getStorage('node')
-        ->resetCache([$entity->id()]);
 
       // Delete orphaned paragraphs when references are removed.
       $this->deleteOrphanedParagraphs($entity);
