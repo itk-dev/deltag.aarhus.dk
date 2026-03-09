@@ -7,6 +7,8 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -15,8 +17,6 @@ use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Hook\Attribute\Hook;
 
 /**
  * Helper class for project-related operations.
@@ -146,7 +146,7 @@ class ProjectHelper {
           // Clear cache for project nodes when we change an entity pointing to
           // it.
           $idsToReset = array_values(array_unique($idsToReset));
-          $nodes = $this->entityTypeManagerInterface->getStorage('node')->load($idsToReset);
+          $nodes = $this->entityTypeManagerInterface->getStorage('node')->loadMultiple($idsToReset);
           foreach ($nodes as $node) {
             Cache::invalidateTags($node->getCacheTags());
           }
@@ -155,70 +155,6 @@ class ProjectHelper {
       catch (\Exception $e) {
         $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
       }
-
-      // Delete orphaned paragraphs when references are removed.
-      $this->deleteOrphanedParagraphs($entity);
-    }
-  }
-
-  /**
-   * Delete orphaned paragraphs when they are removed from entity references.
-   *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
-   *   The entity being saved.
-   */
-  private function deleteOrphanedParagraphs(EntityInterface $entity): void {
-    if (!$entity instanceof NodeInterface) {
-      return;
-    }
-
-    $originalEntity = $entity->original ?? NULL;
-    if (!$originalEntity) {
-      return;
-    }
-
-    try {
-      // Get current paragraph IDs.
-      $currentParagraphIds = [];
-      if (!$entity->get('field_timeline')->isEmpty()) {
-        foreach ($entity->get('field_timeline') as $item) {
-          if ($item->target_id) {
-            $currentParagraphIds[] = $item->target_id;
-          }
-        }
-      }
-
-      // Get original paragraph IDs.
-      $originalParagraphIds = [];
-      if (!$originalEntity->get('field_timeline')->isEmpty()) {
-        foreach ($originalEntity->get('field_timeline') as $item) {
-          if ($item->target_id) {
-            $originalParagraphIds[] = $item->target_id;
-          }
-        }
-      }
-
-      // Find removed paragraph IDs.
-      $removedParagraphIds = array_diff($originalParagraphIds, $currentParagraphIds);
-
-      if (empty($removedParagraphIds)) {
-        return;
-      }
-
-      // Delete the orphaned paragraphs.
-      $paragraphStorage = $this->entityTypeManagerInterface->getStorage('paragraph');
-      $paragraphs = $paragraphStorage->loadMultiple($removedParagraphIds);
-
-      foreach ($paragraphs as $paragraph) {
-        $paragraph->delete();
-        $this->logger->info('Deleted orphaned paragraph @id of type @type', [
-          '@id' => $paragraph->id(),
-          '@type' => $paragraph->bundle(),
-        ]);
-      }
-    }
-    catch (\Exception $e) {
-      $this->logger->error('Error deleting orphaned paragraphs: @message', ['@message' => $e->getMessage()]);
     }
   }
 
@@ -267,20 +203,15 @@ class ProjectHelper {
    *   Array of paragraph entities or NULL.
    */
   private function getTimelineNotes(array $variables) : ?array {
-    try {
-      $paragraphStorage = $this->entityTypeManagerInterface->getStorage('paragraph');
-      $noteQuery = $paragraphStorage->getQuery();
-      $noteQuery->accessCheck();
-      $noteQuery->condition('parent_id', $variables['node']->id());
-      $noteQuery->condition('type', 'timeline_note');
-      $noteIds = $noteQuery->execute();
+    $node = $variables['node'] ?? NULL;
+    if ($node instanceof NodeInterface && $node->hasField('field_timeline')) {
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $list */
+      $list = $node->get('field_timeline');
 
-      return $paragraphStorage->loadMultiple($noteIds);
+      return $list->referencedEntities();
     }
-    catch (\Exception $e) {
-      $this->logger->error('Error getting timeline notes: @message', ['@message' => $e->getMessage()]);
-      return [];
-    }
+
+    return NULL;
   }
 
   /**
