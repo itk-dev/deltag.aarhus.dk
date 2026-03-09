@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-02-25 12:15+0100\n"
-"PO-Revision-Date: 2026-02-25 12:15+0100\n"
+"POT-Creation-Date: 2026-03-09 10:55+0100\n"
+"PO-Revision-Date: 2026-03-09 10:55+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -426,11 +426,11 @@ msgstr "Initiativ tilbagekaldt"
 msgid "Project start"
 msgstr "Initiativ start"
 
-msgid "Proposal categories"
-msgstr "Forslagskategorier"
-
 msgid "Project timeline"
 msgstr "Projektets tidslinje"
+
+msgid "Proposal categories"
+msgstr "Forslagskategorier"
 
 msgid "Proposals"
 msgstr "Forslag"
@@ -714,3 +714,4 @@ msgstr "Tilmeldingsfrist overskredet"
 msgctxt "signup"
 msgid "Deadline:"
 msgstr "Tilmeldingsfrist:"
+
