@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: PEUoedWrfYEX7oZ8CcOukfBTVxar1cPSROX8534esuU
 id: titles
-label: Titles
+label: Titler
 category: Demographic
 likert: false
 options: |

@@ -1,6 +1,6 @@
 langcode: da
 translation:
-  use_source: local
+  use_source: remote_and_local
   overwrite_customized: false
   overwrite_not_customized: true
   update_interval_days: 0

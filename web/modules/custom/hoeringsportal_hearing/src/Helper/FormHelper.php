@@ -44,6 +44,15 @@ class FormHelper {
       $form['field_edoc_casefile_id']['#access'] = NULL !== $node
         && !empty($node->field_edoc_casefile_id->value);
 
+      $form['field_hide_hearing_replies_msg']['#states'] = [
+        'visible' => [
+          ':input[name="field_hide_hearing_replies[value]"]' => ['checked' => TRUE],
+        ],
+      ];
+      // The 'required' state must be set on the widget
+      // (cf. https://www.drupal.org/docs/drupal-apis/form-api/conditional-form-fields#staterequired)
+      $form['field_hide_hearing_replies_msg']['widget'][0]['value']['#states']['required'] = $form['field_hide_hearing_replies_msg']['#states']['visible'];
+
       // Add our custom validation.
       $form['#validate'][] = [$this, 'validateForm'];
     }

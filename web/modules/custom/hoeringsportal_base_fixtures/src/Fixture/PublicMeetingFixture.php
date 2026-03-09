@@ -61,6 +61,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
       ],
       'field_pretix_event_settings' => [
         'template_event' => 'template-series',
+        'contact_mail' => 'info@example.com',
         'synchronize_event' => TRUE,
       ],
       'field_email' => 'parent@test.dk ',
@@ -124,6 +125,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->set('field_pretix_event_settings', [
       // Cf. PretixConfigFixture.
       'template_event' => 'template-series',
+      'contact_mail' => 'info87@example.com',
       'synchronize_event' => TRUE,
     ]);
     $this->addReference('public_meeting:fixture-2', $node);
@@ -169,6 +171,7 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
     $node->set('field_pretix_event_settings', [
       // Cf. PretixConfigFixture.
       'template_event' => 'template-series',
+      'contact_mail' => 'info42@example.com',
       'synchronize_event' => TRUE,
     ]);
     $this->addReference('public_meeting:fixture-3', $node);

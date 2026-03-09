@@ -6,9 +6,19 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.0] - 2026-03-09
+
+* [PR-635](https://github.com/itk-dev/deltag.aarhus.dk/pull/635)
+  Updated itk_pretix module and migrated contact mail
+* [PR-634](https://github.com/itk-dev/deltag.aarhus.dk/pull/634)
+  Added “Hide hearing replies” option
+* [633](https://github.com/itk-dev/deltag.aarhus.dk/pull/633)
+  Added handling of orphaned timeline note paragraphs.
+* [PR-630](https://github.com/itk-dev/deltag.aarhus.dk/pull/630)
+  * Updated accessibility
+  * Added back to dialogue buttons.
+
 ## [4.15.2] - 2026-02-26
-
-
 
 ## [4.15.1] - 2026-02-25
 
@@ -682,7 +692,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.15.2...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.0...HEAD
+[4.16.0]: https://github.com/itk-dev/hoeringsportal/compare/4.15.2...4.16.0
 [4.15.2]: https://github.com/itk-dev/hoeringsportal/compare/4.15.1...4.15.2
 [4.15.1]: https://github.com/itk-dev/hoeringsportal/compare/4.15.0...4.15.1
 [4.15.0]: https://github.com/itk-dev/hoeringsportal/compare/4.14.7...4.15.0

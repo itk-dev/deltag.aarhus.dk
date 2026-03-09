@@ -18,6 +18,9 @@ function hoeringsportal_public_meeting_update_dependencies() {
       10002 => [
         'itk_pretix' => 10101,
       ],
+      10003 => [
+        'itk_pretix' => 10102,
+      ],
     ],
   ];
 }
@@ -65,6 +68,56 @@ function hoeringsportal_public_meeting_update_10002() {
       ->getStorage('node')
       ->getTableMapping()
       ->getAllFieldTableNames('field_pretix_dates');
+    $database = \Drupal::database();
+
+    foreach ($tableNames as $tableName) {
+      foreach ($values as $value) {
+        $query = $database->update($tableName)
+          ->fields($value['fields']);
+        foreach ($value['conditions'] as $field => $val) {
+          $query->condition($field, $val);
+        }
+        $query->execute();
+      }
+    }
+  }
+}
+
+/**
+ * Copy contact mail to pretix event settings.
+ *
+ * Note: For performance reasons (mainly due to request to pretix), rather than
+ * saving nodes we update values directly in the database.
+ */
+function hoeringsportal_public_meeting_update_10003() {
+  /** @var \Drupal\hoeringsportal_public_meeting\Helper\PublicMeetingHelper $helper */
+  $helper = \Drupal::service('hoeringsportal_public_meeting.public_meeting_helper');
+  $publicMeetings = $helper->loadPublicMeetings();
+
+  $values = [];
+  foreach ($publicMeetings as $publicMeeting) {
+    if ($helper->hasPretixSignUp($publicMeeting)) {
+      $contactMail = $publicMeeting->field_email_address->getString() ?: NULL;
+      foreach ($publicMeeting->field_pretix_event_settings as $delta => $_) {
+        $values[] = [
+          'conditions' => [
+            'bundle' => $publicMeeting->bundle(),
+            'entity_id' => $publicMeeting->id(),
+            'delta' => $delta,
+          ],
+          'fields' => [
+            'field_pretix_event_settings_contact_mail' => $contactMail,
+          ],
+        ];
+      }
+    }
+  }
+
+  if (!empty($values)) {
+    $tableNames = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->getTableMapping()
+      ->getAllFieldTableNames('field_pretix_event_settings');
     $database = \Drupal::database();
 
     foreach ($tableNames as $tableName) {
