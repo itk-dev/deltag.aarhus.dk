@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-635](https://github.com/itk-dev/deltag.aarhus.dk/pull/635)
+  Updated itk_pretix module and migrated contact mail
 * [PR-634](https://github.com/itk-dev/deltag.aarhus.dk/pull/634)
   Added “Hide hearing replies” option
 * [633](https://github.com/itk-dev/deltag.aarhus.dk/pull/633)
