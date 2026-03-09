@@ -10,7 +10,7 @@ _core:
 id: comment
 label: Kommentarer
 module: comment
-description: 'Find and manage comments.'
+description: 'Find og administrér kommentarer.'
 tag: default
 base_table: comment_field_data
 base_field: cid
@@ -282,7 +282,7 @@ display:
           entity_type: comment
           entity_field: entity_id
           plugin_id: commented_entity
-          label: 'Posted in'
+          label: 'Indsendt til'
           exclude: false
           alter:
             alter_text: false
@@ -578,7 +578,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'No comments available.'
+          content: 'Der er ingen kommentarer at vise.'
           tokenize: false
       sorts:
         changed:
@@ -695,7 +695,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Author name'
+            label: Forfatternavn
             description: ''
             use_operator: false
             operator: combine_op
@@ -877,11 +877,11 @@ display:
       cacheable: false
   page_published:
     id: page_published
-    display_title: 'Published comments'
+    display_title: 'Udgivne kommentarer'
     display_plugin: page
     position: 1
     display_options:
-      display_description: 'The approved comments listing.'
+      display_description: 'Liste over godkendte kommentarer.'
       display_comment: ''
       exposed_block: false
       display_extenders: {  }
@@ -889,7 +889,7 @@ display:
       menu:
         type: tab
         title: Kommentarer
-        description: 'Comments published'
+        description: 'Publicerede kommentarer'
         weight: 0
         menu_name: admin
         parent: ''
@@ -906,7 +906,7 @@ display:
       cacheable: false
   page_unapproved:
     id: page_unapproved
-    display_title: 'Unapproved comments'
+    display_title: 'Ikke-godkendte kommentarer'
     display_plugin: page
     position: 2
     display_options:
@@ -1170,7 +1170,7 @@ display:
           entity_type: comment
           entity_field: entity_id
           plugin_id: commented_entity
-          label: 'Posted in'
+          label: 'Indsendt til'
           exclude: false
           alter:
             alter_text: false
@@ -1514,7 +1514,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Author Name'
+            label: Forfatternavn
             description: ''
             use_operator: false
             operator: combine_op
@@ -1594,13 +1594,13 @@ display:
         fields: false
         filters: false
         filter_groups: false
-      display_description: 'The unapproved comments listing.'
+      display_description: 'Listen af ikke-godkendte kommentarer.'
       display_extenders: {  }
       path: admin/content/comment/approval
       menu:
         type: tab
-        title: 'Unapproved comments'
-        description: 'Comments unapproved'
+        title: 'Ikke-godkendte kommentarer'
+        description: 'Ikke-godkendte kommentarer'
         weight: 1
         menu_name: admin
         parent: ''

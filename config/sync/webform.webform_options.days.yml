@@ -8,8 +8,8 @@ dependencies:
 _core:
   default_config_hash: YNrKbYrWWjeubUUM8AsQ19KnX7cU1elACR14CZJHmdg
 id: days
-label: Days
-category: 'Date and time'
+label: Dage
+category: 'Dato og tid'
 likert: false
 options: |
   Sunday: Sunday

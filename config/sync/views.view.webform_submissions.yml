@@ -11,7 +11,7 @@ dependencies:
 _core:
   default_config_hash: YPgxGC8TmLtfCOLGCCHJcdH2llA7QksUkdi1abhB7Ro
 id: webform_submissions
-label: 'Webform submissions'
+label: 'Indsendte webforms'
 module: views
 description: 'Default webform submissions views.'
 tag: ''
@@ -24,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Webform submissions'
+      title: 'Indsendte webforms'
       fields:
         sid:
           id: sid
@@ -102,7 +102,7 @@ display:
           entity_type: webform_submission
           entity_field: in_draft
           plugin_id: field
-          label: Draft
+          label: Kladde
           exclude: false
           alter:
             alter_text: false
@@ -245,7 +245,7 @@ display:
           entity_type: webform_submission
           entity_field: remote_addr
           plugin_id: field
-          label: 'IP address'
+          label: IP-adresse
           exclude: false
           alter:
             alter_text: false
@@ -350,7 +350,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: view
+          text: vis
           output_url_as_text: false
           absolute: false
       pager:
@@ -592,7 +592,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: 'Displaying @start - @end of @total'
+          content: 'Viser @start - @end af @total'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -740,7 +740,7 @@ display:
           entity_type: webform_submission
           entity_field: in_draft
           plugin_id: field
-          label: Draft
+          label: Kladde
           exclude: false
           alter:
             alter_text: false
@@ -807,7 +807,7 @@ display:
           entity_type: webform_submission
           entity_field: sticky
           plugin_id: field
-          label: Sticky
+          label: Klæbrig
           exclude: false
           alter:
             alter_text: false
@@ -874,7 +874,7 @@ display:
           entity_type: webform_submission
           entity_field: locked
           plugin_id: field
-          label: Locked
+          label: Låst
           exclude: false
           alter:
             alter_text: false
@@ -1017,7 +1017,7 @@ display:
           entity_type: webform_submission
           entity_field: completed
           plugin_id: field
-          label: Completed
+          label: Gennemført
           exclude: false
           alter:
             alter_text: false
@@ -1093,7 +1093,7 @@ display:
           entity_type: webform_submission
           entity_field: remote_addr
           plugin_id: field
-          label: 'IP address'
+          label: IP-adresse
           exclude: false
           alter:
             alter_text: false
@@ -1263,7 +1263,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Sticky
+            label: Klæbrig
             description: ''
             use_operator: false
             operator: sticky_op
@@ -1305,7 +1305,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Locked
+            label: Låst
             description: ''
             use_operator: false
             operator: locked_op
@@ -1680,7 +1680,7 @@ display:
           entity_type: webform_submission
           entity_field: in_draft
           plugin_id: field
-          label: Draft
+          label: Kladde
           exclude: false
           alter:
             alter_text: false
@@ -1747,7 +1747,7 @@ display:
           entity_type: webform_submission
           entity_field: sticky
           plugin_id: field
-          label: Sticky
+          label: Klæbrig
           exclude: false
           alter:
             alter_text: false
@@ -1814,7 +1814,7 @@ display:
           entity_type: webform_submission
           entity_field: locked
           plugin_id: field
-          label: Locked
+          label: Låst
           exclude: false
           alter:
             alter_text: false
@@ -1957,7 +1957,7 @@ display:
           entity_type: webform_submission
           entity_field: completed
           plugin_id: field
-          label: Completed
+          label: Gennemført
           exclude: false
           alter:
             alter_text: false
@@ -2033,7 +2033,7 @@ display:
           entity_type: webform_submission
           entity_field: remote_addr
           plugin_id: field
-          label: 'IP address'
+          label: IP-adresse
           exclude: false
           alter:
             alter_text: false
@@ -2138,7 +2138,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: view
+          text: vis
           output_url_as_text: false
           absolute: false
         edit_webform_submission:
@@ -2191,7 +2191,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: edit
+          text: redigér
           output_url_as_text: false
           absolute: false
       access:
@@ -2257,7 +2257,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Sticky
+            label: Klæbrig
             description: ''
             use_operator: false
             operator: sticky_op
@@ -2299,7 +2299,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Locked
+            label: Låst
             description: ''
             use_operator: false
             operator: locked_op
@@ -2532,7 +2532,7 @@ display:
           entity_type: webform_submission
           entity_field: in_draft
           plugin_id: field
-          label: Draft
+          label: Kladde
           exclude: false
           alter:
             alter_text: false
@@ -2599,7 +2599,7 @@ display:
           entity_type: webform_submission
           entity_field: sticky
           plugin_id: field
-          label: Sticky
+          label: Klæbrig
           exclude: false
           alter:
             alter_text: false
@@ -2666,7 +2666,7 @@ display:
           entity_type: webform_submission
           entity_field: locked
           plugin_id: field
-          label: Locked
+          label: Låst
           exclude: false
           alter:
             alter_text: false
@@ -2809,7 +2809,7 @@ display:
           entity_type: webform_submission
           entity_field: completed
           plugin_id: field
-          label: Completed
+          label: Gennemført
           exclude: false
           alter:
             alter_text: false
@@ -2885,7 +2885,7 @@ display:
           entity_type: webform_submission
           entity_field: remote_addr
           plugin_id: field
-          label: 'IP address'
+          label: IP-adresse
           exclude: false
           alter:
             alter_text: false
@@ -2990,7 +2990,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: view
+          text: vis
           output_url_as_text: false
           absolute: false
       access:
@@ -3056,7 +3056,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Sticky
+            label: Klæbrig
             description: ''
             use_operator: false
             operator: sticky_op
@@ -3098,7 +3098,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Locked
+            label: Låst
             description: ''
             use_operator: false
             operator: locked_op

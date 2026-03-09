@@ -2,6 +2,7 @@
 
 namespace Drupal\hoeringsportal_project\Helper;
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -113,43 +114,111 @@ class ProjectHelper {
   #[Hook('entity_presave')]
   public function entityPresave(EntityInterface $entity): void {
     if ($entity instanceof NodeInterface) {
+      // When changing references, we must clear cache for nodes that was
+      // previously referenced as well as new referenced nodes.
       try {
-        if (!$entity->hasField('field_project_reference')) {
-          return;
-        }
+        if ($entity->hasField('field_project_reference')) {
+          $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
 
-        $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
+          $originalEntity = $entity->original ?? NULL;
+          $originalTargetId = 0;
+          if ($originalEntity?->hasField('field_project_reference')) {
+            $originalTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
+          }
 
-        $originalEntity = $entity->original ?? NULL;
-        $oldTargetId = 0;
-        if ($originalEntity?->hasField('field_project_reference')) {
-          $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
-        }
+          // Only act if the reference actually changed.
+          if ($originalTargetId === $newTargetId) {
+            return;
+          }
 
-        // Only act if the reference actually changed.
-        if ($oldTargetId === $newTargetId) {
-          return;
-        }
+          $idsToReset = [];
+          if ($originalTargetId > 0) {
+            $idsToReset[] = $originalTargetId;
+          }
+          if ($newTargetId > 0) {
+            $idsToReset[] = $newTargetId;
+          }
 
-        $idsToReset = [];
-        if ($oldTargetId > 0) {
-          $idsToReset[] = $oldTargetId;
-        }
-        if ($newTargetId > 0) {
-          $idsToReset[] = $newTargetId;
-        }
+          if ($idsToReset === []) {
+            return;
+          }
 
-        if ($idsToReset === []) {
-          return;
+          // Clear cache for project nodes when we change an entity pointing to
+          // it.
+          $idsToReset = array_values(array_unique($idsToReset));
+          $nodes = $this->entityTypeManagerInterface->getStorage('node')->load($idsToReset);
+          foreach ($nodes as $node) {
+            Cache::invalidateTags($node->getCacheTags());
+          }
         }
-
-        $idsToReset = array_values(array_unique($idsToReset));
-        $this->entityTypeManagerInterface->getStorage('node')
-          ->resetCache($idsToReset);
       }
       catch (\Exception $e) {
         $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
       }
+
+      // Delete orphaned paragraphs when references are removed.
+      $this->deleteOrphanedParagraphs($entity);
+    }
+  }
+
+  /**
+   * Delete orphaned paragraphs when they are removed from entity references.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity being saved.
+   */
+  private function deleteOrphanedParagraphs(EntityInterface $entity): void {
+    if (!$entity instanceof NodeInterface) {
+      return;
+    }
+
+    $originalEntity = $entity->original ?? NULL;
+    if (!$originalEntity) {
+      return;
+    }
+
+    try {
+      // Get current paragraph IDs.
+      $currentParagraphIds = [];
+      if (!$entity->get('field_timeline')->isEmpty()) {
+        foreach ($entity->get('field_timeline') as $item) {
+          if ($item->target_id) {
+            $currentParagraphIds[] = $item->target_id;
+          }
+        }
+      }
+
+      // Get original paragraph IDs.
+      $originalParagraphIds = [];
+      if (!$originalEntity->get('field_timeline')->isEmpty()) {
+        foreach ($originalEntity->get('field_timeline') as $item) {
+          if ($item->target_id) {
+            $originalParagraphIds[] = $item->target_id;
+          }
+        }
+      }
+
+      // Find removed paragraph IDs.
+      $removedParagraphIds = array_diff($originalParagraphIds, $currentParagraphIds);
+
+      if (empty($removedParagraphIds)) {
+        return;
+      }
+
+      // Delete the orphaned paragraphs.
+      $paragraphStorage = $this->entityTypeManagerInterface->getStorage('paragraph');
+      $paragraphs = $paragraphStorage->loadMultiple($removedParagraphIds);
+
+      foreach ($paragraphs as $paragraph) {
+        $paragraph->delete();
+        $this->logger->info('Deleted orphaned paragraph @id of type @type', [
+          '@id' => $paragraph->id(),
+          '@type' => $paragraph->bundle(),
+        ]);
+      }
+    }
+    catch (\Exception $e) {
+      $this->logger->error('Error deleting orphaned paragraphs: @message', ['@message' => $e->getMessage()]);
     }
   }
 
