@@ -146,7 +146,7 @@ class ProjectHelper {
           // Clear cache for project nodes when we change an entity pointing to
           // it.
           $idsToReset = array_values(array_unique($idsToReset));
-          $nodes = $this->entityTypeManagerInterface->getStorage('node')->load($idsToReset);
+          $nodes = $this->entityTypeManagerInterface->getStorage('node')->loadMultiple($idsToReset);
           foreach ($nodes as $node) {
             Cache::invalidateTags($node->getCacheTags());
           }
