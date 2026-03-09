@@ -37,8 +37,11 @@
  */
 #}
 
-<div class="proposal-category-items">
+<label class="visually-hidden" for="proposal-categories">
+  {{ 'Proposal categories'|t }}
+</label>
+<ul class="proposal-category-items" id="proposal-categories">
   {% for item in items %}
-    <span class="badge rounded-pill">{{ item.content }}</span>
+    <li class="badge rounded-pill">{{ item.content }}</li>
   {% endfor %}
-</div>
+</ul>

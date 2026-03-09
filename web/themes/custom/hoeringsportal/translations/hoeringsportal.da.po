@@ -72,6 +72,9 @@ msgstr ""
 msgid "Attachments"
 msgstr "Vedhæftninger"
 
+msgid "Back to dialogue"
+msgstr "Tilbage til dialog"
+
 msgid ""
 "Before you can contribute you must validate your user account with "
 "NemID."
@@ -423,6 +426,9 @@ msgstr "Initiativ tilbagekaldt"
 msgid "Project start"
 msgstr "Initiativ start"
 
+msgid "Proposal categories"
+msgstr "Forslagskategorier"
+
 msgid "Project timeline"
 msgstr "Projektets tidslinje"
 
@@ -708,4 +714,3 @@ msgstr "Tilmeldingsfrist overskredet"
 msgctxt "signup"
 msgid "Deadline:"
 msgstr "Tilmeldingsfrist:"
-
