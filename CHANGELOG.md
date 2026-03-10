@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-638](https://github.com/itk-dev/deltag.aarhus.dk/pull/638)
+  Changed flags templates to use html button instead of anchor tag.
+
 ## [4.16.0] - 2026-03-09
 
 * [PR-635](https://github.com/itk-dev/deltag.aarhus.dk/pull/635)
