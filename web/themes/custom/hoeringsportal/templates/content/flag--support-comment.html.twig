@@ -35,5 +35,5 @@
 %}
 
 <div class="{{ classes|join(' ') }}">
-  <button{{ attributes.setAttribute('rel', 'nofollow').setAttribute('title', 'Like this'|t) }}>{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-thumbs-up.svg.html.twig') }} {{ flagcount(flag, flaggable) }} {{ 'Like this'|t }} </button>
+  <button{{ attributes.setAttribute('title', 'Like this'|t) }}>{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-thumbs-up.svg.html.twig') }} {{ flagcount(flag, flaggable) }} {{ 'Like this'|t }} </button>
 </div>
