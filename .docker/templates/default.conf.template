@@ -89,7 +89,7 @@ server {
     # Define which paths to protect
     location ~ ^/(flag/flag|admin|user/login) {
         # Block bots on these paths only
-        if ($http_user_agent ~* (bot|crawler|spider|scraper)) {
+        if ($http_user_agent ~* (bot|crawl|crawler|spider|scraper)) {
             return 403;
         }
 

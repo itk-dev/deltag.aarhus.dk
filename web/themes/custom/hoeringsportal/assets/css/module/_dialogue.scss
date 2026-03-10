@@ -12,9 +12,14 @@
 }
 
 .flag-wrapper {
-  .flag a {
+  .flag button {
+    background: none;
+    border: 0;
     color: inherit;
+    letter-spacing: 0.05em;
     text-decoration: none;
+    text-transform: lowercase;
+    padding: 0;
   }
 
   .ajax-progress-throbber {
