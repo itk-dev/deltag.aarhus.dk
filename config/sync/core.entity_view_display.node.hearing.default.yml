@@ -61,7 +61,6 @@ third_party_settings:
       header:
         - 'dynamic_block_field:node-hearing_warning'
         - node_title
-        - field_hide_in_timeline
       left:
         - field_teaser
         - field_description
@@ -150,16 +149,6 @@ content:
     third_party_settings: {  }
     weight: 3
     region: left
-  field_hide_in_timeline:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 21
-    region: header
   field_lokalplaner:
     type: hoeringsportal_data_localplan_default
     label: above
@@ -253,6 +242,7 @@ hidden:
   field_hearing_ticket_list: true
   field_hide_hearing_replies: true
   field_hide_hearing_replies_msg: true
+  field_hide_in_timeline: true
   field_map_display: true
   field_project_reference: true
   field_tags: true
