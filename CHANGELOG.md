@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-640](https://github.com/itk-dev/deltag.aarhus.dk/pull/640)
+  Use string value when truncating
 * [PR-639](https://github.com/itk-dev/deltag.aarhus.dk/pull/639)
   Hid “Hide in timeline” from display
 
