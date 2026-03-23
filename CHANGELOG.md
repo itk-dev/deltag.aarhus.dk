@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-639](https://github.com/itk-dev/deltag.aarhus.dk/pull/639)
+  Hid “Hide in timeline” from display
+
 ## [4.16.0] - 2026-03-09
 
 * [PR-635](https://github.com/itk-dev/deltag.aarhus.dk/pull/635)
