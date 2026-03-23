@@ -9,6 +9,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-638](https://github.com/itk-dev/deltag.aarhus.dk/pull/638)
   Changed flags templates to use html button instead of anchor tag.
 
+## [4.16.1] - 2026-03-23
+
+* [PR-640](https://github.com/itk-dev/deltag.aarhus.dk/pull/640)
+  Use string value when truncating
+* [PR-639](https://github.com/itk-dev/deltag.aarhus.dk/pull/639)
+  Hid “Hide in timeline” from display
+
 ## [4.16.0] - 2026-03-09
 
 * [PR-635](https://github.com/itk-dev/deltag.aarhus.dk/pull/635)
@@ -695,7 +702,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.0...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.1...HEAD
+[4.16.1]: https://github.com/itk-dev/hoeringsportal/compare/4.16.0...4.16.1
 [4.16.0]: https://github.com/itk-dev/hoeringsportal/compare/4.15.2...4.16.0
 [4.15.2]: https://github.com/itk-dev/hoeringsportal/compare/4.15.1...4.15.2
 [4.15.1]: https://github.com/itk-dev/hoeringsportal/compare/4.15.0...4.15.1
