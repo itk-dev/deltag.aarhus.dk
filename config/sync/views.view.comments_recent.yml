@@ -9,9 +9,9 @@ dependencies:
 _core:
   default_config_hash: cFOucxH8PAXDQ2kViCcAHgK-JMCcxVkpIMzD56EfpZo
 id: comments_recent
-label: 'Recent comments'
+label: 'Seneste kommentarer'
 module: views
-description: 'Recent comments.'
+description: 'Seneste kommentarer.'
 tag: default
 base_table: comment_field_data
 base_field: cid
@@ -22,7 +22,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Recent comments'
+      title: 'Seneste kommentarer'
       fields:
         subject:
           id: subject
@@ -131,8 +131,8 @@ display:
           hide_alter_empty: true
           type: timestamp_ago
           settings:
-            future_format: '@interval hence'
-            past_format: '@interval ago'
+            future_format: 'om @interval'
+            past_format: '@interval siden'
             granularity: 2
       pager:
         type: some
@@ -257,8 +257,8 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      block_description: 'Recent comments'
-      block_category: 'Lists (Views)'
+      block_description: 'Seneste kommentarer'
+      block_category: 'Lister (Views)'
       allow:
         items_per_page: true
     cache_metadata:

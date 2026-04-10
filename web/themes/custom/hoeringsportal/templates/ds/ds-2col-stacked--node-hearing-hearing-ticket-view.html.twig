@@ -21,6 +21,9 @@
   */
   #}
 
+{% set hide_hearing_replies = 1 == node.field_hide_hearing_replies.value %}
+{% set hide_hearing_replies_msg = hide_hearing_replies ? node.field_hide_hearing_replies_msg.value %}
+
 <{{ outer_wrapper }}{{ attributes.addClass('ds-2col-stacked', 'clearfix') }}>
 
   {{ title_suffix.contextual_links }}
@@ -28,16 +31,32 @@
   <{{ header_wrapper }}{{ header_attributes.addClass('group-header bg-primary text-white') }}>
     {{ include(directory ~ '/templates/components/header.html.twig', {header: header}) }}
   </{{ header_wrapper }}>
-  <div class="container  content__container">
-    <div class="row">
-      <{{ left_wrapper }}{{ left_attributes.addClass('content group-left col-md-8') }}>
-        {{ left }}
-      </{{ left_wrapper }}>
+  <div class="container content__container">
+    {% if hide_hearing_replies %}
+      <div class="row">
+        <{{ left_wrapper }}{{ left_attributes.addClass('content group-left col-md-8') }}>
+        <div class="col-md-12 q">
+          <div class="alert alert-info mb-3" role="alert">
+            <div class="mb-0">{{ hide_hearing_replies_msg|raw }}</div>
+          </div>
+        </div>
+        </{{ left_wrapper }}>
 
-      <{{ right_wrapper }}{{ right_attributes.addClass('group-right col-md-4 py-3') }}>
+        <{{ right_wrapper }}{{ right_attributes.addClass('group-right col-md-4 py-3') }}>
+        {{ right|without('dynamic_block_field:node-hearing_ticket_author') }}
+        </{{ right_wrapper }}>
+      </div>
+    {% else %}
+      <div class="row">
+        <{{ left_wrapper }}{{ left_attributes.addClass('content group-left col-md-8') }}>
+        {{ left }}
+        </{{ left_wrapper }}>
+
+        <{{ right_wrapper }}{{ right_attributes.addClass('group-right col-md-4 py-3') }}>
         {{ right }}
-      </{{ right_wrapper }}>
-    </div>
+        </{{ right_wrapper }}>
+      </div>
+    {% endif %}
   </div>
   <{{ footer_wrapper }}{{ footer_attributes.addClass('group-footer container-flex') }}>
     {{ footer }}

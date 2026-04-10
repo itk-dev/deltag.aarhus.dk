@@ -35,7 +35,7 @@
 
 {# Show teaser description #}
 {% block card_content %}
-  {{ content.field_teaser[0]['#context'].value|truncate(95, true, true) }}
+  {{ node.field_teaser.string|truncate(95, true, true) }}
 {% endblock %}
 
 {# Collect data for information lines on card #}

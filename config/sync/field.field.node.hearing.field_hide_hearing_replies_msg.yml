@@ -1,0 +1,19 @@
+uuid: 52267b40-09be-4c72-9a15-78e8ea07ff3f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_hearing_replies_msg
+    - node.type.hearing
+id: node.hearing.field_hide_hearing_replies_msg
+field_name: field_hide_hearing_replies_msg
+entity_type: node
+bundle: hearing
+label: Besked
+description: 'Besked der vises i stedet for høringssvar hvis høringssvar er skjult.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

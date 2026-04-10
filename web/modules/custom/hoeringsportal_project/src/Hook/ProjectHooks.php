@@ -2,10 +2,13 @@
 
 namespace Drupal\hoeringsportal_project\Hook;
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -14,8 +17,6 @@ use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Hook\Attribute\Hook;
 
 /**
  * Hooks for project-related operations.
@@ -113,39 +114,43 @@ class ProjectHooks {
   #[Hook('entity_presave')]
   public function entityPresave(EntityInterface $entity): void {
     if ($entity instanceof NodeInterface) {
+      // When changing references, we must clear cache for nodes that was
+      // previously referenced as well as new referenced nodes.
       try {
-        if (!$entity->hasField('field_project_reference')) {
-          return;
-        }
+        if ($entity->hasField('field_project_reference')) {
+          $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
 
-        $newTargetId = (int) ($entity->get('field_project_reference')->target_id ?? 0);
+          $originalEntity = $entity->original ?? NULL;
+          $originalTargetId = 0;
+          if ($originalEntity?->hasField('field_project_reference')) {
+            $originalTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
+          }
 
-        $originalEntity = $entity->original ?? NULL;
-        $oldTargetId = 0;
-        if ($originalEntity?->hasField('field_project_reference')) {
-          $oldTargetId = (int) ($originalEntity->get('field_project_reference')->target_id ?? 0);
-        }
+          // Only act if the reference actually changed.
+          if ($originalTargetId === $newTargetId) {
+            return;
+          }
 
-        // Only act if the reference actually changed.
-        if ($oldTargetId === $newTargetId) {
-          return;
-        }
+          $idsToReset = [];
+          if ($originalTargetId > 0) {
+            $idsToReset[] = $originalTargetId;
+          }
+          if ($newTargetId > 0) {
+            $idsToReset[] = $newTargetId;
+          }
 
-        $idsToReset = [];
-        if ($oldTargetId > 0) {
-          $idsToReset[] = $oldTargetId;
-        }
-        if ($newTargetId > 0) {
-          $idsToReset[] = $newTargetId;
-        }
+          if ($idsToReset === []) {
+            return;
+          }
 
-        if ($idsToReset === []) {
-          return;
+          // Clear cache for project nodes when we change an entity pointing to
+          // it.
+          $idsToReset = array_values(array_unique($idsToReset));
+          $nodes = $this->entityTypeManagerInterface->getStorage('node')->loadMultiple($idsToReset);
+          foreach ($nodes as $node) {
+            Cache::invalidateTags($node->getCacheTags());
+          }
         }
-
-        $idsToReset = array_values(array_unique($idsToReset));
-        $this->entityTypeManagerInterface->getStorage('node')
-          ->resetCache($idsToReset);
       }
       catch (\Exception $e) {
         $this->logger->error('Error in node presave hook: @message', ['@message' => $e->getMessage()]);
@@ -198,20 +203,15 @@ class ProjectHooks {
    *   Array of paragraph entities or NULL.
    */
   private function getTimelineNotes(array $variables) : ?array {
-    try {
-      $paragraphStorage = $this->entityTypeManagerInterface->getStorage('paragraph');
-      $noteQuery = $paragraphStorage->getQuery();
-      $noteQuery->accessCheck();
-      $noteQuery->condition('parent_id', $variables['node']->id());
-      $noteQuery->condition('type', 'timeline_note');
-      $noteIds = $noteQuery->execute();
+    $node = $variables['node'] ?? NULL;
+    if ($node instanceof NodeInterface && $node->hasField('field_timeline')) {
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $list */
+      $list = $node->get('field_timeline');
 
-      return $paragraphStorage->loadMultiple($noteIds);
+      return $list->referencedEntities();
     }
-    catch (\Exception $e) {
-      $this->logger->error('Error getting timeline notes: @message', ['@message' => $e->getMessage()]);
-      return [];
-    }
+
+    return NULL;
   }
 
   /**
