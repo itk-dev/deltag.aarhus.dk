@@ -6,6 +6,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.2] - 2026-04-16
+
+* [PR-629](https://github.com/itk-dev/deltag.aarhus.dk/pull/629)
+  * Update drupal core to 11.3
+  * Update additional modules
+  * Update config to match d11
+* [PR-638](https://github.com/itk-dev/deltag.aarhus.dk/pull/638)
+  Changed flags templates to use html button instead of anchor tag.
+
 ## [4.16.1] - 2026-03-23
 
 * [PR-640](https://github.com/itk-dev/deltag.aarhus.dk/pull/640)
@@ -700,6 +709,7 @@ Updated drupal core 8.6.16
 Initial release
 
 [Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.1...HEAD
+[4.16.1]: https://github.com/itk-dev/hoeringsportal/compare/4.16.1...4.16.2
 [4.16.1]: https://github.com/itk-dev/hoeringsportal/compare/4.16.0...4.16.1
 [4.16.0]: https://github.com/itk-dev/hoeringsportal/compare/4.15.2...4.16.0
 [4.15.2]: https://github.com/itk-dev/hoeringsportal/compare/4.15.1...4.15.2

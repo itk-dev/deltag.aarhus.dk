@@ -73,7 +73,7 @@
   width: 400,
   classes: {
     'ui-dialog': 'create-comment-form',
-  }
+  },
 } %}
 
 {% set is_cancelled = comment.field_cancelled.getString() is not same as '' %}
@@ -126,7 +126,7 @@
       </div>
       {% if not is_cancelled and route_name != 'comment.reply' %}
         <div class="d-flex mb-2">
-          <div class="flag-wrapper me-3">{{ content.flag_support_comment }}</div>
+          {# <div class="flag-wrapper me-3">{{ content.flag_support_comment }}</div> #}
           <div class="comment-reply">
             <a class="use-ajax text-secondary"
               data-dialog-options="{{ dialog_options|json_encode }}" data-dialog-type="modal"

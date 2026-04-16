@@ -30,12 +30,10 @@
   'flag',
   'flag-' ~ flag.id()|clean_class,
   'js-flag-' ~ flag.id()|clean_class ~ '-' ~ flaggable.id(),
-  action_class
+  action_class,
 ]
 %}
 
-{# Set nofollow to prevent search bots from crawling anonymous flag links #}
-{% set attributes = attributes.setAttribute('rel', 'nofollow') %}
 <div class="{{ classes|join(' ') }}">
-  <a{{ attributes.setAttribute('rel', 'nofollow').setAttribute('title', title) }} title="{{ 'Like this'|t }}">{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-thumbs-up.svg.html.twig') }}{{ flagcount(flag, flaggable) }} {{ 'like this'|t }}</a>
+  <button{{ attributes.setAttribute('title', 'Like this'|t) }}>{{ include('themes/custom/hoeringsportal/templates/animated-svg/icon-deltag-thumbs-up.svg.html.twig') }} {{ flagcount(flag, flaggable) }} {{ 'Like this'|t }} </button>
 </div>

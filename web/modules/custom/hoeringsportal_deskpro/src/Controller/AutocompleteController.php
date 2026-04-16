@@ -40,7 +40,7 @@ final class AutocompleteController extends ControllerBase {
    * Department.
    */
   public function department(Request $request) {
-    $query = $request->get('q');
+    $query = $request->query->get('q');
     $departments = $this->deskpro->getTicketDepartments(['no_cache' => 1]);
 
     $matches = array_values(array_filter(
@@ -72,7 +72,7 @@ final class AutocompleteController extends ControllerBase {
    * Agent.
    */
   public function agent(Request $request) {
-    $query = $request->get('q');
+    $query = $request->query->get('q');
     $agents = $this->deskpro->getAgents(['no_cache' => 1]);
 
     $matches = array_values(array_filter(

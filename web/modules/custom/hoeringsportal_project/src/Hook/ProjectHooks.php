@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\hoeringsportal_project\Helper;
+namespace Drupal\hoeringsportal_project\Hook;
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
@@ -19,9 +19,9 @@ use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 
 /**
- * Helper class for project-related operations.
+ * Hooks for project-related operations.
  */
-class ProjectHelper {
+class ProjectHooks {
   use StringTranslationTrait;
 
   /**
@@ -45,8 +45,8 @@ class ProjectHelper {
    * @param array $variables
    *   The template variables array.
    */
-  #[Hook('preprocess')]
-  public function projectPreprocess(array &$variables): void {
+  #[Hook('preprocess_node')]
+  public function preprocessNode(array &$variables): void {
     if ('full' === $variables['view_mode'] && 'project_main_page' === $variables['node']->bundle()) {
       if (!$variables['node']->field_show_timeline->value) {
         return;

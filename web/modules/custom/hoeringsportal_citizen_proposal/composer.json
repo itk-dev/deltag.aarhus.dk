@@ -16,6 +16,6 @@
         "drupal/entity_events": "^2.0",
         "drupal/symfony_mailer": "^1.3",
         "drush/drush": "^13",
-        "itk-dev/serviceplatformen": "^1.5"
+        "itk-dev/serviceplatformen": "^1.8"
     }
 }

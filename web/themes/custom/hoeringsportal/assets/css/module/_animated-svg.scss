@@ -1,4 +1,4 @@
-a:has(svg) {
+button:has(svg) {
   /* prettier-ignore */
   --ease-spring-lazy: linear(0, 0.008 1.1%, 0.034 2.3%, 0.134 4.9%, 0.264 7.3%, 0.683 14.3%, 0.797 16.5%, 0.89 18.6%, 0.967 20.7%, 1.027 22.8%, 1.073 25%, 1.104 27.3%, 1.123 30.6%, 1.119 34.3%, 1.018 49.5%, 0.988 58.6%, 0.985 65.2%, 1 84.5%, 1);
   /* prettier-ignore */
@@ -80,8 +80,8 @@ a:has(svg) {
   }
 }
 
-/* Click on <a> with thumbs-up svg */
-.liked a:has(svg) {
+/* Click on <button> with thumbs-up svg */
+.liked button:has(svg) {
   g.thumbs-up {
     path:first-of-type {
       animation: rotatePop 500ms var(--ease-spring-lazy);
@@ -93,7 +93,7 @@ a:has(svg) {
 }
 
 /* Thumbs-up already set*/
-.action-unflag a:has(svg) {
+.action-unflag button:has(svg) {
   g.thumbs-up {
     path:last-child {
       fill: var(--interactive-primary);

@@ -390,8 +390,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -440,14 +438,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              citizen_proposal_editor: '0'
-              administrator: '0'
-              hearing_editor: '0'
-              project_editor: '0'
-              dialogue_editor: '0'
-              public_meeting_editor: '0'
-              page_editor: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -537,8 +527,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
