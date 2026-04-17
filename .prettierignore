@@ -1,3 +1,6 @@
 # Ignore all Drupal config
 config/
+
+# Files controlled by Drupal
 web/sites/default/default.services.yml
+web/sites/development.services.yml
