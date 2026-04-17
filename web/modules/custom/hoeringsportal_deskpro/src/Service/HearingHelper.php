@@ -743,7 +743,7 @@ class HearingHelper {
     $query->orderBy('aq.job_id');
     $result = $query->execute();
 
-    $jobs_definitions = $result->fetchAll(\PDO::FETCH_BOTH);
+    $jobs_definitions = $result->fetchAll(\PDO::FETCH_ASSOC);
     $jobs = [];
     foreach ($jobs_definitions as $job_definition) {
       $job_definition['id'] = $job_definition['job_id'];
