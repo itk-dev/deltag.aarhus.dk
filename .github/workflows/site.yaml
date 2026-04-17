@@ -19,7 +19,7 @@
 name: Drupal
 
 env:
-  COMPOSE_USER: root
+  COMPOSE_USER: runner
 
 on:
   pull_request:
@@ -33,11 +33,14 @@ jobs:
     name: Check that site can be installed
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Create docker network
+        run: |
+          docker network create frontend
 
       - name: Start docker and install dependencies
         run: |
-          docker network create frontend
           docker compose pull
           docker compose up --detach
 
@@ -64,21 +67,41 @@ jobs:
     # Check updating site only on pull request.
     if: github.event_name == 'pull_request'
     name: Check that site can be updated
+
+    # This job checks that the Drupal site can be upgraded without issues.
+    #
+    # We do this by
+    #
+    # 1. Checking out the base branch ("github.base_ref") and installing the
+    #    site from scratch (using the exact same steps as the "install-site"
+    #    job)
+    # 2. Checking out the updated code and updating the site from the previous
+    #    installation
+    #
+    # Notice that step 2 is NOT run with the code in our new branch, but with
+    # the updated code merged on top of the target branch
+    # (cf.https://github.com/actions/checkout/issues/881). This makes sure that
+    # we can actually update the site after merging with the base branch.
+    #
+    # In some cases we run into a situation where the base site (step 1) cannot
+    # be installed, e.g. if this is a new project or we're making changes that
+    # require manual steps on the upgrade path, and then this jobs will fail. In
+    # that case we should note this in the pull request description and document
+    # the steps needed to complete the upgrade path.
+
     runs-on: ubuntu-latest
-    env:
-      # Force docker compose to run with the new project name
-      # @todo Remove in the future when base branch uses the new project name
-      COMPOSE_PROJECT_NAME: deltag
-      COMPOSE_DOMAIN: deltag.local.itkdev.dk
     steps:
       # Install site from our base ref
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ github.base_ref }}
 
-      - name: Start docker and install dependencies
+      - name: Create docker network
         run: |
           docker network create frontend
+
+      - name: Start docker and install dependencies
+        run: |
           docker compose pull
           docker compose up --detach
 
@@ -106,17 +129,15 @@ jobs:
           sudo chown -Rv $USER:$USER vendor/ web/ private-files/ || true
           sudo chmod -Rv a+w web/sites/default || true
 
-      # Install site with our current ref
-      - uses: actions/checkout@v4
+      # Update site using our updated code.
+      - uses: actions/checkout@v5
         with:
-          ref: ${{ github.head_ref }}
           # Keep our local settings (cf.
           # https://github.com/actions/checkout?tab=readme-ov-file#usage)
           clean: false
 
       - name: Start docker and install dependencies
         run: |
-          docker network create frontend || true
           docker compose pull
           docker compose up --detach
 
