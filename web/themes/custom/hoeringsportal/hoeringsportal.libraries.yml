@@ -11,6 +11,7 @@ bottom-scripts:
     - core/jquery
     - core/drupal
     - core/once
+    - core/drupal.dialog.ajax
 
 image-fade:
   version: VERSION
