@@ -181,6 +181,7 @@ class ProjectHooks {
       $referenceQuery->accessCheck();
       $referenceQuery->exists('field_project_reference');
       $referenceQuery->condition('field_project_reference', $variables['node']->id());
+      $referenceQuery->condition('status', 1);
       $referenceQuery->condition('field_hide_in_timeline', FALSE);
       $referenceQuery->condition($dateFieldQuery);
       $references = $referenceQuery->execute();
