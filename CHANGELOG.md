@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.4] - 2026-04-17
+
 * [PR-645](https://github.com/itk-dev/deltag.aarhus.dk/pull/645)
   Use correct (and supported) fetch mode
 
@@ -716,7 +718,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.3...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.4...HEAD
+[4.16.4]: https://github.com/itk-dev/hoeringsportal/compare/4.16.3...4.16.4
 [4.16.3]: https://github.com/itk-dev/hoeringsportal/compare/4.16.2...4.16.3
 [4.16.2]: https://github.com/itk-dev/hoeringsportal/compare/4.16.1...4.16.2
 [4.16.1]: https://github.com/itk-dev/hoeringsportal/compare/4.16.0...4.16.1
