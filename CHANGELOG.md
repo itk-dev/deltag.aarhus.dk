@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-645](https://github.com/itk-dev/deltag.aarhus.dk/pull/645)
+  Use correct (and supported) fetch mode
+
 ## [4.16.3] - 2026-04-17
 
 * [PR-637](https://github.com/itk-dev/deltag.aarhus.dk/pull/644)
