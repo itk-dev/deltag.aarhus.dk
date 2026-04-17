@@ -1399,10 +1399,10 @@ display:
       automatic_download: true
       export_method: batch
       export_batch_size: 1000
-      store_in_public_file_directory: false
       custom_redirect_path: false
       redirect_to_display: page_1
       include_query_params: true
+      store_in_public_file_directory: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -1856,10 +1856,10 @@ display:
       automatic_download: true
       export_method: batch
       export_batch_size: 1000
-      store_in_public_file_directory: false
       custom_redirect_path: false
       redirect_to_display: page_1
       include_query_params: true
+      store_in_public_file_directory: false
     cache_metadata:
       max-age: -1
       contexts:
