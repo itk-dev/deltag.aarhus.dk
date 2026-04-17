@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a86efa39839dd403cecedbf8c7e8122",
+    "content-hash": "771f9ed3234be580f5dbfcbcb155ec00",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -21805,7 +21805,6 @@
         "chx/drupal-issue-fork": 20,
         "drupal/email_registration": 5,
         "drupal/entityqueue": 15,
-        "drupal/hoeringsportal_dialogue": 20,
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
