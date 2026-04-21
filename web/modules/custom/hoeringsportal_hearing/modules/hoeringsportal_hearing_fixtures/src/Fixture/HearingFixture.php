@@ -238,6 +238,7 @@ EOD,
     for ($i = 0; $i < $numberOfReplies; $i++) {
       $data = [
         'id' => 1000 * (int) $node->id() + $i,
+        'ref' => sprintf('HS%s-%d', $node->id(), $i + 1),
         'date_created' => (new \DateTimeImmutable('2001-01-01'))->modify(sprintf('+%d days', $i))->format(\DateTimeImmutable::ATOM),
         'subject' => sprintf('Reply %d', $i + 1),
         'fields' => [
