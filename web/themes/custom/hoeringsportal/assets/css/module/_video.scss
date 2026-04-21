@@ -1,0 +1,13 @@
+.itk-video-responsive {
+  background: #e2ecee;
+  border: 3px solid #d5e4e6;
+
+  & > iframe {
+    border: 0;
+    z-index: 1;
+  }
+
+  & > .itk-blocked-text {
+    z-index: 0;
+  }
+}
