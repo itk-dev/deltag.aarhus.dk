@@ -46,18 +46,22 @@
 ]
 %}
 
+{% set show_activity = bundles.public_meeting is defined or bundles.course is defined %}
+
 {% set bundles = bundles|filter((v, k) => k != 'public_meeting' and k != 'course') %}
 
-{% if bundles is not empty %}
+{% if bundles is not empty or show_activity %}
   <dl{{ attributes.addClass('admin-list') }}>
-    <div{{ create_attribute({class: item_classes}) }}>
-      <dt class="admin-item__title">
-        <a href="{{ path('hoeringsportal_activity.activity_add') }}" class="admin-item__link">
-          {{ 'Activity'|t }}
-        </a>
-      </dt>
-      <dd class="admin-item__description">{{ 'Create an activity'|t }}</dd>
-    </div>
+    {% if show_activity %}
+      <div{{ create_attribute({class: item_classes}) }}>
+        <dt class="admin-item__title">
+          <a href="{{ path('hoeringsportal_activity.activity_add') }}" class="admin-item__link">
+            {{ 'Activity'|t }}
+          </a>
+        </dt>
+        <dd class="admin-item__description">{{ 'Create an activity'|t }}</dd>
+      </div>
+    {% endif %}
     {% for bundle in bundles %}
       {#
       Add 'admin-item__link' class to the link attributes.

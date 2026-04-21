@@ -9,11 +9,13 @@ settings:
   client_id: client-id
   client_secret: client-secret
   iss_allowed_domains: ''
+  prompt: {  }
   issuer_url: ''
-  authorization_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/connect/authorize'
-  token_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/connect/token'
-  userinfo_endpoint: ''
-  end_session_endpoint: ''
+  authorization_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/oauth2/authorize'
+  token_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/oauth2/token'
+  userinfo_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/oauth2/userinfo'
+  end_session_endpoint: 'http://idp-employee.deltag.local.itkdev.dk/oauth2/end_session'
   scopes:
     - openid
     - email
+    - profile
