@@ -62,8 +62,8 @@ final class HearingTicketAddForm extends FormBase {
     $this->initialize();
 
     $file_validators = [
-      'file_validate_size' => [10490000],
-      'file_validate_extensions' => ['jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps odt ods odp'],
+      'FileSizeLimit' => ['fileLimit' => 10490000],
+      'FileExtension' => ['extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps odt ods odp'],
     ];
 
     $form['hearing_intro_text'] = [
@@ -240,7 +240,7 @@ final class HearingTicketAddForm extends FormBase {
     $organization = trim($form_state->getValue('organization'));
     $representations = $this->config->getRepresentations();
 
-    if ($representations[$representation]['require_organization'] && empty($organization)) {
+    if (($representations[$representation]['require_organization'] ?? FALSE) && empty($organization)) {
       // @todo Customer has to decide if we need an organization name.
       // $form_state->setErrorByName(
       // 'organization',
