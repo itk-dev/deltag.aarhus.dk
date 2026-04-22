@@ -14,6 +14,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Fix permission bug for activities (7217)
   * Update fixture
 
+* [PR-649](https://github.com/itk-dev/deltag.aarhus.dk/pull/649)
+  * Fix deprecation in hoeringsportal_deskpro
+  * Fix display bug in dialogue file_resup module
+
 ## [4.16.4] - 2026-04-17
 
 * [PR-645](https://github.com/itk-dev/deltag.aarhus.dk/pull/645)

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a86efa39839dd403cecedbf8c7e8122",
+    "content-hash": "91f00350f4eb49c889830350025ca9f4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -67,7 +67,7 @@
             "version": "4.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "cfd8e3a885dca7b406791c1eed472af9dd717e8e"
             },
             "dist": {
@@ -7226,6 +7226,35 @@
                 "source": "https://github.com/itk-dev/itk_azure_video/tree/2.1.0"
             },
             "time": "2025-07-04T10:49:56+00:00"
+        },
+        {
+            "name": "itk-dev/itk_dropzonejs_image_widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/itk_dropzonejs_image_widget.git",
+                "reference": "ebcd8c59fe4cf272ae28b2266b2d594a4e3fa8fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/itk_dropzonejs_image_widget/zipball/ebcd8c59fe4cf272ae28b2266b2d594a4e3fa8fd",
+                "reference": "ebcd8c59fe4cf272ae28b2266b2d594a4e3fa8fd",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Module that provides an dropzone widget for drupal image fields",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/itk-dev/itk_dropzonejs_image_widget/issues",
+                "source": "https://github.com/itk-dev/itk_dropzonejs_image_widget/tree/1.0.0"
+            },
+            "time": "2026-04-22T11:11:58+00:00"
         },
         {
             "name": "itk-dev/itk_pretix",
