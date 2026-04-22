@@ -6,13 +6,7 @@ dependencies:
     - field.storage.node.field_image_upload
     - node.type.dialogue_proposal
   module:
-    - file_resup
     - image
-third_party_settings:
-  file_resup:
-    enabled: true
-    max_upload_size: '10 MB'
-    auto_upload: true
 id: node.dialogue_proposal.field_image_upload
 field_name: field_image_upload
 entity_type: node
