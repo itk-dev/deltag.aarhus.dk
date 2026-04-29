@@ -79,6 +79,7 @@
         "itk-dev/azure-ad-delta-sync-drupal": "^2.0",
         "itk-dev/composer-virtualenv": "^1.0",
         "itk-dev/itk_azure_video": "^2.0",
+        "itk-dev/itk_dropzonejs_image_widget": "^1.0",
         "itk-dev/itk_pretix": "^1.5",
         "itk-dev/itk_siteimprove": "^1.2",
         "itk-dev/itk_video": "^1.0",

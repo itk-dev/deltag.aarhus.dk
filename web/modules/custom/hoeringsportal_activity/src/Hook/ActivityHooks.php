@@ -7,6 +7,9 @@ use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\hoeringsportal_activity\Helper\ActivityHelper;
 use Drupal\node\NodeInterface;
 
+/**
+ * Provides hooks for activity.
+ */
 readonly class ActivityHooks {
 
   public function __construct(

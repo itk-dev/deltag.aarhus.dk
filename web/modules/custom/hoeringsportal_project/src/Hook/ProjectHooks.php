@@ -53,7 +53,7 @@ class ProjectHooks {
       }
 
       $variables['timeline_items'] = [];
-      $now = new \DateTimeImmutable();
+      $now = new DrupalDateTime();
 
       $nodes = $this->getTimelineNodes($variables);
 
@@ -220,13 +220,13 @@ class ProjectHooks {
    *
    * @param \Drupal\node\NodeInterface $node
    *   The node entity to add.
-   * @param \DateTimeImmutable $now
+   * @param \Drupal\Core\Datetime\DrupalDateTime $now
    *   The current date and time.
    *
    * @return array
    *   The timeline item array.
    */
-  private function addNodeAsTimelineItem(NodeInterface $node, \DateTimeImmutable $now): array {
+  private function addNodeAsTimelineItem(NodeInterface $node, DrupalDateTime $now): array {
     try {
       $date = $this->determineDate($node);
       if (!$date) {
@@ -259,13 +259,13 @@ class ProjectHooks {
    *
    * @param \Drupal\paragraphs\ParagraphInterface $paragraph
    *   The paragraph entity to add.
-   * @param \DateTimeImmutable $now
+   * @param \Drupal\Core\Datetime\DrupalDateTime $now
    *   The current date and time.
    *
    * @return array
    *   The timeline item array.
    */
-  private function addNoteAsTimelineItem(ParagraphInterface $paragraph, \DateTimeImmutable $now): array {
+  private function addNoteAsTimelineItem(ParagraphInterface $paragraph, DrupalDateTime $now): array {
     try {
       $date = $paragraph->field_date->date;
       if (!$date) {
@@ -296,13 +296,13 @@ class ProjectHooks {
   /**
    * Add "today" timeline item.
    *
-   * @param \DateTimeImmutable $now
+   * @param \Drupal\Core\Datetime\DrupalDateTime $now
    *   The current date and time.
    *
    * @return array
    *   The timeline item array.
    */
-  private function addNowAsTimelineItem(\DateTimeImmutable $now): array {
+  private function addNowAsTimelineItem(DrupalDateTime $now): array {
     return [
       'id' => 'today',
       'date' => $now->format('Y-m-d'),
@@ -380,14 +380,15 @@ class ProjectHooks {
    *   The entity to determine status for.
    * @param \Drupal\Core\Datetime\DrupalDateTime $date
    *   The item date.
-   * @param \DateTimeImmutable $now
+   * @param \Drupal\Core\Datetime\DrupalDateTime $now
    *   The current date.
    *
    * @return string
    *   The status string (upcoming, completed, or note).
    */
-  private function determineStatus(EntityInterface $entity, DrupalDateTime $date, \DateTimeImmutable $now): string {
+  private function determineStatus(EntityInterface $entity, DrupalDateTime $date, DrupalDateTime $now): string {
     return match (TRUE) {
+      $date->format('Y-m-d') === $now->format('Y-m-d') => 'current',
       $date > $now => 'upcoming',
       $entity->getEntityTypeId() === 'node' => 'completed',
       $entity->getEntityTypeId() === 'paragraph' => 'note',

@@ -14,13 +14,13 @@
       0: {
         type: 'text',
         label: 'Decision'|t,
-        value: node.field_decision.value
+        value: node.field_decision.value,
       },
       1: {
         type: 'text',
         label: 'Decision date'|t,
-        value: node.field_decision_date.date|date('U')|format_date('hoeringsportal_date_long')
-      }
+        value: node.field_decision_date.date|date('U')|format_date('hoeringsportal_date_long'),
+      },
     },
     category: 'Decision'|t,
   }) }}

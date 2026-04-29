@@ -6,6 +6,18 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.5] - 2026-04-21
+
+* [PR-648](https://github.com/itk-dev/deltag.aarhus.dk/pull/648)
+  * Update video display (7104)
+  * Fix timeline issue (7196 - 7197)
+  * Fix permission bug for activities (7217)
+  * Update fixture
+
+* [PR-649](https://github.com/itk-dev/deltag.aarhus.dk/pull/649)
+  * Fix deprecation in hoeringsportal_deskpro
+  * Fix display bug in dialogue file_resup module
+
 ## [4.16.4] - 2026-04-17
 
 * [PR-645](https://github.com/itk-dev/deltag.aarhus.dk/pull/645)
