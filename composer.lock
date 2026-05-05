@@ -7344,16 +7344,16 @@
         },
         {
             "name": "itk-dev/itk_video",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/itk_video.git",
-                "reference": "b28e0a03415a11f78f0a8f6831a6a2ceb7273698"
+                "reference": "e5491b327adcafbab88035ad970d00caaa5d7db4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/itk_video/zipball/b28e0a03415a11f78f0a8f6831a6a2ceb7273698",
-                "reference": "b28e0a03415a11f78f0a8f6831a6a2ceb7273698",
+                "url": "https://api.github.com/repos/itk-dev/itk_video/zipball/e5491b327adcafbab88035ad970d00caaa5d7db4",
+                "reference": "e5491b327adcafbab88035ad970d00caaa5d7db4",
                 "shasum": ""
             },
             "require": {
@@ -7381,9 +7381,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/itk_video/issues",
-                "source": "https://github.com/itk-dev/itk_video/tree/1.0.1"
+                "source": "https://github.com/itk-dev/itk_video/tree/1.0.2"
             },
-            "time": "2026-04-21T12:38:34+00:00"
+            "time": "2026-05-05T06:01:34+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
