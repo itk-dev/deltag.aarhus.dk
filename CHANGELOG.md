@@ -6,6 +6,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.6] - 2026-05-05
+
+* [PR-650](https://github.com/itk-dev/deltag.aarhus.dk/pull/650)
+  * Update styling for video display
+  * Add likes back
+
 ## [4.16.5] - 2026-04-21
 
 * [PR-648](https://github.com/itk-dev/deltag.aarhus.dk/pull/648)
