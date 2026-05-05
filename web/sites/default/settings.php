@@ -57,6 +57,7 @@ $settings['config_exclude_modules'] = [
   'devel', 'tracer', 'webprofiler',
   'potx',
   'drupal_translation_extractor',
+  'tidy_feedback_client'
 ];
 
 // See https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Template%21TwigSandboxPolicy.php/11.x

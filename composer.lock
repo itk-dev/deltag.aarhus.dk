@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91f00350f4eb49c889830350025ca9f4",
+    "content-hash": "674a3d293af546a7c97e2212cc91273d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7633,6 +7633,44 @@
                 "issues": "https://github.com/itk-dev/serviceplatformen/issues"
             },
             "time": "2026-02-02T10:01:17+00:00"
+        },
+        {
+            "name": "itk-dev/tidy-feedback-client",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/tidy-feedback-client.git",
+                "reference": "f95dc1be4dfdae89ec2e01fb167aceeb9d16e01e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/tidy-feedback-client/zipball/f95dc1be4dfdae89ec2e01fb167aceeb9d16e01e",
+                "reference": "f95dc1be4dfdae89ec2e01fb167aceeb9d16e01e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/event-dispatcher": "^6 || ^7",
+                "symfony/http-foundation": "^6 || ^7",
+                "symfony/http-kernel": "^6 || ^7"
+            },
+            "type": "drupal-module",
+            "autoload": {
+                "psr-4": {
+                    "ItkDev\\TidyFeedbackClient\\": "src/",
+                    "ItkDev\\TidyFeedbackClientBundle\\": "symfony/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Lightweight client for embedding the Tidy Feedback widget on Symfony and Drupal sites",
+            "support": {
+                "issues": "https://github.com/itk-dev/tidy-feedback-client/issues",
+                "source": "https://github.com/itk-dev/tidy-feedback-client/tree/1.0.4"
+            },
+            "time": "2026-05-05T08:39:30+00:00"
         },
         {
             "name": "itk-dev/web_accessibility_statement",
