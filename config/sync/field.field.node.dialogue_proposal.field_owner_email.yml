@@ -9,7 +9,7 @@ id: node.dialogue_proposal.field_owner_email
 field_name: field_owner_email
 entity_type: node
 bundle: dialogue_proposal
-label: Email
+label: E-mail
 description: ''
 required: false
 translatable: false
