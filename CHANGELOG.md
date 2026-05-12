@@ -6,6 +6,13 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.7] -2026-05-12
+
+* [PR-651](https://github.com/itk-dev/deltag.aarhus.dk/pull/651)
+  * Update php spreadsheet
+  * Update Config fo decision
+  * Update config for dialogue proposal
+
 ## [4.16.6] - 2026-05-05
 
 * [PR-650](https://github.com/itk-dev/deltag.aarhus.dk/pull/650)
