@@ -9550,16 +9550,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "2.4.4",
+            "version": "2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "78bf6f0b4945ab31f1935741324ef3f0bf59a6fe"
+                "reference": "ec7815be350e03df90f3e2ace92653fa6cb4327c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/78bf6f0b4945ab31f1935741324ef3f0bf59a6fe",
-                "reference": "78bf6f0b4945ab31f1935741324ef3f0bf59a6fe",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/ec7815be350e03df90f3e2ace92653fa6cb4327c",
+                "reference": "ec7815be350e03df90f3e2ace92653fa6cb4327c",
                 "shasum": ""
             },
             "require": {
@@ -9650,9 +9650,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.4.4"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.4.5"
             },
-            "time": "2026-04-10T03:20:38+00:00"
+            "time": "2026-04-19T05:48:49+00:00"
         },
         {
             "name": "phpowermove/docblock",
