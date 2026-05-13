@@ -17,6 +17,9 @@ settings:
     -
       value: afvist
       label: Afvist
+    -
+      value: orientering
+      label: Orientering
   allowed_values_function: ''
 module: options
 locked: false
