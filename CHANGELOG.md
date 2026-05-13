@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
+  Updated OIDC development setup
+
 ## [4.16.6] - 2026-05-05
 
 * [PR-650](https://github.com/itk-dev/deltag.aarhus.dk/pull/650)
