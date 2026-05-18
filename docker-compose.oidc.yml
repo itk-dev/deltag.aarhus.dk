@@ -1,8 +1,7 @@
 services:
   # https://github.com/geigerzaehler/oidc-provider-mock
   idp-citizen:
-    # ghcr.io/geigerzaehler/oidc-provider-mock:0.4.2 has an issue: https://github.com/geigerzaehler/oidc-provider-mock/issues/229
-    image: &oidc_provider_mock_image ghcr.io/geigerzaehler/oidc-provider-mock:0.4.1
+    image: &oidc_provider_mock_image ghcr.io/geigerzaehler/oidc-provider-mock:latest
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-citizen.${COMPOSE_DOMAIN}
     networks:
