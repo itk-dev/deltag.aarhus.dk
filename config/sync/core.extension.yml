@@ -69,7 +69,6 @@ module:
   inline_form_errors: 0
   itk_admin: 0
   itk_admin_links: 0
-  itk_dropzonejs_image_widget: 0
   itk_media_entity: 0
   itk_pretix: 0
   itk_siteimprove: 0

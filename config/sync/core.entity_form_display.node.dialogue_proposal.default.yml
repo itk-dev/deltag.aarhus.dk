@@ -17,7 +17,7 @@ dependencies:
     - node.type.dialogue_proposal
   module:
     - hoeringsportal_data
-    - itk_dropzonejs_image_widget
+    - svg_image
 id: node.dialogue_proposal.default
 targetEntityType: node
 bundle: dialogue_proposal
@@ -60,13 +60,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_image_upload:
-    type: itk_dropzonejs_image_widget
-    weight: 5
+    type: image_image
+    weight: 26
     region: content
     settings:
-      preview_image_style: thumbnail
-      dropzone_description: 'Drag and drop an image here or click to upload'
       progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_location:
     type: hoeringsportal_data_map_default

@@ -13,6 +13,8 @@ dependencies:
     - field.field.node.decision.field_media_document
     - field.field.node.decision.field_project_reference
     - field.field.node.decision.field_related_content
+    - field.field.node.decision.field_reply_deadline
+    - field.field.node.decision.field_reply_deadline_exceeded
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
     - field.field.node.decision.field_type
@@ -22,20 +24,22 @@ dependencies:
     - entity_browser
     - field_group
     - paragraphs
+    - publication_date
 third_party_settings:
   field_group:
     group_information:
       children:
         - field_decision
         - field_decision_date
-        - group_project_reference
+        - field_reply_deadline
         - field_department
         - field_area
         - field_type
+        - group_project_reference
       label: Informationer
       region: content
       parent_name: ''
-      weight: 7
+      weight: 8
       format_type: details
       format_settings:
         classes: ''
@@ -69,7 +73,7 @@ mode: default
 content:
   field_area:
     type: options_buttons
-    weight: 6
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -95,19 +99,19 @@ content:
     third_party_settings: {  }
   field_decision:
     type: options_buttons
-    weight: 2
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_decision_date:
     type: datetime_default
-    weight: 3
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 5
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -153,6 +157,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_reply_deadline:
+    type: datetime_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_teaser:
     type: string_textarea
     weight: 2
@@ -178,13 +188,19 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 7
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 6
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -199,10 +215,10 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_reply_deadline_exceeded: true
   langcode: true
   path: true
   promote: true
-  published_at: true
   sticky: true
   uid: true
   url_redirects: true

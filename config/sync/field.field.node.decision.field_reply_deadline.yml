@@ -1,0 +1,21 @@
+uuid: c79c4a93-82eb-43bb-9a65-867aac19d0ad
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reply_deadline
+    - node.type.decision
+  module:
+    - datetime
+id: node.decision.field_reply_deadline
+field_name: field_reply_deadline
+entity_type: node
+bundle: decision
+label: Svarfrist
+description: 'Vælg hvornår der er svarfrist for afgørelsen.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
