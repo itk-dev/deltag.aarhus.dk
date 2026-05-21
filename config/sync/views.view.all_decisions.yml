@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - node.type.decision
     - taxonomy.vocabulary.area
+    - taxonomy.vocabulary.type
   module:
     - better_exposed_filters
     - node
@@ -111,6 +112,8 @@ display:
           bef:
             general:
               autosubmit: true
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: true
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
@@ -127,24 +130,47 @@ display:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: "- Any -|Område\r\n- Enhver -|Vælg område"
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: true
-              field_project_category_target_id:
+                  field_classes: ''
+              field_type_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                  rewrite:
+                    filter_rewrite_values: "- Any -|Vælg type\r\n- Enhver -|Vælg type"
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+              field_reply_deadline_exceeded_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: "- Any -|Alle\r\n- Enhver -|Alle"
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
-                  hide_label: true
+                  hide_label: false
+                  field_classes: ''
       access:
         type: perm
         options:
@@ -283,6 +309,101 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+        field_type_target_id:
+          id: field_type_target_id
+          table: node__field_type
+          field: field_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_type_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_type_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_type_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: type
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_reply_deadline_exceeded_value:
+          id: field_reply_deadline_exceeded_value
+          table: node__field_reply_deadline_exceeded
+          field: field_reply_deadline_exceeded_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Svarfrist overskredet (field_reply_deadline_exceeded)'
+            description: ''
+            use_operator: false
+            operator: field_reply_deadline_exceeded_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_reply_deadline_exceeded_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: true
+          group_info:
+            label: ''
+            description: ''
+            identifier: field_reply_deadline_exceeded_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Alle aktive'
+                operator: empty
+                value: '1'
+              2:
+                title: 'Alle afsluttede'
+                operator: '='
+                value: '1'
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: default
         options:

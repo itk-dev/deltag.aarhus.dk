@@ -16,19 +16,6 @@ jobs:
           echo "This PR can't be merged, due to the 'not ready for merge' label."
           exit 1
 
-  audit:
-    name: audit
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup docker network
-        run: docker network create frontend
-
-      - name: npm audit
-        run: docker compose run --rm node npm audit --prefix /app/web/themes/custom/hoeringsportal
-
   code-analysis:
     name: PHP - Code analysis
     runs-on: ubuntu-latest

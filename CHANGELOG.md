@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-656](https://github.com/itk-dev/deltag.aarhus.dk/pull/656)
+  * Add release date and expire date to decisions
+  * Update decision view
+  * Update decision display
+  * Remove audit from github actions
 * [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
   Updated OIDC development setup
 

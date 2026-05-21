@@ -12,6 +12,8 @@ dependencies:
     - field.field.node.decision.field_media_document
     - field.field.node.decision.field_project_reference
     - field.field.node.decision.field_related_content
+    - field.field.node.decision.field_reply_deadline
+    - field.field.node.decision.field_reply_deadline_exceeded
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
     - field.field.node.decision.field_type
@@ -83,6 +85,25 @@ content:
       link: true
     third_party_settings: {  }
     weight: 10
+    region: content
+  field_reply_deadline:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: hoeringsportal_datetime
+    third_party_settings: {  }
+    weight: 10
+    region: right
+  field_reply_deadline_exceeded:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_teaser:
     type: basic_string

@@ -43,7 +43,7 @@
         "drupal/hoeringsportal_citizen_proposal_archiving": "^1.0",
         "drupal/hoeringsportal_data": "^1.0",
         "drupal/hoeringsportal_deskpro": "^1.0",
-        "drupal/hoeringsportal_dialogue": "1.0-dev",
+        "drupal/hoeringsportal_dialogue": "^1.0",
         "drupal/hoeringsportal_openid_connect": "^1.0",
         "drupal/honeypot": "^2.2",
         "drupal/image_widget_crop": "^3.0",
@@ -322,6 +322,9 @@
             "drupal/core": {
                 "Text format wrapper does not take description_display into account (https://www.drupal.org/project/drupal/issues/2421445#comment-14328645)": "https://www.drupal.org/files/issues/2021-12-03/2421445-18_0.patch",
                 "Add an Autowire trait for plugins (https://www.drupal.org/project/drupal/issues/3294266)": "https://www.drupal.org/files/issues/2023-08-18/3294266-24.patch"
+            },
+            "drupal/search_autocomplete": {
+                "Fix deprecated implicit nullable type declarations (https://www.drupal.org/project/search_autocomplete/issues/3581072)": "https://git.drupalcode.org/project/search_autocomplete/-/merge_requests/13.diff"
             },
             "vincentlanglet/twig-cs-fixer": {
                 "Drupal's trans tag has an optional plural tag which conflicts with the trans tag from Symfony's Twig bridge (cf. https://github.com/VincentLanglet/Twig-CS-Fixer/pull/134#issuecomment-1756924889)": "patches/vincentlanglet/twig-cs-fixer/token-parser.patch"

@@ -5,7 +5,9 @@ namespace Drupal\hoeringsportal_data\Drush\Commands;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\State\StateInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\hoeringsportal_data\Helper\HearingHelper;
 use Drupal\hoeringsportal_deskpro\Service\HearingHelper as DeskproHearingHelper;
 use Drush\Attributes as CLI;
@@ -25,6 +27,7 @@ final class DrushCommands extends BaseDrushCommands {
     private readonly DeskproHearingHelper $deskproHelper,
     private readonly TimeInterface $time,
     private readonly StateInterface $state,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
   ) {
     parent::__construct();
   }
@@ -37,7 +40,8 @@ final class DrushCommands extends BaseDrushCommands {
       $container->get('hoeringsportal_data.hearing_helper'),
       $container->get('hoeringsportal_deskpro.helper'),
       $container->get('datetime.time'),
-      $container->get('state')
+      $container->get('state'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -124,6 +128,35 @@ final class DrushCommands extends BaseDrushCommands {
       }
 
       $this->setLastRunAt(__METHOD__);
+    }
+  }
+
+  /**
+   * Updates reply deadline exceeded on decisions.
+   */
+  #[CLI\Command(name: 'hoeringsportal:data:decision-deadline-update')]
+  public function updateDecisionReplyDeadlineExceeded(): void {
+    $now = new DrupalDateTime('now', 'UTC');
+    $query = $this->entityTypeManager->getStorage('node')->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('type', 'decision')
+      ->condition('status', 1)
+      ->condition('field_reply_deadline', $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT), '<');
+    $notExceeded = $query->orConditionGroup()
+      ->condition('field_reply_deadline_exceeded', 0)
+      ->notExists('field_reply_deadline_exceeded');
+    $nids = $query->condition($notExceeded)->execute();
+
+    if (empty($nids)) {
+      $this->io()->info('No decisions with exceeded deadlines found.');
+      return;
+    }
+
+    $nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
+    foreach ($nodes as $node) {
+      $node->set('field_reply_deadline_exceeded', TRUE);
+      $node->save();
+      $this->writeln(sprintf('Updated decision %d: deadline exceeded', $node->id()));
     }
   }
 

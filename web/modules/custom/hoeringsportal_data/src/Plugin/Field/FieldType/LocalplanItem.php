@@ -12,7 +12,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "hoeringsportal_data_localplan",
  *   label = @Translation("Local plan"),
- *   category = @Translation("Hoeringsportal"),
+ *   category = "Hoeringsportal",
  *   default_widget = "hoeringsportal_data_localplan_default",
  *   default_formatter = "hoeringsportal_data_localplan_default",
  * )

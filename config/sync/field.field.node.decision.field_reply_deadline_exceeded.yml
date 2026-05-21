@@ -1,0 +1,21 @@
+uuid: 94dfc99d-ddd1-4c68-8733-e8a2fbefc98e
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reply_deadline_exceeded
+    - node.type.decision
+id: node.decision.field_reply_deadline_exceeded
+field_name: field_reply_deadline_exceeded
+entity_type: node
+bundle: decision
+label: 'Svarfrist overskredet'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean
