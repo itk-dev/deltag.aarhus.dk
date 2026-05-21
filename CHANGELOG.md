@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.16.8] - 2026-05-21
+
+* [PR-657](https://github.com/itk-dev/deltag.aarhus.dk/pull/657)
+  * Updated drupal core
+
 ## [4.16.7] - 2026-05-12
 
 * [PR-653](https://github.com/itk-dev/deltag.aarhus.dk/pull/653)
