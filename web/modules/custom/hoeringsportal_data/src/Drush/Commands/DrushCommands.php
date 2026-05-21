@@ -137,13 +137,15 @@ final class DrushCommands extends BaseDrushCommands {
   #[CLI\Command(name: 'hoeringsportal:data:decision-deadline-update')]
   public function updateDecisionReplyDeadlineExceeded(): void {
     $now = new DrupalDateTime('now', 'UTC');
-    $nids = $this->entityTypeManager->getStorage('node')->getQuery()
+    $query = $this->entityTypeManager->getStorage('node')->getQuery()
       ->accessCheck(FALSE)
       ->condition('type', 'decision')
       ->condition('status', 1)
+      ->condition('field_reply_deadline', $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT), '<');
+    $notExceeded = $query->orConditionGroup()
       ->condition('field_reply_deadline_exceeded', 0)
-      ->condition('field_reply_deadline', $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT), '<')
-      ->execute();
+      ->notExists('field_reply_deadline_exceeded');
+    $nids = $query->condition($notExceeded)->execute();
 
     if (empty($nids)) {
       $this->io()->info('No decisions with exceeded deadlines found.');
