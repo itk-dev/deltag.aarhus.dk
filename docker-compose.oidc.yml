@@ -1,7 +1,7 @@
 services:
   # https://github.com/geigerzaehler/oidc-provider-mock
   idp-citizen:
-    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    image: &oidc_provider_mock_image ghcr.io/geigerzaehler/oidc-provider-mock:latest
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-citizen.${COMPOSE_DOMAIN}
     networks:
@@ -11,8 +11,12 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-idp.rule=Host(`idp-citizen.${COMPOSE_DOMAIN}`)"
+    expose:
+      - "80"
     command:
       [
+        "--port",
+        "80",
         "--user-claims",
         '{"sub": "citizen1", "dk_ssn": "1111111111", "name": "Anders And", "zip": "1111"}',
         "--user-claims",
@@ -28,7 +32,7 @@ services:
       ]
 
   idp-employee:
-    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    image: *oidc_provider_mock_image
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-employee.${COMPOSE_DOMAIN}
     networks:
@@ -38,8 +42,12 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-employee.rule=Host(`idp-employee.${COMPOSE_DOMAIN}`)"
+    expose:
+      - "80"
     command:
       [
+        "--port",
+        "80",
         "--user-claims",
         '{"sub": "user", "email": "user@example.com", "groups": ["authenticated"]}',
         "--user-claims",

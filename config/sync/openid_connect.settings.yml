@@ -19,9 +19,10 @@ role_mappings:
     - hearing_editor
   project_editor:
     - project_editor
-  public_meeting_editor:
-    - public_meeting_editor
   dialogue_editor:
     - dialogue_editor
+  public_meeting_editor:
+    - public_meeting_editor
   page_editor:
     - page_editor
+autostart_login: false
