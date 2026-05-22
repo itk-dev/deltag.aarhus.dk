@@ -298,13 +298,6 @@ final class HearingTicketAddForm extends FormBase {
       unset($data['geolocation']);
     }
 
-    // Temporary: export form data for comparison testing.
-    file_put_contents('/tmp/hearing-ticket-data.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    $this->messenger()->addMessage($this->t('Form data exported to /tmp/hearing-ticket-data.json'));
-    $node = $this->getRouteMatch()->getParameter('node');
-    $form_state->setRedirect('entity.node.canonical', ['node' => $node->id()]);
-    return;
-
     // File ids.
     $files = $form_state->getValue('files', []);
 
