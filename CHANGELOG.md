@@ -6,6 +6,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-658](https://github.com/itk-dev/deltag.aarhus.dk/pull/658)
+  * Replaced DAWA address autocomplete with Adressevaelger in hoeringsportal_forms and hoeringsportal_deskpro
+  * Added Adressevaelger token configuration in admin settings
+  * Removed nicoeg/dawa dependency from hoeringsportal_deskpro
+  * Updated itk_pretix to use branch without DAWA dependency
+
 * [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
   Updated OIDC development setup
 
