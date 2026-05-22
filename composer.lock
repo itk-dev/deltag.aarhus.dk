@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91f00350f4eb49c889830350025ca9f4",
+    "content-hash": "258bb3ff1800fd8646960c49f8ca682a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7259,21 +7259,20 @@
         },
         {
             "name": "itk-dev/itk_pretix",
-            "version": "1.5.0",
+            "version": "dev-feature/dawa-adressevaelger-shift",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/itk_pretix.git",
-                "reference": "81acb13bd49508916091803894eed54936200bfd"
+                "reference": "5ec220bae7008447f3311a5ef19df92b669563a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/81acb13bd49508916091803894eed54936200bfd",
-                "reference": "81acb13bd49508916091803894eed54936200bfd",
+                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/5ec220bae7008447f3311a5ef19df92b669563a4",
+                "reference": "5ec220bae7008447f3311a5ef19df92b669563a4",
                 "shasum": ""
             },
             "require": {
                 "itk-dev/pretix-api-client-php": "^1.1",
-                "nicoeg/dawa": "^1.0",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -7309,10 +7308,10 @@
                 "Drupal"
             ],
             "support": {
-                "source": "https://github.com/itk-dev/itk_pretix/tree/1.5.0",
+                "source": "https://github.com/itk-dev/itk_pretix/tree/feature/dawa-adressevaelger-shift",
                 "issues": "https://github.com/itk-dev/itk_pretix/issues"
             },
-            "time": "2026-03-09T08:54:50+00:00"
+            "time": "2026-05-22T12:21:15+00:00"
         },
         {
             "name": "itk-dev/itk_siteimprove",
@@ -21861,7 +21860,8 @@
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
-        "drupal/webform": 10
+        "drupal/webform": 10,
+        "itk-dev/itk_pretix": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
