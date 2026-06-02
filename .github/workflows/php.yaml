@@ -34,7 +34,7 @@
 name: PHP
 
 env:
-  COMPOSE_USER: root
+  COMPOSE_USER: runner
 
 on:
   pull_request:
@@ -48,8 +48,12 @@ jobs:
     name: PHP - Check Coding Standards
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: |
+      - uses: actions/checkout@v5
+
+      - name: Create docker network
+        run: |
           docker network create frontend
+
+      - run: |
           docker compose run --rm phpfpm composer install
           docker compose run --rm phpfpm vendor/bin/phpcs

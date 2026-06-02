@@ -24,7 +24,7 @@
 name: Twig
 
 env:
-  COMPOSE_USER: root
+  COMPOSE_USER: runner
 
 on:
   pull_request:
@@ -40,9 +40,12 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Create docker network
+        run: |
+          docker network create frontend
 
       - run: |
-          docker network create frontend
           docker compose run --rm phpfpm composer install
           docker compose run --rm phpfpm vendor/bin/twig-cs-fixer lint
