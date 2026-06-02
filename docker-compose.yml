@@ -25,12 +25,9 @@ services:
       - MYSQL_PASSWORD=db
       - MYSQL_DATABASE=db
       #- ENCRYPT=1 # Uncomment to enable database encryption.
-    # https://symfony.com/doc/current/setup/symfony_server.html#docker-integration
-    labels:
-      com.symfony.server.service-prefix: "DATABASE"
 
   phpfpm:
-    image: itkdev/php8.3-fpm:latest
+    image: itkdev/php8.4-fpm:latest
     user: ${COMPOSE_USER:-deploy}
     networks:
       - app
@@ -76,10 +73,10 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME:?}.rule=Host(`${COMPOSE_DOMAIN:?}`)"
-      # HTTPS config - uncomment to enable redirect from :80 to :443
-      # - "traefik.http.routers.${COMPOSE_PROJECT_NAME:?}.middlewares=redirect-to-https"
-      # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      # Cron-metrics protection (metrics:metrics for local testing).
+      # HTTPS config - enable redirect from :80 to :443
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME:?}.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # Cron-metrics protection.
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME:?}-metrics.rule=Host(`${COMPOSE_DOMAIN:?}`) && PathPrefix(`/cron-metrics`) "
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME:?}-metrics.middlewares=ITKMetricsAuth@file"
 
