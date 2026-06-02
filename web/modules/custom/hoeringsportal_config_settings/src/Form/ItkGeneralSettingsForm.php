@@ -292,8 +292,8 @@ class ItkGeneralSettingsForm extends FormBase {
     $form['integrations']['adressevaelger_token'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Adressevaelger token'),
-      '#default_value' => $config->get('adressevaelger_token') ?? 'adressevaelger123',
-      '#description' => $this->t('API token for the Adressevaelger address lookup service.'),
+      '#default_value' => $config->get('adressevaelger_token'),
+      '#description' => $this->t('API token for the Adressevaelger address lookup service. Leave empty to use the default public token.'),
     ];
 
     $form['messages'] = [
