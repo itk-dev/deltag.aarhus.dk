@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
+  Updated docker templates and updated yaml linting
+
 * [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
   Updated OIDC development setup
 
