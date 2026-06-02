@@ -79,8 +79,8 @@ readonly class ActivityHooks {
       $form['#attached']['library'][] = 'hoeringsportal_activity/course_form_alter';
     }
 
-    // Dawa functionality to address field.
-    $form['field_address']['widget'][0]['value']['#attributes']['class'][] = 'js-dawa-element';
+    // Address autocomplete functionality to address field.
+    $form['field_address']['widget'][0]['value']['#attributes']['class'][] = 'js-adressevaelger-element';
   }
 
 }

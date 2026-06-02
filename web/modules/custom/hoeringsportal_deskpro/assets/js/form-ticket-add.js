@@ -2,135 +2,56 @@ require('../scss/form-ticket-add.scss')
 
 const $ = require('jquery')
 require('jquery-validation')
-require('jquery-ui/ui/widgets/autocomplete')
+const proj4 = require('proj4').default || require('proj4')
 
-// @see https://stackoverflow.com/a/11845718
-$.ui.autocomplete.prototype._resizeMenu = function () {
-  const ul = this.menu.element
-  ul.outerWidth(this.element.outerWidth())
-}
+// Define the UTM zone 32N projection used by the adressevaelger API.
+proj4.defs('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs')
 
 $(() => {
-  const config = {
-    fields: {
-      postalCodeAndCity: 'edit-postal-code-and-city',
-      streetAndNumber: 'edit-street-and-number'
-    }
-  }
+  const addressLookup = document.getElementById('address-lookup')
+  const postalCodeAndCity = document.querySelector('[data-drupal-selector="edit-postal-code-and-city"]')
+  const streetAndNumber = document.querySelector('[data-drupal-selector="edit-street-and-number"]')
+  const geolocation = document.querySelector('[data-drupal-selector="edit-geolocation"]')
+  const postalCode = document.querySelector('[data-drupal-selector="edit-postal-code"]')
 
-  const postalCodeAndCity = $('[data-drupal-selector="' + config.fields.postalCodeAndCity + '"]')
-  const streetAndNumber = $('[data-drupal-selector="' + config.fields.streetAndNumber + '"]')
+  if (addressLookup && postalCodeAndCity && streetAndNumber && geolocation) {
+    const wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'autocomplete-container')
+    addressLookup.parentNode.replaceChild(wrapper, addressLookup)
+    wrapper.appendChild(addressLookup)
 
-  if (postalCodeAndCity && streetAndNumber) {
-    // @see https://codepen.io/mi2oon/pen/zpNMoL
-    const API = 'https://dawa.aws.dk'
-
-    const getData = (path, query = {}) => {
-      const url = `${API}/${path}?` + Object.entries(query)
-        .filter(e => e[1] !== null)
-        .map(e => encodeURIComponent(e[0]) + '=' + encodeURIComponent(e[1])).join('&')
-
-      return $.ajax({
-        url
-      })
-    }
-
-    const address = {
-      postnr: null,
-      vejnavn: null,
-      husnr: null
-    }
-
-    // Autocomplete postal code
-    getData('postnumre')
-      .then(data => {
-        const autocompleteData = data.map(postnr => ({
-          label: `${postnr.nr} ${postnr.navn}`,
-          dataValue: postnr.nr
-        }))
-
-        postalCodeAndCity.autocomplete({
-          source: autocompleteData,
-          autoFocus: true,
-          minLength: 1,
-          select: (e, ui) => {
-            address.postnr = ui.item.dataValue
-            address.vejnavn = null
-            address.husnr = null
-          }
-        })
-      })
-
-    const autocompleteStreetNumber = function () {
-      getData('adresser', address)
-        .then((data) => {
-          const autocompleteData = data
-            .map(adresse => adresse.adgangsadresse)
-            .map(adgangsadresse => ({
-              label: `${adgangsadresse.vejstykke.navn} ${adgangsadresse.husnr}`,
-              dataValue: adgangsadresse.husnr
-            }))
-
-          $(this).autocomplete({
-            source: autocompleteData,
-            autoFocus: true,
-            minLength: 1,
-            select: (e, ui) => { address.husnr = ui.item.dataValue }
-          })
-        })
-    }
-
-    const autocompleteStreet = function () {
-      if (address.postalCode === null) {
-        return
-      }
-
-      getData('vejnavne', address)
-        .then((data) => {
-          const autocompleteData = data.map(vej => ({
-            label: vej.navn,
-            dataValue: vej.navn
-          }))
-
-          $(this).autocomplete({
-            source: autocompleteData,
-            autoFocus: true,
-            minLength: 1,
-            select: (e, ui) => {
-              address.vejnavn = ui.item.dataValue
-              address.husnr = null
-
-              autocompleteStreetNumber.apply(this)
-            }
-          })
-        })
-    }
-
-    streetAndNumber
-      .on('focus', autocompleteStreet)
-      .on('keyup', function (event) {
-        switch (event.key) {
-          // Ignore keys used to navigate autocomplete suggestions.
-          case 'ArrowUp':
-          case 'ArrowDown':
-          case 'Tab':
-          case 'Enter':
-            break
-
-          default:
-            // Decide if we're completing street or street number.
-            if (address.vejnavn !== null) {
-              const value = $(this).val()
-              // If a street has been selected and the current value if a prefix of the selected value, we autocomplete (a new) street.
-              if (value === '' || address.vejnavn.indexOf(value) > -1) {
-                autocompleteStreet.apply(this)
-              } else {
-                autocompleteStreetNumber.apply(this)
-              }
-            }
-            break
+    // Initialize adressevaelger on the address lookup field.
+    // When an address is selected, populate hidden form fields with the
+    // address components and geolocation for server-side processing.
+    // `adressevaelger` is a global provided at runtime:
+    // - adressevaelger: set by adressevaelger.iife.js, loaded via the
+    //   hoeringsportal_forms/adressevaelger-support-text-field library dependency.
+    // eslint-disable-next-line no-undef
+    adressevaelger.adressevaelger(addressLookup, {
+      // eslint-disable-next-line no-undef
+      token: drupalSettings.adressevaelger.token,
+      select: function (selected) {
+        // The selected object nests address data under adresse.husnummer.
+        const husnummer = (selected.adresse && selected.adresse.husnummer) || {}
+        const postnr = husnummer.postnummer || {}
+        postalCodeAndCity.value = (postnr.postnr || '') + ' ' + (postnr.navn || '')
+        if (postalCode) {
+          postalCode.value = postnr.postnr || ''
         }
-      })
+
+        streetAndNumber.value = ((husnummer.vejnavn || '') + ' ' + (husnummer.husnummertekst || '')).trim()
+
+        // The adressevaelger API returns coordinates in EPSG:25832 (UTM zone 32N).
+        // Convert to EPSG:4326 (WGS84 longitude, latitude) for Deskpro.
+        // proj4 returns [longitude, latitude].
+        const coords = husnummer.adgangspunkt && husnummer.adgangspunkt.koordinater
+        if (coords && coords.x && coords.y) {
+          const wgs84 = proj4('EPSG:25832', 'EPSG:4326', [coords.x, coords.y])
+          // Format to 8 decimal places to match the precision of the old DAWA API output.
+          geolocation.value = wgs84[0].toFixed(8) + ', ' + wgs84[1].toFixed(8)
+        }
+      }
+    })
   }
 
   document.querySelector('form#hearing-ticket-add-form').addEventListener('submit', function () {

@@ -281,6 +281,21 @@ class ItkGeneralSettingsForm extends FormBase {
       '#description' => $this->t('The height of the iframe i.e 450px'),
     ];
 
+    $form['integrations'] = [
+      '#title' => $this->t('Integrations'),
+      '#type' => 'details',
+      '#open' => TRUE,
+      '#weight' => '2',
+      '#group' => 'general_settings',
+    ];
+
+    $form['integrations']['adressevaelger_token'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Adressevaelger token'),
+      '#default_value' => $config->get('adressevaelger_token'),
+      '#description' => $this->t('API token for the Adressevaelger address lookup service. Leave empty to use the default public token.'),
+    ];
+
     $form['messages'] = [
       '#title' => $this->t('Messages'),
       '#type' => 'details',
@@ -329,6 +344,7 @@ class ItkGeneralSettingsForm extends FormBase {
       'frontpage_id' => $form_state->getValue('frontpage_id'),
       'users_manual_url' => $form_state->getValue('users_manual_url'),
       'login_message' => $form_state->getValue('login_message'),
+      'adressevaelger_token' => $form_state->getValue('adressevaelger_token'),
       'newsletter_node' => $form_state->getValue('newsletter_node'),
       'newsletter_iframe_source' => $form_state->getValue('newsletter_iframe_source'),
       'newsletter_iframe_height' => $form_state->getValue('newsletter_iframe_height'),

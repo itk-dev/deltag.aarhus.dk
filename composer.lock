@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91f00350f4eb49c889830350025ca9f4",
+    "content-hash": "3b4f765c44fa1ad0edd486ee16e9602a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7259,21 +7259,20 @@
         },
         {
             "name": "itk-dev/itk_pretix",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/itk_pretix.git",
-                "reference": "81acb13bd49508916091803894eed54936200bfd"
+                "reference": "560d2a0917a4a91b6f03fe0c1bc41fcbadb3cbb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/81acb13bd49508916091803894eed54936200bfd",
-                "reference": "81acb13bd49508916091803894eed54936200bfd",
+                "url": "https://api.github.com/repos/itk-dev/itk_pretix/zipball/560d2a0917a4a91b6f03fe0c1bc41fcbadb3cbb4",
+                "reference": "560d2a0917a4a91b6f03fe0c1bc41fcbadb3cbb4",
                 "shasum": ""
             },
             "require": {
                 "itk-dev/pretix-api-client-php": "^1.1",
-                "nicoeg/dawa": "^1.0",
                 "php": "^8.3"
             },
             "require-dev": {
@@ -7309,10 +7308,10 @@
                 "Drupal"
             ],
             "support": {
-                "source": "https://github.com/itk-dev/itk_pretix/tree/1.5.0",
+                "source": "https://github.com/itk-dev/itk_pretix/tree/1.6.0",
                 "issues": "https://github.com/itk-dev/itk_pretix/issues"
             },
-            "time": "2026-03-09T08:54:50+00:00"
+            "time": "2026-06-02T07:26:36+00:00"
         },
         {
             "name": "itk-dev/itk_siteimprove",
