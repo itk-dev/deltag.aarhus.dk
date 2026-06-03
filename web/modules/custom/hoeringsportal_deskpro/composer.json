@@ -12,7 +12,6 @@
   },
   "require": {
     "deskpro/deskpro-api-client-php": "^4.0",
-    "drupal/advancedqueue": "^1.0",
-    "nicoeg/dawa": "^1.0"
+    "drupal/advancedqueue": "^1.0"
   }
 }

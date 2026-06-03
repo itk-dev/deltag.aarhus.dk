@@ -6,7 +6,6 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\hoeringsportal_deskpro\Service\HearingHelper;
 use Drupal\hoeringsportal_deskpro\State\DeskproConfig;
-use Nicoeg\Dawa\Dawa;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -69,7 +68,7 @@ final class HearingTicketAddForm extends FormBase {
     $form['hearing_intro_text'] = [
       '#type' => 'html_tag',
       '#tag' => 'p',
-      '#value' => $this->config->get('intro'),
+      '#value' => $this->config->get('intro') ?? '',
     ];
 
     $form['person_name'] = [
@@ -106,29 +105,28 @@ final class HearingTicketAddForm extends FormBase {
       ],
     ];
 
-    $form['address']['postal_code_and_city'] = [
+    $form['address']['address_lookup'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Postal code and city'),
-      '#attributes' => ['autocomplete' => 'off'],
-      '#states' => [
-        'required' => [
-          ':input[name="address_secret"]' => ['checked' => FALSE],
-        ],
+      '#title' => $this->t('Address'),
+      '#attributes' => [
+        'id' => 'address-lookup',
+        'autocomplete' => 'off',
       ],
+    ];
+
+    $form['address']['postal_code_and_city'] = [
+      '#type' => 'hidden',
     ];
 
     $form['address']['street_and_number'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Street and number'),
-      '#attributes' => ['autocomplete' => 'off'],
-      '#states' => [
-        'required' => [
-          ':input[name="address_secret"]' => ['checked' => FALSE],
-        ],
-      ],
+      '#type' => 'hidden',
     ];
 
-    $form['postal_code'] = [
+    $form['address']['geolocation'] = [
+      '#type' => 'hidden',
+    ];
+
+    $form['address']['postal_code'] = [
       '#type' => 'hidden',
     ];
 
@@ -213,6 +211,9 @@ final class HearingTicketAddForm extends FormBase {
     ];
 
     $form['#attached']['library'][] = 'hoeringsportal_deskpro/form_ticket_add';
+    $form['#attached']['library'][] = 'hoeringsportal_forms/adressevaelger-support-text-field';
+    $itkConfig = \Drupal::getContainer()->get('itk_admin.itk_config');
+    $form['#attached']['drupalSettings']['adressevaelger']['token'] = $itkConfig->get('adressevaelger_token') ?? 'adressevaelger123';
 
     return $form;
   }
@@ -249,11 +250,8 @@ final class HearingTicketAddForm extends FormBase {
     }
 
     if (!$form_state->getValue('address_secret')) {
-      if (empty(trim($form_state->getValue('postal_code_and_city')))) {
-        $form_state->setErrorByName('postal_code_and_city', $this->t('Please enter your postal code and city.'));
-      }
-      if (empty(trim($form_state->getValue('street_and_number')))) {
-        $form_state->setErrorByName('street_and_number', $this->t('Please enter your street and number.'));
+      if (empty(trim($form_state->getValue('postal_code_and_city') ?? '')) || empty(trim($form_state->getValue('street_and_number') ?? ''))) {
+        $form_state->setErrorByName('address_lookup', $this->t('Please select an address.'));
       }
     }
   }
@@ -271,6 +269,7 @@ final class HearingTicketAddForm extends FormBase {
       'postal_code',
       'postal_code_and_city',
       'street_and_number',
+      'geolocation',
       'representation',
       'organization',
       'subject',
@@ -292,24 +291,11 @@ final class HearingTicketAddForm extends FormBase {
     unset($data['street_and_number'], $data['postal_code_and_city']);
 
     if ($form_state->getValue('address_secret')) {
-      unset($data['address']);
+      unset($data['address'], $data['geolocation']);
     }
 
-    if (isset($data['address'])) {
-      // Try to get geolocation from DAWA.
-      try {
-        $dawa = new Dawa();
-        $result = $dawa->accessAddressSearch($data['address']);
-        if (1 === count($result)) {
-          $data['geolocation'] = implode(', ', $result[0]->adgangspunkt->koordinater);
-        }
-      }
-      catch (\Exception $exception) {
-        \Drupal::logger('hoeringsportal_deskpro')->error('@message', [
-          '@message' => $exception->getMessage(),
-          '@values' => $form_state->getValues(),
-        ]);
-      }
+    if (empty($data['geolocation'])) {
+      unset($data['geolocation']);
     }
 
     // File ids.

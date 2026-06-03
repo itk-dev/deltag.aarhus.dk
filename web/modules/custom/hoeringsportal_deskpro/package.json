@@ -37,7 +37,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
     "jquery": "^3.6.1",
-    "jquery-ui": "^1.13.2",
+    "proj4": "^2.5.0",
     "jquery-validation": "^1.19.5",
     "postcss-loader": "^7.0.2",
     "sass": "^1.56.1",
