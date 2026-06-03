@@ -16,7 +16,7 @@
 
 # Ignore sensitive information
 /web/sites/*/settings.local.php
-
+https://widget.cdn.septima.dk/latest/widgetconfig.js
 # Ignore Drupal's file directory
 /web/sites/*/files/
 
