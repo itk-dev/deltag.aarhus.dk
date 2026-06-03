@@ -6,6 +6,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-660](https://github.com/itk-dev/deltag.aarhus.dk/pull/660)
+  * Updated Septima to use latest cdn and adress tool instead of dawa
+  * Removed final traces of dawa from project
+
 * [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
   Updated docker templates and updated yaml linting
   
