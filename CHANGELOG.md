@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
+  Updated docker templates and updated yaml linting
+  
 * [PR-658](https://github.com/itk-dev/deltag.aarhus.dk/pull/658)
   * Replaced DAWA address autocomplete with Adressevaelger in hoeringsportal_forms and hoeringsportal_deskpro
   * Added Adressevaelger token configuration in admin settings

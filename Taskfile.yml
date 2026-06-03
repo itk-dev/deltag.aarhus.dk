@@ -1,7 +1,7 @@
-version: "3"
+version: '3'
 
 # https://taskfile.dev/usage/#env-files
-dotenv: [".env.local", ".env"]
+dotenv: ['.env.local', '.env']
 
 includes:
   translations:
@@ -59,7 +59,7 @@ tasks:
     silent: true
 
   site-install:
-    prompt: "This will reset your setup. Continue?"
+    prompt: 'This will reset your setup. Continue?'
     cmds:
       - task compose -- down
       - task compose -- pull
@@ -110,17 +110,17 @@ tasks:
           {{.DOCKER_COMPOSE}} run --rm node npm run build --prefix web/themes/custom/hoeringsportal
         fi
     vars:
-      SKIP_BUILD: "{{.ASSETS_SKIP_BUILD | default .TASK_ASSETS_SKIP_BUILD}}"
+      SKIP_BUILD: '{{.ASSETS_SKIP_BUILD | default .TASK_ASSETS_SKIP_BUILD}}'
 
   assets-watch:
     cmds:
-      - "{{.DOCKER_COMPOSE}} run --rm node npm run watch --prefix web/themes/custom/hoeringsportal"
+      - '{{.DOCKER_COMPOSE}} run --rm node npm run watch --prefix web/themes/custom/hoeringsportal'
 
   compose:
     cmds:
       - '{{.DOCKER_COMPOSE}} {{if .DOCKER_COMPOSE_PROFILES}}--profile {{.DOCKER_COMPOSE_PROFILES | splitList "," |join " --profile " }}{{end}} {{.CLI_ARGS}}'
     vars:
-      DOCKER_COMPOSE_PROFILES: "{{.PROFILES | default .DOCKER_COMPOSE_PROFILES}}"
+      DOCKER_COMPOSE_PROFILES: '{{.PROFILES | default .DOCKER_COMPOSE_PROFILES}}'
 
   compose-up:
     cmds:
@@ -173,7 +173,7 @@ tasks:
       - task compose -- exec --env PGPASSWORD=pretix pretix_database psql --user=pretix pretix
 
   pretix:database-reset:
-    prompt: "This will reset your pretix database. Continue?"
+    prompt: 'This will reset your pretix database. Continue?'
     cmds:
       # Remove the pretix database container
       - task compose -- rm pretix_database --stop --force
@@ -183,7 +183,7 @@ tasks:
       - task compose -- exec pretix pretix upgrade
 
   pretix:database-load:
-    prompt: "This will reset your pretix database. Continue?"
+    prompt: 'This will reset your pretix database. Continue?'
     cmds:
       - task compose -- exec --no-TTY --env PGPASSWORD=pretix pretix_database psql --quiet --user=pretix pretix <<< "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"
       - task compose -- exec --no-TTY --env PGPASSWORD=pretix pretix_database psql --quiet --user=pretix pretix < .docker/pretix/dumps/pretix.sql
@@ -198,7 +198,7 @@ tasks:
       - "task compose -- exec phpfpm curl --header 'Authorization: Token {{.API_TOKEN}}' {{.PRETIX_URL}}/api/v1/organizers/"
 
   coding-standards:apply:
-    desc: "Apply coding standards"
+    desc: 'Apply coding standards'
     cmds:
       - task: coding-standards:javascript:apply
       - task: coding-standards:markdown:apply
@@ -209,7 +209,7 @@ tasks:
     silent: true
 
   coding-standards:check:
-    desc: "Apply coding standards"
+    desc: 'Apply coding standards'
     cmds:
       - task: coding-standards:javascript:check
       - task: coding-standards:markdown:check
@@ -220,40 +220,40 @@ tasks:
     silent: true
 
   coding-standards:javascript:apply:
-    desc: "Apply coding standards for javascript"
+    desc: 'Apply coding standards for javascript'
     cmds:
       # Cf. .github/workflows/javascript.yaml
       - docker compose run --rm prettier 'web/themes/custom/**/js/**/*.js' --write
 
   coding-standards:javascript:check:
-    desc: "Apply coding standards for javascript"
+    desc: 'Apply coding standards for javascript'
     cmds:
       - task: coding-standards:javascript:apply
       # Cf. .github/workflows/javascript.yaml
       - docker compose run --rm prettier 'web/themes/custom/**/js/**/*.js' --check
 
   coding-standards:markdown:apply:
-    desc: "Apply coding standards for Markdown"
+    desc: 'Apply coding standards for Markdown'
     cmds:
       # Cf. .github/workflows/markdown.yaml
       - docker compose run --rm markdownlint markdownlint '**/*.md' --fix
 
   coding-standards:markdown:check:
-    desc: "Apply and check coding standards for Markdown"
+    desc: 'Apply and check coding standards for Markdown'
     cmds:
       - task: coding-standards:markdown:apply
       # Cf. .github/workflows/markdown.yaml
       - docker compose run --rm markdownlint markdownlint '**/*.md'
 
   coding-standards:php:apply:
-    desc: "Apply coding standards for PHP"
+    desc: 'Apply coding standards for PHP'
     cmds:
       # Cf. .github/workflows/php.yaml
       - docker compose run --rm phpfpm vendor/bin/phpcbf
     silent: true
 
   coding-standards:php:check:
-    desc: "Apply and check coding standards for PHP"
+    desc: 'Apply and check coding standards for PHP'
     cmds:
       - task: coding-standards:php:apply
       # Cf. .github/workflows/php.yaml
@@ -261,39 +261,39 @@ tasks:
     silent: true
 
   coding-standards:styles:apply:
-    desc: "Apply coding standards for styles"
+    desc: 'Apply coding standards for styles'
     cmds:
       # Cf. .github/workflows/styles.yaml
       - docker compose run --rm prettier 'web/themes/custom/**/css/**/*.{css,scss}' --write
 
   coding-standards:styles:check:
-    desc: "Apply coding standards for styles"
+    desc: 'Apply coding standards for styles'
     cmds:
       - task: coding-standards:styles:apply
       # Cf. .github/workflows/styles.yaml
       - docker compose run --rm prettier 'web/themes/custom/**/css/**/*.{css,scss}' --check
 
   coding-standards:twig:apply:
-    desc: "Apply coding standards for Twig"
+    desc: 'Apply coding standards for Twig'
     cmds:
       - docker compose run --rm phpfpm vendor/bin/twig-cs-fixer fix
     silent: true
 
   coding-standards:twig:check:
-    desc: "Apply and check coding standards for Twig"
+    desc: 'Apply and check coding standards for Twig'
     cmds:
       - task: coding-standards:twig:apply
       - docker compose run --rm phpfpm vendor/bin/twig-cs-fixer lint
     silent: true
 
   coding-standards:yaml:apply:
-    desc: "Apply coding standards for YAML"
+    desc: 'Apply coding standards for YAML'
     cmds:
       # Cf. .github/workflows/yaml.yaml
       - docker compose run --rm prettier '**/*.{yml,yaml}' --write
 
   coding-standards:yaml:check:
-    desc: "Apply coding standards for YAML"
+    desc: 'Apply coding standards for YAML'
     cmds:
       - task: coding-standards:yaml:apply
       # Cf. .github/workflows/yaml.yaml
@@ -311,14 +311,14 @@ tasks:
       - docker compose run --rm phpfpm vendor/bin/phpstan analyse --configuration=phpstan.neon --level=9 web/modules/custom/hoeringsportal_audit_log/
 
   docker-pull:
-    desc: "Pull all development docker images"
+    desc: 'Pull all development docker images'
     cmds:
       - docker pull jauderho/prettier
       - docker pull peterdavehello/markdownlint
       - task compose -- pull
 
   fixtures:load:
-    prompt: "This will reset your content. Continue?"
+    prompt: 'This will reset your content. Continue?'
     cmds:
       # We need the pretix service to load public meeting fixtures (cf. https://docs.docker.com/compose/how-tos/environment-variables/envvars/#compose_profiles)
       - COMPOSE_PROFILES=pretix COMPOSE_UP_WAIT=true task compose-up

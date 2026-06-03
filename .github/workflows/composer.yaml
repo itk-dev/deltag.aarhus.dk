@@ -26,47 +26,54 @@
 name: Composer
 
 env:
-  COMPOSE_USER: root
+  COMPOSE_USER: runner
 
 on:
   pull_request:
+    paths: &paths
+      - "composer.json"
+      - "composer.lock"
+      - "docker-compose.yml"
   push:
     branches:
       - main
       - develop
+    paths: *paths
 
 jobs:
   composer-validate:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - run: |
+      - uses: actions/checkout@v6
+
+      - name: Create docker network
+        run: |
           docker network create frontend
+
       - run: |
-          docker compose run --rm phpfpm composer validate
+          docker compose run --rm phpfpm composer validate --strict
 
   composer-normalized:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - run: |
+      - uses: actions/checkout@v6
+
+      - name: Create docker network
+        run: |
           docker network create frontend
+
       - run: |
           docker compose run --rm phpfpm composer install
           docker compose run --rm phpfpm composer normalize --dry-run
 
   composer-audit:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    # Ignore abandoned packages until https://www.drupal.org/project/drupal/issues/3550917
     steps:
-      - uses: actions/checkout@v4
-      - run: |
+      - uses: actions/checkout@v6
+
+      - name: Create docker network
+        run: |
           docker network create frontend
+
       - run: |
-          docker compose run --rm phpfpm composer audit --locked --abandoned=ignore
+          docker compose run --rm phpfpm composer audit
