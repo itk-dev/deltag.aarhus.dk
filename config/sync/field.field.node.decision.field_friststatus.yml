@@ -1,0 +1,21 @@
+uuid: 5f607182-93a4-4b5c-de6f-708192031425
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_friststatus
+    - node.type.decision
+  module:
+    - options
+id: node.decision.field_friststatus
+field_name: field_friststatus
+entity_type: node
+bundle: decision
+label: Friststatus
+description: 'Beregnes automatisk ud fra fristen. Aktiv før fristen, Udløbet efter.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

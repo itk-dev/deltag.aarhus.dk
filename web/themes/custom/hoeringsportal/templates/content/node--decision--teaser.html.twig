@@ -1,9 +1,39 @@
-{# Template for Project teaser extending base-card #}
+{# Template for Decision teaser extending base-card #}
 
 {% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
+
+{# Deadline ("frist") and whether it has passed #}
+{% set deadlinedate = decision_helper.getDeadlineDate(node) %}
+{% set deadlinepassed = decision_helper.isDeadlinePassed(node) %}
+
+{# Show a date splash on the card when the deadline is still active #}
+{% block card_date %}
+  {% if deadlinedate %}
+    {% if deadlinepassed %}
+      <div><strong>{{ 'Udløbet'|t }}</strong></div>
+    {% else %}
+      <div class="fw-semibold">{{ deadlinedate|format_date('hoeringsportal_day_only') }}</div>
+      <div class="small">{{ deadlinedate|format_date('hoeringsportal_month_short') }}</div>
+    {% endif %}
+  {% endif %}
+{% endblock %}
 
 {% block card_content %}
   {{ node.field_teaser.string|truncate(95, true, true) }}
   <span>{{ content.field_project_category }}</span>
   <span class="tags-one-line"><i class="{{ node_type_class }} fa-solid fa-tags"></i><span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span></span>
+{% endblock %}
+
+{# Show the deadline ("frist") as an information line, like hearings #}
+{% block card_type_information %}
+  {% if deadlinedate %}
+    <div class="d-flex gap-3 justify-items-center">
+      <i class="fa-solid fa-fw fa-lg fa-calendar-day text-decision"></i>
+      {% if deadlinepassed %}
+        <p class="small text-muted">{{ 'Frist udløbet'|t }}</p>
+      {% else %}
+        <p class="small">{{ 'Frist'|t }}: {{ deadlinedate|format_date('hoeringsportal_date_long')|capitalize }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
 {% endblock %}

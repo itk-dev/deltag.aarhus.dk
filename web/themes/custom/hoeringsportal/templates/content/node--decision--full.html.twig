@@ -1,6 +1,16 @@
 {% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
 
 {% block content_top %}
+  {# Deadline ("frist") shown muted in the header, like the public site #}
+  {% set deadlinedate = decision_helper.getDeadlineDate(node) %}
+  {% set deadlinepassed = decision_helper.isDeadlinePassed(node) %}
+  {% set frist_value = null %}
+  {% if deadlinedate %}
+    {% set frist_value = deadlinepassed
+      ? 'Frist udløbet'|t
+      : deadlinedate|format_date('hoeringsportal_date_long') %}
+  {% endif %}
+
   {# Header #}
   {{ include(directory ~ '/templates/components/header-default.html.twig', {
     images: node.field_top_images,
@@ -20,6 +30,13 @@
         type: 'text',
         label: 'Decision date'|t,
         value: node.field_decision_date.date|date('U')|format_date('hoeringsportal_date_long'),
+      },
+      2: {
+        type: 'text',
+        label: 'Frist'|t,
+        value: frist_value,
+        icon: 'fa-solid fa-calendar-day',
+        value_class: 'text-muted',
       },
     },
     category: 'Decision'|t,

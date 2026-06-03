@@ -72,6 +72,10 @@ services:
     tags:
       - { name: content_fixture }
 
+  Drupal\hoeringsportal_base_fixtures\Fixture\DecisionLandingPageFixture:
+    tags:
+      - { name: content_fixture }
+
   Drupal\hoeringsportal_base_fixtures\Fixture\UserFixture:
     tags:
       - { name: content_fixture }

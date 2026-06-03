@@ -31,6 +31,7 @@ class MenuItemFixture extends AbstractFixture implements DependentFixtureInterfa
       'node:landing_page:Public meetings',
       'node:landing_page:Projects',
       'node:landing_page:Dialogue proposals',
+      'node:landing_page:Decisions',
     ] as $weight => $name) {
       $page = $this->getReference($name);
       MenuLinkContent::create([
@@ -67,6 +68,7 @@ class MenuItemFixture extends AbstractFixture implements DependentFixtureInterfa
       ProjectLandingPageFixture::class,
       DialogueLandingPageFixture::class,
       PublicMeetingFixture::class,
+      DecisionLandingPageFixture::class,
     ];
   }
 

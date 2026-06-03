@@ -1,0 +1,27 @@
+uuid: 4e5f6071-8293-4a4b-cd5e-6f7081920314
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_friststatus
+field_name: field_friststatus
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: aktiv
+      label: Aktiv
+    -
+      value: udloebet
+      label: Udløbet
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

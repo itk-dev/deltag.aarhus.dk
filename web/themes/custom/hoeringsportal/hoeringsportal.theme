@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\hoeringsportal_decision\Helper\DecisionHelper;
 use Drupal\hoeringsportal_dialogue\Helper\DialogueHelper;
 use Drupal\node\NodeInterface;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper as CitizenProposalHelper;
@@ -19,6 +20,7 @@ function hoeringsportal_preprocess(&$vars) {
   $vars['public_meeting_helper'] = \Drupal::service('hoeringsportal_public_meeting.public_meeting_helper');
   $vars['citizen_proposal_helper'] = \Drupal::service(CitizenProposalHelper::class);
   $vars['dialogue_helper'] = \Drupal::service(DialogueHelper::class);
+  $vars['decision_helper'] = \Drupal::service(DecisionHelper::class);
   $vars['anonymous_edit_helper'] = \Drupal::service(AnonymousEditHelper::class);
   $vars['route_name'] = \Drupal::routeMatch()->getRouteName();
 }
