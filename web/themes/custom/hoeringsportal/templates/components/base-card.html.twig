@@ -67,7 +67,7 @@
     <img class="object-fit-cover" src="{{ image_url }}" alt="{{ image_alt|default('') }}">
 
     {# If we have a node of type hearing or public meeting we show a date splash on the card #}
-    {% if node_type in ['hearing', 'public_meeting', 'course'] %}
+    {% if node_type in ['hearing', 'public_meeting', 'course', 'decision'] %}
       <div class="position-absolute bottom-0 start-0 py-2 px-4 bg-white flex-column d-flex align-items-center">
         {% block card_date %}
         {% endblock %}

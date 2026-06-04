@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-03-09 10:55+0100\n"
-"PO-Revision-Date: 2026-03-09 10:55+0100\n"
+"POT-Creation-Date: 2026-06-04 13:45+0200\n"
+"PO-Revision-Date: 2026-06-04 13:45+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -216,6 +216,12 @@ msgid ""
 msgstr ""
 "Følg med i inddragelsesprocessen og se hvordan dit input former "
 "fremtidens projekt."
+
+msgid "Frist"
+msgstr "Frist"
+
+msgid "Frist udløbet"
+msgstr "Frist udløbet"
 
 msgid "From"
 msgstr "Fra"
@@ -588,6 +594,9 @@ msgstr "Prøv med færre ord eller at formulere det anderledes"
 
 msgid "Tumblr"
 msgstr "Tumblr"
+
+msgid "Udløbet"
+msgstr "Udløbet"
 
 msgid "Upcoming"
 msgstr "Kommende"

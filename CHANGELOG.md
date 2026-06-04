@@ -6,6 +6,18 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-661](https://github.com/itk-dev/deltag.aarhus.dk/pull/661)
+  * Added "Publiceringsdato" and "Frist" date fields to the decision content type.
+    "Publiceringsdato" schedules when a decision is published (backend only); "Frist"
+    is shown in frontend and drives a hidden, auto-computed "Friststatus"
+    (Aktiv/Udløbet), kept current on save and via cron in the new
+    hoeringsportal_decision module.
+  * Reworked the decision overview: filters on Type, Område and Friststatus, sorted
+    by soonest deadline first with expired decisions last, and the deadline shown on
+    teasers and the detail page following the existing card/header conventions.
+  * Added decision fixtures with realistic body content and related activities
+    (hearing, begivenhed), an "Afgørelser" overview landing page and main-menu link.
+
 * [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
   Updated docker templates and updated yaml linting
   

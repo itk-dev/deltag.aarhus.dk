@@ -6,12 +6,15 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.decision.field_area
     - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_deadline
     - field.field.node.decision.field_decision
     - field.field.node.decision.field_decision_date
     - field.field.node.decision.field_department
+    - field.field.node.decision.field_friststatus
     - field.field.node.decision.field_hide_in_timeline
     - field.field.node.decision.field_media_document
     - field.field.node.decision.field_project_reference
+    - field.field.node.decision.field_publish_date
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
@@ -59,12 +62,15 @@ content:
     region: content
 hidden:
   field_content_sections: true
+  field_deadline: true
   field_decision: true
   field_decision_date: true
   field_department: true
+  field_friststatus: true
   field_hide_in_timeline: true
   field_media_document: true
   field_project_reference: true
+  field_publish_date: true
   field_related_content: true
   field_top_images: true
   langcode: true

@@ -102,9 +102,12 @@ content:
     weight: 100
     region: content
 hidden:
+  field_deadline: true
+  field_friststatus: true
   field_hide_in_timeline: true
   field_media_document: true
   field_project_reference: true
+  field_publish_date: true
   field_top_images: true
   langcode: true
   published_at: true

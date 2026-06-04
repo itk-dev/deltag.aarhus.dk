@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autowire: true
+
+  Drupal\hoeringsportal_decision\Helper\DecisionHelper:
+
+  Drupal\hoeringsportal_decision\Hook\DecisionHooks:

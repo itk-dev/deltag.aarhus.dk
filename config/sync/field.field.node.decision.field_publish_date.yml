@@ -1,0 +1,21 @@
+uuid: 1b2c3d4e-5f60-4718-9a2b-3c4d5e6f7081
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publish_date
+    - node.type.decision
+  module:
+    - datetime
+id: node.decision.field_publish_date
+field_name: field_publish_date
+entity_type: node
+bundle: decision
+label: Publiceringsdato
+description: 'Planlægger hvornår afgørelsen vises i frontend. Bruges kun til systemlogik og vises ikke i frontend.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

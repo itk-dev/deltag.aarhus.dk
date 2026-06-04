@@ -108,6 +108,18 @@ BODY,
     $this->addReference('paragraph:content_list:all_early_inclusion', $paragraph);
 
     $paragraph = Paragraph::create([
+      'type' => 'content_list',
+      'field_content_list' => [
+        'target_id' => 'all_decisions',
+        'display_id' => 'default',
+        'data' => '',
+      ],
+      'field_list_title' => 'Alle afgørelser',
+    ]);
+    $paragraph->save();
+    $this->addReference('paragraph:content_list:all_decisions', $paragraph);
+
+    $paragraph = Paragraph::create([
       'type' => 'info_box',
       'field_content_block_text' => [
         'value' => <<<'BODY'
