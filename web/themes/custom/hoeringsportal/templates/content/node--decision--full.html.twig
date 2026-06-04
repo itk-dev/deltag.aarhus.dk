@@ -1,7 +1,7 @@
 {% extends '@hoeringsportal/node/_node--1-col-large-image-top.html.twig' %}
 
 {% block content_top %}
-  {# Deadline ("frist") shown muted in the header, like the public site #}
+  {# Deadline ("frist") shown in the header alongside the other information #}
   {% set deadlinedate = decision_helper.getDeadlineDate(node) %}
   {% set deadlinepassed = decision_helper.isDeadlinePassed(node) %}
   {% set frist_value = null %}
@@ -36,7 +36,6 @@
         label: 'Frist'|t,
         value: frist_value,
         icon: 'fa-solid fa-calendar-day',
-        value_class: 'text-muted',
       },
     },
     category: 'Decision'|t,

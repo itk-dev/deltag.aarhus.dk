@@ -18,22 +18,37 @@
   {% endif %}
 {% endblock %}
 
+{# Show teaser description #}
 {% block card_content %}
   {{ node.field_teaser.string|truncate(95, true, true) }}
-  <span>{{ content.field_project_category }}</span>
-  <span class="tags-one-line"><i class="{{ node_type_class }} fa-solid fa-tags"></i><span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span></span>
 {% endblock %}
 
-{# Show the deadline ("frist") as an information line, like hearings #}
-{% block card_type_information %}
-  {% if deadlinedate %}
-    <div class="d-flex gap-3 justify-items-center">
-      <i class="fa-solid fa-fw fa-lg fa-calendar-day text-decision"></i>
-      {% if deadlinepassed %}
-        <p class="small text-muted">{{ 'Frist udløbet'|t }}</p>
-      {% else %}
-        <p class="small">{{ 'Frist'|t }}: {{ deadlinedate|format_date('hoeringsportal_date_long')|capitalize }}</p>
-      {% endif %}
-    </div>
+{# Collect data for information lines on card, mirroring hearing/public meeting #}
+{% set items = [] %}
+{% if deadlinedate %}
+  {% if deadlinepassed %}
+    {% set items = items|merge([{icon: 'fa-calendar-day', value: 'Frist udløbet'|t}]) %}
+  {% else %}
+    {%
+      set items = items|merge([
+        {icon: 'fa-calendar-day', value: 'Frist'|t ~ ': ' ~ deadlinedate|format_date('hoeringsportal_date_long')|capitalize},
+      ])
+    %}
   {% endif %}
+{% endif %}
+{%
+  set items = items|merge([
+    {icon: 'fa-tags', value: content.field_area},
+    {icon: 'fa-tag', value: content.field_type},
+  ])
+%}
+
+{# Show card information #}
+{% block card_type_information %}
+  {% for item in items %}
+    <div class="d-flex gap-3 justify-items-center {% if not loop.last %} border-bottom {% endif %}">
+      <i class="fa-solid fa-fw fa-lg {{ item.icon }} text-decision"></i>
+      <p class="small">{{ item.value }}</p>
+    </div>
+  {% endfor %}
 {% endblock %}

@@ -11,7 +11,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * "Publiceringsdato" schedules when a decision is published (backend only)
   * "Frist" is shown in frontend and drives a hidden, auto-computed "Friststatus" (Aktiv/Udløbet)
   * Friststatus is kept current on save and via cron in the new hoeringsportal_decision module
-* Reworked the decision overview: filters on Type, Område and Friststatus, sorted by most recently updated, with the deadline shown on teasers
+* Reworked the decision overview: filters on Type, Område and Friststatus, sorted by most recently updated, with the deadline shown on teasers and the detail page following the existing card/header conventions
 
 * [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
   Updated docker templates and updated yaml linting

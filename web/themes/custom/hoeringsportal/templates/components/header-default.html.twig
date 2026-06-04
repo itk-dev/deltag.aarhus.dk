@@ -74,10 +74,10 @@
                             <div class="d-inline-block">
                               <div class="text-background-match">{{ element.label }}</div>
                               {% if element.value is not iterable %}
-                                <div class="text-wrap text-capitalize-first-word {{ element.value_class ?? '' }}">{{ element.value }}</div>
+                                <div class="text-wrap text-capitalize-first-word">{{ element.value }}</div>
                               {% else %}
                                 {% for value in element.value %}
-                                  <div class="text-wrap text-capitalize-first-word {{ element.value_class ?? '' }}">{{ value }}</div>
+                                  <div class="text-wrap text-capitalize-first-word">{{ value }}</div>
                                 {% endfor %}
                               {% endif %}
                             </div>
