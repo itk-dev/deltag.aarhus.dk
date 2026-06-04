@@ -6,7 +6,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-* Added decision (afgørelse) fixtures, an "Afgørelser" overview landing page and main-menu link
+* Added decision (afgørelse) fixtures with realistic body content and related activities (hearing, begivenhed, project), an "Afgørelser" overview landing page and main-menu link
 * Added "Publiceringsdato" and "Frist" date fields to the decision content type
   * "Publiceringsdato" schedules when a decision is published (backend only)
   * "Frist" is shown in frontend and drives a hidden, auto-computed "Friststatus" (Aktiv/Udløbet)

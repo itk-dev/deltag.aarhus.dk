@@ -104,6 +104,30 @@ BODY,
     // fixture references so this stays self-contained and anonymized.
     $teaser = 'Sagittis mattis scelerisque habitasse elit etiam lobortis accumsan. Dignissim ac sapien potenti ipsum nam penatibus leo.';
 
+    // A realistic, fully synthetic decision body modelled on a
+    // kommuneplantillæg announcement (plan numbers and dates are fictional).
+    $body = <<<'BODY'
+<p>Aarhus Byråd vedtog i mødet den 20. maj 2026 tillæg nr. 11 til Kommuneplan 2025.</p>
+<p>I referatet fra byrådsmødet kan du se byrådsindstillingen og alle bilag.</p>
+<p>Kommuneplantillægget ændrer anvendelsen for to arealer, så de bliver rammeområder til boligformål. Ændringerne har baggrund i to høringsbidrag i forbindelse med den offentlige høring af forslag til Kommuneplan 2025. Begge høringsbidrag indeholdt ønsker om at kunne anvende arealer udlagt til offentlige formål, og hidtil anvendt dertil, til boligformål.</p>
+<p>Med vedtagelsen af Kommuneplan 2025 den 17. december 2025 besluttede byrådet at sende ændringsforslagene i offentlig høring i fire uger i form af et kommuneplantillæg i stedet for en fornyet høring af kommuneplanforslaget.</p>
+<h2>Miljøvurdering</h2>
+<p>I henhold til § 4 i lov om miljøvurdering af planer og programmer og af konkrete projekter (VVM) er der truffet afgørelse om, at kommuneplantillægget ikke er omfattet af kravet om miljøvurdering.</p>
+<p>Det er Aarhus Kommunes vurdering, at planen er omfattet af undtagelsen i lovens § 8, stk. 2, nr. 1, da planen kun ændrer anvendelsen af et mindre område på lokalt plan og bebyggelsens omfang fastholdes. Det er på baggrund af en screening i henhold til miljøvurderingslovens § 10 vurderet, at planen ikke vil medføre væsentlige påvirkninger af miljøet.</p>
+<h2>Offentlig høring</h2>
+<p>Forslag til tillæg nr. 11 har været i offentlig høring i perioden 9. februar 2026 til den 9. marts 2026. Der er ikke indkommet høringssvar.</p>
+<p>Tillæg nr. 11 til Kommuneplan 2025 er offentligt bekendtgjort den 3. juni 2026.</p>
+<h2>Retsvirkning</h2>
+<p>Kommuneplanen er bindende for kommunalbestyrelsens planlægning og administration og danner grundlag for kommunens lokalplanlægning og øvrige arealdispositioner.</p>
+<p>Kommuneplanen er ikke direkte bindende for borgere og grundejere og giver ikke i sig selv ret til at gennemføre ændringer i anvendelsen af arealer eller bebyggelse.</p>
+<p>I henhold til planlovens § 12 kan kommunalbestyrelsen modsætte sig udstykning, bebyggelse eller ændret anvendelse af arealer og bebyggelse, der er i strid med kommuneplanens rammer, hvis kommunalbestyrelsen agter at tilvejebringe en lokalplan.</p>
+<h2>Klagevejledning</h2>
+<p>Kommuneplanen er vedtaget i henhold til lov om planlægning. I henhold til planlovens § 58, stk. 1, nr. 3, kan retlige spørgsmål i forbindelse med kommuneplanen påklages af alle, der har retlig interesse i planen.</p>
+<p>Hvis du ønsker at klage over planen, kan du klage til Planklagenævnet. En klage er indgivet, når den er tilgængelig for kommunen i Klageportalen. Klagen skal være modtaget af Aarhus Kommune inden 4 uger efter denne annonces dato.</p>
+<h2>Domstolsprøvelse</h2>
+<p>Hvis et spørgsmål ønskes prøvet ved domstolene, skal sagen anlægges inden 6 måneder. For afgørelser, der er offentligt bekendtgjort, regnes fristen fra annoncens dato.</p>
+BODY;
+
     // Each row: [title, decision, type, area, decisionDate, deadlineOffset].
     // Positive deadline offset = future ("Aktiv"); negative = past ("Udløbet").
     // friststatus is computed automatically on save by hoeringsportal_decision.
@@ -130,9 +154,9 @@ BODY,
         ::create([
           'type' => 'content_block',
         ])
-          ->set('field_paragraph_title', 'Det er et godt spørgsmål …')
+          ->set('field_paragraph_title', 'Om afgørelsen')
           ->set('field_content_block_text', [
-            'value' => '<p>' . $teaser . '</p>',
+            'value' => $body,
             'format' => 'filtered_html',
           ]);
       $paragraph->save();
@@ -161,6 +185,14 @@ BODY,
         'field_content_sections' => [
           'target_id' => $paragraph->id(),
           'target_revision_id' => $paragraph->getRevisionId(),
+        ],
+        // Relate each decision to a hearing and a project so the "relaterer sig
+        // til disse aktiviteter" section is populated. The begivenhed (public
+        // meeting) relation is added by PublicMeetingFixture, which loads after
+        // decisions (it already depends on this fixture).
+        'field_related_content' => [
+          $this->getReference('node:hearing:Hearing' . (($index % 3) + 1)),
+          $this->getReference('project_page:Hvad er byudvikling?'),
         ],
       ];
 

@@ -299,6 +299,41 @@ final class PublicMeetingFixture extends AbstractFixture implements DependentFix
         ],
       ],
     );
+
+    $this->relateDecisionsToMeetings();
+  }
+
+  /**
+   * Add a begivenhed (public meeting) to each decision's related content.
+   *
+   * This runs from PublicMeetingFixture rather than DecisionFixture because the
+   * meetings are created here, and this fixture already loads after (depends
+   * on) DecisionFixture — referencing meetings from DecisionFixture would
+   * create a circular dependency.
+   */
+  private function relateDecisionsToMeetings(): void {
+    $meetings = [
+      $this->getReference('public_meeting:fixture-1'),
+      $this->getReference('public_meeting:fixture-2'),
+      $this->getReference('public_meeting:fixture-3'),
+    ];
+
+    // The synthetic decisions plus the two named originals.
+    $decisionReferences = array_merge(
+      array_map(static fn(int $i) => 'node:decision:synthetic:' . $i, range(0, 12)),
+      [
+        'node:decision:En vigtig afgørelse',
+        'node:decision:En ny afgørelse afvist',
+      ]
+    );
+
+    foreach ($decisionReferences as $index => $reference) {
+      $decision = $this->getReference($reference);
+      $related = $decision->get('field_related_content')->getValue();
+      $related[] = ['target_id' => $meetings[$index % count($meetings)]->id()];
+      $decision->set('field_related_content', $related);
+      $decision->save();
+    }
   }
 
   /**
