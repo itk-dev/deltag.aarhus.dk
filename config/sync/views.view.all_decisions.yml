@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.storage.node.field_deadline
     - field.storage.node.field_friststatus
     - node.type.decision
     - taxonomy.vocabulary.area
     - taxonomy.vocabulary.type
   module:
     - better_exposed_filters
+    - datetime
     - node
     - options
     - taxonomy
@@ -179,20 +181,31 @@ display:
           content: '<!-- This text is added to prevent the the view AND filters from being hidden if the view is empty (cf. https://www.drupal.org/project/viewsreference/issues/3399878) -->'
           tokenize: false
       sorts:
-        changed:
-          id: changed
-          table: node_field_data
-          field: changed
+        field_friststatus_value:
+          id: field_friststatus_value
+          table: node__field_friststatus
+          field: field_friststatus_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: changed
-          plugin_id: date
-          order: DESC
+          plugin_id: standard
+          order: ASC
           expose:
             label: ''
-            field_identifier: changed
+            field_identifier: ''
+          exposed: false
+        field_deadline_value:
+          id: field_deadline_value
+          table: node__field_deadline
+          field: field_deadline_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_deadline_value
           exposed: false
           granularity: second
       arguments: {  }
