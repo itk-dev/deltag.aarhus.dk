@@ -9,7 +9,6 @@ use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
 use Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueFixture;
 use Drupal\hoeringsportal_hearing_fixtures\Fixture\HearingFixture;
-use Drupal\hoeringsportal_project_fixtures\Fixture\ProjectPageFixture;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 
@@ -87,7 +86,6 @@ BODY,
       'field_related_content' => [
         $this->getReference('node:hearing:Hearing1'),
         $this->getReference('node:dialogue:Test Dialogue - proposals full'),
-        $this->getReference('project_page:Hvad er byudvikling?'),
       ],
       'field_content_sections' => [
         'target_id' => $paragraph->id(),
@@ -186,13 +184,12 @@ BODY;
           'target_id' => $paragraph->id(),
           'target_revision_id' => $paragraph->getRevisionId(),
         ],
-        // Relate each decision to a hearing and a project so the "relaterer sig
-        // til disse aktiviteter" section is populated. The begivenhed (public
-        // meeting) relation is added by PublicMeetingFixture, which loads after
+        // Relate each decision to a hearing so the "relaterer sig til disse
+        // aktiviteter" section is populated. The begivenhed (public meeting)
+        // relation is added by PublicMeetingFixture, which loads after
         // decisions (it already depends on this fixture).
         'field_related_content' => [
           $this->getReference('node:hearing:Hearing' . (($index % 3) + 1)),
-          $this->getReference('project_page:Hvad er byudvikling?'),
         ],
       ];
 
@@ -219,7 +216,6 @@ BODY;
       CitizenProposalFixture::class,
       HearingFixture::class,
       DialogueFixture::class,
-      ProjectPageFixture::class,
       TermDepartmentFixture::class,
       TermAreaFixture::class,
       TermTypeFixture::class,
