@@ -52,12 +52,15 @@ content:
     region: content
 hidden:
   field_content_sections: true
+  field_deadline: true
   field_decision: true
   field_decision_date: true
   field_department: true
+  field_friststatus: true
   field_hide_in_timeline: true
   field_media_document: true
   field_project_reference: true
+  field_publish_date: true
   field_related_content: true
   field_teaser: true
   field_top_images: true
