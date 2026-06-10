@@ -420,7 +420,7 @@ SELECT 3 AS index,
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -529,7 +529,7 @@ with arr_plads (arr_id, plads_id)
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -650,7 +650,7 @@ SELECT * FROM jnt6324g5clm1was_ttepg WHERE hearing_geometry_type = \'point\'
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -807,7 +807,7 @@ WHERE  project.planid = plandata.planid
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -962,7 +962,7 @@ project_id,
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -1138,7 +1138,7 @@ WHERE  hearing.planid = plandata.planid
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -1297,7 +1297,7 @@ SELECT hearing.*
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],
@@ -1475,7 +1475,7 @@ WHERE  hearing.area_id = area.id
               ],
               'driver' => [
                 [
-                  'type' => 'dawa',
+                  'type' => 'address',
                   'options' => [
                     'kommunekode' => '751',
                   ],

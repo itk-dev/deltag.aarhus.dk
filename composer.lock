@@ -67,7 +67,7 @@
             "version": "4.0.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "cfd8e3a885dca7b406791c1eed472af9dd717e8e"
             },
             "dist": {
@@ -3623,12 +3623,11 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/hoeringsportal_deskpro",
-                "reference": "501a8a4faaf72960003b21831ae90a5375f6059b"
+                "reference": "1301e8896d8d4f31f590662fd851932c118953d3"
             },
             "require": {
                 "deskpro/deskpro-api-client-php": "^4.0",
-                "drupal/advancedqueue": "^1.0",
-                "nicoeg/dawa": "^1.0"
+                "drupal/advancedqueue": "^1.0"
             },
             "type": "drupal-custom-module",
             "license": [
@@ -8523,64 +8522,6 @@
                 }
             ],
             "time": "2025-05-22T16:48:16+00:00"
-        },
-        {
-            "name": "nicoeg/dawa",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nicoeg/Dawa.git",
-                "reference": "0c7e1c9a75f02423c1adc3f32bd88a18730b501f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nicoeg/Dawa/zipball/0c7e1c9a75f02423c1adc3f32bd88a18730b501f",
-                "reference": "0c7e1c9a75f02423c1adc3f32bd88a18730b501f",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2|^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": {
-                        "Dawa": "Nicoeg\\Dawa\\DawaFacade"
-                    },
-                    "providers": [
-                        "Nicoeg\\Dawa\\DawaServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nicoeg\\Dawa\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolaj Egelund",
-                    "email": "nicomanden@gmail.com"
-                }
-            ],
-            "description": "A PHP package for Dawa http://dawa.aws.dk",
-            "keywords": [
-                "Dawa",
-                "aws.dk",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/nicoeg/Dawa/issues",
-                "source": "https://github.com/nicoeg/Dawa/tree/v1.2.0"
-            },
-            "time": "2021-04-20T14:01:11+00:00"
         },
         {
             "name": "nikic/php-parser",

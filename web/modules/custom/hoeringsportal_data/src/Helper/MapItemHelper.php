@@ -4,7 +4,6 @@ namespace Drupal\hoeringsportal_data\Helper;
 
 use Drupal\hoeringsportal_data\Plugin\Field\FieldType\LocalplanItem;
 use Drupal\hoeringsportal_data\Plugin\Field\FieldType\MapItem;
-use Drupal\hoeringsportal_data\Service\DAWA;
 use Drupal\hoeringsportal_data\Service\Plandata;
 use Drupal\node\NodeInterface;
 
@@ -20,18 +19,10 @@ class MapItemHelper {
   private $plandata;
 
   /**
-   * The DAWA service.
-   *
-   * @var \Drupal\hoeringsportal_data\Service\DAWA
-   */
-  private $dawa;
-
-  /**
    * Constructor.
    */
-  public function __construct(Plandata $plandata, DAWA $dawa) {
+  public function __construct(Plandata $plandata) {
     $this->plandata = $plandata;
-    $this->dawa = $dawa;
   }
 
   /**
