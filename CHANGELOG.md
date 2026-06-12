@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-662](https://github.com/itk-dev/deltag.aarhus.dk/pull/662)
+  7590: Fixed typo in date format ID reference
 * [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
   Updated docker templates and updated yaml linting
   
