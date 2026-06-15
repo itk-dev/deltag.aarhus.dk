@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.0] - 2026-06-15
+
 * [PR-663](https://github.com/itk-dev/deltag.aarhus.dk/pull/663)
   7577: Updated handling of start and end times on timeline
 
@@ -768,7 +770,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...HEAD
+[4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...4.17.0
 [4.16.8]: https://github.com/itk-dev/hoeringsportal/compare/4.16.4...4.16.8
 [4.16.4]: https://github.com/itk-dev/hoeringsportal/compare/4.16.3...4.16.4
 [4.16.3]: https://github.com/itk-dev/hoeringsportal/compare/4.16.2...4.16.3
