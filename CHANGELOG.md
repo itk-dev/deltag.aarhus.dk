@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.0] - 2026-06-15
+
 * [PR-669](https://github.com/itk-dev/deltag.aarhus.dk/pull/669)
   * Remove deprecated chx/drupal-issue-fork dependency
   * Remove translation of category on field type definitions
@@ -807,7 +809,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...HEAD
+[4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...4.17.0
 [4.16.10]: https://github.com/itk-dev/hoeringsportal/compare/4.16.9...4.16.10
 [4.16.9]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...4.16.9
 [4.16.8]: https://github.com/itk-dev/hoeringsportal/compare/4.16.4...4.16.8
