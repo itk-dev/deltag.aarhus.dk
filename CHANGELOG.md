@@ -6,11 +6,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-663](https://github.com/itk-dev/deltag.aarhus.dk/pull/663)
+  7577: Updated handling of start and end times on timeline
+
 * [PR-662](https://github.com/itk-dev/deltag.aarhus.dk/pull/662)
   7590: Fixed typo in date format ID reference
+
 * [PR-659](https://github.com/itk-dev/deltag.aarhus.dk/pull/659)
   Updated docker templates and updated yaml linting
-  
+
 * [PR-658](https://github.com/itk-dev/deltag.aarhus.dk/pull/658)
   * Replaced DAWA address autocomplete with Adressevaelger in hoeringsportal_forms and hoeringsportal_deskpro
   * Added Adressevaelger token configuration in admin settings
