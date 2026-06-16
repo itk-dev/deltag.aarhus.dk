@@ -393,7 +393,7 @@ class DeskproService {
     $attachments = [];
 
     foreach ($blobs as $blob) {
-      $attachments[] = [
+      $attachments[$blob['blob_id']] = [
         'blob_auth' => $blob['blob_auth'],
         'is_inline' => $inline,
       ];
