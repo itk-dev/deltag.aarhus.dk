@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.17.0] - 2026-06-15
 
+* [PR-666](https://github.com/itk-dev/deltag.aarhus.dk/pull/666)
+  7740: Used blob ID as attachment index in Deskpro API call
+
 * [PR-663](https://github.com/itk-dev/deltag.aarhus.dk/pull/663)
   7577: Updated handling of start and end times on timeline
 
