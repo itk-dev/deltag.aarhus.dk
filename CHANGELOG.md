@@ -8,6 +8,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.17.0] - 2026-06-15
 
+* [PR-667](https://github.com/itk-dev/deltag.aarhus.dk/pull/667)
+  7805: Added display of owner name om proposal
+
 * [PR-666](https://github.com/itk-dev/deltag.aarhus.dk/pull/666)
   7740: Used blob ID as attachment index in Deskpro API call
 
