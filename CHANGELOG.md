@@ -31,6 +31,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Updated Septima to use latest cdn and adress tool instead of dawa
   * Removed final traces of dawa from project
 
+* [PR-667](https://github.com/itk-dev/deltag.aarhus.dk/pull/667)
+  7805: Added display of owner name om proposal
+
 * [PR-666](https://github.com/itk-dev/deltag.aarhus.dk/pull/666)
   7740: Used blob ID as attachment index in Deskpro API call
 
