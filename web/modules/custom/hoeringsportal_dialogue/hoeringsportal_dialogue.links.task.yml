@@ -15,3 +15,9 @@ hoeringsportal_dialogue.admin_replies:
   weight: 1
   cache_tags:
     - comment_list
+
+hoeringsportal_dialogue.export_xlsx:
+  title: "Eksportér til Excel"
+  route_name: hoeringsportal_dialogue.export_xlsx
+  base_route: entity.node.canonical
+  weight: 50
