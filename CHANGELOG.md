@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-668](https://github.com/itk-dev/deltag.aarhus.dk/pull/668)
+  7833: Added Excel export of a dialogue with proposals and comments
+
 ## [4.16.8] - 2026-05-21
 
 * [PR-657](https://github.com/itk-dev/deltag.aarhus.dk/pull/657)
