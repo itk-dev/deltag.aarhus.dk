@@ -203,7 +203,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content overview'
+          perm: 'administer citizen proposal'
       cache:
         type: tag
         options: {  }
