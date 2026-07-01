@@ -2,10 +2,13 @@
 
 namespace Drupal\hoeringsportal_dialogue\Controller;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Extension\ThemeExtensionList;
 
 /**
@@ -145,6 +148,38 @@ class DialogueController extends ControllerBase {
       ],
       'features' => $proposalLocations,
     ];
+  }
+
+  /**
+   * Redirect to the XLSX export of a dialogue's proposals and comments.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   A dialogue node.
+   *
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *   Redirect to the views data export endpoint for this dialogue.
+   */
+  public function exportXlsx(NodeInterface $node): RedirectResponse {
+    $url = Url::fromUri('internal:/admin/content/dialogue/full-export.xlsx/' . $node->id());
+
+    return new RedirectResponse($url->toString());
+  }
+
+  /**
+   * Access check for the dialogue export tab.
+   *
+   * The tab is only shown on dialogue nodes for users who may export content.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The node from the route.
+   *
+   * @return \Drupal\Core\Access\AccessResultInterface
+   *   The access result.
+   */
+  public function exportAccess(NodeInterface $node): AccessResultInterface {
+    return AccessResult::allowedIfHasPermission($this->currentUser(), 'administer citizen proposal')
+      ->andIf(AccessResult::allowedIf('dialogue' === $node->bundle()))
+      ->addCacheableDependency($node);
   }
 
 }
