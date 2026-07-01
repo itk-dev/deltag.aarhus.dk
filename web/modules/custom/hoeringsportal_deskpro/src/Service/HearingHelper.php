@@ -124,6 +124,15 @@ class HearingHelper {
   }
 
   /**
+   * Decide if replies have been deleted on a hearing.
+   */
+  public function haveHearingRepliesBeenDeleted(NodeInterface $node): bool {
+    $deleteDate = $this->getHearingRepliesDeletedOn($node);
+
+    return NULL !== $deleteDate && $deleteDate < new DrupalDateTime();
+  }
+
+  /**
    * Check if node is a hearing.
    */
   public function isHearing($node) {
@@ -339,6 +348,9 @@ class HearingHelper {
     if (!$this->isHearing($hearing)) {
       throw new \Exception('Invalid hearing: ' . $hearing->id());
     }
+    if ($this->haveHearingRepliesBeenDeleted($hearing)) {
+      throw new \Exception('Hearing replies have been deleted on hearing ' . $hearing->id());
+    }
 
     $deskproHearingId = $this->getHearingId($hearing);
 
@@ -445,8 +457,11 @@ class HearingHelper {
     try {
       $lockName = __METHOD__;
       if ($this->lock->acquire($lockName)) {
-        /** @var \Drupal\node\Entity\NodeInterface $hearing */
         [$hearing, $ticketId] = $this->validateTicketPayload($payload);
+
+        if ($this->haveHearingRepliesBeenDeleted($hearing)) {
+          throw new \Exception('Hearing replies have been deleted on hearing ' . $hearing->id());
+        }
 
         $ticket = $this->deskpro->getTicket($ticketId, [
           'expand' => ['fields', 'person', 'messages', 'attachments'],
@@ -533,8 +548,11 @@ class HearingHelper {
    * @param mixed $payload
    *   The payload.
    *
-   * @return array
-   *   The hearing node and ticket id ([NodeInterface, string]).
+   * @return array{
+   *   0: NodeInterface,
+   *   1: string
+   *   }
+   *   The hearing node and ticket id.
    *
    * @throws \RuntimeException
    */
