@@ -6,7 +6,6 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-<<<<<<< HEAD
 * [PR-663](https://github.com/itk-dev/deltag.aarhus.dk/pull/663)
   7577: Updated handling of start and end times on timeline
 
@@ -22,13 +21,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Removed nicoeg/dawa dependency from hoeringsportal_deskpro
   * Updated itk_pretix to use branch without DAWA dependency
 
-=======
 * [PR-656](https://github.com/itk-dev/deltag.aarhus.dk/pull/656)
   * Add release date and expire date to decisions
   * Update decision view
   * Update decision display
   * Remove audit from github actions
->>>>>>> feature/decision-deadline
+
 * [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
   Updated OIDC development setup
 
