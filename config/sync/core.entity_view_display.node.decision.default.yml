@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_reply_deadline
     - field.field.node.decision.field_reply_deadline_exceeded
+    - field.field.node.decision.field_reply_deadline_visibility
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
     - field.field.node.decision.field_type
@@ -104,6 +105,16 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 12
+    region: content
+  field_reply_deadline_visibility:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 13
     region: content
   field_teaser:
     type: basic_string

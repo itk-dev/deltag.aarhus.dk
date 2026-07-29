@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_reply_deadline
     - field.field.node.decision.field_reply_deadline_exceeded
+    - field.field.node.decision.field_reply_deadline_visibility
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
     - field.field.node.decision.field_type
@@ -116,6 +117,7 @@ hidden:
   field_project_reference: true
   field_reply_deadline: true
   field_reply_deadline_exceeded: true
+  field_reply_deadline_visibility: true
   langcode: true
   links: true
   published_at: true
