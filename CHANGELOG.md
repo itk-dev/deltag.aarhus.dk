@@ -8,7 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-669](https://github.com/itk-dev/deltag.aarhus.dk/pull/669)
   * Remove deprecated chx/drupal-issue-fork dependency
-  * Remove translation of category on field type definitions 
+  * Remove translation of category on field type definitions
 
 * [PR-663](https://github.com/itk-dev/deltag.aarhus.dk/pull/663)
   7577: Updated handling of start and end times on timeline
