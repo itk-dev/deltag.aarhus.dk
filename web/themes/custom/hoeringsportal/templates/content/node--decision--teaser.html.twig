@@ -1,9 +1,23 @@
-{# Template for Project teaser extending base-card #}
+{# Template for Decision teaser extending base-card #}
 
 {% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
+
+{% block card_date_custom %}
+  {% if node.field_reply_deadline_exceeded.value %}
+    <div class="position-absolute bottom-0 start-0 py-2 px-4 bg-white flex-column d-flex align-items-center">
+      <div><strong>{{ 'Decision date passed'|t }}</strong></div>
+    </div>
+  {% endif %}
+{% endblock %}
 
 {% block card_content %}
   {{ node.field_teaser.string|truncate(95, true, true) }}
   <span>{{ content.field_project_category }}</span>
+  {% if not node.field_reply_deadline_exceeded.value and node.field_reply_deadline.value %}
+    <div class="d-flex gap-3 justify-items-center">
+      <i class="fa-solid fa-fw fa-lg fa-calendar-day text-decision"></i>
+      <p class="small">{{ node.field_reply_deadline.value|date('U')|format_date('hoeringsportal_date_long')|capitalize }}</p>
+    </div>
+  {% endif %}
   <span class="tags-one-line"><i class="{{ node_type_class }} fa-solid fa-tags"></i><span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span></span>
 {% endblock %}

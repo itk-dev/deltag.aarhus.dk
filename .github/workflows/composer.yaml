@@ -65,6 +65,7 @@ jobs:
       - run: |
           docker compose run --rm phpfpm composer install
           docker compose run --rm phpfpm composer normalize --dry-run
+<<<<<<< HEAD
 
   composer-audit:
     runs-on: ubuntu-latest
@@ -77,3 +78,5 @@ jobs:
 
       - run: |
           docker compose run --rm phpfpm composer audit
+=======
+>>>>>>> feature/decision-deadline
