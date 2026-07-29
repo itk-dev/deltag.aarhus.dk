@@ -112,7 +112,7 @@ function applyMap () {
             },
             'driver': [
               {
-                'type': 'dawa',
+                'type': 'address',
                 'options': {
                   'kommunekode': '0751' // Aarhus.
                 }
