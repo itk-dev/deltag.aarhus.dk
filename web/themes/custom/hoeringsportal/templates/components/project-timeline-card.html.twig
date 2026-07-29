@@ -20,17 +20,19 @@
 #}
 
 {% set status_classes = {
-  completed: 'project-timeline-card--completed',
-  current: 'project-timeline-card--current',
-  upcoming: 'project-timeline-card--upcoming',
-  note: 'project-timeline-card--note',
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_COMPLETED')): 'project-timeline-card--completed',
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_CURRENT')): 'project-timeline-card--current',
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_UPCOMING')): 'project-timeline-card--upcoming',
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_NOTE')): 'project-timeline-card--note',
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_IN_PROGRESS')): 'project-timeline-card--in-progress',
 } %}
 
 {% set status_labels = {
-  completed: 'now'|date('Y-m-d') == item.date ? 'Today'|t : '✓ Finished'|t,
-  current: 'Today'|t,
-  upcoming: 'Upcoming'|t,
-  note: 'Note'|t,
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_COMPLETED')): 'now'|date('Y-m-d') == item.date ? 'Today'|t : '✓ Finished'|t,
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_CURRENT')): 'Today'|t,
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_UPCOMING')): 'Upcoming'|t,
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_NOTE')): 'Note'|t,
+  (constant('Drupal\\hoeringsportal_project\\Hook\\ProjectHooks::STATUS_IN_PROGRESS')): 'In progress'|t,
 } %}
 
 {% set accent_class = item.accentColor ? 'project-timeline-card--accent-' ~ item.accentColor : '' %}

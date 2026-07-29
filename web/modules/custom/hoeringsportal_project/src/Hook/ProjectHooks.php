@@ -24,6 +24,15 @@ use Drupal\paragraphs\ParagraphInterface;
 class ProjectHooks {
   use StringTranslationTrait;
 
+  public const string STATUS_COMPLETED = 'completed';
+  // Used for items whose start time and end time are on the same day and said
+  // day is today.
+  public const string STATUS_CURRENT = 'current';
+  // Used for items where "now" is between the item's start and end times.
+  public const string STATUS_IN_PROGRESS = 'in_progress';
+  public const string STATUS_NOTE = 'note';
+  public const string STATUS_UPCOMING = 'upcoming';
+
   /**
    * The logger channel.
    *
@@ -77,10 +86,11 @@ class ProjectHooks {
       usort($variables['timeline_items'], static fn(array $a, array $b): int => $a['date'] <=> $b['date']);
 
       $variables['legend_items'] = [
-        ['status' => 'completed', 'label' => $this->t('Finished')],
-        ['status' => 'current', 'label' => $this->t('In progress')],
-        ['status' => 'upcoming', 'label' => $this->t('Upcoming')],
-        ['status' => 'note', 'label' => $this->t('Note')],
+        ['status' => self::STATUS_COMPLETED, 'label' => $this->t('Finished')],
+        ['status' => self::STATUS_CURRENT, 'label' => $this->t('In progress')],
+        ['status' => self::STATUS_IN_PROGRESS, 'label' => $this->t('In progress')],
+        ['status' => self::STATUS_NOTE, 'label' => $this->t('Note')],
+        ['status' => self::STATUS_UPCOMING, 'label' => $this->t('Upcoming')],
       ];
     }
   }
@@ -228,20 +238,20 @@ class ProjectHooks {
    */
   private function addNodeAsTimelineItem(NodeInterface $node, DrupalDateTime $now): array {
     try {
-      $date = $this->determineDate($node);
-      if (!$date) {
+      [$startTime, $endTime] = $this->determineTimes($node);
+      if (!$startTime) {
         return [];
       }
       $image = $this->determineImage($node)?->getFileUri();
 
       return [
         'id' => $node->id(),
-        'date' => $date->format('Y-m-d'),
-        'month' => $date->format('F Y'),
+        'date' => $startTime->format('Y-m-d'),
+        'month' => $startTime->format('F Y'),
         'title' => $node->getTitle(),
         'subtitle' => $node->type->entity->label(),
         'description' => $node->field_teaser->value,
-        'status' => $this->determineStatus($node, $date, $now),
+        'status' => $this->determineStatus($node, $startTime, $endTime, $now),
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $this->urlGenerator->generateFromRoute('entity.node.canonical', ['node' => $node->id()]),
         'linkText' => $this->t('View <span>@type</span>', ['@type' => $node->type->entity->label()]),
@@ -280,7 +290,7 @@ class ProjectHooks {
         'title' => $paragraph->field_title->value,
         'subtitle' => $paragraph->field_subtitle->value,
         'description' => $paragraph->field_note->value,
-        'status' => $this->determineStatus($paragraph, $date, $now),
+        'status' => $this->determineStatus($paragraph, $date, $date, $now),
         'image' => $image ? ImageStyle::load('responsive_medium_default')->buildUrl($image) : NULL,
         'link' => $paragraph?->field_external_link?->uri ?? '',
         'linkText' => $this->t('View more'),
@@ -310,7 +320,7 @@ class ProjectHooks {
       'title' => $this->t('Project status'),
       'subtitle' => NULL,
       'description' => NULL,
-      'status' => 'current',
+      'status' => self::STATUS_CURRENT,
       'image' => NULL,
       'link' => NULL,
       'linkText' => NULL,
@@ -319,30 +329,56 @@ class ProjectHooks {
   }
 
   /**
-   * Determine date for timeline item.
+   * Determine start and end times for a timeline item.
    *
    * @param \Drupal\node\NodeInterface $node
    *   The node entity to extract the date from.
    *
-   * @return \Drupal\Core\Datetime\DrupalDateTime|null
-   *   The determined date or NULL if no date could be determined.
+   * @return array{
+   *   0: \Drupal\Core\Datetime\DrupalDateTime|null,
+   *   1: \Drupal\Core\Datetime\DrupalDateTime|null,
+   *   }
+   *   The determined start and end times if any.
    */
-  private function determineDate(NodeInterface $node): ?DrupalDateTime {
+  private function determineTimes(NodeInterface $node): array {
     try {
-      return match (TRUE) {
-        $node->hasField('field_decision_date') => new DrupalDateTime($node->field_decision_date->value),
-        $node->hasField('field_start_date') => new DrupalDateTime($node->field_start_date->value),
-        $node->hasField('field_last_meeting_time') => new DrupalDateTime($node->field_last_meeting_time->value),
-        'dialogue' === $node->getType() => new DrupalDateTime(strtotime($node->getCreatedTime())),
-        default => NULL,
-      };
+      switch ($node->getType()) {
+        case 'course':
+        case 'event':
+          return [
+            $node->get('field_first_meeting_time')->date,
+            $node->get('field_last_meeting_time')->date,
+          ];
+
+        case 'decision':
+          return [
+            $node->get('field_decision_date')->date,
+            $node->get('field_decision_date')->date,
+          ];
+
+        case 'dialogue':
+          return [
+            DrupalDateTime::createFromTimestamp($node->getCreatedTime()),
+            DrupalDateTime::createFromTimestamp($node->getCreatedTime()),
+          ];
+
+        case 'hearing':
+          return [
+            $node->get('field_start_date')->date,
+            $node->get('field_reply_deadline')->date,
+          ];
+
+        default:
+          throw new \RuntimeException(sprintf('Unhandled node type: %s',
+            $node->getType()));
+      }
     }
     catch (\Exception $e) {
       $this->logger->error('Error determining date for node @nid: @message', [
         '@nid' => $node->id(),
         '@message' => $e->getMessage(),
       ]);
-      return NULL;
+      return [NULL, NULL];
     }
   }
 
@@ -378,20 +414,27 @@ class ProjectHooks {
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity to determine status for.
-   * @param \Drupal\Core\Datetime\DrupalDateTime $date
-   *   The item date.
+   * @param \Drupal\Core\Datetime\DrupalDateTime $startTime
+   *   The start time.
+   * @param \Drupal\Core\Datetime\DrupalDateTime $endTime
+   *   The end time.
    * @param \Drupal\Core\Datetime\DrupalDateTime $now
    *   The current date.
    *
    * @return string
-   *   The status string (upcoming, completed, or note).
+   *   The status (one ot the STATUS_… constants).
    */
-  private function determineStatus(EntityInterface $entity, DrupalDateTime $date, DrupalDateTime $now): string {
+  private function determineStatus(EntityInterface $entity, DrupalDateTime $startTime, DrupalDateTime $endTime, DrupalDateTime $now): string {
+    $startDay = $startTime->format('Y-m-d');
+    $endDay = $endTime->format('Y-m-d');
+    $today = $now->format('Y-m-d');
+
     return match (TRUE) {
-      $date->format('Y-m-d') === $now->format('Y-m-d') => 'current',
-      $date > $now => 'upcoming',
-      $entity->getEntityTypeId() === 'node' => 'completed',
-      $entity->getEntityTypeId() === 'paragraph' => 'note',
+      $startDay === $endDay && $endDay === $today => self::STATUS_CURRENT,
+      $startTime <= $now && $now <= $endTime => self::STATUS_IN_PROGRESS,
+      $startTime > $now => self::STATUS_UPCOMING,
+      $entity->getEntityTypeId() === 'node' => self::STATUS_COMPLETED,
+      $entity->getEntityTypeId() === 'paragraph' => self::STATUS_NOTE,
       default => '',
     };
   }
