@@ -22,12 +22,14 @@ dependencies:
     - entity_browser
     - field_group
     - paragraphs
+    - publication_date
 third_party_settings:
   field_group:
     group_information:
       children:
         - field_decision
         - field_decision_date
+        - published_at
         - group_project_reference
         - field_department
         - field_area
@@ -52,7 +54,7 @@ third_party_settings:
       label: 'Projekt reference'
       region: hidden
       parent_name: group_information
-      weight: 4
+      weight: 15
       format_type: details
       format_settings:
         classes: ''
@@ -69,7 +71,7 @@ mode: default
 content:
   field_area:
     type: options_buttons
-    weight: 6
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -95,19 +97,19 @@ content:
     third_party_settings: {  }
   field_decision:
     type: options_buttons
-    weight: 2
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_decision_date:
     type: datetime_default
-    weight: 3
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   field_department:
     type: options_buttons
-    weight: 5
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -178,7 +180,13 @@ content:
     third_party_settings: {  }
   field_type:
     type: options_buttons
-    weight: 7
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -202,7 +210,6 @@ hidden:
   langcode: true
   path: true
   promote: true
-  published_at: true
   sticky: true
   uid: true
   url_redirects: true
