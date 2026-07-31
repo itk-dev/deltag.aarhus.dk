@@ -34,4 +34,6 @@ hidden:
   description: true
   langcode: true
   path: true
+  publish_on: true
   status: true
+  unpublish_on: true

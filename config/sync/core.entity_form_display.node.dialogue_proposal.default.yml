@@ -107,8 +107,10 @@ hidden:
   langcode: true
   path: true
   promote: true
+  publish_on: true
   published_at: true
   status: true
   sticky: true
   uid: true
+  unpublish_on: true
   url_redirects: true

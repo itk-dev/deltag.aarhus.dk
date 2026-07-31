@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_department
+    - node.type.course
+    - node.type.decision
     - node.type.dialogue
     - node.type.dialogue_proposal
     - node.type.hearing
@@ -414,8 +416,10 @@ display:
           plugin_id: bundle
           operator: in
           value:
+            decision: decision
             public_meeting: public_meeting
             dialogue: dialogue
+            course: course
             hearing: hearing
             page_map: page_map
             landing_page: landing_page
