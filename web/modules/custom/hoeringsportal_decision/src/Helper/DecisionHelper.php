@@ -16,7 +16,7 @@ class DecisionHelper {
 
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
-  ){
+  ) {
   }
 
   /**
@@ -44,7 +44,7 @@ class DecisionHelper {
    * @param \Drupal\node\NodeInterface $decision
    *   The decision node.
    *
-   * @return bool|null Whether the deadline is exceeded.
+   * @return bool|null
    *   Whether the deadline is exceeded.
    */
   public function deadlineExceeded(NodeInterface $decision): ?bool {
@@ -63,8 +63,6 @@ class DecisionHelper {
    *
    * @param \Drupal\node\NodeInterface $decision
    *   The decision node.
-   *
-   * @return void
    */
   public function setDeadlinePassed(NodeInterface $decision): void {
     try {
@@ -74,7 +72,6 @@ class DecisionHelper {
     catch (\Exception) {
 
     }
-
   }
 
   /**
@@ -84,6 +81,7 @@ class DecisionHelper {
    *   The decision node.
    *
    * @return bool
+   *   Whether deadline exceeded is set.
    */
   public function exceededIsSet(NodeInterface $decision): bool {
     return $decision->get('field_reply_deadline_exceeded')->value ?? FALSE;

@@ -31,23 +31,31 @@ class DecisionHooks {
     $form['publish_on']['widget'][0]['value']['#default_value'] = new DrupalDateTime();
   }
 
+  /**
+   * Implements hook_entity_presave().
+   *
+   * Set reply deadline and reply deadline exceeded in some situations.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity being saved.
+   */
   #[Hook('entity_presave')]
-  public function entityUpsert(EntityInterface $entity): void {
+  public function entityPresave(EntityInterface $entity): void {
     if ($entity instanceof Node && $entity->bundle() === 'decision') {
-      $now =  new DrupalDateTime();
+      $now = new DrupalDateTime();
       $publishDateObj = $entity->get('publish_on')->value ? DrupalDateTime::createFromTimestamp($entity->get('publish_on')->value) : $now;
 
       $deadline = $publishDateObj->modify(self::DEFAULT_DEADLINE);
 
       if ($entity->isNew()) {
         // On node insert.
-        if (empty($entity->get('field_reply_deadline')->getValue())){
+        if (empty($entity->get('field_reply_deadline')->getValue())) {
           $entity->set('field_reply_deadline', $deadline->format(self::DEFAULT_DB_SAVE_DATETIME_FORMAT));
         }
       }
       else {
         // On node update.
-        if (((int)$entity->get('publish_on')->value !== (int)$entity->getOriginal()->get('publish_on')->value) && empty($entity->get('field_reply_deadline')->getValue())) {
+        if (((int) $entity->get('publish_on')->value !== (int) $entity->getOriginal()->get('publish_on')->value) && empty($entity->get('field_reply_deadline')->getValue())) {
           $entity->set('field_reply_deadline', $deadline->format(self::DEFAULT_DB_SAVE_DATETIME_FORMAT));
         }
       }
@@ -57,4 +65,5 @@ class DecisionHooks {
       }
     }
   }
+
 }

@@ -7,7 +7,6 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\State\StateInterface;
-use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\hoeringsportal_data\Helper\HearingHelper;
 use Drupal\hoeringsportal_deskpro\Service\HearingHelper as DeskproHearingHelper;
 use Drush\Attributes as CLI;

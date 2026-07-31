@@ -57,7 +57,6 @@ final class DrushCommands extends BaseDrushCommands {
     $this->setLastRunAt(__METHOD__);
   }
 
-
   /**
    * Set time of last run.
    */
