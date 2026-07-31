@@ -281,7 +281,7 @@ msgid "Latest proposal"
 msgstr "Seneste forslag"
 
 msgid "Like this"
-msgstr "Synes om"
+msgstr "Enig"
 
 msgid "Linkedin"
 msgstr "Linkedin"
@@ -644,7 +644,7 @@ msgid "Your search yielded no result"
 msgstr "Din søgning gav ingen resultater."
 
 msgid "like this"
-msgstr "synes om"
+msgstr "enig"
 
 msgid "replies"
 msgstr "svar"
