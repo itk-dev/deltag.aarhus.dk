@@ -9,7 +9,7 @@ id: node.decision.field_reply_deadline_exceeded
 field_name: field_reply_deadline_exceeded
 entity_type: node
 bundle: decision
-label: 'Svarfrist overskredet'
+label: Afsluttet
 description: ''
 required: false
 translatable: false

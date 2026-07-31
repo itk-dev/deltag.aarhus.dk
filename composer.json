@@ -57,6 +57,7 @@
         "drupal/publishcontent": "^1.7",
         "drupal/quick_node_clone": "^1.12",
         "drupal/redirect": "^1.6",
+        "drupal/scheduler": "^2.3",
         "drupal/search_api": "^1.37",
         "drupal/search_autocomplete": "^4.0",
         "drupal/site_status_message": "^2.1",
