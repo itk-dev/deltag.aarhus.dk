@@ -14,6 +14,6 @@
     "require": {
         "guzzlehttp/guzzle": "^7.4",
         "drupal/csv_serialization": "^4.0",
-        "drupal/xls_serialization": "^1.2"
+        "drupal/xls_serialization": "^2.1"
     }
 }
