@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eed7a4369248e84f5110920299743e3e",
+    "content-hash": "8efaed36e7c23155d8d5dc0de2c6e45f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -67,7 +67,7 @@
             "version": "4.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "cfd8e3a885dca7b406791c1eed472af9dd717e8e"
             },
             "dist": {
@@ -103,7 +103,7 @@
             "version": "1.8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bgrins/spectrum.git",
+                "url": "git@github.com:bgrins/spectrum.git",
                 "reference": "9aa028de7e8039c41ac792485a928edb97d4ac40"
             },
             "dist": {
@@ -21898,8 +21898,6 @@
     "stability-flags": {
         "drupal/email_registration": 5,
         "drupal/entityqueue": 15,
-        "drupal/hoeringsportal_data": 20,
-        "drupal/hoeringsportal_dialogue": 20,
         "drupal/openid_connect": 15,
         "drupal/toolbar_visibility": 20,
         "drupal/viewsreference": 10,
