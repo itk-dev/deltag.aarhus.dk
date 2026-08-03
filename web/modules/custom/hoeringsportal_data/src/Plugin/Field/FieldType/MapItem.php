@@ -12,7 +12,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "hoeringsportal_data_map",
  *   label = @Translation("Map display"),
- *   category = @Translation("Hoeringsportal"),
+ *   category = "Hoeringsportal",
  *   default_widget = "hoeringsportal_data_map_default",
  *   default_formatter = "hoeringsportal_data_map_default",
  * )

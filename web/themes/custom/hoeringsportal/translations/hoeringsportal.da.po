@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-06-15 12:32+0200\n"
-"PO-Revision-Date: 2026-06-15 12:32+0200\n"
+"POT-Creation-Date: 2026-07-31 09:01+0200\n"
+"PO-Revision-Date: 2026-07-31 09:01+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -58,6 +58,12 @@ msgstr "Bidrag #@number af @name"
 
 msgid "Answer @number by @name"
 msgstr "Bidrag @number af @name"
+
+msgid "Appeal deadline"
+msgstr "Klagefrist"
+
+msgid "Appeal deadline passed"
+msgstr "Klagefrist overskredet"
 
 msgid "Article"
 msgstr "Artikel"
@@ -137,6 +143,9 @@ msgstr "Nuværende forekomst"
 msgid "Date"
 msgstr "Dato"
 
+msgid "Deadline exceeded"
+msgstr "Klagefrist overskredet"
+
 msgid "Debate"
 msgstr "Debat"
 
@@ -145,6 +154,9 @@ msgstr "Afgørelse"
 
 msgid "Decision date"
 msgstr "Afgørelsesdato"
+
+msgid "Decision date passed"
+msgstr "Klagefrist overskredet"
 
 msgid "Description"
 msgstr "Beskrivelse"
@@ -717,3 +729,4 @@ msgstr "Tilmeldingsfrist overskredet"
 msgctxt "signup"
 msgid "Deadline:"
 msgstr "Tilmeldingsfrist:"
+

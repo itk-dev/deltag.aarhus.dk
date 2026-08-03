@@ -41,4 +41,6 @@ hidden:
   field_itk_media_width: true
   langcode: true
   path: true
+  publish_on: true
   uid: true
+  unpublish_on: true

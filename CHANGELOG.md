@@ -6,6 +6,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-669](https://github.com/itk-dev/deltag.aarhus.dk/pull/669)
+  * Remove deprecated chx/drupal-issue-fork dependency
+  * Remove translation of category on field type definitions
+
 * [PR-660](https://github.com/itk-dev/deltag.aarhus.dk/pull/660)
   * Updated Septima to use latest cdn and adress tool instead of dawa
   * Removed final traces of dawa from project
@@ -24,6 +28,12 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Added Adressevaelger token configuration in admin settings
   * Removed nicoeg/dawa dependency from hoeringsportal_deskpro
   * Updated itk_pretix to use branch without DAWA dependency
+
+* [PR-656](https://github.com/itk-dev/deltag.aarhus.dk/pull/656)
+  * Add release date and expire date to decisions
+  * Update decision view
+  * Update decision display
+  * Remove audit from github actions
 
 * [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
   Updated OIDC development setup
