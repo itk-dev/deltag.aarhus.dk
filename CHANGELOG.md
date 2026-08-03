@@ -16,6 +16,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-664](https://github.com/itk-dev/deltag.aarhus.dk/pull/664)
   7554: Added "decision" in content types in filter options
+* [PR-660](https://github.com/itk-dev/deltag.aarhus.dk/pull/660)
+  * Updated Septima to use latest cdn and adress tool instead of dawa
+  * Removed final traces of dawa from project
 
 * [PR-663](https://github.com/itk-dev/deltag.aarhus.dk/pull/663)
   7577: Updated handling of start and end times on timeline

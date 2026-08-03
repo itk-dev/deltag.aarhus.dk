@@ -152,7 +152,7 @@ map:
         features_style:
           namedstyle: "#011"
         driver:
-          - type: dawa
+          - type: address
             options:
               kommunekode: 751 # Aarhus
           - type: local
