@@ -22,6 +22,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-672](https://github.com/itk-dev/deltag.aarhus.dk/pull/672)
   * Updated proposal view to use random sorting
 
+* [PR-673](https://github.com/itk-dev/deltag.aarhus.dk/pull/673)
+  * Updated display of like button.
+
 * [PR-660](https://github.com/itk-dev/deltag.aarhus.dk/pull/660)
   * Updated Septima to use latest cdn and adress tool instead of dawa
   * Removed final traces of dawa from project
