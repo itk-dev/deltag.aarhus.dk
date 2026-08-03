@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.0] - 2026-06-15
+
 * [PR-669](https://github.com/itk-dev/deltag.aarhus.dk/pull/669)
   * Remove deprecated chx/drupal-issue-fork dependency
   * Remove translation of category on field type definitions
@@ -24,6 +26,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-673](https://github.com/itk-dev/deltag.aarhus.dk/pull/673)
   * Updated display of like button.
+
+* [PR-667](https://github.com/itk-dev/deltag.aarhus.dk/pull/667)
+  7805: Added display of owner name om proposal
+
+* [PR-666](https://github.com/itk-dev/deltag.aarhus.dk/pull/666)
+  7740: Used blob ID as attachment index in Deskpro API call
+
+* [PR-664](https://github.com/itk-dev/deltag.aarhus.dk/pull/664)
+  7554: Added "decision" in content types in filter options
 
 * [PR-660](https://github.com/itk-dev/deltag.aarhus.dk/pull/660)
   * Updated Septima to use latest cdn and adress tool instead of dawa
@@ -797,7 +808,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...HEAD
+[4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...4.17.0
 [4.16.8]: https://github.com/itk-dev/hoeringsportal/compare/4.16.4...4.16.8
 [4.16.4]: https://github.com/itk-dev/hoeringsportal/compare/4.16.3...4.16.4
 [4.16.3]: https://github.com/itk-dev/hoeringsportal/compare/4.16.2...4.16.3
