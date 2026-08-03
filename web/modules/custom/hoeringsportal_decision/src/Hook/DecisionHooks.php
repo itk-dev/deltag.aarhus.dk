@@ -6,6 +6,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
 
 /**
@@ -14,7 +15,6 @@ use Drupal\node\Entity\Node;
 class DecisionHooks {
 
   const string DEFAULT_DEADLINE = '+8 weeks';
-  const string DEFAULT_DB_SAVE_DATETIME_FORMAT = 'Y-m-d\TH:i:s';
 
   /**
    * Implements hook_FORMID_form_alter().
@@ -50,13 +50,13 @@ class DecisionHooks {
       if ($entity->isNew()) {
         // On node insert.
         if (empty($entity->get('field_reply_deadline')->getValue())) {
-          $entity->set('field_reply_deadline', $deadline->format(self::DEFAULT_DB_SAVE_DATETIME_FORMAT));
+          $entity->set('field_reply_deadline', $deadline->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
         }
       }
       else {
         // On node update.
         if (((int) $entity->get('publish_on')->value !== (int) $entity->getOriginal()->get('publish_on')->value) && empty($entity->get('field_reply_deadline')->getValue())) {
-          $entity->set('field_reply_deadline', $deadline->format(self::DEFAULT_DB_SAVE_DATETIME_FORMAT));
+          $entity->set('field_reply_deadline', $deadline->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
         }
       }
 

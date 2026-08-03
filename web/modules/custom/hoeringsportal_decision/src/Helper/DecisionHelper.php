@@ -39,15 +39,15 @@ class DecisionHelper {
   }
 
   /**
-   * Compute decision deadline exceeded.
+   * Compute decision deadline passed.
    *
    * @param \Drupal\node\NodeInterface $decision
    *   The decision node.
    *
    * @return bool|null
-   *   Whether the deadline is exceeded.
+   *   Whether the deadline is passed.
    */
-  public function deadlineExceeded(NodeInterface $decision): ?bool {
+  public function deadlinePassed(NodeInterface $decision): ?bool {
     if (!$this->isDecision($decision)) {
       return NULL;
     }
@@ -66,25 +66,12 @@ class DecisionHelper {
    */
   public function setDeadlinePassed(NodeInterface $decision): void {
     try {
-      $decision->set('field_reply_deadline_exceeded', TRUE);
+      $decision->set('field_reply_deadline_passed', TRUE);
       $decision->save();
     }
     catch (\Exception) {
 
     }
-  }
-
-  /**
-   * Check if deadline exceeded is set.
-   *
-   * @param \Drupal\node\NodeInterface $decision
-   *   The decision node.
-   *
-   * @return bool
-   *   Whether deadline exceeded is set.
-   */
-  public function exceededIsSet(NodeInterface $decision): bool {
-    return $decision->get('field_reply_deadline_exceeded')->value ?? FALSE;
   }
 
   /**

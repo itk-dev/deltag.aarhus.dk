@@ -48,7 +48,7 @@ final class DrushCommands extends BaseDrushCommands {
     $decisions = $this->helper->loadDecisions();
 
     foreach ($decisions as $decision) {
-      if ($this->helper->deadlineExceeded($decision) && !$this->helper->exceededIsSet($decision)) {
+      if (empty($decision->get('field_reply_deadline_passed')->value) && $this->helper->deadlinePassed($decision)) {
         $this->helper->setDeadlinePassed($decision);
         $this->writeln(json_encode([$decision->id(), 'state']));
       }
