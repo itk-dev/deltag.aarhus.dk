@@ -14,6 +14,10 @@ class DecisionHelper {
 
   const string NODE_TYPE_DECISION = 'decision';
 
+  const string STATE_ACTIVE = 'active';
+
+  const string STATE_FINISHED = 'finished';
+
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
   ) {
@@ -39,39 +43,27 @@ class DecisionHelper {
   }
 
   /**
-   * Compute decision deadline passed.
+   * Compute decision state.
    *
    * @param \Drupal\node\NodeInterface $decision
    *   The decision node.
    *
-   * @return bool|null
-   *   Whether the deadline is passed.
+   * @return string|null
+   *   The computed decision state or NULL if the decision is not valid.
    */
-  public function deadlinePassed(NodeInterface $decision): ?bool {
+  public function computeState(NodeInterface $decision): ?string {
     if (!$this->isDecision($decision)) {
       return NULL;
     }
 
-    $now = new DrupalDateTime('now', 'UTC');
-    $deadline = $this->getDeadline($decision);
+    $now =  new DrupalDateTime('now', 'UTC');
+    $endTime = $this->getDeadline($decision);
 
-    return $deadline && $now > $deadline;
-  }
-
-  /**
-   * Set deadline passed to true.
-   *
-   * @param \Drupal\node\NodeInterface $decision
-   *   The decision node.
-   */
-  public function setDeadlinePassed(NodeInterface $decision): void {
-    try {
-      $decision->set('field_reply_deadline_passed', TRUE);
-      $decision->save();
+    if (empty($endTime) || $now >= $endTime) {
+      return self::STATE_FINISHED;
     }
-    catch (\Exception) {
 
-    }
+    return self::STATE_ACTIVE;
   }
 
   /**
@@ -102,6 +94,37 @@ class DecisionHelper {
     }
 
     return $decision->field_reply_deadline->date;
+  }
+
+  /**
+   * Get decision state.
+   *
+   * @param \Drupal\node\NodeInterface $decision
+   *   The decision node.
+   *
+   * @return string|null
+   *   The decision state or NULL if the decision is not valid.
+   */
+  public function getState(NodeInterface $decision) {
+    if (!$this->isDecision($decision)) {
+      return NULL;
+    }
+
+    return $decision->field_content_state->value;
+  }
+
+  /**
+   * Set decision state.
+   *
+   * @param \Drupal\node\NodeInterface $decision
+   *   The decision node.
+   * @param string $state
+   *   The state.
+   */
+  public function setState(NodeInterface $decision, string $state) {
+    $decision->field_content_state->value = $state;
+
+    return $decision;
   }
 
 }

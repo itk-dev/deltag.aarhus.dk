@@ -24,7 +24,7 @@
       2: (node.field_reply_deadline is not empty and node.field_reply_deadline_visibility.value) ? {
         type: 'text',
         label: 'Appeal deadline'|t,
-        value: node.field_reply_deadline_exceeded.value ? 'Deadline exceeded'|t : node.field_reply_deadline.date|date('U')|format_date('hoeringsportal_date_long'),
+        value: node.field_content_state.value == 'finished' ? 'Deadline exceeded'|t : node.field_reply_deadline.date|date('U')|format_date('hoeringsportal_date_long'),
       } : {},
     },
     category: 'Decision'|t,

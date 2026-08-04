@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.itk_image_browser
     - field.field.node.decision.field_area
     - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_content_state
     - field.field.node.decision.field_decision
     - field.field.node.decision.field_decision_date
     - field.field.node.decision.field_department
@@ -14,7 +15,6 @@ dependencies:
     - field.field.node.decision.field_project_reference
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_reply_deadline
-    - field.field.node.decision.field_reply_deadline_exceeded
     - field.field.node.decision.field_reply_deadline_visibility
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
@@ -225,7 +225,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_reply_deadline_exceeded: true
+  field_content_state: true
   langcode: true
   path: true
   promote: true

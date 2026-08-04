@@ -14,7 +14,7 @@ provider: null
 plugin: local_actions_block
 settings:
   id: local_actions_block
-  label: 'Primære adminsitratorhandlinger'
+  label: 'Primære administratorhandlinger'
   label_display: '0'
   provider: core
 visibility: {  }

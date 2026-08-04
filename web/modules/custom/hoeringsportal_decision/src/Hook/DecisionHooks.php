@@ -43,7 +43,7 @@ class DecisionHooks {
   public function entityPresave(EntityInterface $entity): void {
     if ($entity instanceof Node && $entity->bundle() === 'decision') {
       $now = new DrupalDateTime();
-      $publishDateObj = $entity->get('publish_on')->value ? DrupalDateTime::createFromTimestamp($entity->get('publish_on')->value) : $now;
+      $publishDateObj = DrupalDateTime::createFromTimestamp($entity->get('publish_on')->value ? $entity->get('publish_on')->value : $now->getTimestamp());
 
       $deadline = $publishDateObj->modify(self::DEFAULT_DEADLINE);
 
@@ -60,8 +60,10 @@ class DecisionHooks {
         }
       }
 
-      if ($entity->get('field_reply_deadline')->getValue() < $now) {
-        $entity->set('field_reply_deadline_exceeded', TRUE);
+      $a = $entity->get('field_reply_deadline')->date;
+
+      if ($entity->get('field_reply_deadline')->date < $now) {
+        $entity->set('field_content_state', 'finished');
       }
     }
   }

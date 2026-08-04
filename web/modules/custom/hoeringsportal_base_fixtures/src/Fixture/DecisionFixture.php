@@ -3,6 +3,7 @@
 namespace Drupal\hoeringsportal_base_fixtures\Fixture;
 
 use Drupal\content_fixtures\Fixture\AbstractFixture;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\hoeringsportal_citizen_proposal_fixtures\Fixture\CitizenProposalFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;

@@ -379,8 +379,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Unpublished
-            format_custom_true: Published
+            format_custom_false: 'Ikke udgivet'
+            format_custom_true: Udgivet
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -618,7 +618,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: 'Published status'
+            label: Publiceringsstatus
             description: ''
             identifier: status
             optional: true
@@ -629,11 +629,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: Udgivet
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: 'Ikke udgivet'
                 operator: '='
                 value: '0'
         bundle:
