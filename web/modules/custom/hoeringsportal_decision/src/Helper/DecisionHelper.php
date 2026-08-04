@@ -56,7 +56,7 @@ class DecisionHelper {
       return NULL;
     }
 
-    $now =  new DrupalDateTime('now', 'UTC');
+    $now = new DrupalDateTime('now', 'UTC');
     $endTime = $this->getDeadline($decision);
 
     if (empty($endTime) || $now >= $endTime) {
