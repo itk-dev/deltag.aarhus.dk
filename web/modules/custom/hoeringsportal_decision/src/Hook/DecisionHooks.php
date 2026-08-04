@@ -60,8 +60,6 @@ class DecisionHooks {
         }
       }
 
-      $a = $entity->get('field_reply_deadline')->date;
-
       if ($entity->get('field_reply_deadline')->date < $now) {
         $entity->set('field_content_state', 'finished');
       }
