@@ -2,10 +2,11 @@
 
 {% extends 'themes/custom/hoeringsportal/templates/components/base-card.html.twig' %}
 
-{% set appealDeadline = node.field_reply_deadline_exceeded.value ? 'Deadline exceeded'|t : node.field_reply_deadline.date|date('U')|format_date('hoeringsportal_date_long') %}
+{% set appealDeadline = node.field_content_state.value == 'finished' ? 'Deadline exceeded'|t : node.field_reply_deadline.date|date('U')|format_date('hoeringsportal_date_long') %}
 
 {% block card_date_custom %}
-  {% if node.field_reply_deadline is not empty and node.field_reply_deadline_visibility.value and node.field_reply_deadline_exceeded.value == 'finished' %}
+
+  {% if node.field_reply_deadline is not empty and node.field_reply_deadline_visibility.value and node.field_content_state.value == 'finished' %}
     <div class="position-absolute bottom-0 start-0 py-2 px-4 bg-white flex-column d-flex align-items-center">
       <div><strong>{{ 'Appeal deadline passed'|t }}</strong></div>
     </div>
@@ -16,7 +17,7 @@
   {{ node.field_teaser.string|truncate(95, true, true) }}
   <span>{{ content.field_project_category }}</span>
 
-  {% if node.field_reply_deadline is not empty and node.field_reply_deadline_visibility.value and not node.field_reply_deadline_exceeded.value == 'finished' %}
+  {% if node.field_reply_deadline is not empty and node.field_reply_deadline_visibility.value and not node.field_content_state.value == 'finished' %}
     <div class="d-flex gap-3 justify-items-center">
       <i class="fa-solid fa-fw fa-lg fa-calendar-day text-decision"></i>
       <p class="small">{{ 'Appeal deadline'|t }}: {{ node.field_reply_deadline.date|date('U')|format_date('hoeringsportal_date_long') }}</p>
@@ -24,3 +25,4 @@
   {% endif %}
   <span class="tags-one-line"><i class="{{ node_type_class }} fa-solid fa-tags"></i><span class="is-comma-separated">{{ content.field_area }}{{ content.field_type }}</span></span>
 {% endblock %}
+  
