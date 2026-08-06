@@ -10,6 +10,7 @@ dependencies:
   module:
     - better_exposed_filters
     - node
+    - options
     - taxonomy
     - user
 id: all_decisions
@@ -354,6 +355,56 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+        field_content_state_value:
+          id: field_content_state_value
+          table: node__field_content_state
+          field: field_content_state_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_content_state_value_op
+            label: 'Content state (field_content_state)'
+            description: null
+            use_operator: false
+            operator: field_content_state_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_content_state_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: ''
+            description: ''
+            identifier: field_content_state_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Aktiv
+                operator: or
+                value:
+                  active: active
+              2:
+                title: Afsluttet
+                operator: or
+                value:
+                  finished: finished
+          reduce_duplicates: false
       filter_groups:
         operator: AND
         groups:

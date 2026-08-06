@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\hoeringsportal_decision\Helper\DecisionHelper;
 use Drupal\node\Entity\Node;
 
 /**
@@ -61,7 +62,7 @@ class DecisionHooks {
       }
 
       if ($entity->get('field_reply_deadline')->date < $now) {
-        $entity->set('field_content_state', 'finished');
+          $entity->set('field_content_state', DecisionHelper::STATE_FINISHED);
       }
     }
   }
