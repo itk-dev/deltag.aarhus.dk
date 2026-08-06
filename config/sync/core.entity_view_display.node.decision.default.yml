@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.decision.field_area
     - field.field.node.decision.field_content_sections
+    - field.field.node.decision.field_content_state
     - field.field.node.decision.field_decision
     - field.field.node.decision.field_decision_date
     - field.field.node.decision.field_department
@@ -13,7 +14,6 @@ dependencies:
     - field.field.node.decision.field_project_reference
     - field.field.node.decision.field_related_content
     - field.field.node.decision.field_reply_deadline
-    - field.field.node.decision.field_reply_deadline_exceeded
     - field.field.node.decision.field_reply_deadline_visibility
     - field.field.node.decision.field_teaser
     - field.field.node.decision.field_top_images
@@ -96,16 +96,6 @@ content:
     third_party_settings: {  }
     weight: 10
     region: right
-  field_reply_deadline_exceeded:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 12
-    region: content
   field_reply_deadline_visibility:
     type: boolean
     label: above
@@ -151,6 +141,7 @@ content:
     weight: 6
     region: content
 hidden:
+  field_content_state: true
   field_hide_in_timeline: true
   field_project_reference: true
   langcode: true

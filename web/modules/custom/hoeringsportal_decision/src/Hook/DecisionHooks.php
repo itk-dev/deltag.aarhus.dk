@@ -6,6 +6,8 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\hoeringsportal_decision\Helper\DecisionHelper;
 use Drupal\node\Entity\Node;
 
 /**
@@ -14,7 +16,6 @@ use Drupal\node\Entity\Node;
 class DecisionHooks {
 
   const string DEFAULT_DEADLINE = '+8 weeks';
-  const string DEFAULT_DB_SAVE_DATETIME_FORMAT = 'Y-m-d\TH:i:s';
 
   /**
    * Implements hook_FORMID_form_alter().
@@ -43,25 +44,25 @@ class DecisionHooks {
   public function entityPresave(EntityInterface $entity): void {
     if ($entity instanceof Node && $entity->bundle() === 'decision') {
       $now = new DrupalDateTime();
-      $publishDateObj = $entity->get('publish_on')->value ? DrupalDateTime::createFromTimestamp($entity->get('publish_on')->value) : $now;
+      $publishDateObj = DrupalDateTime::createFromTimestamp($entity->get('publish_on')->value ? $entity->get('publish_on')->value : $now->getTimestamp());
 
       $deadline = $publishDateObj->modify(self::DEFAULT_DEADLINE);
 
       if ($entity->isNew()) {
         // On node insert.
         if (empty($entity->get('field_reply_deadline')->getValue())) {
-          $entity->set('field_reply_deadline', $deadline->format(self::DEFAULT_DB_SAVE_DATETIME_FORMAT));
+          $entity->set('field_reply_deadline', $deadline->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
         }
       }
       else {
         // On node update.
         if (((int) $entity->get('publish_on')->value !== (int) $entity->getOriginal()->get('publish_on')->value) && empty($entity->get('field_reply_deadline')->getValue())) {
-          $entity->set('field_reply_deadline', $deadline->format(self::DEFAULT_DB_SAVE_DATETIME_FORMAT));
+          $entity->set('field_reply_deadline', $deadline->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT));
         }
       }
 
-      if ($entity->get('field_reply_deadline')->getValue() < $now) {
-        $entity->set('field_reply_deadline_exceeded', TRUE);
+      if ($entity->get('field_reply_deadline')->date < $now) {
+        $entity->set('field_content_state', DecisionHelper::STATE_FINISHED);
       }
     }
   }

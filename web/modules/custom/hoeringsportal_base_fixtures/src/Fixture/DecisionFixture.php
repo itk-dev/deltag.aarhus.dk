@@ -3,6 +3,7 @@
 namespace Drupal\hoeringsportal_base_fixtures\Fixture;
 
 use Drupal\content_fixtures\Fixture\AbstractFixture;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\hoeringsportal_citizen_proposal_fixtures\Fixture\CitizenProposalFixture;
 use Drupal\content_fixtures\Fixture\DependentFixtureInterface;
 use Drupal\content_fixtures\Fixture\FixtureGroupInterface;
@@ -61,7 +62,7 @@ BODY,
         'target_id' => $paragraph->id(),
         'target_revision_id' => $paragraph->getRevisionId(),
       ],
-      'field_reply_deadline' => '2026-08-15T12:00:00',
+      'field_reply_deadline' => (new \DateTimeImmutable('2026-08-15T12:00:00'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
       'field_reply_deadline_visibility' => TRUE,
       'published_at' => (new \DateTimeImmutable('2024-01-01 12:00:00'))->getTimestamp(),
     ]);
@@ -93,7 +94,7 @@ BODY,
         'target_id' => $paragraph->id(),
         'target_revision_id' => $paragraph->getRevisionId(),
       ],
-      'field_reply_deadline' => '2026-09-30T23:59:00',
+      'field_reply_deadline' => (new \DateTimeImmutable('2026-09-30T23:59:00'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
       'field_reply_deadline_visibility' => FALSE,
       'published_at' => (new \DateTimeImmutable('2025-01-01 12:00:00'))->getTimestamp(),
     ]);
@@ -120,7 +121,7 @@ BODY,
         'target_id' => $paragraph->id(),
         'target_revision_id' => $paragraph->getRevisionId(),
       ],
-      'field_reply_deadline' => '2026-10-15T14:00:00',
+      'field_reply_deadline' => (new \DateTimeImmutable('2026-10-15T14:00:00'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
       'field_reply_deadline_visibility' => FALSE,
       'published_at' => (new \DateTimeImmutable('2025-07-01 12:00:00'))->getTimestamp(),
     ]);
@@ -173,7 +174,7 @@ BODY,
         'target_id' => $paragraph->id(),
         'target_revision_id' => $paragraph->getRevisionId(),
       ],
-      'field_reply_deadline' => '2025-01-15T10:00:00',
+      'field_reply_deadline' => (new \DateTimeImmutable('2025-01-15T10:00:00'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
       'field_reply_deadline_visibility' => TRUE,
       'published_at' => (new \DateTimeImmutable('2026-07-01 12:00:00'))->getTimestamp(),
     ]);
@@ -200,7 +201,7 @@ BODY,
         'target_id' => $paragraph->id(),
         'target_revision_id' => $paragraph->getRevisionId(),
       ],
-      'field_reply_deadline' => '2024-06-30T16:00:00',
+      'field_reply_deadline' => (new \DateTimeImmutable('2024-06-30T16:00:00'))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
       'field_reply_deadline_visibility' => FALSE,
       'published_at' => (new \DateTimeImmutable('2027-01-01 12:00:00'))->getTimestamp(),
     ]);

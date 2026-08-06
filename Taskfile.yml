@@ -347,6 +347,7 @@ tasks:
       - task drush -- --yes pm:uninstall content_fixtures
       # Update states on public meetings.
       - task drush -- --yes hoeringsportal:public_meeting:state-update
+      - task drush -- --yes hoeringsportal:decision:state-update
       - task compose-up
     silent: true
 

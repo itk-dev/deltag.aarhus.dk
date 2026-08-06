@@ -46,11 +46,11 @@ final class DrushCommands extends BaseDrushCommands {
   #[CLI\Command(name: 'hoeringsportal:decision:state-update')]
   public function updateDecisionState() {
     $decisions = $this->helper->loadDecisions();
-
     foreach ($decisions as $decision) {
-      if ($this->helper->deadlineExceeded($decision) && !$this->helper->exceededIsSet($decision)) {
-        $this->helper->setDeadlinePassed($decision);
-        $this->writeln(json_encode([$decision->id(), 'state']));
+      $newState = $this->helper->computeState($decision);
+      if ($this->helper->getState($decision) !== $newState) {
+        $this->helper->setState($decision, $newState)->save();
+        $this->writeln(json_encode([$decision->id(), $newState]));
       }
     }
 
