@@ -62,7 +62,7 @@ class DecisionHooks {
       }
 
       if ($entity->get('field_reply_deadline')->date < $now) {
-          $entity->set('field_content_state', DecisionHelper::STATE_FINISHED);
+        $entity->set('field_content_state', DecisionHelper::STATE_FINISHED);
       }
     }
   }
