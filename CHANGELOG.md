@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-673](https://github.com/itk-dev/deltag.aarhus.dk/pull/673)
+  * Updated display of like button.
+
 * [PR-671](https://github.com/itk-dev/deltag.aarhus.dk/pull/671)
   * Updated drupal core 11.3.10 -> 11.3.16
   * Update phpoffice/phpspreadsheet (Security)
