@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8efaed36e7c23155d8d5dc0de2c6e45f",
+    "content-hash": "5a7a983e585eaceaee7b17c94f511d66",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -85,7 +85,7 @@
             "version": "v1.2.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/recurser/jquery-simple-color.git",
+                "url": "git@github.com:recurser/jquery-simple-color.git",
                 "reference": "a78212bc7df313fbc3e5d839326aa3668c63edb3"
             },
             "dist": {
