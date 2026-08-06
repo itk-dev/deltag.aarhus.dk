@@ -17,6 +17,6 @@
         "symfony/options-resolver": "^5.0",
         "itk-dev/getorganized-api-client-php": "^1.2",
         "drush/drush": "^13",
-        "dompdf/dompdf": "^2.0"
+        "dompdf/dompdf": "^3.1"
     }
 }
