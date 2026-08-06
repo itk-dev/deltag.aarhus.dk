@@ -6,6 +6,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-671](https://github.com/itk-dev/deltag.aarhus.dk/pull/671)
+  * Updated drupal core 11.3.10 -> 11.3.16
+  * Update phpoffice/phpspreadsheet (Security)
+  * Update drupal/xls_serialization (minor)
+  * Update drupal/views_data_export (minor)
+  * Update dompdf/dompdf v2.x -> v3.x (major)
+  * Update drupal/hoeringsportal_data (Security)
+  * Update drupal/paragraphs (Security)
+
 * [PR-660](https://github.com/itk-dev/deltag.aarhus.dk/pull/660)
   * Updated Septima to use latest cdn and adress tool instead of dawa
   * Removed final traces of dawa from project
