@@ -27,12 +27,6 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Update drupal/hoeringsportal_data (Security)
   * Update drupal/paragraphs (Security)
 
-* [PR-672](https://github.com/itk-dev/deltag.aarhus.dk/pull/672)
-  * Updated proposal view to use random sorting
-
-* [PR-673](https://github.com/itk-dev/deltag.aarhus.dk/pull/673)
-  * Updated display of like button.
-
 * [PR-667](https://github.com/itk-dev/deltag.aarhus.dk/pull/667)
   7805: Added display of owner name om proposal
 
