@@ -419,5 +419,7 @@ hidden:
   field_first_meeting_time: true
   path: true
   promote: true
+  publish_on: true
   sticky: true
   uid: true
+  unpublish_on: true
