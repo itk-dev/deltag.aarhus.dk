@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-674](https://github.com/itk-dev/deltag.aarhus.dk/pull/674)
+  Deskpro file attachments
+
 ## [4.16.9] - 2026-07-01
 
 * [PR-668](https://github.com/itk-dev/deltag.aarhus.dk/pull/668)
