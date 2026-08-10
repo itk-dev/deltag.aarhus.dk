@@ -64,6 +64,16 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-654](https://github.com/itk-dev/deltag.aarhus.dk/pull/654)
   Updated OIDC development setup
 
+## [4.16.10] - 2026-08-07
+
+* [PR-674](https://github.com/itk-dev/deltag.aarhus.dk/pull/674)
+  Deskpro file attachments
+
+## [4.16.9] - 2026-07-01
+
+* [PR-668](https://github.com/itk-dev/deltag.aarhus.dk/pull/668)
+  7833: Added Excel export of a dialogue with proposals and comments
+
 ## [4.16.8] - 2026-05-21
 
 * [PR-657](https://github.com/itk-dev/deltag.aarhus.dk/pull/657)
@@ -809,7 +819,9 @@ Updated drupal core 8.6.16
 Initial release
 
 [Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...HEAD
-[4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...4.17.0
+[4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...4.17.0
+[4.16.10]: https://github.com/itk-dev/hoeringsportal/compare/4.16.9...4.16.10
+[4.16.9]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...4.16.9
 [4.16.8]: https://github.com/itk-dev/hoeringsportal/compare/4.16.4...4.16.8
 [4.16.4]: https://github.com/itk-dev/hoeringsportal/compare/4.16.3...4.16.4
 [4.16.3]: https://github.com/itk-dev/hoeringsportal/compare/4.16.2...4.16.3

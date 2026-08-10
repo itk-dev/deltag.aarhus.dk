@@ -38,3 +38,12 @@ hoeringsportal_dialogue.map_view:
   requirements:
     _permission: "access content"
     node: \d+
+
+hoeringsportal_dialogue.export_xlsx:
+  path: "/node/{node}/dialogue-export"
+  defaults:
+    _controller: '\Drupal\hoeringsportal_dialogue\Controller\DialogueController::exportXlsx'
+    _title: "Eksportér til Excel"
+  requirements:
+    _custom_access: '\Drupal\hoeringsportal_dialogue\Controller\DialogueController::exportAccess'
+    node: \d+
