@@ -69,7 +69,6 @@ module:
   inline_form_errors: 0
   itk_admin: 0
   itk_admin_links: 0
-  itk_dropzonejs_image_widget: 0
   itk_media_entity: 0
   itk_pretix: 0
   itk_siteimprove: 0
@@ -99,6 +98,7 @@ module:
   redirect: 0
   responsive_image: 0
   rest: 0
+  scheduler: 0
   search_api: 0
   search_api_db: 0
   search_autocomplete: 0

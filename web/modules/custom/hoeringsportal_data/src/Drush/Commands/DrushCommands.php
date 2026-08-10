@@ -5,6 +5,7 @@ namespace Drupal\hoeringsportal_data\Drush\Commands;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\hoeringsportal_data\Helper\HearingHelper;
 use Drupal\hoeringsportal_deskpro\Service\HearingHelper as DeskproHearingHelper;
@@ -25,6 +26,7 @@ final class DrushCommands extends BaseDrushCommands {
     private readonly DeskproHearingHelper $deskproHelper,
     private readonly TimeInterface $time,
     private readonly StateInterface $state,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
   ) {
     parent::__construct();
   }
@@ -37,7 +39,8 @@ final class DrushCommands extends BaseDrushCommands {
       $container->get('hoeringsportal_data.hearing_helper'),
       $container->get('hoeringsportal_deskpro.helper'),
       $container->get('datetime.time'),
-      $container->get('state')
+      $container->get('state'),
+      $container->get('entity_type.manager')
     );
   }
 

@@ -57,4 +57,6 @@ hidden:
   field_itk_media_mime_type: true
   field_itk_media_size: true
   langcode: true
+  publish_on: true
   uid: true
+  unpublish_on: true

@@ -82,7 +82,9 @@ function hoeringsportal_forms_form_node_form_alter(&$form, FormStateInterface $f
   $form['advanced']['#attributes']['style'] = 'margin-top:1em';
 
   $form['#attached']['library'][] = 'hoeringsportal_forms/form_styles';
-  $form['#attached']['library'][] = 'hoeringsportal_forms/dawa-support-text-field';
+  $form['#attached']['library'][] = 'hoeringsportal_forms/adressevaelger-support-text-field';
+  $config = \Drupal::getContainer()->get('itk_admin.itk_config');
+  $form['#attached']['drupalSettings']['adressevaelger']['token'] = $config->get('adressevaelger_token') ?? 'adressevaelger123';
   $form['field_media_image']['widget']['entity_browser']['#weight'] = -10;
   $form['field_media_image']['widget']['current']['#weight'] = -50;
 

@@ -51,6 +51,11 @@
         </div>
 
         <div class="node-metadata small">
+          {% set owner = anonymous_edit_helper.getContentOwner(node) %}
+          {% if owner and owner.name|default(false) %}
+            <div class="node-name">{{ owner.isCurrent ? 'You'|t : owner.name }}</div>
+          {% endif %}
+
           <div class="node-time">
             {{ node.changed.value|time_diff }}
             {% if node.changed.value > node.created.value %}

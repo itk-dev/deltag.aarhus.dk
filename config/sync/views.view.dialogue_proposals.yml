@@ -166,52 +166,23 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: tag
+        type: none
         options: {  }
       empty: {  }
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
+        random:
+          id: random
+          table: views
+          field: random
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          order: DESC
+          plugin_id: random
+          order: ASC
           expose:
-            label: 'Seneste forslag'
-            field_identifier: created
-          exposed: true
-          granularity: second
-        count:
-          id: count
-          table: flag_counts
-          field: count
-          relationship: flag_relationship
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: DESC
-          expose:
-            label: 'Flest synes om'
-            field_identifier: count
-          exposed: true
-        comment_count:
-          id: comment_count
-          table: comment_entity_statistics
-          field: comment_count
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: DESC
-          expose:
-            label: 'Flest kommentarer'
-            field_identifier: comment_count
-          exposed: true
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments:
         field_dialogue_target_id:
           id: field_dialogue_target_id
@@ -379,13 +350,12 @@ display:
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -398,13 +368,12 @@ display:
     display_options:
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
-        - 'url.query_args:sort_by'
         - 'user.node_grants:view'
         - user.permissions
       tags:
