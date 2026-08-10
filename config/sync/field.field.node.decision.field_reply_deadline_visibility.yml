@@ -1,0 +1,23 @@
+uuid: d4389838-3cb8-408c-a28e-196b081f483b
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reply_deadline_visibility
+    - node.type.decision
+id: node.decision.field_reply_deadline_visibility
+field_name: field_reply_deadline_visibility
+entity_type: node
+bundle: decision
+label: 'Klagefrist synlig'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

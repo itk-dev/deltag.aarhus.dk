@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-03-09 10:55+0100\n"
-"PO-Revision-Date: 2026-03-09 10:55+0100\n"
+"POT-Creation-Date: 2026-07-31 09:01+0200\n"
+"PO-Revision-Date: 2026-07-31 09:01+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -58,6 +58,12 @@ msgstr "Bidrag #@number af @name"
 
 msgid "Answer @number by @name"
 msgstr "Bidrag @number af @name"
+
+msgid "Appeal deadline"
+msgstr "Klagefrist"
+
+msgid "Appeal deadline passed"
+msgstr "Klagefrist overskredet"
 
 msgid "Article"
 msgstr "Artikel"
@@ -137,6 +143,9 @@ msgstr "Nuværende forekomst"
 msgid "Date"
 msgstr "Dato"
 
+msgid "Deadline exceeded"
+msgstr "Klagefrist overskredet"
+
 msgid "Debate"
 msgstr "Debat"
 
@@ -145,6 +154,9 @@ msgstr "Afgørelse"
 
 msgid "Decision date"
 msgstr "Afgørelsesdato"
+
+msgid "Decision date passed"
+msgstr "Klagefrist overskredet"
 
 msgid "Description"
 msgstr "Beskrivelse"
@@ -265,6 +277,9 @@ msgstr "Jeg har læst betingelserne og giver mit samtykke"
 msgid "I represent"
 msgstr "Jeg udtaler mig som"
 
+msgid "In progress"
+msgstr "I gang"
+
 msgid "Information page"
 msgstr "Information"
 
@@ -278,7 +293,7 @@ msgid "Latest proposal"
 msgstr "Seneste forslag"
 
 msgid "Like this"
-msgstr "Synes om"
+msgstr "Enig"
 
 msgid "Linkedin"
 msgstr "Linkedin"
@@ -641,7 +656,7 @@ msgid "Your search yielded no result"
 msgstr "Din søgning gav ingen resultater."
 
 msgid "like this"
-msgstr "synes om"
+msgstr "enig"
 
 msgid "replies"
 msgstr "svar"

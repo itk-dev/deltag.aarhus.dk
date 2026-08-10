@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: RKkc6tf1VudvYiOtwPCf3Tp_EoA6fov6BFC34D7gMoQ
 id: size
-label: Size
+label: Størrelse
 category: Generelt
 likert: false
 options: |
