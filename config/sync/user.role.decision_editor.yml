@@ -15,6 +15,7 @@ dependencies:
     - node
     - publishcontent
     - quick_node_clone
+    - scheduler
     - system
     - view_unpublished
 id: decision_editor
@@ -44,6 +45,7 @@ permissions:
   - 'edit own image media'
   - 'publish any node type decision'
   - 'revert decision revisions'
+  - 'schedule publishing of nodes'
   - 'unpublish any node type decision'
   - 'update media'
   - 'view any unpublished decision content'

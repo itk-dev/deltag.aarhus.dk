@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.1] - 2026-08-11
+
+* [PR-675](https://github.com/itk-dev/deltag.aarhus.dk/pull/675)
+  * Fixed bug in scheduler permissions
+
 ## [4.17.0] - 2026-06-15
 
 * [PR-669](https://github.com/itk-dev/deltag.aarhus.dk/pull/669)
