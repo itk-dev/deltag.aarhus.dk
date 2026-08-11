@@ -8,7 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.17.1] - 2026-08-11
 
-* [PR-675](https://github.com/itk-dev/deltag.aarhus.dk/pull/675)
+* [PR-676](https://github.com/itk-dev/deltag.aarhus.dk/pull/676)
   * Fixed bug in scheduler permissions
 
 ## [4.17.0] - 2026-06-15
@@ -823,7 +823,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.1...HEAD
+[4.17.1]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...4.17.1
 [4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...4.17.0
 [4.16.10]: https://github.com/itk-dev/hoeringsportal/compare/4.16.9...4.16.10
 [4.16.9]: https://github.com/itk-dev/hoeringsportal/compare/4.16.8...4.16.9
