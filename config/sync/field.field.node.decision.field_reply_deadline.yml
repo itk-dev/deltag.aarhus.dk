@@ -11,7 +11,7 @@ id: node.decision.field_reply_deadline
 field_name: field_reply_deadline
 entity_type: node
 bundle: decision
-label: Klagefrist / Nedtagning
+label: 'Klagefrist / Nedtagning'
 description: 'Vælg hvornår der er klagefrist for afgørelsen.'
 required: false
 translatable: false
