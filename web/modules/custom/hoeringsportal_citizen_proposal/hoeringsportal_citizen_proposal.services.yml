@@ -65,3 +65,6 @@ services:
       - "@logger.channel.hoeringsportal_citizen_proposal"
     tags:
       - { name: "event_subscriber" }
+
+  Drupal\hoeringsportal_citizen_proposal\Helper\AnonymizationHelper:
+    autowire: true
