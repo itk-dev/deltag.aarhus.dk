@@ -88,7 +88,6 @@ class AnonymizationHelper {
     try {
       $query = $this->entityTypeManager->getStorage('node')->getQuery();
       $query
-        ->accessCheck(FALSE)
         ->condition('type', 'citizen_proposal')
         ->condition(
           $query->orConditionGroup()
