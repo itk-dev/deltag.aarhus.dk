@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-677](https://github.com/itk-dev/deltag.aarhus.dk/pull/677)
+  * Added anonymization to citizen proposal
 
 ## [4.17.1] - 2026-08-11
 
