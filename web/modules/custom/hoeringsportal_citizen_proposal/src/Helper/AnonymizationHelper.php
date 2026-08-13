@@ -86,8 +86,8 @@ class AnonymizationHelper {
   public function findProposalsForAnonymization() : array {
     $anonymizationTimeSpan = new DrupalDateTime(self::TIMESPAN_ANONYMIZATION);
     try {
-      $query = $this->entityTypeManager->getStorage('node')->getQuery();
-      $query
+      $query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(FALSE);
+      $query  
         ->condition('type', 'citizen_proposal')
         ->condition(
           $query->orConditionGroup()

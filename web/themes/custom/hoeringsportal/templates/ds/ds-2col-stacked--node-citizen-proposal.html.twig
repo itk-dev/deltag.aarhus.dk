@@ -42,11 +42,11 @@
             {{ left['dynamic_block_field:node-citizen_proposal_support_counter'] }}
             <div class="d-flex justify-content-between mt-3 border-bottom pb-3">
               <div>
-                {{ left.field_author_name }}
+                {{ node.field_author_name.value ? left.field_author_name : 'Anonymized'|t }}
               </div>
               {% if node.field_author_email_display.value is same as('1') %}
                 <div>
-                  {{ left.field_author_email }}
+                  {{ node.field_author_email.value ? left.field_author_email : 'Anonymized'|t }}
                 </div>
               {% endif %}
             </div>
