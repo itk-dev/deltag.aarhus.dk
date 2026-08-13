@@ -10,6 +10,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-679](https://github.com/itk-dev/deltag.aarhus.dk/pull/679)
   * Fixed issue with files uploaded to Deskpro becoming temporary
+* [PR-678](https://github.com/itk-dev/deltag.aarhus.dk/pull/678)
+  * Fixed bug project timeline element display
 
 ## [4.17.1] - 2026-08-11
 
