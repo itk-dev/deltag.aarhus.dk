@@ -3,3 +3,5 @@ services:
     autowire: true
 
   Drupal\hoeringsportal_project\Hook\ProjectHooks:
+
+  Drupal\hoeringsportal_project\Helper\Helper:
