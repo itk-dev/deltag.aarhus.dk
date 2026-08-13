@@ -25,11 +25,10 @@ final class DrushCommands extends BaseDrushCommands {
   }
 
   /**
-   * Get timeline content.
+   * Show timeline content for specific project node.
    *
    * @command hoeringsportal:project:test-timeline-content
    * @usage hoeringsportal:project:test-timeline-content
-   *   Update state for all courses.
    */
   #[CLI\Command(name: 'hoeringsportal:project:test-timeline-content')]
   #[CLI\Argument(name: 'nid', description: 'Project node id')]
