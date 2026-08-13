@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.2] - 2026-08-13
+
+* [PR-679](https://github.com/itk-dev/deltag.aarhus.dk/pull/679)
+  * Fixed issue with files uploaded to Deskpro becoming temporary
+
 ## [4.17.1] - 2026-08-11
 
 * [PR-676](https://github.com/itk-dev/deltag.aarhus.dk/pull/676)
@@ -823,7 +828,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.1...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.2...HEAD
+[4.17.2]: https://github.com/itk-dev/hoeringsportal/compare/4.17.1...4.17.2
 [4.17.1]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...4.17.1
 [4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...4.17.0
 [4.16.10]: https://github.com/itk-dev/hoeringsportal/compare/4.16.9...4.16.10
