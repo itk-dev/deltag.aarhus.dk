@@ -87,7 +87,7 @@ class AnonymizationHelper {
     $anonymizationTimeSpan = new DrupalDateTime(self::TIMESPAN_ANONYMIZATION);
     try {
       $query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(FALSE);
-      $query  
+      $query
         ->condition('type', 'citizen_proposal')
         ->condition(
           $query->orConditionGroup()
