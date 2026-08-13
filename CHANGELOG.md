@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-678](https://github.com/itk-dev/deltag.aarhus.dk/pull/678)
+  * Fixed bug project timeline element display
+
 ## [4.17.1] - 2026-08-11
 
 * [PR-676](https://github.com/itk-dev/deltag.aarhus.dk/pull/676)

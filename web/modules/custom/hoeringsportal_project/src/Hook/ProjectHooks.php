@@ -21,7 +21,7 @@ use Drupal\node\NodeInterface;
  */
 class ProjectHooks {
   use StringTranslationTrait;
-  use   AutowireTrait;
+  use AutowireTrait;
 
   public const string STATUS_COMPLETED = 'completed';
   // Used for items whose start time and end time are on the same day and said
@@ -43,7 +43,7 @@ class ProjectHooks {
     protected EntityTypeManagerInterface $entityTypeManagerInterface,
     protected UrlGeneratorInterface $urlGenerator,
     LoggerChannelFactoryInterface $loggerFactory,
-    protected Helper $helper
+    protected Helper $helper,
   ) {
     $this->logger = $loggerFactory->get('hoeringsportal_project');
   }
@@ -167,4 +167,5 @@ class ProjectHooks {
       }
     }
   }
+
 }

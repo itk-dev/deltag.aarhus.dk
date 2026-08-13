@@ -44,7 +44,7 @@ class Helper {
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManagerInterface,
     protected UrlGeneratorInterface $urlGenerator,
-    LoggerChannelFactoryInterface $loggerFactory
+    LoggerChannelFactoryInterface $loggerFactory,
   ) {
     $this->logger = $loggerFactory->get('hoeringsportal_project');
   }
@@ -52,8 +52,8 @@ class Helper {
   /**
    * Get timeline nodes.
    *
-   * @param array $variables
-   *   A template variables array.
+   * @param \Drupal\node\Entity\Node|null $node
+   *   A node entity.
    *
    * @return array|null
    *   Array of node entities or NULL.
@@ -89,6 +89,7 @@ class Helper {
    * Get timeline notes.
    *
    * @param \Drupal\node\Entity\Node|null $node
+   *   A node entity.
    *
    * @return array|null
    *   Array of paragraph entities or NULL.
@@ -340,4 +341,5 @@ class Helper {
       default => NULL,
     };
   }
+
 }

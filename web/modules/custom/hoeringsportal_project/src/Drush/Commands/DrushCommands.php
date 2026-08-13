@@ -1,6 +1,6 @@
 <?php
 
-  namespace Drupal\hoeringsportal_project\Drush\Commands;
+namespace Drupal\hoeringsportal_project\Drush\Commands;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\hoeringsportal_project\Helper\Helper;
@@ -39,4 +39,5 @@ final class DrushCommands extends BaseDrushCommands {
     $output['notes'] = $this->helper->getTimelineNotes($project);
     $this->output->writeln('Done');
   }
+
 }
