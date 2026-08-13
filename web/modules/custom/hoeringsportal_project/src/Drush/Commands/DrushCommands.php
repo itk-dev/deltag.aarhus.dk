@@ -25,7 +25,7 @@ final class DrushCommands extends BaseDrushCommands {
   }
 
   /**
-   * Updates state on courses.
+   * Get timeline content.
    *
    * @command hoeringsportal:project:test-timeline-content
    * @usage hoeringsportal:project:test-timeline-content
@@ -37,7 +37,14 @@ final class DrushCommands extends BaseDrushCommands {
     $project = $this->entityTypeManagerInterface->getStorage('node')->load($nid);
     $output['nodes'] = $this->helper->getTimelineNodes($project);
     $output['notes'] = $this->helper->getTimelineNotes($project);
-    $this->output->writeln('Done');
+    $this->output->writeln(' -- Nodes: --');
+    foreach ($output['nodes'] as $node) {
+      $this->output->writeln($node->getTitle() .'(' . $node->id() . ')');
+    }
+    $this->output->writeln(' -- Notes: --');
+    foreach ($output['notes'] as $note) {
+      $this->output->writeln($note->field_title->value);
+    }
   }
 
 }
