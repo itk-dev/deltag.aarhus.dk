@@ -404,6 +404,9 @@ class DeskproService {
 
   /**
    * Upload a file.
+   *
+   * @see https://support.deskpro.com/en-US/guides/developers/example-create-ticket
+   * @see https://start.deskpro.com/developers/api-docs/v2.html#post--api-v2-blobs
    */
   private function uploadFile($path) {
     $endpoint = '/blobs/temp';
