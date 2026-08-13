@@ -38,7 +38,7 @@ final class DrushCommands extends BaseDrushCommands {
     $output['notes'] = $this->helper->getTimelineNotes($project);
     $this->output->writeln(' -- Nodes: --');
     foreach ($output['nodes'] as $node) {
-      $this->output->writeln($node->getTitle() .'(' . $node->id() . ')');
+      $this->output->writeln($node->getTitle() . '(' . $node->id() . ')');
     }
     $this->output->writeln(' -- Notes: --');
     foreach ($output['notes'] as $note) {
