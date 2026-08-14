@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.3] - 2026-08-14
+
 * [PR-680](https://github.com/itk-dev/deltag.aarhus.dk/pull/680)
   * Changed sorting of dialogue proposal view
 
