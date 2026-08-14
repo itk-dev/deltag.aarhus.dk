@@ -229,6 +229,8 @@ class HearingHelper {
       $response = $this->deskpro->createTicket($person, $data);
       $ticket = $response->getData();
 
+      // Reupload files for use in message.
+      $blobs = $this->deskpro->uploadFiles($files);
       $response = $this->deskpro->createMessage($ticket, $data, $blobs);
       $message = $response->getData();
 

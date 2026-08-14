@@ -324,6 +324,7 @@ final class HearingTicketAddForm extends FormBase {
       \Drupal::logger('hoeringsportal_deskpro')->error('@message', [
         '@message' => $exception->getMessage(),
         '@values' => $form_state->getValues(),
+        'exception' => $exception,
       ]);
     }
   }
