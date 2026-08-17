@@ -34,7 +34,7 @@ class AnonymizationHelper {
   /**
    * Anonymize citizen proposal.
    *
-   * @param \Drupal\node\Entity\NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   The node.
    *
    * @return bool
@@ -66,7 +66,7 @@ class AnonymizationHelper {
   /**
    * Anonymize citizen proposal support.
    *
-   * @param \Drupal\node\Entity\NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   The node.
    */
   public function anonymizeCitizenProposalSupport(NodeInterface $node): void {
