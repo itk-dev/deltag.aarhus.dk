@@ -9,6 +9,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-677](https://github.com/itk-dev/deltag.aarhus.dk/pull/677)
   * Added anonymization to citizen proposal
 
+## [4.17.3] - 2026-08-14
+
+* [PR-680](https://github.com/itk-dev/deltag.aarhus.dk/pull/680)
+  * Changed sorting of dialogue proposal view
+
 ## [4.17.2] - 2026-08-13
 
 * [PR-679](https://github.com/itk-dev/deltag.aarhus.dk/pull/679)

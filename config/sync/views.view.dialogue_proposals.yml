@@ -121,7 +121,7 @@ display:
           reset_button: false
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
-          expose_sort_order: false
+          expose_sort_order: true
           sort_asc_label: Stigende
           sort_desc_label: Faldende
           text_input_required: 'Vælg et filter'
@@ -129,6 +129,8 @@ display:
           bef:
             general:
               autosubmit: true
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
@@ -141,8 +143,9 @@ display:
             sort:
               plugin_id: default
               advanced:
-                combine: false
-                combine_rewrite: "Flagging count Asc|Oldest first\r\nFlagging count Desc|Newest first\r\n"
+                combine: true
+                combine_rewrite: "Random Faldende|Tilfældig\r\nAuthored on Stigende|Ældste først\r\nAuthored on Faldende|Nyeste først\r\nRandom Stigende|\r\n"
+                combine_param: sort_bef_combine
                 reset: false
                 reset_label: ''
                 collapsible: false
@@ -154,13 +157,17 @@ display:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: '- Any -|All categories'
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: true
+                  field_classes: ''
       access:
         type: perm
         options:
@@ -180,9 +187,25 @@ display:
           plugin_id: random
           order: ASC
           expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
+            label: Random
+            field_identifier: random
+          exposed: true
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: ASC
+          expose:
+            label: 'Authored on'
+            field_identifier: created
+          exposed: true
+          granularity: second
       arguments:
         field_dialogue_target_id:
           id: field_dialogue_target_id
@@ -356,6 +379,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -374,6 +399,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
