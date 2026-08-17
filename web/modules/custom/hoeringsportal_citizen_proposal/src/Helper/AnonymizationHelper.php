@@ -9,7 +9,6 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\node\NodeStorageInterface;
-use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
@@ -28,14 +27,14 @@ class AnonymizationHelper {
     private readonly Connection $connection,
     #[Autowire(service: 'hoeringsportal_citizen_proposal.node.storage')]
     private readonly NodeStorageInterface $nodeStorage,
-    private readonly Helper $helper
+    private readonly Helper $helper,
   ) {
   }
 
   /**
    * Anonymize citizen proposal.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\Entity\NodeInterface $node
    *   The node.
    *
    * @return bool
@@ -67,9 +66,9 @@ class AnonymizationHelper {
   /**
    * Anonymize citizen proposal support.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\Entity\NodeInterface $node
    *   The node.
- */
+   */
   public function anonymizeCitizenProposalSupport(NodeInterface $node): void {
     try {
       $this->connection->update(Helper::PROPOSAL_SUPOORT_TABLE_NAME)
@@ -82,7 +81,7 @@ class AnonymizationHelper {
         ->execute();
       $this->logger->info('Anonymized citizen proposal support entries related to node id: @nid', ['@nid' => $node->id()]);
     }
-    catch (Exception $exception) {
+    catch (\Exception $exception) {
       $this->logger->error('Error updating proposal support for anonymization: @message', [
         '@message' => $exception->getMessage(),
         'exception' => $exception,
@@ -129,4 +128,5 @@ class AnonymizationHelper {
       && empty($entity->field_author_email->value)
       && empty($entity->field_author_phone->value);
   }
+
 }
