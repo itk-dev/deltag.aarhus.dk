@@ -56,9 +56,11 @@ final class DrushCommands extends BaseDrushCommands {
   public function anonymizeProposals(): void {
     $proposals = $this->anonymizationHelper->findProposalsForAnonymization();
 
-    foreach ($proposals as $proposalId) {
-      $this->anonymizationHelper->anonymizeCitizenProposal($proposalId);
-      $this->anonymizationHelper->anonymizeCitizenProposalSupport($proposalId);
+    foreach ($proposals as $proposal) {
+      /** @var \Drupal\node\NodeInterface $proposal */
+      if ($this->anonymizationHelper->anonymizeCitizenProposal($proposal)) {
+        $this->anonymizationHelper->anonymizeCitizenProposalSupport($proposal);
+      }
     }
   }
 

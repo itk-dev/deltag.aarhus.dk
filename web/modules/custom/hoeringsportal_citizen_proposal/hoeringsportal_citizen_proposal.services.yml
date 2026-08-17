@@ -1,4 +1,7 @@
 services:
+  _defaults:
+    autowire: true
+
   logger.channel.hoeringsportal_citizen_proposal:
     parent: logger.channel_base
     arguments: ["hoeringsportal_citizen_proposal"]
@@ -29,6 +32,11 @@ services:
 
   # @see https://www.drupal.org/project/drupal/issues/2376347
   # @see https://www.drupal.org/docs/drupal-apis/services-and-dependency-injection/structure-of-a-service-file#s-properties-of-a-service
+  hoeringsportal_citizen_proposal.node.storage:
+    class: Drupal\node\NodeStorageInterface
+    factory: ["@entity_type.manager", "getStorage"]
+    arguments: ["node"]
+
   hoeringsportal_citizen_proposal.storage.webform:
     class: Drupal\webform\WebformEntityStorageInterface
     factory: ["@entity_type.manager", "getStorage"]
@@ -67,4 +75,3 @@ services:
       - { name: "event_subscriber" }
 
   Drupal\hoeringsportal_citizen_proposal\Helper\AnonymizationHelper:
-    autowire: true
