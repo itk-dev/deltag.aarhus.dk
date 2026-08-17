@@ -59,7 +59,7 @@ class AnonymizationHelper {
       ]);
       return FALSE;
     }
-    
+
     return TRUE;
   }
 
