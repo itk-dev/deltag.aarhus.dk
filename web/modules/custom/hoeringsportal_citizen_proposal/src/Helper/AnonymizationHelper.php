@@ -50,8 +50,6 @@ class AnonymizationHelper {
           ->set('field_author_uuid', '')
           ->save();
         $this->logger->info('Anonymized citizen proposal with id: @nid', ['@nid' => $node->id()]);
-
-        return TRUE;
       }
     }
     catch (EntityStorageException $exception) {
@@ -61,6 +59,8 @@ class AnonymizationHelper {
       ]);
       return FALSE;
     }
+    
+    return TRUE;
   }
 
   /**
