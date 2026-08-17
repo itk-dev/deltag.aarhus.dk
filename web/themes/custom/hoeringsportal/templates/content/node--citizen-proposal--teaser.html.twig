@@ -19,5 +19,6 @@
   </div>
 {% endblock %}
 {% block card_footer %}
-  {{ content.field_author_name }}
+
+  {{ node.field_author_name.value ? content.field_author_name : 'Anonymized'|t }}
 {% endblock %}
