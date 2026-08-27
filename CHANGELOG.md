@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.4] - 2026-08-27
+
+* [PR-681](https://github.com/itk-dev/deltag.aarhus.dk/pull/681)
+  * Changed image dimensions of responsive small image
+
 ## [4.17.3] - 2026-08-14
 
 * [PR-680](https://github.com/itk-dev/deltag.aarhus.dk/pull/680)
