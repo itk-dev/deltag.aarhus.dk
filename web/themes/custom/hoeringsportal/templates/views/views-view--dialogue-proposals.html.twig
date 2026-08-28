@@ -50,7 +50,7 @@
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
     {{ exposed }}
-    {% set node = drupal_entity('node', view.args[0] ?? '')['#node'] %}
+    {% set node = drupal_entity('node', view.args[0] ?? '')['#node'] ?? null %}
     {% if node %}
       {% set proposalConfig = dialogue_helper.getProposalConfig(node) %}
       {% if 'public_proposals' in proposalConfig %}
