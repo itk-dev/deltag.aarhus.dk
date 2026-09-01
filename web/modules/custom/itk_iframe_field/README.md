@@ -57,9 +57,12 @@ not widen the condition under which the iframe is emitted.
 ## Widgets
 
 The field reuses the widgets from the iframe module (`iframe_url`,
-`iframe_urlheight`, `iframe_urlwidthheight`) via
-`hook_field_widget_info_alter()`; the domain list is a display-time concern and
+`iframe_urlheight`, `iframe_urlwidthheight`) via `hook_field_widget_info_alter()`
+in `src/Hook/ItkIframeHooks.php`; the domain list is a display-time concern and
 needs no widget of its own.
+
+The same class adds help text under the URL input listing the field's accepted
+domains, so an editor can see up front which URLs will be embedded.
 
 Note that the domain list is **not** enforced when content is saved: an editor
 can store a URL on any domain, it simply will not render. Enforcing it at save

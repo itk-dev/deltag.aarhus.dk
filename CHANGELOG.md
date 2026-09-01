@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-682](https://github.com/itk-dev/deltag.aarhus.dk/pull/682)
+  * Added itk_iframe_field module
+
 ## [4.17.4] - 2026-08-28
 
 * [PR-681](https://github.com/itk-dev/deltag.aarhus.dk/pull/681)
