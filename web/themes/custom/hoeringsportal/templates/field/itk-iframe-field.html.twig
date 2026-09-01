@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Theme override for an iframe limited to accepted domains.
+ *
+ * Same contract as the module's own itk-iframe-field.html.twig; this override
+ * only adds the theme's Bootstrap and Font Awesome markup.
+ *
+ * "allowed" is decided in
+ * \Drupal\itk_iframe_field\Plugin\Field\FieldFormatter\ItkIframeDefaultFormatter
+ * - do not widen that test here. Embedding a URL the field does not accept is
+ * exactly what the module exists to prevent.
+ *
+ * The size is set with inline CSS - full width, fixed aspect ratio - which is
+ * why the widget hides its width and height inputs: whatever is stored has no
+ * effect on the output.
+ *
+ * Available variables:
+ * - allowed: TRUE to embed the URL, FALSE to link to it.
+ * - src: The URL to embed or link to.
+ * - attributes: HTML attributes for the iframe tag, including id and class.
+ * - text: The title text.
+ * - style: Inline CSS for this iframe, scoped to its id.
+ * - headerlevel: Heading level (1-6) used for the title.
+ *
+ * @see itk_iframe_field/templates/itk-iframe-field.html.twig
+ */
+#}
+{% set classes = ['itk-iframe-field', allowed ? 'itk-iframe-field--embedded' : 'itk-iframe-field--linked'] %}
+<div class="{{ classes|join(' ') }}{% if attributes.class is not empty %} {{ attributes.class }}{% endif %}">
+  {% if text is not empty %}
+    <h{{ headerlevel|default(3) }} class="itk-iframe-field__title mt-3">{{ text }}</h{{ headerlevel|default(3) }}>
+  {% endif %}
+  {% if allowed %}
+    {% if style is not empty %}
+      <style>{{ style|raw }}</style>
+    {% endif %}
+    <iframe{{ attributes.setAttribute('style', 'aspect-ratio: 16/9; width: 100%; border:0; margin:0;').setAttribute('class', 'd-none d-lg-block') }}>
+      {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text}) }}
+    </iframe>
+    <a href="{{ src }}" class="itk-iframe-field__fullscreen btn btn-link px-0" target="_blank" rel="noopener noreferrer">
+      <i class="fa-solid fa-maximize"></i> {{ 'View in full screen'|t }}
+    </a>
+  {% else %}
+    <a href="{{ src }}" class="itk-iframe-field__link w-100 p-3 bg-light d-block" target="_blank">
+      {{ text is not empty ? text : src }} <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  {% endif %}
+</div>

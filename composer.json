@@ -45,6 +45,7 @@
         "drupal/hoeringsportal_dialogue": "^1.0",
         "drupal/hoeringsportal_openid_connect": "^1.0",
         "drupal/honeypot": "^2.2",
+        "drupal/iframe": "^3.0",
         "drupal/image_widget_crop": "^3.0",
         "drupal/inline_entity_form": "^3.0",
         "drupal/jquery_ui_accordion": "^2.0",

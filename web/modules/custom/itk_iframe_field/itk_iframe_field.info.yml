@@ -1,0 +1,10 @@
+name: ITK iframe field
+type: module
+description: "Iframe field type that only renders iframes served from an accepted list of domains"
+package: ITK
+core_version_requirement: ^10 || ^11
+dependencies:
+  - iframe:iframe
+
+"interface translation project": itk_iframe_field
+"interface translation server pattern": modules/custom/%project/translations/%project.%language.po
