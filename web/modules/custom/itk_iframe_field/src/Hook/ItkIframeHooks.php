@@ -88,11 +88,14 @@ class ItkIframeHooks {
       return;
     }
 
-    // The template sizes the iframe with inline CSS, so an editor-supplied
-    // width has no effect. Hide the input rather than removing it, so that
-    // saving an existing item does not rewrite its stored width.
-    if (isset($element['width'])) {
-      $element['width']['#access'] = FALSE;
+    // The template sizes the iframe with inline CSS - a full width and a fixed
+    // aspect ratio - so editor-supplied dimensions have no effect. Hide the
+    // inputs rather than removing them, so that saving an existing item does
+    // not rewrite the dimensions it already had.
+    foreach (['width', 'height'] as $dimension) {
+      if (isset($element[$dimension])) {
+        $element[$dimension]['#access'] = FALSE;
+      }
     }
 
     $domains = AllowedDomains::parse((string) ($field_definition->getSetting('allowed_domains') ?? ''));

@@ -12,8 +12,9 @@
  * The formatter only reaches this template with absolute http(s) URLs, which
  * is what makes "src" safe to use as an href.
  *
- * The width is set here with inline CSS, which is why the widget hides its
- * width input: whatever is stored has no effect on the output.
+ * The size is set here with inline CSS - full width, fixed aspect ratio -
+ * which is why the widget hides its width and height inputs: whatever is
+ * stored has no effect on the output.
  *
  * Available variables:
  * - allowed: TRUE to embed the URL, FALSE to link to it.
@@ -33,7 +34,7 @@
     {% if style is not empty %}
       <style>{{ style|raw }}</style>
     {% endif %}
-    <iframe{{ attributes.setAttribute('style', 'width: 100%;') }}>
+    <iframe{{ attributes.setAttribute('style', 'aspect-ratio: 16 / 9; width: 100%;') }}>
       {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text}) }}
     </iframe>
     <a href="{{ src }}" class="itk-iframe-field__fullscreen" target="_blank" rel="noopener noreferrer">{{ 'View in full screen'|t }}</a>

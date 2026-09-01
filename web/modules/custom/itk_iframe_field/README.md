@@ -68,16 +68,20 @@ link to the remote source.
 URLs off the accepted list get no such link; the link fallback already points at
 the URL itself.
 
-## Width
+## Size
 
-The widget's **width** input is hidden for this field type, because both
-templates set the width with inline CSS and the stored value has no effect on
-the output. Height is still editable.
+The widget's **width** and **height** inputs are hidden for this field type.
+Both templates size the iframe with inline CSS — full width and a fixed 16:9
+aspect ratio — so the stored dimensions have no effect on the output. Editors
+are left with the title and the URL.
 
-The input is hidden with `#access: FALSE` rather than removed, so that saving an
-existing item keeps whatever width it already had rather than silently rewriting
-it to the field default. The width in *field settings* and *widget settings* is
-untouched.
+The inputs are hidden with `#access: FALSE` rather than removed, so that saving
+an existing item keeps the dimensions it already had rather than silently
+rewriting them to the field defaults. Width and height in *field settings* and
+*widget settings* are untouched, as is the plain `iframe` field type.
+
+Change the ratio in the template, not in the field — that is the whole point of
+hiding the inputs.
 
 ## Widgets
 
