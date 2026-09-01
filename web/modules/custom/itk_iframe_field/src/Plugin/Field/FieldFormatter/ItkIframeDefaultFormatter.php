@@ -5,9 +5,7 @@ namespace Drupal\itk_iframe_field\Plugin\Field\FieldFormatter;
 use Drupal\Core\Cache\CacheableDependencyInterface;
 use Drupal\Core\Field\Attribute\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\Core\Url;
 use Drupal\iframe\Plugin\Field\FieldFormatter\IframeDefaultFormatter;
 use Drupal\itk_iframe_field\AllowedDomains;
 
@@ -55,54 +53,15 @@ class ItkIframeDefaultFormatter extends IframeDefaultFormatter {
 
       // A URL off the accepted list still renders, as a link rather than an
       // iframe. The template branches on "allowed".
-      $allowed = AllowedDomains::isAllowed($src, $patterns);
       $elements[$delta]['#theme'] = 'itk_iframe_field';
-      $elements[$delta]['#allowed'] = $allowed;
+      $elements[$delta]['#allowed'] = AllowedDomains::isAllowed($src, $patterns);
       $elements[$delta]['#cache']['tags'] = array_merge(
         $elements[$delta]['#cache']['tags'] ?? [],
         $cache_tags,
       );
-
-      // Only an embedded iframe has anything to show fullscreen; the link
-      // fallback already points at the URL itself.
-      if ($allowed) {
-        $this->addFullscreenLink($elements[$delta], $items, $delta);
-      }
     }
 
     return $elements;
-  }
-
-  /**
-   * Adds the fullscreen dialog link to a rendered item.
-   *
-   * @param array $element
-   *   The render array of a single field item.
-   * @param \Drupal\Core\Field\FieldItemListInterface $items
-   *   The field items being rendered.
-   * @param int $delta
-   *   The delta of the item.
-   */
-  protected function addFullscreenLink(array &$element, FieldItemListInterface $items, int $delta): void {
-    $entity = $items->getEntity();
-    // An unsaved entity - a preview, say - has nothing to link to.
-    if (NULL === $entity->id()) {
-      return;
-    }
-
-    $url = Url::fromRoute('itk_iframe_field.fullscreen', [
-      'entity_type_id' => $entity->getEntityTypeId(),
-      'entity_id' => $entity->id(),
-      'field_name' => $this->fieldDefinition->getName(),
-      'delta' => $delta,
-    ])->toString(TRUE);
-
-    $element['#fullscreen_url'] = $url->getGeneratedUrl();
-    $element['#attached']['library'][] = 'core/drupal.dialog.ajax';
-
-    BubbleableMetadata::createFromRenderArray($element)
-      ->merge($url)
-      ->applyTo($element);
   }
 
 }

@@ -61,19 +61,12 @@ why the widget hides its width input — see below.
 
 ## Full screen
 
-An embedded iframe gets a *View in full screen* link, which opens the same item
-in a Drupal modal dialog (`use-ajax` + `data-dialog-type="modal"`, the same
-pattern the theme already uses for image galleries and videos).
+An embedded iframe gets a *View in full screen* link straight to the embedded
+URL, opening in a new tab. Nothing renders it inside the site — it is a plain
+link to the remote source.
 
-The dialog content comes from the route `itk_iframe_field.fullscreen`
-(`/itk-iframe-field/{entity_type_id}/{entity_id}/{field_name}/{delta}`), handled
-by `FullscreenController`. The controller reads the URL from the stored field
-item, never from the request, and renders it through the same formatter — so the
-accepted-domains list cannot be sidestepped by calling the route directly.
-Access requires view access to both the entity and the field.
-
-URLs off the accepted list get no fullscreen link; the link fallback already
-points at the URL itself.
+URLs off the accepted list get no such link; the link fallback already points at
+the URL itself.
 
 ## Width
 

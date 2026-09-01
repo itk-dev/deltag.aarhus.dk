@@ -31,7 +31,6 @@ class ItkIframeHooks {
           'text' => '',
           'style' => '',
           'headerlevel' => 3,
-          'fullscreen_url' => NULL,
         ],
         'template' => 'itk-iframe-field',
       ],

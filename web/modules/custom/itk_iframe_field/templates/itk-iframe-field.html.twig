@@ -22,8 +22,6 @@
  * - text: The title text.
  * - style: Inline CSS for this iframe, scoped to its id.
  * - headerlevel: Heading level (1-6) used for the title.
- * - fullscreen_url: Route to the same item on its own, for the dialog. NULL
- *   when there is nothing to embed or the entity is not saved yet.
  */
 #}
 {% set classes = ['itk-iframe-field', allowed ? 'itk-iframe-field--embedded' : 'itk-iframe-field--linked'] %}
@@ -38,14 +36,7 @@
     <iframe{{ attributes.setAttribute('style', 'width: 100%;') }}>
       {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text}) }}
     </iframe>
-    {% if fullscreen_url %}
-      <a href="{{ fullscreen_url }}"
-        class="itk-iframe-field__fullscreen use-ajax"
-        data-dialog-type="modal"
-        data-dialog-options='{"width":"90%","height":"90%","dialogClass":"itk-iframe-field-dialog"}'>
-        {{ 'View in full screen'|t }}
-      </a>
-    {% endif %}
+    <a href="{{ src }}" class="itk-iframe-field__fullscreen" target="_blank" rel="noopener noreferrer">{{ 'View in full screen'|t }}</a>
   {% else %}
     <a href="{{ src }}" class="itk-iframe-field__link">{{ text is not empty ? text : src }}</a>
   {% endif %}

@@ -11,7 +11,7 @@
  * - do not widen that test here. Embedding a URL the field does not accept is
  * exactly what the module exists to prevent.
  *
- * The width is set with inline CSS, which is why the widget hides its width
+ * The size is set with inline CSS, which is why the widget hides its width
  * input: whatever is stored has no effect on the output.
  *
  * Available variables:
@@ -21,7 +21,6 @@
  * - text: The title text.
  * - style: Inline CSS for this iframe, scoped to its id.
  * - headerlevel: Heading level (1-6) used for the title.
- * - fullscreen_url: Route to the same item on its own, for the dialog.
  *
  * @see itk_iframe_field/templates/itk-iframe-field.html.twig
  */
@@ -35,18 +34,10 @@
     {% if style is not empty %}
       <style>{{ style|raw }}</style>
     {% endif %}
-    <iframe{{ attributes.setAttribute('style', 'width: 100%;') }}>
+    <iframe{{ attributes.setAttribute('style', 'aspect-ratio: 16/9; width: 100%; border:0; margin:0;') }}>
       {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text}) }}
     </iframe>
-    {% if fullscreen_url %}
-      <a href="{{ fullscreen_url }}"
-        class="itk-iframe-field__fullscreen btn btn-link px-0 use-ajax"
-        data-dialog-type="modal"
-        data-dialog-options='{"width":"90%","height":"90%","dialogClass":"itk-iframe-field-dialog"}'>
-        <i class="fa-solid fa-expand"></i>
-        {{ 'View in full screen'|t }}
-      </a>
-    {% endif %}
+    <a href="{{ src }}" class="itk-iframe-field__fullscreen btn btn-link px-0" target="_blank" rel="noopener noreferrer">{{ 'View in full screen'|t }}</a>
   {% else %}
     <a href="{{ src }}" class="itk-iframe-field__link">
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
