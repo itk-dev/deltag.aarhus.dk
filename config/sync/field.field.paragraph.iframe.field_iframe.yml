@@ -1,0 +1,32 @@
+uuid: e872fa45-19a9-4cc9-93a8-790a3fddf67f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_iframe
+    - paragraphs.paragraphs_type.iframe
+  module:
+    - itk_iframe_field
+id: paragraph.iframe.field_iframe
+field_name: field_iframe
+entity_type: paragraph
+bundle: iframe
+label: Iframe
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: null
+  headerlevel: '3'
+  class: ''
+  frameborder: '0'
+  scrolling: 'no'
+  transparency: '0'
+  allowfullscreen: '1'
+  tokensupport: '0'
+  width: null
+  height: null
+  allowed_domains: eu.opencitiesplanner.bentley.com
+field_type: itk_iframe
