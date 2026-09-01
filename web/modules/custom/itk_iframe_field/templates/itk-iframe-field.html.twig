@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme implementation for an iframe limited to accepted domains.
+ *
+ * URLs served by one of the field's accepted domains are embedded as an
+ * iframe; any other URL is rendered as a plain link instead. Which of the two
+ * applies is decided in
+ * \Drupal\itk_iframe_field\Plugin\Field\FieldFormatter\ItkIframeDefaultFormatter
+ * and passed in as "allowed" - do not widen that test here.
+ *
+ * The formatter only reaches this template with absolute http(s) URLs, which
+ * is what makes "src" safe to use as an href.
+ *
+ * Available variables:
+ * - allowed: TRUE to embed the URL, FALSE to link to it.
+ * - src: The URL to embed or link to.
+ * - attributes: HTML attributes for the iframe tag, including id and class.
+ * - text: The title text.
+ * - style: Inline CSS for this iframe, scoped to its id.
+ * - headerlevel: Heading level (1-6) used for the title.
+ */
+#}
+{% set classes = ['itk-iframe-field', allowed ? 'itk-iframe-field--embedded' : 'itk-iframe-field--linked'] %}
+<div class="{{ classes|join(' ') }}{% if attributes.class is not empty %} {{ attributes.class }}{% endif %}">
+  {% if text is not empty %}
+    <h{{ headerlevel|default(3) }} class="itk-iframe-field__title">{{ text }}</h{{ headerlevel|default(3) }}>
+  {% endif %}
+  {% if allowed %}
+    {% if style is not empty %}
+      <style>{{ style|raw }}</style>
+    {% endif %}
+    <iframe{{ attributes }}>
+      {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text}) }}
+    </iframe>
+  {% else %}
+    <a href="{{ src }}" class="itk-iframe-field__link">{{ text is not empty ? text : src }}</a>
+  {% endif %}
+</div>
