@@ -1,0 +1,8 @@
+itk_iframe_field.fullscreen:
+  path: '/itk-iframe-field/{entity_type_id}/{entity_id}/{field_name}/{delta}'
+  defaults:
+    _controller: '\Drupal\itk_iframe_field\Controller\FullscreenController::build'
+    _title_callback: '\Drupal\itk_iframe_field\Controller\FullscreenController::title'
+  requirements:
+    _custom_access: '\Drupal\itk_iframe_field\Controller\FullscreenController::access'
+    delta: \d+

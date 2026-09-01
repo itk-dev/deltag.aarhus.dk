@@ -47,12 +47,44 @@ produced by token replacement when the iframe field's token support is on.
 ## Theming
 
 Items are rendered through `templates/itk-iframe-field.html.twig` (theme hook
-`itk_iframe_field`), which can be overridden from a theme in the usual way.
+`itk_iframe_field`). The `hoeringsportal` theme overrides it in
+`templates/field/itk-iframe-field.html.twig` to add its Bootstrap and Font
+Awesome markup.
 
 The template receives an `allowed` boolean and branches on it: `true` renders
 the iframe, `false` renders the link. The decision itself is made in
 `ItkIframeDefaultFormatter` — an override may restyle either branch, but must
 not widen the condition under which the iframe is emitted.
+
+Both templates set the iframe width with inline CSS (`width: 100%`), which is
+why the widget hides its width input — see below.
+
+## Full screen
+
+An embedded iframe gets a *View in full screen* link, which opens the same item
+in a Drupal modal dialog (`use-ajax` + `data-dialog-type="modal"`, the same
+pattern the theme already uses for image galleries and videos).
+
+The dialog content comes from the route `itk_iframe_field.fullscreen`
+(`/itk-iframe-field/{entity_type_id}/{entity_id}/{field_name}/{delta}`), handled
+by `FullscreenController`. The controller reads the URL from the stored field
+item, never from the request, and renders it through the same formatter — so the
+accepted-domains list cannot be sidestepped by calling the route directly.
+Access requires view access to both the entity and the field.
+
+URLs off the accepted list get no fullscreen link; the link fallback already
+points at the URL itself.
+
+## Width
+
+The widget's **width** input is hidden for this field type, because both
+templates set the width with inline CSS and the stored value has no effect on
+the output. Height is still editable.
+
+The input is hidden with `#access: FALSE` rather than removed, so that saving an
+existing item keeps whatever width it already had rather than silently rewriting
+it to the field default. The width in *field settings* and *widget settings* is
+untouched.
 
 ## Widgets
 

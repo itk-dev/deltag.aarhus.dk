@@ -8,6 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 * [PR-682](https://github.com/itk-dev/deltag.aarhus.dk/pull/682)
   * Added itk_iframe_field module
+  * Added full screen dialog link to iframe fields
 
 ## [4.17.4] - 2026-08-28
 

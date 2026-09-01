@@ -31,6 +31,7 @@ class ItkIframeHooks {
           'text' => '',
           'style' => '',
           'headerlevel' => 3,
+          'fullscreen_url' => NULL,
         ],
         'template' => 'itk-iframe-field',
       ],
@@ -86,6 +87,13 @@ class ItkIframeHooks {
     $field_definition = $items->getFieldDefinition();
     if ('itk_iframe' !== $field_definition->getType()) {
       return;
+    }
+
+    // The template sizes the iframe with inline CSS, so an editor-supplied
+    // width has no effect. Hide the input rather than removing it, so that
+    // saving an existing item does not rewrite its stored width.
+    if (isset($element['width'])) {
+      $element['width']['#access'] = FALSE;
     }
 
     $domains = AllowedDomains::parse((string) ($field_definition->getSetting('allowed_domains') ?? ''));
