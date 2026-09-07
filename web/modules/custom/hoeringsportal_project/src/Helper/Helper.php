@@ -245,7 +245,7 @@ class Helper {
         case 'dialogue':
           return [
             new DrupalDateTime(),
-            new DrupalDateTime()
+            new DrupalDateTime(),
           ];
 
         case 'hearing':
