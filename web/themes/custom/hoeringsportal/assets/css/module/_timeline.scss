@@ -761,6 +761,7 @@ $mini-nav-dot-size: 10px;
 
   // Connecting line colors based on progress - dark for completed and notes
   &:has(.project-timeline-mini-nav__link--completed)::after,
+  &:has(.project-timeline-mini-nav__link--in_progress)::after,
   &:has(.project-timeline-mini-nav__link--note)::after {
     background: var(--primitive-gray-800);
   }
