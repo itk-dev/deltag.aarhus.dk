@@ -45,7 +45,7 @@ class DialogueController extends ControllerBase {
 
     $mapConfig = [
       'map' => [
-        'srs' => $view['srs'],
+        'srs' => 'EPSG:25832',
         'minZoomLevel' => 15,
         'view' => $view,
         'layer' => [
@@ -128,6 +128,7 @@ class DialogueController extends ControllerBase {
       $proposals = $this->entityTypeManager()->getStorage('node')->loadMultiple($proposalIds);
       foreach ($proposals as $proposal) {
         $location = json_decode($proposal->field_location->data, TRUE);
+        $location['type'] = 'Feature';
         $location['properties']['title'] = $proposal->label();
         $location['properties']['url'] = Url::fromRoute('entity.node.canonical', ['node' => $proposal->id()])->toString();
         $location['properties']['description'] = mb_strimwidth($proposal->field_dialogue_proposal_descr->value, 0, 200, '...');
