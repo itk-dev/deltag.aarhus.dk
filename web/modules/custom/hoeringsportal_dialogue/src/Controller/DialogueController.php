@@ -45,6 +45,7 @@ class DialogueController extends ControllerBase {
 
     $mapConfig = [
       'map' => [
+        'srs' => $view['srs'],
         'minZoomLevel' => 15,
         'view' => $view,
         'layer' => [

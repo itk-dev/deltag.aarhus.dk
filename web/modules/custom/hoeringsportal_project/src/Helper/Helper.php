@@ -243,9 +243,11 @@ class Helper {
           ];
 
         case 'dialogue':
+          // Dialogues don't have static start/end, they are either published
+          // or unpublished. If published theu are active "Today"
           return [
-            DrupalDateTime::createFromTimestamp($node->getCreatedTime()),
-            DrupalDateTime::createFromTimestamp($node->getCreatedTime()),
+            new DrupalDateTime(),
+            new DrupalDateTime(),
           ];
 
         case 'hearing':
@@ -280,9 +282,9 @@ class Helper {
   private function determineImage(NodeInterface $node): ?File {
     try {
       return match (TRUE) {
-        $node->hasField('field_media_image') => $node->field_media_image->entity->field_itk_media_image_upload->entity,
-        $node->hasField('field_media_image_single') => $node->field_media_image_single->entity->field_itk_media_image_upload->entity,
-        $node->hasField('field_top_images') => $node->field_top_images->entity->field_itk_media_image_upload->entity,
+        $node->hasField('field_media_image') => $node->field_media_image->entity?->field_itk_media_image_upload->entity,
+        $node->hasField('field_media_image_single') => $node->field_media_image_single->entity?->field_itk_media_image_upload->entity,
+        $node->hasField('field_top_images') => $node->field_top_images->entity?->field_itk_media_image_upload->entity,
         default => NULL,
       };
     }
@@ -316,7 +318,7 @@ class Helper {
     $today = $now->format('Y-m-d');
 
     return match (TRUE) {
-      $startDay === $endDay && $endDay === $today => self::STATUS_CURRENT,
+      $startDay === $endDay && $endDay === $today => self::STATUS_IN_PROGRESS,
       $startTime <= $now && $now <= $endTime => self::STATUS_IN_PROGRESS,
       $startTime > $now => self::STATUS_UPCOMING,
       $entity->getEntityTypeId() === 'node' => self::STATUS_COMPLETED,
