@@ -9,7 +9,7 @@ hearing-edit:
 septima-widget-config:
   version: VERSION
   js:
-    https://widget.cdn.septima.dk/3.23.0/widgetapi.js: { type: external }
+      https://widget.cdn.septima.dk/3.23.0/widgetconfig.js: { type: external }
 
 septima-widget-api:
   version: VERSION
