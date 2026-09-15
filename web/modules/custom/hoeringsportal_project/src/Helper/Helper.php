@@ -244,7 +244,7 @@ class Helper {
 
         case 'dialogue':
           // Dialogues don't have static start/end, they are either published
-          // or unpublished. If published theu are active "Today"
+          // or unpublished. If published theu are active "Today".
           return [
             new DrupalDateTime(),
             new DrupalDateTime(),
