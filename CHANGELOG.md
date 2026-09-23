@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.17.6] - 2026-09-23
+
+* [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/685)
+  * Security update to webform module and drupal core
+
 ## [4.17.5] - 2026-09-15
 
 * [PR-683](https://github.com/itk-dev/deltag.aarhus.dk/pull/683)
