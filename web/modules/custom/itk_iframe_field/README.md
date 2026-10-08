@@ -22,7 +22,7 @@ player.vimeo.com
 - `*.aarhus.dk` matches any subdomain, but not `aarhus.dk` itself.
 - Lines beginning with `#` are comments; blank lines are ignored.
 - Lines may be pasted as full URLs (`https://aarhus.dk/some/page`); only the
-  host is kept.
+  host is considered.
 
 ## What gets rendered
 
@@ -35,7 +35,7 @@ player.vimeo.com
 So a URL to `google.com` on a field that only accepts `aarhus.dk` still shows
 up — as a link, not an embed.
 
-The third row exists because HTML-escaping does not neutralise a
+The third row exists because HTML-escaping does not neutralize a
 `javascript:` href, so such a value cannot safely be turned into a link
 either. In practice the widget's URL validation prevents these; the check
 guards imported or token-generated values.
@@ -54,9 +54,6 @@ Items are rendered through `templates/itk-iframe-field.html.twig` (theme hook
 The template receives an `allowed` boolean and branches on it: `true` renders
 the iframe, `false` renders the link. The decision itself is made in
 `ItkIframeDefaultFormatter`
-
-Both templates set the iframe width with inline CSS (`width: 100%`), which is
-why the widget hides its width input — see below.
 
 ## Full screen
 

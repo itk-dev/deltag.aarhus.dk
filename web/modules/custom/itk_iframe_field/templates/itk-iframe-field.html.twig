@@ -7,10 +7,6 @@
  * iframe; any other URL is rendered as a plain link instead. Which of the two
  * applies is decided in
  * \Drupal\itk_iframe_field\Plugin\Field\FieldFormatter\ItkIframeDefaultFormatter
- * and passed in as "allowed" - do not widen that test here.
- *
- * The formatter only reaches this template with absolute http(s) URLs, which
- * is what makes "src" safe to use as an href.
  *
  * The size is set here with inline CSS - full width, fixed aspect ratio -
  * which is why the widget hides its width and height inputs: whatever is
