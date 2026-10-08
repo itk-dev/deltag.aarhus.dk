@@ -10,6 +10,17 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Added itk_iframe_field module
   * Added full screen link to iframe fields
 
+## [4.17.7] - 2026-09-23
+
+* [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/685)
+  * Security update to webform module and drupal core
+
+## [4.17.5] - 2026-09-15
+
+* [PR-683](https://github.com/itk-dev/deltag.aarhus.dk/pull/683)
+  * Fixed dialogue bug in timeline view
+  * Fixed bug septima cdn reference
+
 ## [4.17.4] - 2026-08-28
 
 * [PR-681](https://github.com/itk-dev/deltag.aarhus.dk/pull/681)
@@ -845,7 +856,11 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.2...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.7...HEAD
+[4.17.7]: https://github.com/itk-dev/hoeringsportal/compare/4.17.5...4.17.7
+[4.17.5]: https://github.com/itk-dev/hoeringsportal/compare/4.17.4...4.17.5
+[4.17.4]: https://github.com/itk-dev/hoeringsportal/compare/4.17.3...4.17.4
+[4.17.3]: https://github.com/itk-dev/hoeringsportal/compare/4.17.2...4.17.3
 [4.17.2]: https://github.com/itk-dev/hoeringsportal/compare/4.17.1...4.17.2
 [4.17.1]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...4.17.1
 [4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...4.17.0
