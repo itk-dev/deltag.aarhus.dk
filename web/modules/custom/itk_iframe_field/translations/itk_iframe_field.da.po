@@ -1,0 +1,78 @@
+# Danish translation of module itk_iframe_field
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2026-10-08 11:15+0200\n"
+"PO-Revision-Date: 2026-10-08 11:15+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+msgid ""
+"A bare domain such as <em>example.com</em> matches that host only. Use "
+"<em>*.example.com</em> to match its subdomains. Lines starting with "
+"<em>#</em> are treated as comments."
+msgstr ""
+"Et råt domæne som <em>example.com</em> matcher kun host. Brug "
+"<em>*.example.com</em> til at matche subdomæner. Linjer der starter "
+"med <em>#</em> betragtes som kommentarer."
+
+msgid "Accepted domains"
+msgstr "Accepterede domæner"
+
+msgid ""
+"An iframe field that only renders an iframe when its URL is served by "
+"one of the domains accepted for this field."
+msgstr ""
+"Et iframe felt som kun renderer en iframe hvis dens URL peger på et "
+"af de domæner der er accepteret for dette felt."
+
+msgid ""
+"Embedded as an iframe only for: @domains. Any other URL is rendered as "
+"a link."
+msgstr ""
+"Indlejres kun som iframe for: @domains. Alle andre URLer renderes som "
+"links."
+
+msgid "ITK"
+msgstr "ITK"
+
+msgid "Iframe (accepted domains)"
+msgstr "Iframe (accepterede domæner)"
+
+msgid ""
+"No domains are accepted for this field yet, so every URL is rendered "
+"as a link instead of an iframe."
+msgstr ""
+"Intet domæne er accepteret for dette felt endnu, så alle URLer "
+"renderes som links istedet for iframes."
+
+msgid ""
+"One domain per line. Only URLs served by one of these domains are "
+"rendered as an iframe; anything else renders nothing at all. As long "
+"as the list is empty, no iframe is rendered."
+msgstr ""
+"Et domæne pr. linje. Kun URLer der peger på et af disse domæner "
+"renderes som in iframe; andre domæner renderes ikke. Sålænge listen "
+"er tom bliver ingen iframe renderet."
+
+msgid "These lines are not valid domains: @domains"
+msgstr "Disse linjger er ikke valide domæner: @domains"
+
+msgid "Title, over iframe (accepted domains only)"
+msgstr "Titel, over iframe (ved godkendte domæner)"
+
+msgid "View in full screen"
+msgstr "Vis i fuld skærm"
+
+msgid ""
+"Your browser does not support iframes, but you can visit <a "
+"href=\":url\">@text</a>"
+msgstr ""
+"Din browser understøtter ikke iframes, men du kan besøge <a "
+"href=\":url\">@text</a>"

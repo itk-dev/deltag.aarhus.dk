@@ -12,7 +12,10 @@ const timer = setInterval(function () {
   const compStyles = window.getComputedStyle(element);
   const height = parseInt(compStyles.height, 10);
   if (height > 300) {
-    document.querySelector(".spinner").remove();
+    // Clear the timer first: a failure below must not leave the interval
+    // running and repeat itself every 100ms. The spinner only exists on the
+    // hearing reply form, so on any other page there is nothing to remove.
     clearInterval(timer);
+    document.querySelector(".spinner")?.remove();
   }
 }, 100);
