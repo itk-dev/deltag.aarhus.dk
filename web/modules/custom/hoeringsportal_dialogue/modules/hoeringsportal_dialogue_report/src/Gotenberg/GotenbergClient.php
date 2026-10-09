@@ -10,6 +10,19 @@ use GuzzleHttp\ClientInterface;
  */
 final class GotenbergClient {
 
+  private const DEFAULT_URL = 'http://gotenberg:3000';
+  private const CONVERT_HTML_PATH = '/forms/chromium/convert/html';
+
+  // A4, in inches (Gotenberg's unit).
+  private const PAPER_WIDTH = '8.27';
+  private const PAPER_HEIGHT = '11.7';
+  private const MARGIN_TOP = '0.4';
+  // Leaves room for the footer.
+  private const MARGIN_BOTTOM = '0.6';
+
+  // Makes Chromium apply the report's @media print rules.
+  private const EMULATED_MEDIA_TYPE = 'print';
+
   public function __construct(
     private readonly ClientInterface $httpClient,
     private readonly Settings $settings,
@@ -29,39 +42,24 @@ final class GotenbergClient {
    *   The rendered PDF, as binary string.
    */
   public function convertHtmlToPdf(string $html, string $footerHtml): string {
-    $response = $this->httpClient->request('POST', $this->getBaseUrl() . '/forms/chromium/convert/html', [
-      'multipart' => [
-        [
-          'name' => 'files',
-          'filename' => 'index.html',
-          'contents' => $html,
-        ],
-        [
-          'name' => 'files',
-          'filename' => 'footer.html',
-          'contents' => $footerHtml,
-        ],
-        [
-          'name' => 'emulatedMediaType',
-          'contents' => 'print',
-        ],
-        [
-          'name' => 'paperWidth',
-          'contents' => '8.27',
-        ],
-        [
-          'name' => 'paperHeight',
-          'contents' => '11.7',
-        ],
-        [
-          'name' => 'marginTop',
-          'contents' => '0.4',
-        ],
-        [
-          'name' => 'marginBottom',
-          'contents' => '0.6',
-        ],
-      ],
+    $options = [
+      'emulatedMediaType' => self::EMULATED_MEDIA_TYPE,
+      'paperWidth' => self::PAPER_WIDTH,
+      'paperHeight' => self::PAPER_HEIGHT,
+      'marginTop' => self::MARGIN_TOP,
+      'marginBottom' => self::MARGIN_BOTTOM,
+    ];
+
+    $multipart = [
+      ['name' => 'files', 'filename' => 'index.html', 'contents' => $html],
+      ['name' => 'files', 'filename' => 'footer.html', 'contents' => $footerHtml],
+    ];
+    foreach ($options as $name => $value) {
+      $multipart[] = ['name' => $name, 'contents' => $value];
+    }
+
+    $response = $this->httpClient->request('POST', $this->getBaseUrl() . self::CONVERT_HTML_PATH, [
+      'multipart' => $multipart,
     ]);
 
     return (string) $response->getBody();
@@ -73,7 +71,7 @@ final class GotenbergClient {
   private function getBaseUrl(): string {
     $config = $this->settings->get('hoeringsportal_dialogue.gotenberg') ?? [];
 
-    return rtrim($config['url'] ?? 'http://gotenberg:3000', '/');
+    return rtrim($config['url'] ?? self::DEFAULT_URL, '/');
   }
 
 }

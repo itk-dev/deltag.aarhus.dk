@@ -2,6 +2,7 @@
 
 namespace Drupal\hoeringsportal_dialogue_report\Helper;
 
+use Drupal\comment\CommentInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\node\NodeInterface;
@@ -101,10 +102,10 @@ class ReportHelper {
   }
 
   /**
-   * Get all proposals for a dialogue, grouped by category term id.
+   * Get all published proposals for a dialogue, grouped by category term id.
    *
-   * Includes unpublished proposals: this is an administrative report, not a
-   * public listing.
+   * Published status is filtered explicitly rather than via access checks, so
+   * the report is the same whether rendered by an admin or by Drush.
    *
    * @return array<int, \Drupal\node\NodeInterface[]>
    *   Proposal nodes keyed by category term id.
@@ -113,6 +114,7 @@ class ReportHelper {
     $storage = $this->entityTypeManager->getStorage('node');
     $ids = $storage->getQuery()
       ->accessCheck(FALSE)
+      ->condition('status', NodeInterface::PUBLISHED)
       ->condition('type', 'dialogue_proposal')
       ->condition('field_dialogue', $dialogue->id())
       ->sort('created')
@@ -184,7 +186,7 @@ class ReportHelper {
   }
 
   /**
-   * Get all comments for a set of proposals, grouped by proposal node id.
+   * Get published comments for a set of proposals, grouped by proposal id.
    *
    * @param int[] $proposalIds
    *   Proposal node ids.
@@ -200,6 +202,7 @@ class ReportHelper {
     $storage = $this->entityTypeManager->getStorage('comment');
     $ids = $storage->getQuery()
       ->accessCheck(FALSE)
+      ->condition('status', CommentInterface::PUBLISHED)
       ->condition('entity_type', 'node')
       ->condition('field_name', 'field_comments')
       ->condition('entity_id', $proposalIds, 'IN')

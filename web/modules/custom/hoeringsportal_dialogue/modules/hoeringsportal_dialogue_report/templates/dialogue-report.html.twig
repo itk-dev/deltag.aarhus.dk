@@ -2,47 +2,47 @@
 <html lang="da">
 <head>
   <meta charset="utf-8">
-  <title>{{ 'Rapport'|t }}: {{ dialogue.label }}</title>
+  <title>{{ 'Report'|t }}: {{ dialogue.label }}</title>
   <style>{{ print_css|raw }}</style>
 </head>
 <body>
-  <h1 id="top">{{ 'Rapport'|t }}: {{ dialogue.label }}</h1>
+  <h1 id="top">{{ 'Report'|t }}: {{ dialogue.label }}</h1>
   <p>
-    <a href="{{ url('entity.node.canonical', {node: dialogue.id}) }}">{{ 'Tilbage til dialogen'|t }}</a>
+    <a href="{{ url('entity.node.canonical', {node: dialogue.id}) }}">{{ 'Back to dialogue'|t }}</a>
     {% if not for_pdf %}
       &middot;
-      <a href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Download som PDF'|t }}</a>
+      <a href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Download as PDF'|t }}</a>
     {% endif %}
   </p>
 
   <section id="statistik">
-    <h2>{{ 'Statistik'|t }}</h2>
+    <h2>{{ 'Statistics'|t }}</h2>
     {% for tid, category in categories %}
       <div class="stat-box" id="stat-{{ tid }}">
         <h3><a href="#toc-{{ tid }}">{{ category.term.label }}</a></h3>
         <table>
-          <tr><th>{{ 'Forslag'|t }}</th><td>{{ category.proposal_count }}</td></tr>
+          <tr><th>{{ 'Proposals'|t }}</th><td>{{ category.proposal_count }}</td></tr>
           <tr><th>{{ 'Likes'|t }}</th><td>{{ category.like_count }}</td></tr>
-          <tr><th>{{ 'Kommentarer'|t }}</th><td>{{ category.comment_count }}</td></tr>
+          <tr><th>{{ 'Comments'|t }}</th><td>{{ category.comment_count }}</td></tr>
         </table>
       </div>
     {% endfor %}
   </section>
 
   <section id="indholdsfortegnelse">
-    <h2>{{ 'Indholdsfortegnelse'|t }}</h2>
+    <h2>{{ 'Table of contents'|t }}</h2>
     {% for tid, category in categories %}
       <div class="toc-box" id="toc-{{ tid }}">
         <h3>
           {{ category.term.label }}
-          &mdash; <a href="#top">{{ 'Til toppen'|t }}</a>
-          &middot; <a href="#stat-{{ tid }}">{{ 'Til statistik'|t }}</a>
+          &mdash; <a href="#top">{{ 'To top'|t }}</a>
+          &middot; <a href="#stat-{{ tid }}">{{ 'To statistics'|t }}</a>
         </h3>
         <ul>
           {% for proposal in category.proposals %}
             <li>
               <a href="#forslag-{{ proposal.node.id }}">{{ proposal.node.label }}</a>
-              &mdash; {{ proposal.like_count }} {{ 'likes'|t }}, {{ proposal.comment_count }} {{ 'kommentarer'|t }}
+              &mdash; {{ 'Likes'|t }}: {{ proposal.like_count }}, {{ 'Comments'|t }}: {{ proposal.comment_count }}
             </li>
           {% endfor %}
         </ul>
@@ -51,18 +51,18 @@
   </section>
 
   <section id="forslag">
-    <h2>{{ 'Forslag'|t }}</h2>
+    <h2>{{ 'Proposals'|t }}</h2>
     {% import _self as helpers %}
     {% for tid, category in categories %}
       {% for proposal in category.proposals %}
         <article class="proposal" id="forslag-{{ proposal.node.id }}">
           <h3>{{ proposal.node.label }}</h3>
           <p>
-            <a href="#top">{{ 'Til toppen'|t }}</a>
-            &middot; <a href="#toc-{{ tid }}">{{ 'Til indholdsfortegnelse'|t }} ({{ category.term.label }})</a>
+            <a href="#top">{{ 'To top'|t }}</a>
+            &middot; <a href="#toc-{{ tid }}">{{ 'To table of contents'|t }} ({{ category.term.label }})</a>
           </p>
           <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
-          <p>{{ 'Likes'|t }}: {{ proposal.like_count }} &middot; {{ 'Kommentarer'|t }}: {{ proposal.comment_count }}</p>
+          <p>{{ 'Likes'|t }}: {{ proposal.like_count }} &middot; {{ 'Comments'|t }}: {{ proposal.comment_count }}</p>
 
           {% if proposal.comments %}
             <div class="comments">

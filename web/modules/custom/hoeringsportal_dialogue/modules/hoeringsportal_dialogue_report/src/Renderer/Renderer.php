@@ -4,6 +4,7 @@ namespace Drupal\hoeringsportal_dialogue_report\Renderer;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient;
 use Drupal\hoeringsportal_dialogue_report\Helper\ReportHelper;
 use Drupal\node\NodeInterface;
@@ -12,6 +13,10 @@ use Drupal\node\NodeInterface;
  * Renders a dialogue report as HTML or PDF.
  */
 final class Renderer {
+  use StringTranslationTrait;
+
+  private const TEMPLATE = 'templates/dialogue-report.html.twig';
+  private const PRINT_CSS = 'assets/css/dialogue-report-print.css';
 
   public function __construct(
     private readonly RendererInterface $renderer,
@@ -31,21 +36,16 @@ final class Renderer {
    *   suppress the "Download as PDF" link in that case.
    */
   public function renderHtml(NodeInterface $dialogue, bool $forPdf = FALSE): string {
-    $templatePath = $this->getTemplateDirectory() . '/dialogue-report.html.twig';
-    $template = file_get_contents($templatePath);
-    if (FALSE === $template) {
-      throw new \RuntimeException(sprintf('Cannot load template %s', $templatePath));
-    }
-
-    $printCss = file_get_contents($this->getTemplateDirectory() . '/dialogue-report-print.css') ?: '';
-
+    // The CSS is inlined rather than attached as a library: the report bypasses
+    // the theme layer, and Gotenberg receives an HTML string with no way to
+    // fetch linked assets.
     $build = [
       '#type' => 'inline_template',
-      '#template' => $template,
+      '#template' => $this->readModuleFile(self::TEMPLATE),
       '#context' => [
         'dialogue' => $dialogue,
         'categories' => $this->reportHelper->build($dialogue),
-        'print_css' => $printCss,
+        'print_css' => $this->readModuleFile(self::PRINT_CSS),
         'for_pdf' => $forPdf,
       ],
     ];
@@ -59,18 +59,22 @@ final class Renderer {
   public function renderPdf(NodeInterface $dialogue): string {
     $html = $this->renderHtml($dialogue, TRUE);
     $footerHtml = '<html><head><style>body { font-size: 10px; width: 100%; text-align: center; margin: 0; }</style></head>'
-      . '<body>Side <span class="pageNumber"></span> af <span class="totalPages"></span></body></html>';
+      . '<body>' . $this->t('Page <span class="pageNumber"></span> of <span class="totalPages"></span>') . '</body></html>';
 
     return $this->gotenbergClient->convertHtmlToPdf($html, $footerHtml);
   }
 
   /**
-   * Get the module's templates directory.
+   * Read a file relative to this module's directory.
    */
-  private function getTemplateDirectory(): string {
-    $modulePath = $this->moduleHandler->getModule('hoeringsportal_dialogue_report')->getPath();
+  private function readModuleFile(string $relativePath): string {
+    $path = $this->moduleHandler->getModule('hoeringsportal_dialogue_report')->getPath() . '/' . $relativePath;
+    $contents = file_get_contents($path);
+    if (FALSE === $contents) {
+      throw new \RuntimeException(sprintf('Cannot read file %s', $path));
+    }
 
-    return $modulePath . '/templates';
+    return $contents;
   }
 
 }

@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-02-05 08:47+0100\n"
-"PO-Revision-Date: 2026-02-05 08:47+0100\n"
+"POT-Creation-Date: 2026-10-09 09:05+0200\n"
+"PO-Revision-Date: 2026-10-09 09:05+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -69,6 +69,9 @@ msgstr "Dialogforslags svar"
 msgid "Dialogue proposals"
 msgstr "Dialogforslag"
 
+msgid "Download as PDF"
+msgstr "Download som PDF"
+
 msgid "Drop a file here or click <em>Browse</em> below."
 msgid_plural "Drop up to @count files here or click <em>Browse</em> below."
 msgstr[0] "Flyt en fil hertil eller tryk <em>Browse</em> herunder."
@@ -102,6 +105,9 @@ msgstr ""
 msgid "Latest proposal"
 msgstr "Seneste forslag"
 
+msgid "Likes"
+msgstr "Likes"
+
 msgid "Map"
 msgstr "Kort"
 
@@ -120,6 +126,13 @@ msgid_plural "Maximum @count files."
 msgstr[0] "Kun en fil"
 msgstr[1] "Maksimalt @count filer"
 
+msgid ""
+"Page <span class=\"pageNumber\"></span> of <span "
+"class=\"totalPages\"></span>"
+msgstr ""
+"Side <span class=\"pageNumber\"></span> af <span "
+"class=\"totalPages\"></span>"
+
 msgid "Participate with your proposal"
 msgstr "Deltag med dit forslag"
 
@@ -132,6 +145,9 @@ msgstr "Forslag"
 msgid "Reply"
 msgstr "Svar"
 
+msgid "Report"
+msgstr "Rapport"
+
 msgid "Save"
 msgstr "Gem"
 
@@ -141,8 +157,26 @@ msgstr "Send dit forslag"
 msgid "Show proposals on map"
 msgstr "Vis forslag på kort"
 
+msgid "Statistics"
+msgstr "Statistik"
+
+msgid "Table of contents"
+msgstr "Indholdsfortegnelse"
+
+msgid "To statistics"
+msgstr "Til statistik"
+
+msgid "To table of contents"
+msgstr "Til indholdsfortegnelse"
+
+msgid "To top"
+msgstr "Til toppen"
+
 msgid "View all proposals"
 msgstr "Se alle forslag"
+
+msgid "View dialogue report"
+msgstr "Se dialograpport"
 
 msgid "View more"
 msgstr "Se mere"
