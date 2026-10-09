@@ -171,12 +171,21 @@ class DialogueHelper {
         if ($node instanceof NodeInterface && !$node->isNew()) {
           $reportUrl = Url::fromRoute('hoeringsportal_dialogue_report.html', ['node' => $node->id()]);
           if ($reportUrl->access($this->account)) {
-            $form['dialogue_report_link'] = [
-              '#type' => 'link',
-              '#title' => $this->t('View dialogue report'),
-              '#url' => $reportUrl,
-              '#attributes' => ['target' => '_blank'],
+            // Claro renders $form['advanced'] as the right-hand sidebar; the
+            // wrapper class gives the button the sidebar's own padding.
+            $form['advanced']['dialogue_report'] = [
+              '#type' => 'container',
+              '#attributes' => ['class' => ['entity-meta__header']],
               '#weight' => -100,
+              'link' => [
+                '#type' => 'link',
+                '#title' => $this->t('View dialogue report'),
+                '#url' => $reportUrl,
+                '#attributes' => [
+                  'target' => '_blank',
+                  'class' => ['button', 'button--primary'],
+                ],
+              ],
             ];
           }
         }
