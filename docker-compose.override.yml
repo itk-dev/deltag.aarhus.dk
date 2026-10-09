@@ -11,6 +11,8 @@ services:
       - PHP_POST_MAX_SIZE=90M
       - PHP_UPLOAD_MAX_FILESIZE=80M
       - PHP_MEMORY_LIMIT=512M
+    depends_on:
+      - gotenberg
 
   nginx:
     labels:
@@ -39,3 +41,9 @@ services:
     ports:
       - "3310"
       - "7357"
+
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    restart: unless-stopped
+    networks:
+      - app
