@@ -1,6 +1,5 @@
 /* Colours from the hoeringsportal theme's petroleum palette. */
 :root {
-  --petroleum-900: #2a4a4a;
   --petroleum-500: #008486;
   --petroleum-200: #cfe0e2;
   --petroleum-100: #e5eef0;
@@ -20,7 +19,11 @@ h2,
 h3,
 h4 {
   line-height: 1.2;
-  color: var(--petroleum-900);
+  color: var(--petroleum-500);
+}
+
+a {
+  color: var(--petroleum-500);
 }
 
 /* Dialogue > category > proposal: each level wraps the next. */
@@ -53,7 +56,7 @@ h2 {
   margin-left: 1rem;
   padding: 0.6rem 0 0.6rem 1rem;
   border-left: 1px solid var(--petroleum-200);
-  color: var(--petroleum-900);
+  color: var(--petroleum-500);
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -119,7 +122,6 @@ h2 {
 .see-all {
   align-self: flex-start;
   margin-top: auto;
-  color: var(--petroleum-500);
   text-decoration: none;
 }
 
@@ -148,10 +150,6 @@ h2 {
   align-items: baseline;
   gap: 1rem;
   font-size: 0.9em;
-}
-
-.report-nav a {
-  color: var(--petroleum-900);
 }
 
 .breadcrumb {
