@@ -19,6 +19,7 @@ final class Renderer {
   private const BASE_CSS = 'assets/css/dialogue-report.css';
   private const HTML_CSS = 'assets/css/dialogue-report-html.css';
   private const PDF_CSS = 'assets/css/dialogue-report-pdf.css';
+  private const LOGO = 'assets/images/aarhus-kommune-logo.svg';
 
   public function __construct(
     private readonly RendererInterface $renderer,
@@ -50,6 +51,7 @@ final class Renderer {
         'dialogue' => $dialogue,
         'categories' => $this->reportHelper->build($dialogue),
         'css' => $css,
+        'logo' => $this->readModuleFile(self::LOGO),
         'for_pdf' => $forPdf,
       ],
     ];
@@ -62,8 +64,10 @@ final class Renderer {
    */
   public function renderPdf(NodeInterface $dialogue): string {
     $html = $this->renderHtml($dialogue, TRUE);
-    $footerHtml = '<html><head><style>body { font-size: 10px; width: 100%; text-align: center; margin: 0; }</style></head>'
-      . '<body>' . $this->t('Page <span class="pageNumber"></span> of <span class="totalPages"></span>') . '</body></html>';
+    // Chromium's footer template collapses spaces and ignores centring when
+    // the text sits directly in <body>, hence the wrapping div.
+    $footerHtml = '<html><head><style>html, body { margin: 0; padding: 0; } .pager { width: 100%; text-align: center; font-family: sans-serif; font-size: 10px; color: #555; }</style></head>'
+      . '<body><div class="pager">' . $this->t('Page <span class="pageNumber"></span> of <span class="totalPages"></span>') . '</div></body></html>';
 
     return $this->gotenbergClient->convertHtmlToPdf($html, $footerHtml);
   }

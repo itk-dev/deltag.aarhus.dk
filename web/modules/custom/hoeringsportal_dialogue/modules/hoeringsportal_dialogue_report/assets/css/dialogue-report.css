@@ -32,6 +32,38 @@ h2 {
   font-size: 1.9rem;
 }
 
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand svg {
+  width: auto;
+  height: 2.75rem;
+}
+
+.site-name {
+  margin-left: 1rem;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 1px solid var(--petroleum-200);
+  color: var(--petroleum-900);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.printed {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
 .teaser {
   margin-bottom: 1.5rem;
   font-size: 1.1em;

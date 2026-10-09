@@ -119,6 +119,7 @@ class ReportHelper {
       ->condition('type', 'dialogue_proposal')
       ->condition('field_dialogue', $dialogue->id())
       ->sort('created')
+      ->sort('nid')
       ->execute();
 
     if ([] === $ids) {
@@ -205,6 +206,7 @@ class ReportHelper {
       ->condition('field_name', 'field_comments')
       ->condition('entity_id', $proposalIds, 'IN')
       ->sort('created')
+      ->sort('cid')
       ->execute();
 
     if ([] === $ids) {
