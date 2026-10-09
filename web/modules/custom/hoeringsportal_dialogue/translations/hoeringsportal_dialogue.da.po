@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-02-05 08:47+0100\n"
-"PO-Revision-Date: 2026-02-05 08:47+0100\n"
+"POT-Creation-Date: 2026-10-09 12:44+0200\n"
+"PO-Revision-Date: 2026-10-09 12:44+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,20 @@ msgctxt "Comment reply"
 msgid "Reply"
 msgstr "Svar"
 
+msgctxt "Dialogue report"
+msgid "Frontpage"
+msgstr "Forside"
+
+msgid "1 agree vote"
+msgid_plural "@count agree votes"
+msgstr[0] "1 Enig"
+msgstr[1] "@count Enig"
+
+msgid "1 comment"
+msgid_plural "@count comments"
+msgstr[0] "1 kommentar"
+msgstr[1] "@count kommentarer"
+
 msgid "1 day ago"
 msgid_plural "@count days ago"
 msgstr[0] "1 dag siden"
@@ -26,6 +40,11 @@ msgid "1 hour ago"
 msgid_plural "@count hours ago"
 msgstr[0] "1 time siden"
 msgstr[1] "@count timer siden"
+
+msgid "1 input"
+msgid_plural "@count inputs"
+msgstr[0] "1 input"
+msgstr[1] "@count input"
 
 msgid "1 minute ago"
 msgid_plural "@count minutes ago"
@@ -43,8 +62,14 @@ msgstr "@size begrænsning."
 msgid "Add new comment"
 msgstr "Tilføj ny kommentar"
 
+msgid "Back"
+msgstr "Tilbage"
+
 msgid "Back to dialogue"
 msgstr "Tilbage til dialog"
+
+msgid "Click on a category to see all input within the subject"
+msgstr "Klik på en kategori for at se alle input inden for emnet"
 
 msgid "Comment @commentId and it's children have been unpublished."
 msgstr ""
@@ -53,6 +78,9 @@ msgstr ""
 
 msgid "Comments"
 msgstr "Kommentarer"
+
+msgid "Create PDF"
+msgstr "Opret PDF"
 
 msgid "Create dialog proposal"
 msgstr "Opret dialogforslag"
@@ -68,6 +96,9 @@ msgstr "Dialogforslags svar"
 
 msgid "Dialogue proposals"
 msgstr "Dialogforslag"
+
+msgid "Displayed multiple times"
+msgstr "Vises flere gange"
 
 msgid "Drop a file here or click <em>Browse</em> below."
 msgid_plural "Drop up to @count files here or click <em>Browse</em> below."
@@ -99,6 +130,13 @@ msgstr ""
 "Udfyld formularen og send dit forslag så andre kan interagere med "
 "det."
 
+msgid ""
+"Here is all the input about @category. Click on an input to see its "
+"comments."
+msgstr ""
+"Her er alle de input, der handler om @category. Klik på et input for "
+"at se kommentarer til det."
+
 msgid "Latest proposal"
 msgstr "Seneste forslag"
 
@@ -120,14 +158,21 @@ msgid_plural "Maximum @count files."
 msgstr[0] "Kun en fil"
 msgstr[1] "Maksimalt @count filer"
 
+msgid ""
+"Page <span class=\"pageNumber\"></span> of <span "
+"class=\"totalPages\"></span>"
+msgstr ""
+"Side <span class=\"pageNumber\"></span> af <span "
+"class=\"totalPages\"></span>"
+
 msgid "Participate with your proposal"
 msgstr "Deltag med dit forslag"
 
+msgid "Printed: @date"
+msgstr "Udskrevet: @date"
+
 msgid "Proposal replies"
 msgstr "Svar til dialogforslag"
-
-msgid "Proposals"
-msgstr "Forslag"
 
 msgid "Reply"
 msgstr "Svar"
@@ -135,14 +180,31 @@ msgstr "Svar"
 msgid "Save"
 msgstr "Gem"
 
+msgid "See all input"
+msgstr "Se alle input"
+
 msgid "Send your proposal"
 msgstr "Send dit forslag"
 
 msgid "Show proposals on map"
 msgstr "Vis forslag på kort"
 
+msgid "The numbers show agree votes and comments for each input."
+msgstr "Tallene viser Enig og kommentarer til det enkelte input."
+
+msgid "The numbers show agree votes on each comment."
+msgstr "Tallene viser Enig på hver kommentar."
+
+msgid ""
+"The numbers show the total input, agree votes and comments in each "
+"category."
+msgstr "Tallene viser samlede input, Enig og kommentarer i hver kategori."
+
 msgid "View all proposals"
 msgstr "Se alle forslag"
+
+msgid "View dialogue report"
+msgstr "Se dialograpport"
 
 msgid "View more"
 msgstr "Se mere"

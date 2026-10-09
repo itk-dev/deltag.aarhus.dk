@@ -6,6 +6,7 @@ use Drupal\comment\Entity\Comment;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -41,6 +42,8 @@ class DialogueHelper {
    *   The current user account.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
    */
   public function __construct(
     protected RequestStack $requestStack,
@@ -48,6 +51,7 @@ class DialogueHelper {
     protected EntityTypeManagerInterface $entityTypeManager,
     protected AccountInterface $account,
     protected MessengerInterface $messenger,
+    protected ModuleHandlerInterface $moduleHandler,
   ) {
   }
 
@@ -159,6 +163,34 @@ class DialogueHelper {
     $form['field_dialogue_proposal_location']['widget'][0]['localplanids']['#access'] = FALSE;
     $form['field_dialogue_proposal_location']['#states']['visible'][':input[name="field_dialogue_proposal_config[use_map_on_proposals]"]'] =
       ['checked' => TRUE];
+
+    if ($this->moduleHandler->moduleExists('hoeringsportal_dialogue_report')) {
+      $formObject = $form_state->getFormObject();
+      if ($formObject instanceof NodeForm) {
+        $node = $formObject->getEntity();
+        if ($node instanceof NodeInterface && !$node->isNew()) {
+          $reportUrl = Url::fromRoute('hoeringsportal_dialogue_report.html', ['node' => $node->id()]);
+          if ($reportUrl->access($this->account)) {
+            // Claro renders $form['advanced'] as the right-hand sidebar; the
+            // wrapper class gives the button the sidebar's own padding.
+            $form['advanced']['dialogue_report'] = [
+              '#type' => 'container',
+              '#attributes' => ['class' => ['entity-meta__header']],
+              '#weight' => -100,
+              'link' => [
+                '#type' => 'link',
+                '#title' => $this->t('View dialogue report'),
+                '#url' => $reportUrl,
+                '#attributes' => [
+                  'target' => '_blank',
+                  'class' => ['button', 'button--primary'],
+                ],
+              ],
+            ];
+          }
+        }
+      }
+    }
   }
 
   /**

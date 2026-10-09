@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-688](https://github.com/itk-dev/deltag.aarhus.dk/pull/688)
+  * Added dialogue report (HTML and PDF via Gotenberg)
+
 ## [4.17.7] - 2026-09-23
 
 * [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/685)

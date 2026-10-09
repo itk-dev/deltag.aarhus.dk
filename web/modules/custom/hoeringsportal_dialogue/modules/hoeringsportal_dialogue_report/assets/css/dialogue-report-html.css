@@ -1,0 +1,54 @@
+/* Renders the body as an A4 sheet; padding matches GotenbergClient's side margins so content width equals the PDF's. */
+html {
+  background: #e5e5e5;
+}
+
+body {
+  box-sizing: border-box;
+  width: 8.27in;
+  max-width: 100%;
+  margin: 1rem auto;
+  padding: 0.4in;
+  background: #fff;
+  box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
+}
+
+/* Categories start a new page in the PDF: dashed line with a page-break icon. */
+.category {
+  position: relative;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #bbb;
+}
+
+.category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.75rem;
+  height: 1.25rem;
+  transform: translate(-50%, -50%);
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 1.5v4h9v-4M3.5 14.5v-4h9v4M1 8h1.5M5 8h1.5M9.5 8h1.5M13.5 8h1.5'/%3E%3C/svg%3E")
+    center / 1rem no-repeat;
+}
+
+.pdf-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media print {
+  .pdf-button,
+  .category::before {
+    display: none;
+  }
+}

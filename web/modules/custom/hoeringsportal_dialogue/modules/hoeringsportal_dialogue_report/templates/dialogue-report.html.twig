@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <title>{{ dialogue.label }}</title>
+  <style>{{ css|raw }}</style>
+</head>
+<body>
+  {% import '@hoeringsportal_dialogue_report/dialogue-report-macros.html.twig' as helpers %}
+  {% set frontpage = 'Frontpage'|t({}, {context: 'Dialogue report'}) %}
+
+  {% if not for_pdf %}
+    <a class="pdf-button" href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Create PDF'|t }}</a>
+  {% endif %}
+
+  <header class="report-header" id="top">
+    <div class="brand">
+      {{ logo|raw }}
+      <span class="site-name">Deltag Aarhus</span>
+    </div>
+    <div class="printed">{{ helpers.icon('print') }}{{ 'Printed: @date'|t({'@date': 'now'|date('U')|format_date('custom', 'j. F Y')}) }}</div>
+  </header>
+
+  <h1>{{ dialogue.label }}</h1>
+  {% if dialogue.field_teaser.value %}
+    <div class="teaser text">{{ dialogue.field_teaser.value }}</div>
+  {% endif %}
+
+  <section id="statistik">
+    <p>{{ 'Click on a category to see all input within the subject'|t }}</p>
+    <div class="card-grid">
+      {% for tid, category in categories %}
+        <div class="category-card" id="stat-{{ tid }}">
+          <h3>{{ category.term.label }}</h3>
+          <ul class="counts">
+            <li>{{ helpers.icon('input') }}{{ helpers.input_count(category.proposal_count) }}</li>
+            <li>{{ helpers.icon('agree') }}{{ helpers.agree_count(category.like_count) }}</li>
+            <li>{{ helpers.icon('comment') }}{{ helpers.comment_count(category.comment_count) }}</li>
+          </ul>
+          {% if category.proposals %}
+            <a class="see-all" href="#kategori-{{ tid }}">{{ 'See all input'|t }}{{ helpers.icon('forward') }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <p class="info">{{ helpers.icon('info') }}{{ 'The numbers show the total input, agree votes and comments in each category.'|t }}</p>
+  </section>
+
+  {% for tid, category in categories|filter(category => category.proposals) %}
+    <section class="category" id="kategori-{{ tid }}">
+      {{ helpers.nav([{label: frontpage, href: '#top'}, {label: category.term.label}], '#stat-' ~ tid, frontpage) }}
+      <h2>{{ category.term.label }}</h2>
+      <p class="intro">{{ 'Here is all the input about @category. Click on an input to see its comments.'|t({'@category': category.term.label}) }}</p>
+      <ul class="input-list">
+        {% for proposal in category.proposals %}
+          <li>
+            <a class="input-card" href="#forslag-{{ tid }}-{{ proposal.node.id }}">
+              <span class="input-card__text">
+                <strong>{{ proposal.node.label }}</strong>
+                <span class="excerpt">{{ proposal.node.field_dialogue_proposal_descr.value }}</span>
+              </span>
+              <span class="input-card__counts">
+                <span>{{ helpers.icon('agree') }}{{ helpers.agree_count(proposal.like_count) }}</span>
+                <span>{{ helpers.icon('comment') }}{{ helpers.comment_count(proposal.comment_count) }}</span>
+              </span>
+              {{ helpers.icon('chevron') }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <p class="note">{{ helpers.icon('info') }}{{ 'The numbers show agree votes and comments for each input.'|t }}</p>
+    </section>
+
+    {% for proposal in category.proposals %}
+      <article class="proposal" id="forslag-{{ tid }}-{{ proposal.node.id }}">
+        {{ helpers.nav([{label: frontpage, href: '#top'}, {label: category.term.label, href: '#kategori-' ~ tid}, {label: proposal.node.label}], '#kategori-' ~ tid, frontpage) }}
+        <h3 class="proposal-title">{{ proposal.node.label }}</h3>
+        {% if proposal.category_count > 1 %}
+          <p class="info">{{ helpers.icon('info') }}{{ 'Displayed multiple times'|t }}</p>
+        {% endif %}
+        <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
+
+        <div class="summary">
+          <span>{{ helpers.icon('agree') }}{{ helpers.agree_count(proposal.like_count) }}</span>
+          <span>{{ helpers.icon('comment') }}{{ helpers.comment_count(proposal.comment_count) }}</span>
+        </div>
+
+        {% if proposal.comments %}
+          <h4>{{ 'Comments'|t }}</h4>
+          {{ helpers.comment_tree(proposal.comments) }}
+          <p class="note">{{ helpers.icon('info') }}{{ 'The numbers show agree votes on each comment.'|t }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  {% endfor %}
+</body>
+</html>
