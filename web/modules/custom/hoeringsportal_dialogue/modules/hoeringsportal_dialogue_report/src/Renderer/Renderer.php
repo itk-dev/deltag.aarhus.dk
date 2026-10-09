@@ -16,10 +16,11 @@ final class Renderer {
   use StringTranslationTrait;
 
   private const TEMPLATE = 'templates/dialogue-report.html.twig';
-  private const BASE_CSS = 'assets/css/dialogue-report.css';
-  private const HTML_CSS = 'assets/css/dialogue-report-html.css';
-  private const PDF_CSS = 'assets/css/dialogue-report-pdf.css';
-  private const LOGO = 'assets/images/aarhus-kommune-logo.svg';
+  private const ASSETS_DIR = 'assets';
+  private const BASE_CSS = self::ASSETS_DIR . '/css/dialogue-report.css';
+  private const HTML_CSS = self::ASSETS_DIR . '/css/dialogue-report-html.css';
+  private const PDF_CSS = self::ASSETS_DIR . '/css/dialogue-report-pdf.css';
+  private const LOGO = self::ASSETS_DIR . '/images/aarhus-kommune-logo.svg';
 
   public function __construct(
     private readonly RendererInterface $renderer,

@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 final class Commands extends DrushCommands {
 
-  // Private, since the report contains citizens' names and comments.
+  // Private, like the report itself, which only admins can open.
   private const DESTINATION_DIRECTORY = 'private://dialogue-report';
 
   public function __construct(
