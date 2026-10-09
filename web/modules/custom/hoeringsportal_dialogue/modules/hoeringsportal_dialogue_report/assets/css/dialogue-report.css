@@ -1,8 +1,10 @@
-/* Colours from the hoeringsportal theme's petroleum palette. */
+/* Petroleum colours sampled from the design sketch (darker than the theme's). */
 :root {
-  --petroleum-500: #008486;
-  --petroleum-200: #cfe0e2;
-  --petroleum-100: #e5eef0;
+  --heading: #003c3e;
+  --link: #23585d;
+  --divider: #cfe0e2;
+  --card-bg: #f0f5f5;
+  --note-bg: #e9f1f5;
   --line: #dde6e8;
   --muted: #555;
 }
@@ -19,11 +21,11 @@ h2,
 h3,
 h4 {
   line-height: 1.2;
-  color: var(--petroleum-500);
+  color: var(--heading);
 }
 
 a {
-  color: var(--petroleum-500);
+  color: var(--link);
 }
 
 /* Dialogue > category > proposal: each level wraps the next. */
@@ -55,8 +57,8 @@ h2 {
 .site-name {
   margin-left: 1rem;
   padding: 0.6rem 0 0.6rem 1rem;
-  border-left: 1px solid var(--petroleum-200);
-  color: var(--petroleum-500);
+  border-left: 1px solid var(--divider);
+  color: var(--heading);
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -97,13 +99,13 @@ h2 {
   flex-direction: column;
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
-  background: var(--petroleum-100);
+  background: var(--card-bg);
 }
 
 .category-card h3 {
   margin: 0 0 0.75rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--petroleum-200);
+  border-bottom: 1px solid var(--divider);
   font-size: 1.05rem;
   overflow-wrap: anywhere;
 }
@@ -138,7 +140,7 @@ h2 {
   margin-top: 1.5rem;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  background: var(--petroleum-100);
+  background: var(--note-bg);
   font-size: 0.9em;
 }
 
