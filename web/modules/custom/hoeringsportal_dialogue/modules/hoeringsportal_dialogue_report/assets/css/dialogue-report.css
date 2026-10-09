@@ -43,6 +43,13 @@ h1, h2, h3 {
   font-variant-numeric: tabular-nums;
 }
 
+.back-link svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25em;
+  vertical-align: -0.125em;
+}
+
 .text {
   white-space: pre-wrap;
 }

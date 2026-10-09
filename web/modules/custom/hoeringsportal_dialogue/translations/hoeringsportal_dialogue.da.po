@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-09 10:20+0200\n"
-"PO-Revision-Date: 2026-10-09 10:20+0200\n"
+"POT-Creation-Date: 2026-10-09 10:23+0200\n"
+"PO-Revision-Date: 2026-10-09 10:23+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,9 @@ msgstr "@size begrænsning."
 
 msgid "Add new comment"
 msgstr "Tilføj ny kommentar"
+
+msgid "Back"
+msgstr "Tilbage"
 
 msgid "Back to dialogue"
 msgstr "Tilbage til dialog"
@@ -159,12 +162,6 @@ msgstr "Vis forslag på kort"
 
 msgid "Table of contents"
 msgstr "Indholdsfortegnelse"
-
-msgid "To statistics"
-msgstr "Til statistik"
-
-msgid "To table of contents"
-msgstr "Til indholdsfortegnelse"
 
 msgid "To top"
 msgstr "Til toppen"
