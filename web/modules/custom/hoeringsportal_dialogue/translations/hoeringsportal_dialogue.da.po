@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-09 10:17+0200\n"
-"PO-Revision-Date: 2026-10-09 10:17+0200\n"
+"POT-Creation-Date: 2026-10-09 10:20+0200\n"
+"PO-Revision-Date: 2026-10-09 10:20+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -45,6 +45,9 @@ msgstr "Tilføj ny kommentar"
 
 msgid "Back to dialogue"
 msgstr "Tilbage til dialog"
+
+msgid "Click on a category to see all input within the subject"
+msgstr "Klik på en kategori for at se alle input inden for emnet"
 
 msgid "Comment @commentId and it's children have been unpublished."
 msgstr ""
@@ -153,9 +156,6 @@ msgstr "Send dit forslag"
 
 msgid "Show proposals on map"
 msgstr "Vis forslag på kort"
-
-msgid "Statistics"
-msgstr "Statistik"
 
 msgid "Table of contents"
 msgstr "Indholdsfortegnelse"
