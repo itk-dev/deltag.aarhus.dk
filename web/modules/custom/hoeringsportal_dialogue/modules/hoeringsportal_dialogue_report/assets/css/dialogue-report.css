@@ -1,7 +1,7 @@
-/* Petroleum colours sampled from the design sketch (darker than the theme's). */
+/* Petroleum between the theme's #008486 and the design sketch's #003c3e. */
 :root {
-  --heading: #003c3e;
-  --link: #23585d;
+  --heading: #006c6e;
+  --link: #006c6e;
   --divider: #cfe0e2;
   --card-bg: #f0f5f5;
   --note-bg: #e9f1f5;
