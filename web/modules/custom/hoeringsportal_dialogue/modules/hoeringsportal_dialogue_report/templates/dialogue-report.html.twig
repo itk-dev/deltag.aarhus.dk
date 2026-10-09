@@ -43,8 +43,8 @@
       <div class="toc-box" id="toc-{{ tid }}">
         <h3>
           {{ category.term.label }}
-          &mdash; <a href="#top">{{ 'To top'|t }}</a>
-          &middot; {{ helpers.back_link('#stat-' ~ tid) }}
+          &mdash; {{ helpers.icon_link('#top', 'home', 'Frontpage'|t({}, {context: 'Dialogue report'})) }}
+          &middot; {{ helpers.icon_link('#stat-' ~ tid, 'back', 'Back'|t) }}
         </h3>
         <ul>
           {% for proposal in category.proposals %}
@@ -65,8 +65,8 @@
         <article class="proposal" id="forslag-{{ proposal.node.id }}">
           <h3>{{ proposal.node.label }}</h3>
           <p>
-            <a href="#top">{{ 'To top'|t }}</a>
-            &middot; {{ helpers.back_link('#toc-' ~ tid) }}
+            {{ helpers.icon_link('#top', 'home', 'Frontpage'|t({}, {context: 'Dialogue report'})) }}
+            &middot; {{ helpers.icon_link('#toc-' ~ tid, 'back', 'Back'|t) }}
           </p>
           <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
           <p>{{ 'Likes'|t }}: {{ proposal.like_count }} &middot; {{ 'Comments'|t }}: {{ proposal.comment_count }}</p>
@@ -81,8 +81,12 @@
     {% endfor %}
   </section>
 
-  {% macro back_link(href) %}
-    <a class="back-link" href="{{ href }}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ 'Back'|t }}</a>
+  {% macro icon_link(href, icon, label) %}
+    {% set paths = {
+      back: 'M14 8H2M7 3 2 8l5 5',
+      home: 'M2 7.5 8 2l6 5.5M3.5 6v8h9V6M6.5 14v-4h3v4',
+    } %}
+    <a class="icon-link" href="{{ href }}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="{{ paths[icon] }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ label }}</a>
   {% endmacro %}
 
   {% macro comment_tree(entries) %}
