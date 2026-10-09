@@ -33,11 +33,6 @@ body {
   text-decoration: none;
 }
 
-.pdf-button:hover,
-.pdf-button:focus-visible {
-  background: #000;
-}
-
 @media print {
   .pdf-button {
     display: none;

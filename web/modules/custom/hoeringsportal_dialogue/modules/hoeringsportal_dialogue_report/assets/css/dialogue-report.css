@@ -23,6 +23,15 @@ h4 {
   color: var(--petroleum-900);
 }
 
+/* Dialogue > category > proposal: each level wraps the next. */
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+}
+
 .teaser {
   margin-bottom: 1.5rem;
   font-size: 1.1em;
@@ -191,7 +200,7 @@ h4 {
 /* Input: full proposal */
 
 .proposal-title {
-  font-size: 1.75rem;
+  font-size: 1.4rem;
 }
 
 .summary {
