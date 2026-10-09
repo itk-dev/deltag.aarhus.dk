@@ -20,54 +20,67 @@
 
   <section id="statistik">
     <p>{{ 'Click on a category to see all input within the subject'|t }}</p>
-    <div class="stat-grid">
+    <div class="card-grid">
       {% for tid, category in categories %}
-        <div class="stat-box" id="stat-{{ tid }}">
-          <h3>
-            {% if category.proposals %}
-              <a href="#kategori-{{ tid }}">{{ category.term.label }}</a>
-            {% else %}
-              {{ category.term.label }}
-            {% endif %}
-          </h3>
-          <dl>
-            <dt>{{ 'Proposals'|t }}</dt><dd>{{ category.proposal_count }}</dd>
-            <dt>{{ 'Likes'|t }}</dt><dd>{{ category.like_count }}</dd>
-            <dt>{{ 'Comments'|t }}</dt><dd>{{ category.comment_count }}</dd>
-          </dl>
+        <div class="category-card" id="stat-{{ tid }}">
+          <h3>{{ category.term.label }}</h3>
+          <ul class="counts">
+            <li>{{ helpers.icon('input') }}{{ helpers.input_count(category.proposal_count) }}</li>
+            <li>{{ helpers.icon('agree') }}{{ helpers.agree_count(category.like_count) }}</li>
+            <li>{{ helpers.icon('comment') }}{{ helpers.comment_count(category.comment_count) }}</li>
+          </ul>
+          {% if category.proposals %}
+            <a class="see-all" href="#kategori-{{ tid }}">{{ 'See all input'|t }}{{ helpers.icon('forward') }}</a>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
+    <p class="info">{{ helpers.icon('info') }}{{ 'The numbers show the total input, agree votes and comments in each category.'|t }}</p>
   </section>
 
   {% for tid, category in categories|filter(category => category.proposals) %}
     <section class="category" id="kategori-{{ tid }}">
       {{ helpers.nav([{label: frontpage, href: '#top'}, {label: category.term.label}], '#stat-' ~ tid, frontpage) }}
       <h2>{{ category.term.label }}</h2>
-      <ul class="proposal-list">
+      <p class="intro">{{ 'Here is all the input about @category. Click on an input to see its comments.'|t({'@category': category.term.label}) }}</p>
+      <ul class="input-list">
         {% for proposal in category.proposals %}
           <li>
-            <a href="#forslag-{{ tid }}-{{ proposal.node.id }}">{{ proposal.node.label }}</a>
-            &mdash; {{ 'Likes'|t }}: {{ proposal.like_count }}, {{ 'Comments'|t }}: {{ proposal.comment_count }}
+            <a class="input-card" href="#forslag-{{ tid }}-{{ proposal.node.id }}">
+              <span class="input-card__text">
+                <strong>{{ proposal.node.label }}</strong>
+                <span class="excerpt">{{ proposal.node.field_dialogue_proposal_descr.value }}</span>
+              </span>
+              <span class="input-card__counts">
+                <span>{{ helpers.icon('agree') }}{{ helpers.agree_count(proposal.like_count) }}</span>
+                <span>{{ helpers.icon('comment') }}{{ helpers.comment_count(proposal.comment_count) }}</span>
+              </span>
+              {{ helpers.icon('chevron') }}
+            </a>
           </li>
         {% endfor %}
       </ul>
+      <p class="note">{{ helpers.icon('info') }}{{ 'The numbers show agree votes and comments for each input.'|t }}</p>
     </section>
 
     {% for proposal in category.proposals %}
       <article class="proposal" id="forslag-{{ tid }}-{{ proposal.node.id }}">
         {{ helpers.nav([{label: frontpage, href: '#top'}, {label: category.term.label, href: '#kategori-' ~ tid}, {label: proposal.node.label}], '#kategori-' ~ tid, frontpage) }}
-        <h3>{{ proposal.node.label }}</h3>
+        <h3 class="proposal-title">{{ proposal.node.label }}</h3>
         {% if proposal.category_count > 1 %}
           <p class="info">{{ helpers.icon('info') }}{{ 'Displayed multiple times'|t }}</p>
         {% endif %}
         <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
-        <p>{{ 'Likes'|t }}: {{ proposal.like_count }} &middot; {{ 'Comments'|t }}: {{ proposal.comment_count }}</p>
+
+        <div class="summary">
+          <span>{{ helpers.icon('agree') }}{{ helpers.agree_count(proposal.like_count) }}</span>
+          <span>{{ helpers.icon('comment') }}{{ helpers.comment_count(proposal.comment_count) }}</span>
+        </div>
 
         {% if proposal.comments %}
-          <div class="comments">
-            {{ helpers.comment_tree(proposal.comments) }}
-          </div>
+          <h4>{{ 'Comments'|t }}</h4>
+          {{ helpers.comment_tree(proposal.comments) }}
+          <p class="note">{{ helpers.icon('info') }}{{ 'The numbers show agree votes on each comment.'|t }}</p>
         {% endif %}
       </article>
     {% endfor %}
@@ -76,10 +89,27 @@
   {% macro icon(name) -%}
     {%- set paths = {
       back: 'M14 8H2M7 3 2 8l5 5',
+      forward: 'M2 8h12M9 3l5 5-5 5',
+      chevron: 'M6 3l5 5-5 5',
       home: 'M2 7.5 8 2l6 5.5M3.5 6v8h9V6M6.5 14v-4h3v4',
       info: 'M8 1.5a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13M8 7.5v3.5M8 5h.01',
+      input: 'M4 1.5h5l3.5 3.5v9.5h-8.5zM9 1.5V5h3.5M6 8.5h4M6 11h4',
+      agree: 'M8 1.5a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13M5.5 8l1.8 1.8 3.2-3.3',
+      comment: 'M2.5 3h11v7.5h-6.5l-3 2.5v-2.5h-1.5z',
     } -%}
-    <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="{{ paths[name] }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="icon icon--{{ name }}" viewBox="0 0 16 16" aria-hidden="true"><path d="{{ paths[name] }}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  {%- endmacro %}
+
+  {% macro input_count(count) -%}
+    {% trans %}1 input{% plural count %}{{ count }} inputs{% endtrans %}
+  {%- endmacro %}
+
+  {% macro agree_count(count) -%}
+    {% trans %}1 agree vote{% plural count %}{{ count }} agree votes{% endtrans %}
+  {%- endmacro %}
+
+  {% macro comment_count(count) -%}
+    {% trans %}1 comment{% plural count %}{{ count }} comments{% endtrans %}
   {%- endmacro %}
 
   {% macro icon_link(href, icon, label) %}
@@ -108,13 +138,13 @@
   {% endmacro %}
 
   {% macro comment_tree(entries) %}
-    <ul>
+    <ul class="comment-list">
       {% for entry in entries %}
-        <li class="comment">
-          <strong>{{ entry.comment.authorName }}</strong>
-          &mdash; {{ entry.comment.created.value|date('d-m-Y H:i') }}
-          &mdash; {{ 'Likes'|t }}: {{ entry.like_count }}
-          <div class="text">{{ entry.comment.field_comment.value }}</div>
+        <li>
+          <div class="comment-card">
+            <div class="text">{{ entry.comment.field_comment.value }}</div>
+            <div class="comment-card__agree">{{ _self.icon('agree') }}{{ _self.agree_count(entry.like_count) }}</div>
+          </div>
           {% if entry.children %}
             {{ _self.comment_tree(entry.children) }}
           {% endif %}

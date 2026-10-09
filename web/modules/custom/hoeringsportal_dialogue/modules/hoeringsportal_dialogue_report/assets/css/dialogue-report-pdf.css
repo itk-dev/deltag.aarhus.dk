@@ -3,9 +3,10 @@ body {
   margin: 0;
 }
 
-.stat-box,
-.proposal,
-.comment {
+.category-card,
+.input-card,
+.comment-card,
+.summary {
   break-inside: avoid;
 }
 

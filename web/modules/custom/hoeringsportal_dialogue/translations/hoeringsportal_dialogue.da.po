@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-09 11:42+0200\n"
-"PO-Revision-Date: 2026-10-09 11:42+0200\n"
+"POT-Creation-Date: 2026-10-09 12:25+0200\n"
+"PO-Revision-Date: 2026-10-09 12:25+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,16 @@ msgctxt "Dialogue report"
 msgid "Frontpage"
 msgstr "Forside"
 
+msgid "1 agree vote"
+msgid_plural "@count agree votes"
+msgstr[0] "1 Enig"
+msgstr[1] "@count Enig"
+
+msgid "1 comment"
+msgid_plural "@count comments"
+msgstr[0] "1 kommentar"
+msgstr[1] "@count kommentarer"
+
 msgid "1 day ago"
 msgid_plural "@count days ago"
 msgstr[0] "1 dag siden"
@@ -30,6 +40,11 @@ msgid "1 hour ago"
 msgid_plural "@count hours ago"
 msgstr[0] "1 time siden"
 msgstr[1] "@count timer siden"
+
+msgid "1 input"
+msgid_plural "@count inputs"
+msgstr[0] "1 input"
+msgstr[1] "@count input"
 
 msgid "1 minute ago"
 msgid_plural "@count minutes ago"
@@ -115,11 +130,15 @@ msgstr ""
 "Udfyld formularen og send dit forslag så andre kan interagere med "
 "det."
 
+msgid ""
+"Here is all the input about @category. Click on an input to see its "
+"comments."
+msgstr ""
+"Her er alle de input, der handler om @category. Klik på et input for "
+"at se kommentarer til det."
+
 msgid "Latest proposal"
 msgstr "Seneste forslag"
-
-msgid "Likes"
-msgstr "Likes"
 
 msgid "Map"
 msgstr "Kort"
@@ -152,20 +171,31 @@ msgstr "Deltag med dit forslag"
 msgid "Proposal replies"
 msgstr "Svar til dialogforslag"
 
-msgid "Proposals"
-msgstr "Forslag"
-
 msgid "Reply"
 msgstr "Svar"
 
 msgid "Save"
 msgstr "Gem"
 
+msgid "See all input"
+msgstr "Se alle input"
+
 msgid "Send your proposal"
 msgstr "Send dit forslag"
 
 msgid "Show proposals on map"
 msgstr "Vis forslag på kort"
+
+msgid "The numbers show agree votes and comments for each input."
+msgstr "Tallene viser Enig og kommentarer til det enkelte input."
+
+msgid "The numbers show agree votes on each comment."
+msgstr "Tallene viser Enig på hver kommentar."
+
+msgid ""
+"The numbers show the total input, agree votes and comments in each "
+"category."
+msgstr "Tallene viser samlede input, Enig og kommentarer i hver kategori."
 
 msgid "View all proposals"
 msgstr "Se alle forslag"
