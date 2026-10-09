@@ -10,9 +10,14 @@ body {
   break-inside: avoid;
 }
 
-.category,
-.proposal {
+.category {
   break-before: page;
+}
+
+/* Keep a proposal's breadcrumb and title on the same page as its text. */
+.proposal .report-nav,
+.proposal-title {
+  break-after: avoid;
 }
 
 a {

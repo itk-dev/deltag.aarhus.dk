@@ -13,17 +13,15 @@ body {
   box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
 }
 
-/* Marks where the PDF starts a new page, with a page-break icon on the line. */
-.category,
-.proposal {
+/* Categories start a new page in the PDF: dashed line with a page-break icon. */
+.category {
   position: relative;
   margin-top: 3rem;
   padding-top: 1rem;
   border-top: 1px dashed #bbb;
 }
 
-.category::before,
-.proposal::before {
+.category::before {
   content: "";
   position: absolute;
   top: 0;
@@ -50,8 +48,7 @@ body {
 
 @media print {
   .pdf-button,
-  .category::before,
-  .proposal::before {
+  .category::before {
     display: none;
   }
 }
