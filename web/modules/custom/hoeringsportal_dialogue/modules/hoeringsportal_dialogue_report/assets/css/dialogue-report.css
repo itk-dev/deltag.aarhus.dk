@@ -106,7 +106,7 @@ h2 {
 }
 
 .counts {
-  margin: 0;
+  margin: 0 0 0.75rem;
   padding: 0;
   list-style: none;
 }
@@ -115,9 +115,10 @@ h2 {
   margin-top: 0.35rem;
 }
 
+/* Keep the link box tight around the text: PDF viewers highlight the box. */
 .see-all {
+  align-self: flex-start;
   margin-top: auto;
-  padding-top: 0.75rem;
   color: var(--petroleum-500);
   text-decoration: none;
 }
