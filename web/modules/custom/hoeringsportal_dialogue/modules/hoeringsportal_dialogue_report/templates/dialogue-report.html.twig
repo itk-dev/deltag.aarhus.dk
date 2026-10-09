@@ -17,21 +17,29 @@
 
   <section id="statistik">
     <h2>{{ 'Statistics'|t }}</h2>
-    {% for tid, category in categories %}
-      <div class="stat-box" id="stat-{{ tid }}">
-        <h3><a href="#toc-{{ tid }}">{{ category.term.label }}</a></h3>
-        <table>
-          <tr><th>{{ 'Proposals'|t }}</th><td>{{ category.proposal_count }}</td></tr>
-          <tr><th>{{ 'Likes'|t }}</th><td>{{ category.like_count }}</td></tr>
-          <tr><th>{{ 'Comments'|t }}</th><td>{{ category.comment_count }}</td></tr>
-        </table>
-      </div>
-    {% endfor %}
+    <div class="stat-grid">
+      {% for tid, category in categories %}
+        <div class="stat-box" id="stat-{{ tid }}">
+          <h3>
+            {% if category.proposals %}
+              <a href="#toc-{{ tid }}">{{ category.term.label }}</a>
+            {% else %}
+              {{ category.term.label }}
+            {% endif %}
+          </h3>
+          <dl>
+            <dt>{{ 'Proposals'|t }}</dt><dd>{{ category.proposal_count }}</dd>
+            <dt>{{ 'Likes'|t }}</dt><dd>{{ category.like_count }}</dd>
+            <dt>{{ 'Comments'|t }}</dt><dd>{{ category.comment_count }}</dd>
+          </dl>
+        </div>
+      {% endfor %}
+    </div>
   </section>
 
   <section id="indholdsfortegnelse">
     <h2>{{ 'Table of contents'|t }}</h2>
-    {% for tid, category in categories %}
+    {% for tid, category in categories|filter(category => category.proposals) %}
       <div class="toc-box" id="toc-{{ tid }}">
         <h3>
           {{ category.term.label }}
