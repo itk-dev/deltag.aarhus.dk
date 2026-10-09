@@ -2,17 +2,17 @@
 <html lang="da">
 <head>
   <meta charset="utf-8">
-  <title>{{ 'Report'|t }}: {{ dialogue.label }}</title>
+  <title>{{ dialogue.label }}</title>
   <style>{{ css|raw }}</style>
 </head>
 <body>
   {% if not for_pdf %}
     <a class="pdf-button" href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Create PDF'|t }}</a>
   {% endif %}
-  <h1 id="top">{{ 'Report'|t }}: {{ dialogue.label }}</h1>
-  <p>
-    <a href="{{ url('entity.node.canonical', {node: dialogue.id}) }}">{{ 'Back to dialogue'|t }}</a>
-  </p>
+  <h1 id="top">{{ dialogue.label }}</h1>
+  {% if dialogue.field_teaser.value %}
+    <div class="teaser text">{{ dialogue.field_teaser.value }}</div>
+  {% endif %}
 
   <section id="statistik">
     <h2>{{ 'Statistics'|t }}</h2>
