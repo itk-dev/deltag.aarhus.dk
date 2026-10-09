@@ -23,6 +23,10 @@ class ReportHelper {
   /**
    * Build the full report data for a dialogue.
    *
+   * A proposal with several categories is listed, and counted, under each of
+   * them, so category totals can add up to more than the dialogue's totals.
+   * Only categories offered by the dialogue are used.
+   *
    * @param \Drupal\node\NodeInterface $dialogue
    *   A dialogue node.
    *
@@ -31,21 +35,17 @@ class ReportHelper {
    *   - term: TermInterface.
    *   - proposal_count, like_count, comment_count: int.
    *   - proposals: list of arrays with node, like_count, comment_count,
+   *     category_count (number of categories it is listed under) and
    *     comments (tree).
    */
   public function build(NodeInterface $dialogue): array {
     $categories = $this->getCategories($dialogue);
-    $proposalsByCategory = $this->getProposalsByCategory($dialogue);
+    $offeredCategoryIds = array_map(static fn($term) => (int) $term->id(), $categories);
+    $proposals = $this->getProposals($dialogue);
+    $proposalIds = array_keys($proposals);
 
-    $allProposalIds = [];
-    foreach ($proposalsByCategory as $proposals) {
-      foreach ($proposals as $proposal) {
-        $allProposalIds[] = (int) $proposal->id();
-      }
-    }
-
-    $proposalLikeCounts = $this->getProposalLikeCounts($allProposalIds);
-    $commentsByProposal = $this->getCommentsByProposal($allProposalIds);
+    $proposalLikeCounts = $this->getProposalLikeCounts($proposalIds);
+    $commentsByProposal = $this->getCommentsByProposal($proposalIds);
 
     $allCommentIds = [];
     foreach ($commentsByProposal as $comments) {
@@ -55,36 +55,37 @@ class ReportHelper {
     }
     $commentLikeCounts = $this->getCommentLikeCounts($allCommentIds);
 
+    $entriesByCategory = [];
+    foreach ($proposals as $nid => $proposal) {
+      $proposalCategoryIds = array_map('intval', array_column($proposal->get('field_dialogue_proposal_category')->getValue(), 'target_id'));
+      $categoryIds = array_values(array_intersect($offeredCategoryIds, $proposalCategoryIds));
+      if ([] === $categoryIds) {
+        continue;
+      }
+
+      $commentTree = $this->buildCommentTree($commentsByProposal[$nid] ?? [], $commentLikeCounts);
+      $entry = [
+        'node' => $proposal,
+        'like_count' => (int) ($proposalLikeCounts[$nid] ?? 0),
+        'comment_count' => $this->countComments($commentTree),
+        'category_count' => count($categoryIds),
+        'comments' => $commentTree,
+      ];
+      foreach ($categoryIds as $tid) {
+        $entriesByCategory[$tid][] = $entry;
+      }
+    }
+
     $report = [];
     foreach ($categories as $term) {
       $tid = (int) $term->id();
-      $proposals = [];
-      $categoryLikeCount = 0;
-      $categoryCommentCount = 0;
-
-      foreach ($proposalsByCategory[$tid] ?? [] as $proposalNode) {
-        $nid = (int) $proposalNode->id();
-        $commentTree = $this->buildCommentTree($commentsByProposal[$nid] ?? [], $commentLikeCounts);
-        $commentCount = $this->countComments($commentTree);
-        $likeCount = (int) ($proposalLikeCounts[$nid] ?? 0);
-
-        $proposals[] = [
-          'node' => $proposalNode,
-          'like_count' => $likeCount,
-          'comment_count' => $commentCount,
-          'comments' => $commentTree,
-        ];
-
-        $categoryLikeCount += $likeCount;
-        $categoryCommentCount += $commentCount;
-      }
-
+      $entries = $entriesByCategory[$tid] ?? [];
       $report[$tid] = [
         'term' => $term,
-        'proposal_count' => count($proposals),
-        'like_count' => $categoryLikeCount,
-        'comment_count' => $categoryCommentCount,
-        'proposals' => $proposals,
+        'proposal_count' => count($entries),
+        'like_count' => array_sum(array_column($entries, 'like_count')),
+        'comment_count' => array_sum(array_column($entries, 'comment_count')),
+        'proposals' => $entries,
       ];
     }
 
@@ -102,15 +103,15 @@ class ReportHelper {
   }
 
   /**
-   * Get all published proposals for a dialogue, grouped by category term id.
+   * Get all published proposals for a dialogue, oldest first.
    *
    * Published status is filtered explicitly rather than via access checks, so
    * the report is the same whether rendered by an admin or by Drush.
    *
-   * @return array<int, \Drupal\node\NodeInterface[]>
-   *   Proposal nodes keyed by category term id.
+   * @return array<int, \Drupal\node\NodeInterface>
+   *   Proposal nodes keyed by node id.
    */
-  private function getProposalsByCategory(NodeInterface $dialogue): array {
+  private function getProposals(NodeInterface $dialogue): array {
     $storage = $this->entityTypeManager->getStorage('node');
     $ids = $storage->getQuery()
       ->accessCheck(FALSE)
@@ -124,15 +125,12 @@ class ReportHelper {
       return [];
     }
 
-    $grouped = [];
+    $proposals = [];
     foreach ($storage->loadMultiple($ids) as $proposal) {
-      $categoryId = $proposal->get('field_dialogue_proposal_category')->target_id;
-      if (NULL !== $categoryId) {
-        $grouped[(int) $categoryId][] = $proposal;
-      }
+      $proposals[(int) $proposal->id()] = $proposal;
     }
 
-    return $grouped;
+    return $proposals;
   }
 
   /**

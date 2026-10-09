@@ -43,11 +43,45 @@ h1, h2, h3 {
   font-variant-numeric: tabular-nums;
 }
 
-.icon-link svg {
+.icon {
   width: 1em;
   height: 1em;
   margin-right: 0.25em;
   vertical-align: -0.125em;
+}
+
+.report-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.9em;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li + li::before {
+  content: "›";
+  margin: 0 0.4em;
+}
+
+.nav-links {
+  white-space: nowrap;
+}
+
+.nav-links .icon-link + .icon-link {
+  margin-left: 1em;
+}
+
+.info {
+  color: #555;
+  font-size: 0.9em;
 }
 
 .text {

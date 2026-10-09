@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-09 10:27+0200\n"
-"PO-Revision-Date: 2026-10-09 10:27+0200\n"
+"POT-Creation-Date: 2026-10-09 11:42+0200\n"
+"PO-Revision-Date: 2026-10-09 11:42+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -81,6 +81,9 @@ msgstr "Dialogforslags svar"
 
 msgid "Dialogue proposals"
 msgstr "Dialogforslag"
+
+msgid "Displayed multiple times"
+msgstr "Vises flere gange"
 
 msgid "Drop a file here or click <em>Browse</em> below."
 msgid_plural "Drop up to @count files here or click <em>Browse</em> below."
@@ -163,9 +166,6 @@ msgstr "Send dit forslag"
 
 msgid "Show proposals on map"
 msgstr "Vis forslag på kort"
-
-msgid "Table of contents"
-msgstr "Indholdsfortegnelse"
 
 msgid "View all proposals"
 msgstr "Se alle forslag"

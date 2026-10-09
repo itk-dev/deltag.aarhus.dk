@@ -4,12 +4,12 @@ body {
 }
 
 .stat-box,
-.toc-box,
 .proposal,
 .comment {
   break-inside: avoid;
 }
 
+.category,
 .proposal {
   break-before: page;
 }

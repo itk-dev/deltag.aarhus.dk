@@ -7,9 +7,12 @@
 </head>
 <body>
   {% import _self as helpers %}
+  {% set frontpage = 'Frontpage'|t({}, {context: 'Dialogue report'}) %}
+
   {% if not for_pdf %}
     <a class="pdf-button" href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Create PDF'|t }}</a>
   {% endif %}
+
   <h1 id="top">{{ dialogue.label }}</h1>
   {% if dialogue.field_teaser.value %}
     <div class="teaser text">{{ dialogue.field_teaser.value }}</div>
@@ -22,7 +25,7 @@
         <div class="stat-box" id="stat-{{ tid }}">
           <h3>
             {% if category.proposals %}
-              <a href="#toc-{{ tid }}">{{ category.term.label }}</a>
+              <a href="#kategori-{{ tid }}">{{ category.term.label }}</a>
             {% else %}
               {{ category.term.label }}
             {% endif %}
@@ -37,56 +40,71 @@
     </div>
   </section>
 
-  <section id="indholdsfortegnelse">
-    <h2>{{ 'Table of contents'|t }}</h2>
-    {% for tid, category in categories|filter(category => category.proposals) %}
-      <div class="toc-box" id="toc-{{ tid }}">
-        <h3>
-          {{ category.term.label }}
-          &mdash; {{ helpers.icon_link('#top', 'home', 'Frontpage'|t({}, {context: 'Dialogue report'})) }}
-          &middot; {{ helpers.icon_link('#stat-' ~ tid, 'back', 'Back'|t) }}
-        </h3>
-        <ul>
-          {% for proposal in category.proposals %}
-            <li>
-              <a href="#forslag-{{ proposal.node.id }}">{{ proposal.node.label }}</a>
-              &mdash; {{ 'Likes'|t }}: {{ proposal.like_count }}, {{ 'Comments'|t }}: {{ proposal.comment_count }}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+  {% for tid, category in categories|filter(category => category.proposals) %}
+    <section class="category" id="kategori-{{ tid }}">
+      {{ helpers.nav([{label: frontpage, href: '#top'}, {label: category.term.label}], '#stat-' ~ tid, frontpage) }}
+      <h2>{{ category.term.label }}</h2>
+      <ul class="proposal-list">
+        {% for proposal in category.proposals %}
+          <li>
+            <a href="#forslag-{{ tid }}-{{ proposal.node.id }}">{{ proposal.node.label }}</a>
+            &mdash; {{ 'Likes'|t }}: {{ proposal.like_count }}, {{ 'Comments'|t }}: {{ proposal.comment_count }}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    {% for proposal in category.proposals %}
+      <article class="proposal" id="forslag-{{ tid }}-{{ proposal.node.id }}">
+        {{ helpers.nav([{label: frontpage, href: '#top'}, {label: category.term.label, href: '#kategori-' ~ tid}, {label: proposal.node.label}], '#kategori-' ~ tid, frontpage) }}
+        <h3>{{ proposal.node.label }}</h3>
+        {% if proposal.category_count > 1 %}
+          <p class="info">{{ helpers.icon('info') }}{{ 'Displayed multiple times'|t }}</p>
+        {% endif %}
+        <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
+        <p>{{ 'Likes'|t }}: {{ proposal.like_count }} &middot; {{ 'Comments'|t }}: {{ proposal.comment_count }}</p>
+
+        {% if proposal.comments %}
+          <div class="comments">
+            {{ helpers.comment_tree(proposal.comments) }}
+          </div>
+        {% endif %}
+      </article>
     {% endfor %}
-  </section>
+  {% endfor %}
 
-  <section id="forslag">
-    <h2>{{ 'Proposals'|t }}</h2>
-    {% for tid, category in categories %}
-      {% for proposal in category.proposals %}
-        <article class="proposal" id="forslag-{{ proposal.node.id }}">
-          <h3>{{ proposal.node.label }}</h3>
-          <p>
-            {{ helpers.icon_link('#top', 'home', 'Frontpage'|t({}, {context: 'Dialogue report'})) }}
-            &middot; {{ helpers.icon_link('#toc-' ~ tid, 'back', 'Back'|t) }}
-          </p>
-          <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
-          <p>{{ 'Likes'|t }}: {{ proposal.like_count }} &middot; {{ 'Comments'|t }}: {{ proposal.comment_count }}</p>
-
-          {% if proposal.comments %}
-            <div class="comments">
-              {{ helpers.comment_tree(proposal.comments) }}
-            </div>
-          {% endif %}
-        </article>
-      {% endfor %}
-    {% endfor %}
-  </section>
-
-  {% macro icon_link(href, icon, label) %}
-    {% set paths = {
+  {% macro icon(name) -%}
+    {%- set paths = {
       back: 'M14 8H2M7 3 2 8l5 5',
       home: 'M2 7.5 8 2l6 5.5M3.5 6v8h9V6M6.5 14v-4h3v4',
-    } %}
-    <a class="icon-link" href="{{ href }}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="{{ paths[icon] }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ label }}</a>
+      info: 'M8 1.5a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13M8 7.5v3.5M8 5h.01',
+    } -%}
+    <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="{{ paths[name] }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  {%- endmacro %}
+
+  {% macro icon_link(href, icon, label) %}
+    <a class="icon-link" href="{{ href }}">{{ _self.icon(icon) }}{{ label }}</a>
+  {% endmacro %}
+
+  {# Breadcrumb trail on the left, home and back links on the right. #}
+  {% macro nav(trail, back_href, frontpage) %}
+    <nav class="report-nav">
+      <ol class="breadcrumb">
+        {% for item in trail %}
+          <li>
+            {% if item.href is defined %}
+              <a href="{{ item.href }}">{{ item.label }}</a>
+            {% else %}
+              {{ item.label }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+      <span class="nav-links">
+        {{ _self.icon_link('#top', 'home', frontpage) }}
+        {{ _self.icon_link(back_href, 'back', 'Back'|t) }}
+      </span>
+    </nav>
   {% endmacro %}
 
   {% macro comment_tree(entries) %}
