@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-09 09:05+0200\n"
-"PO-Revision-Date: 2026-10-09 09:05+0200\n"
+"POT-Creation-Date: 2026-10-09 10:06+0200\n"
+"PO-Revision-Date: 2026-10-09 10:06+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -54,6 +54,9 @@ msgstr ""
 msgid "Comments"
 msgstr "Kommentarer"
 
+msgid "Create PDF"
+msgstr "Opret PDF"
+
 msgid "Create dialog proposal"
 msgstr "Opret dialogforslag"
 
@@ -68,9 +71,6 @@ msgstr "Dialogforslags svar"
 
 msgid "Dialogue proposals"
 msgstr "Dialogforslag"
-
-msgid "Download as PDF"
-msgstr "Download som PDF"
 
 msgid "Drop a file here or click <em>Browse</em> below."
 msgid_plural "Drop up to @count files here or click <em>Browse</em> below."

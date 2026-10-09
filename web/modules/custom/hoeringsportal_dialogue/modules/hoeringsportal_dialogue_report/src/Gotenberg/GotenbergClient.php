@@ -19,6 +19,9 @@ final class GotenbergClient {
   private const MARGIN_TOP = '0.4';
   // Leaves room for the footer.
   private const MARGIN_BOTTOM = '0.6';
+  // Mirrored by the body padding in dialogue-report-html.css.
+  private const MARGIN_LEFT = '0.4';
+  private const MARGIN_RIGHT = '0.4';
 
   // Makes Chromium apply the report's @media print rules.
   private const EMULATED_MEDIA_TYPE = 'print';
@@ -48,6 +51,8 @@ final class GotenbergClient {
       'paperHeight' => self::PAPER_HEIGHT,
       'marginTop' => self::MARGIN_TOP,
       'marginBottom' => self::MARGIN_BOTTOM,
+      'marginLeft' => self::MARGIN_LEFT,
+      'marginRight' => self::MARGIN_RIGHT,
     ];
 
     $multipart = [

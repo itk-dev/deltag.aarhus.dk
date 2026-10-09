@@ -2,7 +2,6 @@ body {
   font-family: sans-serif;
   font-size: 14px;
   line-height: 1.4;
-  margin: 2rem;
 }
 
 h1, h2, h3 {
@@ -11,7 +10,7 @@ h1, h2, h3 {
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   gap: 0.75rem;
 }
 
@@ -23,6 +22,7 @@ h1, h2, h3 {
 .stat-box h3 {
   font-size: 1rem;
   margin: 0 0 0.5rem;
+  overflow-wrap: anywhere;
 }
 
 .stat-box dl {
@@ -49,22 +49,4 @@ h1, h2, h3 {
 
 .comment {
   margin-bottom: 0.75rem;
-}
-
-@media print {
-  .stat-box,
-  .toc-box,
-  .proposal,
-  .comment {
-    page-break-inside: avoid;
-  }
-
-  .proposal {
-    page-break-before: always;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
 }

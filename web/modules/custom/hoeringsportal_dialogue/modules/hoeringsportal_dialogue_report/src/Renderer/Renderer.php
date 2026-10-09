@@ -16,7 +16,9 @@ final class Renderer {
   use StringTranslationTrait;
 
   private const TEMPLATE = 'templates/dialogue-report.html.twig';
-  private const PRINT_CSS = 'assets/css/dialogue-report-print.css';
+  private const BASE_CSS = 'assets/css/dialogue-report.css';
+  private const HTML_CSS = 'assets/css/dialogue-report-html.css';
+  private const PDF_CSS = 'assets/css/dialogue-report-pdf.css';
 
   public function __construct(
     private readonly RendererInterface $renderer,
@@ -32,20 +34,22 @@ final class Renderer {
    * @param \Drupal\node\NodeInterface $dialogue
    *   A dialogue node.
    * @param bool $forPdf
-   *   TRUE when this HTML is only an intermediate step towards a PDF, to
-   *   suppress the "Download as PDF" link in that case.
+   *   TRUE when this HTML is only an intermediate step towards a PDF. Selects
+   *   the PDF stylesheet instead of the HTML one and hides the PDF button.
    */
   public function renderHtml(NodeInterface $dialogue, bool $forPdf = FALSE): string {
     // The CSS is inlined rather than attached as a library: the report bypasses
     // the theme layer, and Gotenberg receives an HTML string with no way to
     // fetch linked assets.
+    $css = $this->readModuleFile(self::BASE_CSS) . "\n" . $this->readModuleFile($forPdf ? self::PDF_CSS : self::HTML_CSS);
+
     $build = [
       '#type' => 'inline_template',
       '#template' => $this->readModuleFile(self::TEMPLATE),
       '#context' => [
         'dialogue' => $dialogue,
         'categories' => $this->reportHelper->build($dialogue),
-        'print_css' => $this->readModuleFile(self::PRINT_CSS),
+        'css' => $css,
         'for_pdf' => $forPdf,
       ],
     ];

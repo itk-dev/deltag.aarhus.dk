@@ -3,16 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>{{ 'Report'|t }}: {{ dialogue.label }}</title>
-  <style>{{ print_css|raw }}</style>
+  <style>{{ css|raw }}</style>
 </head>
 <body>
+  {% if not for_pdf %}
+    <a class="pdf-button" href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Create PDF'|t }}</a>
+  {% endif %}
   <h1 id="top">{{ 'Report'|t }}: {{ dialogue.label }}</h1>
   <p>
     <a href="{{ url('entity.node.canonical', {node: dialogue.id}) }}">{{ 'Back to dialogue'|t }}</a>
-    {% if not for_pdf %}
-      &middot;
-      <a href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Download as PDF'|t }}</a>
-    {% endif %}
   </p>
 
   <section id="statistik">
