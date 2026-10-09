@@ -6,7 +6,7 @@
   <style>{{ css|raw }}</style>
 </head>
 <body>
-  {% import _self as helpers %}
+  {% import '@hoeringsportal_dialogue_report/dialogue-report-macros.html.twig' as helpers %}
   {% set frontpage = 'Frontpage'|t({}, {context: 'Dialogue report'}) %}
 
   {% if not for_pdf %}
@@ -93,73 +93,5 @@
       </article>
     {% endfor %}
   {% endfor %}
-
-  {% macro icon(name) -%}
-    {%- set paths = {
-      back: 'M14 8H2M7 3 2 8l5 5',
-      forward: 'M2 8h12M9 3l5 5-5 5',
-      chevron: 'M6 3l5 5-5 5',
-      home: 'M2 7.5 8 2l6 5.5M3.5 6v8h9V6M6.5 14v-4h3v4',
-      info: 'M8 1.5a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13M8 7.5v3.5M8 5h.01',
-      input: 'M4 1.5h5l3.5 3.5v9.5h-8.5zM9 1.5V5h3.5M6 8.5h4M6 11h4',
-      agree: 'M8 1.5a6.5 6.5 0 1 0 0 13a6.5 6.5 0 1 0 0-13M5.5 8l1.8 1.8 3.2-3.3',
-      comment: 'M2.5 3h11v7.5h-6.5l-3 2.5v-2.5h-1.5z',
-      print: 'M4.5 6V2h7v4M4.5 12H2.5V6.5h11V12h-2M4.5 9.5h7v4.5h-7z',
-    } -%}
-    <svg class="icon icon--{{ name }}" viewBox="0 0 16 16" aria-hidden="true"><path d="{{ paths[name] }}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  {%- endmacro %}
-
-  {% macro input_count(count) -%}
-    {% trans %}1 input{% plural count %}{{ count }} inputs{% endtrans %}
-  {%- endmacro %}
-
-  {% macro agree_count(count) -%}
-    {% trans %}1 agree vote{% plural count %}{{ count }} agree votes{% endtrans %}
-  {%- endmacro %}
-
-  {% macro comment_count(count) -%}
-    {% trans %}1 comment{% plural count %}{{ count }} comments{% endtrans %}
-  {%- endmacro %}
-
-  {% macro icon_link(href, icon, label) %}
-    <a class="icon-link" href="{{ href }}">{{ _self.icon(icon) }}{{ label }}</a>
-  {% endmacro %}
-
-  {# Breadcrumb trail on the left, home and back links on the right. #}
-  {% macro nav(trail, back_href, frontpage) %}
-    <nav class="report-nav">
-      <ol class="breadcrumb">
-        {% for item in trail %}
-          <li>
-            {% if item.href is defined %}
-              <a href="{{ item.href }}">{{ item.label }}</a>
-            {% else %}
-              {{ item.label }}
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ol>
-      <span class="nav-links">
-        {{ _self.icon_link('#top', 'home', frontpage) }}
-        {{ _self.icon_link(back_href, 'back', 'Back'|t) }}
-      </span>
-    </nav>
-  {% endmacro %}
-
-  {% macro comment_tree(entries) %}
-    <ul class="comment-list">
-      {% for entry in entries %}
-        <li>
-          <div class="comment-card">
-            <div class="text">{{ entry.comment.field_comment.value }}</div>
-            <div class="comment-card__agree">{{ _self.icon('agree') }}{{ _self.agree_count(entry.like_count) }}</div>
-          </div>
-          {% if entry.children %}
-            {{ _self.comment_tree(entry.children) }}
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% endmacro %}
 </body>
 </html>
