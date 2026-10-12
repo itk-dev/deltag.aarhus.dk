@@ -46,6 +46,45 @@ body {
   text-decoration: none;
 }
 
+.pdf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgb(255 255 255 / 80%);
+  color: var(--heading);
+  font-weight: bold;
+}
+
+.pdf-overlay[hidden] {
+  display: none;
+}
+
+.pdf-overlay__spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 0.3rem solid var(--divider);
+  border-top-color: var(--link);
+  border-radius: 50%;
+  animation: pdf-overlay-spin 0.8s linear infinite;
+}
+
+@keyframes pdf-overlay-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdf-overlay__spinner {
+    animation-duration: 3s;
+  }
+}
+
 @media print {
   .pdf-button,
   .category::before {

@@ -22,6 +22,7 @@ final class Renderer {
   private const HTML_CSS = self::ASSETS_DIR . '/css/dialogue-report-html.css';
   private const PDF_CSS = self::ASSETS_DIR . '/css/dialogue-report-pdf.css';
   private const LOGO = self::ASSETS_DIR . '/images/aarhus-kommune-logo.svg';
+  private const HTML_JS = self::ASSETS_DIR . '/js/dialogue-report.js';
 
   public function __construct(
     private readonly RendererInterface $renderer,
@@ -54,6 +55,7 @@ final class Renderer {
           $this->assetUrl($forPdf ? self::PDF_CSS : self::HTML_CSS, $forPdf),
         ],
         'logo_url' => $this->assetUrl(self::LOGO, $forPdf),
+        'script_url' => $forPdf ? NULL : $this->assetUrl(self::HTML_JS, FALSE),
         'for_pdf' => $forPdf,
       ],
     ];

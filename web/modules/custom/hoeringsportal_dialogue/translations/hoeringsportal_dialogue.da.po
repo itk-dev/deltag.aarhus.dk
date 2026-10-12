@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-09 12:44+0200\n"
-"PO-Revision-Date: 2026-10-09 12:44+0200\n"
+"POT-Creation-Date: 2026-10-12 09:25+0200\n"
+"PO-Revision-Date: 2026-10-12 09:25+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -84,6 +84,9 @@ msgstr "Opret PDF"
 
 msgid "Create dialog proposal"
 msgstr "Opret dialogforslag"
+
+msgid "Creating PDF …"
+msgstr "Opretter PDF …"
 
 msgid "Current activity in the project"
 msgstr "Nuværende aktivitet i projektet"
@@ -188,6 +191,9 @@ msgstr "Send dit forslag"
 
 msgid "Show proposals on map"
 msgstr "Vis forslag på kort"
+
+msgid "The PDF could not be created. Please try again."
+msgstr "PDF'en kunne ikke oprettes. Prøv igen."
 
 msgid "The numbers show agree votes and comments for each input."
 msgstr "Tallene viser Enig og kommentarer til det enkelte input."

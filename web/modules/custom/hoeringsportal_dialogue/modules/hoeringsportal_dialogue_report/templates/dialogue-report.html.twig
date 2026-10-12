@@ -12,7 +12,12 @@
   {% set frontpage = 'Frontpage'|t({}, {context: 'Dialogue report'}) %}
 
   {% if not for_pdf %}
-    <a class="pdf-button" href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}">{{ 'Create PDF'|t }}</a>
+    <a class="pdf-button" href="{{ url('hoeringsportal_dialogue_report.pdf', {node: dialogue.id}) }}" data-error-message="{{ 'The PDF could not be created. Please try again.'|t }}">{{ 'Create PDF'|t }}</a>
+    <div class="pdf-overlay" hidden>
+      <div class="pdf-overlay__spinner"></div>
+      <p role="status">{{ 'Creating PDF …'|t }}</p>
+    </div>
+    <script src="{{ script_url }}" defer></script>
   {% endif %}
 
   <header class="report-header" id="top">
