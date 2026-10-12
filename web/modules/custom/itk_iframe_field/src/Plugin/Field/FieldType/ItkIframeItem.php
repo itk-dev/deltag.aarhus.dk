@@ -47,8 +47,8 @@ class ItkIframeItem extends IframeItem {
       '#default_value' => $this->getSetting('allowed_domains') ?? '',
       '#rows' => 6,
       '#weight' => -10,
-      '#description' => $this->t('One domain per line. Only URLs served by one of these domains are rendered as an iframe; anything else renders nothing at all. As long as the list is empty, no iframe is rendered.') . '<br />'
-      . $this->t('A bare domain such as <em>example.com</em> matches that host only. Use <em>*.example.com</em> to match its subdomains. Lines starting with <em>#</em> are treated as comments.'),
+      '#description' => $this->t('One domain per line. Only https URLs served by one of these domains are rendered as an iframe; any other URL is rendered as a link. As long as the list is empty, no iframe is rendered.') . '<br />'
+      . $this->t('Enter host names such as <em>example.com</em>. A domain matches that host only, so list subdomains such as <em>www.example.com</em> separately. Lines starting with <em>#</em> are treated as comments.'),
       '#element_validate' => [[static::class, 'validateAllowedDomains']],
     ];
 
@@ -72,7 +72,7 @@ class ItkIframeItem extends IframeItem {
       if ('' === $line || str_starts_with($line, '#')) {
         continue;
       }
-      if (!AllowedDomains::isValidPattern($line)) {
+      if (!AllowedDomains::isValidDomain($line)) {
         $invalid[] = $line;
       }
     }
@@ -88,7 +88,7 @@ class ItkIframeItem extends IframeItem {
    * Returns the domains accepted for this field.
    *
    * @return string[]
-   *   Normalized host patterns.
+   *   Lowercased domains.
    */
   public function getAllowedDomains(): array {
     return AllowedDomains::parse((string) ($this->getSetting('allowed_domains') ?? ''));

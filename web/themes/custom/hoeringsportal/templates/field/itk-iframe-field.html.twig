@@ -31,7 +31,7 @@
       <style>{{ style|raw }}</style>
     {% endif %}
     <iframe{{ attributes.setAttribute('style', 'aspect-ratio: 16/9; width: 100%; border:0; margin:0;').setAttribute('class', 'd-none d-lg-block') }}>
-      {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text}) }}
+      {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text ?: src}) }}
     </iframe>
     <a href="{{ src }}" class="itk-iframe-field__fullscreen btn btn-link px-0" target="_blank" rel="noopener noreferrer">
       <i class="fa-solid fa-maximize"></i> {{ 'View in full screen'|t }}

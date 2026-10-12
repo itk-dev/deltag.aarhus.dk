@@ -14,23 +14,23 @@ one domain per line:
 ```text
 # Aarhus municipality
 aarhus.dk
-*.aarhus.dk
+www.aarhus.dk
 player.vimeo.com
 ```
 
-- A bare domain (`aarhus.dk`) matches that host only, not its subdomains.
-- `*.aarhus.dk` matches any subdomain, but not `aarhus.dk` itself.
+- A domain matches that exact host only, so list each subdomain separately.
 - Lines beginning with `#` are comments; blank lines are ignored.
-- Lines may be pasted as full URLs (`https://aarhus.dk/some/page`); only the
-  host is considered.
 
 ## What gets rendered
 
-| The item's URL                                  | Output                       |
-|-------------------------------------------------|------------------------------|
-| `http(s)` and host on the accepted list         | `<iframe>`                   |
-| `http(s)` and host *not* on the list            | `<a href="…">`               |
-| anything else (`javascript:`, `data:`, no host) | nothing, logged as a warning |
+| The item's URL                                   | Output                       |
+|--------------------------------------------------|------------------------------|
+| `https` and host on the accepted list            | `<iframe>`                   |
+| `http`, or `https` with a host *not* on the list | `<a href="…">`               |
+| anything else (`javascript:`, `data:`, no host)  | nothing, logged as a warning |
+
+Only `https` URLs are embedded: the site is served over `https`, so browsers
+would block an `http` iframe as mixed content anyway.
 
 So a URL to `google.com` on a field that only accepts `aarhus.dk` still shows
 up — as a link, not an embed.
