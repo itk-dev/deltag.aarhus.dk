@@ -22,7 +22,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@popperjs/core": "^2.11.8",
-    "@symfony/webpack-encore": "^5.1.0",
+    "@symfony/webpack-encore": "^7.2.0",
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
