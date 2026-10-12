@@ -60,7 +60,7 @@ class ReportController extends ControllerBase {
    *   The access result.
    */
   public function access(NodeInterface $node): AccessResultInterface {
-    return AccessResult::allowedIfHasPermission($this->currentUser(), 'administer citizen proposal')
+    return AccessResult::allowedIfHasPermission($this->currentUser(), 'administer dialogues')
       ->andIf(AccessResult::allowedIf('dialogue' === $node->bundle()))
       ->addCacheableDependency($node);
   }
