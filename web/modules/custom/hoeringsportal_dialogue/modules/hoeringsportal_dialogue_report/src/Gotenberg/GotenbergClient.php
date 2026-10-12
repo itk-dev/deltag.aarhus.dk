@@ -3,17 +3,18 @@
 namespace Drupal\hoeringsportal_dialogue_report\Gotenberg;
 
 use Drupal\Core\Site\Settings;
-use GuzzleHttp\ClientInterface;
+use Gotenberg\Gotenberg;
+use Gotenberg\Stream;
+use Psr\Http\Client\ClientInterface;
 
 /**
- * Thin client for the Gotenberg HTML-to-PDF conversion API.
+ * Client for the Gotenberg HTML-to-PDF conversion API.
  */
 final class GotenbergClient {
 
   private const DEFAULT_URL = 'http://gotenberg:3000';
   // Where Gotenberg reaches this site's nginx to fetch the report's assets.
   private const DEFAULT_ASSET_BASE_URL = 'http://nginx:8080';
-  private const CONVERT_HTML_PATH = '/forms/chromium/convert/html';
 
   // A4.
   private const PAPER_WIDTH = '21cm';
@@ -25,13 +26,11 @@ final class GotenbergClient {
   private const MARGIN_LEFT = '1cm';
   private const MARGIN_RIGHT = '1cm';
 
-  // Makes Chromium apply the report's @media print rules.
-  private const EMULATED_MEDIA_TYPE_PRINT = 'print';
-
   // Fail on any 4xx/5xx asset response instead of producing an unstyled PDF.
-  private const FAIL_ON_RESOURCE_HTTP_STATUS_CODES = '[499,599]';
+  private const FAIL_ON_RESOURCE_HTTP_STATUS_CODES = [499, 599];
 
   public function __construct(
+    // Drupal's http_client, so Gotenberg calls use the site's HTTP settings.
     private readonly ClientInterface $httpClient,
     private readonly Settings $settings,
   ) {
@@ -49,32 +48,22 @@ final class GotenbergClient {
    *
    * @return string
    *   The rendered PDF, as binary string.
+   *
+   * @throws \Gotenberg\Exceptions\GotenbergApiErrored
+   *   If Gotenberg fails, e.g. because a linked asset could not be loaded.
    */
   public function convertHtmlToPdf(string $html, string $footerHtml): string {
-    $options = [
-      'emulatedMediaType' => self::EMULATED_MEDIA_TYPE_PRINT,
-      'paperWidth' => self::PAPER_WIDTH,
-      'paperHeight' => self::PAPER_HEIGHT,
-      'marginTop' => self::MARGIN_TOP,
-      'marginBottom' => self::MARGIN_BOTTOM,
-      'marginLeft' => self::MARGIN_LEFT,
-      'marginRight' => self::MARGIN_RIGHT,
-      'failOnResourceHttpStatusCodes' => self::FAIL_ON_RESOURCE_HTTP_STATUS_CODES,
-    ];
+    $request = Gotenberg::chromium($this->getBaseUrl())
+      ->pdf()
+      ->paperSize(self::PAPER_WIDTH, self::PAPER_HEIGHT)
+      ->margins(self::MARGIN_TOP, self::MARGIN_BOTTOM, self::MARGIN_LEFT, self::MARGIN_RIGHT)
+      // Makes Chromium apply the report's @media print rules.
+      ->emulatePrintMediaType()
+      ->failOnResourceHttpStatusCodes(self::FAIL_ON_RESOURCE_HTTP_STATUS_CODES)
+      ->footer(Stream::string('footer.html', $footerHtml))
+      ->html(Stream::string('index.html', $html));
 
-    $multipart = [
-      ['name' => 'files', 'filename' => 'index.html', 'contents' => $html],
-      ['name' => 'files', 'filename' => 'footer.html', 'contents' => $footerHtml],
-    ];
-    foreach ($options as $name => $value) {
-      $multipart[] = ['name' => $name, 'contents' => $value];
-    }
-
-    $response = $this->httpClient->request('POST', $this->getBaseUrl() . self::CONVERT_HTML_PATH, [
-      'multipart' => $multipart,
-    ]);
-
-    return (string) $response->getBody();
+    return (string) Gotenberg::send($request, $this->httpClient)->getBody();
   }
 
   /**
