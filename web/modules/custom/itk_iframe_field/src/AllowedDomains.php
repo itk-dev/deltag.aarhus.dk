@@ -21,11 +21,11 @@ final class AllowedDomains {
   /**
    * Schemes a URL may use to be rendered at all, as an iframe or a link.
    *
-   * Anything else - "javascript:", "data:", a scheme-relative "//host/" or an
-   * internal Drupal path - has no domain that can be matched against the list,
-   * and HTML-escaping does not neutralise a "javascript:" or "data:" href.
+   * Anything else could run script from an href: HTML-escaping does not
+   * neutralise a "javascript:" or "data:" URL. A scheme-relative "//host/" or
+   * an internal Drupal path is refused too, as it has no domain to match.
    */
-  private const SAFE_SCHEMES = ['http', 'https'];
+  private const LINKABLE_SCHEMES = ['http', 'https'];
 
   /**
    * Matches a lowercased host name.
@@ -70,7 +70,7 @@ final class AllowedDomains {
   }
 
   /**
-   * Tells whether a URL is safe to put in an "src" or "href" attribute.
+   * Tells whether a URL may be put in an "src" or "href" attribute at all.
    *
    * @param string $url
    *   The absolute URL resolved for the field item.
@@ -78,13 +78,13 @@ final class AllowedDomains {
    * @return bool
    *   TRUE if the URL is an absolute http(s) URL with a host.
    */
-  public static function isSafeUrl(string $url): bool {
+  public static function isLinkableUrl(string $url): bool {
     $parts = parse_url($url);
     if (!is_array($parts) || empty($parts['host']) || empty($parts['scheme'])) {
       return FALSE;
     }
 
-    return in_array(strtolower($parts['scheme']), self::SAFE_SCHEMES, TRUE);
+    return in_array(strtolower($parts['scheme']), self::LINKABLE_SCHEMES, TRUE);
   }
 
   /**
@@ -102,7 +102,7 @@ final class AllowedDomains {
    *   TRUE if an iframe may be rendered for this URL.
    */
   public static function isAllowed(string $url, array $domains): bool {
-    if ([] === $domains || !self::isSafeUrl($url)) {
+    if ([] === $domains || !self::isLinkableUrl($url)) {
       return FALSE;
     }
 

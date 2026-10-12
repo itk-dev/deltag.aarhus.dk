@@ -39,7 +39,7 @@ class ItkIframeDefaultFormatter extends IframeDefaultFormatter {
     foreach ($elements as $delta => $element) {
       $src = (string) ($element['#src'] ?? '');
 
-      if (!AllowedDomains::isSafeUrl($src)) {
+      if (!AllowedDomains::isLinkableUrl($src)) {
         // No host to match and nothing that can safely become an href either.
         // Render nothing, but keep the field's cacheability so that the output
         // is rebuilt once the accepted domains change.
