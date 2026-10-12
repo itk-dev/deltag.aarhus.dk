@@ -44,6 +44,5 @@ services:
 
   gotenberg:
     image: gotenberg/gotenberg:8
-    restart: unless-stopped
     networks:
       - app

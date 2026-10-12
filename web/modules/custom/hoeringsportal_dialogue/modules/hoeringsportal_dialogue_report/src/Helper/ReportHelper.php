@@ -126,12 +126,7 @@ class ReportHelper {
       return [];
     }
 
-    $proposals = [];
-    foreach ($storage->loadMultiple($ids) as $proposal) {
-      $proposals[(int) $proposal->id()] = $proposal;
-    }
-
-    return $proposals;
+    return $storage->loadMultiple($ids);
   }
 
   /**

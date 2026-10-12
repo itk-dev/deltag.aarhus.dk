@@ -7,5 +7,3 @@ services:
   Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient:
 
   Drupal\hoeringsportal_dialogue_report\Renderer\Renderer:
-
-  Drupal\hoeringsportal_dialogue_report\Controller\ReportController:
