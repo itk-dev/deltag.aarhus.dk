@@ -5,8 +5,10 @@ namespace Drupal\hoeringsportal_dialogue_report\Drush\Commands;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Session\AccountSwitcherInterface;
 use Drupal\hoeringsportal_dialogue_report\Renderer\Renderer;
 use Drupal\node\NodeInterface;
+use Drupal\user\UserInterface;
 use Drush\Attributes as CLI;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -23,6 +25,7 @@ final class Commands extends DrushCommands {
     readonly private Renderer $renderer,
     readonly private EntityTypeManagerInterface $entityTypeManager,
     readonly private FileSystemInterface $fileSystem,
+    readonly private AccountSwitcherInterface $accountSwitcher,
   ) {
     parent::__construct();
   }
@@ -35,6 +38,7 @@ final class Commands extends DrushCommands {
       $container->get(Renderer::class),
       $container->get('entity_type.manager'),
       $container->get('file_system'),
+      $container->get('account_switcher'),
     );
   }
 
@@ -43,22 +47,51 @@ final class Commands extends DrushCommands {
    */
   #[CLI\Command(name: 'hoeringsportal_dialogue_report:render')]
   #[CLI\Argument(name: 'nid', description: 'Dialogue node id')]
+  #[CLI\Option(name: 'user', description: 'Render the report as this user (name or id), so it only contains what that user may see. Defaults to anonymous.')]
   #[CLI\Usage(name: 'drush hoeringsportal_dialogue_report:render 87', description: 'Render the report for dialogue 87 as a PDF file')]
-  public function render(string $nid): void {
+  #[CLI\Usage(name: 'drush hoeringsportal_dialogue_report:render 87 --user=admin', description: 'Render the report for dialogue 87 as the user "admin"')]
+  public function render(string $nid, array $options = ['user' => NULL]): void {
     $node = $this->entityTypeManager->getStorage('node')->load($nid);
     if (!$node instanceof NodeInterface || 'dialogue' !== $node->bundle()) {
       throw new \RuntimeException(sprintf('Node %s is not a dialogue', $nid));
     }
 
+    if (NULL !== $options['user']) {
+      $this->accountSwitcher->switchTo($this->loadUser($options['user']));
+    }
+    try {
+      $pdf = $this->renderer->renderPdf($node);
+    }
+    finally {
+      if (NULL !== $options['user']) {
+        $this->accountSwitcher->switchBack();
+      }
+    }
+
     $directory = self::DESTINATION_DIRECTORY;
     $this->fileSystem->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
     $uri = $this->fileSystem->saveData(
-      $this->renderer->renderPdf($node),
+      $pdf,
       sprintf('%s/dialogue-%d-report.pdf', $directory, $node->id()),
       FileExists::Replace,
     );
 
     $this->io()->success(sprintf('Report saved to %s', $this->fileSystem->realpath($uri) ?: $uri));
+  }
+
+  /**
+   * Load a user by id or name.
+   */
+  private function loadUser(string $idOrName): UserInterface {
+    $storage = $this->entityTypeManager->getStorage('user');
+    $user = ctype_digit($idOrName)
+      ? $storage->load($idOrName)
+      : (current($storage->loadByProperties(['name' => $idOrName])) ?: NULL);
+    if (!$user instanceof UserInterface) {
+      throw new \RuntimeException(sprintf('Cannot find user %s', $idOrName));
+    }
+
+    return $user;
   }
 
 }

@@ -103,10 +103,10 @@ class ReportHelper {
   }
 
   /**
-   * Get all published proposals for a dialogue, oldest first.
+   * Get the published proposals the current user may view, oldest first.
    *
-   * Published status is filtered explicitly rather than via access checks, so
-   * the report is the same whether rendered by an admin or by Drush.
+   * Published status is filtered explicitly as well: access checks alone let
+   * admins and users who may view unpublished content see it.
    *
    * @return array<int, \Drupal\node\NodeInterface>
    *   Proposal nodes keyed by node id.
@@ -114,7 +114,7 @@ class ReportHelper {
   private function getProposals(NodeInterface $dialogue): array {
     $storage = $this->entityTypeManager->getStorage('node');
     $ids = $storage->getQuery()
-      ->accessCheck(FALSE)
+      ->accessCheck(TRUE)
       ->condition('status', NodeInterface::PUBLISHED)
       ->condition('type', 'dialogue_proposal')
       ->condition('field_dialogue', $dialogue->id())
@@ -180,7 +180,7 @@ class ReportHelper {
   }
 
   /**
-   * Get published comments for a set of proposals, grouped by proposal id.
+   * Get published comments the current user may view, grouped by proposal id.
    *
    * @param int[] $proposalIds
    *   Proposal node ids.
@@ -195,7 +195,7 @@ class ReportHelper {
 
     $storage = $this->entityTypeManager->getStorage('comment');
     $ids = $storage->getQuery()
-      ->accessCheck(FALSE)
+      ->accessCheck(TRUE)
       ->condition('status', CommentInterface::PUBLISHED)
       ->condition('entity_type', 'node')
       ->condition('field_name', 'field_comments')
