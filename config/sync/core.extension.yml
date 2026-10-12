@@ -55,6 +55,7 @@ module:
   hoeringsportal_decision: 0
   hoeringsportal_deskpro: 0
   hoeringsportal_dialogue: 0
+  hoeringsportal_dialogue_report: 0
   hoeringsportal_forms: 0
   hoeringsportal_hearing: 0
   hoeringsportal_openid_connect: 0

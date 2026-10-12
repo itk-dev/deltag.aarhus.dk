@@ -17,3 +17,7 @@ services:
   Drupal\hoeringsportal_dialogue_fixtures\Fixture\CommentFixture:
     tags:
       - { name: content_fixture }
+
+  Drupal\hoeringsportal_dialogue_fixtures\Fixture\DialogueLargeFixture:
+    tags:
+      - { name: content_fixture }
