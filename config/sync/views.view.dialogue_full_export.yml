@@ -203,7 +203,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'administer citizen proposal'
+          perm: 'administer dialogues'
       cache:
         type: tag
         options: {  }
