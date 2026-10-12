@@ -241,6 +241,18 @@ h2 {
   font-size: 1.2rem;
 }
 
+.proposal-map {
+  margin: 1.5rem 0 0;
+}
+
+.proposal-map img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+}
+
 .summary {
   display: grid;
   grid-template-columns: 1fr 1fr;

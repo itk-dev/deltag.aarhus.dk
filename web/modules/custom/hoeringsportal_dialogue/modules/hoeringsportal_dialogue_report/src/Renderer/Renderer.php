@@ -8,6 +8,7 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient;
 use Drupal\hoeringsportal_dialogue_report\Helper\ReportHelper;
+use Drupal\hoeringsportal_dialogue_report\Map\MapImageGenerator;
 use Drupal\node\NodeInterface;
 
 /**
@@ -30,6 +31,7 @@ final class Renderer {
     private readonly FileUrlGeneratorInterface $fileUrlGenerator,
     private readonly ReportHelper $reportHelper,
     private readonly GotenbergClient $gotenbergClient,
+    private readonly MapImageGenerator $mapImageGenerator,
   ) {
   }
 
@@ -49,7 +51,9 @@ final class Renderer {
       '#template' => $this->readModuleFile(self::TEMPLATE),
       '#context' => [
         'dialogue' => $dialogue,
-        'categories' => $this->reportHelper->build($dialogue),
+        'categories' => $this->addMapImages($this->reportHelper->build($dialogue), $forPdf),
+        'map_width' => MapImageGenerator::WIDTH,
+        'map_height' => MapImageGenerator::HEIGHT,
         'stylesheets' => [
           $this->assetUrl(self::BASE_CSS, $forPdf),
           $this->assetUrl($forPdf ? self::PDF_CSS : self::HTML_CSS, $forPdf),
@@ -74,6 +78,49 @@ final class Renderer {
       . '<body><div class="pager">' . $this->t('Page <span class="pageNumber"></span> of <span class="totalPages"></span>') . '</div></body></html>';
 
     return $this->gotenbergClient->convertHtmlToPdf($html, $footerHtml);
+  }
+
+  /**
+   * Add each proposal's map image source, if any, as "map_image".
+   *
+   * @param array $categories
+   *   The report categories, cf. ReportHelper::build().
+   * @param bool $forPdf
+   *   Whether the HTML is for the PDF.
+   */
+  private function addMapImages(array $categories, bool $forPdf): array {
+    // A proposal is listed under each of its categories.
+    $sources = [];
+    foreach ($categories as $tid => $category) {
+      foreach ($category['proposals'] as $index => $proposal) {
+        $nid = (int) $proposal['node']->id();
+        if (!array_key_exists($nid, $sources)) {
+          $sources[$nid] = $this->getMapImageSource($proposal['node'], $forPdf);
+        }
+        $categories[$tid]['proposals'][$index]['map_image'] = $sources[$nid];
+      }
+    }
+
+    return $categories;
+  }
+
+  /**
+   * Get the image source of a proposal's map image.
+   *
+   * Gotenberg cannot fetch private files, so the PDF gets the image inline.
+   */
+  private function getMapImageSource(NodeInterface $proposal, bool $forPdf): ?string {
+    $uri = $this->mapImageGenerator->getUri($proposal);
+    if (NULL === $uri) {
+      return NULL;
+    }
+    if (!$forPdf) {
+      return $this->fileUrlGenerator->generateString($uri);
+    }
+
+    $data = file_get_contents($uri);
+
+    return FALSE === $data ? NULL : 'data:image/png;base64,' . base64_encode($data);
   }
 
   /**

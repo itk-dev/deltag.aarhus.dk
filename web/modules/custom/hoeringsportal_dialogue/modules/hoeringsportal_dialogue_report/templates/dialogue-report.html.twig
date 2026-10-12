@@ -87,6 +87,12 @@
         {% endif %}
         <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
 
+        {% if proposal.map_image %}
+          <figure class="proposal-map">
+            <img src="{{ proposal.map_image }}" width="{{ map_width }}" height="{{ map_height }}" alt="{{ 'Map showing the location of the input'|t }}">
+          </figure>
+        {% endif %}
+
         <div class="summary">
           <span>{{ helpers.icon('agree') }}{{ helpers.agree_count(proposal.like_count) }}</span>
           <span>{{ helpers.icon('comment') }}{{ helpers.comment_count(proposal.comment_count) }}</span>

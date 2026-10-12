@@ -999,6 +999,124 @@
             "time": "2022-12-20T22:53:13+00:00"
         },
         {
+            "name": "dantsu/php-image-editor",
+            "version": "1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DantSu/php-image-editor.git",
+                "reference": "59a3e922000767051d380a2c530c61344f1e79ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DantSu/php-image-editor/zipball/59a3e922000767051d380a2c530c61344f1e79ec",
+                "reference": "59a3e922000767051d380a2c530c61344f1e79ec",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DantSu\\PHPImageEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck ALARY",
+                    "homepage": "https://github.com/DantSu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to easily edit image with GD extension.",
+            "homepage": "https://github.com/DantSu/php-image-editor",
+            "keywords": [
+                "GD2",
+                "edit",
+                "edition",
+                "editor",
+                "image",
+                "photo",
+                "php",
+                "picture"
+            ],
+            "support": {
+                "issues": "https://github.com/DantSu/php-image-editor/issues",
+                "source": "https://github.com/DantSu/php-image-editor/tree/1.4.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/DantSu",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-23T07:36:11+00:00"
+        },
+        {
+            "name": "dantsu/php-osm-static-api",
+            "version": "0.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DantSu/php-osm-static-api.git",
+                "reference": "cf89dccfa4f27f6e76de0ab065b313d2f19de728"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DantSu/php-osm-static-api/zipball/cf89dccfa4f27f6e76de0ab065b313d2f19de728",
+                "reference": "cf89dccfa4f27f6e76de0ab065b313d2f19de728",
+                "shasum": ""
+            },
+            "require": {
+                "dantsu/php-image-editor": "^1.3",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DantSu\\OpenStreetMapStaticAPI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck ALARY",
+                    "homepage": "https://github.com/DantSu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to easily get static image from OpenStreetMap (OSM), add markers and draw lines.",
+            "homepage": "https://github.com/DantSu/php-osm-static-api",
+            "keywords": [
+                "OpenStreetMap",
+                "api",
+                "image",
+                "map",
+                "maps",
+                "osm",
+                "php",
+                "static"
+            ],
+            "support": {
+                "issues": "https://github.com/DantSu/php-osm-static-api/issues",
+                "source": "https://github.com/DantSu/php-osm-static-api/tree/0.6.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/DantSu",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-06T07:17:27+00:00"
+        },
+        {
             "name": "dekor/php-array-table",
             "version": "2.0",
             "source": {
@@ -3696,9 +3814,10 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/hoeringsportal_dialogue",
-                "reference": "09ac14e8abf8801446fc5ae3d1647720d07c07d9"
+                "reference": "cce666673ff660e6b6b46663419b376d0ad2df45"
             },
             "require": {
+                "dantsu/php-osm-static-api": "^0.6",
                 "gotenberg/gotenberg-php": "^2.25",
                 "proj4php/proj4php": "^2.0"
             },
@@ -13034,16 +13153,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.37.0",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411"
+                "reference": "9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
-                "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74",
+                "reference": "9c6a5d6b01ca51d486c813e9a9c0ed55f208bb74",
                 "shasum": ""
             },
             "require": {
@@ -13094,7 +13213,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.37.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -13114,7 +13233,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-10T16:19:22+00:00"
+            "time": "2026-09-25T15:50:05+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
@@ -21532,16 +21651,16 @@
         },
         {
             "name": "symfony/polyfill-php82",
-            "version": "v1.38.1",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php82.git",
-                "reference": "002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b"
+                "reference": "843bbe8b2a7934307b749751eede0f111f5d1cfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b",
-                "reference": "002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b",
+                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/843bbe8b2a7934307b749751eede0f111f5d1cfc",
+                "reference": "843bbe8b2a7934307b749751eede0f111f5d1cfc",
                 "shasum": ""
             },
             "require": {
@@ -21588,7 +21707,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php82/tree/v1.38.1"
+                "source": "https://github.com/symfony/polyfill-php82/tree/v1.43.0"
             },
             "funding": [
                 {
@@ -21608,7 +21727,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-26T12:45:58+00:00"
+            "time": "2026-09-25T15:50:05+00:00"
         },
         {
             "name": "symfony/stopwatch",

@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Session\AccountSwitcherInterface;
+use Drupal\hoeringsportal_dialogue_report\Map\MapImageGenerator;
 use Drupal\hoeringsportal_dialogue_report\Renderer\Renderer;
 use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
@@ -26,6 +27,7 @@ final class Commands extends DrushCommands {
     readonly private EntityTypeManagerInterface $entityTypeManager,
     readonly private FileSystemInterface $fileSystem,
     readonly private AccountSwitcherInterface $accountSwitcher,
+    readonly private MapImageGenerator $mapImageGenerator,
   ) {
     parent::__construct();
   }
@@ -39,7 +41,49 @@ final class Commands extends DrushCommands {
       $container->get('entity_type.manager'),
       $container->get('file_system'),
       $container->get('account_switcher'),
+      $container->get(MapImageGenerator::class),
     );
+  }
+
+  /**
+   * Generate map images for dialogue proposals with a location.
+   *
+   * Images are generated when a proposal is saved; this is for proposals
+   * saved before that, or whose image could not be generated then.
+   */
+  #[CLI\Command(name: 'hoeringsportal_dialogue_report:generate-map-images')]
+  #[CLI\Option(name: 'force', description: 'Regenerate images that already exist')]
+  #[CLI\Usage(name: 'drush hoeringsportal_dialogue_report:generate-map-images', description: 'Generate missing map images')]
+  public function generateMapImages(array $options = ['force' => FALSE]): void {
+    $storage = $this->entityTypeManager->getStorage('node');
+    $ids = $storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('type', MapImageGenerator::PROPOSAL_BUNDLE)
+      ->sort('nid')
+      ->execute();
+
+    $generated = 0;
+    $failed = 0;
+    foreach (array_chunk($ids, 50) as $chunk) {
+      foreach ($storage->loadMultiple($chunk) as $proposal) {
+        try {
+          if (NULL !== $this->mapImageGenerator->generate($proposal, (bool) $options['force'])) {
+            ++$generated;
+          }
+        }
+        catch (\Throwable $exception) {
+          ++$failed;
+          $this->logger()->error(sprintf('Proposal %d: %s', $proposal->id(), $exception->getMessage()));
+        }
+      }
+      $storage->resetCache($chunk);
+    }
+
+    $message = sprintf('%d proposals checked, %d with a map image, %d failed', count($ids), $generated, $failed);
+    if ($failed > 0) {
+      throw new \RuntimeException($message);
+    }
+    $this->io()->success($message);
   }
 
   /**

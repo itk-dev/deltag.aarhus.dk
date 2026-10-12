@@ -149,6 +149,9 @@ msgstr "Kort"
 msgid "Map for @title"
 msgstr "Kort til @title"
 
+msgid "Map showing the location of the input"
+msgstr "Kort, der viser placeringen af inputtet"
+
 msgid ""
 "No parent exists for this dialogue proposal! You should add a proposal "
 "from the appropriate dialogue page."
