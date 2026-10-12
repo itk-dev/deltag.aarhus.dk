@@ -13,15 +13,15 @@ final class GotenbergClient {
   private const DEFAULT_URL = 'http://gotenberg:3000';
   private const CONVERT_HTML_PATH = '/forms/chromium/convert/html';
 
-  // A4, in inches (Gotenberg's unit).
-  private const PAPER_WIDTH = '8.27';
-  private const PAPER_HEIGHT = '11.7';
-  private const MARGIN_TOP = '0.4';
+  // A4.
+  private const PAPER_WIDTH = '21cm';
+  private const PAPER_HEIGHT = '29.7cm';
+  private const MARGIN_TOP = '1cm';
   // Leaves room for the footer.
-  private const MARGIN_BOTTOM = '0.6';
+  private const MARGIN_BOTTOM = '1.5cm';
   // Mirrored by the body padding in dialogue-report-html.css.
-  private const MARGIN_LEFT = '0.4';
-  private const MARGIN_RIGHT = '0.4';
+  private const MARGIN_LEFT = '1cm';
+  private const MARGIN_RIGHT = '1cm';
 
   // Makes Chromium apply the report's @media print rules.
   private const EMULATED_MEDIA_TYPE_PRINT = 'print';
@@ -46,7 +46,7 @@ final class GotenbergClient {
    */
   public function convertHtmlToPdf(string $html, string $footerHtml): string {
     $options = [
-      'emulatedMediaType' => self::EMULATED_MEDIA_TYPE,
+      'emulatedMediaType' => self::EMULATED_MEDIA_TYPE_PRINT,
       'paperWidth' => self::PAPER_WIDTH,
       'paperHeight' => self::PAPER_HEIGHT,
       'marginTop' => self::MARGIN_TOP,
@@ -74,7 +74,7 @@ final class GotenbergClient {
    * Get the Gotenberg base URL.
    */
   private function getBaseUrl(): string {
-    $config = $this->settings->get('hoeringsportal_dialogue.gotenberg') ?? [];
+    $config = $this->settings->get('hoeringsportal_dialogue_report.gotenberg') ?? [];
 
     return rtrim($config['url'] ?? self::DEFAULT_URL, '/');
   }

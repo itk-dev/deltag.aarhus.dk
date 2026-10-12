@@ -5,10 +5,10 @@ html {
 
 body {
   box-sizing: border-box;
-  width: 8.27in;
+  width: 21cm;
   max-width: 100%;
   margin: 1rem auto;
-  padding: 0.4in;
+  padding: 1cm;
   background: #fff;
   box-shadow: 0 0 0.5rem rgb(0 0 0 / 20%);
 }

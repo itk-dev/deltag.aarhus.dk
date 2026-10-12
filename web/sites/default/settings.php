@@ -39,7 +39,7 @@ $settings['hoeringsportal_deskpro.deskpro'] = [
 ];
 
 // Gotenberg configuration (used by hoeringsportal_dialogue_report for PDF reports).
-$settings['hoeringsportal_dialogue.gotenberg'] = [
+$settings['hoeringsportal_dialogue_report.gotenberg'] = [
   'url' => 'http://gotenberg:3000',
 ];
 
