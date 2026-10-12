@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>{{ dialogue.label }}</title>
-  <style>{{ css|raw }}</style>
+  {% for stylesheet in stylesheets %}
+    <link rel="stylesheet" href="{{ stylesheet }}">
+  {% endfor %}
 </head>
 <body>
   {% import '@hoeringsportal_dialogue_report/dialogue-report-macros.html.twig' as helpers %}
@@ -15,7 +17,7 @@
 
   <header class="report-header" id="top">
     <div class="brand">
-      {{ logo|raw }}
+      <img src="{{ logo_url }}" alt="Aarhus Kommune">
       <span class="site-name">Deltag Aarhus</span>
     </div>
     <div class="printed">{{ helpers.icon('print') }}{{ 'Printed: @date'|t({'@date': 'now'|date('U')|format_date('custom', 'j. F Y')}) }}</div>

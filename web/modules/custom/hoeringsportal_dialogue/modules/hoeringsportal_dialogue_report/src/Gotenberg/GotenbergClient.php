@@ -11,6 +11,8 @@ use GuzzleHttp\ClientInterface;
 final class GotenbergClient {
 
   private const DEFAULT_URL = 'http://gotenberg:3000';
+  // Where Gotenberg reaches this site's nginx to fetch the report's assets.
+  private const DEFAULT_ASSET_BASE_URL = 'http://nginx:8080';
   private const CONVERT_HTML_PATH = '/forms/chromium/convert/html';
 
   // A4.
@@ -26,6 +28,9 @@ final class GotenbergClient {
   // Makes Chromium apply the report's @media print rules.
   private const EMULATED_MEDIA_TYPE_PRINT = 'print';
 
+  // Fail on any 4xx/5xx asset response instead of producing an unstyled PDF.
+  private const FAIL_ON_RESOURCE_HTTP_STATUS_CODES = '[499,599]';
+
   public function __construct(
     private readonly ClientInterface $httpClient,
     private readonly Settings $settings,
@@ -33,10 +38,11 @@ final class GotenbergClient {
   }
 
   /**
-   * Convert a self-contained HTML document to a PDF.
+   * Convert an HTML document to a PDF.
    *
    * @param string $html
-   *   A self-contained HTML document (no external assets to fetch).
+   *   An HTML document. Linked assets must use absolute URLs Gotenberg can
+   *   reach, cf. self::getAssetBaseUrl().
    * @param string $footerHtml
    *   HTML for the page footer, e.g. a "page X of Y" pager. Uses Chromium's
    *   native print header/footer markup: classes "pageNumber"/"totalPages".
@@ -53,6 +59,7 @@ final class GotenbergClient {
       'marginBottom' => self::MARGIN_BOTTOM,
       'marginLeft' => self::MARGIN_LEFT,
       'marginRight' => self::MARGIN_RIGHT,
+      'failOnResourceHttpStatusCodes' => self::FAIL_ON_RESOURCE_HTTP_STATUS_CODES,
     ];
 
     $multipart = [
@@ -71,12 +78,24 @@ final class GotenbergClient {
   }
 
   /**
+   * Get the base URL Gotenberg uses to fetch this site's assets.
+   */
+  public function getAssetBaseUrl(): string {
+    return rtrim($this->getConfig()['asset_base_url'] ?? self::DEFAULT_ASSET_BASE_URL, '/');
+  }
+
+  /**
    * Get the Gotenberg base URL.
    */
   private function getBaseUrl(): string {
-    $config = $this->settings->get('hoeringsportal_dialogue_report.gotenberg') ?? [];
+    return rtrim($this->getConfig()['url'] ?? self::DEFAULT_URL, '/');
+  }
 
-    return rtrim($config['url'] ?? self::DEFAULT_URL, '/');
+  /**
+   * Get the Gotenberg settings.
+   */
+  private function getConfig(): array {
+    return $this->settings->get('hoeringsportal_dialogue_report.gotenberg') ?? [];
   }
 
 }

@@ -3,6 +3,7 @@
 namespace Drupal\hoeringsportal_dialogue_report\Renderer;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient;
@@ -25,34 +26,34 @@ final class Renderer {
   public function __construct(
     private readonly RendererInterface $renderer,
     private readonly ModuleHandlerInterface $moduleHandler,
+    private readonly FileUrlGeneratorInterface $fileUrlGenerator,
     private readonly ReportHelper $reportHelper,
     private readonly GotenbergClient $gotenbergClient,
   ) {
   }
 
   /**
-   * Render a dialogue report as a self-contained HTML document.
+   * Render a dialogue report as a standalone HTML document.
    *
    * @param \Drupal\node\NodeInterface $dialogue
    *   A dialogue node.
    * @param bool $forPdf
    *   TRUE when this HTML is only an intermediate step towards a PDF. Selects
-   *   the PDF stylesheet instead of the HTML one and hides the PDF button.
+   *   the PDF stylesheet instead of the HTML one, hides the PDF button and
+   *   makes asset URLs reachable from Gotenberg.
    */
   public function renderHtml(NodeInterface $dialogue, bool $forPdf = FALSE): string {
-    // The CSS is inlined rather than attached as a library: the report bypasses
-    // the theme layer, and Gotenberg receives an HTML string with no way to
-    // fetch linked assets.
-    $css = $this->readModuleFile(self::BASE_CSS) . "\n" . $this->readModuleFile($forPdf ? self::PDF_CSS : self::HTML_CSS);
-
     $build = [
       '#type' => 'inline_template',
       '#template' => $this->readModuleFile(self::TEMPLATE),
       '#context' => [
         'dialogue' => $dialogue,
         'categories' => $this->reportHelper->build($dialogue),
-        'css' => $css,
-        'logo' => $this->readModuleFile(self::LOGO),
+        'stylesheets' => [
+          $this->assetUrl(self::BASE_CSS, $forPdf),
+          $this->assetUrl($forPdf ? self::PDF_CSS : self::HTML_CSS, $forPdf),
+        ],
+        'logo_url' => $this->assetUrl(self::LOGO, $forPdf),
         'for_pdf' => $forPdf,
       ],
     ];
@@ -74,16 +75,39 @@ final class Renderer {
   }
 
   /**
+   * Get the URL of one of this module's assets.
+   *
+   * The browser gets a root-relative URL. Gotenberg receives the HTML as a
+   * string, so for the PDF the URL is made absolute on an address Gotenberg
+   * can reach. An absolute URL is used rather than a <base> element, which
+   * would also turn the report's #anchor links into links to that address.
+   */
+  private function assetUrl(string $relativePath, bool $forPdf): string {
+    $path = $this->getModulePath() . '/' . $relativePath;
+    // The modification time busts browser caches when the file changes.
+    $url = $this->fileUrlGenerator->generateString($path) . '?' . filemtime($path);
+
+    return $forPdf ? $this->gotenbergClient->getAssetBaseUrl() . $url : $url;
+  }
+
+  /**
    * Read a file relative to this module's directory.
    */
   private function readModuleFile(string $relativePath): string {
-    $path = $this->moduleHandler->getModule('hoeringsportal_dialogue_report')->getPath() . '/' . $relativePath;
+    $path = $this->getModulePath() . '/' . $relativePath;
     $contents = file_get_contents($path);
     if (FALSE === $contents) {
       throw new \RuntimeException(sprintf('Cannot read file %s', $path));
     }
 
     return $contents;
+  }
+
+  /**
+   * Get this module's path, relative to the Drupal root.
+   */
+  private function getModulePath(): string {
+    return $this->moduleHandler->getModule('hoeringsportal_dialogue_report')->getPath();
   }
 
 }
