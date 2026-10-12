@@ -88,13 +88,11 @@ class ItkIframeHooks {
       return;
     }
 
-    // The template sizes the iframe with inline CSS - a full width and a fixed
-    // aspect ratio - so editor-supplied dimensions have no effect. Hide the
-    // inputs rather than removing them, so that saving an existing item does
-    // not rewrite the dimensions it already had.
+    // The iframe is always full width; width and height only set its aspect
+    // ratio, cf. ItkIframeDefaultFormatter.
     foreach (['width', 'height'] as $dimension) {
       if (isset($element[$dimension])) {
-        $element[$dimension]['#access'] = FALSE;
+        $element[$dimension]['#description'] = $this->t('Only used for the aspect ratio, in pixels, e.g. 800 by 600. The iframe always fills the available width. Without numbers for both, the ratio is 16:9.');
       }
     }
 

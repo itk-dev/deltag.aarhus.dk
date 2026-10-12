@@ -55,6 +55,17 @@ class ItkIframeDefaultFormatter extends IframeDefaultFormatter {
       // iframe. The template branches on "allowed".
       $elements[$delta]['#theme'] = 'itk_iframe_field';
       $elements[$delta]['#allowed'] = AllowedDomains::isAllowed($src, $patterns);
+
+      // Size the iframe in the parent's id-scoped CSS: always full width,
+      // with the item's width and height used only as an aspect ratio.
+      // "height: auto" overrides the height attribute the parent always sets,
+      // which would otherwise stop the aspect ratio from applying.
+      $item = $items[$delta];
+      $elements[$delta]['#style'] = ($elements[$delta]['#style'] ?? '') . sprintf(
+        ' #%s { width: 100%%; height: auto; aspect-ratio: %s; }',
+        (string) $elements[$delta]['#attributes']['id'],
+        self::aspectRatio($item->width ?? NULL, $item->height ?? NULL),
+      );
       $elements[$delta]['#cache']['tags'] = array_merge(
         $elements[$delta]['#cache']['tags'] ?? [],
         $cache_tags,
@@ -62,6 +73,24 @@ class ItkIframeDefaultFormatter extends IframeDefaultFormatter {
     }
 
     return $elements;
+  }
+
+  /**
+   * Get a CSS aspect ratio from an item's width and height.
+   *
+   * The iframe module stores free text such as "100%", "800" or "800px". Only
+   * when both are plain (pixel) numbers do they describe a ratio.
+   *
+   * @return string
+   *   A CSS aspect-ratio value, "16 / 9" by default.
+   */
+  private static function aspectRatio(mixed $width, mixed $height): string {
+    $pixels = '/^\s*([1-9]\d*)\s*(px)?\s*$/i';
+    if (1 === preg_match($pixels, (string) $width, $w) && 1 === preg_match($pixels, (string) $height, $h)) {
+      return $w[1] . ' / ' . $h[1];
+    }
+
+    return '16 / 9';
   }
 
 }

@@ -3,8 +3,8 @@
 Adds an **Iframe (accepted domains)** field type. It behaves like the field type
 from the [iframe](https://www.drupal.org/project/iframe) module, with one extra
 field setting: a list of domains that may be rendered as an iframe.
-Sizing configuration of the iframe is hidden. The sizing is always
-responsive set in frontend template instead of optionally fixed in config.
+The iframe is always responsive: full width, with the item's width and
+height used only as an aspect ratio (see [Size](#size)).
 
 ## Configuring
 
@@ -66,10 +66,16 @@ the URL itself.
 
 ## Size
 
-The widget's **width** and **height** inputs are hidden for this field type.
-Both templates size the iframe with inline CSS — full width and a fixed 16:9
-aspect ratio — so the stored dimensions have no effect on the output. Editors
-are left with the title and the URL.
+An embedded iframe always fills the available width. The item's **width**
+and **height** only set its aspect ratio: with plain pixel numbers for both
+(say `800` and `600`) the iframe gets that ratio, otherwise it is 16:9.
+
+`ItkIframeDefaultFormatter` adds the sizing to the iframe module's `style`
+variable — the CSS it builds from the field's border, scrolling and
+transparency settings, scoped to the iframe's id — so all of the iframe's CSS
+is in one place. It sets `height: auto`, as the iframe module always puts a
+`height` attribute on the iframe, which would otherwise win over the aspect
+ratio.
 
 ## Widgets
 

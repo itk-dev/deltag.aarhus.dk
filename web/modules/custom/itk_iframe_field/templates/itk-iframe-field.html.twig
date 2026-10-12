@@ -8,16 +8,15 @@
  * applies is decided in
  * \Drupal\itk_iframe_field\Plugin\Field\FieldFormatter\ItkIframeDefaultFormatter
  *
- * The size is set here with inline CSS - full width, fixed aspect ratio -
- * which is why the widget hides its width and height inputs: whatever is
- * stored has no effect on the output.
+ * The iframe is sized in "style": always full width, with the item's width
+ * and height used only as an aspect ratio (16:9 if they are not numbers).
  *
  * Available variables:
  * - allowed: TRUE to embed the URL, FALSE to link to it.
  * - src: The URL to embed or link to.
  * - attributes: HTML attributes for the iframe tag, including id and class.
  * - text: The title text.
- * - style: Inline CSS for this iframe, scoped to its id.
+ * - style: CSS for this iframe, scoped to its id: border, overflow and size.
  * - headerlevel: Heading level (1-6) used for the title.
  */
 #}
@@ -30,8 +29,8 @@
     {% if style is not empty %}
       <style>{{ style|raw }}</style>
     {% endif %}
-    <iframe{{ attributes.setAttribute('style', 'aspect-ratio: 16 / 9; width: 100%;') }}>
-      {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text ?: src}) }}
+    <iframe{{ attributes }}>
+      {{ 'Your browser does not support iframes, but you can visit <a href=":url">@text</a>'|t({':url': src, '@text': text is not empty ? text : src}) }}
     </iframe>
     <a href="{{ src }}" class="itk-iframe-field__fullscreen" target="_blank" rel="noopener noreferrer">{{ 'View in full screen'|t }}</a>
   {% else %}
