@@ -24,7 +24,7 @@ final class GotenbergClient {
   private const MARGIN_RIGHT = '0.4';
 
   // Makes Chromium apply the report's @media print rules.
-  private const EMULATED_MEDIA_TYPE = 'print';
+  private const EMULATED_MEDIA_TYPE_PRINT = 'print';
 
   public function __construct(
     private readonly ClientInterface $httpClient,
