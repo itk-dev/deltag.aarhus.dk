@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-07-31 09:01+0200\n"
-"PO-Revision-Date: 2026-07-31 09:01+0200\n"
+"POT-Creation-Date: 2026-10-08 10:45+0200\n"
+"PO-Revision-Date: 2026-10-08 10:45+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -634,6 +634,9 @@ msgstr "Vertikal tidslinje visning"
 msgid "View all proposals"
 msgstr "Se alle forslag"
 
+msgid "View in full screen"
+msgstr "Vis i fuld skærm"
+
 msgid "Whatsapp"
 msgstr "Whatsapp"
 
@@ -648,6 +651,13 @@ msgstr "Du"
 
 msgid "You only have to do it once, and you can do it now."
 msgstr "Du behøver kun at gøre det én gang, og du kan gøre det nu."
+
+msgid ""
+"Your browser does not support iframes, but you can visit <a "
+"href=\":url\">@text</a>"
+msgstr ""
+"Din browser understøtter ikke iframes, men du kn besøge <a "
+"href=\":url\">@text</a>"
 
 msgid "Your information"
 msgstr "Dine oplysninger"

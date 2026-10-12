@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a7a983e585eaceaee7b17c94f511d66",
+    "content-hash": "fed467f7a65d2981a719b3ea2930d68d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3811,6 +3811,62 @@
             }
         },
         {
+            "name": "drupal/iframe",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/iframe.git",
+                "reference": "3.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/iframe-3.0.2.zip",
+                "reference": "3.0.2",
+                "shasum": "c7fc671a373d231847e5c37cba76cd3d4c1310fd"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11 || ^12"
+            },
+            "require-dev": {
+                "drupal/feeds": "^3.0"
+            },
+            "suggest": {
+                "drupal/token": "When installed you can use token syntax for url of iframe."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.2",
+                    "datestamp": "1782868645",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Steffen Schuessler",
+                    "homepage": "https://www.drupal.org/user/340152",
+                    "email": "drupal@neffets.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "smustgrave",
+                    "homepage": "https://www.drupal.org/user/3252890"
+                }
+            ],
+            "description": "Defines a simple iframe field type.",
+            "homepage": "https://drupal.org/project/iframe",
+            "support": {
+                "source": "https://git.drupalcode.org/project/iframe"
+            }
+        },
+        {
             "name": "drupal/image_widget_crop",
             "version": "3.0.0",
             "source": {
@@ -3980,6 +4036,30 @@
             "homepage": "https://www.drupal.org/project/inline_entity_form",
             "support": {
                 "source": "https://git.drupalcode.org/project/inline_entity_form"
+            }
+        },
+        {
+            "name": "drupal/itk_iframe_field",
+            "version": "1.0-dev",
+            "dist": {
+                "type": "path",
+                "url": "web/modules/custom/itk_iframe_field",
+                "reference": "07c175407b8323839d25bd09741f1d4cf068d5c3"
+            },
+            "require": {
+                "drupal/iframe": "^3.0"
+            },
+            "type": "drupal-custom-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Iframe field type that only renders iframes served from an accepted list of domains.",
+            "keywords": [
+                "Drupal"
+            ],
+            "transport-options": {
+                "symlink": false,
+                "relative": true
             }
         },
         {

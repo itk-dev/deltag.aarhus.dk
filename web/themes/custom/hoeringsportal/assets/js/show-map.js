@@ -16,7 +16,13 @@ import { defaults as defaultInteractions } from "ol/interaction.js";
 require("./ol.css");
 
 const mapElement = document.getElementById("map");
-if (mapElement !== null && mapElement.dataset.geojson) {
+// A map field with no geometry stores the literal string "null", which is
+// truthy - OpenLayers then parses it to null and throws on object['crs'].
+if (
+  mapElement !== null &&
+  mapElement.dataset.geojson &&
+  mapElement.dataset.geojson !== "null"
+) {
   const image = new Icon({
     src: "/themes/custom/hoeringsportal/static/images/flag.png",
     anchor: [0.5, 1],

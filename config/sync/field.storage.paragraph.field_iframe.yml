@@ -1,0 +1,19 @@
+uuid: 2420feb4-df0b-41b6-8f61-3fe3d86b144c
+langcode: da
+status: true
+dependencies:
+  module:
+    - itk_iframe_field
+    - paragraphs
+id: paragraph.field_iframe
+field_name: field_iframe
+entity_type: paragraph
+type: itk_iframe
+settings: {  }
+module: itk_iframe_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
