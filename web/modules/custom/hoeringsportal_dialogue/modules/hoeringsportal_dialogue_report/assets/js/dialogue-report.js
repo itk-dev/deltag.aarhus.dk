@@ -1,4 +1,4 @@
-  // Fetch the PDF ourselves so the overlay can be hidden again when the download
+// Fetch the PDF ourselves so the overlay can be hidden again when the download
 // is ready: a plain download link gives the page no such signal. Without
 // JavaScript the button is still an ordinary download link.
 const button = document.querySelector(".pdf-button");
