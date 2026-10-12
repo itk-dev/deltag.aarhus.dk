@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c29376987a4c87592080b612893de4be",
+    "content-hash": "fed467f7a65d2981a719b3ea2930d68d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4036,6 +4036,30 @@
             "homepage": "https://www.drupal.org/project/inline_entity_form",
             "support": {
                 "source": "https://git.drupalcode.org/project/inline_entity_form"
+            }
+        },
+        {
+            "name": "drupal/itk_iframe_field",
+            "version": "1.0-dev",
+            "dist": {
+                "type": "path",
+                "url": "web/modules/custom/itk_iframe_field",
+                "reference": "07c175407b8323839d25bd09741f1d4cf068d5c3"
+            },
+            "require": {
+                "drupal/iframe": "^3.0"
+            },
+            "type": "drupal-custom-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Iframe field type that only renders iframes served from an accepted list of domains.",
+            "keywords": [
+                "Drupal"
+            ],
+            "transport-options": {
+                "symlink": false,
+                "relative": true
             }
         },
         {
