@@ -60,6 +60,7 @@ permissions:
   - 'unpublish any node type public_meeting'
   - 'update media'
   - 'use text format email_html'
+  - 'view any unpublished course content'
   - 'view any unpublished public_meeting content'
   - 'view course revisions'
   - 'view own unpublished media'
