@@ -52,15 +52,26 @@ final class Commands extends DrushCommands {
    * saved before that, or whose image could not be generated then.
    */
   #[CLI\Command(name: 'hoeringsportal_dialogue_report:generate-map-images')]
+  #[CLI\Option(name: 'nid', description: 'Only generate the map image for this proposal (node id)')]
   #[CLI\Option(name: 'force', description: 'Regenerate images that already exist')]
   #[CLI\Usage(name: 'drush hoeringsportal_dialogue_report:generate-map-images', description: 'Generate missing map images')]
-  public function generateMapImages(array $options = ['force' => FALSE]): void {
+  #[CLI\Usage(name: 'drush hoeringsportal_dialogue_report:generate-map-images --nid=87 --force', description: 'Regenerate the map image for proposal 87')]
+  public function generateMapImages(array $options = ['nid' => NULL, 'force' => FALSE]): void {
     $storage = $this->entityTypeManager->getStorage('node');
-    $ids = $storage->getQuery()
-      ->accessCheck(FALSE)
-      ->condition('type', MapImageGenerator::PROPOSAL_BUNDLE)
-      ->sort('nid')
-      ->execute();
+    if (NULL !== $options['nid']) {
+      $proposal = $storage->load($options['nid']);
+      if (!$proposal instanceof NodeInterface || MapImageGenerator::PROPOSAL_BUNDLE !== $proposal->bundle()) {
+        throw new \RuntimeException(sprintf('Node %s is not a dialogue proposal', $options['nid']));
+      }
+      $ids = [(int) $proposal->id()];
+    }
+    else {
+      $ids = $storage->getQuery()
+        ->accessCheck(FALSE)
+        ->condition('type', MapImageGenerator::PROPOSAL_BUNDLE)
+        ->sort('nid')
+        ->execute();
+    }
 
     $generated = 0;
     $failed = 0;

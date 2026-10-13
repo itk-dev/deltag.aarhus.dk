@@ -9,7 +9,7 @@ use DantSu\OpenStreetMapStaticAPI\OpenStreetMap;
 use DantSu\OpenStreetMapStaticAPI\Polygon;
 use Drupal\Core\DestructableInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Extension\ExtensionPathResolver;
 use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Site\Settings;
@@ -33,7 +33,9 @@ final class MapImageGenerator implements DestructableInterface {
   public const HEIGHT = 150;
 
   private const DIRECTORY = 'private://dialogue-proposal-map';
-  private const MARKER = 'assets/images/map-marker.png';
+  // The pin used on the site's maps.
+  private const MARKER_THEME = 'hoeringsportal';
+  private const MARKER = 'assets/images/maps/map-pin.png';
   // Matches the maps on the site, cf. the theme's show-map.js.
   private const MAX_ZOOM = 15;
   private const COLOR = '008486';
@@ -60,7 +62,7 @@ final class MapImageGenerator implements DestructableInterface {
     private readonly ClientInterface $httpClient,
     private readonly FileSystemInterface $fileSystem,
     private readonly EntityTypeManagerInterface $entityTypeManager,
-    private readonly ModuleHandlerInterface $moduleHandler,
+    private readonly ExtensionPathResolver $extensionPathResolver,
     private readonly Settings $settings,
     #[Autowire(service: 'logger.channel.hoeringsportal_dialogue_report')]
     private readonly LoggerInterface $logger,
@@ -336,7 +338,7 @@ final class MapImageGenerator implements DestructableInterface {
     }
 
     if ([] !== $geometry['points']) {
-      $markers = (new Markers($this->getModulePath() . '/' . self::MARKER))
+      $markers = (new Markers($this->getMarkerPath()))
         ->setAnchor(Markers::ANCHOR_CENTER, Markers::ANCHOR_BOTTOM);
       foreach ($geometry['points'] as $point) {
         $markers->addMarker($point);
@@ -378,10 +380,10 @@ final class MapImageGenerator implements DestructableInterface {
   }
 
   /**
-   * Get this module's absolute path.
+   * Get the marker image's absolute path.
    */
-  private function getModulePath(): string {
-    return DRUPAL_ROOT . '/' . $this->moduleHandler->getModule('hoeringsportal_dialogue_report')->getPath();
+  private function getMarkerPath(): string {
+    return DRUPAL_ROOT . '/' . $this->extensionPathResolver->getPath('theme', self::MARKER_THEME) . '/' . self::MARKER;
   }
 
 }

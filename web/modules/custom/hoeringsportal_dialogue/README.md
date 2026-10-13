@@ -28,6 +28,8 @@ Generate missing images, e.g. for proposals saved before images were introduced 
 task drush -- hoeringsportal_dialogue_report:generate-map-images
 # Regenerate all images, e.g. after changing the tile source.
 task drush -- hoeringsportal_dialogue_report:generate-map-images --force
+# Regenerate the image for a single proposal.
+task drush -- hoeringsportal_dialogue_report:generate-map-images --nid=87 --force
 ```
 
 Map tiles are fetched from OpenStreetMap by default. Use another tile source in `settings.local.php`:
