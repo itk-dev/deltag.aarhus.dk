@@ -33,14 +33,6 @@
     <div class="teaser text">{{ dialogue.field_teaser.value }}</div>
   {% endif %}
 
-  {% if dialogue_images %}
-    <div class="report-images">
-      {% for image in dialogue_images %}
-        {{ helpers.image(image.src, image.alt, image_width, image_height) }}
-      {% endfor %}
-    </div>
-  {% endif %}
-
   <section id="statistik">
     <p>{{ 'Click on a category to see all input within the subject'|t }}</p>
     <div class="card-grid">

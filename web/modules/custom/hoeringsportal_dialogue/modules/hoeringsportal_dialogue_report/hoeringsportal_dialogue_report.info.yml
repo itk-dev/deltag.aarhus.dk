@@ -5,5 +5,4 @@ core_version_requirement: ^11
 package: ITK
 dependencies:
   - drupal:image
-  - drupal:media
   - hoeringsportal_dialogue:hoeringsportal_dialogue

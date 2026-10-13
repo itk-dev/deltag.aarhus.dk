@@ -8,9 +8,8 @@ comments at `/node/{nid}/dialogue-report`, and as a PDF (via [Gotenberg](https:/
 
 ### Images
 
-The report shows the dialogue's images (`field_top_images`) and each proposal's image (`field_image_upload`), cropped
-to the size of the map images with the `dialogue_report` image style (300×150), so a proposal's image and map fit side
-by side.
+The report shows each proposal's image (`field_image_upload`), cropped to the size of the map images with the
+`dialogue_report` image style (300×150), so a proposal's image and map fit side by side.
 
 ### Map images
 

@@ -13,7 +13,6 @@ use Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient;
 use Drupal\hoeringsportal_dialogue_report\Helper\ReportHelper;
 use Drupal\hoeringsportal_dialogue_report\Map\MapImageGenerator;
 use Drupal\image\ImageStyleInterface;
-use Drupal\media\MediaInterface;
 use Drupal\node\NodeInterface;
 
 /**
@@ -32,8 +31,6 @@ final class Renderer {
 
   // Crops images to the map images' size, so they line up side by side.
   private const IMAGE_STYLE = 'dialogue_report';
-  private const DIALOGUE_IMAGES_FIELD = 'field_top_images';
-  private const MEDIA_IMAGE_FIELD = 'field_itk_media_image_upload';
   private const PROPOSAL_IMAGE_FIELD = 'field_image_upload';
 
   public function __construct(
@@ -63,7 +60,6 @@ final class Renderer {
       '#template' => $this->readModuleFile(self::TEMPLATE),
       '#context' => [
         'dialogue' => $dialogue,
-        'dialogue_images' => $this->getDialogueImages($dialogue, $forPdf),
         'categories' => $this->addProposalImages($this->reportHelper->build($dialogue), $forPdf),
         'image_width' => MapImageGenerator::WIDTH,
         'image_height' => MapImageGenerator::HEIGHT,
@@ -91,30 +87,6 @@ final class Renderer {
       . '<body><div class="pager">' . $this->t('Page <span class="pageNumber"></span> of <span class="totalPages"></span>') . '</div></body></html>';
 
     return $this->gotenbergClient->convertHtmlToPdf($html, $footerHtml);
-  }
-
-  /**
-   * Get the dialogue's images.
-   *
-   * @return array<int, array{src: string, alt: string}>
-   *   The images.
-   */
-  private function getDialogueImages(NodeInterface $dialogue, bool $forPdf): array {
-    if (!$dialogue->hasField(self::DIALOGUE_IMAGES_FIELD)) {
-      return [];
-    }
-
-    $images = [];
-    foreach ($dialogue->get(self::DIALOGUE_IMAGES_FIELD)->referencedEntities() as $media) {
-      if ($media instanceof MediaInterface && $media->hasField(self::MEDIA_IMAGE_FIELD) && $media->access('view')) {
-        $image = $this->getImage($media->get(self::MEDIA_IMAGE_FIELD), $forPdf);
-        if (NULL !== $image) {
-          $images[] = $image;
-        }
-      }
-    }
-
-    return $images;
   }
 
   /**
