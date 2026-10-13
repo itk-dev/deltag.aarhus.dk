@@ -2,13 +2,18 @@
 
 namespace Drupal\hoeringsportal_dialogue_report\Renderer;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\file\FileInterface;
 use Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient;
 use Drupal\hoeringsportal_dialogue_report\Helper\ReportHelper;
 use Drupal\hoeringsportal_dialogue_report\Map\MapImageGenerator;
+use Drupal\image\ImageStyleInterface;
+use Drupal\media\MediaInterface;
 use Drupal\node\NodeInterface;
 
 /**
@@ -25,6 +30,12 @@ final class Renderer {
   private const LOGO = self::ASSETS_DIR . '/images/aarhus-kommune-logo.svg';
   private const HTML_JS = self::ASSETS_DIR . '/js/dialogue-report.js';
 
+  // Crops images to the map images' size, so they line up side by side.
+  private const IMAGE_STYLE = 'dialogue_report';
+  private const DIALOGUE_IMAGES_FIELD = 'field_top_images';
+  private const MEDIA_IMAGE_FIELD = 'field_itk_media_image_upload';
+  private const PROPOSAL_IMAGE_FIELD = 'field_image_upload';
+
   public function __construct(
     private readonly RendererInterface $renderer,
     private readonly ModuleHandlerInterface $moduleHandler,
@@ -32,6 +43,7 @@ final class Renderer {
     private readonly ReportHelper $reportHelper,
     private readonly GotenbergClient $gotenbergClient,
     private readonly MapImageGenerator $mapImageGenerator,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
   ) {
   }
 
@@ -51,9 +63,10 @@ final class Renderer {
       '#template' => $this->readModuleFile(self::TEMPLATE),
       '#context' => [
         'dialogue' => $dialogue,
-        'categories' => $this->addMapImages($this->reportHelper->build($dialogue), $forPdf),
-        'map_width' => MapImageGenerator::WIDTH,
-        'map_height' => MapImageGenerator::HEIGHT,
+        'dialogue_images' => $this->getDialogueImages($dialogue, $forPdf),
+        'categories' => $this->addProposalImages($this->reportHelper->build($dialogue), $forPdf),
+        'image_width' => MapImageGenerator::WIDTH,
+        'image_height' => MapImageGenerator::HEIGHT,
         'stylesheets' => [
           $this->assetUrl(self::BASE_CSS, $forPdf),
           $this->assetUrl($forPdf ? self::PDF_CSS : self::HTML_CSS, $forPdf),
@@ -81,27 +94,91 @@ final class Renderer {
   }
 
   /**
-   * Add each proposal's map image source, if any, as "map_image".
+   * Get the dialogue's images.
+   *
+   * @return array<int, array{src: string, alt: string}>
+   *   The images.
+   */
+  private function getDialogueImages(NodeInterface $dialogue, bool $forPdf): array {
+    if (!$dialogue->hasField(self::DIALOGUE_IMAGES_FIELD)) {
+      return [];
+    }
+
+    $images = [];
+    foreach ($dialogue->get(self::DIALOGUE_IMAGES_FIELD)->referencedEntities() as $media) {
+      if ($media instanceof MediaInterface && $media->hasField(self::MEDIA_IMAGE_FIELD) && $media->access('view')) {
+        $image = $this->getImage($media->get(self::MEDIA_IMAGE_FIELD), $forPdf);
+        if (NULL !== $image) {
+          $images[] = $image;
+        }
+      }
+    }
+
+    return $images;
+  }
+
+  /**
+   * Add each proposal's image and map image, if any.
+   *
+   * Adds "image" (array{src: string, alt: string}) and "map_image" (string).
    *
    * @param array $categories
    *   The report categories, cf. ReportHelper::build().
    * @param bool $forPdf
    *   Whether the HTML is for the PDF.
    */
-  private function addMapImages(array $categories, bool $forPdf): array {
+  private function addProposalImages(array $categories, bool $forPdf): array {
     // A proposal is listed under each of its categories.
-    $sources = [];
+    $images = [];
     foreach ($categories as $tid => $category) {
       foreach ($category['proposals'] as $index => $proposal) {
-        $nid = (int) $proposal['node']->id();
-        if (!array_key_exists($nid, $sources)) {
-          $sources[$nid] = $this->getMapImageSource($proposal['node'], $forPdf);
-        }
-        $categories[$tid]['proposals'][$index]['map_image'] = $sources[$nid];
+        $node = $proposal['node'];
+        $nid = (int) $node->id();
+        $images[$nid] ??= [
+          'image' => $node->hasField(self::PROPOSAL_IMAGE_FIELD) ? $this->getImage($node->get(self::PROPOSAL_IMAGE_FIELD), $forPdf) : NULL,
+          'map_image' => $this->getMapImageSource($node, $forPdf),
+        ];
+        $categories[$tid]['proposals'][$index] += $images[$nid];
       }
     }
 
     return $categories;
+  }
+
+  /**
+   * Get the first image in an image field, in the report's image style.
+   *
+   * @return array{src: string, alt: string}|null
+   *   The image, or NULL if the field has none.
+   */
+  private function getImage(FieldItemListInterface $items, bool $forPdf): ?array {
+    $item = $items->first();
+    $file = $item?->entity;
+    if (!$file instanceof FileInterface) {
+      return NULL;
+    }
+
+    $uri = $file->getFileUri();
+    $style = $this->entityTypeManager->getStorage('image_style')->load(self::IMAGE_STYLE);
+    if ($style instanceof ImageStyleInterface) {
+      // Gotenberg's requests to Drupal fail the trusted host check, so the
+      // derivative must exist for nginx to serve it as a static file.
+      $derivativeUri = $style->buildUri($uri);
+      if ($forPdf && !file_exists($derivativeUri)) {
+        $style->createDerivative($uri, $derivativeUri);
+      }
+      $url = $style->buildUrl($uri);
+    }
+    else {
+      $url = $this->fileUrlGenerator->generateString($uri);
+    }
+    $url = $this->fileUrlGenerator->transformRelative($url);
+
+    return [
+      // The files are public, so Gotenberg can fetch them like the assets.
+      'src' => $forPdf ? $this->gotenbergClient->getAssetBaseUrl() . $url : $url,
+      'alt' => (string) ($item->alt ?? ''),
+    ];
   }
 
   /**

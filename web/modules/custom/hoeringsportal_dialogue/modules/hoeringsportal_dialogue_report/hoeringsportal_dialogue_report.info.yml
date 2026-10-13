@@ -4,4 +4,6 @@ description: "HTML/PDF report of a dialogue's proposals, categories, likes and c
 core_version_requirement: ^11
 package: ITK
 dependencies:
+  - drupal:image
+  - drupal:media
   - hoeringsportal_dialogue:hoeringsportal_dialogue

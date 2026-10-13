@@ -13,6 +13,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Added dialogue report (HTML and PDF via Gotenberg)
 * [PR-690](https://github.com/itk-dev/deltag.aarhus.dk/pull/690)
   * Added map images of proposal locations to the dialogue report
+  * Added dialogue and proposal images to the dialogue report
 
 ## [4.17.7] - 2026-09-23
 

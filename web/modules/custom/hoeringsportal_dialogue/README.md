@@ -6,6 +6,12 @@ The `hoeringsportal_dialogue_report` submodule renders a report of a dialogue's 
 comments at `/node/{nid}/dialogue-report`, and as a PDF (via [Gotenberg](https://gotenberg.dev/)) at
 `/node/{nid}/dialogue-report/pdf`.
 
+### Images
+
+The report shows the dialogue's images (`field_top_images`) and each proposal's image (`field_image_upload`), cropped
+to the size of the map images with the `dialogue_report` image style (300×150), so a proposal's image and map fit side
+by side.
+
 ### Map images
 
 A proposal's location (`field_location`) is shown in the report as a static map image, rendered with

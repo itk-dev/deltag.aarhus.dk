@@ -33,6 +33,14 @@
     <div class="teaser text">{{ dialogue.field_teaser.value }}</div>
   {% endif %}
 
+  {% if dialogue_images %}
+    <div class="report-images">
+      {% for image in dialogue_images %}
+        {{ helpers.image(image.src, image.alt, image_width, image_height) }}
+      {% endfor %}
+    </div>
+  {% endif %}
+
   <section id="statistik">
     <p>{{ 'Click on a category to see all input within the subject'|t }}</p>
     <div class="card-grid">
@@ -87,10 +95,15 @@
         {% endif %}
         <div class="text">{{ proposal.node.field_dialogue_proposal_descr.value }}</div>
 
-        {% if proposal.map_image %}
-          <figure class="proposal-map">
-            <img src="{{ proposal.map_image }}" width="{{ map_width }}" height="{{ map_height }}" alt="{{ 'Map showing the location of the input'|t }}">
-          </figure>
+        {% if proposal.image or proposal.map_image %}
+          <div class="report-images">
+            {% if proposal.image %}
+              {{ helpers.image(proposal.image.src, proposal.image.alt, image_width, image_height) }}
+            {% endif %}
+            {% if proposal.map_image %}
+              {{ helpers.image(proposal.map_image, 'Map showing the location of the input'|t, image_width, image_height) }}
+            {% endif %}
+          </div>
         {% endif %}
 
         <div class="summary">

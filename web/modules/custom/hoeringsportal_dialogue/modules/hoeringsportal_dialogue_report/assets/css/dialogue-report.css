@@ -241,11 +241,19 @@ h2 {
   font-size: 1.2rem;
 }
 
-.proposal-map {
+/* Images and maps, side by side when there is room. */
+.report-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin: 1.5rem 0 0;
 }
 
-.proposal-map img {
+.report-image {
+  margin: 0;
+}
+
+.report-image img {
   display: block;
   max-width: 100%;
   height: auto;
