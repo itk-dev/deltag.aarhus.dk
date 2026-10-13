@@ -4,7 +4,6 @@ namespace Drupal\hoeringsportal_dialogue_report\Map;
 
 use DantSu\OpenStreetMapStaticAPI\LatLng;
 use DantSu\OpenStreetMapStaticAPI\Markers;
-use DantSu\OpenStreetMapStaticAPI\OpenStreetMap;
 use Drupal\Core\DestructableInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ExtensionPathResolver;
@@ -38,8 +37,9 @@ final class MapImageGenerator implements DestructableInterface {
   // The pin used on the site's maps.
   private const MARKER_THEME = 'hoeringsportal';
   private const MARKER = 'assets/images/maps/map-pin.png';
-  // Matches the maps on the site, cf. the theme's show-map.js.
-  private const ZOOM = 15;
+  // One level closer than the site's maps (cf. the theme's show-map.js), as
+  // the image is small.
+  private const ZOOM = 16;
 
   private const DEFAULT_TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   private const DEFAULT_ATTRIBUTION = '© OpenStreetMap contributors';
@@ -189,10 +189,10 @@ final class MapImageGenerator implements DestructableInterface {
   }
 
   /**
-   * Build an image URI that changes when the location or image size does.
+   * Build an image URI that changes when the location, size or zoom does.
    */
   private function buildUri(int $nid, string $geoJson): string {
-    $hash = substr(hash('sha256', $geoJson . '|' . self::WIDTH . 'x' . self::HEIGHT), 0, 16);
+    $hash = substr(hash('sha256', $geoJson . '|' . self::WIDTH . 'x' . self::HEIGHT . '|' . self::ZOOM), 0, 16);
 
     return sprintf('%s/%d-%s.png', self::DIRECTORY, $nid, $hash);
   }
@@ -225,7 +225,7 @@ final class MapImageGenerator implements DestructableInterface {
       ->setAnchor(Markers::ANCHOR_CENTER, Markers::ANCHOR_BOTTOM)
       ->addMarker($point);
 
-    return OpenStreetMap::createFromLatLngZoom($point, self::ZOOM, self::WIDTH, self::HEIGHT, $this->createTileLayer())
+    return (new CompactAttributionMap($point, self::ZOOM, self::WIDTH, self::HEIGHT, $this->createTileLayer()))
       ->addMarkers($markers)
       ->getImage()
       ->getDataPNG();
