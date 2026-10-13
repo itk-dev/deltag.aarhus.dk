@@ -6,6 +6,7 @@
     "license": "GPL-2.0+",
     "minimum-stability": "dev",
     "require": {
+        "dantsu/php-osm-static-api": "^0.6",
         "gotenberg/gotenberg-php": "^2.25",
         "proj4php/proj4php": "^2.0"
     }
