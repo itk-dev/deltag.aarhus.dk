@@ -3,10 +3,8 @@
 namespace Drupal\hoeringsportal_dialogue_report\Map;
 
 use DantSu\OpenStreetMapStaticAPI\LatLng;
-use DantSu\OpenStreetMapStaticAPI\Line;
 use DantSu\OpenStreetMapStaticAPI\Markers;
 use DantSu\OpenStreetMapStaticAPI\OpenStreetMap;
-use DantSu\OpenStreetMapStaticAPI\Polygon;
 use Drupal\Core\DestructableInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ExtensionPathResolver;
@@ -20,6 +18,10 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
  * Renders a dialogue proposal's location as a static map image.
+ *
+ * Only a single point is supported: the proposal form only offers the point
+ * widget, which stores a GeoJSON Feature with a Point geometry. Any other
+ * location gets no image.
  *
  * Images are stored as private://dialogue-proposal-map/{nid}-{hash}.png, where
  * the hash is computed from the location, so an image never shows an old
@@ -37,15 +39,7 @@ final class MapImageGenerator implements DestructableInterface {
   private const MARKER_THEME = 'hoeringsportal';
   private const MARKER = 'assets/images/maps/map-pin.png';
   // Matches the maps on the site, cf. the theme's show-map.js.
-  private const MAX_ZOOM = 15;
-  private const COLOR = '008486';
-  // 10% opaque, as on the site. The image library's alpha byte is
-  // transparency (00 is opaque), unlike CSS.
-  private const FILL_COLOR = self::COLOR . 'E6';
-  // Room for the marker, which sits above its point.
-  private const PADDING = 40;
-  // The library cannot fit a map to a zero-sized area, e.g. a single point.
-  private const MIN_SPAN_DEGREES = 0.0005;
+  private const ZOOM = 15;
 
   private const DEFAULT_TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   private const DEFAULT_ATTRIBUTION = '© OpenStreetMap contributors';
@@ -116,8 +110,8 @@ final class MapImageGenerator implements DestructableInterface {
   public function generate(NodeInterface $proposal, bool $force = FALSE): ?string {
     $nid = (int) $proposal->id();
     $geoJson = $this->getGeoJson($proposal);
-    $geometry = NULL === $geoJson ? NULL : $this->parseGeoJson($geoJson);
-    if (NULL === $geometry) {
+    $point = NULL === $geoJson ? NULL : $this->parsePoint($geoJson);
+    if (NULL === $point) {
       $this->delete($nid);
       return NULL;
     }
@@ -126,7 +120,7 @@ final class MapImageGenerator implements DestructableInterface {
     if ($force || !file_exists($uri)) {
       $directory = self::DIRECTORY;
       $this->fileSystem->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
-      $this->fileSystem->saveData($this->render($geometry), $uri, FileExists::Replace);
+      $this->fileSystem->saveData($this->render($point), $uri, FileExists::Replace);
     }
     $this->delete($nid, $uri);
 
@@ -204,164 +198,37 @@ final class MapImageGenerator implements DestructableInterface {
   }
 
   /**
-   * Parse GeoJSON (EPSG:4326) into points, lines and polygons.
+   * Get the point from a GeoJSON Feature with a Point geometry (EPSG:4326).
    *
-   * @return array{points: \DantSu\OpenStreetMapStaticAPI\LatLng[], lines: \DantSu\OpenStreetMapStaticAPI\LatLng[][], polygons: \DantSu\OpenStreetMapStaticAPI\LatLng[][]}|null
-   *   The geometry, or NULL if there is none.
+   * @return \DantSu\OpenStreetMapStaticAPI\LatLng|null
+   *   The point, or NULL if the GeoJSON is not a single point.
    */
-  private function parseGeoJson(string $geoJson): ?array {
-    $object = json_decode($geoJson, TRUE);
-    if (!is_array($object)) {
+  private function parsePoint(string $geoJson): ?LatLng {
+    $feature = json_decode($geoJson, TRUE);
+    $lng = $feature['geometry']['coordinates'][0] ?? NULL;
+    $lat = $feature['geometry']['coordinates'][1] ?? NULL;
+    if ('Point' !== ($feature['geometry']['type'] ?? NULL) || !is_numeric($lng) || !is_numeric($lat)) {
       return NULL;
     }
 
-    $geometry = ['points' => [], 'lines' => [], 'polygons' => []];
-    $this->collectGeometry($object, $geometry);
-    $geometry['lines'] = array_values(array_filter($geometry['lines']));
-    $geometry['polygons'] = array_values(array_filter($geometry['polygons']));
-
-    return [] === $geometry['points'] && [] === $geometry['lines'] && [] === $geometry['polygons'] ? NULL : $geometry;
+    return new LatLng((float) $lat, (float) $lng);
   }
 
   /**
-   * Add a GeoJSON object's geometry to $geometry.
-   */
-  private function collectGeometry(array $object, array &$geometry): void {
-    $coordinates = $object['coordinates'] ?? NULL;
-    switch ($object['type'] ?? NULL) {
-      case 'FeatureCollection':
-        foreach ($object['features'] ?? [] as $feature) {
-          if (is_array($feature)) {
-            $this->collectGeometry($feature, $geometry);
-          }
-        }
-        break;
-
-      case 'Feature':
-        if (is_array($object['geometry'] ?? NULL)) {
-          $this->collectGeometry($object['geometry'], $geometry);
-        }
-        break;
-
-      case 'GeometryCollection':
-        foreach ($object['geometries'] ?? [] as $child) {
-          if (is_array($child)) {
-            $this->collectGeometry($child, $geometry);
-          }
-        }
-        break;
-
-      case 'Point':
-        $geometry['points'] = [...$geometry['points'], ...$this->toLatLngs([$coordinates])];
-        break;
-
-      case 'MultiPoint':
-        $geometry['points'] = [...$geometry['points'], ...$this->toLatLngs($coordinates)];
-        break;
-
-      case 'LineString':
-        $geometry['lines'][] = $this->toLatLngs($coordinates);
-        break;
-
-      case 'MultiLineString':
-        foreach ((array) $coordinates as $line) {
-          $geometry['lines'][] = $this->toLatLngs($line);
-        }
-        break;
-
-      // Only outer rings are drawn; holes are ignored.
-      case 'Polygon':
-        $geometry['polygons'][] = $this->toLatLngs($coordinates[0] ?? []);
-        break;
-
-      case 'MultiPolygon':
-        foreach ((array) $coordinates as $polygon) {
-          $geometry['polygons'][] = $this->toLatLngs($polygon[0] ?? []);
-        }
-        break;
-    }
-  }
-
-  /**
-   * Convert GeoJSON positions ([lng, lat]) to LatLngs, skipping invalid ones.
-   *
-   * @return \DantSu\OpenStreetMapStaticAPI\LatLng[]
-   *   The positions.
-   */
-  private function toLatLngs(mixed $positions): array {
-    $latLngs = [];
-    foreach ((array) $positions as $position) {
-      if (is_array($position) && is_numeric($position[0] ?? NULL) && is_numeric($position[1] ?? NULL)) {
-        $latLngs[] = new LatLng((float) $position[1], (float) $position[0]);
-      }
-    }
-
-    return $latLngs;
-  }
-
-  /**
-   * Render geometry on a map.
+   * Render a map centred on a point, with a pin on it.
    *
    * @return string
    *   The PNG image data.
    */
-  private function render(array $geometry): string {
-    $all = array_merge($geometry['points'], ...$geometry['lines'], ...$geometry['polygons']);
-    $lats = array_map(static fn(LatLng $latLng) => $latLng->getLat(), $all);
-    $lngs = array_map(static fn(LatLng $latLng) => $latLng->getLng(), $all);
-    [$south, $north] = $this->ensureSpan(min($lats), max($lats));
-    [$west, $east] = $this->ensureSpan(min($lngs), max($lngs));
+  private function render(LatLng $point): string {
+    $markers = (new Markers($this->getMarkerPath()))
+      ->setAnchor(Markers::ANCHOR_CENTER, Markers::ANCHOR_BOTTOM)
+      ->addMarker($point);
 
-    $map = OpenStreetMap::createFromBoundingBox(
-      new LatLng($north, $west),
-      new LatLng($south, $east),
-      self::PADDING,
-      self::WIDTH,
-      self::HEIGHT,
-      $this->createTileLayer(),
-    );
-
-    foreach ($geometry['polygons'] as $points) {
-      $polygon = new Polygon(self::COLOR, 3, self::FILL_COLOR);
-      foreach ($points as $point) {
-        $polygon->addPoint($point);
-      }
-      $map->addDraw($polygon);
-    }
-
-    foreach ($geometry['lines'] as $points) {
-      $line = new Line(self::COLOR, 3);
-      foreach ($points as $point) {
-        $line->addPoint($point);
-      }
-      $map->addDraw($line);
-    }
-
-    if ([] !== $geometry['points']) {
-      $markers = (new Markers($this->getMarkerPath()))
-        ->setAnchor(Markers::ANCHOR_CENTER, Markers::ANCHOR_BOTTOM);
-      foreach ($geometry['points'] as $point) {
-        $markers->addMarker($point);
-      }
-      $map->addMarkers($markers);
-    }
-
-    return $map->getImage()->getDataPNG();
-  }
-
-  /**
-   * Widen a coordinate range that is too small to fit a map to.
-   *
-   * @return float[]
-   *   The (possibly widened) min and max.
-   */
-  private function ensureSpan(float $min, float $max): array {
-    if ($max - $min >= self::MIN_SPAN_DEGREES) {
-      return [$min, $max];
-    }
-    $center = ($min + $max) / 2;
-
-    return [$center - self::MIN_SPAN_DEGREES / 2, $center + self::MIN_SPAN_DEGREES / 2];
+    return OpenStreetMap::createFromLatLngZoom($point, self::ZOOM, self::WIDTH, self::HEIGHT, $this->createTileLayer())
+      ->addMarkers($markers)
+      ->getImage()
+      ->getDataPNG();
   }
 
   /**
@@ -370,13 +237,13 @@ final class MapImageGenerator implements DestructableInterface {
   private function createTileLayer(): HttpTileLayer {
     $config = $this->settings->get('hoeringsportal_dialogue_report.static_map') ?? [];
 
-    return (new HttpTileLayer(
+    return new HttpTileLayer(
       $this->httpClient,
       $config['user_agent'] ?? self::DEFAULT_USER_AGENT,
       $config['tile_url'] ?? self::DEFAULT_TILE_URL,
       $config['attribution'] ?? self::DEFAULT_ATTRIBUTION,
       $config['subdomains'] ?? 'abc',
-    ))->setMaxZoom(self::MAX_ZOOM);
+    );
   }
 
   /**

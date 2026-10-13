@@ -11,6 +11,9 @@ comments at `/node/{nid}/dialogue-report`, and as a PDF (via [Gotenberg](https:/
 A proposal's location (`field_location`) is shown in the report as a static map image, rendered with
 [dantsu/php-osm-static-api](https://github.com/DantSu/php-osm-static-api).
 
+Only a single point is supported, as that is all the proposal form lets citizens set. A proposal with any other
+geometry gets no map image.
+
 The images are plain files in `private://dialogue-proposal-map/`. They are not tracked in the database (no file
 entities), as they can always be regenerated from the proposal's location:
 
