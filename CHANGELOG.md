@@ -17,6 +17,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Added map images of proposal locations to the dialogue report
   * Added proposal images to the dialogue report
 
+## [4.17.8] - 2026-10-14
+
+* [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/691)
+
 ## [4.17.7] - 2026-09-23
 
 * [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/685)
