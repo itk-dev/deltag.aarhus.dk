@@ -105,7 +105,6 @@ module:
   serialization: 0
   site_status_message: 0
   svg_image: 0
-  svg_sanitizer: 0
   symfony_mailer: 0
   system: 0
   taxonomy: 0
