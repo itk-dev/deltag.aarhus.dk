@@ -7,16 +7,16 @@ dependencies:
 id: static_page
 label: 'Static page'
 type: 'canonical_entities:node'
-pattern: '[node:title]'
+pattern: '/[node:title]'
 selection_criteria:
   a07bd648-bc62-4198-92b4-da0e841f8ebb:
     id: 'entity_bundle:node'
     negate: false
-    uuid: a07bd648-bc62-4198-92b4-da0e841f8ebb
     context_mapping:
       node: node
     bundles:
       static_page: static_page
+    uuid: a07bd648-bc62-4198-92b4-da0e841f8ebb
 selection_logic: and
 weight: -5
 relationships: {  }
