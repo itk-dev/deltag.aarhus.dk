@@ -26,6 +26,12 @@
   {% trans %}1 comment{% plural count %}{{ count }} comments{% endtrans %}
 {%- endmacro %}
 
+{% macro image(src, alt, width, height) %}
+  <figure class="report-image">
+    <img src="{{ src }}" width="{{ width }}" height="{{ height }}" alt="{{ alt }}">
+  </figure>
+{% endmacro %}
+
 {% macro icon_link(href, icon, label) %}
   <a class="icon-link" href="{{ href }}">{{ _self.icon(icon) }}{{ label }}</a>
 {% endmacro %}

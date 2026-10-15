@@ -6,6 +6,7 @@ body {
 .category-card,
 .input-card,
 .comment-card,
+.report-image,
 .summary {
   break-inside: avoid;
 }

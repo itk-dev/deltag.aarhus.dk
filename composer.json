@@ -17,16 +17,16 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/allowed_formats": "^3.0",
         "drupal/better_exposed_filters": "^7.0",
-        "drupal/better_social_sharing_buttons": "^4.0",
+        "drupal/better_social_sharing_buttons": "^5.0",
         "drupal/block_content_suggestions": "^1.0",
         "drupal/captcha": "^2.0",
         "drupal/clamav": "^2.0",
         "drupal/color_field": "^3.0",
         "drupal/config_ignore": "^3.2",
         "drupal/config_import_locale": "^2.0",
-        "drupal/core-composer-scaffold": "~11.3.0",
-        "drupal/core-project-message": "~11.3.0",
-        "drupal/core-recommended": "~11.3.0",
+        "drupal/core-composer-scaffold": "11.4.10",
+        "drupal/core-project-message": "11.4.10",
+        "drupal/core-recommended": "11.4.10",
         "drupal/csv_serialization": "^4.0",
         "drupal/ds": "^3.1",
         "drupal/editor_advanced_link": "^2.2",
@@ -327,12 +327,8 @@
             "drupal/core": "-p2"
         },
         "patches": {
-            "drupal/better_exposed_filters": {
-                "Add option to hide exposed sort field labels (based on “Add option to hide exposed filter field labels”)": "patches/drupal/better_exposed_filters/visually-hidden-label-on-sort.patch"
-            },
             "drupal/core": {
-                "Text format wrapper does not take description_display into account (https://www.drupal.org/project/drupal/issues/2421445#comment-16600920)": "https://www.drupal.org/files/issues/2026-05-28/2421445-36.patch",
-                "Add an Autowire trait for plugins (https://www.drupal.org/project/drupal/issues/3294266)": "https://www.drupal.org/files/issues/2023-08-18/3294266-24.patch"
+                "Text format wrapper does not take description_display into account (https://www.drupal.org/project/drupal/issues/2421445#comment-16600920)": "https://www.drupal.org/files/issues/2026-05-28/2421445-36.patch"
             },
             "drupal/quick_node_clone": {
                 "Use correct namespace for NodeForm": "https://www.drupal.org/files/issues/2025-07-17/3536484-1.patch"

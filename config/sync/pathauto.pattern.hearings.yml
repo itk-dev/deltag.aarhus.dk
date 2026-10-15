@@ -7,16 +7,16 @@ dependencies:
 id: hearings
 label: Hearings
 type: 'canonical_entities:node'
-pattern: 'hoering/[node:title]'
+pattern: '/hoering/[node:title]'
 selection_criteria:
   1ce12383-dd92-4d5d-88d3-50351bdd0ea6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 1ce12383-dd92-4d5d-88d3-50351bdd0ea6
     context_mapping:
       node: node
     bundles:
       hearing: hearing
+    uuid: 1ce12383-dd92-4d5d-88d3-50351bdd0ea6
 selection_logic: and
 weight: -5
 relationships: {  }
