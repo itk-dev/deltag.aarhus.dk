@@ -999,6 +999,124 @@
             "time": "2022-12-20T22:53:13+00:00"
         },
         {
+            "name": "dantsu/php-image-editor",
+            "version": "1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DantSu/php-image-editor.git",
+                "reference": "59a3e922000767051d380a2c530c61344f1e79ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DantSu/php-image-editor/zipball/59a3e922000767051d380a2c530c61344f1e79ec",
+                "reference": "59a3e922000767051d380a2c530c61344f1e79ec",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DantSu\\PHPImageEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck ALARY",
+                    "homepage": "https://github.com/DantSu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to easily edit image with GD extension.",
+            "homepage": "https://github.com/DantSu/php-image-editor",
+            "keywords": [
+                "GD2",
+                "edit",
+                "edition",
+                "editor",
+                "image",
+                "photo",
+                "php",
+                "picture"
+            ],
+            "support": {
+                "issues": "https://github.com/DantSu/php-image-editor/issues",
+                "source": "https://github.com/DantSu/php-image-editor/tree/1.4.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/DantSu",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-23T07:36:11+00:00"
+        },
+        {
+            "name": "dantsu/php-osm-static-api",
+            "version": "0.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DantSu/php-osm-static-api.git",
+                "reference": "cf89dccfa4f27f6e76de0ab065b313d2f19de728"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DantSu/php-osm-static-api/zipball/cf89dccfa4f27f6e76de0ab065b313d2f19de728",
+                "reference": "cf89dccfa4f27f6e76de0ab065b313d2f19de728",
+                "shasum": ""
+            },
+            "require": {
+                "dantsu/php-image-editor": "^1.3",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DantSu\\OpenStreetMapStaticAPI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck ALARY",
+                    "homepage": "https://github.com/DantSu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to easily get static image from OpenStreetMap (OSM), add markers and draw lines.",
+            "homepage": "https://github.com/DantSu/php-osm-static-api",
+            "keywords": [
+                "OpenStreetMap",
+                "api",
+                "image",
+                "map",
+                "maps",
+                "osm",
+                "php",
+                "static"
+            ],
+            "support": {
+                "issues": "https://github.com/DantSu/php-osm-static-api/issues",
+                "source": "https://github.com/DantSu/php-osm-static-api/tree/0.6.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/DantSu",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-06T07:17:27+00:00"
+        },
+        {
             "name": "dekor/php-array-table",
             "version": "2.0",
             "source": {
@@ -3685,9 +3803,10 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/hoeringsportal_dialogue",
-                "reference": "09ac14e8abf8801446fc5ae3d1647720d07c07d9"
+                "reference": "cce666673ff660e6b6b46663419b376d0ad2df45"
             },
             "require": {
+                "dantsu/php-osm-static-api": "^0.6",
                 "gotenberg/gotenberg-php": "^2.25",
                 "proj4php/proj4php": "^2.0"
             },

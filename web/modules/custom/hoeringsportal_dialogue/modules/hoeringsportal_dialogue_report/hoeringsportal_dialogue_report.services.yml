@@ -7,3 +7,11 @@ services:
   Drupal\hoeringsportal_dialogue_report\Gotenberg\GotenbergClient:
 
   Drupal\hoeringsportal_dialogue_report\Renderer\Renderer:
+
+  Drupal\hoeringsportal_dialogue_report\Map\MapImageGenerator:
+    tags:
+      - { name: needs_destruction }
+
+  logger.channel.hoeringsportal_dialogue_report:
+    parent: logger.channel_base
+    arguments: ["hoeringsportal_dialogue_report"]
