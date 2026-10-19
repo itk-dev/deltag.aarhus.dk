@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6a2c6bd91c15806eda83e7979f6d9ef",
+    "content-hash": "453a199cfba2fb3818095f9c9749158e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5434,6 +5434,10 @@
             ],
             "authors": [
                 {
+                    "name": "danielveza",
+                    "homepage": "https://www.drupal.org/user/3362504"
+                },
+                {
                     "name": "heyMP",
                     "homepage": "https://www.drupal.org/user/466258"
                 },
@@ -6729,16 +6733,16 @@
         },
         {
             "name": "gotenberg/gotenberg-php",
-            "version": "v2.25.0",
+            "version": "v2.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gotenberg/gotenberg-php.git",
-                "reference": "690480b428102141c0e1933cd89092aa2ae13844"
+                "reference": "b093562ec726010e588b397ffd5f927246ec048f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gotenberg/gotenberg-php/zipball/690480b428102141c0e1933cd89092aa2ae13844",
-                "reference": "690480b428102141c0e1933cd89092aa2ae13844",
+                "url": "https://api.github.com/repos/gotenberg/gotenberg-php/zipball/b093562ec726010e588b397ffd5f927246ec048f",
+                "reference": "b093562ec726010e588b397ffd5f927246ec048f",
                 "shasum": ""
             },
             "require": {
@@ -6798,7 +6802,7 @@
             ],
             "support": {
                 "issues": "https://github.com/gotenberg/gotenberg-php/issues",
-                "source": "https://github.com/gotenberg/gotenberg-php/tree/v2.25.0"
+                "source": "https://github.com/gotenberg/gotenberg-php/tree/v2.26.0"
             },
             "funding": [
                 {
@@ -6806,7 +6810,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-14T14:40:42+00:00"
+            "time": "2026-10-15T15:00:29+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -6918,22 +6922,22 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.5",
+            "version": "7.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a"
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ffb62ec787050ae4fa9449cdd6b80335db69bda2",
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5.3",
-                "guzzlehttp/psr7": "^2.13.1",
+                "guzzlehttp/promises": "^2.6",
+                "guzzlehttp/psr7": "^2.13.2",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -7026,7 +7030,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.0"
             },
             "funding": [
                 {
@@ -7042,20 +7046,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:21:06+00:00"
+            "time": "2026-10-18T13:38:36+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.5.3",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1"
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/cde49999552d185d64715fe9c1f77a2aadd2f9f1",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/3d88c829bd5f13d13847b39067dbf09a60af2154",
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154",
                 "shasum": ""
             },
             "require": {
@@ -7110,7 +7114,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.5.3"
+                "source": "https://github.com/guzzle/promises/tree/2.6.0"
             },
             "funding": [
                 {
@@ -7126,20 +7130,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:11:28+00:00"
+            "time": "2026-10-18T12:46:59+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.13.1",
+            "version": "2.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "95e7828100de18b4e269fb1703be530082d5166d"
+                "reference": "adee536f95101929f262b8c59e8a61472f347d58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/95e7828100de18b4e269fb1703be530082d5166d",
-                "reference": "95e7828100de18b4e269fb1703be530082d5166d",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/adee536f95101929f262b8c59e8a61472f347d58",
+                "reference": "adee536f95101929f262b8c59e8a61472f347d58",
                 "shasum": ""
             },
             "require": {
@@ -7229,7 +7233,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.13.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.13.2"
             },
             "funding": [
                 {
@@ -7245,7 +7249,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:13:11+00:00"
+            "time": "2026-10-17T23:49:46+00:00"
         },
         {
             "name": "html2text/html2text",
@@ -17131,8 +17135,12 @@
             "authors": [
                 {
                     "name": "Łukasz Zaroda",
-                    "homepage": "https://www.drupal.org/user/1890152",
+                    "homepage": "https://www.drupal.org/user/1921582",
                     "email": "luken@luken-tech.pl"
+                },
+                {
+                    "name": "luke_nuke",
+                    "homepage": "https://www.drupal.org/user/1890152"
                 }
             ],
             "description": "Module privides an API for creating generators of dummy content in a way similar to the 'DoctrineFixturesBundle'.",
@@ -18025,16 +18033,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.10.3",
+            "version": "2.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "6efbd9c472b91db0a3350fcd601c8332c2382e1f"
+                "reference": "40821b7606d8d946bac57dbd2290076c722e3a65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6efbd9c472b91db0a3350fcd601c8332c2382e1f",
-                "reference": "6efbd9c472b91db0a3350fcd601c8332c2382e1f",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/40821b7606d8d946bac57dbd2290076c722e3a65",
+                "reference": "40821b7606d8d946bac57dbd2290076c722e3a65",
                 "shasum": ""
             },
             "require": {
@@ -18128,7 +18136,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-21T13:07:34+00:00"
+            "time": "2026-10-17T19:59:50+00:00"
         },
         {
             "name": "league/config",
