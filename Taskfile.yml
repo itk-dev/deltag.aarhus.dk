@@ -32,6 +32,7 @@ includes:
         # - hoeringsportal_test_delta_sync_fixtures
 
         - itk_admin
+        - itk_iframe_field
         - itk_admin_links
         # - itk_media_entity
 

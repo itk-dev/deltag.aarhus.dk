@@ -47,6 +47,7 @@
         "drupal/honeypot": "^2.2",
         "drupal/image_widget_crop": "^3.0",
         "drupal/inline_entity_form": "^3.0",
+        "drupal/itk_iframe_field": "^1.0",
         "drupal/jquery_ui_accordion": "^2.0",
         "drupal/log_stdout": "^3.0",
         "drupal/maxlength": "^3.1",
@@ -195,6 +196,16 @@
             },
             "type": "path",
             "url": "web/modules/custom/hoeringsportal_citizen_proposal_archiving"
+        },
+        "drupal/itk_iframe_field": {
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "drupal/itk_iframe_field": "1.0-dev"
+                }
+            },
+            "type": "path",
+            "url": "web/modules/custom/itk_iframe_field"
         },
         "// @see web/modules/contrib/search_autocomplete/readme.md": {
             "package": {

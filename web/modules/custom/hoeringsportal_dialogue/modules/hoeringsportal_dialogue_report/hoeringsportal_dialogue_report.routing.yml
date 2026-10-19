@@ -1,0 +1,17 @@
+hoeringsportal_dialogue_report.html:
+  path: "/node/{node}/dialogue-report"
+  defaults:
+    _controller: '\Drupal\hoeringsportal_dialogue_report\Controller\ReportController::html'
+    _title: "Rapport"
+  requirements:
+    _custom_access: '\Drupal\hoeringsportal_dialogue_report\Controller\ReportController::access'
+    node: \d+
+
+hoeringsportal_dialogue_report.pdf:
+  path: "/node/{node}/dialogue-report/pdf"
+  defaults:
+    _controller: '\Drupal\hoeringsportal_dialogue_report\Controller\ReportController::pdf'
+    _title: "Rapport (PDF)"
+  requirements:
+    _custom_access: '\Drupal\hoeringsportal_dialogue_report\Controller\ReportController::access'
+    node: \d+

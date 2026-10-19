@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.aktuelt_i_projektet
     - paragraphs.paragraphs_type.content_block
     - paragraphs.paragraphs_type.files
+    - paragraphs.paragraphs_type.iframe
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.info_box
     - paragraphs.paragraphs_type.introduction
@@ -41,6 +42,7 @@ settings:
       accordion: accordion
       text_aside_blocks_2_column: text_aside_blocks_2_column
       aktuelt_i_projektet: aktuelt_i_projektet
+      iframe: iframe
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -63,6 +65,9 @@ settings:
         enabled: false
       files:
         weight: 13
+        enabled: true
+      iframe:
+        weight: 27
         enabled: true
       image:
         weight: -20
@@ -91,6 +96,9 @@ settings:
       text_aside_blocks_2_column:
         weight: 20
         enabled: true
+      timeline_note:
+        weight: 37
+        enabled: false
       video:
         weight: 34
         enabled: false

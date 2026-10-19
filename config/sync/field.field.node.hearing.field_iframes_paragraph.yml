@@ -1,0 +1,85 @@
+uuid: fc81d556-90d2-43c2-8e0e-29e0b80f0950
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_iframes_paragraph
+    - node.type.hearing
+    - paragraphs.paragraphs_type.iframe
+  module:
+    - entity_reference_revisions
+id: node.hearing.field_iframes_paragraph
+field_name: field_iframes_paragraph
+entity_type: node
+bundle: hearing
+label: Iframes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      iframe: iframe
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 21
+        enabled: false
+      accordion_item:
+        weight: 22
+        enabled: false
+      aktuelt_i_projektet:
+        weight: 23
+        enabled: false
+      content_block:
+        weight: 24
+        enabled: false
+      content_list:
+        weight: 25
+        enabled: false
+      content_promotion:
+        weight: 26
+        enabled: false
+      files:
+        weight: 27
+        enabled: false
+      iframe:
+        weight: 20
+        enabled: true
+      image:
+        weight: 28
+        enabled: false
+      info_box:
+        weight: 29
+        enabled: false
+      introduction:
+        weight: 30
+        enabled: false
+      link:
+        weight: 31
+        enabled: false
+      links_on_a_background_image:
+        weight: 32
+        enabled: false
+      projekt_billede_galleri:
+        weight: 33
+        enabled: false
+      teaser_row:
+        weight: 34
+        enabled: false
+      text:
+        weight: 35
+        enabled: false
+      text_aside_blocks_2_column:
+        weight: 36
+        enabled: false
+      timeline_note:
+        weight: 37
+        enabled: false
+      video:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions
