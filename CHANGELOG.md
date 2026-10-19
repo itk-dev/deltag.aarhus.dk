@@ -6,6 +6,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.18.1] - 2026-10-12
+
 * [PR-692](https://github.com/itk-dev/deltag.aarhus.dk/pull/692/)
   * Updated core and contrib modules
 * [PR-682](https://github.com/itk-dev/deltag.aarhus.dk/pull/682)
@@ -13,6 +15,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Added full screen link to iframe fields
 * [PR-688](https://github.com/itk-dev/deltag.aarhus.dk/pull/688)
   * Added dialogue report (HTML and PDF via Gotenberg)
+* [PR-690](https://github.com/itk-dev/deltag.aarhus.dk/pull/690)
+  * Added map images of proposal locations to the dialogue report
+  * Added proposal images to the dialogue report
 
 ## [4.17.8] - 2026-10-14
 
