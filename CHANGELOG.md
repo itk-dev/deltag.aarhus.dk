@@ -19,6 +19,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Added map images of proposal locations to the dialogue report
   * Added proposal images to the dialogue report
 
+## [4.17.9] - 2026-10-26
+
+* [PR-693](https://github.com/itk-dev/deltag.aarhus.dk/pull/693)
+  * Updated docker compose setup to use maintained nginx/nginx-unprivileged image
+
 ## [4.17.8] - 2026-10-14
 
 * [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/691)
@@ -869,7 +874,8 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.7...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.9...HEAD
+[4.17.9]: https://github.com/itk-dev/hoeringsportal/compare/4.17.8...4.17.9
 [4.17.7]: https://github.com/itk-dev/hoeringsportal/compare/4.17.5...4.17.7
 [4.17.5]: https://github.com/itk-dev/hoeringsportal/compare/4.17.4...4.17.5
 [4.17.4]: https://github.com/itk-dev/hoeringsportal/compare/4.17.3...4.17.4
