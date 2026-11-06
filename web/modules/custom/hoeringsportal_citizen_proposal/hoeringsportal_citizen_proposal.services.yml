@@ -1,4 +1,7 @@
 services:
+  _defaults:
+    autowire: true
+
   logger.channel.hoeringsportal_citizen_proposal:
     parent: logger.channel_base
     arguments: ["hoeringsportal_citizen_proposal"]
