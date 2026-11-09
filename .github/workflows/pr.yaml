@@ -16,8 +16,8 @@ jobs:
           echo "This PR can't be merged, due to the 'not ready for merge' label."
           exit 1
 
-  audit:
-    name: audit
+  npm-audit:
+    name: npm-audit
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
