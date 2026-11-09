@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-10-12 09:25+0200\n"
-"PO-Revision-Date: 2026-10-12 09:25+0200\n"
+"POT-Creation-Date: 2026-11-09 10:48+0100\n"
+"PO-Revision-Date: 2026-11-09 10:48+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -114,6 +114,9 @@ msgstr "Tidlig dialog"
 msgid "Edit your proposal"
 msgstr "Redigér dit forslag"
 
+msgid "Eksportér til Excel"
+msgstr "Eksportér til Excel"
+
 msgid "Error fetching latest proposal: @message"
 msgstr "Fejl ved hentning af seneste forslag: @message"
 
@@ -161,8 +164,8 @@ msgstr ""
 
 msgid "One file only."
 msgid_plural "Maximum @count files."
-msgstr[0] "Kun en fil"
-msgstr[1] "Maksimalt @count filer"
+msgstr[0] "Kun en fil."
+msgstr[1] "Maksimalt @count filer."
 
 msgid ""
 "Page <span class=\"pageNumber\"></span> of <span "
@@ -179,6 +182,15 @@ msgstr "Udskrevet: @date"
 
 msgid "Proposal replies"
 msgstr "Svar til dialogforslag"
+
+msgid "Rapport"
+msgstr "Rapport"
+
+msgid "Rapport (PDF)"
+msgstr "Rapport (PDF)"
+
+msgid "Replies"
+msgstr "Svar"
 
 msgid "Reply"
 msgstr "Svar"
@@ -219,10 +231,10 @@ msgid "View more"
 msgstr "Se mere"
 
 msgid "Your comment has been posted."
-msgstr "Din kommentar er blevet publiseret"
+msgstr "Din kommentar er blevet udgivet."
 
 msgid "comment"
-msgstr "Kommentar"
+msgstr "kommentar"
 
 msgid "like this"
 msgstr "synes om"
@@ -231,5 +243,5 @@ msgid "now"
 msgstr "nu"
 
 msgid "optional"
-msgstr "Valgfrit"
+msgstr "valgfrit"
 

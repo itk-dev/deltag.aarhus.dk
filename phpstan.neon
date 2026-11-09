@@ -1,6 +1,8 @@
 parameters:
   paths:
     - web/modules/custom
+  excludePaths:
+    - web/modules/custom/hoeringsportal_deskpro/node_modules (?) # optional path, might not exist
   level: 0
   customRulesetUsed: true
   ignoreErrors:
