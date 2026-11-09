@@ -44,16 +44,19 @@ class CprHelper {
       $this->setUpService();
     }
 
-    $cprLogValue = Crypt::hashBase64($cpr) . ' (hashed)';
+    $cprLogValue = Crypt::hashBase64($cpr);
+    $metadata = [
+      'cpr_hash' => $cprLogValue,
+    ];
     try {
-      $this->auditLogger->info('cpr_lookup', sprintf('Looking up CPR %s', $cprLogValue));
+      $this->auditLogger->info('cpr_lookup', sprintf('Looking up CPR %s', $cprLogValue), metadata: $metadata);
       $response = $this->service->personLookup($cpr);
-      $this->auditLogger->info('cpr_lookup', sprintf('Looked up CPR %s', $cprLogValue));
+      $this->auditLogger->info('cpr_lookup', sprintf('Looked up CPR %s', $cprLogValue), metadata: $metadata);
     }
     catch (ServiceException $e) {
       // Don't expose actual CPR if it appears in the service error message.
       $message = str_replace($cpr, $cprLogValue, $e->getMessage());
-      $this->auditLogger->error('cpr_lookup', sprintf('Error looking up CPR %s: %s', $cprLogValue, $message));
+      $this->auditLogger->error('cpr_lookup', sprintf('Error looking up CPR %s: %s', $cprLogValue, $message), metadata: $metadata);
       throw new CprException($e->getMessage(), $e->getCode(), $e);
     }
 
