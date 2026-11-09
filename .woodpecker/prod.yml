@@ -92,3 +92,10 @@ steps:
           month: "*"
           weekday: "*"
           job: 'itkdev-docker-compose-server exec phpfpm vendor/bin/drush --uri="https://deltag.aarhus.dk" hoeringsportal:decision:state-update'
+        citizen-proposal-anonymous:
+          minute: "0"
+          hour: "0"
+          day: "*"
+          month: "*"
+          weekday: "*"
+          job: 'itkdev-docker-compose-server exec phpfpm vendor/bin/drush --uri="https://deltag.aarhus.dk" hoeringsportal-citizen-proposal:anonymize-proposals'

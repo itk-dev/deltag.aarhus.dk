@@ -11,6 +11,7 @@ use Drupal\advancedqueue\JobResult;
 use Drupal\entity_events\EntityEventType;
 use Drupal\entity_events\Event\EntityEvent;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper as CitizenProposalHelper;
+use Drupal\hoeringsportal_citizen_proposal\Helper\AnonymizationHelper;
 use Drupal\hoeringsportal_citizen_proposal_archiving\Archiver\AbstractArchiver;
 use Drupal\hoeringsportal_citizen_proposal_archiving\Archiver\GetOrganizedArchiver;
 use Drupal\hoeringsportal_citizen_proposal_archiving\Exception\RuntimeException;
@@ -44,6 +45,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   public function __construct(
     EntityTypeManagerInterface $entityTypeManager,
     readonly private CitizenProposalHelper $citizenProposalHelper,
+    readonly private AnonymizationHelper $anonymizationHelper,
     #[Autowire(service: GetOrganizedArchiver::class)]
     readonly private AbstractArchiver $archiver,
     readonly private Renderer $renderer,
@@ -85,7 +87,7 @@ final class Helper implements EventSubscriberInterface, LoggerAwareInterface, Lo
   public function update(EntityEvent $event) {
     $entity = $event->getEntity();
     if ($entity instanceof NodeInterface
-      && $this->citizenProposalHelper->isCitizenProposal($entity)) {
+      && $this->citizenProposalHelper->isCitizenProposal($entity) && !$this->anonymizationHelper->isAnonymous($entity)) {
       $this->createJob($entity);
     }
   }
