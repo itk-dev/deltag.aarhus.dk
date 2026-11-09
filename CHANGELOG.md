@@ -18,6 +18,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-690](https://github.com/itk-dev/deltag.aarhus.dk/pull/690)
   * Added map images of proposal locations to the dialogue report
   * Added proposal images to the dialogue report
+* [PR-677](https://github.com/itk-dev/deltag.aarhus.dk/pull/677)
+  * Added anonymization to citizen proposal
 
 ## [4.17.9] - 2026-10-26
 

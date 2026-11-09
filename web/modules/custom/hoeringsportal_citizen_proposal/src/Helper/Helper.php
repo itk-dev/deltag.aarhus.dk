@@ -36,10 +36,11 @@ class Helper implements LoggerAwareInterface {
   use LoggerTrait;
 
   private const ADMIN_FORM_VALUES_STATE_KEY = 'citizen_proposal_admin_form_values';
-
   private const CITIZEN_PROPOSAL_ENTITY = 'citizen_proposal_entity';
+  const string NODE_TYPE_CITIZEN_PROPOSAL = 'citizen_proposal';
   private const PROPOSAL_PERIOD_LENGTH = '+180 days';
   private const PROPOSAL_SUPPORT_REQUIRED = 30000;
+  const string PROPOSAL_SUPOORT_TABLE_NAME = 'hoeringsportal_citizen_proposal_support';
 
   /**
    * Constructor for the citizen proposal helper class.
@@ -489,7 +490,7 @@ class Helper implements LoggerAwareInterface {
    * Check is a node is a citizen proposal.
    */
   public function isCitizenProposal(NodeInterface $node): bool {
-    return 'citizen_proposal' === $node->bundle();
+    return self::NODE_TYPE_CITIZEN_PROPOSAL === $node->bundle();
   }
 
   /**

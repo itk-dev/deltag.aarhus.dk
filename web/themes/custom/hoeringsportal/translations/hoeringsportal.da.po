@@ -53,6 +53,9 @@ msgstr "Tilføj ny kommentar"
 msgid "Address"
 msgstr "Adresse"
 
+msgid "Anonymized"
+msgstr "Anonymiseret"
+
 msgid "Answer #@number by @name"
 msgstr "Bidrag #@number af @name"
 
