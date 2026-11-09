@@ -9,7 +9,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 * [PR-696](https://github.com/itk-dev/deltag.aarhus.dk/pull/696)
   * Make github action checks pass
 
-## [4.18.1] - 2026-10-12
+## [4.18.1] - 2026-11-09
 
 * [PR-692](https://github.com/itk-dev/deltag.aarhus.dk/pull/692/)
   * Updated core and contrib modules
