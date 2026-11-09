@@ -38,6 +38,13 @@ $settings['hoeringsportal_deskpro.deskpro'] = [
   'hearing_field_id' => null,
 ];
 
+// Gotenberg configuration (used by hoeringsportal_dialogue_report for PDF reports).
+$settings['hoeringsportal_dialogue_report.gotenberg'] = [
+  'url' => 'http://gotenberg:3000',
+  // Where Gotenberg reaches this site's nginx to fetch the report's CSS and logo.
+  'asset_base_url' => 'http://nginx:8080',
+];
+
 $databases['default']['default'] = [
   'database' => getenv('DATABASE_DATABASE') ?: 'db',
   'username' => getenv('DATABASE_USERNAME') ?: 'db',

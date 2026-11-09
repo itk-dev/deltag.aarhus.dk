@@ -1,0 +1,8 @@
+name: Hoeringsportal dialogue report
+type: module
+description: "HTML/PDF report of a dialogue's proposals, categories, likes and comments."
+core_version_requirement: ^11
+package: ITK
+dependencies:
+  - drupal:image
+  - hoeringsportal_dialogue:hoeringsportal_dialogue

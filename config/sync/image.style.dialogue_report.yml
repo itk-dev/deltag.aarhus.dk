@@ -1,0 +1,15 @@
+uuid: 077102a3-8d68-4683-b475-42670759ec44
+langcode: da
+status: true
+dependencies: {  }
+name: dialogue_report
+label: 'Dialogue report (300×150)'
+effects:
+  b246c715-0c82-40db-9339-882fdf2b01e5:
+    uuid: b246c715-0c82-40db-9339-882fdf2b01e5
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 150
+      anchor: center-center

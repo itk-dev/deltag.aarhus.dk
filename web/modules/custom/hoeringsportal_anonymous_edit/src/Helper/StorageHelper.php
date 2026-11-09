@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\hoeringsportal_anonymous_edit\Helper;
 
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Database\Statement\FetchAs;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\hoeringsportal_anonymous_edit\Model\Content;
 use Drupal\hoeringsportal_anonymous_edit\Model\Owner;
@@ -80,15 +81,17 @@ final class StorageHelper {
    * Fetch items bo token.
    */
   public function fetchItemsByToken(string $token): array {
-    return $this->database
+    $statement = $this->database
       ->select(self::TABLE_NAME_CONTENT, 't')
       ->fields('t')
       ->condition('t.owner_token', $token)
       // Order the result to make the grouping a little easier.
       ->orderBy('t.entity_type')
       ->orderBy('t.entity_bundle')
-      ->execute()
-      ->fetchAll(\PDO::FETCH_CLASS, Content::class);
+      ->execute();
+    $statement->setFetchMode(FetchAs::ClassObject, Content::class);
+
+    return $statement->fetchAll();
   }
 
   /**
@@ -118,13 +121,14 @@ final class StorageHelper {
     $bundle = $entity->bundle();
     if (!isset($items[$type][$bundle]) || $refresh) {
       // @todo Optimize this to load all content in one go and index by (entity_type, entity_bundle).
-      $result = $this->database
+      $statement = $this->database
         ->select(self::TABLE_NAME_CONTENT, 't')
         ->fields('t')
         ->condition('t.entity_type', $entity->getEntityTypeId())
         ->condition('t.entity_bundle', $entity->bundle())
-        ->execute()
-        ->fetchAll(\PDO::FETCH_CLASS, Content::class);
+        ->execute();
+      $statement->setFetchMode(FetchAs::ClassObject, Content::class);
+      $result = $statement->fetchAll();
 
       // Index by UUID.
       $items[$type][$bundle] = array_combine(array_column($result, 'entity_uuid'), $result);
@@ -140,11 +144,12 @@ final class StorageHelper {
     $owners = &drupal_static(__FUNCTION__);
 
     if (!isset($owners)) {
-      $owners = $this->database
+      $statement = $this->database
         ->select(self::TABLE_NAME_OWNERS, 't')
         ->fields('t')
-        ->execute()
-        ->fetchAll(\PDO::FETCH_CLASS, Owner::class);
+        ->execute();
+      $statement->setFetchMode(FetchAs::ClassObject, Owner::class);
+      $owners = $statement->fetchAll();
 
       // Index by token.
       $owners = array_combine(array_column($owners, self::OWNER_TOKEN), $owners);

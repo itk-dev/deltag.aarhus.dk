@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-07 12:56+0100\n"
-"PO-Revision-Date: 2026-01-07 12:56+0100\n"
+"POT-Creation-Date: 2026-11-09 10:48+0100\n"
+"PO-Revision-Date: 2026-11-09 10:48+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,13 @@ msgstr "Indstillinger for @site_name."
 msgid "Configure"
 msgstr "Konfigurér"
 
+msgid "Settings"
+msgstr "Indstillinger"
+
 msgid "Site specific settings"
+msgstr "Sitespecifikke indstillinger"
+
+msgid "Sitespecific settings"
 msgstr "Sitespecifikke indstillinger"
 
 msgid "These pages contain @site_name specific config settings."

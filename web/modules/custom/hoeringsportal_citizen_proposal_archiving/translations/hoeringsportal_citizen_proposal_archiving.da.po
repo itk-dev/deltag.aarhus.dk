@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-07 12:56+0100\n"
-"PO-Revision-Date: 2026-01-07 12:56+0100\n"
+"POT-Creation-Date: 2026-11-09 10:48+0100\n"
+"PO-Revision-Date: 2026-11-09 10:48+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,9 @@ msgstr ""
 
 msgid "Archive URL"
 msgstr "Arkiv URL"
+
+msgid "Archive citizen proposal"
+msgstr "Arkivér borgerforslag"
 
 msgid "Archived at"
 msgstr "Arkiveret den"

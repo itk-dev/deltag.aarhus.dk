@@ -1,0 +1,11 @@
+{
+    "name": "drupal/itk_iframe_field",
+    "type": "drupal-custom-module",
+    "description": "Iframe field type that only renders iframes served from an accepted list of domains.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/iframe": "^3.0"
+    }
+}

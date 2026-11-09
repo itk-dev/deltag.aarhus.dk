@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-07 12:56+0100\n"
-"PO-Revision-Date: 2026-01-07 12:56+0100\n"
+"POT-Creation-Date: 2026-11-09 10:48+0100\n"
+"PO-Revision-Date: 2026-11-09 10:48+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,12 @@ msgstr "Kommentar annulleret"
 
 msgid "Confirm your email address"
 msgstr "Bekræft din e-mailadresse"
+
+msgid "Content"
+msgstr "Indhold"
+
+msgid "Content recover"
+msgstr "Genfind indhold"
 
 msgid "Edit"
 msgstr "Redigér"
@@ -83,11 +89,23 @@ msgstr "Behold kommentar"
 msgid "Log level"
 msgstr "Logniveau"
 
+msgid "Main controller"
+msgstr "Main controller"
+
 msgid "Node"
 msgstr "Indhold"
 
 msgid "Owner name format"
 msgstr "Ejernavneformat"
+
+msgid "Recover"
+msgstr "Genskab"
+
+msgid "Request"
+msgstr "Request"
+
+msgid "Settings"
+msgstr "Indstillinger"
 
 msgid ""
 "Text to set when cancelling a comment. Must be a YAML map from comment "

@@ -6,6 +6,26 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.18.1] - 2026-11-09
+
+* [PR-695](https://github.com/itk-dev/deltag.aarhus.dk/pull/695)
+  * Updated translations extractor and translations
+  * Updated npm package (security)
+  * Updated config
+  * Replaced use of deprecated functions
+* [PR-692](https://github.com/itk-dev/deltag.aarhus.dk/pull/692/)
+  * Updated core and contrib modules
+* [PR-682](https://github.com/itk-dev/deltag.aarhus.dk/pull/682)
+  * Added itk_iframe_field module
+  * Added full screen link to iframe fields
+* [PR-688](https://github.com/itk-dev/deltag.aarhus.dk/pull/688)
+  * Added dialogue report (HTML and PDF via Gotenberg)
+* [PR-690](https://github.com/itk-dev/deltag.aarhus.dk/pull/690)
+  * Added map images of proposal locations to the dialogue report
+  * Added proposal images to the dialogue report
+* [PR-677](https://github.com/itk-dev/deltag.aarhus.dk/pull/677)
+  * Added anonymization to citizen proposal
+
 ## [4.17.9] - 2026-10-26
 
 * [PR-693](https://github.com/itk-dev/deltag.aarhus.dk/pull/693)

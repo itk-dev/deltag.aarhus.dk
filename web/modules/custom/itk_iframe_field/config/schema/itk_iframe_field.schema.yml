@@ -1,0 +1,16 @@
+field.value.itk_iframe:
+  type: iframe.field.schema
+  label: 'Default value'
+
+field.field_settings.itk_iframe:
+  type: iframe.field.schema
+  label: 'Field settings'
+  mapping:
+    allowed_domains:
+      type: text
+      label: 'Accepted domains'
+      nullable: true
+
+field.formatter.settings.itk_iframe_default:
+  type: field.formatter.settings.iframe_default
+  label: 'Formatter "itk_iframe_default" settings'

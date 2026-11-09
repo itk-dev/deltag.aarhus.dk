@@ -5,7 +5,8 @@
  * @type {Encore}
  */
 
-var Encore = require('@symfony/webpack-encore');
+// Encore 7 is an ES module only, hence this file is too.
+import Encore from '@symfony/webpack-encore';
 
 Encore
   // The project directory where all compiled assets will be stored.
@@ -40,5 +41,10 @@ Encore
   // but, you probably want this, unless you're building a single-page app
   .enableSingleRuntimeChunk()
 
+  // Encore 7 enables no CSS minifier by default; cssnano is what Encore 5 used.
+  .configureCssMinimizerPlugin((options, MinimizerPlugin) => {
+    options.minify = MinimizerPlugin.cssnanoMinify;
+  })
+
 // Export the final configuration.
-module.exports = Encore.getWebpackConfig();
+export default Encore.getWebpackConfig();
