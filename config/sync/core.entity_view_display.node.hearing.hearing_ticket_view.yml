@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.hearing.field_hide_hearing_replies
     - field.field.node.hearing.field_hide_hearing_replies_msg
     - field.field.node.hearing.field_hide_in_timeline
+    - field.field.node.hearing.field_iframes_paragraph
     - field.field.node.hearing.field_lokalplaner
     - field.field.node.hearing.field_map
     - field.field.node.hearing.field_map_display
@@ -191,6 +192,7 @@ hidden:
   field_hide_hearing_replies: true
   field_hide_hearing_replies_msg: true
   field_hide_in_timeline: true
+  field_iframes_paragraph: true
   field_lokalplaner: true
   field_map: true
   field_map_display: true

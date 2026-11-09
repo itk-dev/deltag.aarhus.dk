@@ -1,0 +1,9 @@
+hoeringsportal_dialogue_report.html:
+  title: "View dialogue report"
+  route_name: hoeringsportal_dialogue_report.html
+  base_route: entity.node.canonical
+  weight: 51
+  # The report has no site navigation, so keep the dialogue open behind it.
+  options:
+    attributes:
+      target: _blank

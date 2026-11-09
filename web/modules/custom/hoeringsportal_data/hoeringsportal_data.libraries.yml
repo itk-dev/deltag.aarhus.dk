@@ -3,15 +3,15 @@ hearing-edit:
     theme:
       build/hearing-edit.css: {}
   js:
-    https://widget.cdn.septima.dk/latest/widgetconfig.js: { type: external }
+    https://widget.cdn.septima.dk/3.23.0/widgetapi.js: { type: external }
     build/hearing-edit.js: { preprocess: false }
 
 septima-widget-config:
   version: VERSION
   js:
-    https://widget.cdn.septima.dk/latest/widgetconfig.js: { type: external }
+    https://widget.cdn.septima.dk/3.23.0/widgetconfig.js: { type: external }
 
 septima-widget-api:
   version: VERSION
   js:
-    https://widget.cdn.septima.dk/latest/widgetconfig.js: { type: external }
+    https://widget.cdn.septima.dk/3.23.0/widgetapi.js: { type: external }

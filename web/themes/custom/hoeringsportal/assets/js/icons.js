@@ -43,6 +43,8 @@ import {
   faComments,
   faThumbsUp,
   faTags,
+  faArrowUpRightFromSquare,
+  faMaximize,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Import icons from the free brands package
@@ -92,6 +94,8 @@ library.add(
   faLocationDot,
   faThumbsUp,
   faTags,
+  faArrowUpRightFromSquare,
+  faMaximize,
   // Brand
   faDigg,
   faEvernote,

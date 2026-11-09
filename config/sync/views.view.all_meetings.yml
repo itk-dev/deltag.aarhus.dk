@@ -369,6 +369,7 @@ display:
                 operator: or
                 value:
                   upcoming: upcoming
+                  active: active
               2:
                 title: Afsluttet
                 operator: or

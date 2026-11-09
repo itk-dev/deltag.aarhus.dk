@@ -22,5 +22,5 @@ effects:
     weight: 3
     data:
       width: 810
-      height: 300
+      height: 500
       upscale: false

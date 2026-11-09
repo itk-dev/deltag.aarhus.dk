@@ -46,10 +46,6 @@ function hoeringsportal_data_form_alter(&$form, FormStateInterface $form_state, 
 /**
  * Implements hook_entity_bundle_field_info_alter().
  */
-
-/**
- * Implements hook_entity_bundle_field_info_alter().
- */
 function hoeringsportal_data_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
   if ('node' === $entity_type->id() && 'page_map' === $bundle && isset($fields['field_map_configuration'])) {
     $fields['field_map_configuration']->addConstraint('MapConfiguration');

@@ -6,8 +6,46 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.18.1] - 2026-10-12
+
+* [PR-692](https://github.com/itk-dev/deltag.aarhus.dk/pull/692/)
+  * Updated core and contrib modules
+* [PR-682](https://github.com/itk-dev/deltag.aarhus.dk/pull/682)
+  * Added itk_iframe_field module
+  * Added full screen link to iframe fields
+* [PR-688](https://github.com/itk-dev/deltag.aarhus.dk/pull/688)
+  * Added dialogue report (HTML and PDF via Gotenberg)
+* [PR-690](https://github.com/itk-dev/deltag.aarhus.dk/pull/690)
+  * Added map images of proposal locations to the dialogue report
+  * Added proposal images to the dialogue report
 * [PR-677](https://github.com/itk-dev/deltag.aarhus.dk/pull/677)
   * Added anonymization to citizen proposal
+
+## [4.17.9] - 2026-10-26
+
+* [PR-693](https://github.com/itk-dev/deltag.aarhus.dk/pull/693)
+  * Updated docker compose setup to use maintained nginx/nginx-unprivileged image
+
+## [4.17.8] - 2026-10-14
+
+* [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/691)
+
+## [4.17.7] - 2026-09-23
+
+* [PR-685](https://github.com/itk-dev/deltag.aarhus.dk/pull/685)
+  * Security update to webform module and drupal core
+
+## [4.17.5] - 2026-09-15
+
+* [PR-683](https://github.com/itk-dev/deltag.aarhus.dk/pull/683)
+  * Fixed dialogue bug in timeline view
+  * Fixed bug septima cdn reference
+
+## [4.17.4] - 2026-08-28
+
+* [PR-681](https://github.com/itk-dev/deltag.aarhus.dk/pull/681)
+  * Changed image dimensions of responsive small image
+  * Fixed twig bug in view
 
 ## [4.17.3] - 2026-08-14
 
@@ -838,7 +876,12 @@ Updated drupal core 8.6.16
 
 Initial release
 
-[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.2...HEAD
+[Unreleased]: https://github.com/itk-dev/hoeringsportal/compare/4.17.9...HEAD
+[4.17.9]: https://github.com/itk-dev/hoeringsportal/compare/4.17.8...4.17.9
+[4.17.7]: https://github.com/itk-dev/hoeringsportal/compare/4.17.5...4.17.7
+[4.17.5]: https://github.com/itk-dev/hoeringsportal/compare/4.17.4...4.17.5
+[4.17.4]: https://github.com/itk-dev/hoeringsportal/compare/4.17.3...4.17.4
+[4.17.3]: https://github.com/itk-dev/hoeringsportal/compare/4.17.2...4.17.3
 [4.17.2]: https://github.com/itk-dev/hoeringsportal/compare/4.17.1...4.17.2
 [4.17.1]: https://github.com/itk-dev/hoeringsportal/compare/4.17.0...4.17.1
 [4.17.0]: https://github.com/itk-dev/hoeringsportal/compare/4.16.10...4.17.0

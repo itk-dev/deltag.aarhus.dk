@@ -32,6 +32,11 @@ $timeline-statuses: (
     "bg": var(--primitive-petroleum-100),
     "hover": var(--primitive-petroleum-800),
   ),
+  "in_progress": (
+    "color": var(--primitive-petroleum-500),
+    "bg": var(--primitive-petroleum-100),
+    "hover": var(--primitive-petroleum-800),
+  ),
   "current": (
     "color": var(--primitive-orange-500),
     "bg": var(--primitive-gray-100),
@@ -756,6 +761,7 @@ $mini-nav-dot-size: 10px;
 
   // Connecting line colors based on progress - dark for completed and notes
   &:has(.project-timeline-mini-nav__link--completed)::after,
+  &:has(.project-timeline-mini-nav__link--in_progress)::after,
   &:has(.project-timeline-mini-nav__link--note)::after {
     background: var(--primitive-gray-800);
   }
@@ -824,6 +830,10 @@ $mini-nav-dot-size: 10px;
   &.pink {
     @include timeline-mini-nav-status(var(--primitive-pink-500));
   }
+}
+
+.project-timeline-mini-nav__link--in_progress {
+  @include timeline-mini-nav-status(var(--timeline-status-completed), true);
 }
 
 .project-timeline-mini-nav__link--current {

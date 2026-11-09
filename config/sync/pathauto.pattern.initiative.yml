@@ -7,16 +7,16 @@ dependencies:
 id: initiative
 label: Initiative
 type: 'canonical_entities:node'
-pattern: 'initiativ/[node:title]'
+pattern: '/initiativ/[node:title]'
 selection_criteria:
   8a2411c8-3d05-4591-b227-d669f3395411:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 8a2411c8-3d05-4591-b227-d669f3395411
     context_mapping:
       node: node
     bundles:
       project: project
+    uuid: 8a2411c8-3d05-4591-b227-d669f3395411
 selection_logic: and
 weight: -5
 relationships: {  }

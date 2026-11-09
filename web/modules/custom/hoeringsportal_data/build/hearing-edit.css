@@ -1,1 +1,18 @@
-.dawa-autocomplete-container{position:relative;width:100%}.dawa-autocomplete-container input{width:100%;box-sizing:border-box}.dawa-autocomplete-suggestions{margin:.3em 0 0;padding:0;text-align:left;border-radius:.3125em;background:#fcfcfc;box-shadow:0 .0625em .15625em rgba(0,0,0,.15);position:absolute;left:0;right:0;z-index:9999;overflow-y:auto;box-sizing:border-box}.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion{margin:0;list-style:none;cursor:pointer;padding:.4em .6em;color:#333;border:.0625em solid #ddd;border-bottom-width:0}.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion:first-child{border-top-left-radius:inherit;border-top-right-radius:inherit}.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion:last-child{border-bottom-left-radius:inherit;border-bottom-right-radius:inherit;border-bottom-width:.0625em}.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion.dawa-selected,.dawa-autocomplete-suggestions .dawa-autocomplete-suggestion:hover{background:#f0f0f0}.field--type-hoeringsportal-data-map{.widget-container.widget-inactivemap>.widget-map-overlay{z-index:500}.septima-widget-container{position:relative;.reset-point-on-map{position:absolute;bottom:0;left:0}}}
+.field--type-hoeringsportal-data-map {
+  /* Don't show "Aktiver kort" above menubar (which has z-index: 502). */
+  .widget-container.widget-inactivemap > .widget-map-overlay {
+    z-index: 500;
+  }
+
+  .septima-widget-container {
+    position: relative;
+
+    .reset-point-on-map {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvY3NzL2hlYXJpbmctZWRpdC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSx1RUFBdUU7RUFDdkU7SUFDRSxhQUFhO0dBQ2Q7O0VBRUQ7SUFDRSxtQkFBbUI7O0lBRW5CO01BQ0UsbUJBQW1CO01BQ25CLFVBQVU7TUFDVixRQUFRO0tBQ1Q7R0FDRjtDQUNGIiwiZmlsZSI6ImhlYXJpbmctZWRpdC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZmllbGQtLXR5cGUtaG9lcmluZ3Nwb3J0YWwtZGF0YS1tYXAge1xuICAvKiBEb24ndCBzaG93IFwiQWt0aXZlciBrb3J0XCIgYWJvdmUgbWVudWJhciAod2hpY2ggaGFzIHotaW5kZXg6IDUwMikuICovXG4gIC53aWRnZXQtY29udGFpbmVyLndpZGdldC1pbmFjdGl2ZW1hcCA+IC53aWRnZXQtbWFwLW92ZXJsYXkge1xuICAgIHotaW5kZXg6IDUwMDtcbiAgfVxuXG4gIC5zZXB0aW1hLXdpZGdldC1jb250YWluZXIge1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcblxuICAgIC5yZXNldC1wb2ludC1vbi1tYXAge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAwO1xuICAgICAgbGVmdDogMDtcbiAgICB9XG4gIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAuL2Fzc2V0cy9jc3MvaGVhcmluZy1lZGl0LmNzcyJdLCJzb3VyY2VSb290IjoiIn0=*/
