@@ -8,6 +8,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.18.1] - 2026-11-09
 
+* [PR-695](https://github.com/itk-dev/deltag.aarhus.dk/pull/695)
+  * Updated translations extractor and translations
+  * Updated npm package (security)
+  * Updated config
+  * Replaced use of deprecated functions
 * [PR-692](https://github.com/itk-dev/deltag.aarhus.dk/pull/692/)
   * Updated core and contrib modules
 * [PR-682](https://github.com/itk-dev/deltag.aarhus.dk/pull/682)

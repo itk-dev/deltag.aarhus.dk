@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "453a199cfba2fb3818095f9c9749158e",
+    "content-hash": "81311769c2bfa0c56ded70f23d613db3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -18007,31 +18007,31 @@
         },
         {
             "name": "itk-dev/drupal_translation_extractor",
-            "version": "1.4.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_translation_extractor.git",
-                "reference": "fdb8dc27992482779efe6eb348c11a177427f7d2"
+                "reference": "125cf6f9f3307978ac8c7e09b17268a55a8fd1bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/fdb8dc27992482779efe6eb348c11a177427f7d2",
-                "reference": "fdb8dc27992482779efe6eb348c11a177427f7d2",
+                "url": "https://api.github.com/repos/itk-dev/drupal_translation_extractor/zipball/125cf6f9f3307978ac8c7e09b17268a55a8fd1bd",
+                "reference": "125cf6f9f3307978ac8c7e09b17268a55a8fd1bd",
                 "shasum": ""
             },
             "require": {
-                "drupal/core": "^10 || ^11",
-                "php": "^8.3",
-                "symfony/translation": "^6 || ^7 || ^8",
-                "symfony/twig-bridge": "^6 || ^7 || ^8"
+                "drupal/core": "^11.4",
+                "drush/drush": "^13.8",
+                "php": "^8.4",
+                "symfony/translation": "^7 || ^8",
+                "symfony/twig-bridge": "^7 || ^8"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.48",
-                "friendsofphp/php-cs-fixer": "^3.91",
-                "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^12.5",
-                "rector/rector": "^2.3",
-                "vincentlanglet/twig-cs-fixer": "^3.11"
+                "drupal/core-dev": "^11.4",
+                "ergebnis/composer-normalize": "^2.54",
+                "friendsofphp/php-cs-fixer": "^3.95",
+                "rector/rector": "^2.8",
+                "vincentlanglet/twig-cs-fixer": "^4.1"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -18041,9 +18041,10 @@
             "description": "drupal_translation_extractor",
             "support": {
                 "issues": "https://github.com/itk-dev/drupal_translation_extractor/issues",
-                "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/1.4.0"
+                "source": "https://github.com/itk-dev/drupal_translation_extractor/tree/2.0.0"
             },
-            "time": "2026-09-28T13:51:15+00:00"
+            "time": "2026-10-30T13:00:49+00:00",
+            "published-time": "2026-10-30T13:01:12+00:00"
         },
         {
             "name": "league/commonmark",
@@ -22664,5 +22665,5 @@
         "php": "^8.4.0"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

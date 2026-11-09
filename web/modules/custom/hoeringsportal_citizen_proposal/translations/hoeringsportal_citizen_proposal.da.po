@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-01-07 12:56+0100\n"
-"PO-Revision-Date: 2026-01-07 12:56+0100\n"
+"POT-Creation-Date: 2026-11-09 10:48+0100\n"
+"PO-Revision-Date: 2026-11-09 10:48+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,9 @@ msgstr "Adgang nægtet side"
 
 msgid "Add form"
 msgstr "Tilføj formular"
+
+msgid "Administer citizen proposal"
+msgstr "Administrer borgerforslag"
 
 msgid "Allow email"
 msgstr "Tillad e-mail"
@@ -64,17 +67,26 @@ msgstr "Annullér forslag"
 msgid "Citizen proposal"
 msgstr "Borgerforslag"
 
+msgid "Citizen proposal settings"
+msgstr "Indstillinger for borgerforslag"
+
 msgid "Citizen proposal settings sucessfully saved."
 msgstr "Borgerforslag indstillinger gemt med succes."
 
 msgid "Citizen proposal support"
 msgstr "Borgerforslag støtte"
 
+msgid "Citizen proposal support counter"
+msgstr "Borgerforslagsstøttetæller"
+
 msgid "Citizen proposal support related to citizen proposal nodes"
 msgstr "Borgerforslag støtte relateret til borgerforslag noder"
 
 msgid "Citizen proposal supporters"
 msgstr "Borgerforslag støtter"
+
+msgid "Citizen proposals"
+msgstr "Borgerforslag"
 
 msgid "Consent help"
 msgstr "Samtykke hjælp"
@@ -244,6 +256,9 @@ msgstr "Indsendelse tekst når et forslag er blevet indsendt"
 
 msgid "Submission text when a proposal has been supported"
 msgstr "Indsendelse tekst når et forslag er blevet støttet"
+
+msgid "Support citizen proposal"
+msgstr "Støt borgerforslag"
 
 msgid "Support form"
 msgstr "Støtte formular"
