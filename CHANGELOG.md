@@ -6,7 +6,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-* []()
+* [PR-696](https://github.com/itk-dev/deltag.aarhus.dk/pull/696)
   * Make checks pass
 
 ## [4.18.1] - 2026-10-12

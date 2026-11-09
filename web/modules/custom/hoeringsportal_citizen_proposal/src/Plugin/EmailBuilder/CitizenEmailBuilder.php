@@ -4,6 +4,7 @@ namespace Drupal\hoeringsportal_citizen_proposal\Plugin\EmailBuilder;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Template\TwigEnvironment;
+use Drupal\filter\FilterFormatRepositoryInterface;
 use Drupal\hoeringsportal_citizen_proposal\Exception\RuntimeException;
 use Drupal\hoeringsportal_citizen_proposal\Helper\Helper;
 use Drupal\hoeringsportal_citizen_proposal\Helper\MailHelper;
@@ -36,7 +37,7 @@ final class CitizenEmailBuilder extends EmailBuilderBase implements ContainerFac
   /**
    * {@inheritdoc}
    */
-  public function __construct(readonly private Helper $citizenProposalHelper, readonly private TwigEnvironment $twig, array $configuration, $plugin_id, $plugin_definition) {
+  public function __construct(readonly private Helper $citizenProposalHelper, readonly private TwigEnvironment $twig, readonly private FilterFormatRepositoryInterface $filterFormatRepository, array $configuration, $plugin_id, $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
 
@@ -47,6 +48,7 @@ final class CitizenEmailBuilder extends EmailBuilderBase implements ContainerFac
     return new static(
       $container->get(Helper::class),
       $container->get('twig'),
+      $container->get(FilterFormatRepositoryInterface::class),
       $configuration,
       $plugin_id,
       $plugin_definition
@@ -104,7 +106,7 @@ final class CitizenEmailBuilder extends EmailBuilderBase implements ContainerFac
       ->setBody([
         '#type' => 'processed_text',
         '#text' => $content['value'],
-        '#format' => $content['format'] ?? filter_default_format(),
+        '#format' => $content['format'] ?? $this->filterFormatRepository->getDefaultFormat()->id(),
       ]);
 
     parent::build($email);

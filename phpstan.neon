@@ -1,6 +1,8 @@
 parameters:
   paths:
     - web/modules/custom
+  excludePaths:
+    - web/modules/custom/*/node_modules/*
   level: 0
   customRulesetUsed: true
   ignoreErrors:

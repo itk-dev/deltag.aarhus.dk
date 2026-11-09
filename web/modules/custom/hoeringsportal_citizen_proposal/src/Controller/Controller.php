@@ -4,6 +4,7 @@ namespace Drupal\hoeringsportal_citizen_proposal\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
+use Drupal\views\Views;
 
 /**
  * Controller for citizen proposals.
@@ -20,7 +21,17 @@ class Controller extends ControllerBase {
    *   The view renderable array.
    */
   public function supporters(NodeInterface $node): array {
-    return views_embed_view('citizen_proposal_support', 'page_1', $node->id()) ?: [];
+    $view = Views::getView('citizen_proposal_support');
+    if (!$view || !$view->access('page_1')) {
+      return [];
+    }
+
+    return [
+      '#type' => 'view',
+      '#name' => 'citizen_proposal_support',
+      '#display_id' => 'page_1',
+      '#arguments' => [$node->id()],
+    ];
   }
 
 }
