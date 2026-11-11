@@ -281,7 +281,7 @@
                         "on-audit": true
                     },
                     "oomphinc/composer-installers-extender": {
-                        "reason": "Needed to install libraries from asset-packagist.",
+                        "reason": "Needed to install libraries from asset-packagist (recommended (!) by https://www.drupal.org/project/color_field).",
                         "on-audit": true
                     }
                 }
