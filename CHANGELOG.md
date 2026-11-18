@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.18.2] - 2026-11-18
+
+* [PR-698](https://github.com/itk-dev/deltag.aarhus.dk/pull/698)
+  * Prepared the Drupal core security update ([PSA-2026-11-16](https://www.drupal.org/psa-2026-11-16))
+
 ## [4.18.1] - 2026-11-09
 
 * [PR-695](https://github.com/itk-dev/deltag.aarhus.dk/pull/695)
