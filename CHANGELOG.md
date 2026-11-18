@@ -14,6 +14,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
   * Updated masterminds/html5 and symfony/* packages that drupal/core-recommended 11.4.13 requires
   * Security update drupal/scheduler 2.3.0 => 2.3.1 (SA-CONTRIB-2026-306) and
     drupal/file_resup 2.0.5 => 2.0.6 (SA-CONTRIB-2026-338)
+  * Security update phpseclib/phpseclib 3.0.57 => 3.0.58 and symfony/http-client v7.2.0 => v7.4.23
+  * Updated itk-dev/azure-ad-delta-sync-drupal 2.0.1 => 2.0.2 to allow symfony/http-client 7.4
 
 ## [4.18.1] - 2026-11-09
 
