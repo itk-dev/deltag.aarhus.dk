@@ -3586,26 +3586,26 @@
         },
         {
             "name": "drupal/file_resup",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/file_resup.git",
-                "reference": "2.0.5"
+                "reference": "2.0.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/file_resup-2.0.5.zip",
-                "reference": "2.0.5",
-                "shasum": "6c5afbeb0b095dc20b983641a9d99e31d0da9b91"
+                "url": "https://ftp.drupal.org/files/projects/file_resup-2.0.6.zip",
+                "reference": "2.0.6",
+                "shasum": "6751dbf6d6f0c8b4221171287f2071147e7ad83e"
             },
             "require": {
-                "drupal/core": "^9 || ^10 || ^11"
+                "drupal/core": "^10.3 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.5",
-                    "datestamp": "1768258837",
+                    "version": "2.0.6",
+                    "datestamp": "1794420067",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3618,19 +3618,27 @@
             ],
             "authors": [
                 {
-                    "name": "anrikun",
-                    "homepage": "https://www.drupal.org/user/410199"
+                    "name": "Henri MEDOT",
+                    "homepage": "https://www.absyx.fr/en",
+                    "role": "Author"
                 },
                 {
-                    "name": "tim bozeman",
-                    "homepage": "https://www.drupal.org/user/2241356"
+                    "name": "Tim Bozeman",
+                    "homepage": "https://bozeman.engineering",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/2360739/committers"
                 }
             ],
-            "description": "Allows users to add large files, multiple files, and resume uploads.",
+            "description": "File Resumable Upload aka file_resup adds large files multiple and resumable upload to the File and Image field widgets.",
             "homepage": "https://www.drupal.org/project/file_resup",
             "support": {
-                "source": "https://git.drupalcode.org/project/file_resup"
-            }
+                "source": "https://git.drupalcode.org/project/file_resup",
+                "issues": "https://www.drupal.org/project/issues/file_resup"
+            },
+            "published-time": "2026-11-10T17:21:19+00:00"
         },
         {
             "name": "drupal/flag",
@@ -5107,17 +5115,17 @@
         },
         {
             "name": "drupal/scheduler",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/scheduler.git",
-                "reference": "2.3.0"
+                "reference": "2.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/scheduler-2.3.0.zip",
-                "reference": "2.3.0",
-                "shasum": "c79ff70ac5300d7e95f5da2e31d95eee52c152aa"
+                "url": "https://ftp.drupal.org/files/projects/scheduler-2.3.1.zip",
+                "reference": "2.3.1",
+                "shasum": "65a49574c8de1849257749f7ceb819cc61e0130c"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11"
@@ -5135,8 +5143,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.3.0",
-                    "datestamp": "1780654272",
+                    "version": "2.3.1",
+                    "datestamp": "1793820105",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5179,7 +5187,8 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/scheduler",
                 "issues": "https://www.drupal.org/project/issues/scheduler"
-            }
+            },
+            "published-time": "2026-11-03T20:01:07+00:00"
         },
         {
             "name": "drupal/search_api",
