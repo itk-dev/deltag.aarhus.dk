@@ -273,6 +273,13 @@
             "tbachert/spi": true
         },
         "discard-changes": true,
+        "policy": {
+            "abandoned": {
+                "ignore": {
+                    "oomphinc/composer-installers-extender": "Composer plugin that installs bower assets (jquery-simple-color, spectrum) into web/libraries. Runs only during composer install, not at runtime. No known security advisories. No maintained replacement. Reviewed 2026-11-18."
+                }
+            }
+        },
         "sort-packages": true
     },
     "extra": {
