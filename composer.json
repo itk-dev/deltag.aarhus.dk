@@ -95,7 +95,7 @@
         "drupal/content_fixtures": "^3.2",
         "drupal/core-dev": "^11.1",
         "drupal/masquerade": "^2.0",
-        "drupal/webprofiler": "^11.1",
+        "drupal/webprofiler": "^11.2",
         "ergebnis/composer-normalize": "^2.44",
         "itk-dev/drupal_translation_extractor": "^2.0",
         "mglaman/phpstan-drupal": "^1.1",
@@ -273,6 +273,20 @@
             "tbachert/spi": true
         },
         "discard-changes": true,
+        "policy": {
+            "abandoned": {
+                "ignore": {
+                    "doctrine/common": {
+                        "reason": "Pulled in(directly) by drupal/webprofiler (cf. https://git.drupalcode.org/project/devel/-/work_items/3311556).",
+                        "on-audit": true
+                    },
+                    "oomphinc/composer-installers-extender": {
+                        "reason": "Needed to install libraries from asset-packagist (recommended (!) by https://www.drupal.org/project/color_field).",
+                        "on-audit": true
+                    }
+                }
+            }
+        },
         "sort-packages": true
     },
     "extra": {

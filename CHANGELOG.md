@@ -6,10 +6,27 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [4.18.2] - 2026-11-19
+## [4.18.3] - 2026-11-19
 
 * [PR-700] (https://github.com/itk-dev/deltag.aarhus.dk/pull/700)
   * Modified service dependency
+* [PR-697](https://github.com/itk-dev/deltag.aarhus.dk/pull/697)
+  * Applied Drupal core security updates
+  * Updated [drupal/webprofiler](https://www.drupal.org/project/webprofiler) and [drupal/scheduler](https://www.drupal.org/project/scheduler)
+  * Ignored some abandoned packages during composer audit
+
+## [4.18.2] - 2026-11-18
+
+* [PR-698](https://github.com/itk-dev/deltag.aarhus.dk/pull/698)
+  * Security update drupal/core 11.4.11 => 11.4.13 ([PSA-2026-11-16](https://www.drupal.org/psa-2026-11-16),
+    SA-CORE-2026-017, SA-CORE-2026-018)
+  * Updated masterminds/html5 and symfony/* packages that drupal/core-recommended 11.4.13 requires
+  * Security update drupal/scheduler 2.3.0 => 2.3.1 (SA-CONTRIB-2026-306) and
+    drupal/file_resup 2.0.5 => 2.0.6 (SA-CONTRIB-2026-338)
+  * Security update phpseclib/phpseclib 3.0.57 => 3.0.58 and symfony/http-client v7.2.0 => v7.4.23
+  * Updated itk-dev/azure-ad-delta-sync-drupal 2.0.1 => 2.0.2 to allow symfony/http-client 7.4
+  * Ignored the abandoned oomphinc/composer-installers-extender in composer audit.
+    It runs only during composer install and has no known security advisories.
 
 ## [4.18.1] - 2026-11-09
 
