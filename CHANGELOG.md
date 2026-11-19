@@ -6,6 +6,11 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.18.2] - 2026-11-19
+
+* [PR-700] (https://github.com/itk-dev/deltag.aarhus.dk/pull/700)
+  * Modified service dependency
+
 ## [4.18.1] - 2026-11-09
 
 * [PR-695](https://github.com/itk-dev/deltag.aarhus.dk/pull/695)
