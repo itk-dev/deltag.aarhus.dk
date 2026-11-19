@@ -55,7 +55,7 @@ final class CitizenEmailBuilder extends EmailBuilderBase implements ContainerFac
     return new static(
       $container->get(Helper::class),
       $container->get('twig'),
-      $container->get('filter.format_repository'),
+      $container->get(FilterFormatRepositoryInterface::class),
       $configuration,
       $plugin_id,
       $plugin_definition
