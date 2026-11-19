@@ -8,7 +8,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [4.18.3] - 2026-11-19
 
-* [PR-700] (https://github.com/itk-dev/deltag.aarhus.dk/pull/700)
+* [PR-700] (<https://github.com/itk-dev/deltag.aarhus.dk/pull/700>)
   * Modified service dependency
 * [PR-697](https://github.com/itk-dev/deltag.aarhus.dk/pull/697)
   * Applied Drupal core security updates
