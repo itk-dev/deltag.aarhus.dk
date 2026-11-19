@@ -6,6 +6,15 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [4.18.3] - 2026-11-19
+
+* [PR-700] (<https://github.com/itk-dev/deltag.aarhus.dk/pull/700>)
+  * Modified service dependency
+* [PR-697](https://github.com/itk-dev/deltag.aarhus.dk/pull/697)
+  * Applied Drupal core security updates
+  * Updated [drupal/webprofiler](https://www.drupal.org/project/webprofiler) and [drupal/scheduler](https://www.drupal.org/project/scheduler)
+  * Ignored some abandoned packages during composer audit
+
 ## [4.18.2] - 2026-11-18
 
 * [PR-698](https://github.com/itk-dev/deltag.aarhus.dk/pull/698)
