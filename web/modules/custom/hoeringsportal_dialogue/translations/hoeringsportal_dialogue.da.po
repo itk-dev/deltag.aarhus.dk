@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2026-11-09 10:48+0100\n"
-"PO-Revision-Date: 2026-11-09 10:48+0100\n"
+"POT-Creation-Date: 2026-11-19 10:56+0100\n"
+"PO-Revision-Date: 2026-11-19 10:56+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -226,6 +226,9 @@ msgstr "Se alle forslag"
 
 msgid "View dialogue report"
 msgstr "Se dialograpport"
+
+msgid "View dialogue report (BETA)"
+msgstr "Se dialograpport (BETA)"
 
 msgid "View more"
 msgstr "Se mere"
