@@ -76,6 +76,7 @@ module:
   itk_pretix: 0
   itk_siteimprove: 0
   itk_video: 0
+  itkdev_advancedqueue_addons: 0
   jquery_ui: 0
   jsonapi: 0
   language: 0

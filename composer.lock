@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1645faf87e255669e4b00f62253f509",
+    "content-hash": "394b346e3133b761f966473c8830c9cf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7868,6 +7868,49 @@
                 "source": "https://github.com/itk-dev/itk_video/tree/1.0.2"
             },
             "time": "2026-05-05T06:01:34+00:00"
+        },
+        {
+            "name": "itk-dev/itkdev_advancedqueue_addons",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/itkdev_advancedqueue_addons.git",
+                "reference": "587f130f4f7d19f52a91579663bf12c3e2896835"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/itkdev_advancedqueue_addons/zipball/587f130f4f7d19f52a91579663bf12c3e2896835",
+                "reference": "587f130f4f7d19f52a91579663bf12c3e2896835",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/advancedqueue": "^1.7",
+                "drush/drush": "^13.8",
+                "php": "^8.4"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.56",
+                "palantirnet/drupal-rector": "^1.1",
+                "phpstan/phpstan": "2.3.3"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "EUPL-1.2"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "Add-ons for Drupal's Advanced Queue module",
+            "support": {
+                "issues": "https://github.com/itk-dev/itkdev_advancedqueue_addons/issues",
+                "source": "https://github.com/itk-dev/itkdev_advancedqueue_addons/tree/1.0.1"
+            },
+            "time": "2026-11-09T21:49:38+00:00",
+            "published-time": "2026-11-09T21:49:59+00:00"
         },
         {
             "name": "itk-dev/openid-connect",

@@ -84,6 +84,7 @@
         "itk-dev/itk_pretix": "^1.6",
         "itk-dev/itk_siteimprove": "^1.2",
         "itk-dev/itk_video": "^1.0",
+        "itk-dev/itkdev_advancedqueue_addons": "^1.0",
         "itk-dev/serviceplatformen": "^1.5",
         "itk-dev/web_accessibility_statement": "^1.3",
         "onelogin/php-saml": "^4.0",
