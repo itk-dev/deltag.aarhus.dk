@@ -2,8 +2,10 @@
 
 namespace Drupal\hoeringsportal_citizen_proposal\Helper;
 
+use Drupal\Component\Utility\Crypt;
 use Drupal\Core\Site\Settings;
 use Drupal\hoeringsportal_citizen_proposal\Exception\CprException;
+use Drupal\os2web_audit\Service\Logger;
 use GuzzleHttp\Client;
 use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 use Http\Factory\Guzzle\RequestFactory;
@@ -15,6 +17,7 @@ use ItkDev\Serviceplatformen\Certificate\FilesystemCertificateLocator;
 use ItkDev\Serviceplatformen\Request\InvocationContextRequestGenerator;
 use ItkDev\Serviceplatformen\Service\Exception\ServiceException;
 use ItkDev\Serviceplatformen\Service\PersonBaseDataExtendedService;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -28,6 +31,11 @@ class CprHelper {
    */
   private PersonBaseDataExtendedService $service;
 
+  public function __construct(
+    #[Autowire(service: 'os2web_audit.logger')]
+    protected Logger $auditLogger,
+  ) {}
+
   /**
    * Look up CPR.
    */
@@ -36,10 +44,19 @@ class CprHelper {
       $this->setUpService();
     }
 
+    $cprLogValue = Crypt::hashBase64($cpr);
+    $metadata = [
+      'cpr_hash' => $cprLogValue,
+    ];
     try {
+      $this->auditLogger->info('cpr_lookup', sprintf('Looking up CPR %s', $cprLogValue), metadata: $metadata);
       $response = $this->service->personLookup($cpr);
+      $this->auditLogger->info('cpr_lookup', sprintf('Looked up CPR %s', $cprLogValue), metadata: $metadata);
     }
     catch (ServiceException $e) {
+      // Don't expose actual CPR if it appears in the service error message.
+      $message = str_replace($cpr, $cprLogValue, $e->getMessage());
+      $this->auditLogger->error('cpr_lookup', sprintf('Error looking up CPR %s: %s', $cprLogValue, $message), metadata: $metadata);
       throw new CprException($e->getMessage(), $e->getCode(), $e);
     }
 

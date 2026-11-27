@@ -6,6 +6,9 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+* [PR-694](https://github.com/itk-dev/deltag.aarhus.dk/pull/694)
+  Added CPR lookup audit logging
+
 ## [4.18.3] - 2026-11-19
 
 * [PR-700] (<https://github.com/itk-dev/deltag.aarhus.dk/pull/700>)

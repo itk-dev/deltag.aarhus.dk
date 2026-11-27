@@ -99,3 +99,10 @@ steps:
           month: "*"
           weekday: "*"
           job: 'itkdev-docker-compose-server exec phpfpm vendor/bin/drush --uri="https://deltag.aarhus.dk" hoeringsportal-citizen-proposal:anonymize-proposals'
+        os2web-audit:
+          minute: "*/7"
+          hour: "*"
+          day: "*"
+          month: "*"
+          weekday: "*"
+          job: 'itkdev-docker-compose-server exec phpfpm vendor/bin/drush --uri="https://deltag.aarhus.dk" advancedqueue:queue:process os2web_audit'
